@@ -13,7 +13,8 @@ var urlMapping = {
   '/using-javascript': '/latest/using-javascript',
   '/loading-local-files': '/latest/loading-local-files',
   '/playing-videos': '/latest/playing-videos',
-  '/faq': '/latest/faq'
+  '/faq': '/latest/faq',
+  '/index': 'latest/index'
 };
 
 var arrayValues = new Array();
