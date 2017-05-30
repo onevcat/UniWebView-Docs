@@ -62,3 +62,6 @@ There should be no conflicting for those files, unless you already have a `Andro
 
 4. Other permissions. Depend on your use case, you may need to add more permission to the manifest file. For example, you may need `ACCESS_FINE_LOCATION` if you want to use location service in web view, or `WRITE_EXTERNAL_STORAGE` if you want to choose or capture a photo to upload (since a temporary file will be created in the disk).
 
+### Next Step
+
+Congratulations! You are prepared to use UniWebView in your project now. Please read [next chapter](/latest/using-prefab) to know how to use the simplest prefab way to show a web page.

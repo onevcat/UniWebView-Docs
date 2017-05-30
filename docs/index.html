@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>UniWebView - Docs</title>
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
@@ -15,15 +15,30 @@
 <script type="text/javascript" src="versionFiles.js"></script>
 
 <script>
+  const repo = 'https://github.com/onevcat/UniWebView-Docs/'
   window.$docsify = {
     loadSidebar: true,
     loadNavbar: true,
     homepage: 'index.md',
     name: 'UniWebView Docs',
-    repo: 'https://github.com/onevat/Kingfisher',
+    repo: repo,
     themeColor: '#2a9555',
     alias: window.urlMapping,
     search: window.searchs,
+    auto2top: true,
+    formatUpdated: '{YYYY}-{MM}-{DD}',
+    plugins: [
+      function (hook, vm) {
+        hook.beforeEach(function (html) {
+          console.log(vm.route.path);
+          if (vm.route.path === '/') {
+            return html += '\n> Last modified: {docsify-updated} | [Edit on GitHub](' + repo + 'tree/master/docs/latest/index.md)';
+          } else {
+            return html += '\n> Last modified: {docsify-updated} | [Edit on GitHub](' + repo + 'tree/master/docs' + vm.route.path + '.md)';
+          }
+        })
+      }
+    ]
   }
 
 </script>
