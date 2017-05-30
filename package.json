@@ -1,0 +1,18 @@
+{
+  "name": "uniwebview-docs",
+  "version": "1.0.0",
+  "description": "Documentation of UniWebView",
+  "main": "index.js",
+  "scripts": {
+    "start": "docsify serve ./docs",
+    "build": "node build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wei Wang",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "fs-extra": "^3.0.1",
+    "replace-in-file": "^2.5.0"
+  }
+}
