@@ -18,6 +18,7 @@
     - [Submit a Ticket](https://onevcat.zendesk.com/hc/en-us/requests/new)
 - Other
     - [Migration From 2.x](migration-guide.md)
+    - [Version Highlight](version-highlight.md)
     - [Term of Service](tos.md)
     - [Privacy Policy](privacy.md)
 - [Release Note](release-note)

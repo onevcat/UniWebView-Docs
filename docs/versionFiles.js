@@ -14,7 +14,7 @@ var urlMapping = {
   '/loading-local-files': '/latest/loading-local-files',
   '/playing-videos': '/latest/playing-videos',
   '/faq': '/latest/faq',
-  '/index': 'latest/index'
+  '/index': '/latest/index',
 };
 
 var arrayValues = new Array();
@@ -24,6 +24,8 @@ for (var key in urlMapping) {
   if (value.lastIndexOf('http', 0) !== 0) {
     arrayValues.push(value);
   }
+  arrayValues.push('migration-guide');
+  arrayValues.push('version-highlight');
 }
 
 window.urlMapping = urlMapping;

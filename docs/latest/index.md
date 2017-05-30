@@ -24,7 +24,7 @@ UniWebView project was started in 2013. The original version of UniWebView suppo
 
 We are not satisfied with this situation. Performance and code quality could be dramatically improved if we use the latest technology. Adding features and fixing issues would be easier and faster too. That is the reason why we decided to rewrite UniWebView from scratch. In version 3, we started again from 0 and redesigned almost all APIs. With the experience of the past few years of development, we have a chance to make good things better and bad design gone.
 
-Version 3 is not compatible with 2. If you are upgrading from UniWebView 2, you may wish to take a brief look at the [migration guide](migration-guide). Most concepts are similar but it might still take you a while to upgrade. We also recommend you to read our documentation to bring the potential power of UniWebView to your project.
+Already using UniWebView 2? Please take a look at the [version 3 highlight](version-highlight) to see how it gets evolved from previous version. Be caution that version 3 is not compatible with 2. If you are upgrading from UniWebView 2, you may wish to take a brief look at the [migration guide](migration-guide). Most concepts are similar but it might still take you a while to upgrade. We also recommend you to read our documentation to bring the potential power of UniWebView to your project.
 
 > This documentation is only for version 3. Need to know more about version 2 and its future? See [this answer](/latest/faq?id=what-about-uniwebview-2).
 
@@ -32,4 +32,4 @@ Version 3 is not compatible with 2. If you are upgrading from UniWebView 2, you 
 
 If you are ready, follow the [Installation](/latest/installation) and subsequent guides to know basic usage of UniWebView.
 
-Please feel free to browse this documentation site and UniWebView's [APIs](/latest/api.md). You can find more information on UniWebView's [official site](https://uniwebview.com) too.
+Please feel free to browse this documentation site and UniWebView's [APIs](/latest/api). You can find more information on UniWebView's [official site](https://uniwebview.com) too.
