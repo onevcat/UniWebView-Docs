@@ -14,7 +14,7 @@ Besides of Unity Asset Store, we also have our own store. After purchasing from 
 
 No matter in which way you import UniWebView, Unity would prompt you with a window to confirm the importing files.
 
-![](images/importing.png)
+<img src="images/importing.png" data-rjs="2" />
 
 There should be no conflicting for those files, unless you already have a `AndroidManifest.xml` in your project under `Assets/Plugins/Android`. If it shows a yellow warning mark for `AndroidManifest.xml`, you could uncheck it to keep your current version for now. We will describe how to modify the manifest file in [next section](/latest/installation?id=manifest-file).
 

@@ -12,7 +12,8 @@
 <body>
   <div id="app"></div>
 </body>
-<script type="text/javascript" src="versionFiles.js"></script>
+<script type="text/javascript" src="/js/retina.min.js"></script>
+<script type="text/javascript" src="/js/versionFiles.js"></script>
 
 <script>
   const repo = 'https://github.com/onevcat/UniWebView-Docs/'
@@ -31,7 +32,10 @@
       function (hook, vm) {
         hook.beforeEach(function (html) {
           return html += '\n> Last modified: {docsify-updated} | [Edit on GitHub](' + repo + 'tree/master/docs' + vm.route.file + ')';
-        })
+        });
+        hook.doneEach(function () {
+          window.retinajs();
+        });
       }
     ]
   }

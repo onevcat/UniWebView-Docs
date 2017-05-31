@@ -1,7 +1,7 @@
 # UniWebView
 
 <center>
-![](images/logo.png)
+<img src="images/logo.png" data-rjs="2" />
 </center>
 
 > UniWebView is a modern web view component for mobile Unity3D games. Integrating web content to your games was never easier.
