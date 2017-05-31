@@ -15,6 +15,7 @@ var urlMapping = {
   '/playing-videos': '/latest/playing-videos',
   '/faq': '/latest/faq',
   '/index': '/latest/index',
+  '/uploading': '/latest/uploading'
 };
 
 var arrayValues = new Array();

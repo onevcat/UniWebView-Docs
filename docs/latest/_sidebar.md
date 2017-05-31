@@ -11,6 +11,7 @@
     - [Messaging System](latest/messaging-system.md)
     - [Using JavaScript](latest/using-javascript.md)
     - [Loading Local Files](latest/loading-local-files.md)
+    - [Uploading](latest/uploading.md)
     - [Playing Videos](latest/playing-videos.md)
 - [API Documentation](latest/api.md)
 - Help Center
