@@ -14,7 +14,7 @@ UniWebView is a Unity 3D plugin for adding a web view component to your Unity 3D
 
 UniWebView supports running on iOS 9.0 or above, and Android 5.0 (API Level 21) or above. On iOS, UniWebView is using [`WKWebView`](https://developer.apple.com/reference/webkit/wkwebview) as the render engine. While on Android, [`WebView`](https://developer.android.com/reference/android/webkit/WebView.html) is used.
 
-UniWebView also contains Unity Editor support on macOS for debug purpose. You could bring up a standalone web view directly in the Play Mode of Unity Editor if you are development your game on a Mac.
+UniWebView also contains Unity Editor support on macOS for debug purpose. You could bring up a standalone web view directly in the Play Mode of Unity Editor if you are development your game on a Mac. If you are working on a Windows PC, you can still build and use UniWebView on mobile devices, but you cannot see the result directly in the Windows Unity Editor.
 
 > This Editor plugin is a full-features variety of mobile version. Although UniWebView is designed for platform, you could also put it in a standalone macOS game if you want.
 

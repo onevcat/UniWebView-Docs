@@ -13,7 +13,6 @@
     - [Loading Local Files](latest/loading-local-files.md)
     - [Uploading](latest/uploading.md)
     - [Playing Videos](latest/playing-videos.md)
-- [API Documentation](latest/api.md)
 - Help Center
     - [FAQ](latest/faq.md)
     - [Submit a Ticket](https://onevcat.zendesk.com/hc/en-us/requests/new)
@@ -22,4 +21,6 @@
     - [Version Highlight](version-highlight.md)
     - [Term of Service](tos.md)
     - [Privacy Policy](privacy.md)
+---
+- [API Documentation](latest/api.md)
 - [Release Note](release-note)

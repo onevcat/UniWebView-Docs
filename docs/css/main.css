@@ -1,0 +1,38 @@
+body { font-size: 16px; }
+.sidebar ul li a { font-size: 16px; }
+.sidebar li { font-weight: 500; font-size: 17px; margin: 6px 0 10px 15px; }
+.sidebar-nav hr {
+  border: none;
+  border-bottom: 1px solid #eee;
+  margin: 2em 0
+}
+
+
+.markdown-section {max-width: none;}
+@media screen and (min-width: 800px) {
+  .markdown-section {
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+  }
+}
+@media screen and (min-width: 800px) {
+  .markdown-section {
+    padding-top: 1.875rem;
+    padding-bottom: 1.875rem;
+  }
+}
+@media screen and (min-width: 800px) {
+  .markdown-section {
+    margin: 0 5.55555%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .markdown-section {
+    margin: 0 9%;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .markdown-section {
+    margin: 0 17%;
+  }
+}
