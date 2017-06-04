@@ -7,7 +7,93 @@ body { font-size: 16px; }
   margin: 2em 0
 }
 
-.api-title strong { color: #e96900; }
+.api-box {
+  background: #fff;
+  border: 1px solid #EEE;
+  margin: 1.5em 0;
+}
+
+.api-box .api-heading {
+  background: #f8f8f8;
+  padding: 1rem 1rem 1rem;
+}
+
+.api-box .api-heading a { color: #34495e; text-decoration: none; }
+.api-box .api-heading .return-type { color: #2a9555; }
+
+.api-box .api-body {
+  padding: 0.2rem 1rem;
+}
+
+.api-badge { 
+  font-size: 13px;
+  font-weight: 700;
+  float: right;
+  padding: 3px 5px 3px;
+  border-radius: 5px;
+  margin: 0px 3px 0px;
+}
+
+.api-badge.api-badge-orange {
+  background: #FC6241;
+  color: white;
+}
+
+.api-badge.api-badge-blue {
+  background: #0D5176;
+  color: white;
+}
+
+.api-badge.api-badge-green {
+  background: #A5C445;
+  color: white;
+}
+
+.section-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: #999;
+  margin: .2rem 1rem .2rem;
+}
+
+.method-return {
+  margin: .2rem 2rem .5rem;
+}
+
+.parameter-item-list ul {
+  margin: .2rem 0 1rem;
+  list-style: none;
+}
+
+.parameter-item-list li {
+  padding: 0.2rem 0.2rem 0.2rem;
+}
+
+.parameter-item-type { color: #2a9555; font-weight: 700; }
+.parameter-item-name { color: #666; font-weight: 500; }
+.parameter-item-desc p {
+  font-size: 15px;
+  font-weight: 300;
+  margin: 0.2em 0;
+  line-height: 1.3rem;
+}
+
+.example {
+  border: 0.5px solid #ddd;
+  margin: 0.2rem 0;
+}
+.example .example-title {
+  color: #888;
+  font-weight: 400;
+  padding: 0rem 1rem 0rem;
+  margin: 0.4em 0
+}
+
+.example pre {
+  margin: 0 0;
+}
 
 .markdown-section {max-width: none;}
 @media screen and (min-width: 800px) {

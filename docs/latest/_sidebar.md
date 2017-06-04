@@ -22,5 +22,5 @@
     - [Term of Service](tos.md)
     - [Privacy Policy](privacy.md)
 ---
-- [API Documentation](latest/api.md)
+- [API Documentation](latest/api)
 - [Release Note](release-note)

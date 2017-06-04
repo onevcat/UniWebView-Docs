@@ -13,8 +13,12 @@
   "license": "ISC",
   "dependencies": {
     "colors": "^1.1.2",
+    "concat-stream": "^1.6.0",
     "fs-extra": "^3.0.1",
-    "js-yaml": "^3.8.4",
-    "replace-in-file": "^2.5.0"
+    "marked": "^0.3.6",
+    "node-prismjs": "^0.1.0",
+    "pygmentize-bundled": "^2.3.0",
+    "replace-in-file": "^2.5.0",
+    "toml": "^2.3.2"
   }
 }

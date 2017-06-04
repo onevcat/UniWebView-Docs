@@ -1,0 +1,308 @@
+title = "UniWebView"
+
+[[Properties]]
+name = "Frame"
+returnType = "Rect"
+hasSetter = true
+summary = """Get or Set the frame of current web view. The value is based on current `Screen.width` and `Screen.height`.
+The first two values of `Rect` is `x` and `y` position and the followed two `width` and `height`. The original point is top left corner:
+
+![](https://docs.unity3d.com/StaticFiles/ScriptRefImages/RectXY.svg)
+"""
+example = """
+```csharp
+// Make the web view full screen:
+webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
+
+// Make the web view center in the screen with size 500x500:
+var side = 500;
+var x = (Screen.width - side) / 2.0f;
+var y = (Screen.height - side) / 2.0f;
+webView.Frame = new Rect(x, y, side, side);
+```
+"""
+notice = "`Frame` will be ignored if `ReferenceRectTransform` is set."
+
+[[Properties]]
+name = "ReferenceRectTransform"
+returnType = "RectTransform"
+hasSetter = true
+summary = """
+A reference rect transform which the web view should change its position and size to.
+
+Set it to a Unity UI element (which contains a `RectTransform`) under a canvas to determine 
+the web view frame by a certain UI element. 
+
+By using this, you could get benefit from [Multiple Resolutions UI](https://docs.unity3d.com/Manual/HOWTO-UIMultiResolution.html).
+"""
+example = """
+```csharp
+// Some panel
+RectTransform panel = ...
+
+// Set the web view position and size to match panel
+webView.ReferenceRectTransform = panel;
+```
+"""
+
+[[Properties]]
+name = "Url"
+returnType = "string"
+hasSetter = false
+summary = "The url of current loaded web page."
+example = """
+```csharp
+webView.Load("https://example.com/");
+
+// Some time later or in "OnPageFinished":
+print(webView.Url);
+// => "https://example.com/"
+```
+"""
+
+[[Properties]]
+name = "CanGoBack"
+returnType = "bool"
+hasSetter = false
+summary = "Gets whether there is a back page in the back-forward list that can be navigated to."
+
+[[Properties]]
+name = "CanGoForward"
+returnType = "bool"
+hasSetter = false
+summary = "Gets whether there is a forward page in the back-forward list that can be navigated to."
+
+[[Methods]]
+name = "Load"
+syntax = "Load(string url)"
+returnType = "void"
+summary = "Load a url in current web view."
+example = """
+```csharp
+webView.Load("https://example.com");
+```
+"""
+[[Methods.parameters]]
+name = "url"
+type = "string"
+summary = "The url to be loaded. This url should start with `http://` or `https://` scheme. You could even load a non-ascii url text if it is valid."
+
+[[Methods]]
+name = "LoadHTMLString"
+syntax = "LoadHTMLString(string htmlString, string baseUrl)"
+returnType = "void"
+summary = "Load an HTML string in current web view."
+example = """
+```csharp
+webView.LoadHTMLString("<p>Hello World</p>", "https://domain.com");
+```
+"""
+
+[[Methods.parameters]]
+name = "htmlString"
+type = "string"
+summary = "The HTML string to use as the contents of the webpage."
+
+[[Methods.parameters]]
+name = "baseUrl"
+type = "string"
+summary = "The url to use as the page's base url."
+
+[[Methods]]
+name = "Reload"
+syntax = "Reload()"
+returnType = "void"
+summary = "Reloads the current page."
+
+[[Methods]]
+name = "Stop"
+syntax = "Stop()"
+returnType = "void"
+summary = "Stops loading all resources on the current page."
+
+[[Methods]]
+name = "GoBack"
+syntax = "GoBack()"
+returnType = "void"
+summary = "Navigates to the back item in the back-forward list."
+example = """
+```csharp
+if (webView.CanGoBack) {
+    webView.GoBack();
+}
+```
+"""
+
+[[Methods]]
+name = "GoForward"
+syntax = "GoForward()"
+returnType = "void"
+summary = "Navigates to the forward item in the back-forward list."
+example = """
+```csharp
+if (webView.CanGoForward) {
+    webView.GoForward();
+}
+```
+"""
+
+[[Methods]]
+name = "SetOpenLinksInExternalBrowser"
+syntax = "SetOpenLinksInExternalBrowser(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the link clicking in the web view should open the page in an external browser.
+
+By default, when user clicks a link, it will be opened in the same web view. After setting this with `true`, 
+the user will be navigated to an external native browser.
+
+On iOS, the mobile Safari; on Android, the default browser like Chrome; on macOS Editor, the default browser of your system will be used.
+"""
+example = """
+```csharp
+// You may want to set it in OnPageFinished event, 
+// otherwise the original page will be also opened externally
+webView.OnPageFinished += (view, statusCode, url) => {
+    webView.SetOpenLinksInExternalBrowser(true);
+};
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "The flag indicates whether a link should be opened externally."
+
+[[Methods]]
+name = "Show"
+syntax = "Show(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)"
+returnType = "bool"
+returnValue = "A `bool` value indicates whether the showing operation started."
+summary = """Sets the web view visible on screen.
+
+If you pass `false` and `UniWebViewTransitionEdge.None` to the first two parameters, it means no animation 
+will be applied when showing. So the `duration` parameter will not be taken into account. Otherwise, when 
+either or both `fade` and `edge` set, the showing operation will be animated.
+
+Regardless of there is an animation or not, the `completionHandler` will be called if not `null` when the web view
+showing finishes.
+"""
+example = """
+```csharp
+// Show the web view without animation
+webView.Show();
+
+// Show the web view with a fade animation
+webView.Show(true);
+
+// Show the web view with a modal presenting animation from screen bottom
+webView.Show(false, UniWebViewTransitionEdge.Bottom);
+
+// Print a message after the web view shown with animation
+webView.Show(true, UniWebViewTransitionEdge.Top, 0.25f, ()=> {
+    print("Show transition finished!");
+});
+```
+"""
+[[Methods.parameters]]
+name = "fade"
+type = "bool"
+summary = "Whether show with a fade in animation. Default is `false`."
+[[Methods.parameters]]
+name = "edge"
+type = "UniWebViewTransitionEdge"
+summary = "The edge from which the web view showing. It simulates a modal effect when showing a web view. Default is `UniWebViewTransitionEdge.None`."
+[[Methods.parameters]]
+name = "duration"
+type = "float"
+summary = "Duration of showing animation. Default is `0.4f`."
+[[Methods.parameters]]
+name = "completionHandler"
+type = "Action"
+summary = "Completion handler which will be called when showing finishes. Default is `null`."
+
+[[Methods]]
+name = "Hide"
+syntax = "Hide(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)"
+returnType = "bool"
+returnValue = "A `bool` value indicates whether the hiding operation started."
+summary = """Sets the web view invisible from screen.
+
+If you pass `false` and `UniWebViewTransitionEdge.None` to the first two parameters, it means no animation 
+will be applied when hiding. So the `duration` parameter will not be taken into account. Otherwise, when 
+either or both `fade` and `edge` set, the hiding operation will be animated.
+
+Regardless there is an animation or not, the `completionHandler` will be called if not `null` when the web view
+hiding finishes.
+"""
+notice = """Hiding the web view does not destroy or release it. You could always call `Show` on the web view again to make it visible.
+
+To release a web view and its resource, pass the web view component as the parameter of `Destroy`.
+"""
+example = """
+```csharp
+// Hide the web view without animation
+webView.Hide();
+
+// Hide the web view with a fade animation
+webView.Hide(true);
+
+// Hide the web view with a modal presenting animation from screen bottom
+webView.Hide(false, UniWebViewTransitionEdge.Bottom);
+
+// Print a message after the web view hidden with animation
+webView.Hide(true, UniWebViewTransitionEdge.Top, 0.25f, ()=> {
+    print("Hide transition finished!");
+});
+```
+"""
+[[Methods.parameters]]
+name = "fade"
+type = "bool"
+summary = "Whether hide with a fade in animation. Default is `false`."
+[[Methods.parameters]]
+name = "edge"
+type = "UniWebViewTransitionEdge"
+summary = "The edge from which the web view hiding. It simulates a modal effect when hiding a web view. Default is `UniWebViewTransitionEdge.None`."
+[[Methods.parameters]]
+name = "duration"
+type = "float"
+summary = "Duration of hiding animation. Default is `0.4f`."
+[[Methods.parameters]]
+name = "completionHandler"
+type = "Action"
+summary = "Completion handler which will be called when hiding finishes. Default is `null`."
+
+[[Methods]]
+name = "AnimateTo"
+syntax = "AnimateTo(Rect frame, float duration, float delay, Action completionHandler)"
+returnType = "bool"
+returnValue = "A `bool` value indicates whether the animation started."
+summary = "Animates the web view from current `Frame` (position and size) to another `Frame` (position and size) within `duration`."
+example = """
+```csharp
+// Animate current web view to cover half of the screen.
+var halfScreen = new Rect(0, 0, Screen.width / 2, Screen.height / 2);
+webView.AnimateTo(halfScreen, 0.4f, 0.1f, () => {
+    print("Aniamtion finished!");
+});
+```
+"""
+[[Methods.parameters]]
+name = "frame"
+type = "Rect"
+summary = "The new `Frame` which the web view should be."
+[[Methods.parameters]]
+name = "duration"
+type = "float"
+summary = "Duration of the animation."
+[[Methods.parameters]]
+name = "delay"
+type = "float"
+summary = "Delay before the animation begins. Default is `0.0f`, which means the animation will start immediately."
+[[Methods.parameters]]
+name = "completionHandler"
+type = "Action"
+summary = "Completion handler which will be called when animation finishes. Default is `null`."
+
+
+
