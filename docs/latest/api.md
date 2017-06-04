@@ -402,4 +402,40 @@ webView<span class="token punctuation">.</span><span class="token function">Anim
     </div>
   </div>
 </div>
+<div class='api-box method'>
+  <div class='api-heading' id='AddJavaScript' data-id='AddJavaScript'><a href='#/latest/api?id=AddJavaScript'><span class='return-type'>void</span> AddJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Adds a JavaScript to current page. Normally, you add a JavaScript function with this method.</p>
+<p>The input <code>jsString</code> will be executed by current web view. If succeeded, the input JavaScript code will &quot;inject&quot; 
+to the web view and a <code>UniWebViewNativeResultPayload</code> with <code>resultCode</code> being &quot;0&quot; will passed to the <code>completionHandler</code>.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>jsString</span></div>
+    <div class='parameter-item-desc'><p>The JavaScript code be added. It should be a valid JavaScript statement.</p>
+</div>
+  </li>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>Action&lt;UniWebViewNativeResultPayload&gt;</span> <span class='parameter-item-name'>completionHandler</span></div>
+    <div class='parameter-item-desc'><p>An action with a payload which indicates the adding result. If everything goes fine and the <code>jsString</code> added to current web view, <code>resultCode</code> would be &quot;0&quot;</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">AddJavaScript</span><span class="token punctuation">(</span><span class="token string">"function add() { return 1 + 2; }"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>resultCode<span class="token punctuation">.</span><span class="token function">Equal</span><span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"JavaScript adding finished without problem."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
 

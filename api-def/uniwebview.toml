@@ -304,5 +304,32 @@ name = "completionHandler"
 type = "Action"
 summary = "Completion handler which will be called when animation finishes. Default is `null`."
 
+[[Methods]]
+name = "AddJavaScript"
+syntax = "AddJavaScript(string jsString, Action<UniWebViewNativeResultPayload> completionHandler)"
+returnType = "void"
+summary = """
+Adds a JavaScript to current page. Normally, you add a JavaScript function with this method.
+
+The input `jsString` will be executed by current web view. If succeeded, the input JavaScript code will "inject" 
+to the web view and a `UniWebViewNativeResultPayload` with `resultCode` being "0" will passed to the `completionHandler`.
+"""
+example = """
+```csharp
+webView.AddJavaScript("function add() { return 1 + 2; }", (payload)=>{
+    if (result.resultCode.Equal("0")) {
+        Debug.Log("JavaScript adding finished without problem.");
+    }
+});
+```
+"""
+[[Methods.parameters]]
+name = "jsString"
+type = "string"
+summary = "The JavaScript code be added. It should be a valid JavaScript statement."
+[[Methods.parameters]]
+name = "completionHandler"
+type = "Action<UniWebViewNativeResultPayload>"
+summary = "An action with a payload which indicates the adding result. If everything goes fine and the `jsString` added to current web view, `resultCode` would be \"0\""
 
 

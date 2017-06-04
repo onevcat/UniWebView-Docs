@@ -3,6 +3,7 @@ const concat = require('concat-stream');
 const fs = require('fs-extra');
 const marked = require('marked');
 const Prism = require('node-prismjs');
+const escapeHtml = require('escape-html');
 
 marked.setOptions({
   highlight: function (code) {
@@ -51,7 +52,7 @@ class Property extends Entry {
 
   output() {
     return "<div class='api-box property'>\n" +
-      `  <div class='api-heading' id='${this.entry.name}' data-id='${this.entry.name}'><a href='#/latest/api?id=${this.entry.name}'><span class='return-type'>${this.entry.returnType}</span> ${this.entry.name} { get; ${this.setterText()}}</a></div>\n` +
+      `  <div class='api-heading' id='${this.entry.name}' data-id='${this.entry.name}'><a href='#/latest/api?id=${this.entry.name}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${this.entry.name} { get; ${this.setterText()}}</a></div>\n` +
       "  <div class='api-body'>\n" +
       "    <div class='desc'>\n" +
       `      ${this.summaryText()}` +
@@ -74,7 +75,7 @@ class Method extends Entry {
 
     this.entry.parameters.forEach(parameter => {
       list += "  <li>\n" +
-        `    <div parameter-item><span class='parameter-item-type'>${parameter.type}</span> <span class='parameter-item-name'>${parameter.name}</span></div>\n` +
+        `    <div parameter-item><span class='parameter-item-type'>${escapeHtml(parameter.type)}</span> <span class='parameter-item-name'>${parameter.name}</span></div>\n` +
         `    <div class='parameter-item-desc'>${marked(parameter.summary)}</div>\n` +
         "  </li>\n"
     });
@@ -90,7 +91,7 @@ class Method extends Entry {
     if (!this.entry.returnValue) {
       return "";
     }
-    return `<div class='section-title'>Return Value</div>\n<div class='method-return'>${this.entry.returnValue}</div>\n`
+    return `<div class='section-title'>Return Value</div>\n<div class='method-return'>${escapeHtml(this.entry.returnValue)}</div>\n`
   }
 
   badgesText() {
@@ -106,7 +107,7 @@ class Method extends Entry {
 
   output() {
     return "<div class='api-box method'>\n" +
-      `  <div class='api-heading' id='${this.entry.name}' data-id='${this.entry.name}'><a href='#/latest/api?id=${this.entry.name}'><span class='return-type'>${this.entry.returnType}</span> ${this.entry.syntax}</a>${this.badgesText()}</div>\n` +
+      `  <div class='api-heading' id='${this.entry.name}' data-id='${this.entry.name}'><a href='#/latest/api?id=${this.entry.name}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${escapeHtml(this.entry.syntax)}</a>${this.badgesText()}</div>\n` +
       "  <div class='api-body'>\n" +
       "    <div class='desc'>\n" +
       `      ${this.summaryText()}` +
