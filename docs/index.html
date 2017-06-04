@@ -6,7 +6,7 @@
   <title>UniWebView - Docs</title>
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="//unpkg.com/docsify@4.1.9/lib/themes/vue.css">
   <link rel="stylesheet" href="/css/main.css">
 </head>
 
@@ -41,8 +41,12 @@
     ]
   }
 
+  if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.register('sw.js')
+  }
+
 </script>
-<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+<script src="//unpkg.com/docsify@4.1.9/lib/docsify.min.js"></script>
 <script src="//unpkg.com/prismjs/components/prism-csharp.min.js"></script>
 <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
 
