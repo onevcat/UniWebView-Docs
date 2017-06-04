@@ -6,7 +6,7 @@
   "scripts": {
     "start": "docsify serve ./docs",
     "archive": "node archive.js",
-    "build-api": "node build-api.js"
+    "build-api": "node build-api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Wei Wang",
