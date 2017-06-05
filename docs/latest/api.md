@@ -407,7 +407,7 @@ webView<span class="token punctuation">.</span><span class="token function">Anim
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Adds a JavaScript to current page. Normally, you add a JavaScript function with this method.</p>
+<p>Adds a JavaScript to current page. Normally, you add a JavaScript function or variable with this method.</p>
 <p>The input <code>jsString</code> will be executed by current web view. If succeeded, the input JavaScript code will &quot;inject&quot; 
 to the web view and a <code>UniWebViewNativeResultPayload</code> with <code>resultCode</code> being &quot;0&quot; will passed to the <code>completionHandler</code>.</p>
 </div>
@@ -416,12 +416,12 @@ to the web view and a <code>UniWebViewNativeResultPayload</code> with <code>resu
 <div class='parameter-item-list'><ul>
   <li>
     <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>jsString</span></div>
-    <div class='parameter-item-desc'><p>The JavaScript code be added. It should be a valid JavaScript statement.</p>
+    <div class='parameter-item-desc'><p>The JavaScript code to add. It should be a valid JavaScript statement string.</p>
 </div>
   </li>
   <li>
     <div parameter-item><span class='parameter-item-type'>Action&lt;UniWebViewNativeResultPayload&gt;</span> <span class='parameter-item-name'>completionHandler</span></div>
-    <div class='parameter-item-desc'><p>An action with a payload which indicates the adding result. If everything goes fine and the <code>jsString</code> added to current web view, <code>resultCode</code> would be &quot;0&quot;</p>
+    <div class='parameter-item-desc'><p>Called when adding JavaScript operation finishes. Default is <code>null</code>. If everything goes fine and the <code>jsString</code> added to current web view, <code>resultCode</code> would be &quot;0&quot;</p>
 </div>
   </li>
 </ul></div>
@@ -430,9 +430,210 @@ to the web view and a <code>UniWebViewNativeResultPayload</code> with <code>resu
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">AddJavaScript</span><span class="token punctuation">(</span><span class="token string">"function add() { return 1 + 2; }"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>resultCode<span class="token punctuation">.</span><span class="token function">Equal</span><span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"JavaScript adding finished without problem."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">ptint</span><span class="token punctuation">(</span><span class="token string">"JavaScript adding finished without problem."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='EvaluateJavaScript' data-id='EvaluateJavaScript'><a href='#/latest/api?id=EvaluateJavaScript'><span class='return-type'>void</span> EvaluateJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Evaluates a JavaScript string on current page. Normally you execute a certain JavaScript function or get a variable by this method.</p>
+<p>The input <code>jsString</code> will be executed by current web view. Executing result will be sent back to you in the <code>completionHandler</code>. You could access the <code>data</code> member of <code>UniWebViewNativeResultPayload</code> passed in to get the JavaScript function return value.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>jsString</span></div>
+    <div class='parameter-item-desc'><p>The JavaScript string to evaluate.</p>
+</div>
+  </li>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>Action&lt;UniWebViewNativeResultPayload&gt;</span> <span class='parameter-item-name'>completionHandler</span></div>
+    <div class='parameter-item-desc'><p>Called when evaluating JavaScript operation finishes. Default is <code>null</code>. If everything goes find, the <code>resultCode</code> would be &quot;0&quot; and the return value of invoked JavaScript is contained in <code>data</code>.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Pop up an alert from web view.</span>
+webView<span class="token punctuation">.</span><span class="token function">EvaluateJavaScript</span><span class="token punctuation">(</span><span class="token string">"alert('Alert!');"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>payload<span class="token punctuation">.</span>resultCode<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// => "0"</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>payload<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// => ""</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Adding two numbers by a JavaScript function.</span>
+webView<span class="token punctuation">.</span><span class="token function">AddJavaScript</span><span class="token punctuation">(</span><span class="token string">"function add(a, b) { return a + b; }"</span><span class="token punctuation">,</span> completionHandler<span class="token punctuation">:</span> _ <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    webView<span class="token punctuation">.</span><span class="token function">EvaluateJavaScript</span><span class="token punctuation">(</span><span class="token string">"add(4, 5);"</span><span class="token punctuation">,</span> completionHandler<span class="token punctuation">:</span> <span class="token punctuation">(</span>payload<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>payload<span class="token punctuation">.</span>resultCode<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// => "0"</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>payload<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// => "9"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Call a JavaScript function not existing.</span>
+webView<span class="token punctuation">.</span><span class="token function">EvaluateJavaScript</span><span class="token punctuation">(</span><span class="token string">"functionNotExisting()"</span><span class="token punctuation">,</span> completionHandler<span class="token punctuation">:</span> <span class="token punctuation">(</span>payload<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>payload<span class="token punctuation">.</span>resultCode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// a non-zero value which indicates JavaScript error code.</span>
+    <span class="token comment" spellcheck="true">// eg. "4" on iOS.</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='AddUrlScheme' data-id='AddUrlScheme'><a href='#/latest/api?id=AddUrlScheme'><span class='return-type'>void</span> AddUrlScheme(string scheme)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Adds a url scheme to UniWebView message system interpreter. All following url navigation to this scheme will be sent as a message to UniWebView instead.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>scheme</span></div>
+    <div class='parameter-item-desc'><p>The url scheme to add. It should not contain &quot;://&quot; part. You could even add &quot;http&quot; and/or &quot;https&quot; to prevent all resource loading on the page. &quot;uniwebview&quot; is added by default. Nothing will happen if you try to add a dulplicated scheme.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Add "myscheme" as a UniWebView message scheme.</span>
+webView<span class="token punctuation">.</span><span class="token function">AddUrlScheme</span><span class="token punctuation">(</span><span class="token string">"myscheme"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// A link like "myscheme://action" will be treated as a message and raise the `OnMessageReceived` event from now.</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='RemoveUrlScheme' data-id='RemoveUrlScheme'><a href='#/latest/api?id=RemoveUrlScheme'><span class='return-type'>void</span> RemoveUrlScheme(string scheme)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Removes a url scheme from UniWebView message system interpreter.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>scheme</span></div>
+    <div class='parameter-item-desc'><p>The url scheme to remove. Nothing will happen if the scheme is not in the message system.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">RemoveUrlScheme</span><span class="token punctuation">(</span><span class="token string">"myscheme"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='AddSslExceptionDomain' data-id='AddSslExceptionDomain'><a href='#/latest/api?id=AddSslExceptionDomain'><span class='return-type'>void</span> AddSslExceptionDomain(string domain)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Adds a domain to the SSL checking white list.</p>
+<p>If you are trying to access a web site with untrusted or expired certification, 
+the web view will prevent its loading. If you could confirm that this site is trusted,
+you can add the domain as an SSL exception, so you could visit it.</p>
+</div>
+      <p class='tip'>We strongly suggest you to upgrade your site certification to a trusted one. It would be dangerous to add a site as SSL exception and your user might be exposed to the risk of Man-in-the-middle attack. You should know exactly what you will do before adding a domain to white list.</p>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>domain</span></div>
+    <div class='parameter-item-desc'><p>The domain to add. It should not contain any scheme or path part in url.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// This loading will fail since the certification is a self signed one and not trusted.</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+<span class="token comment" spellcheck="true">// Add "self-signed.badssl.com" as trusted.</span>
+webView<span class="token punctuation">.</span><span class="token function">AddSslExceptionDomain</span><span class="token punctuation">(</span><span class="token string">"self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// This page should load now.</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='RemoveSslExceptionDomain' data-id='RemoveSslExceptionDomain'><a href='#/latest/api?id=RemoveSslExceptionDomain'><span class='return-type'>void</span> RemoveSslExceptionDomain(string domain)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Removes a domain from the SSL checking white list.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>domain</span></div>
+    <div class='parameter-item-desc'><p>The domain to remove. It should not contain any scheme or path part in url.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">RemoveSslExceptionDomain</span><span class="token punctuation">(</span><span class="token string">"self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='SetHeaderField' data-id='SetHeaderField'><a href='#/latest/api?id=SetHeaderField'><span class='return-type'>void</span> SetHeaderField(string key, string value)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets a customized header field for web view requests.</p>
+<p>The header field will be used for all subsequence reqeust. 
+Pass <code>null</code> as value to unset a header field.</p>
+<p>Some reserved headers like user agent are not be able to override by setting here, 
+use the <code>SetUserAgent</code> method for them instead.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>key</span></div>
+    <div class='parameter-item-desc'><p>The key of customized header field.</p>
+</div>
+  </li>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>value</span></div>
+    <div class='parameter-item-desc'><p>The value of customized header field. <code>null</code> if you want to unset the field.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Set "MyToken" field to "123abc" in a web view. It will be used for all requests.</span>
+webView<span class="token punctuation">.</span><span class="token function">SetHeaderField</span><span class="token punctuation">(</span><span class="token string">"MyToken"</span><span class="token punctuation">,</span> <span class="token string">"123abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Unset it</span>
+webView<span class="token punctuation">.</span><span class="token function">SetHeaderField</span><span class="token punctuation">(</span><span class="token string">"MyToken"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
     </div>

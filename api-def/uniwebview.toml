@@ -309,7 +309,7 @@ name = "AddJavaScript"
 syntax = "AddJavaScript(string jsString, Action<UniWebViewNativeResultPayload> completionHandler)"
 returnType = "void"
 summary = """
-Adds a JavaScript to current page. Normally, you add a JavaScript function with this method.
+Adds a JavaScript to current page. Normally, you add a JavaScript function or variable with this method.
 
 The input `jsString` will be executed by current web view. If succeeded, the input JavaScript code will "inject" 
 to the web view and a `UniWebViewNativeResultPayload` with `resultCode` being "0" will passed to the `completionHandler`.
@@ -318,7 +318,7 @@ example = """
 ```csharp
 webView.AddJavaScript("function add() { return 1 + 2; }", (payload)=>{
     if (result.resultCode.Equal("0")) {
-        Debug.Log("JavaScript adding finished without problem.");
+        ptint("JavaScript adding finished without problem.");
     }
 });
 ```
@@ -326,10 +326,156 @@ webView.AddJavaScript("function add() { return 1 + 2; }", (payload)=>{
 [[Methods.parameters]]
 name = "jsString"
 type = "string"
-summary = "The JavaScript code be added. It should be a valid JavaScript statement."
+summary = "The JavaScript code to add. It should be a valid JavaScript statement string."
 [[Methods.parameters]]
 name = "completionHandler"
 type = "Action<UniWebViewNativeResultPayload>"
-summary = "An action with a payload which indicates the adding result. If everything goes fine and the `jsString` added to current web view, `resultCode` would be \"0\""
+summary = "Called when adding JavaScript operation finishes. Default is `null`. If everything goes fine and the `jsString` added to current web view, `resultCode` would be \"0\""
 
+[[Methods]]
+name = "EvaluateJavaScript"
+syntax = "EvaluateJavaScript(string jsString, Action<UniWebViewNativeResultPayload> completionHandler)"
+returnType = "void"
+summary = """Evaluates a JavaScript string on current page. Normally you execute a certain JavaScript function or get a variable by this method.
 
+The input `jsString` will be executed by current web view. Executing result will be sent back to you in the `completionHandler`. You could access the `data` member of `UniWebViewNativeResultPayload` passed in to get the JavaScript function return value.
+"""
+example = """
+```csharp
+// Pop up an alert from web view.
+webView.EvaluateJavaScript("alert('Alert!');", (payload)=>{
+    print(payload.resultCode); // => "0"
+    print(payload.data); // => ""
+});
+
+// Adding two numbers by a JavaScript function.
+webView.AddJavaScript("function add(a, b) { return a + b; }", completionHandler: _ => {
+    webView.EvaluateJavaScript("add(4, 5);", completionHandler: (payload) => {
+        print(payload.resultCode); // => "0"
+        print(payload.data);  // => "9"
+    });
+});
+
+// Call a JavaScript function not existing.
+webView.EvaluateJavaScript("functionNotExisting()", completionHandler: (payload) => {
+    print(payload.resultCode);
+    // a non-zero value which indicates JavaScript error code.
+    // eg. "4" on iOS.
+});
+```
+"""
+[[Methods.parameters]]
+name = "jsString"
+type = "string"
+summary = "The JavaScript string to evaluate."
+[[Methods.parameters]]
+name = "completionHandler"
+type = "Action<UniWebViewNativeResultPayload>"
+summary = "Called when evaluating JavaScript operation finishes. Default is `null`. If everything goes find, the `resultCode` would be \"0\" and the return value of invoked JavaScript is contained in `data`."
+
+[[Methods]]
+name = "AddUrlScheme"
+syntax = "AddUrlScheme(string scheme)"
+returnType = "void"
+summary = "Adds a url scheme to UniWebView message system interpreter. All following url navigation to this scheme will be sent as a message to UniWebView instead."
+example = """
+```csharp
+// Add "myscheme" as a UniWebView message scheme.
+webView.AddUrlScheme("myscheme");
+
+// A link like "myscheme://action" will be treated as a message and raise the `OnMessageReceived` event from now.
+```
+"""
+[[Methods.parameters]]
+name = "scheme"
+type = "string"
+summary = "The url scheme to add. It should not contain \"://\" part. You could even add \"http\" and/or \"https\" to prevent all resource loading on the page. \"uniwebview\" is added by default. Nothing will happen if you try to add a dulplicated scheme."
+
+[[Methods]]
+name = "RemoveUrlScheme"
+syntax = "RemoveUrlScheme(string scheme)"
+returnType = "void"
+summary = "Removes a url scheme from UniWebView message system interpreter."
+example = """
+```csharp
+webView.RemoveUrlScheme("myscheme");
+```
+"""
+[[Methods.parameters]]
+name = "scheme"
+type = "string"
+summary = "The url scheme to remove. Nothing will happen if the scheme is not in the message system."
+
+[[Methods]]
+name = "AddSslExceptionDomain"
+syntax = "AddSslExceptionDomain(string domain)"
+returnType = "void"
+summary = """
+Adds a domain to the SSL checking white list.
+
+If you are trying to access a web site with untrusted or expired certification, 
+the web view will prevent its loading. If you could confirm that this site is trusted,
+you can add the domain as an SSL exception, so you could visit it.
+"""
+notice = "We strongly suggest you to upgrade your site certification to a trusted one. It would be dangerous to add a site as SSL exception and your user might be exposed to the risk of Man-in-the-middle attack. You should know exactly what you will do before adding a domain to white list."
+example = """
+```csharp
+// This loading will fail since the certification is a self signed one and not trusted.
+webView.Load("https://self-signed.badssl.com/"); 
+
+// Add "self-signed.badssl.com" as trusted.
+webView.AddSslExceptionDomain("self-signed.badssl.com");
+// This page should load now.
+webView.Load("https://self-signed.badssl.com/"); 
+```
+"""
+[[Methods.parameters]]
+name = "domain"
+type = "string"
+summary = "The domain to add. It should not contain any scheme or path part in url."
+
+[[Methods]]
+name = "RemoveSslExceptionDomain"
+syntax = "RemoveSslExceptionDomain(string domain)"
+returnType = "void"
+summary = "Removes a domain from the SSL checking white list."
+example = """
+```csharp
+webView.RemoveSslExceptionDomain("self-signed.badssl.com");
+```
+"""
+[[Methods.parameters]]
+name = "domain"
+type = "string"
+summary = "The domain to remove. It should not contain any scheme or path part in url."
+
+[[Methods]]
+name = "SetHeaderField"
+syntax = "SetHeaderField(string key, string value)"
+returnType = "void"
+summary = """
+Sets a customized header field for web view requests.
+
+The header field will be used for all subsequence reqeust. 
+Pass `null` as value to unset a header field.
+
+Some reserved headers like user agent are not be able to override by setting here, 
+use the `SetUserAgent` method for them instead.
+"""
+example = """
+```csharp
+// Set "MyToken" field to "123abc" in a web view. It will be used for all following requests.
+webView.SetHeaderField("MyToken", "123abc");
+
+// Unset it
+webView.SetHeaderField("MyToken", null);
+```
+"""
+[[Methods.parameters]]
+name = "key"
+type = "string"
+summary = "The key of customized header field."
+[[Methods.parameters]]
+name = "value"
+type = "string"
+summary = "The value of customized header field. `null` if you want to unset the field."
