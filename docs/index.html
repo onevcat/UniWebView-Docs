@@ -43,7 +43,10 @@
             apiKey: 'b7cb81121c4ef29ddbda7689086f52d7',
             indexName: 'uniwebview',
             inputSelector: '#search',
-            debug: true // Set debug to true if you want to inspect the dropdown
+            debug: false, // Set debug to true if you want to inspect the dropdown
+            algoliaOptions: {
+              hitsPerPage: 10
+            }
           });
         });
       }

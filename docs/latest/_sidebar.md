@@ -1,4 +1,3 @@
-- [UniWebView Home](https://uniwebview.com)
 - Getting Started
     - [Installation](latest/installation.md)
     - [Using Prefab](latest/using-prefab.md)
