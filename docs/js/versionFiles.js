@@ -16,19 +16,8 @@ var urlMapping = {
   '/faq': '/latest/faq',
   '/index': '/latest/index',
   '/uploading': '/latest/uploading',
-  '/api': '/latest/api',
+  '/api': '/latest/api/overview',
+  '/latest/api/': '/latest/api/overview',
 };
 
-var arrayValues = new Array();
-
-for (var key in urlMapping) {
-  const value = urlMapping[key];
-  if (value.lastIndexOf('http', 0) !== 0) {
-    arrayValues.push(value);
-  }
-  arrayValues.push('migration-guide');
-  arrayValues.push('version-highlight');
-}
-
 window.urlMapping = urlMapping;
-window.searchs = arrayValues;

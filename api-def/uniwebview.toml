@@ -1,4 +1,5 @@
 title = "UniWebView"
+file = "uniwebview"
 
 [[Properties]]
 name = "Frame"
@@ -479,3 +480,143 @@ summary = "The key of customized header field."
 name = "value"
 type = "string"
 summary = "The value of customized header field. `null` if you want to unset the field."
+
+[[Methods]]
+name = "SetUserAgent"
+syntax = "SetUserAgent(string agent)"
+returnType = "void"
+summary = "Sets the user agent used in the web view. If the string is null or empty, the system default value will be used."
+example = """
+```csharp
+// Set the user agent string sent in request header.
+webView.SetUserAgent("My-Amazion-App/1.0.0 (iOS 10.3, iPhone 7)");
+
+// => In request header:
+// User-Agent = "My-Amazion-App/1.0.0 (iOS 10.3, iPhone 7)"
+```
+"""
+[[Methods.parameters]]
+name = "agent"
+type = "string"
+summary = "The new user agent string to use."
+
+[[Methods]]
+name = "GetUserAgent"
+syntax = "GetUserAgent()"
+returnType = "string"
+returnValue = "The user agent string in use."
+summary = "Gets the user agent string currently used in web view. If a customized user agent is not set, the default user agent in current platform will be returned."
+example = """
+```csharp
+// Gets the default user agent.
+webView.GetUserAgent()
+// => "Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 ..."
+// This value varies in different platforms.
+
+// Sets a user agent and then get it.
+webView.SetUserAgent("My-Amazion-App/1.0.0 (iOS 10.3, iPhone 7)");
+webView.GetUserAgent()
+// => "My-Amazion-App/1.0.0 (iOS 10.3, iPhone 7)"
+```
+"""
+
+[[Methods]]
+name = "SetAllowAutoPlay"
+syntax = "SetAllowAutoPlay(bool flag)"
+returnType = "void"
+
+summary = """
+Set allow auto play for current web view. By default, 
+users need to touch the play button to start playing a media resource.
+
+By setting this to `true`, you could start the playing automatically through
+corresponding media [tag attributes](https://www.w3schools.com/tags/att_video_autoplay.asp).
+"""
+notice = "You need to set it before creating a web view. Existing web views are not affected."
+example = """
+```csharp
+UniWebView.SetAllowAutoPlay(true);
+
+// Create a new web view.
+var webView = gameObject.AddComponent<UniWebView>();
+
+// Now load and open a page which contains auto-started video to try
+webView.Load("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_video_autoplay");
+webView.Show();
+```
+"""
+
+[[Methods.badges]]
+name = "static"
+color = "blue"
+
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "A flag indicates whether autoplaying of media is allowed or not."
+
+[[Methods]]
+name = "SetAllowInlinePlay"
+syntax = "SetAllowInlinePlay(bool flag)"
+returnType = "void"
+summary = """
+Set allow inline play for current web view. By default, on iOS, the video 
+can only be played in a new full screen view.
+
+By setting this to `true`, you could play a video inline the page, instead of opening 
+a new full screen window.
+
+This only works for iOS and macOS Editor. 
+On Android, you could play videos inline by default and calling this method does nothing.
+"""
+notice = "You need to set it before creating a web view. Existing web views are not affected."
+example = """
+```csharp
+UniWebView.SetAllowInlinePlay(true);
+
+// Create a new web view.
+var webView = gameObject.AddComponent<UniWebView>();
+
+// Now load and open a page which contains auto-started video to try
+webView.Load("https://example.com/inline-video");
+webView.Show();
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "A flag indicates whether inline playing of media is allowed or not."
+
+[[Methods]]
+name = "SetJavaScriptEnabled"
+syntax = "SetJavaScriptEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether JavaScript should be enabled in current web view. Default is enabled.
+
+For a modern page, you may always want JavaScript enabled. However, if you could confirm that you are
+not using any JavaScript in your page, you could turn it off to get better performance and safety.
+"""
+notice = "You need to set it before creating a web view. Existing web views are not affected."
+example = """
+```csharp
+// Disable JavaScript in web views created later.
+UniWebView.SetJavaScriptEnabled(false);
+
+// JavaScript is disabled in this web view.
+var webView = gameObject.AddComponent<UniWebView>();
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether JavaScript should be enabled."

@@ -32,4 +32,4 @@ Already using UniWebView 2? Please take a look at the [version 3 highlight](vers
 
 If you are ready, follow the [Installation](/latest/installation) and subsequent guides to know basic usage of UniWebView.
 
-Please feel free to browse this documentation site and UniWebView's [APIs](/latest/api). You can find more information on UniWebView's [official site](https://uniwebview.com) too.
+Please feel free to browse this documentation site and UniWebView's [APIs](/latest/api/overview). You can find more information on UniWebView's [official site](https://uniwebview.com) too.

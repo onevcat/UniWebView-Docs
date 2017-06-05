@@ -12,8 +12,9 @@ marked.setOptions({
 });
 
 class Entry {
-  constructor(entry) {
+  constructor(entry, file) {
     this.entry = entry;
+    this.file = file;
   }
 
   exampleText() {
@@ -35,7 +36,7 @@ class Entry {
   noticeText() {
     var notice = "";
     if (this.entry.notice) {
-      notice = `<p class='tip'>${this.entry.notice}</p>\n`;
+      notice = `<p class='tip'>${marked.inlineLexer(this.entry.notice, [], {})}</p>\n`;
     }
     return notice;
   }
@@ -52,7 +53,7 @@ class Property extends Entry {
 
   output() {
     return "<div class='api-box property'>\n" +
-      `  <div class='api-heading' id='${this.entry.name}' data-id='${this.entry.name}'><a href='#/latest/api?id=${this.entry.name}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${this.entry.name} { get; ${this.setterText()}}</a></div>\n` +
+      `  <div class='api-heading' id='${this.entry.name}' data-id='${this.entry.name}'><a href='#/latest/api/${this.file}.html?id=${this.entry.name}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${this.entry.name} { get; ${this.setterText()}}</a></div>\n` +
       "  <div class='api-body'>\n" +
       "    <div class='desc'>\n" +
       `      ${this.summaryText()}` +
@@ -107,7 +108,7 @@ class Method extends Entry {
 
   output() {
     return "<div class='api-box method'>\n" +
-      `  <div class='api-heading' id='${this.entry.name}' data-id='${this.entry.name}'><a href='#/latest/api?id=${this.entry.name}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${escapeHtml(this.entry.syntax)}</a>${this.badgesText()}</div>\n` +
+      `  <div class='api-heading' id='${this.entry.name}' data-id='${this.entry.name}'><a href='#/latest/api/${this.file}.html?id=${this.entry.name}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${escapeHtml(this.entry.syntax)}</a>${this.badgesText()}</div>\n` +
       "  <div class='api-body'>\n" +
       "    <div class='desc'>\n" +
       `      ${this.summaryText()}` +
@@ -121,30 +122,30 @@ class Method extends Entry {
   }
 }
 
-function outputProperties(properties) {
+function outputProperties(properties, file) {
   if (!properties) { return ""; }
-  var result = "#### Properties\n\n";
+  var result = "<h4>Properties</h4>\n";
   properties.forEach(p => {
-    const property = new Property(p);
+    const property = new Property(p, file);
     result += property.output();
   });
   return result + '\n';
 }
 
-function outputMethods(methods) {
+function outputMethods(methods, file) {
   if (!methods) { return ""; }
-  var result = "#### Methods\n\n";
+  var result = "<h4>Methods</h4>\n";
   methods.forEach(m => {
-    const method = new Method(m);
+    const method = new Method(m, file);
     result += method.output();
   });
   return result + '\n';
 }
 
 function output(api) {
-  var result = `## ${api.title}\n\n`;
-  result += outputProperties(api["Properties"]);
-  result += outputMethods(api["Methods"]);
+  var result = `<h2>${api.title}</h2>\n`;
+  result += outputProperties(api["Properties"], api.file);
+  result += outputMethods(api["Methods"], api.file);
   return result;
 }
 
@@ -153,11 +154,11 @@ const allFiles = [
   'uniwebview.toml'
 ]
 
-var result = "# API Documentation\n\n";
+var result = "<h1>API Documentation</h1>\n";
 allFiles.forEach((file) => {
   const s = fs.readFileSync(`${apiFolder}/${file}`, "utf8");
   let api = toml.parse(s);
   result += output(api);
-});
 
-fs.writeFileSync('./docs/latest/api.md', result);
+  fs.writeFileSync(`./docs/latest/api/${api.file}.html`, result);
+});

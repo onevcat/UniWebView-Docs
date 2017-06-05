@@ -28,13 +28,14 @@
     repo: repo,
     themeColor: '#2a9555',
     alias: window.urlMapping,
-    search: window.searchs,
     auto2top: true,
     formatUpdated: '{YYYY}-{MM}-{DD}',
     plugins: [
       function (hook, vm) {
         hook.beforeEach(function (html) {
-          return html += '\n> Last modified: {docsify-updated} | [Edit on GitHub](' + repo + 'tree/master/docs' + vm.route.file + ')';
+          return html += "<blockquote>\n" +
+            "<p>Last modified: 2017-06-05 | <a href=\"" + repo + "tree/master/docs" + vm.route.file + "\" target=\"_blank\">Edit on GitHub</a></p>\n" +
+            "</blockquote>"
         });
         hook.doneEach(function () {
           window.retinajs();

@@ -123,3 +123,15 @@ body { font-size: 16px; }
     margin: 0 17%;
   }
 }
+
+.sidebar {
+  position:fixed; 
+  overflow:visible;
+}
+.sidebar .search {
+  overflow: visible;
+}
+.sidebar .sidebar-nav {
+  overflow-y: scroll;
+  height: 80%;
+}

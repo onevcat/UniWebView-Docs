@@ -22,5 +22,6 @@
     - [Term of Service](tos.md)
     - [Privacy Policy](privacy.md)
 ---
-- [API Documentation](latest/api)
+- API Documentation
+    - [UniWebView](/latest/api/uniwebview.html)
 - [Release Note](release-note)
