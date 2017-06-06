@@ -127,6 +127,314 @@ webView<span class="token punctuation">.</span>Alpha <span class="token operator
   </div>
 </div>
 
+<h4>Events</h4>
+<div class='api-box method'>
+  <div class='api-heading' id='OnPageStarted' data-id='OnPageStarted'><a href='#/latest/api/uniwebview.html?id=OnPageStarted'><span class='return-type'>event</span> OnPageStarted(UniWebView webView, string url)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the web view starts loading a url.</p>
+<p>This event will be invoked for both url loading with <code>Load</code> method or by a link navigating from page.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
+    <div class='parameter-item-desc'><p>The url which the web view begins to load.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnPageStarted <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Loading started for url: "</span> <span class="token operator">+</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// => "Loading started for url: https://example.com/"</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='OnPageFinished' data-id='OnPageFinished'><a href='#/latest/api/uniwebview.html?id=OnPageFinished'><span class='return-type'>event</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the web view finished to load a url successully.</p>
+<p>This method will be invoked when a valid response received from the url, regardless the response status.
+If a url loading fails before reaching to the server and getting a response, <code>OnPageErrorReceived</code> will be 
+raised instead.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>statusCode</span></div>
+    <div class='parameter-item-desc'><p>HTTP status code received from response.</p>
+</div>
+  </li>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
+    <div class='parameter-item-desc'><p>The url which the web view begins to load.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnPageFinished <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> statusCode<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>statusCode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Web view loading finished for: "</span> <span class="token operator">+</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// => "202"</span>
+<span class="token comment" spellcheck="true">// => "Web view loading finished for: https://example.com"</span>
+
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://some_domain.com/404"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// => "404"</span>
+<span class="token comment" spellcheck="true">// => "Web view loading finished for: https://example.com"</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='OnPageErrorReceived' data-id='OnPageErrorReceived'><a href='#/latest/api/uniwebview.html?id=OnPageErrorReceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when an error encountered during the loading process. 
+Such as host not found or no Internet connection will raise this event.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>errorCode</span></div>
+    <div class='parameter-item-desc'><p>The error code which indicates the error type. It is different from systems and platforms.</p>
+</div>
+  </li>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
+    <div class='parameter-item-desc'><p>The error message which indicates the error.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnPageErrorReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> error<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Errored."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://onevcat-not-existing.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// => "Errored."</span>
+
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"unknown://host?param1=value1&amp;param2=value2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// => "Errored."</span>
+
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// => "Errored."</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='OnMessageReceived' data-id='OnMessageReceived'><a href='#/latest/api/uniwebview.html?id=OnMessageReceived'><span class='return-type'>event</span> OnMessageReceived(UniWebView webView, UniWebViewMessage message)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when a message from web view is received. </p>
+<p>Generally, the message comes from a navigation to 
+a scheme which is observed by current web view. You could use <code>AddUrlScheme</code> and 
+<code>RemoveUrlScheme</code> to manipulate the scheme list.</p>
+<p>&quot;uniwebview://&quot; scheme is default in the list, so a clicking on link starts with &quot;uniwebview://&quot;
+will raise this event, if it is not removed.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>UniWebViewMessage</span> <span class='parameter-item-name'>message</span></div>
+    <div class='parameter-item-desc'><p>The message object which contains information like message path and arguments.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Scheme<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Args<span class="token punctuation">[</span><span class="token string">"param1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Args<span class="token punctuation">[</span><span class="token string">"param2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"uniwebview://host?param1=value1&amp;param2=value2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// => "uniwebview", "host", "value1", "value2"</span>
+
+
+anotherWebView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>RawMessage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+anotherWebView<span class="token punctuation">.</span><span class="token function">AddUrlScheme</span><span class="token punctuation">(</span><span class="token string">"myscheme"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Clike the link "myscheme://action" in a web page.</span>
+<span class="token comment" spellcheck="true">// &lt;a href="myscheme://action">Click Me&lt;/a></span>
+
+<span class="token comment" spellcheck="true">// => "myscheme://action"</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='OnShouldClose' data-id='OnShouldClose'><a href='#/latest/api/uniwebview.html?id=OnShouldClose'><span class='return-type'>event bool</span> OnShouldClose(UniWebView webView)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the web view is about to close itself.</p>
+<p>This event is raised when the users close the web view by Back button on Android, Done button on iOS,
+or Close button on Unity Editor. It gives a chance to make final decision whether the web view should 
+be closed and destroyed. You should also clean all related resources you created (such as a reference to
+the web view.)</p>
+<p>If this event is not listened and implemented, the web view will be closed and destroyed by default when
+it needed.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+      <div class='section-title'>Return Value</div>
+<div class='method-return'>Whether the web view should be closed and destroyed.</div>
+      <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Clean webView field when </span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyBehaviour</span> <span class="token punctuation">:</span> MonoBehaviour <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> webView<span class="token punctuation">;</span>
+
+    <span class="token keyword">void</span> <span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        webView<span class="token punctuation">.</span>OnShouldClose <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            webView <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// Make the web view there without being closed</span>
+webView<span class="token punctuation">.</span>OnShouldClose <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='OnKeyCodeReceived' data-id='OnKeyCodeReceived'><a href='#/latest/api/uniwebview.html?id=OnKeyCodeReceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when a key (like back button or volume up) on the device is pressed.</p>
+<p>This event only raised on Android. It is useful when you disabled the back button but still need to 
+get the back button event. On iOS, user&#39;s key action is not avaliable and this event will never be 
+raised.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>keyCode</span></div>
+    <div class='parameter-item-desc'><p>The key code of pressed key. See <a href="https://developer.android.com/reference/android/view/KeyEvent.html#KEYCODE_0">Android API for keycode</a> to know the possible values.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnKeyCodeReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> keyCode<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>keyCode <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Back Button was clicked."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='OnOreintationChanged' data-id='OnOreintationChanged'><a href='#/latest/api/uniwebview.html?id=OnOreintationChanged'><span class='return-type'>event</span> OnOreintationChanged(UniWebView webView, ScreenOrientation orientation)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the screen oreintation is changed. It is a good time to set the web view frame if you 
+need to support multiple oreintations in your game.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>ScreenOrientation</span> <span class='parameter-item-name'>orientation</span></div>
+    <div class='parameter-item-desc'><p>The screen orientation for current state.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Keep the web view full screen on both portait and landscape mode.</span>
+webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span>OnOreintationChanged <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> orientation<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+
 <h4>Methods</h4>
 <div class='api-box method'>
   <div class='api-heading' id='Load' data-id='Load'><a href='#/latest/api/uniwebview.html?id=Load'><span class='return-type'>void</span> Load(string url)</a></div>
@@ -432,6 +740,28 @@ webView<span class="token punctuation">.</span><span class="token function">Hide
 webView<span class="token punctuation">.</span><span class="token function">AnimateTo</span><span class="token punctuation">(</span>halfScreen<span class="token punctuation">,</span> <span class="token number">0.4f</span><span class="token punctuation">,</span> <span class="token number">0.1f</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Aniamtion finished!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='UpdateFrame' data-id='UpdateFrame'><a href='#/latest/api/uniwebview.html?id=UpdateFrame'><span class='return-type'>void</span> UpdateFrame()</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Update and set current frame of web view to match the setting.</p>
+<p>This is useful if the <code>referenceRectTransform</code> is changed and you need to sync the frame change
+to the web view. This method follows the frame determining rules.</p>
+</div>
+                        <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// In a UIBehavior script:</span>
+<span class="token comment" spellcheck="true">// Called when associated `rectTransform` is changed.</span>
+<span class="token keyword">void</span> <span class="token function">OnRectTransformDimensionsChange</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// This will update web view's frame to match the reference rect transform if set.</span>
+    webView<span class="token punctuation">.</span><span class="token function">UpdateFrame</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 </div>
     </div>
@@ -1288,7 +1618,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='SetWebContentsDebuggingEnabled' data-id='SetWebContentsDebuggingEnabled'><a href='#/latest/api/uniwebview.html?id=SetWebContentsDebuggingEnabled'><span class='return-type'>void</span> etWebContentsDebuggingEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div><div class='api-badge api-badge-blue'>static</div></div>
+  <div class='api-heading' id='SetWebContentsDebuggingEnabled' data-id='SetWebContentsDebuggingEnabled'><a href='#/latest/api/uniwebview.html?id=SetWebContentsDebuggingEnabled'><span class='return-type'>void</span> SetWebContentsDebuggingEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

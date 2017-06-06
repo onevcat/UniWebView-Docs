@@ -122,6 +122,8 @@ class Method extends Entry {
   }
 }
 
+class Event extends Method { }
+
 function outputProperties(properties, file) {
   if (!properties) { return ""; }
   var result = "<h4>Properties</h4>\n";
@@ -142,9 +144,20 @@ function outputMethods(methods, file) {
   return result + '\n';
 }
 
+function outputEvent(events, file) {
+  if (!events) { return ""; }
+  var result = "<h4>Events</h4>\n";
+  events.forEach(e => {
+    const event = new Event(e, file);
+    result += event.output();
+  });
+  return result + '\n';
+}
+
 function output(api) {
   var result = `<h2>${api.title}</h2>\n`;
   result += outputProperties(api["Properties"], api.file);
+  result += outputEvent(api["Events"], api.file);
   result += outputMethods(api["Methods"], api.file);
   return result;
 }
