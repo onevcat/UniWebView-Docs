@@ -133,7 +133,7 @@ body { font-size: 16px; }
 }
 .sidebar .sidebar-nav {
   overflow-y: scroll;
-  height: 80%;
+  height: 85%;
 }
 
 .algolia-autocomplete {

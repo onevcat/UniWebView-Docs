@@ -31,3 +31,7 @@ h1   {color: red;}
 ```
 
 Then your style file would be loadded and the page could be styled. It is the same for other resources like images.
+
+#### Android apps Using "Split Application Binary"
+
+If you are using "Split Application Binary" for Android build (obb files), you should not put your local html files under **StreamingAssets** folder. Instead, you need to put them to `Assets/Plugins/Android/assets/` and then you can use the same way as you did for normal streaming assets resource to load it from the new location.
