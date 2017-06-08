@@ -139,3 +139,7 @@ body { font-size: 16px; }
 .algolia-autocomplete {
     width: 100%;
 }
+
+.video-player {
+  box-shadow: 0px 0px 2px 2px #888;
+}

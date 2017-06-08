@@ -321,7 +321,7 @@ summary = "Animates the web view from current `Frame` (position and size) to ano
 example = """
 ```csharp
 // Animate current web view to cover half of the screen.
-var halfScreen = new Rect(0, 0, Screen.width / 2, Screen.height / 2);
+var halfScreen = new Rect(0, 0, Screen.width, Screen.height / 2);
 webView.AnimateTo(halfScreen, 0.4f, 0.1f, () => {
     print("Aniamtion finished!");
 });
