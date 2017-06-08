@@ -40,6 +40,17 @@ class Entry {
     }
     return notice;
   }
+
+  badgesText() {
+    if (!this.entry.badges) {
+      return "";
+    }
+    var result = "";
+    this.entry.badges.forEach(badge => {
+      result += `<div class='api-badge api-badge-${badge.color}'>${badge.name}</div>`
+    });
+    return result;
+  }
 }
 
 class Property extends Entry {
@@ -53,7 +64,7 @@ class Property extends Entry {
 
   output() {
     return "<div class='api-box property'>\n" +
-      `  <div class='api-heading' id='${this.entry.name}' data-id='${this.entry.name}'><a href='#/latest/api/${this.file}.html?id=${this.entry.name}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${this.entry.name} { get; ${this.setterText()}}</a></div>\n` +
+      `  <div class='api-heading' id='${this.entry.name}' data-id='${this.entry.name}'><a href='#/latest/api/${this.file}.html?id=${this.entry.name}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${this.entry.name} { get; ${this.setterText()}}</a>${this.badgesText()}</div>\n` +
       "  <div class='api-body'>\n" +
       "    <div class='desc'>\n" +
       `      ${this.summaryText()}` +
@@ -93,17 +104,6 @@ class Method extends Entry {
       return "";
     }
     return `<div class='section-title'>Return Value</div>\n<div class='method-return'>${escapeHtml(this.entry.returnValue)}</div>\n`
-  }
-
-  badgesText() {
-    if (!this.entry.badges) {
-      return "";
-    }
-    var result = "";
-    this.entry.badges.forEach(badge => {
-      result += `<div class='api-badge api-badge-${badge.color}'>${badge.name}</div>`
-    });
-    return result;
   }
 
   output() {
@@ -164,11 +164,18 @@ function output(api) {
 
 const apiFolder = './api-def';
 const allFiles = [
-  'uniwebview.toml'
+  'uniwebview.toml',
+  'uniwebviewmessage.toml',
+  'uniwebviewnativelistener.toml',
+  'uniwebviewnativeresultpayload.toml',
+  'uniwebviewtransitionedge.toml',
+  'uniwebviewtoolbarposition.toml',
+  'uniwebviewlogger.toml',
+  'uniwebviewhelper.toml'
 ]
 
-var result = "<h1>API Documentation</h1>\n";
 allFiles.forEach((file) => {
+  var result = "<h1>API Documentation</h1>\n";
   const s = fs.readFileSync(`${apiFolder}/${file}`, "utf8");
   let api = toml.parse(s);
   result += output(api);

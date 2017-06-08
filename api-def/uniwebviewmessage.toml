@@ -1,0 +1,99 @@
+title = "UniWebViewMessage"
+file = "uniwebviewmessage"
+
+[[Properties]]
+name = "RawMessage"
+returnType = "string"
+hasSetter = false
+summary = "Gets the raw message. It is the original url which initialized this message."
+example = """
+```csharp
+webView.OnMessageReceived += (view, message) => {
+    print(message.RawMessage);
+};
+webView.Load("uniwebview://action?key=value&anotherKey=value");
+
+// => "uniwebview://action?key=value&anotherKey=value"
+```
+"""
+
+[[Properties]]
+name = "Scheme"
+returnType = "string"
+hasSetter = false
+summary = """
+The url scheme of this UniWebViewMessage. "uniwebview" was added to message scheme list
+by default. You can add your own scheme by using `UniWebView.AddUrlScheme`.
+"""
+example = """
+```csharp
+webView.OnMessageReceived += (view, message) => {
+    print(message.Scheme);
+};
+webView.Load("uniwebview://action?key=value&anotherKey=value");
+
+// => "uniwebview"
+
+// Use a customized scheme.
+anotherWebView.AddUrlScheme("myscheme");
+anotherWebView.OnMessageReceived += (view, message) => {
+    print(message.Scheme);
+};
+anotherWebView.Load("myscheme://action");
+
+// => "myscheme"
+```
+"""
+
+[[Properties]]
+name = "Path"
+returnType = "string"
+hasSetter = false
+summary = "The path of this UniWebViewMessage."
+example = """
+```csharp
+webView.OnMessageReceived += (view, message) => {
+    print(message.Scheme);
+};
+webView.Load("uniwebview://action?key=value&anotherKey=value");
+
+// => "action"
+```
+"""
+
+[[Properties]]
+name = "Args"
+returnType = "Dictionary<string, string>"
+hasSetter = false
+summary = """
+The arguments of this UniWebViewMessage. UniWebView will try to parse the url query into 
+a dictionary. 
+
+When received url "uniwebview://yourPath?param1=value1&param2=value2", 
+the args is a `Dictionary` with: Args["param1"] = value1, Args["param2"] = value2
+"""
+example = """
+```csharp
+webView.OnMessageReceived += (view, message) => {
+    print(message.Args["key"]);
+    print(message.Args["anotherKey"]);
+};
+webView.Load("uniwebview://action?key=value&anotherKey=anotherValue");
+
+// => "value"
+// => "anotherValue"
+```
+"""
+
+[[Methods]]
+name = "UniWebViewMessage"
+syntax = "UniWebViewMessage(string rawMessage)"
+returnType = ""
+summary = "Initializes a new instance of the `UniWebViewMessage` struct."
+[[Methods.parameters]]
+name = "rawMessage"
+type = "string"
+summary = "Raw message which will be parsed to a `UniWebViewMessage`."
+[[Methods.badges]]
+name = "constructor"
+color = "blue"
