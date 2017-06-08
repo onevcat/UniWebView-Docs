@@ -4,7 +4,7 @@
 
 #### Unity Asset Store
 
-If you purchased UniWebView from Unity Asset Store, open the Asset Store window from `Window → Asset Store`. You could search for UniWebView 3 there, then download it and click the "Import" button.
+If you purchased UniWebView from Unity Asset Store, open the Asset Store window from **Window → Asset Store**. You could search for UniWebView 3 there, then download it and click the "Import" button.
 
 #### UniWebView Store
 

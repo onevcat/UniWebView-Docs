@@ -10,7 +10,7 @@ You could start from a new Unity project, then import UniWebView to the newly cr
 
 The first task is creating a UniWebView and make it show our content. In [previous chapter](/latest/using-prefab), we did this with the prefab. Here, since we want more control on the UniWebView component, we will do it in code this time. 
 
-Open a new scene, and add an empty `GameObject` by GameObject → Create Empty in menu. Rename the newly created game object to "Controller". This will be our controller object for the scene. Then, click Assets → Create → C# Script to create a script with "Controller" as its name. 
+Open a new scene, and add an empty `GameObject` by **GameObject → Create Empty** in menu. Rename the newly created game object to "Controller". This will be our controller object for the scene. Then, click **Assets → Create → C# Script** to create a script with "Controller" as its name. 
 
 > Instead of C# script, you could also use Unity Script (JavaScript) as your game scripting language. We use C# here since UniWebView is written in C# and it is a more popular language in Unity world. UniWebView should work well for both languages.
 
@@ -204,7 +204,7 @@ Play the game again. Now you have a "flappy bird" prototype in the web view!
 
 #### Score to Star
 
-Instead of displaying score point to your user, a normal choice is showing a star for easy understanding. For example, below 500 points gives 1 start, 501~1000 gives 2 stars, etc. There is already a function to convert an input point to star count in the web page:
+Instead of displaying score point to your user, a normal choice is showing the star count for easier understanding. For example, below 500 points gives 1 start, 501~1000 gives 2 stars, etc. There is already a function to convert an input point to star count in the web page:
 
 ```javascript
 function getStars(score) {
@@ -212,7 +212,7 @@ function getStars(score) {
 }
 ```
 
-Can you try to call it after you getting the score to see how many stars you earned? It should be possible done by an invoking of `EvaluateJavaScript` and getting the `data` of final payload.
+Can you try to call it after you getting the score to see how many stars you've earned? It should be possible done by an invoking of `EvaluateJavaScript` and getting the `data` of returned payload in callback.
 
 #### Close the web view
 
@@ -224,4 +224,4 @@ Finally, the "Close" button is not functional yet. The button in fact is a link 
 
 Congratulations! You got the basic ideas and have learned the essential parts of UniWebView. Now you are ready to create and use the web view in your own project.
 
-There are much more than what mentioned in this tutorial. If you need to know deeper about UniWebView, pick the topics you are interested in from the "[UniWebView In Depth](/latest/position-and-size)" part and keep reading. Please also read the [API Documentation](/latest/api/overview) to know details about the provided APIs.
+There are much more than what mentioned in this tutorial. We prepared some further reading resource for you. If you need to know deeper about UniWebView, pick the topics you are interested in from the "[UniWebView In Depth](/latest/position-and-size)" part and keep reading. Please also read the [API Documentation](/latest/api/overview) to know details about the provided APIs.
