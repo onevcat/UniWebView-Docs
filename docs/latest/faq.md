@@ -28,7 +28,7 @@ No, we don't provide trial currently. That is mainly because that there is no go
 
 #### Where to purchase? How long will I get the free updates for it?
 
-You can buy this package in both our digital store and Unity Asset Store. Please see our [official site](https://uniwebview.com) for more. Although you can get full support from either store, we suggest you purchase it from our digital store to get faster update versions.
+You can buy this package in both our digital store and Unity Asset Store. Please see our [official site](https://uniwebview.com/#prices) for more. Although you can get full support from either store, we suggest you purchase it from our digital store to get faster update versions.
 
 You get all minor and patch updates for free until (but not including) the next major version. If there is quite huge change in either Unity or the system webview, we have to introduce breaking changes to maintain the pacakge usability and stability. At this situation, we will release a new major version for it.
 
@@ -36,6 +36,6 @@ You get all minor and patch updates for free until (but not including) the next 
 
 You can use UniWebView in all your projects with the same Unity ID exporting the final product. But if you need to use another Unity ID, you need to purchase anothe license.
 
-All C# source code of the Unity side is included in the package. But the native side is distributed by binary and the source code (Objective-C for iOS and macOS, Java for Android) are not included. In case you need to extend UniWebView as your own requirement, we also provide a license to access to our main development repository. We are hosting this project and all its code in GitHub. With the source code license, your GitHub account will be added to our repo and you could access and modify the source code as you need. See our [official site](https://uniwebview.com) for more about it.
+All C# source code of the Unity side is included in the package. But the native side is distributed by binary and the source code (Objective-C for iOS and macOS, Java for Android) are not included. In case you need to extend UniWebView as your own requirement, we also provide a license to access to our main development repository. We are hosting this project and all its code in GitHub. With the source code license, your GitHub account will be added to our repo and you could access and modify the source code as you need. See our [official site](https://uniwebview.com/#prices) for more about it.
 
  You should observe the [EULA of Unity Asset Store](http://unity3d.com/company/legal/as_terms) you agreed when you register your Unity Asset Store account. That means you have no rights to reproduce, duplicate, copy, sell, trade or resell this package, even you have source access. If you need to redistribute your package containing UniWebView to other developers (that means you are developing a SDK or something else which does not orientate to final customers), please [contact us](https://onevcat.zendesk.com/hc/en-us/requests/new) for a **Limited Redistribution License** instead.
