@@ -4,7 +4,6 @@
     - [Working with Code](latest/working-with-code.md)
 - UniWebView In Depth
     - [Position and Size](latest/position-and-size.md)
-    - [Common Browsing Tasks](latest/browsing.md)
     - [Transition](latest/transition.md)
     - [Memory Management](latest/memory-management.md)
     - [Messaging System](latest/messaging-system.md)

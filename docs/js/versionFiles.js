@@ -7,7 +7,6 @@ var urlMapping = {
   '/working-with-code': '/latest/working-with-code',
   '/position-and-size': '/latest/position-and-size',
   '/transition': '/latest/transition',
-  '/browsing': '/latest/browsing',
   '/memory-management': '/latest/memory-management',
   '/messaging-system': '/latest/messaging-system',
   '/using-javascript': '/latest/using-javascript',
