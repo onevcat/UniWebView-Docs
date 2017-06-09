@@ -88,6 +88,7 @@ Here is the API change list:
 | static ResetUserAgent | Removed. Use [SetUserAgent](/latest/api/uniwebview.html?id=setuseragent) and pass `null`. |
 | SetDoneButtonText | [SetToolbarDoneButtonText](/latest/api/uniwebview.html?id=settoolbardonebuttontext) |
 | CleanCookie | [static ClearCookies](/latest/api/uniwebview.html?id=clearcookies) |
+| inets | Removed. Use [Frame](/latest/api/uniwebview.html?id=frame) or [ReferenceRectTransform](/latest/api/uniwebview.html?id=referencerecttransform) instead. |
 | url | urlOnStart (This is private and can only be set in Inspector. Use [Load](/latest/api/uniwebview.html?id=load) if you want to load a new page.) |
 | currentUrl | [Url](/latest/api/uniwebview.html?id=url) |
 | backButtonEnable | [SetBackButtonEnabled](/latest/api/uniwebview.html?id=setbackbuttonenabled) |
