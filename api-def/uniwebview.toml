@@ -1030,6 +1030,31 @@ type = "bool"
 summary = "Whether the toolbar transition should also afjust web view position and size if overlapped. Default is `false`"
 
 [[Methods]]
+name = "SetToolbarDoneButtonText"
+syntax = "SetToolbarDoneButtonText(string text)"
+returnType = "void"
+summary = """
+Sets the done button text in toolbar.
+
+By default, UniWebView will show a "Done" button at bottom-right corner in the 
+toolbar. You could change its title by passing a text.
+
+This method is only for iOS, since there is no toolbar on Android.
+"""
+example = """
+```csharp
+webView.SetToolbarDoneButtonText("关闭");
+```
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.parameters]]
+name = "text"
+type = "string"
+summary = "The text needed to be set as done button title."
+
+[[Methods]]
 name = "SetWebContentsDebuggingEnabled"
 syntax = "SetWebContentsDebuggingEnabled(bool enabled)"
 returnType = "void"

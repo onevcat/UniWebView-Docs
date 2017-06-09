@@ -64,7 +64,7 @@ class Property extends Entry {
 
   output() {
     return "<div class='api-box property'>\n" +
-      `  <div class='api-heading' id='${this.entry.name}' data-id='${this.entry.name}'><a href='#/latest/api/${this.file}.html?id=${this.entry.name}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${this.entry.name} { get; ${this.setterText()}}</a>${this.badgesText()}</div>\n` +
+      `  <div class='api-heading' id='${this.entry.name.toLowerCase()}' data-id='${this.entry.name.toLowerCase()}'><a href='#/latest/api/${this.file}.html?id=${this.entry.name.toLowerCase()}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${this.entry.name} { get; ${this.setterText()}}</a>${this.badgesText()}</div>\n` +
       "  <div class='api-body'>\n" +
       "    <div class='desc'>\n" +
       `      ${this.summaryText()}` +
@@ -108,7 +108,7 @@ class Method extends Entry {
 
   output() {
     return "<div class='api-box method'>\n" +
-      `  <div class='api-heading' id='${this.entry.name}' data-id='${this.entry.name}'><a href='#/latest/api/${this.file}.html?id=${this.entry.name}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${escapeHtml(this.entry.syntax)}</a>${this.badgesText()}</div>\n` +
+      `  <div class='api-heading' id='${this.entry.name.toLowerCase()}' data-id='${this.entry.name.toLowerCase()}'><a href='#/latest/api/${this.file}.html?id=${this.entry.name.toLowerCase()}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${escapeHtml(this.entry.syntax)}</a>${this.badgesText()}</div>\n` +
       "  <div class='api-body'>\n" +
       "    <div class='desc'>\n" +
       `      ${this.summaryText()}` +
