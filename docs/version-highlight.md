@@ -1,6 +1,6 @@
 # Version Highlight
 
-> #### Upgrade Pricing
+> ### Upgrade Pricing
 ?> If you have purchased UniWebView 2 before, we offer a discount on upgrade. For users purchased 
 UniWebView 2 from UniWebView Store, please visit our [home page](https://uniwebview.com/#prices) for more information.
 For Unity Asset Store users, you could login with your Asset Store and visit [our product page](https://www.assetstore.unity3d.com/#!/content/92605) 
