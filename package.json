@@ -7,7 +7,6 @@
     "start": "docsify serve ./docs",
     "archive": "node archive.js",
     "build-api": "node build-api.js",
-    "deploy": "rsync -auv docs onevcat@104.236.137.50:/home/onevcat/uniwebview-docs/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Wei Wang",

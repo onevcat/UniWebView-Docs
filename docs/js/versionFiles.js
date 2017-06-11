@@ -1,6 +1,6 @@
 
 var urlMapping = {
-  '/release-note': 'https://raw.githubusercontent.com/onevcat/Kingfisher/master/CHANGELOG.md',
+  '/release-note': 'CHANGELOG.md',
 
   '/installation': '/latest/installation',
   '/using-prefab': '/latest/using-prefab',

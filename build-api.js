@@ -103,7 +103,7 @@ class Method extends Entry {
     if (!this.entry.returnValue) {
       return "";
     }
-    return `<div class='section-title'>Return Value</div>\n<div class='method-return'>${escapeHtml(this.entry.returnValue)}</div>\n`
+    return `<div class='section-title'>Return Value</div>\n<div class='method-return'>${marked(escapeHtml(this.entry.returnValue))}</div>\n`
   }
 
   output() {
