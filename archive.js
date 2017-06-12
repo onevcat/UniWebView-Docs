@@ -10,7 +10,7 @@ function replaceVersionLink(fromVersion, toVersion, files) {
     files: files,
     //Replacement to make (string or regex) 
     from: reg,
-    to: `/${toVersion}/`,
+    to: `/archived/${toVersion}/`,
   };
 
   let changedFiles = replace.sync(options);
@@ -21,14 +21,14 @@ function updateNavBar(fromVersion, toVersion) {
   const options = {
     files: `./docs/_navbar.md`,
     from: `- [${fromVersion}](latest/index.md)`,
-    to: `- [${toVersion}](latest/index.md)\n  - [${fromVersion}](${fromVersion}/index.md)`,
+    to: `- [${toVersion}](latest/index.md)\n  - [${fromVersion}](archived/${fromVersion}/index.md)`,
   };
   replace.sync(options);
   console.log('Update Nav bar'.green);
 }
 
 function archive(version, files) {
-  const folder = `./docs/${version}`
+  const folder = `./docs/archived/${version}`
   if (fs.existsSync(folder)) {
     console.log('Target archive version is already existing. Please confirm that you are specifying the correct archive version.'.red);
     throw new Error('Version Already Existed.');
@@ -36,7 +36,7 @@ function archive(version, files) {
 
   console.log(`Copying current version to target folder: ${folder}...`);
   fs.copySync('./docs/latest', folder);
-  const archivedFiles = fs.readdirSync(folder).map(file => { return `./docs/${version}/${file}`; });
+  const archivedFiles = fs.readdirSync(folder).map(file => { return `${folder}/${file}`; });
   replaceVersionLink('latest', version, archivedFiles)
 }
 
