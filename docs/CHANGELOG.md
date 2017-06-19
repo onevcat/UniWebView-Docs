@@ -545,6 +545,7 @@ To make sure you can notice this change, the usage of RunningOnRetinaIOS() will 
 - Some other small issues.
 
 > The parameters of LoadBeginDelegate is changed from 1.4.0. There is now an url parameter in the delegate. If you are using webview.currentUrl in the corresponding event, now please use this parameter intead of that. The currentUrl is updated only when web page loading finished or failed now.
+
 ---
 
 ### 1.4.0
@@ -729,3 +730,5 @@ New: Support for location service of Android.
 ### 1.0.1
 
 Init release
+
+
