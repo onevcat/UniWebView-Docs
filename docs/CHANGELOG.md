@@ -1,5 +1,16 @@
 # UniWebView - Release Note
 
+### 3.0.1
+
+#### Fix
+
+- Setting cookies from JavaScript now could work correctly.
+- Allowing back compatibility for mixed content loading in Android.
+- Stopping loading now could trigger page loading error event.
+- Fully bitcode support is now enabled for iOS build.
+
+---
+
 ### 3.0.0
 
 !> 3.0.0 is a major update of UniWebView. We rewote the whole software from scratch to bring your experience of using a web view in Unity to a next level. Be causion it is not compatible with UniWebView 2, there are quite a few breaking changes in this version. For migration from UniWebView 2 in detail, visit our [Migration Guide](http://docs.uniwebview.com/#/migration-guide) in documentation. To know the highlight of the version, check [this page](http://docs.uniwebview.com/#/version-highlight) for more.
