@@ -1,5 +1,7 @@
 # Loading Local Files
 
+### Loading From Game Bundle
+
 You could load local HTML files through web view if you put them to the [StreamingAssets folder](https://docs.unity3d.com/Manual/StreamingAssets.html). The StreamingAssets folder is a folder directly under your "Assets" folder, with "StreamingAssets" as its name. We have a helper method `UniWebViewHelper.StreamingAssetURLForPath` to help you get correct path in all platforms. You could pass the relative path of your HTML file to this method and load it with `Load` method of web view.
 
 Say you have a page with path as: `Assets/StreamingAssets/local_www/index.html`, you could load it with this code:
@@ -35,3 +37,14 @@ Then your style file would be loadded and the page could be styled. It is the sa
 #### Android apps Using "Split Application Binary"
 
 If you are using "Split Application Binary" for Android build (obb files), you should not put your local html files under **StreamingAssets** folder. Instead, you need to put them to `Assets/Plugins/Android/assets/` and then you can use the same way as you did for normal streaming assets resource to load it from the new location.
+
+### Loading From Persistent Data Path
+
+Sometimes, you may want to download some HTML files to disk and then load them locally. One popular location to put the downloaded files would be the `Application.persistentDataPath`. If you are putting your files under this path, use `UniWebViewHelper.PersistentDataURLForPath` method to get the correct path:
+
+```csharp
+var url = UniWebViewHelper.PersistentDataURLForPath("www/index.html");
+webView.Load(url);
+```
+
+Notice that You may also need to add external read permissin to your Android manifest file, since the `persistentDataPath` is usually a location on SD card.

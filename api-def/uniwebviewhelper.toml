@@ -27,3 +27,30 @@ For example, if you placed a html file under `Assets/StreamingAssets/www/index.h
 [[Methods.badges]]
 name = "static"
 color = "blue"
+
+
+
+[[Methods]]
+name = "PersistentDataURLForPath"
+syntax = "PersistentDataURLForPath(string path)"
+returnType = "string"
+summary = """
+Get the local persistent data path for a given file path related to the data folder of your host app.
+
+This method will help you to concat a URL string for a file under you stored in the `persistentDataPath`.
+"""
+example = """
+```csharp
+var url = UniWebViewHelper.PersistentDataURLForPath("www/index.html");
+webView.Load(url);
+```
+"""
+[[Methods.parameters]]
+name = "path"
+type = "string"
+summary = """
+The relative path to the Assets/StreamingAssets of your file.
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
