@@ -1675,6 +1675,28 @@ You could open Safari&#39;s developer tools to debug a web view on iOS.</p>
   </div>
 </div>
 <div class='api-box method'>
+  <div class='api-heading' id='setwindowuserresizeenabled' data-id='setwindowuserresizeenabled'><a href='#/latest/api/uniwebview.html?id=setwindowuserresizeenabled'><span class='return-type'>void</span> SetWindowUserResizeEnabled(bool enabled)</a><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Enables user resizing for web view window. By default, you can only set the window size by setting its frame on mac Editor. 
+By enabling user resizing, you would be able to resize the window by dragging its border as a normal macOS window.</p>
+</div>
+      <p class='tip'>This method only works for macOS for debugging purpose. It does nothing on iOS and Android.</p>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item-desc'><p>Whether the window could be able to be resized by cursor.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class='api-heading' id='gethtmlcontent' data-id='gethtmlcontent'><a href='#/latest/api/uniwebview.html?id=gethtmlcontent'><span class='return-type'>void</span> GetHTMLContent(Action&lt;string&gt; handler)</a></div>
   <div class='api-body'>
     <div class='desc'>

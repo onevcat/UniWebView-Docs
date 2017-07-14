@@ -1077,6 +1077,23 @@ type = "bool"
 summary = "Whether the content debugging should be enabled."
 
 [[Methods]]
+name = "SetWindowUserResizeEnabled"
+syntax = "SetWindowUserResizeEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Enables user resizing for web view window. By default, you can only set the window size by setting its frame on mac Editor. 
+By enabling user resizing, you would be able to resize the window by dragging its border as a normal macOS window.
+"""
+notice = "This method only works for macOS for debugging purpose. It does nothing on iOS and Android."
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether the window could be able to be resized by cursor."
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
+[[Methods]]
 name = "GetHTMLContent"
 syntax = "GetHTMLContent(Action<string> handler)"
 returnType = "void"

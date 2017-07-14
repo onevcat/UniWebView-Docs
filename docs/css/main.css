@@ -49,6 +49,11 @@ body { font-size: 16px; }
   color: white;
 }
 
+.api-badge.api-badge-purple {
+  background: #8D4BBB;
+  color: white;
+}
+
 .section-title {
   font-size: 12px;
   font-weight: 700;
