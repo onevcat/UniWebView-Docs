@@ -1,5 +1,19 @@
 # UniWebView - Release Note
 
+### 3.1.0
+
+#### Add
+
+- A helper method `UniWebViewHelper.PersistentDataURLForPath` to return a url string for files under `persistentDataPath`.
+- A method to enable user resizing for web view windows on macOS Editor.
+- Upgrade to new build toolchain to get better optimized binary for both iOS and Android targets.
+
+#### Fix
+
+- An issue which might cause url encoding returns wrong result when the original url contains space for other special characters.
+
+---
+
 ### 3.0.1
 
 #### Fix
