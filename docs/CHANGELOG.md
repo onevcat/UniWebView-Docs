@@ -1,5 +1,16 @@
 # UniWebView - Release Note
 
+### 3.1.1
+
+#### Fix
+
+- Local file URL with special charactors now can be corrected encoded when loading.
+- Avoid unhandled Show method calling right after a Hide method. Now, the Hide method will be ignore if the web view is already hidden.
+- All three kinds of render mode for canvas (`ScreenSpaceOverlay`, `ScreenSpaceCamera` and `WorldSpace`) are now supported when using `RectTransform` to determin web view position and size. 
+- Array query in `UniWebViewMessage` should work as expected. Now a query like "?a[]=1&a[]=2" will be parsed to "1,2" in the result message.
+
+---
+
 ### 3.1.0
 
 #### Add
