@@ -68,6 +68,8 @@ webView.ReferenceRectTransform = myUITransform;
 
 And everything should be done.
 
+> The `RectTransform` way supports all three kinds render mode ("Screen Space - Overlay", "Screen Space - Camera" and "World Space") on the first `Canvas` from the transform above. However, if you are using a camera-depended space, please make sure you have setup the camera correctly for the render mode. Otherwise, `RectTransform` will fall back as there is no camera and the size/locataion might be incorrect.
+
 #### Rect Transform Change
 
 Similar to the case for `Frame`, `ReferenceRectTransform` only consider the current state of the referenced transform when set. However, since we know the the reference rect will be changed when the screen oreintation changes, there is no need to update it again in `OnOreintationChanged` event. UniWebView will update its position and size automatically for you.

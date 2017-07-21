@@ -19,6 +19,8 @@ UniWebView messaging system also helps you to parse the input. You could access 
 - `Path` - "action"
 - `Args` - {"key": value, "anotherKey": "anotherValue"}
 
+> If you are using the same key in the url query, `UniWebViewMessage` will parse them to the same key as well, with the values concatenated by comma. For example, a url like `uniwebview://action?key=1&key=2` will be parsed to a message with `Args` as `{"key": "1,2"}`.
+
 #### Adding your own scheme
 
 Besides of the default "uniwebview", you could also add your own url scheme. Call `AddUrlScheme` with the one you need:
