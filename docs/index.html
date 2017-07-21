@@ -34,7 +34,7 @@
       function (hook, vm) {
         hook.beforeEach(function (html) {
           return html += "<blockquote>\n" +
-            "<p>Last modified: 2017-06-05 | <a href=\"" + repo + "tree/master/docs" + vm.route.file + "\" target=\"_blank\">Edit on GitHub</a></p>\n" +
+            "<p>Last modified: {docsify-updated} | <a href=\"" + repo + "tree/master/docs/" + vm.route.file + "\" target=\"_blank\">Edit on GitHub</a></p>\n" +
             "</blockquote>"
         });
         hook.doneEach(function () {
