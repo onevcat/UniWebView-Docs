@@ -1060,14 +1060,21 @@ syntax = "SetWebContentsDebuggingEnabled(bool enabled)"
 returnType = "void"
 summary = """
 Enables debugging of web contents. You could inspect of the content of a 
-web view by using a browser development tool of Chrome.
+web view by using a browser development tool of Chrome for Android or Safari for macOS.
 
-This method is only for Android. On iOS, you do not need additional step. 
+This method is only for Android and macOS Editor. On iOS, you do not need additional step. 
 You could open Safari's developer tools to debug a web view on iOS.
+"""
+notice = """Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embeded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in editor and never affect real devices. 
+
+Please remember to disable this in your product build. This should be only used while development.
 """
 [[Methods.badges]]
 name = "Android"
 color = "green"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
 [[Methods.badges]]
 name = "static"
 color = "blue"
