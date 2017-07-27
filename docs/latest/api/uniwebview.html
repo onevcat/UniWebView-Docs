@@ -1652,16 +1652,20 @@ toolbar. You could change its title by passing a text.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setwebcontentsdebuggingenabled' data-id='setwebcontentsdebuggingenabled'><a href='#/latest/api/uniwebview.html?id=setwebcontentsdebuggingenabled'><span class='return-type'>void</span> SetWebContentsDebuggingEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div><div class='api-badge api-badge-blue'>static</div></div>
+  <div class='api-heading' id='setwebcontentsdebuggingenabled' data-id='setwebcontentsdebuggingenabled'><a href='#/latest/api/uniwebview.html?id=setwebcontentsdebuggingenabled'><span class='return-type'>void</span> SetWebContentsDebuggingEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div><div class='api-badge api-badge-purple'>macOS</div><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
 <p>Enables debugging of web contents. You could inspect of the content of a 
-web view by using a browser development tool of Chrome.</p>
-<p>This method is only for Android. On iOS, you do not need additional step. 
+web view by using a browser development tool of Chrome for Android or Safari for macOS.</p>
+<p>This method is only for Android and macOS Editor. On iOS, you do not need additional step. 
 You could open Safari&#39;s developer tools to debug a web view on iOS.</p>
 </div>
-            <div class='parameters'>
+      <p class='tip'>Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embeded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in editor and never affect real devices. 
+
+Please remember to disable this in your product build. This should be only used while development.
+</p>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
