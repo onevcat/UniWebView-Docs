@@ -14,7 +14,7 @@ You can also change the "accept" type to a wider `*/*`, which will cause all typ
 
 ### Additional setup on Android
 
-There are several additional steps for Android to support file uploading.
+On iOS, everything should work without any effort. However, there are several additional steps for Android to support file uploading.
 
 1. Please make sure you have added `UniWebViewFileChooserActivity` into your "AndroidManifest.xml" file. You should have already done that if you followed the [Installation Guide](/latest/installation) when you import UniWebView into your project. Otherwise, please refer to that guide and modify the manifest file.
 
@@ -25,3 +25,7 @@ There are several additional steps for Android to support file uploading.
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     ```
+
+3. You also need to add Android's Support Library v4 as a dependency if you need to upload an image. Please download the support-v4 package from [here](https://chromium.googlesource.com/android_tools/+/master/sdk/extras/android/m2repository/com/android/support/support-v4/24.1.1/support-v4-24.1.1.aar) or just find it (`support-v4-24.1.1.aar`) under your Android SDK extras folder. Then put it to "/Assets/Plugins/Android" folder. If you did not add it, a crash will happen when user trys to upload an image on Android.
+
+Now you should be able to choose an image from either camera or photo library, then upload it to your server.

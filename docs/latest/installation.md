@@ -62,6 +62,8 @@ There should be no conflicting for those files, unless you already have a `Andro
 
 4. Other permissions. Depend on your use case, you may need to add more permission to the manifest file. For example, you may need `ACCESS_FINE_LOCATION` if you want to use location service in web view, or `WRITE_EXTERNAL_STORAGE` if you want to choose or capture a photo to upload (since a temporary file will be created in the disk).
 
+!> You also need to add Android's Support Library v4 as a dependency if you need to upload an image. Please download the support-v4 package from [here](https://chromium.googlesource.com/android_tools/+/master/sdk/extras/android/m2repository/com/android/support/support-v4/24.1.1/support-v4-24.1.1.aar) or just find it (`support-v4-24.1.1.aar`) under your Android SDK extras folder. Then put it to "/Assets/Plugins/Android" folder. If you did not add it, a crash will happen when user trys to upload an image on Android.
+
 ### Restarting Unity
 
 You need to restart your Unity Editor to load UniWebView bundle for macOS Editor. Also remember to switch your build target in player setting to either iOS or Android, since UniWebView will only work on these two platforms.
