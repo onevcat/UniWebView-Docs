@@ -1,5 +1,17 @@
 # UniWebView - Release Note
 
+### 3.1.2
+
+#### Fix
+
+- Now `SetWebContentsDebuggingEnabled` also works for macOS Editor build. Set it to true and you could right click in the web view in editor to show an inspector for debugging purpose.
+- Fix a flickering of navigation bar when loading a new page with immersive mode on Android.
+- A compiling error when build iOS target on a Windows editor.
+- A problem that built-in some schemes (`mailto`, `sms` and `tel`) not handled correctly on iOS and macOS.
+- Fix some deprecated methods of build system for Android.
+
+---
+
 ### 3.1.1
 
 #### Fix
