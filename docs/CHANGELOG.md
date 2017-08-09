@@ -1,5 +1,13 @@
 # UniWebView - Release Note
 
+### 3.1.3
+
+#### Fix
+
+- A linking issue when running with a lower iOS SDK in Xcode.
+
+---
+
 ### 3.1.2
 
 #### Fix
