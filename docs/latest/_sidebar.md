@@ -11,6 +11,7 @@
     - [Loading Local Files](latest/loading-local-files.md)
     - [Uploading](latest/uploading.md)
     - [Playing Videos](latest/playing-videos.md)
+    - [Debugging](latest/debugging.md)
 - Help Center
     - [FAQ](latest/faq.md)
     - [Submit a Ticket](https://onevcat.zendesk.com/hc/en-us/requests/new)
