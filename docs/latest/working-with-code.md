@@ -218,7 +218,7 @@ Can you try to call it after you getting the score to see how many stars you've 
 
 Finally, the "Close" button is not functional yet. The button in fact is a link to `uniwebview://close`. You can add another `if` statement in the `OnMessageReceived` to handle it. To close the web view, just call `Destroy(webView);`.
 
-!> If you got any troble in the practice, you can find the final version of Controller.cs [here](https://gist.github.com/onevcat/9666d61d481843c41d67caf08467def1). However, we strongly suggest you try to implmeent it yourself first!
+!> If you got any troble in the practice, you can find the final version of Controller.cs [here](https://gist.github.com/onevcat/9666d61d481843c41d67caf08467def1). However, we strongly suggest you try to implement it yourself first!
 
 ### Next Step
 
