@@ -126,6 +126,10 @@ webView.Load("https://example.com");
 name = "url"
 type = "string"
 summary = "The url to be loaded. This url should start with `http://` or `https://` scheme. You could even load a non-ascii url text if it is valid."
+[[Methods.parameters]]
+name = "skipEncoding"
+type = "bool"
+summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before loading it. Otherwise, your original url string will be used as the url if it is valid. Default is `false`."
 
 [[Methods]]
 name = "LoadHTMLString"
@@ -137,16 +141,18 @@ example = """
 webView.LoadHTMLString("<p>Hello World</p>", "https://domain.com");
 ```
 """
-
 [[Methods.parameters]]
 name = "htmlString"
 type = "string"
 summary = "The HTML string to use as the contents of the webpage."
-
 [[Methods.parameters]]
 name = "baseUrl"
 type = "string"
 summary = "The url to use as the page's base url."
+[[Methods.parameters]]
+name = "skipEncoding"
+type = "bool"
+summary = "Whether UniWebView should skip encoding the baseUrl or not. If set to `false`, UniWebView will try to encode the baseUrl parameter before using it. Otherwise, your original url string will be used as the baseUrl if it is valid. Default is `false`."
 
 [[Methods]]
 name = "Reload"
@@ -762,6 +768,10 @@ summary = "The url to which cookie will be set."
 name = "cookie"
 type = "string"
 summary = "The cookie string to set. Need more information on cookie? See the [HTTP cookie](https://en.wikipedia.org/wiki/HTTP_cookie) page."
+[[Methods.parameters]]
+name = "skipEncoding"
+type = "bool"
+summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to set the cookie if it is valid. Default is `false`."
 
 [[Methods]]
 name = "GetCookie"
@@ -786,6 +796,10 @@ summary = "The url (domain) where the target cookie is."
 name = "key"
 type = "string"
 summary = "The key for target cookie value."
+[[Methods.parameters]]
+name = "skipEncoding"
+type = "bool"
+summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to get the cookie if it is valid. Default is `false`."
 
 [[Methods]]
 name = "SetShowSpinnerWhileLoading"
