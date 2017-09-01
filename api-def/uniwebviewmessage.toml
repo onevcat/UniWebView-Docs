@@ -50,14 +50,21 @@ name = "Path"
 returnType = "string"
 hasSetter = false
 summary = "The path of this UniWebViewMessage."
+notice = "This will be the decoded value for the path of original url."
 example = """
 ```csharp
 webView.OnMessageReceived += (view, message) => {
     print(message.Scheme);
 };
 webView.Load("uniwebview://action?key=value&anotherKey=value");
-
 // => "action"
+
+// Encoded path
+webView.OnMessageReceived += (view, message) => {
+    print(message.Scheme);
+};
+webView.Load("uniwebview://%e8%b7%af%e5%be%84?key=value&anotherKey=value");
+// => "路径"
 ```
 """
 
@@ -72,16 +79,31 @@ a dictionary.
 When received url "uniwebview://yourPath?param1=value1&param2=value2", 
 the args is a `Dictionary` with: Args["param1"] = value1, Args["param2"] = value2
 """
+notice = "Both the key and valud will be url decoded from the original url."
 example = """
 ```csharp
+// Basic key-value args
 webView.OnMessageReceived += (view, message) => {
     print(message.Args["key"]);
     print(message.Args["anotherKey"]);
 };
 webView.Load("uniwebview://action?key=value&anotherKey=anotherValue");
-
 // => "value"
 // => "anotherValue"
+
+// With the same key
+webView.OnMessageReceived += (view, message) => {
+    print(message.Args["key"]);
+};
+var message = new UniWebViewMessage("uniwebview://sample_message?key=1&key=2");
+// => "1,2"
+
+// With encoded key and value
+webView.OnMessageReceived += (view, message) => {
+    print(message.Args["键"]);
+};
+var message = new UniWebViewMessage("uniwebview://sample_message?%E9%94%AE=%E5%80%BC);
+// => "值"
 ```
 """
 
