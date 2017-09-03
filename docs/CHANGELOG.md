@@ -1,5 +1,33 @@
 # UniWebView - Release Note
 
+### 3.2.0
+
+#### Add
+
+- An option to URL or HTML string loading APIs to skip encoding, it is useful when you need to encode the url yourself instead of using the default encoding rule in UniWebView.
+- An option to cookie setting and getting APIs to skip encoding.
+
+#### Fix
+
+- An issue on Android which cause the default user agent cannot be retrieved correctly before the first request.
+- A memory leak on macOS Editor that web view window not get closed correctly.
+- More accurate scaling calculating in Zoomed Display mode on iOS.
+- Event touch could be handled correctly in Android when multiple web views shown now.
+- The URL encoding will not be applied to an already encoded input URL now.
+- The local file loading will not be loaded again in current view. This prevents a wrong behavior when loading a local page containing iframe tag.
+- The UniWebViewMessage will now respect the encoded url parameters and queries.
+
+---
+
+### 3.1.4
+
+#### Fix
+
+- Fix a problem which could cause web view alpha value not correct in some situation after transition with fade animation.
+- Fix position issue when showing web view with both edge and fade animation.
+
+---
+
 ### 3.1.3
 
 #### Fix

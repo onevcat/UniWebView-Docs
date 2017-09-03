@@ -114,12 +114,13 @@ webView.Alpha = 0.5f;
 
 [[Methods]]
 name = "Load"
-syntax = "Load(string url)"
+syntax = "Load(string url, bool skipEncoding)"
 returnType = "void"
 summary = "Load a url in current web view."
 example = """
 ```csharp
 webView.Load("https://example.com");
+webView.Load("https://example.com?email=support%40uniwebview.com", true);
 ```
 """
 [[Methods.parameters]]
@@ -133,7 +134,7 @@ summary = "Whether UniWebView should skip encoding the url or not. If set to `fa
 
 [[Methods]]
 name = "LoadHTMLString"
-syntax = "LoadHTMLString(string htmlString, string baseUrl)"
+syntax = "LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)"
 returnType = "void"
 summary = "Load an HTML string in current web view."
 example = """
@@ -737,7 +738,7 @@ color = "blue"
 
 [[Methods]]
 name = "SetCookie"
-syntax = "SetCookie(string url, string cookie)"
+syntax = "SetCookie(string url, string cookie, bool skipEncoding)"
 returnType = "void"
 summary = """
 Sets a cookie for a certain url.
@@ -775,7 +776,7 @@ summary = "Whether UniWebView should skip encoding the url or not. If set to `fa
 
 [[Methods]]
 name = "GetCookie"
-syntax = "GetCookie(string url, string key)"
+syntax = "GetCookie(string url, string key, bool skipEncoding)"
 returnType = "string"
 returnValue = "Value of the target cookie under url."
 summary = "Gets the cookie value under a url and key."

@@ -438,7 +438,7 @@ webView<span class="token punctuation">.</span>OnOreintationChanged <span class=
 
 <h4>Methods</h4>
 <div class='api-box method'>
-  <div class='api-heading' id='load' data-id='load'><a href='#/latest/api/uniwebview.html?id=load'><span class='return-type'>void</span> Load(string url, bool skipEncoding)</a></div>
+  <div class='api-heading' id='load' data-id='load'><a href='#/latest/api/uniwebview.html?id=load'><span class='return-type'>void</span> Load(string url)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -452,24 +452,18 @@ webView<span class="token punctuation">.</span>OnOreintationChanged <span class=
     <div class='parameter-item-desc'><p>The url to be loaded. This url should start with <code>http://</code> or <code>https://</code> scheme. You could even load a non-ascii url text if it is valid.</p>
 </div>
   </li>
-  <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
-    <div class='parameter-item-desc'><p>Whether UniWebView should skip encoding the url or not. If set to <code>false</code>, UniWebView will try to encode the url parameter before loading it. Otherwise, your original url string will be used as the url if it is valid. Default is <code>false</code>.</p>
-</div>
-  </li>
 </ul></div>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com?email=support%40uniwebview.com"</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
     </div>
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='loadhtmlstring' data-id='loadhtmlstring'><a href='#/latest/api/uniwebview.html?id=loadhtmlstring'><span class='return-type'>void</span> LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)</a></div>
+  <div class='api-heading' id='loadhtmlstring' data-id='loadhtmlstring'><a href='#/latest/api/uniwebview.html?id=loadhtmlstring'><span class='return-type'>void</span> LoadHTMLString(string htmlString, string baseUrl)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -486,11 +480,6 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   <li>
     <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>baseUrl</span></div>
     <div class='parameter-item-desc'><p>The url to use as the page&#39;s base url.</p>
-</div>
-  </li>
-  <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
-    <div class='parameter-item-desc'><p>Whether UniWebView should skip encoding the baseUrl or not. If set to <code>false</code>, UniWebView will try to encode the baseUrl parameter before using it. Otherwise, your original url string will be used as the baseUrl if it is valid. Default is <code>false</code>.</p>
 </div>
   </li>
 </ul></div>
@@ -1243,7 +1232,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setcookie' data-id='setcookie'><a href='#/latest/api/uniwebview.html?id=setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class='api-heading' id='setcookie' data-id='setcookie'><a href='#/latest/api/uniwebview.html?id=setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1266,11 +1255,6 @@ use this method.</p>
     <div class='parameter-item-desc'><p>The cookie string to set. Need more information on cookie? See the <a href="https://en.wikipedia.org/wiki/HTTP_cookie">HTTP cookie</a> page.</p>
 </div>
   </li>
-  <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
-    <div class='parameter-item-desc'><p>Whether UniWebView should skip encoding the url or not. If set to <code>false</code>, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to set the cookie if it is valid. Default is <code>false</code>.</p>
-</div>
-  </li>
 </ul></div>
 </div>
             <div class='example'>
@@ -1286,7 +1270,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='getcookie' data-id='getcookie'><a href='#/latest/api/uniwebview.html?id=getcookie'><span class='return-type'>string</span> GetCookie(string url, string key, bool skipEncoding)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class='api-heading' id='getcookie' data-id='getcookie'><a href='#/latest/api/uniwebview.html?id=getcookie'><span class='return-type'>string</span> GetCookie(string url, string key)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1303,11 +1287,6 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   <li>
     <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>key</span></div>
     <div class='parameter-item-desc'><p>The key for target cookie value.</p>
-</div>
-  </li>
-  <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
-    <div class='parameter-item-desc'><p>Whether UniWebView should skip encoding the url or not. If set to <code>false</code>, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to get the cookie if it is valid. Default is <code>false</code>.</p>
 </div>
   </li>
 </ul></div>
