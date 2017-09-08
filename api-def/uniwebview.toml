@@ -803,6 +803,39 @@ type = "bool"
 summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to get the cookie if it is valid. Default is `false`."
 
 [[Methods]]
+name = "ClearHttpAuthUsernamePassword"
+syntax = "ClearHttpAuthUsernamePassword(string host, string realm)"
+returnType = "void"
+summary = """Clears any saved credentials for HTTP authentication for both Basic and Digest.
+
+On both iOS and Android, the user input credentials will be stored permanently across session.
+It could prevent your users to input username and password again until they changed. If you need the 
+credentials only living in a shorter lifetime, call this method at proper timing.
+
+On iOS, it will clear the credentials immediately and completely from both disk and network cache. 
+On Android, it only clears from disk database, the authentication might be still cached in the network stack and will not be removed until next session (app restarting). 
+
+The client logout mechanism should be implemented by the Web site designer (such as server sending a HTTP 401 for invalidating credentials).
+"""
+example = """
+```csharp
+UniWebView.ClearHttpAuthUsernamePassword("uniwebview.com", "UniWebViewUserRealm");
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "host"
+type = "string"
+summary = "The host to which the credentials apply. It should not contain any thing like scheme or path part."
+[[Methods.parameters]]
+name = "realm"
+type = "string"
+summary = "The realm to which the credentials apply."
+
+
+[[Methods]]
 name = "SetShowSpinnerWhileLoading"
 syntax = "SetShowSpinnerWhileLoading(bool flag)"
 returnType = "void"
