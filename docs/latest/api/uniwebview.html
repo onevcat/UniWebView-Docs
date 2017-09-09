@@ -1325,6 +1325,42 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
+  <div class='api-heading' id='clearhttpauthusernamepassword' data-id='clearhttpauthusernamepassword'><a href='#/latest/api/uniwebview.html?id=clearhttpauthusernamepassword'><span class='return-type'>void</span> ClearHttpAuthUsernamePassword(string host, string realm)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Clears any saved credentials for HTTP authentication for both Basic and Digest.</p>
+<p>On both iOS and Android, the user input credentials will be stored permanently across session.
+It could prevent your users to input username and password again until they changed. If you need the 
+credentials only living in a shorter lifetime, call this method at proper timing.</p>
+<p>On iOS, it will clear the credentials immediately and completely from both disk and network cache. 
+On Android, it only clears from disk database, the authentication might be still cached in the network stack and will not be removed until next session (app restarting). </p>
+<p>The client logout mechanism should be implemented by the Web site designer (such as server sending a HTTP 401 for invalidating credentials).</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>host</span></div>
+    <div class='parameter-item-desc'><p>The host to which the credentials apply. It should not contain any thing like scheme or path part.</p>
+</div>
+  </li>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>realm</span></div>
+    <div class='parameter-item-desc'><p>The realm to which the credentials apply.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp">UniWebView<span class="token punctuation">.</span><span class="token function">ClearHttpAuthUsernamePassword</span><span class="token punctuation">(</span><span class="token string">"uniwebview.com"</span><span class="token punctuation">,</span> <span class="token string">"UniWebViewUserRealm"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class='api-heading' id='setshowspinnerwhileloading' data-id='setshowspinnerwhileloading'><a href='#/latest/api/uniwebview.html?id=setshowspinnerwhileloading'><span class='return-type'>void</span> SetShowSpinnerWhileLoading(bool flag)</a></div>
   <div class='api-body'>
     <div class='desc'>

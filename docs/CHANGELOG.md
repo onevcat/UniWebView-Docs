@@ -1,5 +1,20 @@
 # UniWebView - Release Note
 
+### 3.3.0
+
+#### Add
+
+- Support HTTP Basic and HTTP Digest authentication. A native pop-up will be displayed when there is a challenge to ask users to provide user name and password.
+- Support "intent" and "market" URL scheme. Now any valid "intent://" URL will be handled on Android. If target intent is not found, and there is no fallback URL provided, UniWebView will try to open the application page on Play Market. The "market://" URL will be navigated to Play Market.
+
+#### Fix
+
+- A problem which caused hidden web view also receiving touch event on Android when multiple web views are used.
+- Fix an issue which causes crash when uploding a camera captured photo on some Android devices.
+- Improvement on loading performance a bit on Android.
+
+---
+
 ### 3.2.0
 
 #### Add
