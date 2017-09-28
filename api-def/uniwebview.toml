@@ -635,6 +635,8 @@ a new full screen window.
 
 This only works for iOS and macOS Editor. 
 On Android, you could play videos inline by default and calling this method does nothing.
+
+Remember you also need to add "playsinline" attribute to your video tag in the HTML page.
 """
 notice = "You need to set it before creating a web view. Existing web views are not affected."
 example = """
@@ -644,7 +646,8 @@ UniWebView.SetAllowInlinePlay(true);
 // Create a new web view.
 var webView = gameObject.AddComponent<UniWebView>();
 
-// Now load and open a page which contains auto-started video to try
+// Now load and open a page which contains inline video to try:
+// <video src="file.mp4" playsinline> or <video src="file.mp4" webkit-playsinline>
 webView.Load("https://example.com/inline-video");
 webView.Show();
 ```
