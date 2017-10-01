@@ -1121,6 +1121,7 @@ can only be played in a new full screen view.</p>
 a new full screen window.</p>
 <p>This only works for iOS and macOS Editor. 
 On Android, you could play videos inline by default and calling this method does nothing.</p>
+<p>Remember you also need to add &quot;playsinline&quot; attribute to your video tag in the HTML page.</p>
 </div>
       <p class='tip'>You need to set it before creating a web view. Existing web views are not affected.</p>
       <div class='parameters'>
@@ -1140,7 +1141,8 @@ On Android, you could play videos inline by default and calling this method does
 <span class="token comment" spellcheck="true">// Create a new web view.</span>
 <span class="token keyword">var</span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// Now load and open a page which contains auto-started video to try</span>
+<span class="token comment" spellcheck="true">// Now load and open a page which contains inline video to try:</span>
+<span class="token comment" spellcheck="true">// &lt;video src="file.mp4" playsinline> or &lt;video src="file.mp4" webkit-playsinline></span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com/inline-video"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
