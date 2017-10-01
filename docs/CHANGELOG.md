@@ -1,5 +1,15 @@
 # UniWebView - Release Note
 
+### 3.3.1
+
+#### Fix
+
+- A crash when setting screen orientation with Unity API while the web view showing.
+- Compatible with iOS 11 SDK and Xcode 9.
+- Due to a Unity High Sierra support issue, UniWebView 3 now require Unity 5.6.3 at least.
+
+---
+
 ### 3.3.0
 
 #### Add
