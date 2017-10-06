@@ -1,5 +1,13 @@
 # UniWebView - Release Note
 
+### 3.3.2
+
+#### Fix
+
+- A crash when games are built against iOS 11 SDK and setting screen orientation with Unity API while the web view showing.
+
+---
+
 ### 3.3.1
 
 #### Fix
