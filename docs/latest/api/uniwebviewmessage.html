@@ -1,6 +1,26 @@
 <h1>API Documentation</h1>
 <h2>UniWebViewMessage</h2>
-<h4>Properties</h4>
+<h3>Summary</h3><p>Represents a message sent from web content back to Unity. Whenever you want to send some information from web view and handle it 
+in Unity script, you can navigate the user with a link started with &quot;uniwebview://&quot;. <code>OnMessageReceived</code> event will be fired for the web view with 
+a <code>UniWebViewMessage</code> object. You can get the url path and arguments from this message object.</p>
+<h5>Properties Summary</h5><table>
+<tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebviewmessage.html?id=rawmessage'><span class='return-type'>string</span> RawMessage { get; }</a></div></td><td><div class='simple-summary'>
+<p>Gets the raw message.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebviewmessage.html?id=scheme'><span class='return-type'>string</span> Scheme { get; }</a></div></td><td><div class='simple-summary'>
+<p>The url scheme of this UniWebViewMessage.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebviewmessage.html?id=path'><span class='return-type'>string</span> Path { get; }</a></div></td><td><div class='simple-summary'>
+<p>The path of this UniWebViewMessage.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebviewmessage.html?id=args'><span class='return-type'>Dictionary&lt;string, string&gt;</span> Args { get; }</a></div></td><td><div class='simple-summary'>
+<p>The arguments of this UniWebViewMessage.</p>
+</div>
+</td></tr></table><h5>Methods Summary</h5><table>
+<tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebviewmessage.html?id=uniwebviewmessage'><span class='return-type'></span> UniWebViewMessage(string rawMessage)</a></div></td><td><div class='simple-summary'>
+<p>Initializes a new instance of the <code>UniWebViewMessage</code> struct.</p>
+</div>
+</td></tr></table><h4>Properties</h4>
 <div class='api-box property'>
   <div class='api-heading' id='rawmessage' data-id='rawmessage'><a href='#/latest/api/uniwebviewmessage.html?id=rawmessage'><span class='return-type'>string</span> RawMessage { get; }</a></div>
   <div class='api-body'>

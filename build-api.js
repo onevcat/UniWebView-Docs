@@ -33,6 +33,13 @@ class Entry {
       "</div>\n";
   }
 
+  simpleSummaryText() {
+    let summaryText = this.entry.summary.split('.')[0] + '.';
+    return "<div class='simple-summary'>\n" +
+    marked(summaryText).replace('<pre><code class="lang-csharp">', '<pre v-pre="" data-lang="csharp"><code class="lang-csharp">') +
+    "</div>\n";
+  }
+
   noticeText() {
     var notice = "";
     if (this.entry.notice) {
@@ -51,6 +58,18 @@ class Entry {
     });
     return result;
   }
+
+  apiHeading() {
+    return `<div class='api-heading' id='${this.entryId()}' data-id='${this.entryId()}'>${this.linkText()}</div>`
+  }
+  
+  entryLink() {
+    return `#/latest/api/${this.file}.html?id=${this.entry.name.toLowerCase()}`
+  }
+
+  entryId() {
+    return this.entry.name.toLowerCase();
+  }
 }
 
 class Property extends Entry {
@@ -62,9 +81,17 @@ class Property extends Entry {
     return "";
   }
 
+  linkText() {
+    return `${this.linkTextWithoutBadge()}${this.badgesText()}`
+  }
+
+  linkTextWithoutBadge() {
+    return `<a href='${this.entryLink()}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${this.entry.name} { get; ${this.setterText()}}</a>`
+  }
+
   output() {
     return "<div class='api-box property'>\n" +
-      `  <div class='api-heading' id='${this.entry.name.toLowerCase()}' data-id='${this.entry.name.toLowerCase()}'><a href='#/latest/api/${this.file}.html?id=${this.entry.name.toLowerCase()}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${this.entry.name} { get; ${this.setterText()}}</a>${this.badgesText()}</div>\n` +
+      `  ${this.apiHeading()}\n` +
       "  <div class='api-body'>\n" +
       "    <div class='desc'>\n" +
       `      ${this.summaryText()}` +
@@ -106,9 +133,17 @@ class Method extends Entry {
     return `<div class='section-title'>Return Value</div>\n<div class='method-return'>${marked(escapeHtml(this.entry.returnValue))}</div>\n`
   }
 
+  linkText() {
+    return `${this.linkTextWithoutBadge()}${this.badgesText()}`
+  }
+
+  linkTextWithoutBadge() {
+    return `<a href='${this.entryLink()}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${escapeHtml(this.entry.syntax)}</a>`
+  }
+
   output() {
     return "<div class='api-box method'>\n" +
-      `  <div class='api-heading' id='${this.entry.name.toLowerCase()}' data-id='${this.entry.name.toLowerCase()}'><a href='#/latest/api/${this.file}.html?id=${this.entry.name.toLowerCase()}'><span class='return-type'>${escapeHtml(this.entry.returnType)}</span> ${escapeHtml(this.entry.syntax)}</a>${this.badgesText()}</div>\n` +
+      `  ${this.apiHeading()}\n` +
       "  <div class='api-body'>\n" +
       "    <div class='desc'>\n" +
       `      ${this.summaryText()}` +
@@ -123,6 +158,48 @@ class Method extends Entry {
 }
 
 class Event extends Method { }
+
+function outputSummary(api) {
+  var result = "<h3>Summary</h3>";
+  if (api.summary) {
+    result += marked(api.summary);
+  }
+
+  let properties = api["Properties"];
+  if (properties) {
+    result += "<h5>Properties Summary</h5>"
+    result += "<table>\n"
+    properties.forEach((p)=>{
+      const property = new Property(p, api.file);
+      result += `<tr><td><div class='api-summary-heading'>${property.linkTextWithoutBadge()}</div></td><td>${property.simpleSummaryText()}</td></tr>`;
+    });
+    result += "</table>";
+  }
+
+  let events = api["Events"];
+  if (events) {
+    result += "<h5>Events Summary</h5>"
+    result += "<table>\n"
+    events.forEach((e)=>{
+      const event = new Event(e, api.file);
+      result += `<tr><td><div class='api-summary-heading'>${event.linkTextWithoutBadge()}</div></td><td>${event.simpleSummaryText()}</td></tr>`;
+    });
+    result += "</table>";
+  }
+
+  let methods = api["Methods"];
+  if (methods) {
+    result += "<h5>Methods Summary</h5>"
+    result += "<table>\n"
+    methods.forEach((m)=>{
+      const method = new Method(m, api.file);
+      result += `<tr><td><div class='api-summary-heading'>${method.linkTextWithoutBadge()}</div></td><td>${method.simpleSummaryText()}</td></tr>`;
+    });
+    result += "</table>";
+  }
+
+  return result;
+}
 
 function outputProperties(properties, file) {
   if (!properties) { return ""; }
@@ -156,6 +233,7 @@ function outputEvent(events, file) {
 
 function output(api) {
   var result = `<h2>${api.title}</h2>\n`;
+  result += outputSummary(api);
   result += outputProperties(api["Properties"], api.file);
   result += outputEvent(api["Events"], api.file);
   result += outputMethods(api["Methods"], api.file);

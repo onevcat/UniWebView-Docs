@@ -18,6 +18,11 @@ body { font-size: 16px; }
   padding: 1rem 1rem 1rem;
 }
 
+.simple-summary p { margin: 0.2em 0; }
+
+.api-summary-heading a { color: #34495e; text-decoration: none; }
+.api-summary-heading .return-type { color: #2a9555; }
+
 .api-box .api-heading a { color: #34495e; text-decoration: none; }
 .api-box .api-heading .return-type { color: #2a9555; }
 

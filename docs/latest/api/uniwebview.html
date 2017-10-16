@@ -1,6 +1,193 @@
 <h1>API Documentation</h1>
 <h2>UniWebView</h2>
-<h4>Properties</h4>
+<h3>Summary</h3><p>The main class of UniWebView. It represents a native web view and expose a few APIs for you to use 
+in Unity. You could create and use an instance of <code>UniWebView</code> to show a page from URL, interact with the web content, 
+as well as receive a message from web view.</p>
+<h5>Properties Summary</h5><table>
+<tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=frame'><span class='return-type'>Rect</span> Frame { get; set; }</a></div></td><td><div class='simple-summary'>
+<p>Get or Set the frame of current web view.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=referencerecttransform'><span class='return-type'>RectTransform</span> ReferenceRectTransform { get; set; }</a></div></td><td><div class='simple-summary'>
+<p>A reference rect transform which the web view should change its position and size to.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=url'><span class='return-type'>string</span> Url { get; }</a></div></td><td><div class='simple-summary'>
+<p>The url of current loaded web page.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=cangoback'><span class='return-type'>bool</span> CanGoBack { get; }</a></div></td><td><div class='simple-summary'>
+<p>Gets whether there is a back page in the back-forward list that can be navigated to.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=cangoforward'><span class='return-type'>bool</span> CanGoForward { get; }</a></div></td><td><div class='simple-summary'>
+<p>Gets whether there is a forward page in the back-forward list that can be navigated to.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=backgroundcolor'><span class='return-type'>Color</span> BackgroundColor { get; set; }</a></div></td><td><div class='simple-summary'>
+<p>Gets or sets the background color of web view.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=alpha'><span class='return-type'>float</span> Alpha { get; set; }</a></div></td><td><div class='simple-summary'>
+<p>Gets or sets the alpha value of the whole web view.</p>
+</div>
+</td></tr></table><h5>Events Summary</h5><table>
+<tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onpagestarted'><span class='return-type'>event</span> OnPageStarted(UniWebView webView, string url)</a></div></td><td><div class='simple-summary'>
+<p>Raised when the web view starts loading a url.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onpagefinished'><span class='return-type'>event</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div></td><td><div class='simple-summary'>
+<p>Raised when the web view finished to load a url successully.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onpageerrorreceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
+<p>Raised when an error encountered during the loading process.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onmessagereceived'><span class='return-type'>event</span> OnMessageReceived(UniWebView webView, UniWebViewMessage message)</a></div></td><td><div class='simple-summary'>
+<p>Raised when a message from web view is received.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onshouldclose'><span class='return-type'>event bool</span> OnShouldClose(UniWebView webView)</a></div></td><td><div class='simple-summary'>
+<p>Raised when the web view is about to close itself.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onkeycodereceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a></div></td><td><div class='simple-summary'>
+<p>Raised when a key (like back button or volume up) on the device is pressed.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onoreintationchanged'><span class='return-type'>event</span> OnOreintationChanged(UniWebView webView, ScreenOrientation orientation)</a></div></td><td><div class='simple-summary'>
+<p>Raised when the screen oreintation is changed.</p>
+</div>
+</td></tr></table><h5>Methods Summary</h5><table>
+<tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=load'><span class='return-type'>void</span> Load(string url, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+<p>Load a url in current web view.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=loadhtmlstring'><span class='return-type'>void</span> LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+<p>Load an HTML string in current web view.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=reload'><span class='return-type'>void</span> Reload()</a></div></td><td><div class='simple-summary'>
+<p>Reloads the current page.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=stop'><span class='return-type'>void</span> Stop()</a></div></td><td><div class='simple-summary'>
+<p>Stops loading all resources on the current page.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=goback'><span class='return-type'>void</span> GoBack()</a></div></td><td><div class='simple-summary'>
+<p>Navigates to the back item in the back-forward list.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=goforward'><span class='return-type'>void</span> GoForward()</a></div></td><td><div class='simple-summary'>
+<p>Navigates to the forward item in the back-forward list.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setopenlinksinexternalbrowser'><span class='return-type'>void</span> SetOpenLinksInExternalBrowser(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the link clicking in the web view should open the page in an external browser.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=show'><span class='return-type'>bool</span> Show(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div></td><td><div class='simple-summary'>
+<p>Sets the web view visible on screen.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=hide'><span class='return-type'>bool</span> Hide(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div></td><td><div class='simple-summary'>
+<p>Sets the web view invisible from screen.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=animateto'><span class='return-type'>bool</span> AnimateTo(Rect frame, float duration, float delay, Action completionHandler)</a></div></td><td><div class='simple-summary'>
+<p>Animates the web view from current <code>Frame</code> (position and size) to another <code>Frame</code> (position and size) within <code>duration</code>.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=updateframe'><span class='return-type'>void</span> UpdateFrame()</a></div></td><td><div class='simple-summary'>
+<p>Update and set current frame of web view to match the setting.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=addjavascript'><span class='return-type'>void</span> AddJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div></td><td><div class='simple-summary'>
+<p>Adds a JavaScript to current page.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=evaluatejavascript'><span class='return-type'>void</span> EvaluateJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div></td><td><div class='simple-summary'>
+<p>Evaluates a JavaScript string on current page.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=addurlscheme'><span class='return-type'>void</span> AddUrlScheme(string scheme)</a></div></td><td><div class='simple-summary'>
+<p>Adds a url scheme to UniWebView message system interpreter.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=removeurlscheme'><span class='return-type'>void</span> RemoveUrlScheme(string scheme)</a></div></td><td><div class='simple-summary'>
+<p>Removes a url scheme from UniWebView message system interpreter.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=addsslexceptiondomain'><span class='return-type'>void</span> AddSslExceptionDomain(string domain)</a></div></td><td><div class='simple-summary'>
+<p>Adds a domain to the SSL checking white list.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=removesslexceptiondomain'><span class='return-type'>void</span> RemoveSslExceptionDomain(string domain)</a></div></td><td><div class='simple-summary'>
+<p>Removes a domain from the SSL checking white list.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setheaderfield'><span class='return-type'>void</span> SetHeaderField(string key, string value)</a></div></td><td><div class='simple-summary'>
+<p>Sets a customized header field for web view requests.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setuseragent'><span class='return-type'>void</span> SetUserAgent(string agent)</a></div></td><td><div class='simple-summary'>
+<p>Sets the user agent used in the web view.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=getuseragent'><span class='return-type'>string</span> GetUserAgent()</a></div></td><td><div class='simple-summary'>
+<p>Gets the user agent string currently used in web view.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setallowautoplay'><span class='return-type'>void</span> SetAllowAutoPlay(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Set allow auto play for current web view.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setallowinlineplay'><span class='return-type'>void</span> SetAllowInlinePlay(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Set allow inline play for current web view.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setjavascriptenabled'><span class='return-type'>void</span> SetJavaScriptEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether JavaScript should be enabled in current web view.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setallowjavascriptopenwindow'><span class='return-type'>void</span> SetAllowJavaScriptOpenWindow(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether JavaScript can open windows without user interaction.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=cleancache'><span class='return-type'>void</span> CleanCache()</a></div></td><td><div class='simple-summary'>
+<p>Clean web view cache.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=clearcookies'><span class='return-type'>void</span> ClearCookies()</a></div></td><td><div class='simple-summary'>
+<p>Clear all cookies from web views.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+<p>Sets a cookie for a certain url.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=getcookie'><span class='return-type'>string</span> GetCookie(string url, string key, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+<p>Gets the cookie value under a url and key.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=clearhttpauthusernamepassword'><span class='return-type'>void</span> ClearHttpAuthUsernamePassword(string host, string realm)</a></div></td><td><div class='simple-summary'>
+<p>Clears any saved credentials for HTTP authentication for both Basic and Digest.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setshowspinnerwhileloading'><span class='return-type'>void</span> SetShowSpinnerWhileLoading(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether to show a loading indicator while the loading is in progress.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setspinnertext'><span class='return-type'>void</span> SetSpinnerText(string text)</a></div></td><td><div class='simple-summary'>
+<p>Sets the text displayed in the loading indicator, if <code>SetShowSpinnerWhileLoading</code> is set to <code>true</code>.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=sethorizontalscrollbarenabled'><span class='return-type'>void</span> SetHorizontalScrollBarEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the horizontal scroll bar should show when the web content beyonds web view bounds.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setverticalscrollbarenabled'><span class='return-type'>void</span> SetVerticalScrollBarEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the vertical scroll bar should show when the web content beyonds web view bounds.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setbouncesenabled'><span class='return-type'>void</span> SetBouncesEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the web view should show with a bounces effect when scrolling to page edge.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setzoomenabled'><span class='return-type'>void</span> SetZoomEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the web view supports zoom guesture to change content size.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=addpermissiontrustdomain'><span class='return-type'>void</span> AddPermissionTrustDomain(string domain)</a></div></td><td><div class='simple-summary'>
+<p>Adds a trusted domain to white list and allow permission requests from the domain.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=removepermissiontrustdomain'><span class='return-type'>void</span> RemovePermissionTrustDomain(string domain)</a></div></td><td><div class='simple-summary'>
+<p>Removes a trusted domain from white list.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setbackbuttonenabled'><span class='return-type'>void</span> SetBackButtonEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the device back button should be enabled to execute &quot;go back&quot; or &quot;closing&quot; operation.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setusewideviewport'><span class='return-type'>void</span> SetUseWideViewPort(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the web view should enable support for the &quot;viewport&quot; HTML meta tag or should use a wide viewport.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setloadwithoverviewmode'><span class='return-type'>void</span> SetLoadWithOverviewMode(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the web view loads pages in overview mode, that is, zooms out the content to fit on screen by width.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setimmersivemodeenabled'><span class='return-type'>void</span> SetImmersiveModeEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the web view should behave in immersive mode, that is, 
+hides the status bar and navigation bar with a sticky style.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setshowtoolbar'><span class='return-type'>void</span> SetShowToolbar(bool show, bool animated, bool onTop, bool adjustInset)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether to show a toolbar which contains navigation buttons and Done button.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=settoolbardonebuttontext'><span class='return-type'>void</span> SetToolbarDoneButtonText(string text)</a></div></td><td><div class='simple-summary'>
+<p>Sets the done button text in toolbar.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setwebcontentsdebuggingenabled'><span class='return-type'>void</span> SetWebContentsDebuggingEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Enables debugging of web contents.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setwindowuserresizeenabled'><span class='return-type'>void</span> SetWindowUserResizeEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Enables user resizing for web view window.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=gethtmlcontent'><span class='return-type'>void</span> GetHTMLContent(Action&lt;string&gt; handler)</a></div></td><td><div class='simple-summary'>
+<p>Gets the HTML content from current page by accessing its <code>outerHTML</code> with JavaScript.</p>
+</div>
+</td></tr></table><h4>Properties</h4>
 <div class='api-box property'>
   <div class='api-heading' id='frame' data-id='frame'><a href='#/latest/api/uniwebview.html?id=frame'><span class='return-type'>Rect</span> Frame { get; set; }</a></div>
   <div class='api-body'>

@@ -1,6 +1,11 @@
 title = "UniWebView"
 file = "uniwebview"
 
+summary = """The main class of UniWebView. It represents a native web view and expose a few APIs for you to use 
+in Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content, 
+as well as receive a message from web view.
+"""
+
 [[Properties]]
 name = "Frame"
 returnType = "Rect"
