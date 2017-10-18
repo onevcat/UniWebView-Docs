@@ -1183,7 +1183,7 @@ summary = """Prints current page.
 By calling this method, a native print preview panel will be brought up on iOS and Android. 
 This method does nothing on macOS editor.
 """
-notice = "The web views on both platforms do not support JavaScript (window.print()), you can only initialize a print job from Unity by this method."
+notice = "The web view does not support JavaScript (window.print()) on neither iOS nor Android, you can only initialize a print job from Unity by this method."
 [[Methods.badges]]
 name = "iOS"
 color = "orange"

@@ -187,6 +187,9 @@ hides the status bar and navigation bar with a sticky style.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=gethtmlcontent'><span class='return-type'>void</span> GetHTMLContent(Action&lt;string&gt; handler)</a></div></td><td><div class='simple-summary'>
 <p>Gets the HTML content from current page by accessing its <code>outerHTML</code> with JavaScript.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=print'><span class='return-type'>void</span> Print()</a></div></td><td><div class='simple-summary'>
+<p>Prints current page.</p>
+</div>
 </td></tr></table><h4>Properties</h4>
 <div class='api-box property'>
   <div class='api-heading' id='frame' data-id='frame'><a href='#/latest/api/uniwebview.html?id=frame'><span class='return-type'>Rect</span> Frame { get; set; }</a></div>
@@ -1972,6 +1975,19 @@ By enabling user resizing, you would be able to resize the window by dragging it
 </code></pre>
 </div>
     </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='print' data-id='print'><a href='#/latest/api/uniwebview.html?id=print'><span class='return-type'>void</span> Print()</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Prints current page.</p>
+<p>By calling this method, a native print preview panel will be brought up on iOS and Android. 
+This method does nothing on macOS editor.</p>
+</div>
+      <p class='tip'>The web view does not support JavaScript (window.print()) on neither iOS nor Android, you can only initialize a print job from Unity by this method.</p>
+                      </div>
   </div>
 </div>
 
