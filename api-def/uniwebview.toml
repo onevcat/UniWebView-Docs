@@ -1174,6 +1174,23 @@ name = "handler"
 type = "Action<string>"
 summary = "Called after the JavaScript executed. The parameter `string` is the content read from page."
 
+[[Methods]]
+name = "Print"
+syntax = "Print()"
+returnType = "void"
+summary = """Prints current page.
+
+By calling this method, a native print preview panel will be brought up on iOS and Android. 
+This method does nothing on macOS editor.
+"""
+notice = "The web views on both platforms do not support JavaScript (window.print()), you can only initialize a print job from Unity by this method."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
 [[Events]]
 name = "OnPageStarted"
 syntax = "OnPageStarted(UniWebView webView, string url)"
