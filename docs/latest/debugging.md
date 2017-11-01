@@ -2,7 +2,7 @@
 
 ### UniWebView Logger
 
-UniWebView could provide detail logs for you, it will help you to understand what happens in UniWWebView
+UniWebView could provide detail logs for you, it will help you to understand what happens in UniWebView
 
 There are 5 log levels, following the order of verbosity, they are:
 
