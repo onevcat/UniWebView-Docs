@@ -1,5 +1,21 @@
 # UniWebView - Release Note
 
+### 3.4.0
+
+UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using Xcode 8 and iOS 10 SDK, please use UniWebView 3.3.x instead.
+
+#### Add
+
+- Better cookie management for iOS 11. On iOS 11, now UniWebView uses the newly added HTTP cookie store to get more stable cookie states.
+- Update web view layout and toolbar for iPhone X screen.
+- A method for printing current web view to a printer or air printer.
+
+#### Fix
+
+- A potential issue which may cause cookie lost during 301 or 302 redirecting.
+
+---
+
 ### 3.3.2
 
 #### Fix
