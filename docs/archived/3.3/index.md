@@ -26,10 +26,10 @@ We are not satisfied with this situation. Performance and code quality could be 
 
 Already using UniWebView 2? Please take a look at the [version 3 highlight](version-highlight) to see how it gets evolved from previous version. Be caution that version 3 is not compatible with 2. If you are upgrading from UniWebView 2, you may wish to take a brief look at the [migration guide](migration-guide). Most concepts are similar but it might still take you a while to upgrade. We also recommend you to read our documentation to bring the potential power of UniWebView to your project.
 
-> This documentation is only for version 3. Need to know more about version 2 and its future? See [this answer](/archived/3.2.0/faq?id=what-about-uniwebview-2).
+> This documentation is only for version 3. Need to know more about version 2 and its future? See [this answer](/archived/3.3/faq?id=what-about-uniwebview-2).
 
 ## Next Step
 
-If you are ready, follow the [Installation](/archived/3.2.0/installation) and subsequent guides to know basic usage of UniWebView.
+If you are ready, follow the [Installation](/archived/3.3/installation) and subsequent guides to know basic usage of UniWebView.
 
-Please feel free to browse this documentation site and UniWebView's [APIs](/archived/3.2.0/api/overview). You can find more information on UniWebView's [official site](https://uniwebview.com) too.
+Please feel free to browse this documentation site and UniWebView's [APIs](/archived/3.3/api/overview). You can find more information on UniWebView's [official site](https://uniwebview.com) too.

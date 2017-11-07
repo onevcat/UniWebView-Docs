@@ -16,7 +16,7 @@ You can also change the "accept" type to a wider `*/*`, which will cause all typ
 
 On iOS, everything should work without any effort. However, there are several additional steps for Android to support file uploading.
 
-1. Please make sure you have added `UniWebViewFileChooserActivity` into your "AndroidManifest.xml" file. You should have already done that if you followed the [Installation Guide](/archived/3.2.0/installation) when you import UniWebView into your project. Otherwise, please refer to that guide and modify the manifest file.
+1. Please make sure you have added `UniWebViewFileChooserActivity` into your "AndroidManifest.xml" file. You should have already done that if you followed the [Installation Guide](/archived/3.2/installation) when you import UniWebView into your project. Otherwise, please refer to that guide and modify the manifest file.
 
 2. You need to add `WRITE_EXTERNAL_STORAGE` permission to the manifest file. File uploading on Android needs to create a temporary file on disk so UniWebView needs the external storage writing permission for that. Please make sure the following declaration is in your manifest file, just after the closing `</application>` tag:
 

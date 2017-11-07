@@ -26,4 +26,4 @@ on iOS, it will clear the credentials immediately and completely from both disk 
 While on Android, it only clears from disk database, the authentication might be still cached in the network stack 
 and will not be removed until next session (app restarting). 
 
-See [documentation](/archived/3.3.0/api/uniwebview.html?id=clearhttpauthusernamepassword) of `ClearHttpAuthUsernamePassword` for more.
+See [documentation](/archived/3.3/api/uniwebview.html?id=clearhttpauthusernamepassword) of `ClearHttpAuthUsernamePassword` for more.

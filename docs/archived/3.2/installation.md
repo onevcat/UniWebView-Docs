@@ -16,7 +16,7 @@ No matter in which way you import UniWebView, Unity would prompt you with a wind
 
 <img src="images/importing.png" data-rjs="2" />
 
-There should be no conflicting for those files, unless you already have a `AndroidManifest.xml` in your project under `Assets/Plugins/Android`. If it shows a yellow warning mark for `AndroidManifest.xml`, you could uncheck it to keep your current version for now. We will describe how to modify the manifest file in [next section](/archived/3.3.0/installation?id=manifest-file).
+There should be no conflicting for those files, unless you already have a `AndroidManifest.xml` in your project under `Assets/Plugins/Android`. If it shows a yellow warning mark for `AndroidManifest.xml`, you could uncheck it to keep your current version for now. We will describe how to modify the manifest file in [next section](/archived/3.2/installation?id=manifest-file).
 
 > The files might not be the same as they were in the image above. You should always import everything under `Plugins` and `UniWebView` from package. When exporting the package by Unity's tools, there is a chance to contain some other files. It should be safe to ignore any files if they are under neither `Plugins` nor `UniWebView`.
 
@@ -62,7 +62,7 @@ There should be no conflicting for those files, unless you already have a `Andro
 
 4. Other permissions. Depending on your use case, you may need to add more permissions to the manifest file. For example, you may need `ACCESS_FINE_LOCATION` if you want to use location service in web view, or `WRITE_EXTERNAL_STORAGE` if you want to choose or capture a photo to upload (since a temporary file will be created in the disk).
 
-!> You also need to add Android's Support Library v4 as a dependency if you need to upload an image. Please download the support-v4 package from [here](https://chromium.googlesource.com/android_tools/+/master/sdk/extras/android/m2repository/com/android/support/support-v4/24.1.1/support-v4-24.1.1.aar) or just find it (`support-v4-24.1.1.aar`) under your Android SDK extras folder. Then put it to "/Assets/Plugins/Android" folder. If you did not add it, a crash will happen when user trys to upload an image on Android. We strongly suggest you take a look at the [Uploading](/archived/3.3.0/uploading) documentation to get a full guide on how to support image uploading in UniWebView.
+!> You also need to add Android's Support Library v4 as a dependency if you need to upload an image. Please download the support-v4 package from [here](https://chromium.googlesource.com/android_tools/+/master/sdk/extras/android/m2repository/com/android/support/support-v4/24.1.1/support-v4-24.1.1.aar) or just find it (`support-v4-24.1.1.aar`) under your Android SDK extras folder. Then put it to "/Assets/Plugins/Android" folder. If you did not add it, a crash will happen when user trys to upload an image on Android. We strongly suggest you take a look at the [Uploading](/archived/3.2/uploading) documentation to get a full guide on how to support image uploading in UniWebView.
 
 ### Restarting Unity
 
@@ -70,4 +70,4 @@ You need to restart your Unity Editor to load UniWebView bundle for macOS Editor
 
 ### Next Step
 
-Congratulations! You are prepared to use UniWebView in your project now. Please read [next chapter](/archived/3.3.0/using-prefab) to know how to use the simplest prefab way to show a web page.
+Congratulations! You are prepared to use UniWebView in your project now. Please read [next chapter](/archived/3.2/using-prefab) to know how to use the simplest prefab way to show a web page.

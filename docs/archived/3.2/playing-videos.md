@@ -5,7 +5,7 @@ the [`<video>` tag](https://www.w3schools.com/html/html5_video.asp) to play
 it in HTML. 
 
 ?> On Android, you need `android:hardwareAccelerated` set for the main activity 
-to play videos. Please check the [Installation Guide](/archived/3.3.0/installation) if 
+to play videos. Please check the [Installation Guide](/archived/3.2/installation) if 
 you have not done with it.
 
 Autoplay is not enabled by default, even you contain an 

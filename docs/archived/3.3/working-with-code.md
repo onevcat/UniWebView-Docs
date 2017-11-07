@@ -6,9 +6,9 @@ Enough talk, let's begin.
 
 ### Creating a UniWebView
 
-You could start from a new Unity project, then import UniWebView to the newly created project. Simply importing from Unity Asset Store or opening the UniWebView unity package file should do the trick. You could keep all default importing files since we are working in the new project. If you haven't read the [Installation guide](/archived/3.3.0/installation), we recommend you that you should take several minutes to do that now. Remember to restart your Unity Editor after the importing process done, it will give Unity Editor a chance to load UniWebView editor plugin. Also change the target platform from "PC, Mac & Linux Standalone" to either "iOS" or "Android" in Build Settings.
+You could start from a new Unity project, then import UniWebView to the newly created project. Simply importing from Unity Asset Store or opening the UniWebView unity package file should do the trick. You could keep all default importing files since we are working in the new project. If you haven't read the [Installation guide](/archived/3.3/installation), we recommend you that you should take several minutes to do that now. Remember to restart your Unity Editor after the importing process done, it will give Unity Editor a chance to load UniWebView editor plugin. Also change the target platform from "PC, Mac & Linux Standalone" to either "iOS" or "Android" in Build Settings.
 
-The first task is creating a UniWebView and make it show our content. In [previous chapter](/archived/3.3.0/using-prefab), we did this with the prefab. Here, since we want more control on the UniWebView component, we will do it in code this time. 
+The first task is creating a UniWebView and make it show our content. In [previous chapter](/archived/3.3/using-prefab), we did this with the prefab. Here, since we want more control on the UniWebView component, we will do it in code this time. 
 
 Open a new scene, and add an empty `GameObject` by **GameObject → Create Empty** in menu. Rename the newly created game object to "Controller". This will be our controller object for the scene. Then, click **Assets → Create → C# Script** to create a script with "Controller" as its name. 
 
@@ -64,7 +64,7 @@ The first line sets the web view's frame to full screen. In iOS and Android, it 
 
 The `Load` method will do extact what you expect. Here we will load our demo page hosted on the UniWebView - Docs site.
 
-Finally, we call `Show` to make the web view visible. This method and its opposite `Hide` method has several paramaters to control the transition. For now, we just use the default behavior, which will bring the web view visible without any anmiation. We will learn more about this topic in the [Transition](/archived/3.3.0/transition) chapter.
+Finally, we call `Show` to make the web view visible. This method and its opposite `Hide` method has several paramaters to control the transition. For now, we just use the default behavior, which will bring the web view visible without any anmiation. We will learn more about this topic in the [Transition](/archived/3.3/transition) chapter.
 
 Now, you could start the game to see what will happen. If every thing goes fine, you should be able to see our demo page, which contains a canvas and two buttons:
 
@@ -224,4 +224,4 @@ Finally, the "Close" button is not functional yet. The button in fact is a link 
 
 Congratulations! You got the basic ideas and have learned the essential parts of UniWebView. Now you are ready to create and use the web view in your own project.
 
-There are much more than what mentioned in this tutorial. We prepared some further reading resource for you. If you need to know deeper about UniWebView, pick the topics you are interested in from the "[UniWebView In Depth](/archived/3.3.0/position-and-size)" part and keep reading. Please also read the [API Documentation](/archived/3.3.0/api/overview) to know details about the provided APIs.
+There are much more than what mentioned in this tutorial. We prepared some further reading resource for you. If you need to know deeper about UniWebView, pick the topics you are interested in from the "[UniWebView In Depth](/archived/3.3/position-and-size)" part and keep reading. Please also read the [API Documentation](/archived/3.3/api/overview) to know details about the provided APIs.
