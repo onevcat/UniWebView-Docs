@@ -33,10 +33,10 @@ There is no additional step for inspecting pages on iOS. You could just run and 
 
 #### Android
 
-On Android, you need to call the [`SetWindowUserResizeEnabled`](/archived/3.2/api/uniwebview.html?id=setwindowuserresizeenabled) method first. It will allow Chrome to discover and connect to the web view on Android. Follow the [Remote Debugging WebViews](https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews) topic to know how to use Chrome DevTools with UniWebView.
+On Android, you need to call the [`SetWebContentsDebuggingEnabled`](/archived/3.2/api/uniwebview.html?id=setwindowuserresizeenabled) method first. It will allow Chrome to discover and connect to the web view on Android. Follow the [Remote Debugging WebViews](https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews) topic to know how to use Chrome DevTools with UniWebView.
 
 #### macOS
 
-On macOS you need to call the [`SetWindowUserResizeEnabled`](/archived/3.2/api/uniwebview.html?id=setwindowuserresizeenabled) method first. Then you are able to right click on the web view in macOS editor to bring up the context menu. Select the "Inspect Element" in that menu.
+On macOS you need to call the [`SetWebContentsDebuggingEnabled`](/archived/3.2/api/uniwebview.html?id=setwindowuserresizeenabled) method first. Then you are able to right click on the web view in macOS editor to bring up the context menu. Select the "Inspect Element" in that menu.
 
 !> Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embeded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in editor and never affect real devices. Please remember to disable this in your product build. This should be only used while development.
