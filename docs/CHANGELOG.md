@@ -1,5 +1,14 @@
 # UniWebView - Release Note
 
+### 3.4.2
+
+#### Fix
+
+- Use new message sending method between native and C# script. Now all messages could be received even when the web view game object is inactive.
+- Prevent `Init` with an empty name for security.
+
+---
+
 ### 3.4.1
 
 #### Fix
@@ -8,6 +17,8 @@
 - The toolbar will not show automatically when you are using a prefab with "Use Toolbar" on. Now the toolbar will follow the show and hide state of the web view itself.
 - Fix an error in Editor when stop playing mode while a web view is being shown.
 - Upgrade to Android build SDK to API Level 26. (But still support from Android 5.0.)
+
+---
 
 ### 3.4.0
 
