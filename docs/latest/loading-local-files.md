@@ -1,5 +1,7 @@
 # Loading Local Files
 
+!> Note: Loading local files in Unity Editor will not on macOS 10.10 or below. You need at least macOS 10.11 to display local pages correctly.
+
 ### Loading From Game Bundle
 
 You could load local HTML files through web view if you put them to the [StreamingAssets folder](https://docs.unity3d.com/Manual/StreamingAssets.html). The StreamingAssets folder is a folder directly under your "Assets" folder, with "StreamingAssets" as its name. We have a helper method `UniWebViewHelper.StreamingAssetURLForPath` to help you get correct path in all platforms. You could pass the relative path of your HTML file to this method and load it with `Load` method of web view.
