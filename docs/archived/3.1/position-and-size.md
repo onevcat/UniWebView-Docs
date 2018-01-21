@@ -62,7 +62,7 @@ It is possible for you to define the positon and side of UniWebView to an existi
 Once you have a `RectTransform`, you could just set the property:
 
 ```csharp
-ReferenceRectTransform myUITransform = ...
+RectTransform myUITransform = ...
 webView.ReferenceRectTransform = myUITransform;
 ```
 
