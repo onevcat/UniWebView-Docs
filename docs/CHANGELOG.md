@@ -1,5 +1,22 @@
 # UniWebView - Release Note
 
+### 3.5.0
+
+#### Add
+
+- Images from Internet now could be downloaded to Download folder in Android.
+- More consistent toolbar layout mechanism for toolbar on iOS. Now Auto Layout is used for layouting toolbar, and `adjustInset` option works better. 
+
+#### Fix
+
+- An issue which crashes macOS Editor when loading a local file in macOS 10.11 or earlier.
+- iOS context menu (action bar) now could cover toolbar properly.
+- A regression that makes setting text for toolbar done button title not working.
+- No need to add support-v4 package anymore to support uploading files to server.
+- Toolbar intersection with web view will now respect your frame setting first, then adjust its own height or top anchor.
+
+----
+
 ### 3.4.2
 
 #### Fix
