@@ -1,5 +1,14 @@
 # UniWebView - Release Note
 
+### 3.5.1
+
+#### Fix
+
+- A potential issue which may cause game unresponsive when switching back to foreground when a web view's game object or its parent objects are inactive.
+- An issue causes web view cannot be added to correct view in the first game runloop while splash screen is disabled.
+
+---
+
 ### 3.5.0
 
 #### Add
@@ -15,7 +24,7 @@
 - No need to add support-v4 package anymore to support uploading files to server.
 - Toolbar intersection with web view will now respect your frame setting first, then adjust its own height or top anchor.
 
-----
+---
 
 ### 3.4.2
 
