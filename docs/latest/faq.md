@@ -18,6 +18,10 @@ UniWebView also contains Unity Editor support on macOS for debug purpose. You co
 
 > This Editor plugin is a full-featured mobile version. Although UniWebView is designed for mobile platforms, you could also put it in a standalone macOS game if you want.
 
+#### Sometimes the session is not kept on iOS.
+
+On iOS, the web view is running in another self-managed process. It always takes some time (typically several seconds) to synchronize your cookie/session to the cookie storage. So if you destroy the web view too soon before the storage could be synced, the cookie/session information might be lost. This behavior is more likely a limitation of `WKWebView` on iOS system.
+
 #### Does this package support Unity Personal or does it only work in Unity Professional?
 
 UniWebView can work well in all supported platforms with both Unity Personal and Profession. 
