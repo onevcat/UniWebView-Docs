@@ -535,6 +535,10 @@ Pass `null` as value to unset a header field.
 Some reserved headers like user agent are not be able to override by setting here, 
 use the `SetUserAgent` method for them instead.
 """
+notice = """Customized header fields will only be set for `GET` requests. The header fields set by this 
+method will not be added when a form is submitted as `POST` requests, due to some limitation of WebKit on iOS 
+and Android platforms.
+"""
 example = """
 ```csharp
 // Set "MyToken" field to "123abc" in a web view. It will be used for all following requests.
