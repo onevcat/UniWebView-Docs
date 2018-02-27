@@ -1,5 +1,14 @@
 # UniWebView - Release Note
 
+### 3.5.2
+
+#### Fix
+
+- An issue which causes POST data from HTML form is missing when a customized header field is set on iOS.
+- Now customized header fields will be also added to image download requests on Android.
+
+---
+
 ### 3.5.1
 
 #### Fix

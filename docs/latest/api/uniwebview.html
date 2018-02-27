@@ -1182,7 +1182,11 @@ Pass <code>null</code> as value to unset a header field.</p>
 <p>Some reserved headers like user agent are not be able to override by setting here, 
 use the <code>SetUserAgent</code> method for them instead.</p>
 </div>
-            <div class='parameters'>
+      <p class='tip'>Customized header fields will only be set for <code>GET</code> requests. The header fields set by this 
+method will not be added when a form is submitted as <code>POST</code> requests, due to some limitation of WebKit on iOS 
+and Android platforms.
+</p>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
