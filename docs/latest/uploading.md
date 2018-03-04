@@ -9,12 +9,14 @@ To show a upload field, use the stardard input tag with proper type:
 ```
 
 When user click the select file button, UniWebView will prompt the user from where they want to choose a file.
-If you specified the "accept" to `image/*` as the sample above, only photo sources and image files will be avaliable. 
+If you specified the "accept" to `image/*` as the sample above, only photo sources and image files will be available. 
 You can also change the "accept" type to a wider `*/*`, which will cause all types of files be choosable. 
 
-### Additional setup on Android
+### Additional setup on iOS
 
-On iOS, everything should work without any effort. However, there are several additional steps for Android to support file uploading.
+On iOS, if you just want let your user to upload images from photo library, it should already work without any effort. However, if you want to let users to upload images from cameras, you need to set [NSCameraUsageDescription](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW24) in your Info.plist file in the exported Xcode project, otherwise your app would crash when users choose to take photo or video by camera.
+
+### Additional setup on Android
 
 1. Please make sure you have added `UniWebViewFileChooserActivity` into your "AndroidManifest.xml" file. You should have already done that if you followed the [Installation Guide](/latest/installation) when you import UniWebView into your project. Otherwise, please refer to that guide and modify the manifest file.
 
