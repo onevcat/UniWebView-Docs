@@ -1,6 +1,6 @@
 # Term of Service (Terms)
 
-?> Last updated: 2017-06-08
+?> Last updated: 2018-03-06
 
 UniWebView follows ToS of Unity Asset Store. Please [read that](https://unity3d.com/legal/as_terms) before you continue to use Unity Asset Store and UniWebView.
 
@@ -10,7 +10,7 @@ You acknowledge and agree that, by accessing, purchasing or using the Service, y
 
 ### Termination
 
-We may terminate or suspend access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.
+We may terminate or suspend access to our website or customer support service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.
 
 All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.
 
@@ -21,8 +21,6 @@ UniWebView reserves the right, at its sole discretion, to modify the Services. U
 ### Content
 
 The Site, Software, Developer Services, Communities and Website Content (as that term is defined in the Site and Communities Additional Terms) are protected by copyright, trademark, and other laws. Except as expressly provided in the Agreement, UniWebView and its licensors exclusively own all right, title and interest in and to the Services, including all associated intellectual property rights. You will not remove, alter or obscure any copyright, trademark, service mark or other proprietary rights notices incorporated in or accompanying the Services.
-
-
 
 As between you and UniWebView, you own all right, title and interest (including, all intellectual property rights) in and to the content you create using the Software, Developer Services and/or any content you post to the Site or in the Communities (collectively, “Your Content”) (other than any components of the Software contained therein or used in connection therewith).
  
