@@ -1445,3 +1445,31 @@ summary = "The web view component which raises this event."
 name = "orientation"
 type = "ScreenOrientation"
 summary = "The screen orientation for current state."
+
+[[Events]]
+name = "OnWebContentProcessTerminated"
+syntax = "OnWebContentProcessTerminated(UniWebView webView)"
+returnType = "event"
+summary = """
+Raised when on iOS, when system calls `webViewWebContentProcessDidTerminate` method. 
+It is usually due to a low memory when loading the web content and leave you a blank white screen. 
+You need to free as much as memory you could and then do a page reload.
+"""
+example = """
+```csharp
+// Clean memory and reload current page
+webView.OnWebContentProcessTerminated += (view) => {
+    // Free memory
+    // unusedAssets.Clean();
+
+    webView.Reload();
+};
+```
+"""
+[[Events.badges]]
+name = "iOS"
+color = "orange"
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
