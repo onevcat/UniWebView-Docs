@@ -1,5 +1,18 @@
 # UniWebView - Release Note
 
+### 3.6.0
+
+#### Add
+
+- OnWebContentProcessTerminatedDelegate event is added. This event will be raised when iOS system stops loading the web content for some reason (Usually due to memory pressure). Prior UniWebView versions will try to refresh the page for you automatically. However, that would not fix the problem in most cases. This event provides a chance for you to free as much as resources and do reloading/handling as you need.
+
+#### Fix
+
+- As issue which causes web view frame not set properly when using prefab with a pre-set reference rectangle transform.
+- Some other minor internal fix.
+
+---
+
 ### 3.5.2
 
 #### Fix

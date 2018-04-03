@@ -47,6 +47,9 @@ as well as receive a message from web view.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onoreintationchanged'><span class='return-type'>event</span> OnOreintationChanged(UniWebView webView, ScreenOrientation orientation)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the screen oreintation is changed.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onwebcontentprocessterminated'><span class='return-type'>event</span> OnWebContentProcessTerminated(UniWebView webView)</a></div></td><td><div class='simple-summary'>
+<p>Raised when on iOS, when system calls <code>webViewWebContentProcessDidTerminate</code> method.</p>
+</div>
 </td></tr></table><h5>Methods Summary</h5><table>
 <tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=load'><span class='return-type'>void</span> Load(string url, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
 <p>Load a url in current web view.</p>
@@ -619,6 +622,39 @@ need to support multiple oreintations in your game.</p>
 webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span>OnOreintationChanged <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> orientation<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class='api-heading' id='onwebcontentprocessterminated' data-id='onwebcontentprocessterminated'><a href='#/latest/api/uniwebview.html?id=onwebcontentprocessterminated'><span class='return-type'>event</span> OnWebContentProcessTerminated(UniWebView webView)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when on iOS, when system calls <code>webViewWebContentProcessDidTerminate</code> method. 
+It is usually due to a low memory when loading the web content and leave you a blank white screen. 
+You need to free as much as memory you could and then do a page reload.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Clean memory and reload current page</span>
+webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Free memory</span>
+    <span class="token comment" spellcheck="true">// unusedAssets.Clean();</span>
+
+    webView<span class="token punctuation">.</span><span class="token function">Reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
