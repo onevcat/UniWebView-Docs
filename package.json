@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "vuepress": "^0.5.1"
+  },
+  "name": "UniWebView-Docs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/onevcat/UniWebView-Docs.git",
+  "author": "onevcat <onevcat@gmail.com>",
+  "license": "N/A",
+  "scripts": {
+    "dev": "./node_modules/.bin/vuepress dev docs",
+    "build": "./node_modules/.bin/vuepress build docs"
+  }
+}
