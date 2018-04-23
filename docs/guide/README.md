@@ -6,10 +6,10 @@ UniWebView is a Unity 3D plugin for adding a web view component to your Unity 3D
 
 ## Supported Platforms
 
-UniWebView supports running: 
+UniWebView supports running:
 
-- iOS 9.0 or above
-- Android 5.0 (API Level 21) or above
+* iOS 9.0 or above
+* Android 5.0 (API Level 21) or above
 
 On iOS, UniWebView is using [`WKWebView`](https://developer.apple.com/reference/webkit/wkwebview) as the render component. While on Android, [`WebView`](https://developer.android.com/reference/android/webkit/WebView.html) is used.
 
@@ -19,7 +19,7 @@ UniWebView also contains Unity Editor support on macOS for debug purpose. You co
 
 ## Version 3
 
-UniWebView project was started in 2013. The original version of UniWebView supported Unity 4. In Unity 5, Unity team changed the method how native plugins work and there was no way to support both Unity 4 and 5 in the same plugin version. So we decided to have a major upgrade to version 2. After several years of development, UniWebView 2 is quite stable now. However, the legacy code only supported old fashion (and deprecated) `UIWebView` on iOS, and we also had to consider back compatibility and use out-dated APIs for `WebView` too. 
+UniWebView project was started in 2013. The original version of UniWebView supported Unity 4. In Unity 5, Unity team changed the method how native plugins work and there was no way to support both Unity 4 and 5 in the same plugin version. So we decided to have a major upgrade to version 2. After several years of development, UniWebView 2 is quite stable now. However, the legacy code only supported old fashion (and deprecated) `UIWebView` on iOS, and we also had to consider back compatibility and use out-dated APIs for `WebView` too.
 
 We are not satisfied with this situation. Performance and code quality could be dramatically improved if we use the latest technology. Adding features and fixing issues would be easier and faster too. That is the reason why we decided to rewrite UniWebView from scratch. In version 3, we started again from 0 and redesigned almost all APIs. With the experience of the past few years of development, we have a chance to make good things better and bad design gone.
 

@@ -11,7 +11,7 @@ module.exports = {
     nav: [
       {
         text: "Guide",
-        link: "/guide/getting-started"
+        link: "/guide/"
       },
       {
         text: "API Reference",
@@ -23,12 +23,7 @@ module.exports = {
         {
           title: "Guide",
           collapsable: false,
-          children: [
-            "getting-started",
-            "installation",
-            "using-prefab",
-            "working-with-code"
-          ]
+          children: ["", "installation", "using-prefab", "working-with-code"]
         },
         {
           title: "UniWebView In Depth",
@@ -54,10 +49,16 @@ module.exports = {
         {
           title: "Other",
           collapsable: false,
-          children: ["../api/", "../release-note/"]
+          children: [["../api/", "API Reference"], "../release-note/"]
         }
       ],
-      "/api/": []
+      "/api/": [
+        {
+          title: "API Reference",
+          collapsable: false,
+          children: [""]
+        }
+      ]
     }
   }
 };
