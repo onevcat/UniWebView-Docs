@@ -8,9 +8,9 @@ Enough talk, let's begin.
 
 You could start from a new Unity project, then import UniWebView to the newly created project. Simply importing from Unity Asset Store or opening the UniWebView unity package file should do the trick. You could keep all default importing files since we are working in the new project. If you haven't read the [Installation guide](./installation.md), we recommend you that you should take several minutes to do that now. Remember to restart your Unity Editor after the importing process done, it will give Unity Editor a chance to load UniWebView editor plugin. Also change the target platform from "PC, Mac & Linux Standalone" to either "iOS" or "Android" in Build Settings.
 
-The first task is creating a UniWebView and make it show our content. In [previous chapter](./using-prefab.md), we did this with the prefab. Here, since we want more control on the UniWebView component, we will do it in code this time. 
+The first task is creating a UniWebView and make it show our content. In [previous chapter](./using-prefab.md), we did this with the prefab. Here, since we want more control on the UniWebView component, we will do it in code this time.
 
-Open a new scene, and add an empty `GameObject` by **GameObject → Create Empty** in menu. Rename the newly created game object to "Controller". This will be our controller object for the scene. Then, click **Assets → Create → C# Script** to create a script with "Controller" as its name. 
+Open a new scene, and add an empty `GameObject` by **GameObject → Create Empty** in menu. Rename the newly created game object to "Controller". This will be our controller object for the scene. Then, click **Assets → Create → C# Script** to create a script with "Controller" as its name.
 
 > Instead of C# script, you could also use Unity Script (JavaScript) as your game scripting language. We use C# here since UniWebView is written in C# and it is a more popular language in Unity world. UniWebView should work well for both languages.
 
@@ -25,7 +25,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : MonoBehaviour {	
+public class Controller : MonoBehaviour {
 
     UniWebView webView;
 
@@ -37,10 +37,10 @@ public class Controller : MonoBehaviour {
 
         // More to add...
     }
-    
+
     // Update is called once per frame
     void Update () {
-        
+
     }
 }
 ```
@@ -154,7 +154,7 @@ When you unfortunately run into an obstacle, the game will stopped. That is not 
 If you take a look the the HTML source, you can find this code below which will be executed when the game end:
 
 ```javascript
-window.location.href = 'uniwebview://game-over?score=' + myGameArea.frameNo;
+window.location.href = "uniwebview://game-over?score=" + myGameArea.frameNo;
 ```
 
 It tries to navigate the page to a link started with "uniwebview://" as its scheme. UniWebView could receive such navigation as a message if you listened to the corresponding event: `OnMessageReceived`. Add this code at the end of `Start()`:
