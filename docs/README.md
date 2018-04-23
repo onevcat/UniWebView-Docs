@@ -2,7 +2,7 @@
 home: true
 heroImage: /images/hero.png
 actionText: Get Started →
-actionLink: /guide/
+actionLink: /guide/getting-started
 heroText: " "
 tagline: UniWebView is a modern web view component for mobile Unity3D games. Integrating web content to your games was never easier.
 features:

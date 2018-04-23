@@ -12,7 +12,7 @@ module.exports = {
     nav: [
       {
         text: 'Guide',
-        link: '/guide/',
+        link: '/guide/getting-started',
       },
       {
         text: 'API Reference',
@@ -23,53 +23,53 @@ module.exports = {
         link: '/release/'
       },
     ],
-    sidebar: {
-      '/guide/': [
-        {
-          title: 'Guide',
-          collapsable: false,
-          children: [
-            '',
-            'installation',
-            'using-prefab',
-            'working-with-code',
-          ]
-        },
-        {
-          title: 'UniWebView In Depth',
-          collapsable: false,
-          children: [
-            'position-and-size',
-            'transition',
-            'memory-management',
-            'messaging-system',
-            'using-javascript',
-            'loading-local-files',
-            'uploading',
-            'playing-videos',
-            'http-auth',
-            'debugging'
-          ]
-        },
-        {
-          title: 'Help Center',
-          collapsable: false,
-          children: [
-          ]
-        },
-        {
-          title: 'API Reference',
-          collapsable: false,
-          children: [
-          ]
-        },
-        {
-          title: 'Other',
-          collapsable: false,
-          children: [
-          ]
-        },
-      ]
-    }
+    sidebar: [
+      {
+        title: 'Guide',
+        collapsable: false,
+        children: [
+          'guide/getting-started',
+          'guide/installation',
+          'guide/using-prefab',
+          'guide/working-with-code',
+        ]
+      },
+      {
+        title: 'UniWebView In Depth',
+        collapsable: false,
+        children: [
+          'guide/position-and-size',
+          'guide/transition',
+          'guide/memory-management',
+          'guide/messaging-system',
+          'guide/using-javascript',
+          'guide/loading-local-files',
+          'guide/uploading',
+          'guide/playing-videos',
+          'guide/http-auth',
+          'guide/debugging'
+        ]
+      },
+      {
+        title: 'Help Center',
+        collapsable: false,
+        children: [
+          'help/faq',
+          'help/ticket'
+        ]
+      },
+      {
+        title: 'API Reference',
+        collapsable: false,
+        children: [
+        ]
+      },
+      {
+        title: 'Other',
+        collapsable: false,
+        children: [
+        ]
+      },
+    ]
   }
 }
