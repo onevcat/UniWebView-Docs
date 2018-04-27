@@ -1325,7 +1325,6 @@ webView.OnMessageReceived += (view, message) => {
 webView.Load("uniwebview://host?param1=value1&param2=value2");
 // => "uniwebview", "host", "value1", "value2"
 
-
 anotherWebView.OnMessageReceived += (view, message) => {
     print(message.RawMessage);
 }

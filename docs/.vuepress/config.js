@@ -59,6 +59,10 @@ module.exports = {
           children: [""]
         }
       ]
+    },
+    algolia: {
+      apiKey: "b7cb81121c4ef29ddbda7689086f52d7",
+      indexName: "uniwebview"
     }
   }
 };

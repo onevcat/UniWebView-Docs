@@ -18,6 +18,7 @@
     "fs-extra": "^3.0.1",
     "marked": "^0.3.6",
     "node-prismjs": "^0.1.0",
+    "prismjs": "^1.14.0",
     "pygmentize-bundled": "^2.3.0",
     "replace-in-file": "^2.5.0",
     "toml": "^2.3.2"

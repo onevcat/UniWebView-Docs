@@ -208,7 +208,7 @@ The first two values of <code>Rect</code> is <code>x</code> and <code>y</code> p
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Make the web view full screen:</span>
 webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Make the web view center in the screen with size 500x500:</span>
 <span class="token keyword">var</span> side <span class="token operator">=</span> <span class="token number">500</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token punctuation">(</span>Screen<span class="token punctuation">.</span>width <span class="token operator">-</span> side<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0f</span><span class="token punctuation">;</span>
@@ -233,7 +233,7 @@ the web view frame by a certain UI element. </p>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Some panel</span>
 RectTransform panel <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Set the web view position and size to match panel</span>
 webView<span class="token punctuation">.</span>ReferenceRectTransform <span class="token operator">=</span> panel<span class="token punctuation">;</span>
 </code></pre>
@@ -251,7 +251,7 @@ webView<span class="token punctuation">.</span>ReferenceRectTransform <span clas
             <div class='example'>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Some time later or in "OnPageFinished":</span>
 <span class="token function">print</span><span class="token punctuation">(</span>webView<span class="token punctuation">.</span>Url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => "https://example.com/"</span>
@@ -333,12 +333,12 @@ webView<span class="token punctuation">.</span>Alpha <span class="token operator
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
     <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
     <div class='parameter-item-desc'><p>The url which the web view begins to load.</p>
 </div>
   </li>
@@ -350,7 +350,7 @@ webView<span class="token punctuation">.</span>Alpha <span class="token operator
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Loading started for url: "</span> <span class="token operator">+</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// => "Loading started for url: https://example.com/"</span>
 </code></pre>
 </div>
@@ -371,17 +371,17 @@ raised instead.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
     <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>statusCode</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>statusCode</span></div>
     <div class='parameter-item-desc'><p>HTTP status code received from response.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
     <div class='parameter-item-desc'><p>The url which the web view begins to load.</p>
 </div>
   </li>
@@ -393,11 +393,11 @@ raised instead.</p>
     <span class="token function">print</span><span class="token punctuation">(</span>statusCode<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Web view loading finished for: "</span> <span class="token operator">+</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
+<span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => "202"</span>
 <span class="token comment" spellcheck="true">// => "Web view loading finished for: https://example.com"</span>
-
+<span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://some_domain.com/404"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => "404"</span>
 <span class="token comment" spellcheck="true">// => "Web view loading finished for: https://example.com"</span>
@@ -418,17 +418,17 @@ Such as host not found or no Internet connection will raise this event.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
     <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>errorCode</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>errorCode</span></div>
     <div class='parameter-item-desc'><p>The error code which indicates the error type. It is different from systems and platforms.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
     <div class='parameter-item-desc'><p>The error message which indicates the error.</p>
 </div>
   </li>
@@ -439,13 +439,13 @@ Such as host not found or no Internet connection will raise this event.</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnPageErrorReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> error<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Errored."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
+<span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://onevcat-not-existing.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => "Errored."</span>
-
+<span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"unknown://host?param1=value1&amp;param2=value2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => "Errored."</span>
-
+<span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => "Errored."</span>
 </code></pre>
@@ -469,12 +469,12 @@ will raise this event, if it is not removed.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
     <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>UniWebViewMessage</span> <span class='parameter-item-name'>message</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewMessage</span> <span class='parameter-item-name'>message</span></div>
     <div class='parameter-item-desc'><p>The message object which contains information like message path and arguments.</p>
 </div>
   </li>
@@ -490,16 +490,15 @@ will raise this event, if it is not removed.</p>
 <span class="token punctuation">}</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"uniwebview://host?param1=value1&amp;param2=value2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => "uniwebview", "host", "value1", "value2"</span>
-
-
+<span />
 anotherWebView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>RawMessage<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 anotherWebView<span class="token punctuation">.</span><span class="token function">AddUrlScheme</span><span class="token punctuation">(</span><span class="token string">"myscheme"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Clike the link "myscheme://action" in a web page.</span>
 <span class="token comment" spellcheck="true">// &lt;a href="myscheme://action">Click Me&lt;/a></span>
-
+<span />
 <span class="token comment" spellcheck="true">// => "myscheme://action"</span>
 </code></pre>
 </div>
@@ -523,7 +522,7 @@ it needed.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
     <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
 </div>
   </li>
@@ -537,7 +536,7 @@ it needed.</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Clean webView field when </span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyBehaviour</span> <span class="token punctuation">:</span> MonoBehaviour <span class="token punctuation">{</span>
     <span class="token keyword">var</span> webView<span class="token punctuation">;</span>
-
+<span />
     <span class="token keyword">void</span> <span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         webView<span class="token punctuation">.</span>OnShouldClose <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
@@ -546,7 +545,7 @@ it needed.</p>
         <span class="token punctuation">}</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Make the web view there without being closed</span>
 webView<span class="token punctuation">.</span>OnShouldClose <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
@@ -570,12 +569,12 @@ raised.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
     <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>keyCode</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>keyCode</span></div>
     <div class='parameter-item-desc'><p>The key code of pressed key. See <a href="https://developer.android.com/reference/android/view/KeyEvent.html#KEYCODE_0">Android API for keycode</a> to know the possible values.</p>
 </div>
   </li>
@@ -605,12 +604,12 @@ need to support multiple oreintations in your game.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
     <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>ScreenOrientation</span> <span class='parameter-item-name'>orientation</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>ScreenOrientation</span> <span class='parameter-item-name'>orientation</span></div>
     <div class='parameter-item-desc'><p>The screen orientation for current state.</p>
 </div>
   </li>
@@ -641,7 +640,7 @@ You need to free as much as memory you could and then do a page reload.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
     <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
 </div>
   </li>
@@ -653,7 +652,7 @@ You need to free as much as memory you could and then do a page reload.</p>
 webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// Free memory</span>
     <span class="token comment" spellcheck="true">// unusedAssets.Clean();</span>
-
+<span />
     webView<span class="token punctuation">.</span><span class="token function">Reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
@@ -674,12 +673,12 @@ webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <sp
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
     <div class='parameter-item-desc'><p>The url to be loaded. This url should start with <code>http://</code> or <code>https://</code> scheme. You could even load a non-ascii url text if it is valid.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
     <div class='parameter-item-desc'><p>Whether UniWebView should skip encoding the url or not. If set to <code>false</code>, UniWebView will try to encode the url parameter before loading it. Otherwise, your original url string will be used as the url if it is valid. Default is <code>false</code>.</p>
 </div>
   </li>
@@ -705,17 +704,17 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>htmlString</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>htmlString</span></div>
     <div class='parameter-item-desc'><p>The HTML string to use as the contents of the webpage.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>baseUrl</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>baseUrl</span></div>
     <div class='parameter-item-desc'><p>The url to use as the page&#39;s base url.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
     <div class='parameter-item-desc'><p>Whether UniWebView should skip encoding the baseUrl or not. If set to <code>false</code>, UniWebView will try to encode the baseUrl parameter before using it. Otherwise, your original url string will be used as the baseUrl if it is valid. Default is <code>false</code>.</p>
 </div>
   </li>
@@ -797,7 +796,7 @@ the user will be navigated to an external native browser.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
     <div class='parameter-item-desc'><p>The flag indicates whether a link should be opened externally.</p>
 </div>
   </li>
@@ -831,22 +830,22 @@ showing finishes.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>fade</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>fade</span></div>
     <div class='parameter-item-desc'><p>Whether show with a fade in animation. Default is <code>false</code>.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>UniWebViewTransitionEdge</span> <span class='parameter-item-name'>edge</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewTransitionEdge</span> <span class='parameter-item-name'>edge</span></div>
     <div class='parameter-item-desc'><p>The edge from which the web view showing. It simulates a modal effect when showing a web view. Default is <code>UniWebViewTransitionEdge.None</code>.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>duration</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>duration</span></div>
     <div class='parameter-item-desc'><p>Duration of showing animation. Default is <code>0.4f</code>.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>Action</span> <span class='parameter-item-name'>completionHandler</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>Action</span> <span class='parameter-item-name'>completionHandler</span></div>
     <div class='parameter-item-desc'><p>Completion handler which will be called when showing finishes. Default is <code>null</code>.</p>
 </div>
   </li>
@@ -859,13 +858,13 @@ showing finishes.</p>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Show the web view without animation</span>
 webView<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Show the web view with a fade animation</span>
 webView<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Show the web view with a modal presenting animation from screen bottom</span>
 webView<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">,</span> UniWebViewTransitionEdge<span class="token punctuation">.</span>Bottom<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Print a message after the web view shown with animation</span>
 webView<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">,</span> UniWebViewTransitionEdge<span class="token punctuation">.</span>Top<span class="token punctuation">,</span> <span class="token number">0.25f</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Show transition finished!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -895,22 +894,22 @@ To release a web view and its resource, pass the web view component as the param
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>fade</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>fade</span></div>
     <div class='parameter-item-desc'><p>Whether hide with a fade in animation. Default is <code>false</code>.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>UniWebViewTransitionEdge</span> <span class='parameter-item-name'>edge</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewTransitionEdge</span> <span class='parameter-item-name'>edge</span></div>
     <div class='parameter-item-desc'><p>The edge from which the web view hiding. It simulates a modal effect when hiding a web view. Default is <code>UniWebViewTransitionEdge.None</code>.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>duration</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>duration</span></div>
     <div class='parameter-item-desc'><p>Duration of hiding animation. Default is <code>0.4f</code>.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>Action</span> <span class='parameter-item-name'>completionHandler</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>Action</span> <span class='parameter-item-name'>completionHandler</span></div>
     <div class='parameter-item-desc'><p>Completion handler which will be called when hiding finishes. Default is <code>null</code>.</p>
 </div>
   </li>
@@ -923,13 +922,13 @@ To release a web view and its resource, pass the web view component as the param
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Hide the web view without animation</span>
 webView<span class="token punctuation">.</span><span class="token function">Hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Hide the web view with a fade animation</span>
 webView<span class="token punctuation">.</span><span class="token function">Hide</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Hide the web view with a modal presenting animation from screen bottom</span>
 webView<span class="token punctuation">.</span><span class="token function">Hide</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">,</span> UniWebViewTransitionEdge<span class="token punctuation">.</span>Bottom<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Print a message after the web view hidden with animation</span>
 webView<span class="token punctuation">.</span><span class="token function">Hide</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">,</span> UniWebViewTransitionEdge<span class="token punctuation">.</span>Top<span class="token punctuation">,</span> <span class="token number">0.25f</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Hide transition finished!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -950,22 +949,22 @@ webView<span class="token punctuation">.</span><span class="token function">Hide
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>Rect</span> <span class='parameter-item-name'>frame</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>Rect</span> <span class='parameter-item-name'>frame</span></div>
     <div class='parameter-item-desc'><p>The new <code>Frame</code> which the web view should be.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>duration</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>duration</span></div>
     <div class='parameter-item-desc'><p>Duration of the animation.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>delay</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>delay</span></div>
     <div class='parameter-item-desc'><p>Delay before the animation begins. Default is <code>0.0f</code>, which means the animation will start immediately.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>Action</span> <span class='parameter-item-name'>completionHandler</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>Action</span> <span class='parameter-item-name'>completionHandler</span></div>
     <div class='parameter-item-desc'><p>Completion handler which will be called when animation finishes. Default is <code>null</code>.</p>
 </div>
   </li>
@@ -1021,12 +1020,12 @@ to the web view and a <code>UniWebViewNativeResultPayload</code> with <code>resu
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>jsString</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>jsString</span></div>
     <div class='parameter-item-desc'><p>The JavaScript code to add. It should be a valid JavaScript statement string.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>Action&lt;UniWebViewNativeResultPayload&gt;</span> <span class='parameter-item-name'>completionHandler</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>Action&lt;UniWebViewNativeResultPayload&gt;</span> <span class='parameter-item-name'>completionHandler</span></div>
     <div class='parameter-item-desc'><p>Called when adding JavaScript operation finishes. Default is <code>null</code>. If everything goes fine and the <code>jsString</code> added to current web view, <code>resultCode</code> would be &quot;0&quot;</p>
 </div>
   </li>
@@ -1056,12 +1055,12 @@ to the web view and a <code>UniWebViewNativeResultPayload</code> with <code>resu
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>jsString</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>jsString</span></div>
     <div class='parameter-item-desc'><p>The JavaScript string to evaluate.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>Action&lt;UniWebViewNativeResultPayload&gt;</span> <span class='parameter-item-name'>completionHandler</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>Action&lt;UniWebViewNativeResultPayload&gt;</span> <span class='parameter-item-name'>completionHandler</span></div>
     <div class='parameter-item-desc'><p>Called when evaluating JavaScript operation finishes. Default is <code>null</code>. If everything goes find, the <code>resultCode</code> would be &quot;0&quot; and the return value of invoked JavaScript is contained in <code>data</code>.</p>
 </div>
   </li>
@@ -1074,7 +1073,7 @@ webView<span class="token punctuation">.</span><span class="token function">Eval
     <span class="token function">print</span><span class="token punctuation">(</span>payload<span class="token punctuation">.</span>resultCode<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// => "0"</span>
     <span class="token function">print</span><span class="token punctuation">(</span>payload<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// => ""</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Adding two numbers by a JavaScript function.</span>
 webView<span class="token punctuation">.</span><span class="token function">AddJavaScript</span><span class="token punctuation">(</span><span class="token string">"function add(a, b) { return a + b; }"</span><span class="token punctuation">,</span> completionHandler<span class="token punctuation">:</span> _ <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     webView<span class="token punctuation">.</span><span class="token function">EvaluateJavaScript</span><span class="token punctuation">(</span><span class="token string">"add(4, 5);"</span><span class="token punctuation">,</span> completionHandler<span class="token punctuation">:</span> <span class="token punctuation">(</span>payload<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
@@ -1082,7 +1081,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddJ
         <span class="token function">print</span><span class="token punctuation">(</span>payload<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// => "9"</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Call a JavaScript function not existing.</span>
 webView<span class="token punctuation">.</span><span class="token function">EvaluateJavaScript</span><span class="token punctuation">(</span><span class="token string">"functionNotExisting()"</span><span class="token punctuation">,</span> completionHandler<span class="token punctuation">:</span> <span class="token punctuation">(</span>payload<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>payload<span class="token punctuation">.</span>resultCode<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1105,7 +1104,7 @@ webView<span class="token punctuation">.</span><span class="token function">Eval
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>scheme</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>scheme</span></div>
     <div class='parameter-item-desc'><p>The url scheme to add. It should not contain &quot;://&quot; part. You could even add &quot;http&quot; and/or &quot;https&quot; to prevent all resource loading on the page. &quot;uniwebview&quot; is added by default. Nothing will happen if you try to add a dulplicated scheme.</p>
 </div>
   </li>
@@ -1115,7 +1114,7 @@ webView<span class="token punctuation">.</span><span class="token function">Eval
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Add "myscheme" as a UniWebView message scheme.</span>
 webView<span class="token punctuation">.</span><span class="token function">AddUrlScheme</span><span class="token punctuation">(</span><span class="token string">"myscheme"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// A link like "myscheme://action" will be treated as a message and raise the `OnMessageReceived` event from now.</span>
 </code></pre>
 </div>
@@ -1133,7 +1132,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddU
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>scheme</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>scheme</span></div>
     <div class='parameter-item-desc'><p>The url scheme to remove. Nothing will happen if the scheme is not in the message system.</p>
 </div>
   </li>
@@ -1162,7 +1161,7 @@ you can add the domain as an SSL exception, so you could visit it.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>domain</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>domain</span></div>
     <div class='parameter-item-desc'><p>The domain to add. It should not contain any scheme or path part in url.</p>
 </div>
   </li>
@@ -1172,11 +1171,11 @@ you can add the domain as an SSL exception, so you could visit it.</p>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// This loading will fail since the certification is a self signed one and not trusted.</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-
+<span />
 <span class="token comment" spellcheck="true">// Add "self-signed.badssl.com" as trusted.</span>
 webView<span class="token punctuation">.</span><span class="token function">AddSslExceptionDomain</span><span class="token punctuation">(</span><span class="token string">"self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// This page should load now.</span>
-webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 </code></pre>
 </div>
     </div>
@@ -1193,7 +1192,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>domain</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>domain</span></div>
     <div class='parameter-item-desc'><p>The domain to remove. It should not contain any scheme or path part in url.</p>
 </div>
   </li>
@@ -1226,12 +1225,12 @@ and Android platforms.
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>key</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>key</span></div>
     <div class='parameter-item-desc'><p>The key of customized header field.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>value</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>value</span></div>
     <div class='parameter-item-desc'><p>The value of customized header field. <code>null</code> if you want to unset the field.</p>
 </div>
   </li>
@@ -1241,7 +1240,7 @@ and Android platforms.
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Set "MyToken" field to "123abc" in a web view. It will be used for all following requests.</span>
 webView<span class="token punctuation">.</span><span class="token function">SetHeaderField</span><span class="token punctuation">(</span><span class="token string">"MyToken"</span><span class="token punctuation">,</span> <span class="token string">"123abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Unset it</span>
 webView<span class="token punctuation">.</span><span class="token function">SetHeaderField</span><span class="token punctuation">(</span><span class="token string">"MyToken"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
@@ -1260,7 +1259,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetH
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>agent</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>agent</span></div>
     <div class='parameter-item-desc'><p>The new user agent string to use.</p>
 </div>
   </li>
@@ -1270,7 +1269,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetH
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Set the user agent string sent in request header.</span>
 webView<span class="token punctuation">.</span><span class="token function">SetUserAgent</span><span class="token punctuation">(</span><span class="token string">"My-Amazion-App/1.0.0 (iOS 10.3, iPhone 7)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// => In request header:</span>
 <span class="token comment" spellcheck="true">// User-Agent = "My-Amazion-App/1.0.0 (iOS 10.3, iPhone 7)"</span>
 </code></pre>
@@ -1294,7 +1293,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetU
 webView<span class="token punctuation">.</span><span class="token function">GetUserAgent</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">// => "Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 ..."</span>
 <span class="token comment" spellcheck="true">// This value varies in different platforms.</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Sets a user agent and then get it.</span>
 webView<span class="token punctuation">.</span><span class="token function">SetUserAgent</span><span class="token punctuation">(</span><span class="token string">"My-Amazion-App/1.0.0 (iOS 10.3, iPhone 7)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">GetUserAgent</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1319,7 +1318,7 @@ corresponding media <a href="https://www.w3schools.com/tags/att_video_autoplay.a
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
     <div class='parameter-item-desc'><p>A flag indicates whether autoplaying of media is allowed or not.</p>
 </div>
   </li>
@@ -1328,10 +1327,10 @@ corresponding media <a href="https://www.w3schools.com/tags/att_video_autoplay.a
             <div class='example'>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp">UniWebView<span class="token punctuation">.</span><span class="token function">SetAllowAutoPlay</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Create a new web view.</span>
 <span class="token keyword">var</span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Now load and open a page which contains auto-started video to try</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_video_autoplay"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1358,7 +1357,7 @@ On Android, you could play videos inline by default and calling this method does
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
     <div class='parameter-item-desc'><p>A flag indicates whether inline playing of media is allowed or not.</p>
 </div>
   </li>
@@ -1367,10 +1366,10 @@ On Android, you could play videos inline by default and calling this method does
             <div class='example'>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp">UniWebView<span class="token punctuation">.</span><span class="token function">SetAllowInlinePlay</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Create a new web view.</span>
 <span class="token keyword">var</span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Now load and open a page which contains inline video to try:</span>
 <span class="token comment" spellcheck="true">// &lt;video src="file.mp4" playsinline> or &lt;video src="file.mp4" webkit-playsinline></span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com/inline-video"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1394,7 +1393,7 @@ not using any JavaScript in your page, you could turn it off to get better perfo
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
     <div class='parameter-item-desc'><p>Whether JavaScript should be enabled.</p>
 </div>
   </li>
@@ -1404,7 +1403,7 @@ not using any JavaScript in your page, you could turn it off to get better perfo
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Disable JavaScript in web views created later.</span>
 UniWebView<span class="token punctuation">.</span><span class="token function">SetJavaScriptEnabled</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// JavaScript is disabled in this web view.</span>
 <span class="token keyword">var</span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
@@ -1424,7 +1423,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
     <div class='parameter-item-desc'><p>Whether JavaScript could open window automatically.</p>
 </div>
   </li>
@@ -1434,9 +1433,9 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Allow JavaScript open window automatically.</span>
 UniWebView<span class="token punctuation">.</span><span class="token function">SetAllowJavaScriptOpenWindow</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token keyword">var</span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Now, the following JavaScript code could navigate to </span>
 <span class="token comment" spellcheck="true">// "example.com" without user interaction in `webView`.</span>
 <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1489,17 +1488,17 @@ use this method.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
     <div class='parameter-item-desc'><p>The url to which cookie will be set.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>cookie</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>cookie</span></div>
     <div class='parameter-item-desc'><p>The cookie string to set. Need more information on cookie? See the <a href="https://en.wikipedia.org/wiki/HTTP_cookie">HTTP cookie</a> page.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
     <div class='parameter-item-desc'><p>Whether UniWebView should skip encoding the url or not. If set to <code>false</code>, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to set the cookie if it is valid. Default is <code>false</code>.</p>
 </div>
   </li>
@@ -1509,7 +1508,7 @@ use this method.</p>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Set a cookie "testCookie=1" to current url/domain.</span>
 UniWebView<span class="token punctuation">.</span><span class="token function">SetCookie</span><span class="token punctuation">(</span>webView<span class="token punctuation">.</span>Url<span class="token punctuation">,</span> <span class="token string">"testCookie=1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Set a full properties specified cookie.</span>
 UniWebView<span class="token punctuation">.</span><span class="token function">SetCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token string">"sessionToken=abc123; Expires=Wed, 09 Jun 2021 10:18:14 GMT"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
@@ -1528,17 +1527,17 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
     <div class='parameter-item-desc'><p>The url (domain) where the target cookie is.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>key</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>key</span></div>
     <div class='parameter-item-desc'><p>The key for target cookie value.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
     <div class='parameter-item-desc'><p>Whether UniWebView should skip encoding the url or not. If set to <code>false</code>, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to get the cookie if it is valid. Default is <code>false</code>.</p>
 </div>
   </li>
@@ -1573,12 +1572,12 @@ On Android, it only clears from disk database, the authentication might be still
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>host</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>host</span></div>
     <div class='parameter-item-desc'><p>The host to which the credentials apply. It should not contain any thing like scheme or path part.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>realm</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>realm</span></div>
     <div class='parameter-item-desc'><p>The realm to which the credentials apply.</p>
 </div>
   </li>
@@ -1603,7 +1602,7 @@ On Android, it only clears from disk database, the authentication might be still
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
     <div class='parameter-item-desc'><p>Whether an indicator should show.</p>
 </div>
   </li>
@@ -1623,7 +1622,7 @@ On Android, it only clears from disk database, the authentication might be still
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>text</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>text</span></div>
     <div class='parameter-item-desc'><p>The text to display while loading indicator visible. Default is &quot;Loading...&quot;</p>
 </div>
   </li>
@@ -1644,7 +1643,7 @@ On Android, it only clears from disk database, the authentication might be still
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
     <div class='parameter-item-desc'><p>Whether enable the scroll bar or not.</p>
 </div>
   </li>
@@ -1665,7 +1664,7 @@ On Android, it only clears from disk database, the authentication might be still
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
     <div class='parameter-item-desc'><p>Whether enable the scroll bar or not.</p>
 </div>
   </li>
@@ -1686,7 +1685,7 @@ On Android, it only clears from disk database, the authentication might be still
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
     <div class='parameter-item-desc'><p>Whether enable the bounces effect should be applied or not.</p>
 </div>
   </li>
@@ -1706,7 +1705,7 @@ On Android, it only clears from disk database, the authentication might be still
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
     <div class='parameter-item-desc'><p>Whether the zoom guesture is allowed or not.</p>
 </div>
   </li>
@@ -1733,7 +1732,7 @@ you have trouble in granting users&#39; permission. It is not needed on iOS.
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>domain</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>domain</span></div>
     <div class='parameter-item-desc'><p>The domain to add to the white list.</p>
 </div>
   </li>
@@ -1758,7 +1757,7 @@ you have trouble in granting users&#39; permission. It is not needed on iOS.
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>domain</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>domain</span></div>
     <div class='parameter-item-desc'><p>The domain to remove from white list.</p>
 </div>
   </li>
@@ -1787,7 +1786,7 @@ similar purpose.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
     <div class='parameter-item-desc'><p>Whether the back button should perform go back or closing operation to web view.</p>
 </div>
   </li>
@@ -1808,7 +1807,7 @@ similar purpose.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
     <div class='parameter-item-desc'><p>Whether to enable support for the viewport meta tag.</p>
 </div>
   </li>
@@ -1829,7 +1828,7 @@ similar purpose.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
     <div class='parameter-item-desc'><p>Whether to enable support for the overview mode.</p>
 </div>
   </li>
@@ -1852,7 +1851,7 @@ hides the status bar and navigation bar with a sticky style.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
     <div class='parameter-item-desc'><p>Whether to enable immersive mode when web view is showing up.</p>
 </div>
   </li>
@@ -1877,22 +1876,22 @@ web view reloacating itself to avoid the overlap.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>show</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>show</span></div>
     <div class='parameter-item-desc'><p>Whether the toolbar should show or hide.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>animated</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>animated</span></div>
     <div class='parameter-item-desc'><p>Whether the toolbar state changing should be with animation. Default is <code>false</code>.</p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>opTop</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>opTop</span></div>
     <div class='parameter-item-desc'><p>Whether the toolbar should snap to top of screen or to bottom of screen. Default is <code>true</code></p>
 </div>
   </li>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>adjustInset</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>adjustInset</span></div>
     <div class='parameter-item-desc'><p>Whether the toolbar transition should also afjust web view position and size if overlapped. Default is <code>false</code></p>
 </div>
   </li>
@@ -1902,7 +1901,7 @@ web view reloacating itself to avoid the overlap.</p>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Show a toolbar at top of screen with animation.</span>
 webView<span class="token punctuation">.</span><span class="token function">SetShowToolbar</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+<span />
 <span class="token comment" spellcheck="true">// Hide the tool bar without animation. At the same time, make </span>
 <span class="token comment" spellcheck="true">// the web view snap to screen top if there was overlapping between </span>
 <span class="token comment" spellcheck="true">// the web view and toolbar.</span>
@@ -1926,7 +1925,7 @@ toolbar. You could change its title by passing a text.</p>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>text</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>text</span></div>
     <div class='parameter-item-desc'><p>The text needed to be set as done button title.</p>
 </div>
   </li>
@@ -1958,7 +1957,7 @@ Please remember to disable this in your product build. This should be only used 
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
     <div class='parameter-item-desc'><p>Whether the content debugging should be enabled.</p>
 </div>
   </li>
@@ -1980,7 +1979,7 @@ By enabling user resizing, you would be able to resize the window by dragging it
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
     <div class='parameter-item-desc'><p>Whether the window could be able to be resized by cursor.</p>
 </div>
   </li>
@@ -2000,7 +1999,7 @@ By enabling user resizing, you would be able to resize the window by dragging it
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>Action&lt;string&gt;</span> <span class='parameter-item-name'>handler</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>Action&lt;string&gt;</span> <span class='parameter-item-name'>handler</span></div>
     <div class='parameter-item-desc'><p>Called after the JavaScript executed. The parameter <code>string</code> is the content read from page.</p>
 </div>
   </li>
