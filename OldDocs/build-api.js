@@ -6,7 +6,7 @@ const Prism = require("node-prismjs");
 const escapeHtml = require("escape-html");
 
 marked.setOptions({
-  highlight: function(code) {
+  highlight: function (code) {
     return Prism.highlight(code, Prism.languages.csharp).replace(
       /\n\n/g,
       "\n<span />\n"
@@ -78,17 +78,17 @@ class Entry {
     this.entry.badges.forEach(badge => {
       result += `<div class='api-badge api-badge-${badge.color}'>${
         badge.name
-      }</div>`;
+        }</div>`;
     });
     return result;
   }
 
   apiHeading() {
-    return `<div class='api-heading' id='${this.entryId()}' data-id='${this.entryId()}'>${this.linkText()}</div>`;
+    return `<div class="api-anchor" id='${this.entryId()}'></div><div class='api-heading' data-id='${this.entryId()}'>${this.linkText()}</div>`;
   }
 
   entryLink() {
-    return `#/latest/api/${this.file}.html?id=${this.entry.name.toLowerCase()}`;
+    return `#${this.entry.name.toLowerCase()}`;
   }
 
   entryId() {
@@ -145,7 +145,7 @@ class Method extends Entry {
         `    <div class='parameter-item'><span class='parameter-item-type'>${escapeHtml(
           parameter.type
         )}</span> <span class='parameter-item-name'>${
-          parameter.name
+        parameter.name
         }</span></div>\n` +
         `    <div class='parameter-item-desc'>${marked(
           parameter.summary
@@ -195,45 +195,45 @@ class Method extends Entry {
   }
 }
 
-class Event extends Method {}
+class Event extends Method { }
 
 function outputSummary(api) {
-  var result = "<h3>Summary</h3>";
+  var result = "### Summary\n\n";
   if (api.summary) {
-    result += marked(api.summary);
+    result += `${api.summary}\n`;
   }
 
   let properties = api["Properties"];
   if (properties) {
-    result += "<h5>Properties Summary</h5>";
+    result += "#### Properties Summary\n\n";
     result += "<table>\n";
     properties.forEach(p => {
       const property = new Property(p, api.file);
       result += `<tr><td><div class='api-summary-heading'>${property.linkTextWithoutBadge()}</div></td><td>${property.simpleSummaryText()}</td></tr>`;
     });
-    result += "</table>";
+    result += "</table>\n\n";
   }
 
   let events = api["Events"];
   if (events) {
-    result += "<h5>Events Summary</h5>";
+    result += "#### Events Summary\n\n";
     result += "<table>\n";
     events.forEach(e => {
       const event = new Event(e, api.file);
       result += `<tr><td><div class='api-summary-heading'>${event.linkTextWithoutBadge()}</div></td><td>${event.simpleSummaryText()}</td></tr>`;
     });
-    result += "</table>";
+    result += "</table>\n\n";
   }
 
   let methods = api["Methods"];
   if (methods) {
-    result += "<h5>Methods Summary</h5>";
+    result += "#### Methods Summary\n\n";
     result += "<table>\n";
     methods.forEach(m => {
       const method = new Method(m, api.file);
       result += `<tr><td><div class='api-summary-heading'>${method.linkTextWithoutBadge()}</div></td><td>${method.simpleSummaryText()}</td></tr>`;
     });
-    result += "</table>";
+    result += "</table>\n\n";
   }
 
   return result;
@@ -243,7 +243,7 @@ function outputProperties(properties, file) {
   if (!properties) {
     return "";
   }
-  var result = "<h4>Properties</h4>\n";
+  var result = "### Properties\n\n";
   properties.forEach(p => {
     const property = new Property(p, file);
     result += property.output();
@@ -255,7 +255,7 @@ function outputMethods(methods, file) {
   if (!methods) {
     return "";
   }
-  var result = "<h4>Methods</h4>\n";
+  var result = "### Methods\n\n";
   methods.forEach(m => {
     const method = new Method(m, file);
     result += method.output();
@@ -267,7 +267,7 @@ function outputEvent(events, file) {
   if (!events) {
     return "";
   }
-  var result = "<h4>Events</h4>\n";
+  var result = "### Events\n\n";
   events.forEach(e => {
     const event = new Event(e, file);
     result += event.output();
@@ -276,7 +276,7 @@ function outputEvent(events, file) {
 }
 
 function output(api) {
-  var result = `<h2>${api.title}</h2>\n`;
+  var result = `## ${api.title}\n\n`;
   result += outputSummary(api);
   result += outputProperties(api["Properties"], api.file);
   result += outputEvent(api["Events"], api.file);
@@ -297,7 +297,9 @@ const allFiles = [
 ];
 
 allFiles.forEach(file => {
-  var result = "<h1>API Documentation</h1>\n";
+  var result = `---
+sidebarDepth: 0
+---\n\n`;
   const s = fs.readFileSync(`${apiFolder}/${file}`, "utf8");
   let api = toml.parse(s);
   result += output(api);

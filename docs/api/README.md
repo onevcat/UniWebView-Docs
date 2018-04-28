@@ -1,201 +1,221 @@
-# UniWebView
+---
+sidebarDepth: 0
+---
 
-<h3>Summary</h3><p>The main class of UniWebView. It represents a native web view and expose a few APIs for you to use 
-in Unity. You could create and use an instance of <code>UniWebView</code> to show a page from URL, interact with the web content, 
-as well as receive a message from web view.</p>
-<h5>Properties Summary</h5><table>
-<tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=frame'><span class='return-type'>Rect</span> Frame { get; set; }</a></div></td><td><div class='simple-summary'>
+## UniWebView
+
+### Summary
+
+The main class of UniWebView. It represents a native web view and expose a few APIs for you to use 
+in Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content, 
+as well as receive a message from web view.
+
+#### Properties Summary
+
+<table>
+<tr><td><div class='api-summary-heading'><a href='#frame'><span class='return-type'>Rect</span> Frame { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Get or Set the frame of current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=referencerecttransform'><span class='return-type'>RectTransform</span> ReferenceRectTransform { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#referencerecttransform'><span class='return-type'>RectTransform</span> ReferenceRectTransform { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>A reference rect transform which the web view should change its position and size to.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=url'><span class='return-type'>string</span> Url { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#url'><span class='return-type'>string</span> Url { get; }</a></div></td><td><div class='simple-summary'>
 <p>The url of current loaded web page.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=cangoback'><span class='return-type'>bool</span> CanGoBack { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#cangoback'><span class='return-type'>bool</span> CanGoBack { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets whether there is a back page in the back-forward list that can be navigated to.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=cangoforward'><span class='return-type'>bool</span> CanGoForward { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#cangoforward'><span class='return-type'>bool</span> CanGoForward { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets whether there is a forward page in the back-forward list that can be navigated to.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=backgroundcolor'><span class='return-type'>Color</span> BackgroundColor { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#backgroundcolor'><span class='return-type'>Color</span> BackgroundColor { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Gets or sets the background color of web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=alpha'><span class='return-type'>float</span> Alpha { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#alpha'><span class='return-type'>float</span> Alpha { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Gets or sets the alpha value of the whole web view.</p>
 </div>
-</td></tr></table><h5>Events Summary</h5><table>
-<tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onpagestarted'><span class='return-type'>event</span> OnPageStarted(UniWebView webView, string url)</a></div></td><td><div class='simple-summary'>
+</td></tr></table>
+
+#### Events Summary
+
+<table>
+<tr><td><div class='api-summary-heading'><a href='#onpagestarted'><span class='return-type'>event</span> OnPageStarted(UniWebView webView, string url)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view starts loading a url.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onpagefinished'><span class='return-type'>event</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onpagefinished'><span class='return-type'>event</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view finished to load a url successully.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onpageerrorreceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onpageerrorreceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
 <p>Raised when an error encountered during the loading process.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onmessagereceived'><span class='return-type'>event</span> OnMessageReceived(UniWebView webView, UniWebViewMessage message)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onmessagereceived'><span class='return-type'>event</span> OnMessageReceived(UniWebView webView, UniWebViewMessage message)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a message from web view is received.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onshouldclose'><span class='return-type'>event bool</span> OnShouldClose(UniWebView webView)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onshouldclose'><span class='return-type'>event bool</span> OnShouldClose(UniWebView webView)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view is about to close itself.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onkeycodereceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onkeycodereceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a key (like back button or volume up) on the device is pressed.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onoreintationchanged'><span class='return-type'>event</span> OnOreintationChanged(UniWebView webView, ScreenOrientation orientation)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onoreintationchanged'><span class='return-type'>event</span> OnOreintationChanged(UniWebView webView, ScreenOrientation orientation)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the screen oreintation is changed.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=onwebcontentprocessterminated'><span class='return-type'>event</span> OnWebContentProcessTerminated(UniWebView webView)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onwebcontentprocessterminated'><span class='return-type'>event</span> OnWebContentProcessTerminated(UniWebView webView)</a></div></td><td><div class='simple-summary'>
 <p>Raised when on iOS, when system calls <code>webViewWebContentProcessDidTerminate</code> method.</p>
 </div>
-</td></tr></table><h5>Methods Summary</h5><table>
-<tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=load'><span class='return-type'>void</span> Load(string url, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+</td></tr></table>
+
+#### Methods Summary
+
+<table>
+<tr><td><div class='api-summary-heading'><a href='#load'><span class='return-type'>void</span> Load(string url, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
 <p>Load a url in current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=loadhtmlstring'><span class='return-type'>void</span> LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#loadhtmlstring'><span class='return-type'>void</span> LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
 <p>Load an HTML string in current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=reload'><span class='return-type'>void</span> Reload()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#reload'><span class='return-type'>void</span> Reload()</a></div></td><td><div class='simple-summary'>
 <p>Reloads the current page.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=stop'><span class='return-type'>void</span> Stop()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#stop'><span class='return-type'>void</span> Stop()</a></div></td><td><div class='simple-summary'>
 <p>Stops loading all resources on the current page.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=goback'><span class='return-type'>void</span> GoBack()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#goback'><span class='return-type'>void</span> GoBack()</a></div></td><td><div class='simple-summary'>
 <p>Navigates to the back item in the back-forward list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=goforward'><span class='return-type'>void</span> GoForward()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#goforward'><span class='return-type'>void</span> GoForward()</a></div></td><td><div class='simple-summary'>
 <p>Navigates to the forward item in the back-forward list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setopenlinksinexternalbrowser'><span class='return-type'>void</span> SetOpenLinksInExternalBrowser(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setopenlinksinexternalbrowser'><span class='return-type'>void</span> SetOpenLinksInExternalBrowser(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the link clicking in the web view should open the page in an external browser.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=show'><span class='return-type'>bool</span> Show(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#show'><span class='return-type'>bool</span> Show(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div></td><td><div class='simple-summary'>
 <p>Sets the web view visible on screen.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=hide'><span class='return-type'>bool</span> Hide(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#hide'><span class='return-type'>bool</span> Hide(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div></td><td><div class='simple-summary'>
 <p>Sets the web view invisible from screen.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=animateto'><span class='return-type'>bool</span> AnimateTo(Rect frame, float duration, float delay, Action completionHandler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#animateto'><span class='return-type'>bool</span> AnimateTo(Rect frame, float duration, float delay, Action completionHandler)</a></div></td><td><div class='simple-summary'>
 <p>Animates the web view from current <code>Frame</code> (position and size) to another <code>Frame</code> (position and size) within <code>duration</code>.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=updateframe'><span class='return-type'>void</span> UpdateFrame()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#updateframe'><span class='return-type'>void</span> UpdateFrame()</a></div></td><td><div class='simple-summary'>
 <p>Update and set current frame of web view to match the setting.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=addjavascript'><span class='return-type'>void</span> AddJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#addjavascript'><span class='return-type'>void</span> AddJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div></td><td><div class='simple-summary'>
 <p>Adds a JavaScript to current page.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=evaluatejavascript'><span class='return-type'>void</span> EvaluateJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#evaluatejavascript'><span class='return-type'>void</span> EvaluateJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div></td><td><div class='simple-summary'>
 <p>Evaluates a JavaScript string on current page.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=addurlscheme'><span class='return-type'>void</span> AddUrlScheme(string scheme)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#addurlscheme'><span class='return-type'>void</span> AddUrlScheme(string scheme)</a></div></td><td><div class='simple-summary'>
 <p>Adds a url scheme to UniWebView message system interpreter.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=removeurlscheme'><span class='return-type'>void</span> RemoveUrlScheme(string scheme)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removeurlscheme'><span class='return-type'>void</span> RemoveUrlScheme(string scheme)</a></div></td><td><div class='simple-summary'>
 <p>Removes a url scheme from UniWebView message system interpreter.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=addsslexceptiondomain'><span class='return-type'>void</span> AddSslExceptionDomain(string domain)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#addsslexceptiondomain'><span class='return-type'>void</span> AddSslExceptionDomain(string domain)</a></div></td><td><div class='simple-summary'>
 <p>Adds a domain to the SSL checking white list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=removesslexceptiondomain'><span class='return-type'>void</span> RemoveSslExceptionDomain(string domain)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removesslexceptiondomain'><span class='return-type'>void</span> RemoveSslExceptionDomain(string domain)</a></div></td><td><div class='simple-summary'>
 <p>Removes a domain from the SSL checking white list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setheaderfield'><span class='return-type'>void</span> SetHeaderField(string key, string value)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setheaderfield'><span class='return-type'>void</span> SetHeaderField(string key, string value)</a></div></td><td><div class='simple-summary'>
 <p>Sets a customized header field for web view requests.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setuseragent'><span class='return-type'>void</span> SetUserAgent(string agent)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setuseragent'><span class='return-type'>void</span> SetUserAgent(string agent)</a></div></td><td><div class='simple-summary'>
 <p>Sets the user agent used in the web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=getuseragent'><span class='return-type'>string</span> GetUserAgent()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getuseragent'><span class='return-type'>string</span> GetUserAgent()</a></div></td><td><div class='simple-summary'>
 <p>Gets the user agent string currently used in web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setallowautoplay'><span class='return-type'>void</span> SetAllowAutoPlay(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowautoplay'><span class='return-type'>void</span> SetAllowAutoPlay(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Set allow auto play for current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setallowinlineplay'><span class='return-type'>void</span> SetAllowInlinePlay(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowinlineplay'><span class='return-type'>void</span> SetAllowInlinePlay(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Set allow inline play for current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setjavascriptenabled'><span class='return-type'>void</span> SetJavaScriptEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setjavascriptenabled'><span class='return-type'>void</span> SetJavaScriptEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether JavaScript should be enabled in current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setallowjavascriptopenwindow'><span class='return-type'>void</span> SetAllowJavaScriptOpenWindow(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowjavascriptopenwindow'><span class='return-type'>void</span> SetAllowJavaScriptOpenWindow(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether JavaScript can open windows without user interaction.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=cleancache'><span class='return-type'>void</span> CleanCache()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#cleancache'><span class='return-type'>void</span> CleanCache()</a></div></td><td><div class='simple-summary'>
 <p>Clean web view cache.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=clearcookies'><span class='return-type'>void</span> ClearCookies()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#clearcookies'><span class='return-type'>void</span> ClearCookies()</a></div></td><td><div class='simple-summary'>
 <p>Clear all cookies from web views.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
 <p>Sets a cookie for a certain url.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=getcookie'><span class='return-type'>string</span> GetCookie(string url, string key, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getcookie'><span class='return-type'>string</span> GetCookie(string url, string key, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
 <p>Gets the cookie value under a url and key.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=clearhttpauthusernamepassword'><span class='return-type'>void</span> ClearHttpAuthUsernamePassword(string host, string realm)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#clearhttpauthusernamepassword'><span class='return-type'>void</span> ClearHttpAuthUsernamePassword(string host, string realm)</a></div></td><td><div class='simple-summary'>
 <p>Clears any saved credentials for HTTP authentication for both Basic and Digest.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setshowspinnerwhileloading'><span class='return-type'>void</span> SetShowSpinnerWhileLoading(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setshowspinnerwhileloading'><span class='return-type'>void</span> SetShowSpinnerWhileLoading(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether to show a loading indicator while the loading is in progress.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setspinnertext'><span class='return-type'>void</span> SetSpinnerText(string text)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setspinnertext'><span class='return-type'>void</span> SetSpinnerText(string text)</a></div></td><td><div class='simple-summary'>
 <p>Sets the text displayed in the loading indicator, if <code>SetShowSpinnerWhileLoading</code> is set to <code>true</code>.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=sethorizontalscrollbarenabled'><span class='return-type'>void</span> SetHorizontalScrollBarEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#sethorizontalscrollbarenabled'><span class='return-type'>void</span> SetHorizontalScrollBarEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the horizontal scroll bar should show when the web content beyonds web view bounds.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setverticalscrollbarenabled'><span class='return-type'>void</span> SetVerticalScrollBarEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setverticalscrollbarenabled'><span class='return-type'>void</span> SetVerticalScrollBarEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the vertical scroll bar should show when the web content beyonds web view bounds.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setbouncesenabled'><span class='return-type'>void</span> SetBouncesEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setbouncesenabled'><span class='return-type'>void</span> SetBouncesEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view should show with a bounces effect when scrolling to page edge.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setzoomenabled'><span class='return-type'>void</span> SetZoomEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setzoomenabled'><span class='return-type'>void</span> SetZoomEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view supports zoom guesture to change content size.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=addpermissiontrustdomain'><span class='return-type'>void</span> AddPermissionTrustDomain(string domain)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#addpermissiontrustdomain'><span class='return-type'>void</span> AddPermissionTrustDomain(string domain)</a></div></td><td><div class='simple-summary'>
 <p>Adds a trusted domain to white list and allow permission requests from the domain.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=removepermissiontrustdomain'><span class='return-type'>void</span> RemovePermissionTrustDomain(string domain)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removepermissiontrustdomain'><span class='return-type'>void</span> RemovePermissionTrustDomain(string domain)</a></div></td><td><div class='simple-summary'>
 <p>Removes a trusted domain from white list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setbackbuttonenabled'><span class='return-type'>void</span> SetBackButtonEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setbackbuttonenabled'><span class='return-type'>void</span> SetBackButtonEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the device back button should be enabled to execute &quot;go back&quot; or &quot;closing&quot; operation.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setusewideviewport'><span class='return-type'>void</span> SetUseWideViewPort(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setusewideviewport'><span class='return-type'>void</span> SetUseWideViewPort(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view should enable support for the &quot;viewport&quot; HTML meta tag or should use a wide viewport.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setloadwithoverviewmode'><span class='return-type'>void</span> SetLoadWithOverviewMode(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setloadwithoverviewmode'><span class='return-type'>void</span> SetLoadWithOverviewMode(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view loads pages in overview mode, that is, zooms out the content to fit on screen by width.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setimmersivemodeenabled'><span class='return-type'>void</span> SetImmersiveModeEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setimmersivemodeenabled'><span class='return-type'>void</span> SetImmersiveModeEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view should behave in immersive mode, that is, 
 hides the status bar and navigation bar with a sticky style.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setshowtoolbar'><span class='return-type'>void</span> SetShowToolbar(bool show, bool animated, bool onTop, bool adjustInset)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setshowtoolbar'><span class='return-type'>void</span> SetShowToolbar(bool show, bool animated, bool onTop, bool adjustInset)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether to show a toolbar which contains navigation buttons and Done button.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=settoolbardonebuttontext'><span class='return-type'>void</span> SetToolbarDoneButtonText(string text)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbardonebuttontext'><span class='return-type'>void</span> SetToolbarDoneButtonText(string text)</a></div></td><td><div class='simple-summary'>
 <p>Sets the done button text in toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setwebcontentsdebuggingenabled'><span class='return-type'>void</span> SetWebContentsDebuggingEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setwebcontentsdebuggingenabled'><span class='return-type'>void</span> SetWebContentsDebuggingEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Enables debugging of web contents.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=setwindowuserresizeenabled'><span class='return-type'>void</span> SetWindowUserResizeEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setwindowuserresizeenabled'><span class='return-type'>void</span> SetWindowUserResizeEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Enables user resizing for web view window.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=gethtmlcontent'><span class='return-type'>void</span> GetHTMLContent(Action&lt;string&gt; handler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#gethtmlcontent'><span class='return-type'>void</span> GetHTMLContent(Action&lt;string&gt; handler)</a></div></td><td><div class='simple-summary'>
 <p>Gets the HTML content from current page by accessing its <code>outerHTML</code> with JavaScript.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebview.html?id=print'><span class='return-type'>void</span> Print()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#print'><span class='return-type'>void</span> Print()</a></div></td><td><div class='simple-summary'>
 <p>Prints current page.</p>
 </div>
-</td></tr></table><h4>Properties</h4>
+</td></tr></table>
+
+### Properties
+
 <div class='api-box property'>
-  <div class='api-heading' id='frame' data-id='frame'><a href='#/latest/api/uniwebview.html?id=frame'><span class='return-type'>Rect</span> Frame { get; set; }</a></div>
+  <div class="api-anchor" id='frame'></div><div class='api-heading' data-id='frame'><a href='#frame'><span class='return-type'>Rect</span> Frame { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -220,7 +240,7 @@ webView<span class="token punctuation">.</span>Frame <span class="token operator
   </div>
 </div>
 <div class='api-box property'>
-  <div class='api-heading' id='referencerecttransform' data-id='referencerecttransform'><a href='#/latest/api/uniwebview.html?id=referencerecttransform'><span class='return-type'>RectTransform</span> ReferenceRectTransform { get; set; }</a></div>
+  <div class="api-anchor" id='referencerecttransform'></div><div class='api-heading' data-id='referencerecttransform'><a href='#referencerecttransform'><span class='return-type'>RectTransform</span> ReferenceRectTransform { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -242,7 +262,7 @@ webView<span class="token punctuation">.</span>ReferenceRectTransform <span clas
   </div>
 </div>
 <div class='api-box property'>
-  <div class='api-heading' id='url' data-id='url'><a href='#/latest/api/uniwebview.html?id=url'><span class='return-type'>string</span> Url { get; }</a></div>
+  <div class="api-anchor" id='url'></div><div class='api-heading' data-id='url'><a href='#url'><span class='return-type'>string</span> Url { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -261,7 +281,7 @@ webView<span class="token punctuation">.</span>ReferenceRectTransform <span clas
   </div>
 </div>
 <div class='api-box property'>
-  <div class='api-heading' id='cangoback' data-id='cangoback'><a href='#/latest/api/uniwebview.html?id=cangoback'><span class='return-type'>bool</span> CanGoBack { get; }</a></div>
+  <div class="api-anchor" id='cangoback'></div><div class='api-heading' data-id='cangoback'><a href='#cangoback'><span class='return-type'>bool</span> CanGoBack { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -271,7 +291,7 @@ webView<span class="token punctuation">.</span>ReferenceRectTransform <span clas
   </div>
 </div>
 <div class='api-box property'>
-  <div class='api-heading' id='cangoforward' data-id='cangoforward'><a href='#/latest/api/uniwebview.html?id=cangoforward'><span class='return-type'>bool</span> CanGoForward { get; }</a></div>
+  <div class="api-anchor" id='cangoforward'></div><div class='api-heading' data-id='cangoforward'><a href='#cangoforward'><span class='return-type'>bool</span> CanGoForward { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -281,7 +301,7 @@ webView<span class="token punctuation">.</span>ReferenceRectTransform <span clas
   </div>
 </div>
 <div class='api-box property'>
-  <div class='api-heading' id='backgroundcolor' data-id='backgroundcolor'><a href='#/latest/api/uniwebview.html?id=backgroundcolor'><span class='return-type'>Color</span> BackgroundColor { get; set; }</a></div>
+  <div class="api-anchor" id='backgroundcolor'></div><div class='api-heading' data-id='backgroundcolor'><a href='#backgroundcolor'><span class='return-type'>Color</span> BackgroundColor { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -302,7 +322,7 @@ webView<span class="token punctuation">.</span>BackgroundColor <span class="toke
   </div>
 </div>
 <div class='api-box property'>
-  <div class='api-heading' id='alpha' data-id='alpha'><a href='#/latest/api/uniwebview.html?id=alpha'><span class='return-type'>float</span> Alpha { get; set; }</a></div>
+  <div class="api-anchor" id='alpha'></div><div class='api-heading' data-id='alpha'><a href='#alpha'><span class='return-type'>float</span> Alpha { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -320,9 +340,10 @@ webView<span class="token punctuation">.</span>Alpha <span class="token operator
   </div>
 </div>
 
-<h4>Events</h4>
+### Events
+
 <div class='api-box method'>
-  <div class='api-heading' id='onpagestarted' data-id='onpagestarted'><a href='#/latest/api/uniwebview.html?id=onpagestarted'><span class='return-type'>event</span> OnPageStarted(UniWebView webView, string url)</a></div>
+  <div class="api-anchor" id='onpagestarted'></div><div class='api-heading' data-id='onpagestarted'><a href='#onpagestarted'><span class='return-type'>event</span> OnPageStarted(UniWebView webView, string url)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -358,7 +379,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='onpagefinished' data-id='onpagefinished'><a href='#/latest/api/uniwebview.html?id=onpagefinished'><span class='return-type'>event</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div>
+  <div class="api-anchor" id='onpagefinished'></div><div class='api-heading' data-id='onpagefinished'><a href='#onpagefinished'><span class='return-type'>event</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -407,7 +428,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='onpageerrorreceived' data-id='onpageerrorreceived'><a href='#/latest/api/uniwebview.html?id=onpageerrorreceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div>
+  <div class="api-anchor" id='onpageerrorreceived'></div><div class='api-heading' data-id='onpageerrorreceived'><a href='#onpageerrorreceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -454,7 +475,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='onmessagereceived' data-id='onmessagereceived'><a href='#/latest/api/uniwebview.html?id=onmessagereceived'><span class='return-type'>event</span> OnMessageReceived(UniWebView webView, UniWebViewMessage message)</a></div>
+  <div class="api-anchor" id='onmessagereceived'></div><div class='api-heading' data-id='onmessagereceived'><a href='#onmessagereceived'><span class='return-type'>event</span> OnMessageReceived(UniWebView webView, UniWebViewMessage message)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -506,7 +527,7 @@ anotherWebView<span class="token punctuation">.</span><span class="token functio
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='onshouldclose' data-id='onshouldclose'><a href='#/latest/api/uniwebview.html?id=onshouldclose'><span class='return-type'>event bool</span> OnShouldClose(UniWebView webView)</a></div>
+  <div class="api-anchor" id='onshouldclose'></div><div class='api-heading' data-id='onshouldclose'><a href='#onshouldclose'><span class='return-type'>event bool</span> OnShouldClose(UniWebView webView)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -556,7 +577,7 @@ webView<span class="token punctuation">.</span>OnShouldClose <span class="token 
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='onkeycodereceived' data-id='onkeycodereceived'><a href='#/latest/api/uniwebview.html?id=onkeycodereceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='onkeycodereceived'></div><div class='api-heading' data-id='onkeycodereceived'><a href='#onkeycodereceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -593,7 +614,7 @@ raised.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='onoreintationchanged' data-id='onoreintationchanged'><a href='#/latest/api/uniwebview.html?id=onoreintationchanged'><span class='return-type'>event</span> OnOreintationChanged(UniWebView webView, ScreenOrientation orientation)</a></div>
+  <div class="api-anchor" id='onoreintationchanged'></div><div class='api-heading' data-id='onoreintationchanged'><a href='#onoreintationchanged'><span class='return-type'>event</span> OnOreintationChanged(UniWebView webView, ScreenOrientation orientation)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -628,7 +649,7 @@ webView<span class="token punctuation">.</span>OnOreintationChanged <span class=
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='onwebcontentprocessterminated' data-id='onwebcontentprocessterminated'><a href='#/latest/api/uniwebview.html?id=onwebcontentprocessterminated'><span class='return-type'>event</span> OnWebContentProcessTerminated(UniWebView webView)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='onwebcontentprocessterminated'></div><div class='api-heading' data-id='onwebcontentprocessterminated'><a href='#onwebcontentprocessterminated'><span class='return-type'>event</span> OnWebContentProcessTerminated(UniWebView webView)</a><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -661,9 +682,10 @@ webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <sp
   </div>
 </div>
 
-<h4>Methods</h4>
+### Methods
+
 <div class='api-box method'>
-  <div class='api-heading' id='load' data-id='load'><a href='#/latest/api/uniwebview.html?id=load'><span class='return-type'>void</span> Load(string url, bool skipEncoding)</a></div>
+  <div class="api-anchor" id='load'></div><div class='api-heading' data-id='load'><a href='#load'><span class='return-type'>void</span> Load(string url, bool skipEncoding)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -694,7 +716,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='loadhtmlstring' data-id='loadhtmlstring'><a href='#/latest/api/uniwebview.html?id=loadhtmlstring'><span class='return-type'>void</span> LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)</a></div>
+  <div class="api-anchor" id='loadhtmlstring'></div><div class='api-heading' data-id='loadhtmlstring'><a href='#loadhtmlstring'><span class='return-type'>void</span> LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -729,7 +751,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='reload' data-id='reload'><a href='#/latest/api/uniwebview.html?id=reload'><span class='return-type'>void</span> Reload()</a></div>
+  <div class="api-anchor" id='reload'></div><div class='api-heading' data-id='reload'><a href='#reload'><span class='return-type'>void</span> Reload()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -739,7 +761,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='stop' data-id='stop'><a href='#/latest/api/uniwebview.html?id=stop'><span class='return-type'>void</span> Stop()</a></div>
+  <div class="api-anchor" id='stop'></div><div class='api-heading' data-id='stop'><a href='#stop'><span class='return-type'>void</span> Stop()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -749,7 +771,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='goback' data-id='goback'><a href='#/latest/api/uniwebview.html?id=goback'><span class='return-type'>void</span> GoBack()</a></div>
+  <div class="api-anchor" id='goback'></div><div class='api-heading' data-id='goback'><a href='#goback'><span class='return-type'>void</span> GoBack()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -766,7 +788,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='goforward' data-id='goforward'><a href='#/latest/api/uniwebview.html?id=goforward'><span class='return-type'>void</span> GoForward()</a></div>
+  <div class="api-anchor" id='goforward'></div><div class='api-heading' data-id='goforward'><a href='#goforward'><span class='return-type'>void</span> GoForward()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -783,7 +805,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setopenlinksinexternalbrowser' data-id='setopenlinksinexternalbrowser'><a href='#/latest/api/uniwebview.html?id=setopenlinksinexternalbrowser'><span class='return-type'>void</span> SetOpenLinksInExternalBrowser(bool flag)</a></div>
+  <div class="api-anchor" id='setopenlinksinexternalbrowser'></div><div class='api-heading' data-id='setopenlinksinexternalbrowser'><a href='#setopenlinksinexternalbrowser'><span class='return-type'>void</span> SetOpenLinksInExternalBrowser(bool flag)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -815,7 +837,7 @@ webView<span class="token punctuation">.</span>OnPageFinished <span class="token
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='show' data-id='show'><a href='#/latest/api/uniwebview.html?id=show'><span class='return-type'>bool</span> Show(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div>
+  <div class="api-anchor" id='show'></div><div class='api-heading' data-id='show'><a href='#show'><span class='return-type'>bool</span> Show(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -875,7 +897,7 @@ webView<span class="token punctuation">.</span><span class="token function">Show
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='hide' data-id='hide'><a href='#/latest/api/uniwebview.html?id=hide'><span class='return-type'>bool</span> Hide(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div>
+  <div class="api-anchor" id='hide'></div><div class='api-heading' data-id='hide'><a href='#hide'><span class='return-type'>bool</span> Hide(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -939,7 +961,7 @@ webView<span class="token punctuation">.</span><span class="token function">Hide
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='animateto' data-id='animateto'><a href='#/latest/api/uniwebview.html?id=animateto'><span class='return-type'>bool</span> AnimateTo(Rect frame, float duration, float delay, Action completionHandler)</a></div>
+  <div class="api-anchor" id='animateto'></div><div class='api-heading' data-id='animateto'><a href='#animateto'><span class='return-type'>bool</span> AnimateTo(Rect frame, float duration, float delay, Action completionHandler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -986,7 +1008,7 @@ webView<span class="token punctuation">.</span><span class="token function">Anim
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='updateframe' data-id='updateframe'><a href='#/latest/api/uniwebview.html?id=updateframe'><span class='return-type'>void</span> UpdateFrame()</a></div>
+  <div class="api-anchor" id='updateframe'></div><div class='api-heading' data-id='updateframe'><a href='#updateframe'><span class='return-type'>void</span> UpdateFrame()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1008,7 +1030,7 @@ to the web view. This method follows the frame determining rules.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='addjavascript' data-id='addjavascript'><a href='#/latest/api/uniwebview.html?id=addjavascript'><span class='return-type'>void</span> AddJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div>
+  <div class="api-anchor" id='addjavascript'></div><div class='api-heading' data-id='addjavascript'><a href='#addjavascript'><span class='return-type'>void</span> AddJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1044,7 +1066,7 @@ to the web view and a <code>UniWebViewNativeResultPayload</code> with <code>resu
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='evaluatejavascript' data-id='evaluatejavascript'><a href='#/latest/api/uniwebview.html?id=evaluatejavascript'><span class='return-type'>void</span> EvaluateJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div>
+  <div class="api-anchor" id='evaluatejavascript'></div><div class='api-heading' data-id='evaluatejavascript'><a href='#evaluatejavascript'><span class='return-type'>void</span> EvaluateJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1094,7 +1116,7 @@ webView<span class="token punctuation">.</span><span class="token function">Eval
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='addurlscheme' data-id='addurlscheme'><a href='#/latest/api/uniwebview.html?id=addurlscheme'><span class='return-type'>void</span> AddUrlScheme(string scheme)</a></div>
+  <div class="api-anchor" id='addurlscheme'></div><div class='api-heading' data-id='addurlscheme'><a href='#addurlscheme'><span class='return-type'>void</span> AddUrlScheme(string scheme)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1122,7 +1144,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddU
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='removeurlscheme' data-id='removeurlscheme'><a href='#/latest/api/uniwebview.html?id=removeurlscheme'><span class='return-type'>void</span> RemoveUrlScheme(string scheme)</a></div>
+  <div class="api-anchor" id='removeurlscheme'></div><div class='api-heading' data-id='removeurlscheme'><a href='#removeurlscheme'><span class='return-type'>void</span> RemoveUrlScheme(string scheme)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1147,7 +1169,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddU
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='addsslexceptiondomain' data-id='addsslexceptiondomain'><a href='#/latest/api/uniwebview.html?id=addsslexceptiondomain'><span class='return-type'>void</span> AddSslExceptionDomain(string domain)</a></div>
+  <div class="api-anchor" id='addsslexceptiondomain'></div><div class='api-heading' data-id='addsslexceptiondomain'><a href='#addsslexceptiondomain'><span class='return-type'>void</span> AddSslExceptionDomain(string domain)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1182,7 +1204,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='removesslexceptiondomain' data-id='removesslexceptiondomain'><a href='#/latest/api/uniwebview.html?id=removesslexceptiondomain'><span class='return-type'>void</span> RemoveSslExceptionDomain(string domain)</a></div>
+  <div class="api-anchor" id='removesslexceptiondomain'></div><div class='api-heading' data-id='removesslexceptiondomain'><a href='#removesslexceptiondomain'><span class='return-type'>void</span> RemoveSslExceptionDomain(string domain)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1207,7 +1229,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setheaderfield' data-id='setheaderfield'><a href='#/latest/api/uniwebview.html?id=setheaderfield'><span class='return-type'>void</span> SetHeaderField(string key, string value)</a></div>
+  <div class="api-anchor" id='setheaderfield'></div><div class='api-heading' data-id='setheaderfield'><a href='#setheaderfield'><span class='return-type'>void</span> SetHeaderField(string key, string value)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1249,7 +1271,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetH
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setuseragent' data-id='setuseragent'><a href='#/latest/api/uniwebview.html?id=setuseragent'><span class='return-type'>void</span> SetUserAgent(string agent)</a></div>
+  <div class="api-anchor" id='setuseragent'></div><div class='api-heading' data-id='setuseragent'><a href='#setuseragent'><span class='return-type'>void</span> SetUserAgent(string agent)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1278,7 +1300,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetU
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='getuseragent' data-id='getuseragent'><a href='#/latest/api/uniwebview.html?id=getuseragent'><span class='return-type'>string</span> GetUserAgent()</a></div>
+  <div class="api-anchor" id='getuseragent'></div><div class='api-heading' data-id='getuseragent'><a href='#getuseragent'><span class='return-type'>string</span> GetUserAgent()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1304,7 +1326,7 @@ webView<span class="token punctuation">.</span><span class="token function">GetU
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setallowautoplay' data-id='setallowautoplay'><a href='#/latest/api/uniwebview.html?id=setallowautoplay'><span class='return-type'>void</span> SetAllowAutoPlay(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='setallowautoplay'></div><div class='api-heading' data-id='setallowautoplay'><a href='#setallowautoplay'><span class='return-type'>void</span> SetAllowAutoPlay(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1340,7 +1362,7 @@ webView<span class="token punctuation">.</span><span class="token function">Show
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setallowinlineplay' data-id='setallowinlineplay'><a href='#/latest/api/uniwebview.html?id=setallowinlineplay'><span class='return-type'>void</span> SetAllowInlinePlay(bool flag)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='setallowinlineplay'></div><div class='api-heading' data-id='setallowinlineplay'><a href='#setallowinlineplay'><span class='return-type'>void</span> SetAllowInlinePlay(bool flag)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1380,7 +1402,7 @@ webView<span class="token punctuation">.</span><span class="token function">Show
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setjavascriptenabled' data-id='setjavascriptenabled'><a href='#/latest/api/uniwebview.html?id=setjavascriptenabled'><span class='return-type'>void</span> SetJavaScriptEnabled(bool enabled)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='setjavascriptenabled'></div><div class='api-heading' data-id='setjavascriptenabled'><a href='#setjavascriptenabled'><span class='return-type'>void</span> SetJavaScriptEnabled(bool enabled)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1412,7 +1434,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setallowjavascriptopenwindow' data-id='setallowjavascriptopenwindow'><a href='#/latest/api/uniwebview.html?id=setallowjavascriptopenwindow'><span class='return-type'>void</span> SetAllowJavaScriptOpenWindow(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='setallowjavascriptopenwindow'></div><div class='api-heading' data-id='setallowjavascriptopenwindow'><a href='#setallowjavascriptopenwindow'><span class='return-type'>void</span> SetAllowJavaScriptOpenWindow(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1447,7 +1469,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='cleancache' data-id='cleancache'><a href='#/latest/api/uniwebview.html?id=cleancache'><span class='return-type'>void</span> CleanCache()</a></div>
+  <div class="api-anchor" id='cleancache'></div><div class='api-heading' data-id='cleancache'><a href='#cleancache'><span class='return-type'>void</span> CleanCache()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1458,7 +1480,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='clearcookies' data-id='clearcookies'><a href='#/latest/api/uniwebview.html?id=clearcookies'><span class='return-type'>void</span> ClearCookies()</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='clearcookies'></div><div class='api-heading' data-id='clearcookies'><a href='#clearcookies'><span class='return-type'>void</span> ClearCookies()</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1474,7 +1496,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setcookie' data-id='setcookie'><a href='#/latest/api/uniwebview.html?id=setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='setcookie'></div><div class='api-heading' data-id='setcookie'><a href='#setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1517,7 +1539,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='getcookie' data-id='getcookie'><a href='#/latest/api/uniwebview.html?id=getcookie'><span class='return-type'>string</span> GetCookie(string url, string key, bool skipEncoding)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='getcookie'></div><div class='api-heading' data-id='getcookie'><a href='#getcookie'><span class='return-type'>string</span> GetCookie(string url, string key, bool skipEncoding)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1556,7 +1578,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='clearhttpauthusernamepassword' data-id='clearhttpauthusernamepassword'><a href='#/latest/api/uniwebview.html?id=clearhttpauthusernamepassword'><span class='return-type'>void</span> ClearHttpAuthUsernamePassword(string host, string realm)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='clearhttpauthusernamepassword'></div><div class='api-heading' data-id='clearhttpauthusernamepassword'><a href='#clearhttpauthusernamepassword'><span class='return-type'>void</span> ClearHttpAuthUsernamePassword(string host, string realm)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1592,7 +1614,7 @@ On Android, it only clears from disk database, the authentication might be still
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setshowspinnerwhileloading' data-id='setshowspinnerwhileloading'><a href='#/latest/api/uniwebview.html?id=setshowspinnerwhileloading'><span class='return-type'>void</span> SetShowSpinnerWhileLoading(bool flag)</a></div>
+  <div class="api-anchor" id='setshowspinnerwhileloading'></div><div class='api-heading' data-id='setshowspinnerwhileloading'><a href='#setshowspinnerwhileloading'><span class='return-type'>void</span> SetShowSpinnerWhileLoading(bool flag)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1612,7 +1634,7 @@ On Android, it only clears from disk database, the authentication might be still
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setspinnertext' data-id='setspinnertext'><a href='#/latest/api/uniwebview.html?id=setspinnertext'><span class='return-type'>void</span> SetSpinnerText(string text)</a></div>
+  <div class="api-anchor" id='setspinnertext'></div><div class='api-heading' data-id='setspinnertext'><a href='#setspinnertext'><span class='return-type'>void</span> SetSpinnerText(string text)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1632,7 +1654,7 @@ On Android, it only clears from disk database, the authentication might be still
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='sethorizontalscrollbarenabled' data-id='sethorizontalscrollbarenabled'><a href='#/latest/api/uniwebview.html?id=sethorizontalscrollbarenabled'><span class='return-type'>void</span> SetHorizontalScrollBarEnabled(bool enabled)</a></div>
+  <div class="api-anchor" id='sethorizontalscrollbarenabled'></div><div class='api-heading' data-id='sethorizontalscrollbarenabled'><a href='#sethorizontalscrollbarenabled'><span class='return-type'>void</span> SetHorizontalScrollBarEnabled(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1653,7 +1675,7 @@ On Android, it only clears from disk database, the authentication might be still
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setverticalscrollbarenabled' data-id='setverticalscrollbarenabled'><a href='#/latest/api/uniwebview.html?id=setverticalscrollbarenabled'><span class='return-type'>void</span> SetVerticalScrollBarEnabled(bool enabled)</a></div>
+  <div class="api-anchor" id='setverticalscrollbarenabled'></div><div class='api-heading' data-id='setverticalscrollbarenabled'><a href='#setverticalscrollbarenabled'><span class='return-type'>void</span> SetVerticalScrollBarEnabled(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1674,7 +1696,7 @@ On Android, it only clears from disk database, the authentication might be still
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setbouncesenabled' data-id='setbouncesenabled'><a href='#/latest/api/uniwebview.html?id=setbouncesenabled'><span class='return-type'>void</span> SetBouncesEnabled(bool enabled)</a></div>
+  <div class="api-anchor" id='setbouncesenabled'></div><div class='api-heading' data-id='setbouncesenabled'><a href='#setbouncesenabled'><span class='return-type'>void</span> SetBouncesEnabled(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1695,7 +1717,7 @@ On Android, it only clears from disk database, the authentication might be still
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setzoomenabled' data-id='setzoomenabled'><a href='#/latest/api/uniwebview.html?id=setzoomenabled'><span class='return-type'>void</span> SetZoomEnabled(bool enabled)</a></div>
+  <div class="api-anchor" id='setzoomenabled'></div><div class='api-heading' data-id='setzoomenabled'><a href='#setzoomenabled'><span class='return-type'>void</span> SetZoomEnabled(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1715,7 +1737,7 @@ On Android, it only clears from disk database, the authentication might be still
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='addpermissiontrustdomain' data-id='addpermissiontrustdomain'><a href='#/latest/api/uniwebview.html?id=addpermissiontrustdomain'><span class='return-type'>void</span> AddPermissionTrustDomain(string domain)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='addpermissiontrustdomain'></div><div class='api-heading' data-id='addpermissiontrustdomain'><a href='#addpermissiontrustdomain'><span class='return-type'>void</span> AddPermissionTrustDomain(string domain)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1747,7 +1769,7 @@ you have trouble in granting users&#39; permission. It is not needed on iOS.
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='removepermissiontrustdomain' data-id='removepermissiontrustdomain'><a href='#/latest/api/uniwebview.html?id=removepermissiontrustdomain'><span class='return-type'>void</span> RemovePermissionTrustDomain(string domain)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='removepermissiontrustdomain'></div><div class='api-heading' data-id='removepermissiontrustdomain'><a href='#removepermissiontrustdomain'><span class='return-type'>void</span> RemovePermissionTrustDomain(string domain)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1767,7 +1789,7 @@ you have trouble in granting users&#39; permission. It is not needed on iOS.
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setbackbuttonenabled' data-id='setbackbuttonenabled'><a href='#/latest/api/uniwebview.html?id=setbackbuttonenabled'><span class='return-type'>void</span> SetBackButtonEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='setbackbuttonenabled'></div><div class='api-heading' data-id='setbackbuttonenabled'><a href='#setbackbuttonenabled'><span class='return-type'>void</span> SetBackButtonEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1796,7 +1818,7 @@ similar purpose.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setusewideviewport' data-id='setusewideviewport'><a href='#/latest/api/uniwebview.html?id=setusewideviewport'><span class='return-type'>void</span> SetUseWideViewPort(bool flag)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='setusewideviewport'></div><div class='api-heading' data-id='setusewideviewport'><a href='#setusewideviewport'><span class='return-type'>void</span> SetUseWideViewPort(bool flag)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1817,7 +1839,7 @@ similar purpose.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setloadwithoverviewmode' data-id='setloadwithoverviewmode'><a href='#/latest/api/uniwebview.html?id=setloadwithoverviewmode'><span class='return-type'>void</span> SetLoadWithOverviewMode(bool flag)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='setloadwithoverviewmode'></div><div class='api-heading' data-id='setloadwithoverviewmode'><a href='#setloadwithoverviewmode'><span class='return-type'>void</span> SetLoadWithOverviewMode(bool flag)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1838,7 +1860,7 @@ similar purpose.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setimmersivemodeenabled' data-id='setimmersivemodeenabled'><a href='#/latest/api/uniwebview.html?id=setimmersivemodeenabled'><span class='return-type'>void</span> SetImmersiveModeEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='setimmersivemodeenabled'></div><div class='api-heading' data-id='setimmersivemodeenabled'><a href='#setimmersivemodeenabled'><span class='return-type'>void</span> SetImmersiveModeEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1861,7 +1883,7 @@ hides the status bar and navigation bar with a sticky style.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setshowtoolbar' data-id='setshowtoolbar'><a href='#/latest/api/uniwebview.html?id=setshowtoolbar'><span class='return-type'>void</span> SetShowToolbar(bool show, bool animated, bool onTop, bool adjustInset)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='setshowtoolbar'></div><div class='api-heading' data-id='setshowtoolbar'><a href='#setshowtoolbar'><span class='return-type'>void</span> SetShowToolbar(bool show, bool animated, bool onTop, bool adjustInset)</a><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1912,7 +1934,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='settoolbardonebuttontext' data-id='settoolbardonebuttontext'><a href='#/latest/api/uniwebview.html?id=settoolbardonebuttontext'><span class='return-type'>void</span> SetToolbarDoneButtonText(string text)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='settoolbardonebuttontext'></div><div class='api-heading' data-id='settoolbardonebuttontext'><a href='#settoolbardonebuttontext'><span class='return-type'>void</span> SetToolbarDoneButtonText(string text)</a><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1940,7 +1962,7 @@ toolbar. You could change its title by passing a text.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setwebcontentsdebuggingenabled' data-id='setwebcontentsdebuggingenabled'><a href='#/latest/api/uniwebview.html?id=setwebcontentsdebuggingenabled'><span class='return-type'>void</span> SetWebContentsDebuggingEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div><div class='api-badge api-badge-purple'>macOS</div><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='setwebcontentsdebuggingenabled'></div><div class='api-heading' data-id='setwebcontentsdebuggingenabled'><a href='#setwebcontentsdebuggingenabled'><span class='return-type'>void</span> SetWebContentsDebuggingEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div><div class='api-badge api-badge-purple'>macOS</div><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1967,7 +1989,7 @@ Please remember to disable this in your product build. This should be only used 
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='setwindowuserresizeenabled' data-id='setwindowuserresizeenabled'><a href='#/latest/api/uniwebview.html?id=setwindowuserresizeenabled'><span class='return-type'>void</span> SetWindowUserResizeEnabled(bool enabled)</a><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='setwindowuserresizeenabled'></div><div class='api-heading' data-id='setwindowuserresizeenabled'><a href='#setwindowuserresizeenabled'><span class='return-type'>void</span> SetWindowUserResizeEnabled(bool enabled)</a><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1989,7 +2011,7 @@ By enabling user resizing, you would be able to resize the window by dragging it
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='gethtmlcontent' data-id='gethtmlcontent'><a href='#/latest/api/uniwebview.html?id=gethtmlcontent'><span class='return-type'>void</span> GetHTMLContent(Action&lt;string&gt; handler)</a></div>
+  <div class="api-anchor" id='gethtmlcontent'></div><div class='api-heading' data-id='gethtmlcontent'><a href='#gethtmlcontent'><span class='return-type'>void</span> GetHTMLContent(Action&lt;string&gt; handler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2017,7 +2039,7 @@ By enabling user resizing, you would be able to resize the window by dragging it
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='print' data-id='print'><a href='#/latest/api/uniwebview.html?id=print'><span class='return-type'>void</span> Print()</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='print'></div><div class='api-heading' data-id='print'><a href='#print'><span class='return-type'>void</span> Print()</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2029,3 +2051,4 @@ This method does nothing on macOS editor.</p>
                       </div>
   </div>
 </div>
+
