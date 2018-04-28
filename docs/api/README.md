@@ -223,7 +223,12 @@ hides the status bar and navigation bar with a sticky style.</p>
 The first two values of <code>Rect</code> is <code>x</code> and <code>y</code> position and the followed two <code>width</code> and <code>height</code>. The original point is top left corner:</p>
 <p><img src="https://docs.unity3d.com/StaticFiles/ScriptRefImages/RectXY.svg" alt=""></p>
 </div>
-      <p class='tip'><code>Frame</code> will be ignored if <code>ReferenceRectTransform</code> is set.</p>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        <code>Frame</code> will be ignored if <code>ReferenceRectTransform</code> is set.
+  </p>
+</div>
       <div class='example'>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Make the web view full screen:</span>
@@ -908,10 +913,15 @@ either or both <code>fade</code> and <code>edge</code> set, the hiding operation
 <p>Regardless there is an animation or not, the <code>completionHandler</code> will be called if not <code>null</code> when the web view
 hiding finishes.</p>
 </div>
-      <p class='tip'>Hiding the web view does not destroy or release it. You could always call <code>Show</code> on the web view again to make it visible.
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        Hiding the web view does not destroy or release it. You could always call <code>Show</code> on the web view again to make it visible.
 
 To release a web view and its resource, pass the web view component as the parameter of <code>Destroy</code>.
-</p>
+
+  </p>
+</div>
       <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
@@ -1178,7 +1188,12 @@ webView<span class="token punctuation">.</span><span class="token function">AddU
 the web view will prevent its loading. If you could confirm that this site is trusted,
 you can add the domain as an SSL exception, so you could visit it.</p>
 </div>
-      <p class='tip'>We strongly suggest you to upgrade your site certification to a trusted one. It would be dangerous to add a site as SSL exception and your user might be exposed to the risk of Man-in-the-middle attack. You should know exactly what you will do before adding a domain to white list.</p>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        We strongly suggest you to upgrade your site certification to a trusted one. It would be dangerous to add a site as SSL exception and your user might be exposed to the risk of Man-in-the-middle attack. You should know exactly what you will do before adding a domain to white list.
+  </p>
+</div>
       <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
@@ -1239,10 +1254,15 @@ Pass <code>null</code> as value to unset a header field.</p>
 <p>Some reserved headers like user agent are not be able to override by setting here, 
 use the <code>SetUserAgent</code> method for them instead.</p>
 </div>
-      <p class='tip'>Customized header fields will only be set for <code>GET</code> requests. The header fields set by this 
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        Customized header fields will only be set for <code>GET</code> requests. The header fields set by this 
 method will not be added when a form is submitted as <code>POST</code> requests, due to some limitation of WebKit on iOS 
 and Android platforms.
-</p>
+
+  </p>
+</div>
       <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
@@ -1335,7 +1355,12 @@ users need to touch the play button to start playing a media resource.</p>
 <p>By setting this to <code>true</code>, you could start the playing automatically through
 corresponding media <a href="https://www.w3schools.com/tags/att_video_autoplay.asp">tag attributes</a>.</p>
 </div>
-      <p class='tip'>You need to set it before creating a web view. Existing web views are not affected.</p>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        You need to set it before creating a web view. Existing web views are not affected.
+  </p>
+</div>
       <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
@@ -1374,7 +1399,12 @@ a new full screen window.</p>
 On Android, you could play videos inline by default and calling this method does nothing.</p>
 <p>Remember you also need to add &quot;playsinline&quot; attribute to your video tag in the HTML page.</p>
 </div>
-      <p class='tip'>You need to set it before creating a web view. Existing web views are not affected.</p>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        You need to set it before creating a web view. Existing web views are not affected.
+  </p>
+</div>
       <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
@@ -1410,7 +1440,12 @@ webView<span class="token punctuation">.</span><span class="token function">Show
 <p>For a modern page, you may always want JavaScript enabled. However, if you could confirm that you are
 not using any JavaScript in your page, you could turn it off to get better performance and safety.</p>
 </div>
-      <p class='tip'>You need to set it before creating a web view. Existing web views are not affected.</p>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        You need to set it before creating a web view. Existing web views are not affected.
+  </p>
+</div>
       <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
@@ -1486,7 +1521,12 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
       <div class='summary'>
 <p>Clear all cookies from web views.</p>
 </div>
-      <p class='tip'>This will clear cookies from all domains in the web view and previous. If you only need to remove cookies from a certain domain, use <code>SetCookie</code> instead.</p>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        This will clear cookies from all domains in the web view and previous. If you only need to remove cookies from a certain domain, use <code>SetCookie</code> instead.
+  </p>
+</div>
                   <div class='example'>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp">UniWebView<span class="token punctuation">.</span><span class="token function">ClearCookies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1746,10 +1786,15 @@ On Android, it only clears from disk database, the authentication might be still
 permission. It will allow the permission gets approved so you could access the corresponding devices.
 From Android 6.0, the permission requests method is changed and this is not needed anymore.</p>
 </div>
-      <p class='tip'>This method is not the same to <code>AddSslExceptionDomain</code>, 
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        This method is not the same to <code>AddSslExceptionDomain</code>, 
 which is for bypassing SSL checking. You only need this method when 
 you have trouble in granting users&#39; permission. It is not needed on iOS.
-</p>
+
+  </p>
+</div>
       <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
@@ -1971,10 +2016,15 @@ web view by using a browser development tool of Chrome for Android or Safari for
 <p>This method is only for Android and macOS Editor. On iOS, you do not need additional step. 
 You could open Safari&#39;s developer tools to debug a web view on iOS.</p>
 </div>
-      <p class='tip'>Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embeded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in editor and never affect real devices. 
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embeded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in editor and never affect real devices. 
 
 Please remember to disable this in your product build. This should be only used while development.
-</p>
+
+  </p>
+</div>
       <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
@@ -1996,7 +2046,12 @@ Please remember to disable this in your product build. This should be only used 
 <p>Enables user resizing for web view window. By default, you can only set the window size by setting its frame on mac Editor. 
 By enabling user resizing, you would be able to resize the window by dragging its border as a normal macOS window.</p>
 </div>
-      <p class='tip'>This method only works for macOS for debugging purpose. It does nothing on iOS and Android.</p>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        This method only works for macOS for debugging purpose. It does nothing on iOS and Android.
+  </p>
+</div>
       <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
@@ -2047,7 +2102,12 @@ By enabling user resizing, you would be able to resize the window by dragging it
 <p>By calling this method, a native print preview panel will be brought up on iOS and Android. 
 This method does nothing on macOS editor.</p>
 </div>
-      <p class='tip'>On iOS and Android, the web view does not support JavaScript (window.print()), you can only initialize a print job from Unity by this method.</p>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        On iOS and Android, the web view does not support JavaScript (window.print()), you can only initialize a print job from Unity by this method.
+  </p>
+</div>
                       </div>
   </div>
 </div>

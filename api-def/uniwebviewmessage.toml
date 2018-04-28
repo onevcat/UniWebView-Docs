@@ -1,0 +1,126 @@
+title = "UniWebViewMessage"
+file = "uniwebviewmessage"
+
+summary = """Represents a message sent from web content back to Unity. Whenever you want to send some information from web view and handle it 
+in Unity script, you can navigate the user with a link started with "uniwebview://". `OnMessageReceived` event will be fired for the web view with 
+a `UniWebViewMessage` object. You can get the url path and arguments from this message object.
+"""
+
+[[Properties]]
+name = "RawMessage"
+returnType = "string"
+hasSetter = false
+summary = "Gets the raw message. It is the original url which initialized this message."
+example = """
+```csharp
+webView.OnMessageReceived += (view, message) => {
+    print(message.RawMessage);
+};
+webView.Load("uniwebview://action?key=value&anotherKey=value");
+
+// => "uniwebview://action?key=value&anotherKey=value"
+```
+"""
+
+[[Properties]]
+name = "Scheme"
+returnType = "string"
+hasSetter = false
+summary = """
+The url scheme of this UniWebViewMessage. "uniwebview" was added to message scheme list
+by default. You can add your own scheme by using `UniWebView.AddUrlScheme`.
+"""
+example = """
+```csharp
+webView.OnMessageReceived += (view, message) => {
+    print(message.Scheme);
+};
+webView.Load("uniwebview://action?key=value&anotherKey=value");
+
+// => "uniwebview"
+
+// Use a customized scheme.
+anotherWebView.AddUrlScheme("myscheme");
+anotherWebView.OnMessageReceived += (view, message) => {
+    print(message.Scheme);
+};
+anotherWebView.Load("myscheme://action");
+
+// => "myscheme"
+```
+"""
+
+[[Properties]]
+name = "Path"
+returnType = "string"
+hasSetter = false
+summary = "The path of this UniWebViewMessage."
+notice = "This will be the decoded value for the path of original url."
+example = """
+```csharp
+webView.OnMessageReceived += (view, message) => {
+    print(message.Scheme);
+};
+webView.Load("uniwebview://action?key=value&anotherKey=value");
+// => "action"
+
+// Encoded path
+webView.OnMessageReceived += (view, message) => {
+    print(message.Scheme);
+};
+webView.Load("uniwebview://%e8%b7%af%e5%be%84?key=value&anotherKey=value");
+// => "路径"
+```
+"""
+
+[[Properties]]
+name = "Args"
+returnType = "Dictionary<string, string>"
+hasSetter = false
+summary = """
+The arguments of this UniWebViewMessage. UniWebView will try to parse the url query into 
+a dictionary. 
+
+When received url "uniwebview://yourPath?param1=value1&param2=value2", 
+the args is a `Dictionary` with: Args["param1"] = value1, Args["param2"] = value2
+"""
+notice = "Both the key and valud will be url decoded from the original url."
+example = """
+```csharp
+// Basic key-value args
+webView.OnMessageReceived += (view, message) => {
+    print(message.Args["key"]);
+    print(message.Args["anotherKey"]);
+};
+webView.Load("uniwebview://action?key=value&anotherKey=anotherValue");
+// => "value"
+// => "anotherValue"
+
+// With the same key
+webView.OnMessageReceived += (view, message) => {
+    print(message.Args["key"]);
+};
+var message = new UniWebViewMessage("uniwebview://sample_message?key=1&key=2");
+// => "1,2"
+
+// With encoded key and value
+webView.OnMessageReceived += (view, message) => {
+    print(message.Args["键"]);
+};
+var message = new UniWebViewMessage("uniwebview://sample_message?%E9%94%AE=%E5%80%BC);
+// => "值"
+```
+"""
+
+[[Methods]]
+name = "UniWebViewMessage"
+syntax = "UniWebViewMessage(string rawMessage)"
+returnType = ""
+summary = "Initializes a new instance of the `UniWebViewMessage` struct."
+[[Methods.parameters]]
+name = "rawMessage"
+type = "string"
+summary = "Raw message which will be parsed to a `UniWebViewMessage`."
+[[Methods.badges]]
+name = "constructor"
+color = "blue"

@@ -1,5 +1,10 @@
 {
   "dependencies": {
+    "escape-html": "^1.0.3",
+    "fs-extra": "^5.0.0",
+    "marked": "^0.3.19",
+    "node-prismjs": "^0.1.1",
+    "toml": "^2.3.3",
     "vuepress": "^0.8.4"
   },
   "name": "UniWebView-Docs",

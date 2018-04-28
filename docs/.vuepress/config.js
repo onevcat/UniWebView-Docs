@@ -56,7 +56,16 @@ module.exports = {
         {
           title: "API Reference",
           collapsable: false,
-          children: [""]
+          children: [
+            "",
+            "uniwebviewmessage",
+            "uniwebviewnativelistener",
+            "uniwebviewnativeresultpayload",
+            "uniwebviewtransitionedge",
+            "uniwebviewtoolbarposition",
+            "uniwebviewlogger",
+            "uniwebviewhelper"
+          ]
         }
       ]
     },
