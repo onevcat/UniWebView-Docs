@@ -13,7 +13,7 @@ sidebarDepth: 0
 <p>The web view holder of this listener.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#name'><span class='return-type'>string</span> Name { get; }</a></div></td><td><div class='simple-summary'>
-<p>Name of current listener.</p>
+<p>Name of the current listener.</p>
 </div>
 </td></tr></table>
 
@@ -40,7 +40,7 @@ sidebarDepth: 0
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Name of current listener. This is a UUID string by which native side could use to find the message destination.</p>
+<p>Name of the current listener. This is a UUID string by which native side could use to find the message destination.</p>
 </div>
                 </div>
   </div>

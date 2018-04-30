@@ -10,7 +10,7 @@ sidebarDepth: 0
 
 <table>
 <tr><td><div class='api-summary-heading'><a href='#instance'><span class='return-type'>UniWebViewLogger</span> Instance { get; }</a></div></td><td><div class='simple-summary'>
-<p>Instance of the UniWebView logger across the process.</p>
+<p>An instance of the UniWebView logger across the process.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#loglevel'><span class='return-type'>UniWebViewLogger.Level</span> LogLevel { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Current level of this logger.</p>
@@ -56,7 +56,7 @@ sidebarDepth: 0
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Instance of the UniWebView logger across the process. Normally you should use this for logging purpose
+<p>An instance of the UniWebView logger across the process. Normally you should use this for logging purpose
 in UniWebView, instead of creating a new logger yourself.</p>
 </div>
                 </div>
@@ -68,7 +68,7 @@ in UniWebView, instead of creating a new logger yourself.</p>
     <div class='desc'>
       <div class='summary'>
 <p>Current level of this logger. All messages above current level will be logged out.</p>
-<p>Default is <code>Critical</code>, which means the logger only prints errors and exceptions.</p>
+<p>The default level is <code>Critical</code>, which means the logger only prints errors and exceptions.</p>
 </div>
                 </div>
   </div>

@@ -33,7 +33,7 @@ sidebarDepth: 0
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>path</span></div>
     <div class='parameter-item-desc'><p>The relative path to the Assets/StreamingAssets of your file. </p>
-<p>For example, if you placed a html file under <code>Assets/StreamingAssets/www/index.html</code>, you should pass <code>www/index.html</code> as parameter.</p>
+<p>For example, if you placed an HTML file under <code>Assets/StreamingAssets/www/index.html</code>, you should pass <code>www/index.html</code> as the parameter.</p>
 </div>
   </li>
 </ul></div>
