@@ -1,15 +1,26 @@
-<h1>API Documentation</h1>
-<h2>UniWebViewHelper</h2>
-<h3>Summary</h3><h5>Methods Summary</h5><table>
-<tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebviewhelper.html?id=streamingasseturlforpath'><span class='return-type'>string</span> StreamingAssetURLForPath(string path)</a></div></td><td><div class='simple-summary'>
+---
+sidebarDepth: 0
+---
+
+## UniWebViewHelper
+
+### Summary
+
+#### Methods Summary
+
+<table>
+<tr><td><div class='api-summary-heading'><a href='#streamingasseturlforpath'><span class='return-type'>string</span> StreamingAssetURLForPath(string path)</a></div></td><td><div class='simple-summary'>
 <p>Get the local streaming asset path for a given file path related to the StreamingAssets folder.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#/latest/api/uniwebviewhelper.html?id=persistentdataurlforpath'><span class='return-type'>string</span> PersistentDataURLForPath(string path)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#persistentdataurlforpath'><span class='return-type'>string</span> PersistentDataURLForPath(string path)</a></div></td><td><div class='simple-summary'>
 <p>Get the local persistent data path for a given file path related to the data folder of your host app.</p>
 </div>
-</td></tr></table><h4>Methods</h4>
+</td></tr></table>
+
+### Methods
+
 <div class='api-box method'>
-  <div class='api-heading' id='streamingasseturlforpath' data-id='streamingasseturlforpath'><a href='#/latest/api/uniwebviewhelper.html?id=streamingasseturlforpath'><span class='return-type'>string</span> StreamingAssetURLForPath(string path)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='streamingasseturlforpath'></div><div class='api-heading' data-id='streamingasseturlforpath'><a href='#streamingasseturlforpath'><span class='return-type'>string</span> StreamingAssetURLForPath(string path)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -20,9 +31,9 @@
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>path</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>path</span></div>
     <div class='parameter-item-desc'><p>The relative path to the Assets/StreamingAssets of your file. </p>
-<p>For example, if you placed a html file under <code>Assets/StreamingAssets/www/index.html</code>, you should pass <code>www/index.html</code> as parameter.</p>
+<p>For example, if you placed an HTML file under <code>Assets/StreamingAssets/www/index.html</code>, you should pass <code>www/index.html</code> as the parameter.</p>
 </div>
   </li>
 </ul></div>
@@ -37,7 +48,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class='api-heading' id='persistentdataurlforpath' data-id='persistentdataurlforpath'><a href='#/latest/api/uniwebviewhelper.html?id=persistentdataurlforpath'><span class='return-type'>string</span> PersistentDataURLForPath(string path)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='persistentdataurlforpath'></div><div class='api-heading' data-id='persistentdataurlforpath'><a href='#persistentdataurlforpath'><span class='return-type'>string</span> PersistentDataURLForPath(string path)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -48,7 +59,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div parameter-item><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>path</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>path</span></div>
     <div class='parameter-item-desc'><p>The relative path to the Assets/StreamingAssets of your file.</p>
 </div>
   </li>

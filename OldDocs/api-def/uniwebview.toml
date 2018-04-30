@@ -1,7 +1,9 @@
 title = "UniWebView"
-file = "README"
+file = "uniwebview"
 
-summary = """The main class of UniWebView. It represents a native web view and exposes a few APIs for you to use in Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content, as well as receive a message from the web view.
+summary = """The main class of UniWebView. It represents a native web view and expose a few APIs for you to use 
+in Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content, 
+as well as receive a message from web view.
 """
 
 [[Properties]]
@@ -34,7 +36,8 @@ hasSetter = true
 summary = """
 A reference rect transform which the web view should change its position and size to.
 
-Set it to a Unity UI element (which contains a `RectTransform`) under a canvas to determine the web view frame by a certain UI element. 
+Set it to a Unity UI element (which contains a `RectTransform`) under a canvas to determine 
+the web view frame by a certain UI element. 
 
 By using this, you could get benefit from [Multiple Resolutions UI](https://docs.unity3d.com/Manual/HOWTO-UIMultiResolution.html).
 """
@@ -86,7 +89,7 @@ This only sets the background color of the content view of the web view. Normall
 color will be hidden by the web page background. If you want to make the web view background visible,
 you need to make the web page it transparent by adding some necessary style to it.
 
-This property only changes the web view background. 
+This property only change the web view background. 
 If you want to make the whole web view transparent, use `Alpha` instead.
 """
 example = """
@@ -105,7 +108,7 @@ Gets or sets the alpha value of the whole web view.
 
 You could make the game scene behind web view visible to make the web view transparent.
 
-The default value is `1.0f`, which means totally opaque. Set it to `0.0f` will make the web view totally transparent.
+Default is `1.0f`, which means totally opaque. Set it to `0.0f` will make the web view totally transparent.
 """
 example = """
 ```csharp
@@ -202,7 +205,7 @@ returnType = "void"
 summary = """
 Sets whether the link clicking in the web view should open the page in an external browser.
 
-By default, when the user clicks a link, it will be opened in the same web view. After setting this with `true`, 
+By default, when user clicks a link, it will be opened in the same web view. After setting this with `true`, 
 the user will be navigated to an external native browser.
 
 On iOS, the mobile Safari; on Android, the default browser like Chrome; on macOS Editor, the default browser of your system will be used.
@@ -228,7 +231,8 @@ returnType = "bool"
 returnValue = "A `bool` value indicates whether the showing operation started."
 summary = """Sets the web view visible on screen.
 
-If you pass `false` and `UniWebViewTransitionEdge.None` to the first two parameters, it means no animation will be applied when showing. So the `duration` parameter will not be taken into account. Otherwise, when 
+If you pass `false` and `UniWebViewTransitionEdge.None` to the first two parameters, it means no animation 
+will be applied when showing. So the `duration` parameter will not be taken into account. Otherwise, when 
 either or both `fade` and `edge` set, the showing operation will be animated.
 
 Regardless of there is an animation or not, the `completionHandler` will be called if not `null` when the web view
@@ -275,7 +279,9 @@ returnType = "bool"
 returnValue = "A `bool` value indicates whether the hiding operation started."
 summary = """Sets the web view invisible from screen.
 
-If you pass `false` and `UniWebViewTransitionEdge.None` to the first two parameters, it means no animation will be applied when hiding. So the `duration` parameter will not be taken into account. Otherwise, when either or both `fade` and `edge` set, the hiding operation will be animated.
+If you pass `false` and `UniWebViewTransitionEdge.None` to the first two parameters, it means no animation 
+will be applied when hiding. So the `duration` parameter will not be taken into account. Otherwise, when 
+either or both `fade` and `edge` set, the hiding operation will be animated.
 
 Regardless there is an animation or not, the `completionHandler` will be called if not `null` when the web view
 hiding finishes.
@@ -456,7 +462,7 @@ webView.AddUrlScheme("myscheme");
 [[Methods.parameters]]
 name = "scheme"
 type = "string"
-summary = "The URL scheme to add. It should not contain \"://\" part. You could even add \"http\" and/or \"https\" to prevent all resource loading on the page. \"uniwebview\" is added by default. Nothing will happen if you try to add a duplicated scheme."
+summary = "The url scheme to add. It should not contain \"://\" part. You could even add \"http\" and/or \"https\" to prevent all resource loading on the page. \"uniwebview\" is added by default. Nothing will happen if you try to add a dulplicated scheme."
 
 [[Methods]]
 name = "RemoveUrlScheme"
@@ -480,14 +486,14 @@ returnType = "void"
 summary = """
 Adds a domain to the SSL checking white list.
 
-If you are trying to access a website with untrusted or expired certification, 
+If you are trying to access a web site with untrusted or expired certification, 
 the web view will prevent its loading. If you could confirm that this site is trusted,
 you can add the domain as an SSL exception, so you could visit it.
 """
-notice = "We strongly suggest you upgrade your site certification to a trusted one. It would be dangerous to add a site as SSL exception and your user might be exposed to the risk of Man-in-the-middle attack. You should know exactly what you will do before adding a domain to the whitelist."
+notice = "We strongly suggest you to upgrade your site certification to a trusted one. It would be dangerous to add a site as SSL exception and your user might be exposed to the risk of Man-in-the-middle attack. You should know exactly what you will do before adding a domain to white list."
 example = """
 ```csharp
-// This loading will fail since the certification is a self-signed one and not trusted.
+// This loading will fail since the certification is a self signed one and not trusted.
 webView.Load("https://self-signed.badssl.com/"); 
 
 // Add "self-signed.badssl.com" as trusted.
@@ -523,10 +529,10 @@ returnType = "void"
 summary = """
 Sets a customized header field for web view requests.
 
-The header field will be used for all subsequence request. 
+The header field will be used for all subsequence reqeust. 
 Pass `null` as value to unset a header field.
 
-Some reserved headers like user agent are not able to override by setting here, 
+Some reserved headers like user agent are not be able to override by setting here, 
 use the `SetUserAgent` method for them instead.
 """
 notice = """Customized header fields will only be set for `GET` requests. The header fields set by this 
@@ -596,7 +602,7 @@ syntax = "SetAllowAutoPlay(bool flag)"
 returnType = "void"
 
 summary = """
-Set allow autoplay for current web view. By default, 
+Set allow auto play for current web view. By default, 
 users need to touch the play button to start playing a media resource.
 
 By setting this to `true`, you could start the playing automatically through
@@ -634,7 +640,7 @@ Set allow inline play for current web view. By default, on iOS, the video
 can only be played in a new full screen view.
 
 By setting this to `true`, you could play a video inline the page, instead of opening 
-a new full-screen window.
+a new full screen window.
 
 This only works for iOS and macOS Editor. 
 On Android, you could play videos inline by default and calling this method does nothing.
@@ -751,7 +757,8 @@ Sets a cookie for a certain url.
 
 The `cookie` string supports all available cookie properties as well as multiple cookies. See 
 
-UniWebView respects the server cookie header by default. Generally, you do not need to set the cookie from client manually. However, if you have to pass your server a manually set cookie, 
+UniWebView respect the server cookie header by default. Generally, you do not need to set the 
+cookie from client manually. However, if you have to pass your server a manually set cookie, 
 use this method.
 """
 example = """
@@ -813,14 +820,14 @@ syntax = "ClearHttpAuthUsernamePassword(string host, string realm)"
 returnType = "void"
 summary = """Clears any saved credentials for HTTP authentication for both Basic and Digest.
 
-On both iOS and Android, the user input credentials will be stored permanently across the session.
+On both iOS and Android, the user input credentials will be stored permanently across session.
 It could prevent your users to input username and password again until they changed. If you need the 
 credentials only living in a shorter lifetime, call this method at proper timing.
 
 On iOS, it will clear the credentials immediately and completely from both disk and network cache. 
 On Android, it only clears from disk database, the authentication might be still cached in the network stack and will not be removed until next session (app restarting). 
 
-The client logout mechanism should be implemented by the Web site designer (such as server sending an HTTP 401 for invalidating credentials).
+The client logout mechanism should be implemented by the Web site designer (such as server sending a HTTP 401 for invalidating credentials).
 """
 example = """
 ```csharp
@@ -921,7 +928,8 @@ returnType = "void"
 summary = """
 Adds a trusted domain to white list and allow permission requests from the domain.
 
-You only need this on Android devices with the system before 6.0 when a site needs the location or camera permission. It will allow the permission gets approved so you could access the corresponding devices.
+You only need this on Android devices with system before 6.0 when a site needs the location or camera 
+permission. It will allow the permission gets approved so you could access the corresponding devices.
 From Android 6.0, the permission requests method is changed and this is not needed anymore.
 """
 example = """
@@ -961,14 +969,18 @@ returnType = "void"
 summary = """
 Sets whether the device back button should be enabled to execute \"go back\" or \"closing\" operation.
 
-On Android, the device back button in navigation bar will navigate users to a back page. If there is no any back page available, the back button clicking will try to raise an `OnShouldClose` event and try to close the web view if `true` is return from the event. If the `OnShouldClose` event is not listened to,  the web view will be closed and the UniWebView component will be destroyed to release any resource in use.
+On Android, the device back button in navigation bar will navigate users to a back page. If there is 
+no any back page avaliable, the back button clicking will try to raise a `OnShouldClose` event and try 
+to close the web view if `true` is return from the event. If the `OnShouldClose` is not listened, 
+the web view will be closed and the UniWebView component will be destroyed to release using resource.
 
-Listen to `OnKeyCodeReceived` if you need to disable the back button, but still, want to get the back button key pressing event.
+Listen to `OnKeyCodeReceived` if you need to disable the back button, but still want to get the back 
+button key pressing event.
 
 This method is only for Android. On iOS, you could show a toolbar with navigation and Done buttons for 
 similar purpose.
 
-The default is enabled.
+Default is enabled.
 """
 [[Methods.badges]]
 name = "Android"
@@ -985,7 +997,7 @@ returnType = "void"
 summary = """
 Sets whether the web view should enable support for the \"viewport\" HTML meta tag or should use a wide viewport.
 
-This method is only for Android. The default is disabled.
+This method is only for Android. Default is disabled.
 """
 [[Methods.badges]]
 name = "Android"
@@ -1002,7 +1014,7 @@ returnType = "void"
 summary = """
 Sets whether the web view loads pages in overview mode, that is, zooms out the content to fit on screen by width.
 
-This method is only for Android. The default is disabled.
+This method is only for Android. Default is disabled.
 """
 [[Methods.badges]]
 name = "Android"
@@ -1022,7 +1034,7 @@ hides the status bar and navigation bar with a sticky style.
 
 If disabled, the navigation bar will always show up while the web view is visible.
 
-This method is only for Android. The default is enabled.
+This method is only for Android. Default is enabled.
 """
 [[Methods.badges]]
 name = "Android"
@@ -1039,8 +1051,10 @@ returnType = "void"
 summary = """
 Sets whether to show a toolbar which contains navigation buttons and Done button.
 
-You could choose to show or hide the toolbar. By configuring the `animated` and `onTop` 
-parameters, you can control the animating and position of the toolbar. If the toolbar is overlapping with some part of your web view, pass `adjustInset` with `true` to have the web view relocating itself to avoid the overlap.
+You could choose to show or hide the tool bar. By configuring the `animated` and `onTop` 
+parameters, you can control the animating and position of the toolbar. If the toolbar is 
+overlapping with some part of your web view, pass `adjustInset` with `true` to have the 
+web view reloacating itself to avoid the overlap.
 
 This method is only for iOS. The toolbar is hidden by default.
 """
@@ -1082,9 +1096,10 @@ returnType = "void"
 summary = """
 Sets the done button text in toolbar.
 
-By default, UniWebView will show a "Done" button at bottom-right corner in the toolbar. You could change its title by passing a text.
+By default, UniWebView will show a "Done" button at bottom-right corner in the 
+toolbar. You could change its title by passing a text.
 
-This method is only for iOS since there is no toolbar on Android.
+This method is only for iOS, since there is no toolbar on Android.
 """
 example = """
 ```csharp
@@ -1107,10 +1122,10 @@ summary = """
 Enables debugging of web contents. You could inspect of the content of a 
 web view by using a browser development tool of Chrome for Android or Safari for macOS.
 
-This method is only for Android and macOS Editor. On iOS, you do not need an additional step. 
+This method is only for Android and macOS Editor. On iOS, you do not need additional step. 
 You could open Safari's developer tools to debug a web view on iOS.
 """
-notice = """Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embedded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in the editor and never affect real devices. 
+notice = """Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embeded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in editor and never affect real devices. 
 
 Please remember to disable this in your product build. This should be only used while development.
 """
@@ -1140,7 +1155,7 @@ notice = "This method only works for macOS for debugging purpose. It does nothin
 [[Methods.parameters]]
 name = "enabled"
 type = "bool"
-summary = "Whether the window could be able to be resized by the cursor."
+summary = "Whether the window could be able to be resized by cursor."
 [[Methods.badges]]
 name = "macOS"
 color = "purple"
@@ -1187,7 +1202,7 @@ returnType = "event"
 summary = """
 Raised when the web view starts loading a url.
 
-This event will be invoked for both URL loading with `Load` method or by a link navigating from a page.
+This event will be invoked for both url loading with `Load` method or by a link navigating from page.
 """
 example = """
 ```csharp
@@ -1215,8 +1230,8 @@ returnType = "event"
 summary = """
 Raised when the web view finished to load a url successully.
 
-This method will be invoked when a valid response received from the URL, regardless the response status.
-If a URL loading fails before reaching to the server and getting a response, `OnPageErrorReceived` will be 
+This method will be invoked when a valid response received from the url, regardless the response status.
+If a url loading fails before reaching to the server and getting a response, `OnPageErrorReceived` will be 
 raised instead.
 """
 example = """
@@ -1292,7 +1307,8 @@ returnType = "event"
 summary = """
 Raised when a message from web view is received. 
 
-Generally, the message comes from a navigation to a scheme which is observed by current web view. You could use `AddUrlScheme` and 
+Generally, the message comes from a navigation to 
+a scheme which is observed by current web view. You could use `AddUrlScheme` and 
 `RemoveUrlScheme` to manipulate the scheme list.
 
 "uniwebview://" scheme is default in the list, so a clicking on link starts with "uniwebview://"
@@ -1336,7 +1352,9 @@ returnType = "event bool"
 summary = """
 Raised when the web view is about to close itself.
 
-This event is raised when the users close the web view by the Back button on Android, the Done button on iOS, or the Close button on Unity Editor. It gives a chance to make a final decision whether the web view should be closed and destroyed. You should also clean all related resources you created (such as a reference to
+This event is raised when the users close the web view by Back button on Android, Done button on iOS,
+or Close button on Unity Editor. It gives a chance to make final decision whether the web view should 
+be closed and destroyed. You should also clean all related resources you created (such as a reference to
 the web view.)
 
 If this event is not listened and implemented, the web view will be closed and destroyed by default when
@@ -1376,7 +1394,8 @@ returnType = "event"
 summary = """
 Raised when a key (like back button or volume up) on the device is pressed.
 
-This event only raised on Android. It is useful when you disabled the back button but still need to get the back button event. On iOS, user's key action is not available and this event will never be 
+This event only raised on Android. It is useful when you disabled the back button but still need to 
+get the back button event. On iOS, user's key action is not avaliable and this event will never be 
 raised.
 """
 example = """
@@ -1405,8 +1424,8 @@ name = "OnOreintationChanged"
 syntax = "OnOreintationChanged(UniWebView webView, ScreenOrientation orientation)"
 returnType = "event"
 summary = """
-Raised when the screen orientation is changed. It is a good time to set the web view frame if you 
-need to support multiple orientations in your game.
+Raised when the screen oreintation is changed. It is a good time to set the web view frame if you 
+need to support multiple oreintations in your game.
 """
 example = """
 ```csharp
@@ -1432,8 +1451,8 @@ syntax = "OnWebContentProcessTerminated(UniWebView webView)"
 returnType = "event"
 summary = """
 Raised when on iOS, when system calls `webViewWebContentProcessDidTerminate` method. 
-It is usually due to a low memory when loading the web content and leaves you a blank white screen. 
-You need to free as much as the memory you could and then do a page reload.
+It is usually due to a low memory when loading the web content and leave you a blank white screen. 
+You need to free as much as memory you could and then do a page reload.
 """
 example = """
 ```csharp

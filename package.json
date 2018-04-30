@@ -1,25 +1,21 @@
 {
-  "name": "uniwebview-docs",
-  "version": "1.0.0",
-  "description": "Documentation of UniWebView",
-  "main": "index.js",
-  "scripts": {
-    "start": "docsify serve ./docs",
-    "archive": "node archive.js",
-    "build-api": "node build-api.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Wei Wang",
-  "license": "ISC",
   "dependencies": {
-    "colors": "^1.1.2",
-    "concat-stream": "^1.6.0",
     "escape-html": "^1.0.3",
-    "fs-extra": "^3.0.1",
-    "marked": "^0.3.6",
-    "node-prismjs": "^0.1.0",
-    "pygmentize-bundled": "^2.3.0",
-    "replace-in-file": "^2.5.0",
-    "toml": "^2.3.2"
+    "fs-extra": "^5.0.0",
+    "marked": "^0.3.19",
+    "node-prismjs": "^0.1.1",
+    "toml": "^2.3.3",
+    "vuepress": "^0.8.4"
+  },
+  "name": "UniWebView-Docs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/onevcat/UniWebView-Docs.git",
+  "author": "onevcat <onevcat@gmail.com>",
+  "license": "N/A",
+  "scripts": {
+    "dev": "./node_modules/.bin/vuepress dev docs",
+    "build": "yarn api && ./node_modules/.bin/vuepress build docs",
+    "api": "node ./script/build-api.js"
   }
 }
