@@ -19,7 +19,7 @@ public class MyMonoBehaviour : MonoBehaviour {
 }
 ```
 
-If there is a chance that the holder component of the web view (here, a `MyMonoBehaviour` component in this example) get destroyed, you may also want to add `OnDestroy` to `MyMonoBehaviour` and close the web view to prevent leaking:
+If there is a chance that the holder component of the web view (here, a `MyMonoBehaviour` component in this example) get destroyed, you may also want to add `OnDestroy` to `MyMonoBehaviour` and close the web view to preventing leaking:
 
 ```csharp
 public class MyMonoBehaviour : MonoBehaviour {
@@ -40,7 +40,7 @@ Besides of destroying the web view, there is also a `Hide` method which could ma
 
 ### Reset web view reference to avoid error
 
-On Android, the user could close web view by device back button, and on iOS, there is a Done button in toolbar to do so. For either case, if you are holding a reference of the web view in your script, you need to reset it to `null`, otherwise you may encounter an issue saying that you are trying to access a destroyed component later.
+On Android, the user could close web view by device back button, and on iOS, there is a Done button in the toolbar to do so. For either case, if you are holding a reference of the web view in your script, you need to reset it to `null`, otherwise, you may encounter an issue saying that you are trying to access a destroyed component later.
 
 To do so, add a listener to `OnShouldClose` event, which either Android and iOS would call when closing a web view from user action. There you could set the reference to web view back to `null`:
 
@@ -58,9 +58,9 @@ public class MyMonoBehaviour : MonoBehaviour {
 }
 ```
 
-This also give you a chance to override the closing operation. If you return `false` in the event callback, the web view will not be closed.
+This also gives you a chance to override the closing operation. If you return `false` in the event callback, the web view will not be closed.
 
-And in other part of code in `MyMonoBehaviour` which is using the `webView`, you might want to check whether the `webView` is `null` before using it:
+And in other parts in `MyMonoBehaviour` which is using the `webView`, you might want to check whether the `webView` is `null` before using it:
 
 ```csharp
 public class MyMonoBehaviour : MonoBehaviour {

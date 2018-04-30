@@ -15,6 +15,7 @@
   "license": "N/A",
   "scripts": {
     "dev": "./node_modules/.bin/vuepress dev docs",
-    "build": "./node_modules/.bin/vuepress build docs"
+    "build": "yarn api && ./node_modules/.bin/vuepress build docs",
+    "api": "node ./script/build-api.js"
   }
 }

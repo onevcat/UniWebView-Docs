@@ -7,12 +7,12 @@ UniWebView could provide detail logs for you, it will help you to understand wha
 There are 5 log levels, following the order of verbosity, they are:
 
 - Verbose: The most detailed logging level. It prints out almost all events.
-- Debug: Good for general debugging purpose. It prints most of events.
-- Info: Less logs than Debug level, but will cover quite a few important events.
-- Critical: This is the **default value** for built in logger. It only prints out error messages you need to notice.
+- Debug: Good for the general debugging purpose. It prints most of the events.
+- Info: Fewer logs than Debug level, but will cover quite a few important events.
+- Critical: This is the **default value** of the built-in logger. It only prints out error messages you need to notice.
 - Off: Turning off the logger.
 
-`UniWebViewLogger` class takes the responsibility to print log out to console in all platforms. You can set the log level by the code below:
+`UniWebViewLogger` class takes the responsibility to print log out to console on all platforms. You can set the log level by the code below:
 
 ```csharp
 // Set the log level to Verbose
@@ -39,4 +39,6 @@ On Android, you need to call the [`SetWebContentsDebuggingEnabled`](/api/uniwebv
 
 On macOS you need to call the [`SetWebContentsDebuggingEnabled`](/api/uniwebview.html?id=setwebcontentsdebuggingenabled) method first. Then you are able to right click on the web view in macOS editor to bring up the context menu. Select the "Inspect Element" in that menu.
 
-!> Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embeded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in editor and never affect real devices. Please remember to disable this in your product build. This should be only used while development.
+::: warning
+Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embedded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in the editor and never affect real devices. Please remember to disable this in your product build. This should be only used while development.
+:::

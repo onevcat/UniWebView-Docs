@@ -1,6 +1,6 @@
 # Using JavaScript
 
-JavaScript is a powerful tool to interact and even change the web content from your Unity games. UniWebView has full support on running JavaScript in the web page. You could not only run existing JavaScript code in the page, but also define your own functions in JavaScript and add it to the web view.
+JavaScript is a powerful tool to interact and even change the web content from your Unity games. UniWebView has full support for running JavaScript in the web page. You could not only run existing JavaScript code on the page but also define your own functions in JavaScript and add it to the web view.
 
 ## Adding
 
@@ -40,8 +40,8 @@ webView.EvaluateJavaScript("document.body.innerHTML", (payload) => {
 });
 ```
 
-Thanks to modern mobile web view component, UniWebView is fully compatible with JavaScript. You could expect that almost all features are supported in UniWebView if they are supported in the browser of your device. That means you could use lots of third party JavaScript libraries to enhance your browsing experience. It is even possible to run a complicated Single Page Application built on something like React and vue.js without problem.
+Thanks to modern mobile web view component, UniWebView is fully compatible with JavaScript. You could expect that almost all features are supported in UniWebView if they are supported in the browser of your device. That means you could use lots of third-party JavaScript libraries to enhance your browsing experience. It is even possible to run a complicated Single Page Application built on something like React and vue.js without any problem.
 
 ## Disabling
 
-If you are not using any JavaScript, you could disable it by `UniWebView.SetJavaScriptEnabled(false)`. All web view created after this setting will not support JavaScript, it would give you a faster spped when browsing non-JavaScript content.
+If you are not using any JavaScript, you could disable it by `UniWebView.SetJavaScriptEnabled(false)`. All web view created after this setting will not support JavaScript, it would give you a faster speed when browsing non-JavaScript content.

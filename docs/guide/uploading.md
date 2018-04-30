@@ -1,6 +1,6 @@
 # Uploading
 
-UniWebView supports uploading files from disk of your device or from a cloud service to web site.
+UniWebView supports uploading files from the disk of your device or from a cloud service to your website.
 
 To show a upload field, use the standard input tag with proper type:
 
@@ -8,7 +8,7 @@ To show a upload field, use the standard input tag with proper type:
 <input type="file" name="filename" accept="image/*">
 ```
 
-When user click the select file button, UniWebView will prompt the user from where they want to choose a file.
+When the user clicks the select file button, UniWebView will prompt the user from where they want to choose a file.
 If you specified the "accept" to `image/*` as the sample above, only photo sources and image files will be available. 
 You can also change the "accept" type to a wider `*/*`, which will cause all types of files be choosable.
 
@@ -18,7 +18,7 @@ Additional steps are required for allowing uploading in some cases, please keep 
 
 ### Additional setup on iOS
 
-On iOS, if you just want let your user to upload images from photo library, it should already work without any effort. However, if you want to let users to upload images from cameras, you need to set [NSCameraUsageDescription](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW24) in your Info.plist file in the exported Xcode project, otherwise your app would crash when users choose to take photo or video by camera.
+On iOS, if you just want let your user upload images from the photo library, it should already work without any effort. However, if you want to let users upload images from cameras, you need to set [NSCameraUsageDescription](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW24) in your Info.plist file in the exported Xcode project, otherwise, your app would crash when users choose to take photo or video by camera.
 
 ### Additional setup on Android
 

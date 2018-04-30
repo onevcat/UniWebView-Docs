@@ -6,11 +6,11 @@ actionLink: /guide/
 heroText: " "
 tagline: UniWebView is a modern web view component for mobile Unity3D games. Integrating web content to your games was never easier.
 features:
-- title: Simplicity First
-  details: Minimal setup with markdown-centered project structure helps you focus on writing.
-- title: Vue-Powered
-  details: Enjoy the dev experience of Vue + webpack, use Vue components in markdown, and develop custom themes with Vue.
-- title: Performant
-  details: VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
+- title: FUNCTIONALITY
+  details: Supporting full set of general web tasks. Including browsing pages, playing videos, interacting and more.
+- title: MODERN & FAST
+  details: Built on modern Unity and web technology. Smaller memory footprint and better performance.
+- title: BRILLIANT API
+  details: Well designed APIs and documentation for developers. Easy for both using and extending.
 footer: Copyright © 2016-present OneV's Den (@onevcat)
 ---

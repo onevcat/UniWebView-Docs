@@ -6,13 +6,13 @@ sidebarDepth: 0
 
 ## Can I render a texture from the webview in the game?
 
-No, UniWebView is not designed for grabbing a page and rendering it to a texture in your game object. It is a view added above Unity's view, without interrupting the Unity game. You can use it to show something like a game FAQ page, events notification or release note. You can set the size of webview so you can decide if the Unity game scene can be seen or not, but it is not and will not be a in-game texture render solution.
+No, UniWebView is not designed for grabbing a page and rendering it to a texture in your game object. It is a view added above Unity's view, without interrupting the Unity game. You can use it to show something like a game FAQ page, events notification or release note. You can set the size of webview so you can decide if the Unity game scene can be seen or not, but it is not and will not be an in-game texture render solution.
 
 ## Can I put some Unity GUI/object above of UniWebView?
 
 No, you can't. 
 
-UniWebView is a layer from system and is added above of the whole Unity view. That means it is always floating over your Unity scene. You can never put your elements from Unity above of the webpage. You can only organize the layout of your Unity elements and the web view to make them look good together. With the help of `ReferenceRectTransform`, it should be quite easy.
+UniWebView is a layer of the system UI and is added above of the whole Unity view. That means it is always floating over your Unity scene. You can never put your elements from Unity above of the webpage. You can only organize the layout of your Unity elements and the web view to make them look good together. With the help of `ReferenceRectTransform`, it should be quite easy.
 
 ## Which platforms could UniWebView work on?
 
@@ -24,11 +24,11 @@ UniWebView also contains Unity Editor support on macOS for debug purpose. You co
 
 ## Sometimes the session is not kept on iOS.
 
-On iOS, the web view is running in another self-managed process. It always takes some time (typically several seconds) to synchronize your cookie/session to the cookie storage. So if you destroy the web view too soon before the storage could be synced, the cookie/session information might be lost. This behavior is more likely a limitation of `WKWebView` on iOS system.
+On iOS, the web view is running in another self-managed process. It always takes some time (typically several seconds) to synchronize your cookie/session to the cookie storage. So if you destroy the web view too soon before the storage could be synced, the cookie/session information might be lost. This behavior is more likely a limitation of `WKWebView` on the iOS system.
 
 ## Does this package support Unity Personal or does it only work in Unity Professional?
 
-UniWebView can work well in all supported platforms with both Unity Personal and Profession. 
+UniWebView can work well on all supported platforms with both Unity Personal and Profession. 
 
 ## Is there a trial version?
 
@@ -46,4 +46,4 @@ You can use UniWebView in all your projects with the same Unity ID exporting the
 
 All C# source code of the Unity side is included in the package. But the native side is distributed by binary and the source code (Objective-C for iOS and macOS, Java for Android) are not included. If you need to extend UniWebView, we also provide a license to access to our main development repository. We are hosting this project and all its code in GitHub. With the source code license, your GitHub account will be added to our repo and you could access and modify the source code as you need. See our [official site](https://uniwebview.com/#prices) for more about this option.
 
-You should observe the [EULA of Unity Asset Store](http://unity3d.com/company/legal/as_terms) you agreed to when you registered your Unity Asset Store account. That means you have no rights to reproduce, duplicate, copy, sell, trade or resell this package, even if you have source access. If you need to redistribute your package containing UniWebView to other developers (that means you are developing a SDK or something else which does not target "end users"), please [contact us](https://onevcat.zendesk.com/hc/en-us/requests/new) for a **Limited Redistribution License** instead.
+You should observe the [EULA of Unity Asset Store](http://unity3d.com/company/legal/as_terms) you agreed to when you registered your Unity Asset Store account. That means you have no rights to reproduce, duplicate, copy, sell, trade or resell this package, even if you have source access. If you need to redistribute your package containing UniWebView to other developers (that means you are developing an SDK or something else which does not target "end users"), please [contact us](https://onevcat.zendesk.com/hc/en-us/requests/new) for a **Limited Redistribution License** instead.
