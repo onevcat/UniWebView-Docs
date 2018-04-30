@@ -1,8 +1,12 @@
----
-sidebar: false
----
-
 # Release Note
+
+### 3.6.1 (26 Apr, 2018)
+
+#### Fix
+
+* Compatible with Unity 2017.4. Now videos could be played correctly on Android devices in project exported by Unity 2017.4.
+
+---
 
 ### 3.6.0 (3 Apr, 2018)
 
@@ -949,3 +953,5 @@ New: Support for location service of Android.
 ### 1.0.1 (1 Nov, 2013)
 
 Init release
+
+
