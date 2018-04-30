@@ -6,7 +6,7 @@ name = "Instance"
 returnType = "UniWebViewLogger"
 hasSetter = false
 summary = """
-Instance of the UniWebView logger across the process. Normally you should use this for logging purpose
+An instance of the UniWebView logger across the process. Normally you should use this for logging purpose
 in UniWebView, instead of creating a new logger yourself.
 """
 [[Properties.badges]]
@@ -20,7 +20,7 @@ hasSetter = true
 summary = """
 Current level of this logger. All messages above current level will be logged out.
 
-Default is `Critical`, which means the logger only prints errors and exceptions.
+The default level is `Critical`, which means the logger only prints errors and exceptions.
 """
 
 [[Properties]]

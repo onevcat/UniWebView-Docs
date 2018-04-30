@@ -22,7 +22,7 @@ type = "string"
 summary = """
 The relative path to the Assets/StreamingAssets of your file. 
 
-For example, if you placed a html file under `Assets/StreamingAssets/www/index.html`, you should pass `www/index.html` as parameter.
+For example, if you placed an HTML file under `Assets/StreamingAssets/www/index.html`, you should pass `www/index.html` as the parameter.
 """
 [[Methods.badges]]
 name = "static"

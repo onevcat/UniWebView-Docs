@@ -6,9 +6,7 @@ sidebarDepth: 0
 
 ### Summary
 
-The main class of UniWebView. It represents a native web view and expose a few APIs for you to use 
-in Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content, 
-as well as receive a message from web view.
+The main class of UniWebView. It represents a native web view and exposes a few APIs for you to use in Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content, as well as receive a message from the web view.
 
 #### Properties Summary
 
@@ -58,7 +56,7 @@ as well as receive a message from web view.
 <p>Raised when a key (like back button or volume up) on the device is pressed.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onoreintationchanged'><span class='return-type'>event</span> OnOreintationChanged(UniWebView webView, ScreenOrientation orientation)</a></div></td><td><div class='simple-summary'>
-<p>Raised when the screen oreintation is changed.</p>
+<p>Raised when the screen orientation is changed.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onwebcontentprocessterminated'><span class='return-type'>event</span> OnWebContentProcessTerminated(UniWebView webView)</a></div></td><td><div class='simple-summary'>
 <p>Raised when on iOS, when system calls <code>webViewWebContentProcessDidTerminate</code> method.</p>
@@ -129,7 +127,7 @@ as well as receive a message from web view.
 <p>Gets the user agent string currently used in web view.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowautoplay'><span class='return-type'>void</span> SetAllowAutoPlay(bool flag)</a></div></td><td><div class='simple-summary'>
-<p>Set allow auto play for current web view.</p>
+<p>Set allow autoplay for current web view.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowinlineplay'><span class='return-type'>void</span> SetAllowInlinePlay(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Set allow inline play for current web view.</p>
@@ -250,8 +248,7 @@ webView<span class="token punctuation">.</span>Frame <span class="token operator
     <div class='desc'>
       <div class='summary'>
 <p>A reference rect transform which the web view should change its position and size to.</p>
-<p>Set it to a Unity UI element (which contains a <code>RectTransform</code>) under a canvas to determine 
-the web view frame by a certain UI element. </p>
+<p>Set it to a Unity UI element (which contains a <code>RectTransform</code>) under a canvas to determine the web view frame by a certain UI element. </p>
 <p>By using this, you could get benefit from <a href="https://docs.unity3d.com/Manual/HOWTO-UIMultiResolution.html">Multiple Resolutions UI</a>.</p>
 </div>
             <div class='example'>
@@ -314,7 +311,7 @@ webView<span class="token punctuation">.</span>ReferenceRectTransform <span clas
 <p>This only sets the background color of the content view of the web view. Normally, the background
 color will be hidden by the web page background. If you want to make the web view background visible,
 you need to make the web page it transparent by adding some necessary style to it.</p>
-<p>This property only change the web view background. 
+<p>This property only changes the web view background. 
 If you want to make the whole web view transparent, use <code>Alpha</code> instead.</p>
 </div>
             <div class='example'>
@@ -333,7 +330,7 @@ webView<span class="token punctuation">.</span>BackgroundColor <span class="toke
       <div class='summary'>
 <p>Gets or sets the alpha value of the whole web view.</p>
 <p>You could make the game scene behind web view visible to make the web view transparent.</p>
-<p>Default is <code>1.0f</code>, which means totally opaque. Set it to <code>0.0f</code> will make the web view totally transparent.</p>
+<p>The default value is <code>1.0f</code>, which means totally opaque. Set it to <code>0.0f</code> will make the web view totally transparent.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
@@ -353,7 +350,7 @@ webView<span class="token punctuation">.</span>Alpha <span class="token operator
     <div class='desc'>
       <div class='summary'>
 <p>Raised when the web view starts loading a url.</p>
-<p>This event will be invoked for both url loading with <code>Load</code> method or by a link navigating from page.</p>
+<p>This event will be invoked for both URL loading with <code>Load</code> method or by a link navigating from a page.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -389,8 +386,8 @@ webView<span class="token punctuation">.</span><span class="token function">Load
     <div class='desc'>
       <div class='summary'>
 <p>Raised when the web view finished to load a url successully.</p>
-<p>This method will be invoked when a valid response received from the url, regardless the response status.
-If a url loading fails before reaching to the server and getting a response, <code>OnPageErrorReceived</code> will be 
+<p>This method will be invoked when a valid response received from the URL, regardless the response status.
+If a URL loading fails before reaching to the server and getting a response, <code>OnPageErrorReceived</code> will be 
 raised instead.</p>
 </div>
             <div class='parameters'>
@@ -485,8 +482,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
     <div class='desc'>
       <div class='summary'>
 <p>Raised when a message from web view is received. </p>
-<p>Generally, the message comes from a navigation to 
-a scheme which is observed by current web view. You could use <code>AddUrlScheme</code> and 
+<p>Generally, the message comes from a navigation to a scheme which is observed by current web view. You could use <code>AddUrlScheme</code> and 
 <code>RemoveUrlScheme</code> to manipulate the scheme list.</p>
 <p>&quot;uniwebview://&quot; scheme is default in the list, so a clicking on link starts with &quot;uniwebview://&quot;
 will raise this event, if it is not removed.</p>
@@ -537,9 +533,7 @@ anotherWebView<span class="token punctuation">.</span><span class="token functio
     <div class='desc'>
       <div class='summary'>
 <p>Raised when the web view is about to close itself.</p>
-<p>This event is raised when the users close the web view by Back button on Android, Done button on iOS,
-or Close button on Unity Editor. It gives a chance to make final decision whether the web view should 
-be closed and destroyed. You should also clean all related resources you created (such as a reference to
+<p>This event is raised when the users close the web view by the Back button on Android, the Done button on iOS, or the Close button on Unity Editor. It gives a chance to make a final decision whether the web view should be closed and destroyed. You should also clean all related resources you created (such as a reference to
 the web view.)</p>
 <p>If this event is not listened and implemented, the web view will be closed and destroyed by default when
 it needed.</p>
@@ -587,8 +581,7 @@ webView<span class="token punctuation">.</span>OnShouldClose <span class="token 
     <div class='desc'>
       <div class='summary'>
 <p>Raised when a key (like back button or volume up) on the device is pressed.</p>
-<p>This event only raised on Android. It is useful when you disabled the back button but still need to 
-get the back button event. On iOS, user&#39;s key action is not avaliable and this event will never be 
+<p>This event only raised on Android. It is useful when you disabled the back button but still need to get the back button event. On iOS, user&#39;s key action is not available and this event will never be 
 raised.</p>
 </div>
             <div class='parameters'>
@@ -623,8 +616,8 @@ raised.</p>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Raised when the screen oreintation is changed. It is a good time to set the web view frame if you 
-need to support multiple oreintations in your game.</p>
+<p>Raised when the screen orientation is changed. It is a good time to set the web view frame if you 
+need to support multiple orientations in your game.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -659,8 +652,8 @@ webView<span class="token punctuation">.</span>OnOreintationChanged <span class=
     <div class='desc'>
       <div class='summary'>
 <p>Raised when on iOS, when system calls <code>webViewWebContentProcessDidTerminate</code> method. 
-It is usually due to a low memory when loading the web content and leave you a blank white screen. 
-You need to free as much as memory you could and then do a page reload.</p>
+It is usually due to a low memory when loading the web content and leaves you a blank white screen. 
+You need to free as much as the memory you could and then do a page reload.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -815,7 +808,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
     <div class='desc'>
       <div class='summary'>
 <p>Sets whether the link clicking in the web view should open the page in an external browser.</p>
-<p>By default, when user clicks a link, it will be opened in the same web view. After setting this with <code>true</code>, 
+<p>By default, when the user clicks a link, it will be opened in the same web view. After setting this with <code>true</code>, 
 the user will be navigated to an external native browser.</p>
 <p>On iOS, the mobile Safari; on Android, the default browser like Chrome; on macOS Editor, the default browser of your system will be used.</p>
 </div>
@@ -847,8 +840,7 @@ webView<span class="token punctuation">.</span>OnPageFinished <span class="token
     <div class='desc'>
       <div class='summary'>
 <p>Sets the web view visible on screen.</p>
-<p>If you pass <code>false</code> and <code>UniWebViewTransitionEdge.None</code> to the first two parameters, it means no animation 
-will be applied when showing. So the <code>duration</code> parameter will not be taken into account. Otherwise, when 
+<p>If you pass <code>false</code> and <code>UniWebViewTransitionEdge.None</code> to the first two parameters, it means no animation will be applied when showing. So the <code>duration</code> parameter will not be taken into account. Otherwise, when 
 either or both <code>fade</code> and <code>edge</code> set, the showing operation will be animated.</p>
 <p>Regardless of there is an animation or not, the <code>completionHandler</code> will be called if not <code>null</code> when the web view
 showing finishes.</p>
@@ -907,9 +899,7 @@ webView<span class="token punctuation">.</span><span class="token function">Show
     <div class='desc'>
       <div class='summary'>
 <p>Sets the web view invisible from screen.</p>
-<p>If you pass <code>false</code> and <code>UniWebViewTransitionEdge.None</code> to the first two parameters, it means no animation 
-will be applied when hiding. So the <code>duration</code> parameter will not be taken into account. Otherwise, when 
-either or both <code>fade</code> and <code>edge</code> set, the hiding operation will be animated.</p>
+<p>If you pass <code>false</code> and <code>UniWebViewTransitionEdge.None</code> to the first two parameters, it means no animation will be applied when hiding. So the <code>duration</code> parameter will not be taken into account. Otherwise, when either or both <code>fade</code> and <code>edge</code> set, the hiding operation will be animated.</p>
 <p>Regardless there is an animation or not, the <code>completionHandler</code> will be called if not <code>null</code> when the web view
 hiding finishes.</p>
 </div>
@@ -1137,7 +1127,7 @@ webView<span class="token punctuation">.</span><span class="token function">Eval
 <div class='parameter-item-list'><ul>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>scheme</span></div>
-    <div class='parameter-item-desc'><p>The url scheme to add. It should not contain &quot;://&quot; part. You could even add &quot;http&quot; and/or &quot;https&quot; to prevent all resource loading on the page. &quot;uniwebview&quot; is added by default. Nothing will happen if you try to add a dulplicated scheme.</p>
+    <div class='parameter-item-desc'><p>The URL scheme to add. It should not contain &quot;://&quot; part. You could even add &quot;http&quot; and/or &quot;https&quot; to prevent all resource loading on the page. &quot;uniwebview&quot; is added by default. Nothing will happen if you try to add a duplicated scheme.</p>
 </div>
   </li>
 </ul></div>
@@ -1184,14 +1174,14 @@ webView<span class="token punctuation">.</span><span class="token function">AddU
     <div class='desc'>
       <div class='summary'>
 <p>Adds a domain to the SSL checking white list.</p>
-<p>If you are trying to access a web site with untrusted or expired certification, 
+<p>If you are trying to access a website with untrusted or expired certification, 
 the web view will prevent its loading. If you could confirm that this site is trusted,
 you can add the domain as an SSL exception, so you could visit it.</p>
 </div>
       <div class='warning custom-block'>
   <p class="custom-block-title">NOTICE</p>
   <p>
-        We strongly suggest you to upgrade your site certification to a trusted one. It would be dangerous to add a site as SSL exception and your user might be exposed to the risk of Man-in-the-middle attack. You should know exactly what you will do before adding a domain to white list.
+        We strongly suggest you upgrade your site certification to a trusted one. It would be dangerous to add a site as SSL exception and your user might be exposed to the risk of Man-in-the-middle attack. You should know exactly what you will do before adding a domain to the whitelist.
   </p>
 </div>
       <div class='parameters'>
@@ -1206,7 +1196,7 @@ you can add the domain as an SSL exception, so you could visit it.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// This loading will fail since the certification is a self signed one and not trusted.</span>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// This loading will fail since the certification is a self-signed one and not trusted.</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 <span />
 <span class="token comment" spellcheck="true">// Add "self-signed.badssl.com" as trusted.</span>
@@ -1249,9 +1239,9 @@ webView<span class="token punctuation">.</span><span class="token function">Load
     <div class='desc'>
       <div class='summary'>
 <p>Sets a customized header field for web view requests.</p>
-<p>The header field will be used for all subsequence reqeust. 
+<p>The header field will be used for all subsequence request. 
 Pass <code>null</code> as value to unset a header field.</p>
-<p>Some reserved headers like user agent are not be able to override by setting here, 
+<p>Some reserved headers like user agent are not able to override by setting here, 
 use the <code>SetUserAgent</code> method for them instead.</p>
 </div>
       <div class='warning custom-block'>
@@ -1350,7 +1340,7 @@ webView<span class="token punctuation">.</span><span class="token function">GetU
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Set allow auto play for current web view. By default, 
+<p>Set allow autoplay for current web view. By default, 
 users need to touch the play button to start playing a media resource.</p>
 <p>By setting this to <code>true</code>, you could start the playing automatically through
 corresponding media <a href="https://www.w3schools.com/tags/att_video_autoplay.asp">tag attributes</a>.</p>
@@ -1394,7 +1384,7 @@ webView<span class="token punctuation">.</span><span class="token function">Show
 <p>Set allow inline play for current web view. By default, on iOS, the video 
 can only be played in a new full screen view.</p>
 <p>By setting this to <code>true</code>, you could play a video inline the page, instead of opening 
-a new full screen window.</p>
+a new full-screen window.</p>
 <p>This only works for iOS and macOS Editor. 
 On Android, you could play videos inline by default and calling this method does nothing.</p>
 <p>Remember you also need to add &quot;playsinline&quot; attribute to your video tag in the HTML page.</p>
@@ -1542,8 +1532,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
       <div class='summary'>
 <p>Sets a cookie for a certain url.</p>
 <p>The <code>cookie</code> string supports all available cookie properties as well as multiple cookies. See </p>
-<p>UniWebView respect the server cookie header by default. Generally, you do not need to set the 
-cookie from client manually. However, if you have to pass your server a manually set cookie, 
+<p>UniWebView respects the server cookie header by default. Generally, you do not need to set the cookie from client manually. However, if you have to pass your server a manually set cookie, 
 use this method.</p>
 </div>
             <div class='parameters'>
@@ -1623,12 +1612,12 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
     <div class='desc'>
       <div class='summary'>
 <p>Clears any saved credentials for HTTP authentication for both Basic and Digest.</p>
-<p>On both iOS and Android, the user input credentials will be stored permanently across session.
+<p>On both iOS and Android, the user input credentials will be stored permanently across the session.
 It could prevent your users to input username and password again until they changed. If you need the 
 credentials only living in a shorter lifetime, call this method at proper timing.</p>
 <p>On iOS, it will clear the credentials immediately and completely from both disk and network cache. 
 On Android, it only clears from disk database, the authentication might be still cached in the network stack and will not be removed until next session (app restarting). </p>
-<p>The client logout mechanism should be implemented by the Web site designer (such as server sending a HTTP 401 for invalidating credentials).</p>
+<p>The client logout mechanism should be implemented by the Web site designer (such as server sending an HTTP 401 for invalidating credentials).</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -1782,8 +1771,7 @@ On Android, it only clears from disk database, the authentication might be still
     <div class='desc'>
       <div class='summary'>
 <p>Adds a trusted domain to white list and allow permission requests from the domain.</p>
-<p>You only need this on Android devices with system before 6.0 when a site needs the location or camera 
-permission. It will allow the permission gets approved so you could access the corresponding devices.
+<p>You only need this on Android devices with the system before 6.0 when a site needs the location or camera permission. It will allow the permission gets approved so you could access the corresponding devices.
 From Android 6.0, the permission requests method is changed and this is not needed anymore.</p>
 </div>
       <div class='warning custom-block'>
@@ -1839,15 +1827,11 @@ you have trouble in granting users&#39; permission. It is not needed on iOS.
     <div class='desc'>
       <div class='summary'>
 <p>Sets whether the device back button should be enabled to execute &quot;go back&quot; or &quot;closing&quot; operation.</p>
-<p>On Android, the device back button in navigation bar will navigate users to a back page. If there is 
-no any back page avaliable, the back button clicking will try to raise a <code>OnShouldClose</code> event and try 
-to close the web view if <code>true</code> is return from the event. If the <code>OnShouldClose</code> is not listened, 
-the web view will be closed and the UniWebView component will be destroyed to release using resource.</p>
-<p>Listen to <code>OnKeyCodeReceived</code> if you need to disable the back button, but still want to get the back 
-button key pressing event.</p>
+<p>On Android, the device back button in navigation bar will navigate users to a back page. If there is no any back page available, the back button clicking will try to raise an <code>OnShouldClose</code> event and try to close the web view if <code>true</code> is return from the event. If the <code>OnShouldClose</code> event is not listened to,  the web view will be closed and the UniWebView component will be destroyed to release any resource in use.</p>
+<p>Listen to <code>OnKeyCodeReceived</code> if you need to disable the back button, but still, want to get the back button key pressing event.</p>
 <p>This method is only for Android. On iOS, you could show a toolbar with navigation and Done buttons for 
 similar purpose.</p>
-<p>Default is enabled.</p>
+<p>The default is enabled.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -1868,7 +1852,7 @@ similar purpose.</p>
     <div class='desc'>
       <div class='summary'>
 <p>Sets whether the web view should enable support for the &quot;viewport&quot; HTML meta tag or should use a wide viewport.</p>
-<p>This method is only for Android. Default is disabled.</p>
+<p>This method is only for Android. The default is disabled.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -1889,7 +1873,7 @@ similar purpose.</p>
     <div class='desc'>
       <div class='summary'>
 <p>Sets whether the web view loads pages in overview mode, that is, zooms out the content to fit on screen by width.</p>
-<p>This method is only for Android. Default is disabled.</p>
+<p>This method is only for Android. The default is disabled.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -1912,7 +1896,7 @@ similar purpose.</p>
 <p>Sets whether the web view should behave in immersive mode, that is, 
 hides the status bar and navigation bar with a sticky style.</p>
 <p>If disabled, the navigation bar will always show up while the web view is visible.</p>
-<p>This method is only for Android. Default is enabled.</p>
+<p>This method is only for Android. The default is enabled.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -1933,10 +1917,8 @@ hides the status bar and navigation bar with a sticky style.</p>
     <div class='desc'>
       <div class='summary'>
 <p>Sets whether to show a toolbar which contains navigation buttons and Done button.</p>
-<p>You could choose to show or hide the tool bar. By configuring the <code>animated</code> and <code>onTop</code> 
-parameters, you can control the animating and position of the toolbar. If the toolbar is 
-overlapping with some part of your web view, pass <code>adjustInset</code> with <code>true</code> to have the 
-web view reloacating itself to avoid the overlap.</p>
+<p>You could choose to show or hide the toolbar. By configuring the <code>animated</code> and <code>onTop</code> 
+parameters, you can control the animating and position of the toolbar. If the toolbar is overlapping with some part of your web view, pass <code>adjustInset</code> with <code>true</code> to have the web view relocating itself to avoid the overlap.</p>
 <p>This method is only for iOS. The toolbar is hidden by default.</p>
 </div>
             <div class='parameters'>
@@ -1984,9 +1966,8 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
     <div class='desc'>
       <div class='summary'>
 <p>Sets the done button text in toolbar.</p>
-<p>By default, UniWebView will show a &quot;Done&quot; button at bottom-right corner in the 
-toolbar. You could change its title by passing a text.</p>
-<p>This method is only for iOS, since there is no toolbar on Android.</p>
+<p>By default, UniWebView will show a &quot;Done&quot; button at bottom-right corner in the toolbar. You could change its title by passing a text.</p>
+<p>This method is only for iOS since there is no toolbar on Android.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -2013,13 +1994,13 @@ toolbar. You could change its title by passing a text.</p>
       <div class='summary'>
 <p>Enables debugging of web contents. You could inspect of the content of a 
 web view by using a browser development tool of Chrome for Android or Safari for macOS.</p>
-<p>This method is only for Android and macOS Editor. On iOS, you do not need additional step. 
+<p>This method is only for Android and macOS Editor. On iOS, you do not need an additional step. 
 You could open Safari&#39;s developer tools to debug a web view on iOS.</p>
 </div>
       <div class='warning custom-block'>
   <p class="custom-block-title">NOTICE</p>
   <p>
-        Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embeded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in editor and never affect real devices. 
+        Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embedded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in the editor and never affect real devices. 
 
 Please remember to disable this in your product build. This should be only used while development.
 
@@ -2057,7 +2038,7 @@ By enabling user resizing, you would be able to resize the window by dragging it
 <div class='parameter-item-list'><ul>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
-    <div class='parameter-item-desc'><p>Whether the window could be able to be resized by cursor.</p>
+    <div class='parameter-item-desc'><p>Whether the window could be able to be resized by the cursor.</p>
 </div>
   </li>
 </ul></div>
