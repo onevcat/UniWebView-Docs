@@ -4,10 +4,15 @@ This is the documentation source of UniWebView. See the site here: http://docs.u
 
 The documentation is built by [VuePress](https://vuepress.vuejs.org).
 
-# Build documentaiton for a version
-
-Before you start to change the documentation for a new version, you need to archive the current version by using:
+### Development
 
 ```bash
-npm run archive -- 3.0 3.1
+yarn install
+yarn dev
+```
+
+### Deploy
+
+```bash
+./deploy.sh
 ```
