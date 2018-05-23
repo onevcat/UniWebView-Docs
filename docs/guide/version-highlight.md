@@ -51,7 +51,7 @@ reference UI.
 UniWebView 2 provided you a set of flexible APIs. In UniWebView 3, we did much better on API accuracy and naming convention 
 stability.
 
-In the previous version, some JavaScriot APIs are not easy to use. After you execute a JavaScript, you have to wait for the event be 
+In the previous version, some JavaScript APIs are not easy to use. After you execute a JavaScript, you have to wait for the event be 
 raised and identify the invocation yourself. In UniWebView 3, all the JavaScript related APIs come with an `Action` parameter for 
 callback. That means you could use a lambda expressions and interact with these APIs with no effort. We also added more events to APIs like 
 `Show` or `Hide`, to help you take more accurate and refined control for your web view.
@@ -62,11 +62,11 @@ Currently, we pop up a standalone web view in macOS Unity Editor. Back to the ag
 the player tab. The old way is slow and difficult to interact with. Quite a few JavaScript features were not avaliable due to lack of web 
 view aniamtion.
 
-In UniWebView 3, by poping up a real web view, you now get a fully functional compoment when developing in Editor. It should improve your workflow and reduce the verifying effort dramatically.
+In UniWebView 3, by poping up a real web view, you now get a fully functional component when developing in Editor. It should improve your workflow and reduce the verifying effort drastically.
 
 ### Much More
 
-As we mentioned at start, we have more than 150 improvement and fix in the new version. You can check our guides and 
+As we mentioned at start, we have more than 150 improvements and fixes in the new version. You can check our guides and 
 [API Documentation](/latest/api/overview) to know more. We strongly suggest you to upgrade to version 3 for a more 
 stable web view. We believe it would be good to free you from the detail of web page browsing and focus to your game 
 content. Hope you like UniWebView and it would be great if it could help you!
