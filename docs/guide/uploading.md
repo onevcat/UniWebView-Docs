@@ -24,12 +24,10 @@ On iOS, if you just want let your user upload images from the photo library, it 
 
 1. Please make sure you have added `UniWebViewFileChooserActivity` into your "AndroidManifest.xml" file. You should have already done that if you followed the [Installation Guide](./installation.md) when you import UniWebView into your project. Otherwise, please refer to that guide and modify the manifest file.
 
-2. You need to add `WRITE_EXTERNAL_STORAGE` permission to the manifest file. File uploading on Android needs to create a temporary file on disk so UniWebView needs the external storage writing permission for that. Please make sure the following declaration is in your manifest file, just after the closing `</application>` tag:
+::: warning NOTICE
+You don't need the step above if you are using UniWebView 3.7.0 or later, since UniWebView will contain the activity declaration itself. However, you still need to add the turn on write permission as described below.
+:::
 
-    ```xml
-    </application>
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    ```
+2. File uploading on Android needs to create a temporary file on disk so UniWebView needs the external storage writing permission for that. You could set the "Write Permission" to "External (SD Card)" in Android Player Settings → Other Settings → Configuration in Unity.
 
 Now you should be able to choose an image from either camera or photo library, then upload it to your server.
