@@ -3,7 +3,7 @@
 ### 3.7.0 (14 Jun, 2018)
 
 ::: danger
-From Unity 2018, Gradle is used as the default build system, so we updated the integration method to make UniWebView works better in the new build system. If you are upgrading UniWebView from an earlier version, please refer to the "Adapting to AAR File" (http://docs.uniwebview.com/guide/adapting-to-aar-file.html) documentation.
+From Unity 2018, Gradle is used as the default build system, so we updated the integration method to make UniWebView works better in the new build system. If you are upgrading UniWebView from an earlier version, please refer to the [Adapting to AAR File](http://docs.uniwebview.com/guide/adapting-to-aar-file.html) documentation.
 :::
 
 #### Add
