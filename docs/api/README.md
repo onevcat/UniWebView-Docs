@@ -55,7 +55,7 @@ The main class of UniWebView. It represents a native web view and exposes a few 
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onkeycodereceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a key (like back button or volume up) on the device is pressed.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onoreintationchanged'><span class='return-type'>event</span> OnOreintationChanged(UniWebView webView, ScreenOrientation orientation)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onorientationchanged'><span class='return-type'>event</span> OnOrientationChanged(UniWebView webView, ScreenOrientation orientation)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the screen orientation is changed.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onwebcontentprocessterminated'><span class='return-type'>event</span> OnWebContentProcessTerminated(UniWebView webView)</a></div></td><td><div class='simple-summary'>
@@ -612,7 +612,7 @@ raised.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onoreintationchanged'></div><div class='api-heading' data-id='onoreintationchanged'><a href='#onoreintationchanged'><span class='return-type'>event</span> OnOreintationChanged(UniWebView webView, ScreenOrientation orientation)</a></div>
+  <div class="api-anchor" id='onorientationchanged'></div><div class='api-heading' data-id='onorientationchanged'><a href='#onorientationchanged'><span class='return-type'>event</span> OnOrientationChanged(UniWebView webView, ScreenOrientation orientation)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -636,9 +636,9 @@ need to support multiple orientations in your game.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Keep the web view full screen on both portait and landscape mode.</span>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Keep the web view full screen on both portrait and landscape mode.</span>
 webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
-webView<span class="token punctuation">.</span>OnOreintationChanged <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> orientation<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+webView<span class="token punctuation">.</span>OnOrientationChanged <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> orientation<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>

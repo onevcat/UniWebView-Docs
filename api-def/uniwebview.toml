@@ -1401,8 +1401,8 @@ type = "int"
 summary = "The key code of pressed key. See [Android API for keycode](https://developer.android.com/reference/android/view/KeyEvent.html#KEYCODE_0) to know the possible values."
 
 [[Events]]
-name = "OnOreintationChanged"
-syntax = "OnOreintationChanged(UniWebView webView, ScreenOrientation orientation)"
+name = "OnOrientationChanged"
+syntax = "OnOrientationChanged(UniWebView webView, ScreenOrientation orientation)"
 returnType = "event"
 summary = """
 Raised when the screen orientation is changed. It is a good time to set the web view frame if you 
@@ -1410,9 +1410,9 @@ need to support multiple orientations in your game.
 """
 example = """
 ```csharp
-// Keep the web view full screen on both portait and landscape mode.
+// Keep the web view full screen on both portrait and landscape mode.
 webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
-webView.OnOreintationChanged += (view, orientation) => {
+webView.OnOrientationChanged += (view, orientation) => {
     webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
 };
 ```

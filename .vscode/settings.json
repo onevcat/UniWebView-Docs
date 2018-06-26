@@ -1,5 +1,34 @@
 // 将设置放入此文件中以覆盖默认值和用户设置。
 {
     "editor.formatOnSave": true,
-    "editor.tabSize": 2
-}
+    "editor.tabSize": 2,
+    "cSpell.enabledLanguageIds": [
+      "asciidoc",
+      "c",
+      "cpp",
+      "csharp",
+      "css",
+      "go",
+      "handlebars",
+      "html",
+      "jade",
+      "javascript",
+      "javascriptreact",
+      "json",
+      "latex",
+      "less",
+      "markdown",
+      "php",
+      "plaintext",
+      "pub",
+      "python",
+      "restructuredtext",
+      "rust",
+      "scss",
+      "text",
+      "toml",
+      "typescript",
+      "typescriptreact",
+      "yml"
+    ]
+  }
