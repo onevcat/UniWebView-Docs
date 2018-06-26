@@ -1,5 +1,11 @@
 # Release Note
 
+### 3.7.1 (26 Jun, 2018)
+
+#### Fix
+
+* A typo on "OnOrientationChanged" event. It was "OnOreintationChanged" and now we correct this issue in both code and documentation.
+
 ### 3.7.0 (14 Jun, 2018)
 
 ::: danger
