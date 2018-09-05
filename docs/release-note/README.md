@@ -1,5 +1,16 @@
 # Release Note
 
+### 3.8.0 (5 Sep, 2018)
+
+#### Add
+
+* A method to allow file access from file URLs. This could solve some problem when request in a cross origin way from local pages. However, by setting it to true may cause some potential security issue, so make your choice at the risk.
+
+#### Fix
+
+* A problem causing immersive mode flickering in Android 8.x.
+* Post request on back button would work correctly.
+
 ### 3.7.1 (26 Jun, 2018)
 
 #### Fix
