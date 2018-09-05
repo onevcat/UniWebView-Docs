@@ -1146,6 +1146,38 @@ name = "macOS"
 color = "purple"
 
 [[Methods]]
+name = "SetAllowFileAccessFromFileURLs"
+syntax = "SetAllowFileAccessFromFileURLs(bool flag)"
+returnType = "void"
+summary = """
+Sets whether file access from file URLs is allowed.
+
+By setting with `true`, access to file URLs inside the web view will be enabled and you could access sub-resources or 
+make cross origin requests from local HTML files. This method only works on iOS. The file accessing from file URLs on
+Android is available by default.
+"""
+notice = """
+By setting allowing access from file URLs, you will bring some potential security issue to your app. Some malicious script 
+would be able to read your sandbox. So we DO NOT recommend to enable it before you realize and understand the risk. 
+UniWebView cannot provide any warranty on this security issue.
+"""
+example = """
+```csharp
+webView.SetAllowFileAccessFromFileURLs(true);
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the file access from file URLs is allowed or not."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
+[[Methods]]
 name = "GetHTMLContent"
 syntax = "GetHTMLContent(Action<string> handler)"
 returnType = "void"

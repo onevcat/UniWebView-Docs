@@ -202,6 +202,9 @@ hides the status bar and navigation bar with a sticky style.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setwindowuserresizeenabled'><span class='return-type'>void</span> SetWindowUserResizeEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Enables user resizing for web view window.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowfileaccessfromfileurls'><span class='return-type'>void</span> SetAllowFileAccessFromFileURLs(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether file access from file URLs is allowed.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#gethtmlcontent'><span class='return-type'>void</span> GetHTMLContent(Action&lt;string&gt; handler)</a></div></td><td><div class='simple-summary'>
 <p>Gets the HTML content from current page by accessing its <code>outerHTML</code> with JavaScript.</p>
 </div>
@@ -2044,6 +2047,43 @@ By enabling user resizing, you would be able to resize the window by dragging it
 </ul></div>
 </div>
                 </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setallowfileaccessfromfileurls'></div><div class='api-heading' data-id='setallowfileaccessfromfileurls'><a href='#setallowfileaccessfromfileurls'><span class='return-type'>void</span> SetAllowFileAccessFromFileURLs(bool flag)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether file access from file URLs is allowed.</p>
+<p>By setting with <code>true</code>, access to file URLs inside the web view will be enabled and you could access sub-resources or 
+make cross origin requests from local HTML files. This method only works on iOS. The file accessing from file URLs on
+Android is available by default.</p>
+</div>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        By setting allowing access from file URLs, you will bring some potential security issue to your app. Some malicious script 
+would be able to read your sandbox. So we DO NOT recommend to enable it before you realize and understand the risk. 
+UniWebView cannot provide any warranty on this security issue.
+
+  </p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item-desc'><p>Whether the file access from file URLs is allowed or not.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">SetAllowFileAccessFromFileURLs</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
