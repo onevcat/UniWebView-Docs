@@ -1,16 +1,19 @@
 module.exports = {
   title: "UniWebView",
-  description:
-    "UniWebView is a modern web view component for mobile Unity 3D games. Integrating web content to your games was never easier. It is a plugin built on native iOS/Android technology, which helps your users to enjoy web content and interact with your game through the web views.",
-  head: [["link", { rel: "icon", href: `/logo.png` }]],
+  description: "UniWebView is a modern web view component for mobile Unity 3D games. Integrating web content to your games was never easier. It is a plugin built on native iOS/Android technology, which helps your users to enjoy web content and interact with your game through the web views.",
+  head: [
+    ["link", {
+      rel: "icon",
+      href: `/logo.png`
+    }]
+  ],
   serviceWorker: true,
   dest: "dist",
   themeConfig: {
     repo: "onevcat/UniWebView-Docs",
     editLinks: true,
     docsDir: "docs",
-    nav: [
-      {
+    nav: [{
         text: "Guide",
         link: "/guide/"
       },
@@ -20,8 +23,7 @@ module.exports = {
       }
     ],
     sidebar: {
-      "/guide/": [
-        {
+      "/guide/": [{
           title: "Guide",
           collapsable: false,
           children: ["", "installation", "using-prefab", "working-with-code"]
@@ -60,22 +62,20 @@ module.exports = {
           ]
         }
       ],
-      "/api/": [
-        {
-          title: "API Reference",
-          collapsable: false,
-          children: [
-            "",
-            "uniwebviewmessage",
-            "uniwebviewnativelistener",
-            "uniwebviewnativeresultpayload",
-            "uniwebviewtransitionedge",
-            "uniwebviewtoolbarposition",
-            "uniwebviewlogger",
-            "uniwebviewhelper"
-          ]
-        }
-      ]
+      "/api/": [{
+        title: "API Reference",
+        collapsable: false,
+        children: [
+          "",
+          "uniwebviewmessage",
+          "uniwebviewnativelistener",
+          "uniwebviewnativeresultpayload",
+          "uniwebviewtransitionedge",
+          "uniwebviewtoolbarposition",
+          "uniwebviewlogger",
+          "uniwebviewhelper"
+        ]
+      }]
     },
     algolia: {
       apiKey: "b7cb81121c4ef29ddbda7689086f52d7",
