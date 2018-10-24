@@ -1,5 +1,11 @@
 # Release Note
 
+### 3.8.1 (24 Oct, 2018)
+
+#### Fix
+
+* Fix a potential crash when reference `RectTransform` is used to determine web view frame, while there is no cavans for some reason on the transform.
+
 ### 3.8.0 (5 Sep, 2018)
 
 #### Add
