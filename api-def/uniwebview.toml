@@ -116,13 +116,19 @@ webView.Alpha = 0.5f;
 
 [[Methods]]
 name = "Load"
-syntax = "Load(string url, bool skipEncoding)"
+syntax = "Load(string url, bool skipEncoding, string readAccessURL)"
 returnType = "void"
 summary = "Load a url in current web view."
 example = """
 ```csharp
+// Load a URL.
 webView.Load("https://example.com");
+
+// Load a URL which is already escaped.
 webView.Load("https://example.com?email=support%40uniwebview.com", true);
+
+// Load a local file 
+webView.Load("file:///local_app_folder/root/index.html", false, file:///local_app_folder/root/);
 ```
 """
 [[Methods.parameters]]
@@ -133,6 +139,10 @@ summary = "The url to be loaded. This url should start with `http://` or `https:
 name = "skipEncoding"
 type = "bool"
 summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before loading it. Otherwise, your original url string will be used as the url if it is valid. Default is `false`."
+[[Methods.parameters]]
+name = "readAccessURL"
+type = "string"
+summary = "The URL to allow read access to. This parameter is only used when loading from the filesystem in iOS, and passed to `loadFileURL:allowingReadAccessToURL:` method of WebKit. By default, the parent folder of the `url` parameter will be read accessible."
 
 [[Methods]]
 name = "LoadHTMLString"

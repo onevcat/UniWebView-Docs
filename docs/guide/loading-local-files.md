@@ -38,6 +38,10 @@ h1   {color: red;}
 
 Then your style file would be loaded and the page could be styled. It is the same for other resources like images.
 
+> On iOS, when you use `Load` method to load a local page, by default, only the resources in the same folder are visible to your page.
+> If your resources are located to another folder (typically it should be a parent folder of your loading page), you could pass a `readAccessURL`
+> parameter when you call `Load`. See the [API reference](https://docs.uniwebview.com/api/#load) of this parameter for more.
+
 ### Using "Split Application Binary"
 
 If you are using "Split Application Binary" for Android build (obb files), you should not put your local HTML files under **StreamingAssets** folder. Instead, you need to put them to `Assets/Plugins/Android/assets/` and then you can use the same way as you did for normal streaming assets resource to load it from the new location.
