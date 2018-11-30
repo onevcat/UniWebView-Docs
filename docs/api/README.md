@@ -66,7 +66,7 @@ The main class of UniWebView. It represents a native web view and exposes a few 
 #### Methods Summary
 
 <table>
-<tr><td><div class='api-summary-heading'><a href='#load'><span class='return-type'>void</span> Load(string url, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#load'><span class='return-type'>void</span> Load(string url, bool skipEncoding, string readAccessURL)</a></div></td><td><div class='simple-summary'>
 <p>Load a url in current web view.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#loadhtmlstring'><span class='return-type'>void</span> LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
@@ -686,7 +686,7 @@ webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <sp
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='load'></div><div class='api-heading' data-id='load'><a href='#load'><span class='return-type'>void</span> Load(string url, bool skipEncoding)</a></div>
+  <div class="api-anchor" id='load'></div><div class='api-heading' data-id='load'><a href='#load'><span class='return-type'>void</span> Load(string url, bool skipEncoding, string readAccessURL)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -705,12 +705,25 @@ webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <sp
     <div class='parameter-item-desc'><p>Whether UniWebView should skip encoding the url or not. If set to <code>false</code>, UniWebView will try to encode the url parameter before loading it. Otherwise, your original url string will be used as the url if it is valid. Default is <code>false</code>.</p>
 </div>
   </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>readAccessURL</span></div>
+    <div class='parameter-item-desc'><p>The URL to allow read access to. This parameter is only used when loading from the filesystem in iOS, and passed to <code>loadFileURL:allowingReadAccessToURL:</code> method of WebKit. By default, the parent folder of the <code>url</code> parameter will be read accessible.</p>
+</div>
+  </li>
 </ul></div>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Load a URL.</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment" spellcheck="true">// Load a URL which is already escaped.</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com?email=support%40uniwebview.com"</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment" spellcheck="true">// Load a local file, with "local_app_folder/root/" as its access path.</span>
+<span class="token keyword">var</span> indexURL <span class="token operator">=</span> <span class="token string">"file://"</span> <span class="token operator">+</span> <span class="token string">"/local_app_folder/root/page/index.html"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> accessURL <span class="token operator">=</span> <span class="token string">"file://"</span> <span class="token operator">+</span> <span class="token string">"/local_app_folder/root/"</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>indexURL<span class="token punctuation">,</span> <span class="token keyword">false</span><span class="token punctuation">,</span> accessURL<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
     </div>

@@ -44,6 +44,23 @@ You get all minor and patch updates for free until (but not including) the next 
 
 You can use UniWebView in all your projects with the same Unity ID exporting the final product. But if you need to use another Unity ID, you need to purchase another license.
 
-All C# source code of the Unity side is included in the package. But the native side is distributed by binary and the source code (Objective-C for iOS and macOS, Java for Android) are not included. If you need to extend UniWebView, we also provide a license to access to our main development repository. We are hosting this project and all its code in GitHub. With the source code license, your GitHub account will be added to our repo and you could access and modify the source code as you need. See our [official site](https://uniwebview.com/#prices) for more about this option.
+All C# source code of the Unity side is included in the package. But the native side is only distributed in binary format. The source code (Objective-C for iOS and macOS, Java for Android) are not included in asset store package. If you need the native side source code, we provide a Source Access for our main development repository. We host this project and all its code on GitHub. With the Source Access License, your GitHub account will be added to our repository and you can access or modify the source code as you need.
 
-You should observe the [EULA of Unity Asset Store](http://unity3d.com/company/legal/as_terms) you agreed to when you registered your Unity Asset Store account. That means you have no rights to reproduce, duplicate, copy, sell, trade or resell this package, even if you have source access. If you need to redistribute your package containing UniWebView to other developers (that means you are developing an SDK or something else which does not target "end users"), please [contact us](https://onevcat.zendesk.com/hc/en-us/requests/new) for a **Limited Redistribution License** instead.
+You should observe the [EULA of Unity Asset Store](http://unity3d.com/company/legal/as_terms) you agreed to when you registered your Unity Asset Store account. That means you have no rights to reproduce, duplicate, copy, sell, trade or resell the package, even if you have Source Access License. But by purchasing the Source Access, you will also have a **Limited Redistribution License**. It allows you to redistribute your own package with UniWebView as a dependency to other developers (that means you are developing an SDK or something else which does not target for "end users", but for other developers). In this case, you can redistribute UniWebView in binary format to third party developers. The detail of the **Source Access License** is provided as below:
+
+> - You are permitted to use the source code in this repository as many projects as you want, if these projects are owned by the same 
+> person or organization made the purchase.
+> - You are permitted to modify the source code, compile your own version and use the recompiled version in as many projects as 
+> you want, if these projects are owned by the same person or organization made the purchase.
+> - The source code and repository is for your own use only. You are NOT permitted to redistribute or share the repository without prior 
+> authorization.
+> - You are permitted to redistribute the UniWebView package which contains a built version for native code to third party developers. However, they do not
+> grant the same Source Access License. They are not permitted to redistribute the package again. Only using UniWebView in the enclosure of your product is 
+> permitted.
+> 
+> All code and assets provided in this repository are provided on an “as is” basis, without warranty of any kind, express or implied, 
+> including but not limited to the warranties of merchantability, fitness for a particular purpose and non-infringement. In no 
+> event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of 
+> contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
+
+Feel free to [contact us](https://onevcat.zendesk.com/hc/en-us/requests/new) if you have any question on it. We are glad to help.

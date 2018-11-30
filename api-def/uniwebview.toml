@@ -127,8 +127,10 @@ webView.Load("https://example.com");
 // Load a URL which is already escaped.
 webView.Load("https://example.com?email=support%40uniwebview.com", true);
 
-// Load a local file 
-webView.Load("file:///local_app_folder/root/index.html", false, file:///local_app_folder/root/);
+// Load a local file, with "local_app_folder/root/" as its read access path.
+var indexURL = "file://" + "/local_app_folder/root/page/index.html";
+var accessURL = "file://" + "/local_app_folder/root/";
+webView.Load(indexURL, false, accessURL);
 ```
 """
 [[Methods.parameters]]
