@@ -1,5 +1,16 @@
 # Release Note
 
+### 3.9.0 (30 Nov, 2018)
+
+#### Add
+
+* A parameter for `Load` method to customize the read access URL for local file loading. It helps to load local resources under a different URL other than the current load page.
+
+#### Fix
+
+* A problem that read access URL not encoded correctly when special characters contained.
+* An issue causes crash when changing screen orientation by code when closing the web view with a toolbar displayed.
+
 ### 3.8.1 (24 Oct, 2018)
 
 #### Fix

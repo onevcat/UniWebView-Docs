@@ -720,7 +720,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 <span class="token comment" spellcheck="true">// Load a URL which is already escaped.</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com?email=support%40uniwebview.com"</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
-<span class="token comment" spellcheck="true">// Load a local file, with "local_app_folder/root/" as its access path.</span>
+<span class="token comment" spellcheck="true">// Load a local file, with "local_app_folder/root/" as its read access path.</span>
 <span class="token keyword">var</span> indexURL <span class="token operator">=</span> <span class="token string">"file://"</span> <span class="token operator">+</span> <span class="token string">"/local_app_folder/root/page/index.html"</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> accessURL <span class="token operator">=</span> <span class="token string">"file://"</span> <span class="token operator">+</span> <span class="token string">"/local_app_folder/root/"</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>indexURL<span class="token punctuation">,</span> <span class="token keyword">false</span><span class="token punctuation">,</span> accessURL<span class="token punctuation">)</span><span class="token punctuation">;</span>
