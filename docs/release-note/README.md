@@ -1,5 +1,12 @@
 # Release Note
 
+### 3.9.1 (18 Dec, 2018)
+
+#### Fix
+
+* A potential issue causes file chooser not response correctly when user dismiss the permission prompt without choosing.
+* Remove JavaScript Interface support for suppressing security warning from Google.
+
 ### 3.9.0 (30 Nov, 2018)
 
 #### Add
