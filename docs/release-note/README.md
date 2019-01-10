@@ -1,5 +1,12 @@
 # Release Note
 
+### 3.9.2
+
+#### Fix
+
+* A problem that `SetZoomEnabled` not works correctly on iOS 12.
+* Now `CanGoBack`, `CanGoForward` and `Url` getters also work for single page app page.
+
 ### 3.9.1 (18 Dec, 2018)
 
 #### Fix
