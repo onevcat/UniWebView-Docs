@@ -1190,6 +1190,45 @@ name = "macOS"
 color = "purple"
 
 [[Methods]]
+name = "SetAllowHTTPAuthPopUpWindow"
+syntax = "SetAllowHTTPAuthPopUpWindow(bool flag)"
+returnType = "void"
+summary = """
+Sets whether a prompt alert should be displayed for collection username and password when the web view receives an
+HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.
+    
+By setting with `false`, no prompt will be shown and the user cannot login with input credentials. In this case,
+you can only access this page by providing username and password through the URL like: "http://username:password@example.com".
+If the username and password does not match, normally an error with 401 as status code would be returned (this behavior depends
+on the server implementation). If set with `true`, a prompt will be shown when there is no credentials provided or it is not
+correct in the URL.
+    
+Default is `true`.
+"""
+example = """
+```csharp
+// This URL requires HTTP Basic authentication.
+var url = "https://example.com/auth/http-basic";
+
+// A prompt alert will be shown and user has a chance to input their username/password.
+webView.Load(url);
+
+// Setting to false, this will use "username" and "password" to response server challenge.
+webView.SetAllowHTTPAuthPopUpWindow(false);
+webView.Load("https://username:password@example.com/auth/http-basic");
+
+// Loading a URL but not providing credentials and no chance for user to input.
+// An error might be raised according to your server implementation.
+webView.SetAllowHTTPAuthPopUpWindow(false);
+webView.Load(url);
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether a prompt alert should be shown for HTTP authentication challenge or not."
+
+[[Methods]]
 name = "GetHTMLContent"
 syntax = "GetHTMLContent(Action<string> handler)"
 returnType = "void"

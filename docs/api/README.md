@@ -205,6 +205,10 @@ hides the status bar and navigation bar with a sticky style.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowfileaccessfromfileurls'><span class='return-type'>void</span> SetAllowFileAccessFromFileURLs(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether file access from file URLs is allowed.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowhttpauthpopupwindow'><span class='return-type'>void</span> SetAllowHTTPAuthPopUpWindow(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether a prompt alert should be displayed for collection username and password when the web view receives an
+HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#gethtmlcontent'><span class='return-type'>void</span> GetHTMLContent(Action&lt;string&gt; handler)</a></div></td><td><div class='simple-summary'>
 <p>Gets the HTML content from current page by accessing its <code>outerHTML</code> with JavaScript.</p>
 </div>
@@ -2094,6 +2098,51 @@ UniWebView cannot provide any warranty on this security issue.
             <div class='example'>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">SetAllowFileAccessFromFileURLs</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setallowhttpauthpopupwindow'></div><div class='api-heading' data-id='setallowhttpauthpopupwindow'><a href='#setallowhttpauthpopupwindow'><span class='return-type'>void</span> SetAllowHTTPAuthPopUpWindow(bool flag)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether a prompt alert should be displayed for collection username and password when the web view receives an
+HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
+<p>By setting with <code>false</code>, no prompt will be shown and the user cannot login with input credentials. In this case,
+you can only access this page by providing username and password through the URL like: &quot;<a href="http://username:password@example.com&quot;">http://username:password@example.com&quot;</a>.
+If the username and password does not match, normally an error with 401 as status code would be returned (this behavior depends
+on the server implementation). If set with <code>true</code>, a prompt will be shown when there is no credentials provided or it is not
+correct in the URL.</p>
+<p>Default is <code>true</code>.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item-desc'><p>Whether a prompt alert should be shown for HTTP authentication challenge or not.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// This URL requires HTTP Basic authentication.</span>
+<span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token string">"https://example,com/auth/http-basic"</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment" spellcheck="true">// A prompt alert will be shown and user has a chance to input their username/password.</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment" spellcheck="true">// Setting to false, this will use "username" and "password" to response server challenge.</span>
+webView<span class="token punctuation">.</span><span class="token function">SetAllowHTTPAuthPopUpWindow</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://username:password@example,com/auth/http-basic"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment" spellcheck="true">// Loading a URL but not providing credentials and no chance for user to input.</span>
+<span class="token comment" spellcheck="true">// An error might be raised according to your server implementation.</span>
+webView<span class="token punctuation">.</span><span class="token function">SetAllowHTTPAuthPopUpWindow</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
     </div>
