@@ -1,5 +1,16 @@
 # Release Note
 
+### 3.10.0 (9 Feb, 2019)
+
+#### Add
+
+* A method to turn off automatically prompt alert showing when received an HTTP auth challenge from server. Use `SetAllowHTTPAuthPopUpWindow` to control the behavior.
+* Support open third party app with links of corresponding URL schemes. Now you can use a link to open other apps as long as it was registered.
+
+#### Fix
+
+* Performance issues when using some sync getter APIs on Android native side.
+
 ### 3.9.2 (10 Jan, 2019)
 
 #### Fix

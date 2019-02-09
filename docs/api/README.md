@@ -2130,14 +2130,14 @@ correct in the URL.</p>
             <div class='example'>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// This URL requires HTTP Basic authentication.</span>
-<span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token string">"https://example,com/auth/http-basic"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token string">"https://example.com/auth/http-basic"</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// A prompt alert will be shown and user has a chance to input their username/password.</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// Setting to false, this will use "username" and "password" to response server challenge.</span>
 webView<span class="token punctuation">.</span><span class="token function">SetAllowHTTPAuthPopUpWindow</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://username:password@example,com/auth/http-basic"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://username:password@example.com/auth/http-basic"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// Loading a URL but not providing credentials and no chance for user to input.</span>
 <span class="token comment" spellcheck="true">// An error might be raised according to your server implementation.</span>
