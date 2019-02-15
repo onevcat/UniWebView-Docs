@@ -1,5 +1,11 @@
 # Release Note
 
+### 3.10.1 (15 Feb, 2019)
+
+#### Fix
+
+* An issue that lack of a placeholder method which causes code not compile on Windows.
+
 ### 3.10.0 (9 Feb, 2019)
 
 #### Add
