@@ -1,5 +1,12 @@
 # Release Note
 
+### 3.10.2
+
+#### Fix
+
+* Fix a crash when selecting files from Downloads folder on certain Android devices when uploading.
+* Support showing web view in cutout mode in Android. Now UniWebView will follow the cutout render setting.
+
 ### 3.10.1 (15 Feb, 2019)
 
 #### Fix
