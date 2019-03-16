@@ -734,6 +734,33 @@ type = "bool"
 summary = "Whether JavaScript could open window automatically."
 
 [[Methods]]
+name = "SetCalloutEnabled"
+syntax = "SetCalloutEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether a callout (context) menu should be displayed when user long tapping on certain web view content.
+
+When enabled, when user long presses an image or link in the web page, a context menu would be show up to ask 
+user's action. On iOS, it is a action sheet to ask whether opening the target link or saving the image. On 
+Android it is a pop up dialog to ask whether saving the image to local disk. On iOS, the preview page triggered 
+by force touch on iOS is also considered as a callout menu.
+
+Default is `true`, means that the callout menu will be displayed. Call this method with `false` to disable the 
+it on the web view.
+"""
+example = """
+```csharp
+// Disable callout menu in web views.
+UniWebView.SetCalloutEnabled(false);
+```
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether a callout menu should be displayed when user long pressing or force touching a certain web page element."
+
+
+[[Methods]]
 name = "CleanCache"
 syntax = "CleanCache()"
 returnType = "void"
