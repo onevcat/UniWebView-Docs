@@ -138,6 +138,9 @@ The main class of UniWebView. It represents a native web view and exposes a few 
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowjavascriptopenwindow'><span class='return-type'>void</span> SetAllowJavaScriptOpenWindow(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether JavaScript can open windows without user interaction.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setcalloutenabled'><span class='return-type'>void</span> SetCalloutEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether a callout (context) menu should be displayed when user long tapping on certain web view content.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#cleancache'><span class='return-type'>void</span> CleanCache()</a></div></td><td><div class='simple-summary'>
 <p>Clean web view cache.</p>
 </div>
@@ -1508,6 +1511,38 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
 <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href <span class="token operator">=</span> <span class="token string">'https://example.com'</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setcalloutenabled'></div><div class='api-heading' data-id='setcalloutenabled'><a href='#setcalloutenabled'><span class='return-type'>void</span> SetCalloutEnabled(bool enabled)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether a callout (context) menu should be displayed when user long tapping on certain web view content.</p>
+<p>When enabled, when user long presses an image or link in the web page, a context menu would be show up to ask 
+user&#39;s action. On iOS, it is a action sheet to ask whether opening the target link or saving the image. On 
+Android it is a pop up dialog to ask whether saving the image to local disk. On iOS, the preview page triggered 
+by force touch on iOS is also considered as a callout menu.</p>
+<p>Default is <code>true</code>, means that the callout menu will be displayed. Call this method with <code>false</code> to disable the 
+it on the web view.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item-desc'><p>Whether a callout menu should be displayed when user long pressing or force touching a certain web page element.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Disable callout menu in web views.</span>
+UniWebView<span class="token punctuation">.</span><span class="token function">SetCalloutEnabled</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
     </div>
