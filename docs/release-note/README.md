@@ -1,6 +1,17 @@
 # Release Note
 
-### 3.10.2
+### 3.11.0 (27 Mar, 2019)
+
+#### Add
+
+* Add `SetCalloutEnabled` method to control the behavior when user taps an image or link with long press or force touch gesture. Now you can choose not display the context callout menu.
+
+#### Fix
+
+* Now the navigation bar on Android will automatically hide itself immediately when the soft keyboard dismissed.
+* A workaround for regression on iOS 12 which causes selecting input fields in forms does not trigger the web view auto scrolling.
+
+### 3.10.2 (28 Feb, 2019)
 
 #### Fix
 
