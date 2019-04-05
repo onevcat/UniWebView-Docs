@@ -141,6 +141,9 @@ The main class of UniWebView. It represents a native web view and exposes a few 
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setcalloutenabled'><span class='return-type'>void</span> SetCalloutEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether a callout (context) menu should be displayed when user long tapping on certain web view content.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setdraginteractionenabled'><span class='return-type'>void</span> SetDragInteractionEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the drag interaction should be enabled on iOS.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#cleancache'><span class='return-type'>void</span> CleanCache()</a></div></td><td><div class='simple-summary'>
 <p>Clean web view cache.</p>
 </div>
@@ -1541,8 +1544,38 @@ it on the web view.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Disable callout menu in web views.</span>
-UniWebView<span class="token punctuation">.</span><span class="token function">SetCalloutEnabled</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Disable callout menu in the web view.</span>
+webView<span class="token punctuation">.</span><span class="token function">SetCalloutEnabled</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setdraginteractionenabled'></div><div class='api-heading' data-id='setdraginteractionenabled'><a href='#setdraginteractionenabled'><span class='return-type'>void</span> SetDragInteractionEnabled(bool enabled)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether the drag interaction should be enabled on iOS.</p>
+<p>From iOS 11, the iPad web view supports the drag interaction when user long presses an image, link or text.
+Setting this to <code>false</code> would disable the drag feather on the web view.</p>
+<p>This method only works on iOS. It does nothing on Android or macOS editor. Default is <code>true</code>, which means
+drag interaction on iPad is enabled.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item-desc'><p>Whether the drag interaction should be enabled.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Disable the drag interaction in the web view.</span>
+webView<span class="token punctuation">.</span><span class="token function">SetDragInteractionEnabled</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
     </div>

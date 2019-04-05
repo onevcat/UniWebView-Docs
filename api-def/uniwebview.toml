@@ -782,6 +782,9 @@ webView.SetDragInteractionEnabled(false);
 name = "enabled"
 type = "bool"
 summary = "Whether the drag interaction should be enabled."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
 
 
 [[Methods]]
