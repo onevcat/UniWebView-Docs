@@ -750,14 +750,38 @@ it on the web view.
 """
 example = """
 ```csharp
-// Disable callout menu in web views.
-UniWebView.SetCalloutEnabled(false);
+// Disable callout menu in the web view.
+webView.SetCalloutEnabled(false);
 ```
 """
 [[Methods.parameters]]
 name = "enabled"
 type = "bool"
 summary = "Whether a callout menu should be displayed when user long pressing or force touching a certain web page element."
+
+[[Methods]]
+name = "SetDragInteractionEnabled"
+syntax = "SetDragInteractionEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the drag interaction should be enabled on iOS.
+
+From iOS 11, the iPad web view supports the drag interaction when user long presses an image, link or text.
+Setting this to `false` would disable the drag feather on the web view.
+
+This method only works on iOS. It does nothing on Android or macOS editor. Default is `true`, which means
+drag interaction on iPad is enabled.
+"""
+example = """
+```csharp
+// Disable the drag interaction in the web view.
+webView.SetDragInteractionEnabled(false);
+```
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether the drag interaction should be enabled."
 
 
 [[Methods]]
