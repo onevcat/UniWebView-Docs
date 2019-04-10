@@ -1,5 +1,15 @@
 # Release Note
 
+### 3.12.0 (10 Apr, 2019)
+
+#### Add
+
+* Now you can use `SetDragInteractionEnabled` to disable the drag interaction on iPad running iOS 11 or above.
+
+#### Fix
+
+* A issue which causes the non-fullscreen web view position moving in some cases when soft keyboard is showing up.
+
 ### 3.11.0 (27 Mar, 2019)
 
 #### Add
