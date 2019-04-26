@@ -1,5 +1,13 @@
 # Release Note
 
+### 3.12.1 (26 Apr, 2019)
+
+####  Fix
+
+* An issue that web content does not go back to its original position after keyboard dismissed on iOS.
+* A crash when dismissing the web view on iOS 9 devices.
+* An issue causes some files cannot be selected when uploading with a form and the file chooser.
+
 ### 3.12.0 (10 Apr, 2019)
 
 #### Add
