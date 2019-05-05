@@ -104,7 +104,7 @@
 ### 3.7.0 (14 Jun, 2018)
 
 ::: danger
-From Unity 2018, Gradle is used as the default build system, so we updated the integration method to make UniWebView works better in the new build system. If you are upgrading UniWebView from an earlier version, please refer to the [Adapting to AAR File](http://docs.uniwebview.com/guide/adapting-to-aar-file.html) documentation.
+From Unity 2018, Gradle is used as the default build system, so we updated the integration method to make UniWebView works better in the new build system. If you are upgrading UniWebView from an earlier version, please refer to the [Adapting to AAR File](https://docs.uniwebview.com/guide/adapting-to-aar-file.html) documentation.
 :::
 
 #### Add
@@ -323,7 +323,7 @@ UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using
 ### 3.0.0 (27 Jun, 2017)
 
 ::: danger
-3.0.0 is a major update of UniWebView. We rewote the whole software from scratch to bring your experience of using a web view in Unity to a next level. Be causion it is not compatible with UniWebView 2, there are quite a few breaking changes in this version. For migration from UniWebView 2 in detail, visit our [Migration Guide](http://docs.uniwebview.com/#/migration-guide) in documentation. To know the highlight of the version, check [this page](http://docs.uniwebview.com/#/version-highlight) for more.
+3.0.0 is a major update of UniWebView. We rewote the whole software from scratch to bring your experience of using a web view in Unity to a next level. Be causion it is not compatible with UniWebView 2, there are quite a few breaking changes in this version. For migration from UniWebView 2 in detail, visit our [Migration Guide](https://docs.uniwebview.com/#/migration-guide) in documentation. To know the highlight of the version, check [this page](https://docs.uniwebview.com/#/version-highlight) for more.
 :::
 
 #### Add
@@ -333,8 +333,8 @@ UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using
 * New pop-up style Unity Editor support on macOS. It is a fully functional tool for debugging purpose.
 * A brandly new way to setup bridging between Unity and Cocoa native. Now there is no message sending delay.
 * You can now set the position of toolbar to top or bottom on iOS.
-* A leveled logger to log all UniWebView related information. See [UniWebViewLogger](http://docs.uniwebview.com/#/latest/api/uniwebviewlogger.html) documentation for more.
-* Use a payload based callback API like transition and JavaScript related methods. It takes more data. See [UniWebViewNativeResultPayload](http://docs.uniwebview.com/#/latest/api/uniwebviewnativeresultpayload.html).
+* A leveled logger to log all UniWebView related information. See [UniWebViewLogger](https://docs.uniwebview.com/#/latest/api/uniwebviewlogger.html) documentation for more.
+* Use a payload based callback API like transition and JavaScript related methods. It takes more data. See [UniWebViewNativeResultPayload](https://docs.uniwebview.com/#/latest/api/uniwebviewnativeresultpayload.html).
 * SSL exception for white listed domain. It is useful for a untrusted certification but you still want to access.
 * A method to get current web view HTML content as a string.
 
@@ -682,7 +682,7 @@ The current Windows Phone 8 support (UniWebViewWP.dll) will be kept in later ver
 * A serialize issue which may cause editor crash in some occation.
 
 ::: danger
-Notice: This version is not compatible with Unity 4.x. If you need to use UniWebView on Unity 4.x, please use UniWebView 1.x instead. You can find more information about the earlier version on Asset Store: http://assetstore.unity3d.com/jp/#!/content/12476
+Notice: This version is not compatible with Unity 4.x. If you need to use UniWebView on Unity 4.x, please use UniWebView 1.x instead. You can find more information about the earlier version on Asset Store: https://assetstore.unity3d.com/jp/#!/content/12476
 :::
 
 ---
@@ -690,7 +690,7 @@ Notice: This version is not compatible with Unity 4.x. If you need to use UniWeb
 ### 1.9.0 (10 Feb, 2015)
 
 ::: warning
-1.9.x will be the last version support Unity 4.x. Due to the huge difference between Unity 4 and 5, we decide to make a major update as well. Please keep an eye on our website (http://uniwebview.onevcat.com) to know more information about Unity 5 compatible version.
+1.9.x will be the last version support Unity 4.x. Due to the huge difference between Unity 4 and 5, we decide to make a major update as well. Please keep an eye on our website (https://uniwebview.onevcat.com) to know more information about Unity 5 compatible version.
 :::
 
 #### Fix

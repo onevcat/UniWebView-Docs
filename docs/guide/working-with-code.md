@@ -55,7 +55,7 @@ void Start () {
     //...
 
     webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
-    webView.Load("http://docs.uniwebview.com/game.html");
+    webView.Load("https://docs.uniwebview.com/game.html");
     webView.Show();
 }
 ```
