@@ -745,8 +745,8 @@ user's action. On iOS, it is a action sheet to ask whether opening the target li
 Android it is a pop up dialog to ask whether saving the image to local disk. On iOS, the preview page triggered 
 by force touch on iOS is also considered as a callout menu.
 
-Default is `true`, means that the callout menu will be displayed. Call this method with `false` to disable the 
-it on the web view.
+Default is `true`, means that the callout menu will be displayed. Call this method with `false` to disable it 
+on the web view.
 """
 example = """
 ```csharp

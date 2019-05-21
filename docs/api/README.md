@@ -1529,8 +1529,8 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
 user&#39;s action. On iOS, it is a action sheet to ask whether opening the target link or saving the image. On 
 Android it is a pop up dialog to ask whether saving the image to local disk. On iOS, the preview page triggered 
 by force touch on iOS is also considered as a callout menu.</p>
-<p>Default is <code>true</code>, means that the callout menu will be displayed. Call this method with <code>false</code> to disable the 
-it on the web view.</p>
+<p>Default is <code>true</code>, means that the callout menu will be displayed. Call this method with <code>false</code> to disable it 
+on the web view.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
