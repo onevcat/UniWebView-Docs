@@ -1,5 +1,21 @@
 # Release Note
 
+### 3.13.0 (11 Jun, 2019)
+
+::: warning
+From 3.13.0, UniWebView supports from Unity 2017.3. This would help to reduce some legacy code and achieve more stable behaviors.
+If you need to continue use UniWebView 3 on Unity 5.6, Unity 2017.1 or Unity 2017.2, please keep to use UniWebView 3.12.1 or below.
+:::
+
+#### Add
+
+* Support on Android for uploading multiple files at the same time.
+
+#### Fix
+
+* The `RawMessage` of `UniWebViewMessage` is now not escaped any more. It will return exactly the original URL it receives. Meanwhile, the values in `Args` keep escaped as is.
+* An issue on iPad that the customized "Done" button text might be truncated in some cases.
+
 ### 3.12.1 (26 Apr, 2019)
 
 ####  Fix
