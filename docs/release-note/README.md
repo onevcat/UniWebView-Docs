@@ -1,10 +1,16 @@
 # Release Note
 
+### 3.13.1 (17 Aug, 2019)
+
+#### Fix
+
+* Enabled app cache support for web view on Android.
+
 ### 3.13.0 (11 Jun, 2019)
 
 ::: warning
 From 3.13.0, UniWebView supports from Unity 2017.3. This would help to reduce some legacy code and achieve more stable behaviors.
-If you need to continue use UniWebView 3 on Unity 5.6, Unity 2017.1 or Unity 2017.2, please keep to use UniWebView 3.12.1 or below.
+If you need to continue use UniWebView 3 on Unity 5.6, Unity 2017.1 or Unity 2017.2, please keep to use UniWebView 3.12.1 or earlier.
 :::
 
 #### Add
