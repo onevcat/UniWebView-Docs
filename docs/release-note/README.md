@@ -4,7 +4,7 @@
 
 #### Fix
 
-* An unintended symbol link to deprecated UIWebView on iOS. This prevent the deprecation warning when submit app to the App Store.
+* An unintended symbol link to deprecated UIWebView on iOS. This prevents the deprecation warning when submitting an app to the App Store.
 
 ### 3.13.1 (17 Aug, 2019)
 
