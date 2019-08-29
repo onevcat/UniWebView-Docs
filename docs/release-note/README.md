@@ -1,5 +1,11 @@
 # Release Note
 
+### 3.13.2 (29 Aug, 2019)
+
+#### Fix
+
+* An unintended symbol link to deprecated UIWebView on iOS. This prevent the deprecation warning when submit app to the App Store.
+
 ### 3.13.1 (17 Aug, 2019)
 
 #### Fix
