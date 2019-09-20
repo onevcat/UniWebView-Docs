@@ -296,6 +296,7 @@ const allFiles = [
   "uniwebviewnativeresultpayload.toml",
   "uniwebviewtransitionedge.toml",
   "uniwebviewtoolbarposition.toml",
+  "uniwebviewcontentinsetadjustmentbehavior.toml",
   "uniwebviewlogger.toml",
   "uniwebviewhelper.toml"
 ];

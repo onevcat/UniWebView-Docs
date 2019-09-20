@@ -1,0 +1,26 @@
+title = "UniWebViewContentInsetAdjustmentBehavior"
+file = "uniwebviewcontentinsetadjustmentbehavior"
+
+[[Properties]]
+name = "Automatic"
+returnType = "UniWebViewContentInsetAdjustmentBehavior"
+hasSetter = false
+summary = "Automatically adjust the scroll view insets."
+
+[[Properties]]
+name = "ScrollableAxes"
+returnType = "UniWebViewContentInsetAdjustmentBehavior"
+hasSetter = false
+summary = "Adjust the insets only in the scrollable directions."
+
+[[Properties]]
+name = "Never"
+returnType = "UniWebViewContentInsetAdjustmentBehavior"
+hasSetter = false
+summary = "Do not adjust the scroll view insets."
+
+[[Properties]]
+name = "Always"
+returnType = "UniWebViewContentInsetAdjustmentBehavior"
+hasSetter = false
+summary = "Always include the safe area insets in the content adjustment."

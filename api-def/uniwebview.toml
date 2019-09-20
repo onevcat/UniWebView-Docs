@@ -603,6 +603,36 @@ webView.GetUserAgent()
 """
 
 [[Methods]]
+name = "SetContentInsetAdjustmentBehavior"
+syntax = "SetContentInsetAdjustmentBehavior(UniWebViewContentInsetAdjustmentBehavior behavior)"
+returnType = "void"
+
+summary = """
+Sets the adjustment behavior which indicates how safe area insets 
+are added to the adjusted content inset. It is a wrapper of [`contentInsetAdjustmentBehavior`](https://developer.apple.com/documentation/uikit/uiscrollview/2902261-contentinsetadjustmentbehavior) on iOS.
+
+It only works on iOS 11 and above.
+"""
+notice = """
+You need to call this method as soon as you create a web view,
+before you call any other methods related to web view layout (like `Show` or `SetShowToolbar`).
+"""
+example = """
+```csharp
+var webView = gameObject.AddComponent<UniWebView>();
+// Do not adjust the scroll view insets in the web view.
+webView.SetContentInsetAdjustmentBehavior(UniWebViewContentInsetAdjustmentBehavior.Never);
+```
+"""
+[[Methods.parameters]]
+name = "behavior"
+type = "UniWebViewContentInsetAdjustmentBehavior"
+summary = "The behavior for determining the adjusted content offsets."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+
+[[Methods]]
 name = "SetAllowAutoPlay"
 syntax = "SetAllowAutoPlay(bool flag)"
 returnType = "void"
@@ -635,7 +665,7 @@ color = "blue"
 [[Methods.parameters]]
 name = "flag"
 type = "bool"
-summary = "A flag indicates whether autoplaying of media is allowed or not."
+summary = "A flag indicates whether auto-playing of media is allowed or not."
 
 [[Methods]]
 name = "SetAllowInlinePlay"
