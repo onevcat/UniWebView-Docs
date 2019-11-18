@@ -1380,7 +1380,7 @@ name = "OnPageFinished"
 syntax = "OnPageFinished(UniWebView webView, int statusCode, string url)"
 returnType = "event"
 summary = """
-Raised when the web view finished to load a url successully.
+Raised when the web view finished to load a url successfully.
 
 This method will be invoked when a valid response received from the URL, regardless the response status.
 If a URL loading fails before reaching to the server and getting a response, `OnPageErrorReceived` will be 

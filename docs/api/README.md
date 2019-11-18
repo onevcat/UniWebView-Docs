@@ -41,7 +41,7 @@ The main class of UniWebView. It represents a native web view and exposes a few 
 <p>Raised when the web view starts loading a url.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onpagefinished'><span class='return-type'>event</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div></td><td><div class='simple-summary'>
-<p>Raised when the web view finished to load a url successully.</p>
+<p>Raised when the web view finished to load a url successfully.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onpageerrorreceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
 <p>Raised when an error encountered during the loading process.</p>
@@ -125,6 +125,10 @@ The main class of UniWebView. It represents a native web view and exposes a few 
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#getuseragent'><span class='return-type'>string</span> GetUserAgent()</a></div></td><td><div class='simple-summary'>
 <p>Gets the user agent string currently used in web view.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setcontentinsetadjustmentbehavior'><span class='return-type'>void</span> SetContentInsetAdjustmentBehavior(UniWebViewContentInsetAdjustmentBehavior behavior)</a></div></td><td><div class='simple-summary'>
+<p>Sets the adjustment behavior which indicates how safe area insets 
+are added to the adjusted content inset.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowautoplay'><span class='return-type'>void</span> SetAllowAutoPlay(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Set allow autoplay for current web view.</p>
@@ -398,7 +402,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Raised when the web view finished to load a url successully.</p>
+<p>Raised when the web view finished to load a url successfully.</p>
 <p>This method will be invoked when a valid response received from the URL, regardless the response status.
 If a URL loading fails before reaching to the server and getting a response, <code>OnPageErrorReceived</code> will be 
 raised instead.</p>
@@ -1362,6 +1366,43 @@ webView<span class="token punctuation">.</span><span class="token function">GetU
   </div>
 </div>
 <div class='api-box method'>
+  <div class="api-anchor" id='setcontentinsetadjustmentbehavior'></div><div class='api-heading' data-id='setcontentinsetadjustmentbehavior'><a href='#setcontentinsetadjustmentbehavior'><span class='return-type'>void</span> SetContentInsetAdjustmentBehavior(UniWebViewContentInsetAdjustmentBehavior behavior)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the adjustment behavior which indicates how safe area insets 
+are added to the adjusted content inset. It is a wrapper of <a href="https://developer.apple.com/documentation/uikit/uiscrollview/2902261-contentinsetadjustmentbehavior"><code>contentInsetAdjustmentBehavior</code></a> on iOS.</p>
+<p>It only works on iOS 11 and above.</p>
+</div>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        You need to call this method as soon as you create a web view,
+before you call any other methods related to web view layout (like <code>Show</code> or <code>SetShowToolbar</code>).
+
+  </p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewContentInsetAdjustmentBehavior</span> <span class='parameter-item-name'>behavior</span></div>
+    <div class='parameter-item-desc'><p>The behavior for determining the adjusted content offsets.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token keyword">var</span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Do not adjust the scroll view insets in the web view.</span>
+webView<span class="token punctuation">.</span><span class="token function">SetContentInsetAdjustmentBehavior</span><span class="token punctuation">(</span>UniWebViewContentInsetAdjustmentBehavior<span class="token punctuation">.</span>Never<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class="api-anchor" id='setallowautoplay'></div><div class='api-heading' data-id='setallowautoplay'><a href='#setallowautoplay'><span class='return-type'>void</span> SetAllowAutoPlay(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
@@ -1382,7 +1423,7 @@ corresponding media <a href="https://www.w3schools.com/tags/att_video_autoplay.a
 <div class='parameter-item-list'><ul>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
-    <div class='parameter-item-desc'><p>A flag indicates whether autoplaying of media is allowed or not.</p>
+    <div class='parameter-item-desc'><p>A flag indicates whether auto-playing of media is allowed or not.</p>
 </div>
   </li>
 </ul></div>
