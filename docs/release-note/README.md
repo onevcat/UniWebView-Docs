@@ -1,5 +1,16 @@
 # Release Note
 
+### 3.14.0 (20 Nov, 2019)
+
+#### Add
+
+* New API `SetContentInsetAdjustmentBehavior` for setting the adjustment behavior which indicates how safe area insets. It is a wrapper for `contentInsetAdjustmentBehavior` on iOS.
+
+#### Fix
+
+* A crash when uploading a single picture taken by camera on some Android devices.
+* Unescape JavaScript result from Android. This helps get correct value when using `GetHTMLContent`.
+
 ### 3.13.2 (29 Aug, 2019)
 
 #### Fix
