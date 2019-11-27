@@ -1386,6 +1386,10 @@ This method will be invoked when a valid response received from the URL, regardl
 If a URL loading fails before reaching to the server and getting a response, `OnPageErrorReceived` will be 
 raised instead.
 """
+notice = """
+Android did not provide a way to get the HTTP status code until API Level 23 (Android 6). 
+The `statusCode` is not trustable and will be always 200 on Android devices running a system before Android 6.
+"""
 example = """
 ```csharp
 webView.OnPageFinished += (view, statusCode, url) => {
