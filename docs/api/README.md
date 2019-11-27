@@ -407,7 +407,15 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 If a URL loading fails before reaching to the server and getting a response, <code>OnPageErrorReceived</code> will be 
 raised instead.</p>
 </div>
-            <div class='parameters'>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        Android did not provide a way to get the HTTP status code until API Level 23 (Android 6). 
+The <code>statusCode</code> is not trustable and will be always 200 on Android devices running a system before Android 6.
+
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
