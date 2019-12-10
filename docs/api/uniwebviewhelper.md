@@ -25,7 +25,7 @@ sidebarDepth: 0
     <div class='desc'>
       <div class='summary'>
 <p>Get the local streaming asset path for a given file path related to the StreamingAssets folder.</p>
-<p>This method will help you to concat a URL string for a file under your StreamingAssets folder for different platforms.</p>
+<p>This method will help you to create a URL string for a file under your StreamingAssets folder for different platforms.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -53,7 +53,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
     <div class='desc'>
       <div class='summary'>
 <p>Get the local persistent data path for a given file path related to the data folder of your host app.</p>
-<p>This method will help you to concat a URL string for a file under you stored in the <code>persistentDataPath</code>.</p>
+<p>This method will help you to create a URL string for a file under you stored in the <code>persistentDataPath</code>.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>

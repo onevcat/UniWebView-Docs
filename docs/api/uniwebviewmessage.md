@@ -130,7 +130,7 @@ the args is a <code>Dictionary</code> with: Args[&quot;param1&quot;] = value1, A
       <div class='warning custom-block'>
   <p class="custom-block-title">NOTICE</p>
   <p>
-        Both the key and valud will be url decoded from the original url.
+        Both the key and value will be url decoded from the original url.
   </p>
 </div>
       <div class='example'>

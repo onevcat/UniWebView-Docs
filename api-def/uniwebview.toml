@@ -1361,6 +1361,12 @@ Use 0 for both `x` and `y` value to scroll the web view to its origin. In a norm
 You can use the `animated` parameter to control whether scrolling the page with or without animation.
 This parameter only works on iOS and Android. On macOS editor, the scrolling always happens without animation.
 """
+example = """
+```csharp
+// Scroll the web page to top with animation.
+webView.ScrollTo(0, 0, true);
+```
+"""
 [[Methods.parameters]]
 name = "x"
 type = "int"
@@ -1373,12 +1379,6 @@ summary = "Y value of the target scrolling point."
 name = "animated"
 type = "bool"
 summary = "If `true`, the scrolling happens with animation. Otherwise, it happens without animation and the content is set directly."
-example = """
-```csharp
-// Scroll the web page to top with animation.
-webView.ScrollTo(0, 0, true);
-```
-"""
 
 [[Events]]
 name = "OnPageStarted"

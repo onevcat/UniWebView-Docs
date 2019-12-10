@@ -6,7 +6,9 @@ sidebarDepth: 0
 
 ### Summary
 
-The main class of UniWebView. It represents a native web view and exposes a few APIs for you to use in Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content, as well as receive a message from the web view.
+The main class of UniWebView. It represents a native web view and exposes a few APIs for you to use in 
+Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content, 
+as well as receive a message from the web view.
 
 #### Properties Summary
 
@@ -131,7 +133,7 @@ The main class of UniWebView. It represents a native web view and exposes a few 
 are added to the adjusted content inset.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowautoplay'><span class='return-type'>void</span> SetAllowAutoPlay(bool flag)</a></div></td><td><div class='simple-summary'>
-<p>Set allow autoplay for current web view.</p>
+<p>Set allow auto-play for current web view.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowinlineplay'><span class='return-type'>void</span> SetAllowInlinePlay(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Set allow inline play for current web view.</p>
@@ -179,7 +181,7 @@ are added to the adjusted content inset.</p>
 <p>Sets whether the web view should show with a bounces effect when scrolling to page edge.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setzoomenabled'><span class='return-type'>void</span> SetZoomEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
-<p>Sets whether the web view supports zoom guesture to change content size.</p>
+<p>Sets whether the web view supports zoom gesture to change content size.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#addpermissiontrustdomain'><span class='return-type'>void</span> AddPermissionTrustDomain(string domain)</a></div></td><td><div class='simple-summary'>
 <p>Adds a trusted domain to white list and allow permission requests from the domain.</p>
@@ -225,6 +227,9 @@ HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#print'><span class='return-type'>void</span> Print()</a></div></td><td><div class='simple-summary'>
 <p>Prints current page.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#scrollto'><span class='return-type'>void</span> ScrollTo(int x, int y, bool animated)</a></div></td><td><div class='simple-summary'>
+<p>Scrolls the web view to a certain point.</p>
+</div>
 </td></tr></table>
 
 ### Properties
@@ -235,7 +240,8 @@ HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
     <div class='desc'>
       <div class='summary'>
 <p>Get or Set the frame of current web view. The value is based on current <code>Screen.width</code> and <code>Screen.height</code>.
-The first two values of <code>Rect</code> is <code>x</code> and <code>y</code> position and the followed two <code>width</code> and <code>height</code>. The original point is top left corner:</p>
+The first two values of <code>Rect</code> is <code>x</code> and <code>y</code> position and the followed two <code>width</code> and <code>height</code>. The original point is 
+top left corner:</p>
 <p><img src="https://docs.unity3d.com/StaticFiles/ScriptRefImages/RectXY.svg" alt=""></p>
 </div>
       <div class='warning custom-block'>
@@ -485,17 +491,17 @@ Such as host not found or no Internet connection will raise this event.</p>
             <div class='example'>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnPageErrorReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> error<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Errored."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Error."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://onevcat-not-existing.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// => "Errored."</span>
+<span class="token comment" spellcheck="true">// => "Error."</span>
 <span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"unknown://host?param1=value1&amp;param2=value2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// => "Errored."</span>
+<span class="token comment" spellcheck="true">// => "Error."</span>
 <span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// => "Errored."</span>
+<span class="token comment" spellcheck="true">// => "Error."</span>
 </code></pre>
 </div>
     </div>
@@ -543,7 +549,7 @@ anotherWebView<span class="token punctuation">.</span>OnMessageReceived <span cl
 <span class="token punctuation">}</span>
 anotherWebView<span class="token punctuation">.</span><span class="token function">AddUrlScheme</span><span class="token punctuation">(</span><span class="token string">"myscheme"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
-<span class="token comment" spellcheck="true">// Clike the link "myscheme://action" in a web page.</span>
+<span class="token comment" spellcheck="true">// Click the link "myscheme://action" in a web page.</span>
 <span class="token comment" spellcheck="true">// &lt;a href="myscheme://action">Click Me&lt;/a></span>
 <span />
 <span class="token comment" spellcheck="true">// => "myscheme://action"</span>
@@ -1038,7 +1044,7 @@ webView<span class="token punctuation">.</span><span class="token function">Hide
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Animate current web view to cover half of the screen.</span>
 <span class="token keyword">var</span> halfScreen <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">AnimateTo</span><span class="token punctuation">(</span>halfScreen<span class="token punctuation">,</span> <span class="token number">0.4f</span><span class="token punctuation">,</span> <span class="token number">0.1f</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Aniamtion finished!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Animation finished!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
@@ -1095,7 +1101,7 @@ to the web view and a <code>UniWebViewNativeResultPayload</code> with <code>resu
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">AddJavaScript</span><span class="token punctuation">(</span><span class="token string">"function add() { return 1 + 2; }"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>resultCode<span class="token punctuation">.</span><span class="token function">Equal</span><span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">ptint</span><span class="token punctuation">(</span><span class="token string">"JavaScript adding finished without problem."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"JavaScript adding finished without problem."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
@@ -1212,7 +1218,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddU
     <div class='desc'>
       <div class='summary'>
 <p>Adds a domain to the SSL checking white list.</p>
-<p>If you are trying to access a website with untrusted or expired certification, 
+<p>If you are trying to access a website with un-trusted or expired certification, 
 the web view will prevent its loading. If you could confirm that this site is trusted,
 you can add the domain as an SSL exception, so you could visit it.</p>
 </div>
@@ -1338,10 +1344,10 @@ webView<span class="token punctuation">.</span><span class="token function">SetH
             <div class='example'>
     <p class='example-title'>Example</p>
 <pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Set the user agent string sent in request header.</span>
-webView<span class="token punctuation">.</span><span class="token function">SetUserAgent</span><span class="token punctuation">(</span><span class="token string">"My-Amazion-App/1.0.0 (iOS 10.3, iPhone 7)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">SetUserAgent</span><span class="token punctuation">(</span><span class="token string">"My-App/1.0.0 (iOS 10.3, iPhone 7)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// => In request header:</span>
-<span class="token comment" spellcheck="true">// User-Agent = "My-Amazion-App/1.0.0 (iOS 10.3, iPhone 7)"</span>
+<span class="token comment" spellcheck="true">// User-Agent = "My-App/1.0.0 (iOS 10.3, iPhone 7)"</span>
 </code></pre>
 </div>
     </div>
@@ -1365,9 +1371,9 @@ webView<span class="token punctuation">.</span><span class="token function">GetU
 <span class="token comment" spellcheck="true">// This value varies in different platforms.</span>
 <span />
 <span class="token comment" spellcheck="true">// Sets a user agent and then get it.</span>
-webView<span class="token punctuation">.</span><span class="token function">SetUserAgent</span><span class="token punctuation">(</span><span class="token string">"My-Amazion-App/1.0.0 (iOS 10.3, iPhone 7)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">SetUserAgent</span><span class="token punctuation">(</span><span class="token string">"My-App/1.0.0 (iOS 10.3, iPhone 7)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">GetUserAgent</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// => "My-Amazion-App/1.0.0 (iOS 10.3, iPhone 7)"</span>
+<span class="token comment" spellcheck="true">// => "My-App/1.0.0 (iOS 10.3, iPhone 7)"</span>
 </code></pre>
 </div>
     </div>
@@ -1415,7 +1421,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetC
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Set allow autoplay for current web view. By default, 
+<p>Set allow auto-play for current web view. By default, 
 users need to touch the play button to start playing a media resource.</p>
 <p>By setting this to <code>true</code>, you could start the playing automatically through
 corresponding media <a href="https://www.w3schools.com/tags/att_video_autoplay.asp">tag attributes</a>.</p>
@@ -1887,14 +1893,14 @@ On Android, it only clears from disk database, the authentication might be still
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Sets whether the web view supports zoom guesture to change content size. Default is <code>false</code>, which means the zoom guesture is not supported.</p>
+<p>Sets whether the web view supports zoom gesture to change content size. Default is <code>false</code>, which means the zoom gesture is not supported.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
-    <div class='parameter-item-desc'><p>Whether the zoom guesture is allowed or not.</p>
+    <div class='parameter-item-desc'><p>Whether the zoom gesture is allowed or not.</p>
 </div>
   </li>
 </ul></div>
@@ -2078,7 +2084,7 @@ parameters, you can control the animating and position of the toolbar. If the to
   </li>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>adjustInset</span></div>
-    <div class='parameter-item-desc'><p>Whether the toolbar transition should also afjust web view position and size if overlapped. Default is <code>false</code></p>
+    <div class='parameter-item-desc'><p>Whether the toolbar transition should also adjust web view position and size if overlapped. Default is <code>false</code></p>
 </div>
   </li>
 </ul></div>
@@ -2309,6 +2315,45 @@ This method does nothing on macOS editor.</p>
   </p>
 </div>
                       </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='scrollto'></div><div class='api-heading' data-id='scrollto'><a href='#scrollto'><span class='return-type'>void</span> ScrollTo(int x, int y, bool animated)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Scrolls the web view to a certain point.</p>
+<p>Use 0 for both <code>x</code> and <code>y</code> value to scroll the web view to its origin. In a normal vertical web page, it is equivalent as scrolling to top.</p>
+<p>You can use the <code>animated</code> parameter to control whether scrolling the page with or without animation.
+This parameter only works on iOS and Android. On macOS editor, the scrolling always happens without animation.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>x</span></div>
+    <div class='parameter-item-desc'><p>X value of the target scrolling point.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>y</span></div>
+    <div class='parameter-item-desc'><p>Y value of the target scrolling point.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>animated</span></div>
+    <div class='parameter-item-desc'><p>If <code>true</code>, the scrolling happens with animation. Otherwise, it happens without animation and the content is set directly.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Scroll the web page to top with animation.</span>
+webView<span class="token punctuation">.</span><span class="token function">ScrollTo</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+    </div>
   </div>
 </div>
 
