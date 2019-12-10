@@ -8,7 +8,7 @@ returnType = "string"
 summary = """
 Get the local streaming asset path for a given file path related to the StreamingAssets folder.
 
-This method will help you to concat a URL string for a file under your StreamingAssets folder for different platforms.
+This method will help you to create a URL string for a file under your StreamingAssets folder for different platforms.
 """
 example = """
 ```csharp
@@ -37,7 +37,7 @@ returnType = "string"
 summary = """
 Get the local persistent data path for a given file path related to the data folder of your host app.
 
-This method will help you to concat a URL string for a file under you stored in the `persistentDataPath`.
+This method will help you to create a URL string for a file under you stored in the `persistentDataPath`.
 """
 example = """
 ```csharp
