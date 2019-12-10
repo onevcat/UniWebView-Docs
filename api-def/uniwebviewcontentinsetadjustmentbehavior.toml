@@ -11,7 +11,7 @@ summary = "Automatically adjust the scroll view insets."
 name = "ScrollableAxes"
 returnType = "UniWebViewContentInsetAdjustmentBehavior"
 hasSetter = false
-summary = "Adjust the insets only in the scrollable directions."
+summary = "Adjust the insets only in the scroll-able directions."
 
 [[Properties]]
 name = "Never"

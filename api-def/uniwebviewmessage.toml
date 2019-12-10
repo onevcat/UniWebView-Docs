@@ -82,7 +82,7 @@ a dictionary.
 When received url "uniwebview://yourPath?param1=value1&param2=value2", 
 the args is a `Dictionary` with: Args["param1"] = value1, Args["param2"] = value2
 """
-notice = "Both the key and valud will be url decoded from the original url."
+notice = "Both the key and value will be url decoded from the original url."
 example = """
 ```csharp
 // Basic key-value args
