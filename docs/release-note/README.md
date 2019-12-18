@@ -1,5 +1,13 @@
 # Release Note
 
+### 3.15.1 (18 Dec, 2019)
+
+#### Fix
+
+* Unity 2019.3 support. Fixed a problem which causes your app hanging and being killed at starting on iOS devices when building against Unity 2019.03 and without Xcode connected.
+* A possible crash when uploading and converting data between file choosers.
+* A potential issue that the Camera can be ignored when choosing images for uploading.
+
 ### 3.15.0 (11 Dec, 2019)
 
 #### Add
