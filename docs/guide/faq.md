@@ -10,7 +10,7 @@ No, UniWebView is not designed for grabbing a page and rendering it to a texture
 
 ## Can I put some Unity GUI/object above of UniWebView?
 
-No, you can't. 
+No, you can't.
 
 UniWebView is a layer of the system UI and is added above of the whole Unity view. That means it is always floating over your Unity scene. You can never put your elements from Unity above of the webpage. You can only organize the layout of your Unity elements and the web view to make them look good together. With the help of `ReferenceRectTransform`, it should be quite easy.
 
@@ -26,9 +26,22 @@ UniWebView also contains Unity Editor support on macOS for debug purpose. You co
 
 On iOS, the web view is running in another self-managed process. It always takes some time (typically several seconds) to synchronize your cookie/session to the cookie storage. So if you destroy the web view too soon before the storage could be synced, the cookie/session information might be lost. This behavior is more likely a limitation of `WKWebView` on the iOS system.
 
+## I have a performance issue, the page is loading/running laggy.
+
+UniWebView is a wrapper of the web view components on iOS or Android. So you can expect the similar performance for your page when they are running with UniWebView against when running with `WKWebView` on iOS or `WebView` on Android. However, please remember you are displaying the web content inside Unity, which is also taking a lot of resource to run.
+
+As a result, it is not surprising that your web page could be slower than normal when displaying or scrolling, especially if you have heavy tasks running in your Unity game. If you hit a performance issue in the web view, we suggest you can try below:
+
+1. Turn off all the cameras in your game, if the game scene is below the web view and invisible. It will reduce a lot of rendering pressure and the system can focus on rendering the web content instead.
+2. Stop all unnecessary scripts in your scene, especially those contain heavy logic inside `Update`, `FixedUpdate` or `LateUpdate`.
+3. Unload and release the unused resource as much as possible.
+4. If possible, try to create a clean and new scene to display the web view.
+
+Usually, the performance of the web view component on system is also improving with the new system version releasing. For example, we can observe ~50% speed up from a web view on Android 9.0, compared to Android 5.0. Changing your deploy target of your app is also an important way to improve the performance.
+
 ## Does this package support Unity Personal or does it only work in Unity Professional?
 
-UniWebView can work well on all supported platforms with both Unity Personal and Profession. 
+UniWebView can work well on all supported platforms with both Unity Personal and Profession.
 
 ## Is there a trial version?
 
@@ -48,19 +61,19 @@ All C# source code of the Unity side is included in the package. But the native 
 
 You should observe the [EULA of Unity Asset Store](https://unity3d.com/company/legal/as_terms) you agreed to when you registered your Unity Asset Store account. That means you have no rights to reproduce, duplicate, copy, sell, trade or resell the package, even if you have Source Access License. But by purchasing the Source Access, you will also have a **Limited Redistribution License**. It allows you to redistribute your own package with UniWebView as a dependency to other developers (that means you are developing an SDK or something else which does not target for "end users", but for other developers). In this case, you can redistribute UniWebView in binary format to third party developers. The detail of the **Source Access License** is provided as below:
 
-> - You are permitted to use the source code in this repository as many projects as you want, if these projects are owned by the same 
-> person or organization made the purchase.
-> - You are permitted to modify the source code, compile your own version and use the recompiled version in as many projects as 
-> you want, if these projects are owned by the same person or organization made the purchase.
-> - The source code and repository is for your own use only. You are NOT permitted to redistribute or share the repository without prior 
-> authorization.
+> - You are permitted to use the source code in this repository as many projects as you want, if these projects are owned by the same
+>   person or organization made the purchase.
+> - You are permitted to modify the source code, compile your own version and use the recompiled version in as many projects as
+>   you want, if these projects are owned by the same person or organization made the purchase.
+> - The source code and repository is for your own use only. You are NOT permitted to redistribute or share the repository without prior
+>   authorization.
 > - You are permitted to redistribute the UniWebView package which contains a built version for native code to third party developers. However, they do not
-> grant the same Source Access License. They are not permitted to redistribute the package again. Only using UniWebView in the enclosure of your product is 
-> permitted.
-> 
-> All code and assets provided in this repository are provided on an “as is” basis, without warranty of any kind, express or implied, 
-> including but not limited to the warranties of merchantability, fitness for a particular purpose and non-infringement. In no 
-> event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of 
+>   grant the same Source Access License. They are not permitted to redistribute the package again. Only using UniWebView in the enclosure of your product is
+>   permitted.
+>
+> All code and assets provided in this repository are provided on an “as is” basis, without warranty of any kind, express or implied,
+> including but not limited to the warranties of merchantability, fitness for a particular purpose and non-infringement. In no
+> event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of
 > contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
 
 Feel free to [contact us](https://onevcat.zendesk.com/hc/en-us/requests/new) if you have any question on it. We are glad to help.
