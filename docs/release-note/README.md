@@ -1,5 +1,12 @@
 # Release Note
 
+### 3.15.2 (8 Jan, 2020)
+
+#### Fix
+
+* URLs with "#" should be loaded correctly in iOS even the `skipEncoding` is not set to `true` in `Load` method.
+* The keyboard will be dismissed automatically when hiding the web view by calling `Hide` now.
+
 ### 3.15.1 (18 Dec, 2019)
 
 #### Fix
