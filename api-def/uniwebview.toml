@@ -793,6 +793,31 @@ type = "bool"
 summary = "Whether a callout menu should be displayed when user long pressing or force touching a certain web page element."
 
 [[Methods]]
+name = "SetSupportMultipleWindows"
+syntax = "SetSupportMultipleWindows(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the web view should support a pop up web view triggered by user in a new tab.
+
+In a general web browser (such as Google Chrome or Safari), a URL with `target="_blank"` attribute is intended 
+to be opened in a new tab. However, in the context of web view, there is no way to handle new tabs without 
+proper configurations. Due to that, by default UniWebView will ignore the `target="_blank"` and try to open 
+the page in the same web view if that kind of link is pressed.
+
+It works for most cases, but if this is a problem to your app logic, you can change this behavior by calling 
+this method with `true`. It enables the "opening in new tab" behavior in a limited way, by adding the new tab 
+web view above to the current web view, with the same size and position. When the opened new tab is closed, 
+it will be removed from the view hierarchy automatically.
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = """
+Whether to support multiple windows. If `true`, the `target="_blank"` link will be opened in a new web view. 
+Default is `false`.
+"""
+
+[[Methods]]
 name = "SetDragInteractionEnabled"
 syntax = "SetDragInteractionEnabled(bool enabled)"
 returnType = "void"
