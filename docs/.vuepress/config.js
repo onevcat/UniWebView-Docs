@@ -41,6 +41,7 @@ module.exports = {
             "uploading",
             "playing-videos",
             "http-auth",
+            "support-new-window",
             "debugging"
           ]
         },
