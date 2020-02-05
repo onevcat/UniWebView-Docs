@@ -1,5 +1,15 @@
 # Release Note
 
+### 3.16.0 (5 Feb, 2020)
+
+#### Add
+
+* Support for `target="_blank"` links. By default, UniWebView will open the destination URL in the same page even it is attributed by a `_blank` target. If you want to open it in a new page, call `SetSupportMultipleWindows` with `true` and it will create a new web view above the current one to load the new request.
+
+#### Fix
+
+* Improve SSL error handling logic for Android to prevent warnings from Google.
+
 ### 3.15.2 (8 Jan, 2020)
 
 #### Fix

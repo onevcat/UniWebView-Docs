@@ -147,6 +147,9 @@ are added to the adjusted content inset.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setcalloutenabled'><span class='return-type'>void</span> SetCalloutEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether a callout (context) menu should be displayed when user long tapping on certain web view content.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setsupportmultiplewindows'><span class='return-type'>void</span> SetSupportMultipleWindows(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the web view should support a pop up web view triggered by user in a new tab.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setdraginteractionenabled'><span class='return-type'>void</span> SetDragInteractionEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the drag interaction should be enabled on iOS.</p>
 </div>
@@ -1604,6 +1607,35 @@ webView<span class="token punctuation">.</span><span class="token function">SetC
 </code></pre>
 </div>
     </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setsupportmultiplewindows'></div><div class='api-heading' data-id='setsupportmultiplewindows'><a href='#setsupportmultiplewindows'><span class='return-type'>void</span> SetSupportMultipleWindows(bool enabled)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether the web view should support a pop up web view triggered by user in a new tab.</p>
+<p>In a general web browser (such as Google Chrome or Safari), a URL with <code>target=&quot;_blank&quot;</code> attribute is intended 
+to be opened in a new tab. However, in the context of web view, there is no way to handle new tabs without 
+proper configurations. Due to that, by default UniWebView will ignore the <code>target=&quot;_blank&quot;</code> and try to open 
+the page in the same web view if that kind of link is pressed.</p>
+<p>It works for most cases, but if this is a problem to your app logic, you can change this behavior by calling 
+this method with <code>true</code>. It enables the &quot;opening in new tab&quot; behavior in a limited way, by adding the new tab 
+web view above to the current web view, with the same size and position. When the opened new tab is closed, 
+it will be removed from the view hierarchy automatically.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item-desc'><p>Whether to support multiple windows. If <code>true</code>, the <code>target=&quot;_blank&quot;</code> link will be opened in a new web view. 
+Default is <code>false</code>.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
   </div>
 </div>
 <div class='api-box method'>
