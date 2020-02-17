@@ -818,6 +818,30 @@ Default is `false`.
 """
 
 [[Methods]]
+name = "SetDefaultFontSize"
+syntax = "SetDefaultFontSize(int size)"
+returnType = "void"
+summary = """
+Sets the default font size used in the web view.
+
+On Android, the web view font size can be affected by the system font scale setting. Use this method to set the 
+font size in a more reasonable way, by giving the web view another default font size with the system font scale 
+considered. It can removes or reduces the effect of system font scale when displaying the web content.
+
+This method only works on Android. On iOS, this method does nothing since the web view will respect the font 
+size setting in your CSS styles.
+"""
+[[Methods.parameters]]
+name = "size"
+type = "int"
+summary = """
+The target default font size set to the web view.
+"""
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
 name = "SetDragInteractionEnabled"
 syntax = "SetDragInteractionEnabled(bool enabled)"
 returnType = "void"
