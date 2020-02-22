@@ -150,6 +150,9 @@ are added to the adjusted content inset.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setsupportmultiplewindows'><span class='return-type'>void</span> SetSupportMultipleWindows(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view should support a pop up web view triggered by user in a new tab.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setdefaultfontsize'><span class='return-type'>void</span> SetDefaultFontSize(int size)</a></div></td><td><div class='simple-summary'>
+<p>Sets the default font size used in the web view.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setdraginteractionenabled'><span class='return-type'>void</span> SetDragInteractionEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the drag interaction should be enabled on iOS.</p>
 </div>
@@ -1631,6 +1634,31 @@ it will be removed from the view hierarchy automatically.</p>
     <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
     <div class='parameter-item-desc'><p>Whether to support multiple windows. If <code>true</code>, the <code>target=&quot;_blank&quot;</code> link will be opened in a new web view. 
 Default is <code>false</code>.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setdefaultfontsize'></div><div class='api-heading' data-id='setdefaultfontsize'><a href='#setdefaultfontsize'><span class='return-type'>void</span> SetDefaultFontSize(int size)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the default font size used in the web view.</p>
+<p>On Android, the web view font size can be affected by the system font scale setting. Use this method to set the 
+font size in a more reasonable way, by giving the web view another default font size with the system font scale 
+considered. It can removes or reduces the effect of system font scale when displaying the web content.</p>
+<p>This method only works on Android. On iOS, this method does nothing since the web view will respect the font 
+size setting in your CSS styles.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>size</span></div>
+    <div class='parameter-item-desc'><p>The target default font size set to the web view.</p>
 </div>
   </li>
 </ul></div>

@@ -1,5 +1,11 @@
 # Release Note
 
+### 3.16.1
+
+#### Fix
+
+* A layout issue that break web view size when switching back to foreground when an action sheet shown in some cases.
+
 ### 3.16.0 (5 Feb, 2020)
 
 #### Add
