@@ -1248,6 +1248,27 @@ type = "string"
 summary = "The text needed to be set as done button title."
 
 [[Methods]]
+name = "SetShowToolbarNavigationButtons"
+syntax = "SetShowToolbarNavigationButtons(bool show)"
+returnType = "void"
+summary = """
+Sets the visibility of navigation buttons, such as "Go Back" and "Go Forward", on toolbar.
+
+By default, UniWebView will show the "Go Back" and "Go Forward" navigation buttons on the toolbar.
+Users can use these buttons to perform go back or go forward action just like in a browser. If the navigation
+model is not for your case, call this method with `false` as `show` parameter to hide them.
+
+This method is only for iOS, since there is no toolbar on Android.
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.parameters]]
+name = "show"
+type = "bool"
+summary = "Whether the navigation buttons on the toolbar should show or hide."
+
+[[Methods]]
 name = "SetWebContentsDebuggingEnabled"
 syntax = "SetWebContentsDebuggingEnabled(bool enabled)"
 returnType = "void"
