@@ -214,6 +214,9 @@ hides the status bar and navigation bar with a sticky style.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbardonebuttontext'><span class='return-type'>void</span> SetToolbarDoneButtonText(string text)</a></div></td><td><div class='simple-summary'>
 <p>Sets the done button text in toolbar.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setshowtoolbarnavigationbuttons'><span class='return-type'>void</span> SetShowToolbarNavigationButtons(bool show)</a></div></td><td><div class='simple-summary'>
+<p>Sets the visibility of navigation buttons, such as &quot;Go Back&quot; and &quot;Go Forward&quot;, on toolbar.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setwebcontentsdebuggingenabled'><span class='return-type'>void</span> SetWebContentsDebuggingEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Enables debugging of web contents.</p>
 </div>
@@ -2188,6 +2191,30 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
 </code></pre>
 </div>
     </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setshowtoolbarnavigationbuttons'></div><div class='api-heading' data-id='setshowtoolbarnavigationbuttons'><a href='#setshowtoolbarnavigationbuttons'><span class='return-type'>void</span> SetShowToolbarNavigationButtons(bool show)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the visibility of navigation buttons, such as &quot;Go Back&quot; and &quot;Go Forward&quot;, on toolbar.</p>
+<p>By default, UniWebView will show the &quot;Go Back&quot; and &quot;Go Forward&quot; navigation buttons on the toolbar.
+Users can use these buttons to perform go back or go forward action just like in a browser. If the navigation
+model is not for your case, call this method with <code>false</code> as <code>show</code> parameter to hide them.</p>
+<p>This method is only for iOS, since there is no toolbar on Android.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>show</span></div>
+    <div class='parameter-item-desc'><p>Whether the navigation buttons on the toolbar should show or hide.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
   </div>
 </div>
 <div class='api-box method'>

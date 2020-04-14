@@ -1,10 +1,19 @@
 # Release Note
 
-### 3.16.1
+### 3.17.0 (14, Apr, 2020)
+
+#### Add
+
+* A method to set the default font size on Android. This can help to reduce the influence of the user's display setting of the font scale. Use `SetDefaultFontSize` to give a more reasonable default font size based on the scale setting.
+* Now the visibility of navigation buttons (Go Back and Go Forward) on iOS toolbar can be set from Unity by `SetShowToolbarNavigationButtons`.
 
 #### Fix
 
-* A layout issue that break web view size when switching back to foreground when an action sheet shown in some cases.
+* A layout issue that breaks web view size when switching back to foreground when an action sheet shown in some cases.
+* The customized user agent string now also applies to the pop-up window when `SetSupportMultipleWindows` was called with `true`.
+* An issue that causes the new window cannot be dismissed correctly by `window.close()` on Android.
+* Now the text input views should be automatically scrolled up on Android when the soft keyboard displays and overlaps them.
+* The `ReferenceRectTransform` can calculate the correct final size and position for a non-default resolution setting for screen now.
 
 ### 3.16.0 (5 Feb, 2020)
 
