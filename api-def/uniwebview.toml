@@ -1269,6 +1269,21 @@ type = "bool"
 summary = "Whether the navigation buttons on the toolbar should show or hide."
 
 [[Methods]]
+name = "SetUserInteractionEnabled"
+syntax = "SetUserInteractionEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the web view can receive user interaction or not.
+
+By setting this to `false`, the web view will not accept any user touch event so your users cannot tap links or
+scroll the page.
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether the user interaction should be enabled or not."
+
+[[Methods]]
 name = "SetWebContentsDebuggingEnabled"
 syntax = "SetWebContentsDebuggingEnabled(bool enabled)"
 returnType = "void"
