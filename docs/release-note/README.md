@@ -1,5 +1,16 @@
 # Release Note
 
+### 3.18.0 (14 May, 2020)
+
+#### Add
+
+* An API to disable the whole user interaction of the web view. Call `SetUserInteractionEnabled(false)` on the web view if you do not want users to tap or scroll the web view.
+* Allow "Go Back" feature on a pop-up window if `SetSupportMultipleWindows` is set to `true`.
+
+#### Fix
+
+* An issue that the `OnPageFinished` event is not called on Android when loading an HTML string.
+
 ### 3.17.0 (14 Apr, 2020)
 
 #### Add
