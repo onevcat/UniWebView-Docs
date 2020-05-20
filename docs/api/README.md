@@ -264,7 +264,8 @@ top left corner:</p>
 </div>
       <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Make the web view full screen:</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Make the web view full screen:</span>
 webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// Make the web view center in the screen with size 500x500:</span>
@@ -273,6 +274,7 @@ webView<span class="token punctuation">.</span>Frame <span class="token operator
 <span class="token keyword">var</span> y <span class="token operator">=</span> <span class="token punctuation">(</span>Screen<span class="token punctuation">.</span>height <span class="token operator">-</span> side<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0f</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> side<span class="token punctuation">,</span> side<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -288,12 +290,14 @@ webView<span class="token punctuation">.</span>Frame <span class="token operator
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Some panel</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Some panel</span>
 RectTransform panel <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span />
 <span class="token comment" spellcheck="true">// Set the web view position and size to match panel</span>
 webView<span class="token punctuation">.</span>ReferenceRectTransform <span class="token operator">=</span> panel<span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -307,12 +311,14 @@ webView<span class="token punctuation">.</span>ReferenceRectTransform <span clas
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// Some time later or in "OnPageFinished":</span>
 <span class="token function">print</span><span class="token punctuation">(</span>webView<span class="token punctuation">.</span>Url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => "https://example.com/"</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -351,9 +357,11 @@ If you want to make the whole web view transparent, use <code>Alpha</code> inste
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Set the web view background (under the web page) to red.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Set the web view background (under the web page) to red.</span>
 webView<span class="token punctuation">.</span>BackgroundColor <span class="token operator">=</span> Color<span class="token punctuation">.</span>red<span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -369,9 +377,11 @@ webView<span class="token punctuation">.</span>BackgroundColor <span class="toke
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Set the web view half transparent.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Set the web view half transparent.</span>
 webView<span class="token punctuation">.</span>Alpha <span class="token operator">=</span> <span class="token number">0.5f</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -404,13 +414,15 @@ webView<span class="token punctuation">.</span>Alpha <span class="token operator
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnPageStarted <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnPageStarted <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Loading started for url: "</span> <span class="token operator">+</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// => "Loading started for url: https://example.com/"</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -455,7 +467,8 @@ The <code>statusCode</code> is not trustable and will be always 200 on Android d
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnPageFinished <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> statusCode<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnPageFinished <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> statusCode<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>statusCode<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Web view loading finished for: "</span> <span class="token operator">+</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -468,6 +481,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 <span class="token comment" spellcheck="true">// => "404"</span>
 <span class="token comment" spellcheck="true">// => "Web view loading finished for: https://example.com"</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -502,7 +516,8 @@ Such as host not found or no Internet connection will raise this event.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnPageErrorReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> error<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnPageErrorReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> error<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Error."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span />
@@ -515,6 +530,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => "Error."</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -547,7 +563,8 @@ will raise this event, if it is not removed.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Scheme<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Path<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Args<span class="token punctuation">[</span><span class="token string">"param1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -566,6 +583,7 @@ anotherWebView<span class="token punctuation">.</span><span class="token functio
 <span />
 <span class="token comment" spellcheck="true">// => "myscheme://action"</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -596,7 +614,8 @@ it needed.</p>
 </div>
       <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Clean webView field when </span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Clean webView field when </span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyBehaviour</span> <span class="token punctuation">:</span> MonoBehaviour <span class="token punctuation">{</span>
     <span class="token keyword">var</span> webView<span class="token punctuation">;</span>
 <span />
@@ -614,6 +633,7 @@ webView<span class="token punctuation">.</span>OnShouldClose <span class="token 
     <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -644,12 +664,14 @@ raised.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnKeyCodeReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> keyCode<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnKeyCodeReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> keyCode<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>keyCode <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Back Button was clicked."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -679,12 +701,14 @@ need to support multiple orientations in your game.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Keep the web view full screen on both portrait and landscape mode.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Keep the web view full screen on both portrait and landscape mode.</span>
 webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span>OnOrientationChanged <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> orientation<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -710,7 +734,8 @@ You need to free as much as the memory you could and then do a page reload.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Clean memory and reload current page</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Clean memory and reload current page</span>
 webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// Free memory</span>
     <span class="token comment" spellcheck="true">// unusedAssets.Clean();</span>
@@ -718,6 +743,7 @@ webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <sp
     webView<span class="token punctuation">.</span><span class="token function">Reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -754,7 +780,8 @@ webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <sp
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Load a URL.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Load a URL.</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// Load a URL which is already escaped.</span>
@@ -765,6 +792,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 <span class="token keyword">var</span> accessURL <span class="token operator">=</span> <span class="token string">"file://"</span> <span class="token operator">+</span> <span class="token string">"/local_app_folder/root/"</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>indexURL<span class="token punctuation">,</span> <span class="token keyword">false</span><span class="token punctuation">,</span> accessURL<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -798,8 +826,10 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">LoadHTMLString</span><span class="token punctuation">(</span><span class="token string">"&lt;p>Hello World&lt;/p>"</span><span class="token punctuation">,</span> <span class="token string">"https://domain.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">LoadHTMLString</span><span class="token punctuation">(</span><span class="token string">"&lt;p>Hello World&lt;/p>"</span><span class="token punctuation">,</span> <span class="token string">"https://domain.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -833,10 +863,12 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 </div>
                         <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token keyword">if</span> <span class="token punctuation">(</span>webView<span class="token punctuation">.</span>CanGoBack<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>webView<span class="token punctuation">.</span>CanGoBack<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     webView<span class="token punctuation">.</span><span class="token function">GoBack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -850,10 +882,12 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 </div>
                         <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token keyword">if</span> <span class="token punctuation">(</span>webView<span class="token punctuation">.</span>CanGoForward<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>webView<span class="token punctuation">.</span>CanGoForward<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     webView<span class="token punctuation">.</span><span class="token function">GoForward</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -880,12 +914,14 @@ the user will be navigated to an external native browser.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// You may want to set it in OnPageFinished event, </span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// You may want to set it in OnPageFinished event, </span>
 <span class="token comment" spellcheck="true">// otherwise the original page will be also opened externally</span>
 webView<span class="token punctuation">.</span>OnPageFinished <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> statusCode<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     webView<span class="token punctuation">.</span><span class="token function">SetOpenLinksInExternalBrowser</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -931,7 +967,8 @@ showing finishes.</p>
 </div>
       <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Show the web view without animation</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Show the web view without animation</span>
 webView<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// Show the web view with a fade animation</span>
@@ -945,6 +982,7 @@ webView<span class="token punctuation">.</span><span class="token function">Show
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Show transition finished!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -998,7 +1036,8 @@ To release a web view and its resource, pass the web view component as the param
 </div>
       <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Hide the web view without animation</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Hide the web view without animation</span>
 webView<span class="token punctuation">.</span><span class="token function">Hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// Hide the web view with a fade animation</span>
@@ -1012,6 +1051,7 @@ webView<span class="token punctuation">.</span><span class="token function">Hide
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Hide transition finished!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1053,12 +1093,14 @@ webView<span class="token punctuation">.</span><span class="token function">Hide
 </div>
       <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Animate current web view to cover half of the screen.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Animate current web view to cover half of the screen.</span>
 <span class="token keyword">var</span> halfScreen <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">AnimateTo</span><span class="token punctuation">(</span>halfScreen<span class="token punctuation">,</span> <span class="token number">0.4f</span><span class="token punctuation">,</span> <span class="token number">0.1f</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Animation finished!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1074,13 +1116,15 @@ to the web view. This method follows the frame determining rules.</p>
 </div>
                         <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// In a UIBehavior script:</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// In a UIBehavior script:</span>
 <span class="token comment" spellcheck="true">// Called when associated `rectTransform` is changed.</span>
 <span class="token keyword">void</span> <span class="token function">OnRectTransformDimensionsChange</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// This will update web view's frame to match the reference rect transform if set.</span>
     webView<span class="token punctuation">.</span><span class="token function">UpdateFrame</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1111,12 +1155,14 @@ to the web view and a <code>UniWebViewNativeResultPayload</code> with <code>resu
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">AddJavaScript</span><span class="token punctuation">(</span><span class="token string">"function add() { return 1 + 2; }"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">AddJavaScript</span><span class="token punctuation">(</span><span class="token string">"function add() { return 1 + 2; }"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>resultCode<span class="token punctuation">.</span><span class="token function">Equal</span><span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"JavaScript adding finished without problem."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1146,7 +1192,8 @@ to the web view and a <code>UniWebViewNativeResultPayload</code> with <code>resu
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Pop up an alert from web view.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Pop up an alert from web view.</span>
 webView<span class="token punctuation">.</span><span class="token function">EvaluateJavaScript</span><span class="token punctuation">(</span><span class="token string">"alert('Alert!');"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>payload<span class="token punctuation">.</span>resultCode<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// => "0"</span>
     <span class="token function">print</span><span class="token punctuation">(</span>payload<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// => ""</span>
@@ -1167,6 +1214,7 @@ webView<span class="token punctuation">.</span><span class="token function">Eval
     <span class="token comment" spellcheck="true">// eg. "4" on iOS.</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1190,11 +1238,13 @@ webView<span class="token punctuation">.</span><span class="token function">Eval
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Add "myscheme" as a UniWebView message scheme.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Add "myscheme" as a UniWebView message scheme.</span>
 webView<span class="token punctuation">.</span><span class="token function">AddUrlScheme</span><span class="token punctuation">(</span><span class="token string">"myscheme"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// A link like "myscheme://action" will be treated as a message and raise the `OnMessageReceived` event from now.</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1218,8 +1268,10 @@ webView<span class="token punctuation">.</span><span class="token function">AddU
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">RemoveUrlScheme</span><span class="token punctuation">(</span><span class="token string">"myscheme"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">RemoveUrlScheme</span><span class="token punctuation">(</span><span class="token string">"myscheme"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1252,7 +1304,8 @@ you can add the domain as an SSL exception, so you could visit it.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// This loading will fail since the certification is a self-signed one and not trusted.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// This loading will fail since the certification is a self-signed one and not trusted.</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 <span />
 <span class="token comment" spellcheck="true">// Add "self-signed.badssl.com" as trusted.</span>
@@ -1260,6 +1313,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddS
 <span class="token comment" spellcheck="true">// This page should load now.</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1283,8 +1337,10 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">RemoveSslExceptionDomain</span><span class="token punctuation">(</span><span class="token string">"self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">RemoveSslExceptionDomain</span><span class="token punctuation">(</span><span class="token string">"self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1326,12 +1382,14 @@ and Android platforms.
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Set "MyToken" field to "123abc" in a web view. It will be used for all following requests.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Set "MyToken" field to "123abc" in a web view. It will be used for all following requests.</span>
 webView<span class="token punctuation">.</span><span class="token function">SetHeaderField</span><span class="token punctuation">(</span><span class="token string">"MyToken"</span><span class="token punctuation">,</span> <span class="token string">"123abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// Unset it</span>
 webView<span class="token punctuation">.</span><span class="token function">SetHeaderField</span><span class="token punctuation">(</span><span class="token string">"MyToken"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1355,12 +1413,14 @@ webView<span class="token punctuation">.</span><span class="token function">SetH
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Set the user agent string sent in request header.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Set the user agent string sent in request header.</span>
 webView<span class="token punctuation">.</span><span class="token function">SetUserAgent</span><span class="token punctuation">(</span><span class="token string">"My-App/1.0.0 (iOS 10.3, iPhone 7)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// => In request header:</span>
 <span class="token comment" spellcheck="true">// User-Agent = "My-App/1.0.0 (iOS 10.3, iPhone 7)"</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1377,7 +1437,8 @@ webView<span class="token punctuation">.</span><span class="token function">SetU
 </div>
       <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Gets the default user agent.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Gets the default user agent.</span>
 webView<span class="token punctuation">.</span><span class="token function">GetUserAgent</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">// => "Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 ..."</span>
 <span class="token comment" spellcheck="true">// This value varies in different platforms.</span>
@@ -1387,6 +1448,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetU
 webView<span class="token punctuation">.</span><span class="token function">GetUserAgent</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">// => "My-App/1.0.0 (iOS 10.3, iPhone 7)"</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1420,10 +1482,12 @@ before you call any other methods related to web view layout (like <code>Show</c
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token keyword">var</span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token keyword">var</span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// Do not adjust the scroll view insets in the web view.</span>
 webView<span class="token punctuation">.</span><span class="token function">SetContentInsetAdjustmentBehavior</span><span class="token punctuation">(</span>UniWebViewContentInsetAdjustmentBehavior<span class="token punctuation">.</span>Never<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1456,7 +1520,8 @@ corresponding media <a href="https://www.w3schools.com/tags/att_video_autoplay.a
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">UniWebView<span class="token punctuation">.</span><span class="token function">SetAllowAutoPlay</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">SetAllowAutoPlay</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// Create a new web view.</span>
 <span class="token keyword">var</span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1465,6 +1530,7 @@ corresponding media <a href="https://www.w3schools.com/tags/att_video_autoplay.a
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_video_autoplay"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1500,7 +1566,8 @@ On Android, you could play videos inline by default and calling this method does
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">UniWebView<span class="token punctuation">.</span><span class="token function">SetAllowInlinePlay</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">SetAllowInlinePlay</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// Create a new web view.</span>
 <span class="token keyword">var</span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1510,6 +1577,7 @@ On Android, you could play videos inline by default and calling this method does
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com/inline-video"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1541,12 +1609,14 @@ not using any JavaScript in your page, you could turn it off to get better perfo
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Disable JavaScript in web views created later.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Disable JavaScript in web views created later.</span>
 UniWebView<span class="token punctuation">.</span><span class="token function">SetJavaScriptEnabled</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// JavaScript is disabled in this web view.</span>
 <span class="token keyword">var</span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1571,7 +1641,8 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Allow JavaScript open window automatically.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Allow JavaScript open window automatically.</span>
 UniWebView<span class="token punctuation">.</span><span class="token function">SetAllowJavaScriptOpenWindow</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token keyword">var</span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1582,6 +1653,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
     window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href <span class="token operator">=</span> <span class="token string">'https://example.com'</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1611,9 +1683,11 @@ on the web view.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Disable callout menu in the web view.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Disable callout menu in the web view.</span>
 webView<span class="token punctuation">.</span><span class="token function">SetCalloutEnabled</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1695,9 +1769,11 @@ drag interaction on iPad is enabled.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Disable the drag interaction in the web view.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Disable the drag interaction in the web view.</span>
 webView<span class="token punctuation">.</span><span class="token function">SetDragInteractionEnabled</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1728,8 +1804,10 @@ webView<span class="token punctuation">.</span><span class="token function">SetD
 </div>
                   <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">UniWebView<span class="token punctuation">.</span><span class="token function">ClearCookies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">ClearCookies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1766,12 +1844,14 @@ use this method.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Set a cookie "testCookie=1" to current url/domain.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Set a cookie "testCookie=1" to current url/domain.</span>
 UniWebView<span class="token punctuation">.</span><span class="token function">SetCookie</span><span class="token punctuation">(</span>webView<span class="token punctuation">.</span>Url<span class="token punctuation">,</span> <span class="token string">"testCookie=1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// Set a full properties specified cookie.</span>
 UniWebView<span class="token punctuation">.</span><span class="token function">SetCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token string">"sessionToken=abc123; Expires=Wed, 09 Jun 2021 10:18:14 GMT"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1808,9 +1888,11 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
 </div>
       <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">UniWebView<span class="token punctuation">.</span><span class="token function">GetCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token string">"testCookie"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">GetCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token string">"testCookie"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => The corresponding cookie value. Or "" if there is no such cookie.</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -1845,8 +1927,10 @@ On Android, it only clears from disk database, the authentication might be still
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">UniWebView<span class="token punctuation">.</span><span class="token function">ClearHttpAuthUsernamePassword</span><span class="token punctuation">(</span><span class="token string">"uniwebview.com"</span><span class="token punctuation">,</span> <span class="token string">"UniWebViewUserRealm"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">ClearHttpAuthUsernamePassword</span><span class="token punctuation">(</span><span class="token string">"uniwebview.com"</span><span class="token punctuation">,</span> <span class="token string">"UniWebViewUserRealm"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -2004,8 +2088,10 @@ you have trouble in granting users&#39; permission. It is not needed on iOS.
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">AddPermissionTrustDomain</span><span class="token punctuation">(</span><span class="token string">"my-own-site.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">AddPermissionTrustDomain</span><span class="token punctuation">(</span><span class="token string">"my-own-site.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -2157,7 +2243,8 @@ parameters, you can control the animating and position of the toolbar. If the to
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Show a toolbar at top of screen with animation.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Show a toolbar at top of screen with animation.</span>
 webView<span class="token punctuation">.</span><span class="token function">SetShowToolbar</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// Hide the tool bar without animation. At the same time, make </span>
@@ -2165,6 +2252,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
 <span class="token comment" spellcheck="true">// the web view and toolbar.</span>
 webView<span class="token punctuation">.</span><span class="token function">SetShowToolbar</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">,</span> <span class="token keyword">false</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -2190,8 +2278,10 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">SetToolbarDoneButtonText</span><span class="token punctuation">(</span><span class="token string">"关闭"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">SetToolbarDoneButtonText</span><span class="token punctuation">(</span><span class="token string">"关闭"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -2332,8 +2422,10 @@ UniWebView cannot provide any warranty on this security issue.
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">SetAllowFileAccessFromFileURLs</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">SetAllowFileAccessFromFileURLs</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -2364,7 +2456,8 @@ correct in the URL.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// This URL requires HTTP Basic authentication.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// This URL requires HTTP Basic authentication.</span>
 <span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token string">"https://example.com/auth/http-basic"</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment" spellcheck="true">// A prompt alert will be shown and user has a chance to input their username/password.</span>
@@ -2379,6 +2472,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 webView<span class="token punctuation">.</span><span class="token function">SetAllowHTTPAuthPopUpWindow</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -2402,11 +2496,13 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span><span class="token function">GetHTMLContent</span><span class="token punctuation">(</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">GetHTMLContent</span><span class="token punctuation">(</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// => "&lt;html>&lt;head> ... &lt;/html>"</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -2461,9 +2557,11 @@ This parameter only works on iOS and Android. On macOS editor, the scrolling alw
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Scroll the web page to top with animation.</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Scroll the web page to top with animation.</span>
 webView<span class="token punctuation">.</span><span class="token function">ScrollTo</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>

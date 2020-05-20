@@ -27,9 +27,9 @@ class Entry {
         "    <p class='example-title'>Example</p>\n" +
         marked(this.entry.example).replace(
           '<pre><code class="lang-csharp">',
-          '<pre v-pre="" data-lang="csharp"><code class="lang-csharp">'
+          '<div class="language-csharp extra-class">\n<pre class="language-csharp"><code>'
         ) +
-        "</div>\n";
+        "</div>\n</div>\n";
     }
     return example;
   }
