@@ -20,6 +20,10 @@ module.exports = {
       {
         text: "API Reference",
         link: "/api/"
+      },
+      {
+        text: "v3",
+        link: "https://docs-v3.uniwebview.com"
       }
     ],
     sidebar: {
