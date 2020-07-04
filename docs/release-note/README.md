@@ -1,5 +1,13 @@
 # Release Note
 
+### 3.18.1 (4 Jul, 2020)
+
+#### Fix
+
+* A potential issue that the Android keyboard is not shown when switching back from a full screen view on Android 9 or above.
+* Now the Unity Editor support also allows displaying a web view when using the Device Simulator package.
+* An issue on iOS which causes the toolbar buttons placed in wrong position when switching back to the game while the web view is showing.
+
 ### 3.18.0 (14 May, 2020)
 
 #### Add
