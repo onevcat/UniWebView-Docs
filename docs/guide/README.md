@@ -1,31 +1,79 @@
-# Getting Started
+# Introduction
 
-## What is UniWebView
+## What can UniWebView do
 
-UniWebView is a Unity 3D plugin for adding a web view component to your Unity 3D mobile games. UniWebView includes a set of abstract high-level APIs in C#, which wrapped the native APIs of iOS and Android platforms. With UniWebView, you can have some behaviors like a browser into your games without knowing anything about native development. It is very useful when you need to show an announcement or notice, add a leaderboard for player rankings, or just display any web pages to your users.
+UniWebView is a Unity 3D plugin for adding a web view component to your Unity 3D mobile games on iOS and Android. It provides a set of abstract, cross-platforms, and high-level APIs in C#. With UniWebView, you can have some behaviors like a browser into your games without knowing anything about native development.
+
+It boosts your development process dramatically when you need to show an announcement or notice, add a leader board for player rankings, or display any interactive web pages to your users.
+
+## Feature List
+
+### Web Content Browsing
+
+- HTTP and HTTPS pages
+- Local Files
+- Presenting & Dismissing
+- Size and Position
+- Loading Events
+- Safe Browsing Mode
+
+### Interaction with Web Page
+
+- Built-in Toolbar
+- Page Navigation
+- Messaging System
+
+### Resources
+
+- Videos, inline or full-screen
+- Image Picking & Uploading
+- User Agent & Cookie
+- Full Log & Debugging
+- Much more ...
 
 ## Supported Platforms
 
-UniWebView supports running:
+UniWebView v4 supports running on:
 
-* iOS 9.0 or above
-* Android 5.0 (API Level 21) or above
+- **Unity 2018.3** or above
+- **iOS 9.0** or above
+- **Android 5.0** (API Level 21) or above
 
-On iOS, UniWebView is using [`WKWebView`](https://developer.apple.com/reference/webkit/wkwebview) as the render component. While on Android, [`WebView`](https://developer.android.com/reference/android/webkit/WebView.html) is used.
+:::tip EARLIER VERSION
+If you are looking for a UniWebView version for earlier Unity versions, check the [v3 version](https://assetstore.unity.com/packages/tools/network/uniwebview-3-92605). It supports from the same iOS and Android versions, but back to Unity 2017.3. However, it only ships a subset of features compared to the latest v4, and only receives critical bug fix.
+:::
 
-UniWebView also contains Unity Editor support on macOS for debug purpose. You could bring up a standalone web view directly in the Play Mode of Unity Editor if you are developing your game on a Mac. If you are working on a Windows PC, you can still build and use UniWebView on mobile devices, but you cannot see the result directly in the Windows Unity Editor.
+## How It Works
 
-> This Editor plugin is a full-featured variety of mobile version. Although UniWebView is designed for the mobile platforms, you could also put it in a standalone macOS game if you want.
+UniWebView wraps the technology under the hood to render a general-purpose web view:
 
-## Version 3
+- On iOS, [WKWebView](https://developer.apple.com/reference/webkit/wkwebview)
+- On Android, [WebView](https://developer.android.com/reference/android/webkit/WebView.html)
 
-UniWebView project was started in 2013. The original version of UniWebView supported Unity 4. In Unity 5, Unity team changed the method how native plugins work and there was no way to support both Unity 4 and 5 in the same plugin version. So we decided to have a major upgrade to version 2. After several years of development, UniWebView 2 is quite stable now. However, the legacy code only supported old fashion (and deprecated) `UIWebView` on iOS, and we also had to consider back compatibility and use out-dated APIs for `WebView` too.
+It also provides a "Safe Browsing" mode, to help you get a system-level experience of web content, which uses:
 
-We are not satisfied with this situation. Performance and code quality could be dramatically improved if we use the latest technology. Adding features and fixing issues would be easier and faster too. That is the reason why we decided to rewrite UniWebView from scratch. In version 3, we started again from 0 and redesigned almost all APIs. With the experience of the past few years of development, we have a chance to make good things better and bad design gone.
+- On iOS, [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller)
+- On Android, [Custom Tabs](https://developers.google.com/web/android/custom-tabs)
 
-Already using UniWebView 2? Please take a look at the [version 3 highlight](./version-highlight.md) to see how it gets evolved from the previous version. Be caution that version 3 is not compatible with 2. If you are upgrading from UniWebView 2, you may wish to take a brief look at the [migration guide](./migration-guide.md). Most concepts are similar but it might still take you a while to upgrade. We also recommend you to read our documentation to bring the potential power of UniWebView to your project.
+UniWebView also contains Unity Editor support on macOS for the debug purpose. You could bring up a standalone web view directly in the Play Mode of Unity Editor if you are developing your game on a Mac.
 
-> This documentation is only for version 3. If you need any information about UniWebView 2, please check [this site](http://uniwebview.onevcat.com) instead.
+:::warning WINDOWS EDITOR
+If you are working on a Windows PC, you can still build and use UniWebView on mobile devices, but you cannot see the result directly in the Windows Unity Editor. UniWebView does not come with a Unity Editor support on Windows.
+:::
+
+:::tip MAC OS TARGET
+The macOS Editor plugin is a full-featured variety of its mobile version. Although UniWebView is designed for the mobile platforms, it does not prevent you from putting it into a standalone macOS game.
+:::
+
+## About Version 4
+
+The starting of the UniWebView project can be traced back to 2013. Until now, we shipped more than 100 versions to make sure the package works well with the latest technology. UniWebView version 4 is a step further. We worked even harder to clean up the codebase, rewrite the native side from scratch in a more reliable way, improve the performance on both platforms, and add a bunch of new features.
+
+At the same time, we are managed to keep the code compatibility for most of the APIs as they were in v3. That means upgrading from version 3 to version 4 is painless. For most of the projects, just reimport the new version and you can get all the new things immediately.
+
+Already using UniWebView 3? Please take a look at the [Version Highlight](./version-highlight.md) to see how it gets evolved from the previous versions. To upgrade to the latest version, take a brief look at the [Migration Guide](./migration-guide.md). We also recommend you to read our documentation to bring the potential power of UniWebView to your project.
+
+> This documentation is for version 4. If you are still using v3, you can find its documentation on [this site](https://docs-v3.uniwebview.com) instead.
 
 ## Next Step
 

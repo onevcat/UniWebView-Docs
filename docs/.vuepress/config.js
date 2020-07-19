@@ -13,6 +13,7 @@ module.exports = {
     repo: "onevcat/UniWebView-Docs",
     editLinks: true,
     docsDir: "docs",
+    lastUpdated: 'Last Updated',
     nav: [{
         text: "Guide",
         link: "/guide/"
