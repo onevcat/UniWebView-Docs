@@ -2,7 +2,7 @@
 
 ## Adding to Scene
 
-[Prefab](https://docs.unity3d.com/Manual/Prefabs.html) is the fastest way to integrate a web view to your project. UniWebView provides two prefabs under the `UniWebView/Prefab` folder:
+[Prefab](https://docs.unity3d.com/Manual/Prefabs.html) is the fastest way to integrate a web view to your project. There are two main ways to show a web view: with a **General-Purpose Web View** or with the **Safe Browsing Mode**. UniWebView provides two prefabs under the `UniWebView/Prefab` folder for them:
 
 - `UniWebView.prefab`: For general-purpose web view
 - `UniWebViewSafeBrowsing.prefab`: For safe browsing mode
