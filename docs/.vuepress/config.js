@@ -37,6 +37,7 @@ module.exports = {
           title: "UniWebView In Depth",
           collapsable: false,
           children: [
+            "safe-browsing",
             "position-and-size",
             "transition",
             "memory-management",

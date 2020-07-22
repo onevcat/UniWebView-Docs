@@ -2,13 +2,18 @@
 
 ## Adding to Scene
 
-[Prefab](https://docs.unity3d.com/Manual/Prefabs.html) is the fastest way to integrate a web view to your project. There are two main ways to show a web view: with a **General-Purpose Web View** or with the **Safe Browsing Mode**. UniWebView provides two prefabs under the `UniWebView/Prefab` folder for them:
+[Prefab](https://docs.unity3d.com/Manual/Prefabs.html) is the fastest way to integrate a web view to your project. There are two main ways to show a web view:
+
+- **General-Purpose Web View** - Provides a flexible web view component. You can set its size and position, call JavaScript on it from Unity and do much more other tasks.
+- **Safe Browsing Mode** - Provides a full-screen and browser-level experience to display web content. There is very little you can do except giving it a URL and let it show. But it can shares cookies and browsing information with the system browser.
+
+UniWebView provides two prefabs under the `UniWebView/Prefab` folder for them:
 
 - `UniWebView.prefab`: For general-purpose web view
 - `UniWebViewSafeBrowsing.prefab`: For safe browsing mode
 
 ::: tip
-To know the difference between the general-purpose web view mode and the safe browsing mode, please check the [Safe Browsing Mode](./safe-browsing.md) guide.
+To know the detail of differences between the general-purpose web view mode and the safe browsing mode, please check the [Safe Browsing Mode](./safe-browsing.md) guide.
 :::
 
 Drag either to the scene you need to show a web view. Then you can configure the properties of the component in the Inspector Tab.
