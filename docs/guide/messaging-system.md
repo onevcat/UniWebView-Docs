@@ -1,39 +1,56 @@
 # Messaging System
 
-By sending a message from web page to Unity, you could control or notify your game. The UniWebView messaging system takes responsibility to observe some schemes navigation (from link clicking or JavaScript location navigation), then parse and forward specified navigating to Unity.
+You can send a message from the web view to UniWebView. It helps you implement a way to "control" your game from the web page.
 
-UniWebView inspects all links starts from `uniwebview://` by default. That means if you have a link with "uniwebview" as the URL scheme, the `OnMessageReceived` event will be raised with a received `UniWebViewMessage` object:
+UniWebView inspects all links starts from `uniwebview://` by default. That means if your user taps a link starting with "uniwebview", an `OnMessageReceived` event will be raised with a `UniWebViewMessage` as its parameter.
+
+If you have this on your page:
+
+```html
+<a href="uniwebview://action?key=value&anotherKey=anotherValue">Tap Me</a>
+```
+
+And you have this event listener in Unity:
 
 ```csharp
 webView.OnMessageReceived += (view, message) => {
     print(message.RawMessage);
 };
-webView.Load("uniwebview://action?key=value&anotherKey=anotherValue");
-
-// This will print "uniwebview://action?key=value&anotherKey=anotherValue" as the raw message.
 ```
 
-UniWebView messaging system also helps you to parse the input. You could access the `Scheme`, `Path` and `Args` properties to get information from the URL. For example, in the code about, you could get:
+When the link is tapped, "uniwebview://action?key=value&anotherKey=anotherValue" will be printed.
 
-- `Scheme` - "uniwebview"
-- `Path` - "action"
-- `Args` - {"key": value, "anotherKey": "anotherValue"}
+UniWebView parses the input and pass it to you in the `OnMessageReceived` event, as the `message` parameter. In the example above, you have:
 
-::: tip
+```csharp
+message.Scheme // "uniwebview"
+message.Path   // "action"
+message.Args   // {"key": value, "anotherKey": "anotherValue"}
+```
+
+::: tip DUPLICATED KEY
 If you are using the same key in the URL query, `UniWebViewMessage` will parse them to the same key as well, with the values concatenated by a comma. For example, a URL like `uniwebview://action?key=1&key=2` will be parsed to a message with `Args` as `{"key": "1,2"}`.
+:::
+
+::: tip NAVIGATION
+Besides of an HTML link, a `location.href` JavaScript will also send a message to UniWebView and trigger the event. The code below is identical to example above:
+
+```javascript
+location.href = "uniwebview://action?key=value&anotherKey=anotherValue";
+```
+
 :::
 
 ### Adding your own scheme
 
-Besides of the default "uniwebview", you could also add your own URL scheme. Call `AddUrlScheme` with the one you need:
+By default, "uniwebview" is inspected in UniWebView Messaging System. You can also add your own URL schemes. Call `AddUrlScheme` with the one you need:
 
 ```csharp
+// Start to inspect all `myscheme://` URLs.
 webView.AddUrlScheme("myscheme");
 ```
 
-And then, all URLs started from "myscheme" will be messages sent to you.
-
-A tricky thing here is you could even set "http" and "https" as the scheme. It will prevent all loading of web resources and send them to you. This gives a chance to inspect all traffic. A use case for it is you do not want your user to leave the current page. So you could first load your page, then, in the `OnPageFinished` event, disable all navigating by adding the "http(s)" scheme to UniWebView message system:
+A tricky thing here is, you can even set `http` and `https` as the scheme. It will prevent all loading of web resources. A use case is that you do not want your user to leave the current page: first load your page, then, in the `OnPageFinished` event, disable all navigating by adding the "http(s)" scheme:
 
 ```csharp
 webView.Load("https://yourpage.com");
@@ -42,10 +59,12 @@ webView.OnPageFinished += (view, statusCode, url) => {
     webView.AddUrlScheme("http");
     webView.AddUrlScheme("https");
 
-    // Now your user will not be able to navigate to other pages.
+    // Now your user will not be able to navigate to other pages hosted on HTTP or HTTPS.
 };
 ```
 
-### Limitation
+---
 
-The messaging system is built on URL and Unity's message sender. It means you cannot send the unlimited size of data at once. The allowed max length of a URL is different from devices and system versions. But a safe length is ~16KB for a URL. If you have something huge to send from web page to Unity and encountered some problems, it would be better to split them into smaller pieces.
+::: warning Limitation
+The messaging system is built on URL and Unity's message sender. It means you cannot send the unlimited size of data at once. The allowed max length of a URL is different from devices and system versions. But **a safe length is ~16KB** for a URL. If you have something huge to send from the web page to Unity and encountered some problems, it would be better to split them into smaller pieces.
+:::
