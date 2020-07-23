@@ -36,6 +36,10 @@ safeBrowsing.Show();
 
 Once created, the URL cannot be modified anymore. It is also the only chance you can set which URL the user would start to browse.
 
+::: danger HTTP & HTTPS
+Only web content hosted by HTTP or HTTPS is supported in Safe Browsing Mode. Attempts to load a local file URL in Safe Browsing Mode causes a runtime error.
+:::
+
 ## Customization & Events
 
 ### Color
