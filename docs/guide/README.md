@@ -10,12 +10,12 @@ It boosts your development process dramatically when you need to show an announc
 
 ### Web Content Browsing
 
-- HTTP and HTTPS pages
-- Local Files
-- Presenting & Dismissing
-- Size and Position
-- Loading Events
-- Safe Browsing Mode
+- [HTTP and HTTPS pages](/api/#load)
+- [Local Files](./loading-local-files.md)
+- [Presenting and Dismissing](./transition.md)
+- [Size and Position](./position-and-size.md)
+- [Loading Events](/api/#events-summary)
+- [Safe Browsing Mode](./safe-browsing.md)
 
 ### Interaction with Web Page
 
