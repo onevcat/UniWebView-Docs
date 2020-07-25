@@ -11,25 +11,26 @@ It boosts your development process dramatically when you need to show an announc
 ### Web Content Browsing
 
 - [HTTP and HTTPS pages](/api/#load)
-- [Local Files](./loading-local-files.md)
-- [Presenting and Dismissing](./transition.md)
-- [Size and Position](./position-and-size.md)
+- [Local Files](loading-local-files.md)
+- [Presenting and Dismissing](transition.md)
+- [Size and Position](position-and-size.md)
 - [Loading Events](/api/#events-summary)
-- [Safe Browsing Mode](./safe-browsing.md)
+- [Safe Browsing Mode](safe-browsing.md)
 
 ### Interaction with Web Page
 
-- Built-in Toolbar
-- Page Navigation
-- Messaging System
+- [Built-in Toolbar]()
+- [Full JavaScript Support](using-javascript.md)
+- [Messaging System](messaging-system.md)
 
-### Resources
+### Other Tasks
 
-- Videos, inline or full-screen
-- Image Picking & Uploading
-- User Agent & Cookie
-- Full Log & Debugging
-- Much more ...
+- [Videos, inline or full-screen](playing-videos.md)
+- [Image Picking & Uploading](uploading.md)
+- [User Agent & Cookie](/api/#setuseragent)
+- [Full Log & Debugging](debugging.md)
+
+And much more. Please check the [full API Reference](/api).
 
 ## Supported Platforms
 
