@@ -1263,6 +1263,9 @@ This method is only for iOS, since there is no toolbar on Android.
 [[Methods.badges]]
 name = "iOS"
 color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
 [[Methods.parameters]]
 name = "show"
 type = "bool"
