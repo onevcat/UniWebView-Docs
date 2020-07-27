@@ -14,7 +14,7 @@ as well as receive a message from the web view.
 
 <table>
 <tr><td><div class='api-summary-heading'><a href='#frame'><span class='return-type'>Rect</span> Frame { get; set; }</a></div></td><td><div class='simple-summary'>
-<p>Get or Set the frame of current web view.</p>
+<p>Gets or sets the frame of current web view.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#referencerecttransform'><span class='return-type'>RectTransform</span> ReferenceRectTransform { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>A reference rect transform which the web view should change its position and size to.</p>
@@ -45,6 +45,9 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onpagefinished'><span class='return-type'>event</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view finished to load a url successfully.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onpageprogresschanged'><span class='return-type'>event</span> OnPageProgressChanged(UniWebView webView, float progress)</a></div></td><td><div class='simple-summary'>
+<p>Raised when the loading progress value changes in current web view.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onpageerrorreceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
 <p>Raised when an error encountered during the loading process.</p>
 </div>
@@ -54,14 +57,14 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onshouldclose'><span class='return-type'>event bool</span> OnShouldClose(UniWebView webView)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view is about to close itself.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onkeycodereceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a></div></td><td><div class='simple-summary'>
-<p>Raised when a key (like back button or volume up) on the device is pressed.</p>
-</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onorientationchanged'><span class='return-type'>event</span> OnOrientationChanged(UniWebView webView, ScreenOrientation orientation)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the screen orientation is changed.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onwebcontentprocessterminated'><span class='return-type'>event</span> OnWebContentProcessTerminated(UniWebView webView)</a></div></td><td><div class='simple-summary'>
 <p>Raised when on iOS, when system calls <code>webViewWebContentProcessDidTerminate</code> method.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onkeycodereceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a></div></td><td><div class='simple-summary'>
+<p>Raised when a key (like back button or volume up) on the device is pressed.</p>
 </div>
 </td></tr></table>
 
@@ -69,10 +72,10 @@ as well as receive a message from the web view.
 
 <table>
 <tr><td><div class='api-summary-heading'><a href='#load'><span class='return-type'>void</span> Load(string url, bool skipEncoding, string readAccessURL)</a></div></td><td><div class='simple-summary'>
-<p>Load a url in current web view.</p>
+<p>Loads a url in current web view.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#loadhtmlstring'><span class='return-type'>void</span> LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
-<p>Load an HTML string in current web view.</p>
+<p>Loads an HTML string in current web view.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#reload'><span class='return-type'>void</span> Reload()</a></div></td><td><div class='simple-summary'>
 <p>Reloads the current page.</p>
@@ -99,7 +102,7 @@ as well as receive a message from the web view.
 <p>Animates the web view from current <code>Frame</code> (position and size) to another <code>Frame</code> (position and size) within <code>duration</code>.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#updateframe'><span class='return-type'>void</span> UpdateFrame()</a></div></td><td><div class='simple-summary'>
-<p>Update and set current frame of web view to match the setting.</p>
+<p>Updates and sets current frame of web view to match the setting.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#addjavascript'><span class='return-type'>void</span> AddJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div></td><td><div class='simple-summary'>
 <p>Adds a JavaScript to current page.</p>
@@ -133,10 +136,10 @@ as well as receive a message from the web view.
 are added to the adjusted content inset.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowautoplay'><span class='return-type'>void</span> SetAllowAutoPlay(bool flag)</a></div></td><td><div class='simple-summary'>
-<p>Set allow auto-play for current web view.</p>
+<p>Sets allow auto-play for current web view.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowinlineplay'><span class='return-type'>void</span> SetAllowInlinePlay(bool flag)</a></div></td><td><div class='simple-summary'>
-<p>Set allow inline play for current web view.</p>
+<p>Sets allow inline play for current web view.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setjavascriptenabled'><span class='return-type'>void</span> SetJavaScriptEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether JavaScript should be enabled in current web view.</p>
@@ -157,7 +160,7 @@ are added to the adjusted content inset.</p>
 <p>Sets whether the drag interaction should be enabled on iOS.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#cleancache'><span class='return-type'>void</span> CleanCache()</a></div></td><td><div class='simple-summary'>
-<p>Clean web view cache.</p>
+<p>Cleans web view cache.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#clearcookies'><span class='return-type'>void</span> ClearCookies()</a></div></td><td><div class='simple-summary'>
 <p>Clear all cookies from web views.</p>
@@ -214,8 +217,17 @@ hides the status bar and navigation bar with a sticky style.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbardonebuttontext'><span class='return-type'>void</span> SetToolbarDoneButtonText(string text)</a></div></td><td><div class='simple-summary'>
 <p>Sets the done button text in toolbar.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbargobackbuttontext'><span class='return-type'>void</span> SetToolbarGoBackButtonText(string text)</a></div></td><td><div class='simple-summary'>
+<p>Sets the go back button text in toolbar.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbargoforwardbuttontext'><span class='return-type'>void</span> SetToolbarGoForwardButtonText(string text)</a></div></td><td><div class='simple-summary'>
+<p>Sets the go forward button text in toolbar.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setshowtoolbarnavigationbuttons'><span class='return-type'>void</span> SetShowToolbarNavigationButtons(bool show)</a></div></td><td><div class='simple-summary'>
 <p>Sets the visibility of navigation buttons, such as &quot;Go Back&quot; and &quot;Go Forward&quot;, on toolbar.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbartintcolor'><span class='return-type'>void</span> SetToolbarTintColor(Color color)</a></div></td><td><div class='simple-summary'>
+<p>Sets the background tint color for the toolbar.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setuserinteractionenabled'><span class='return-type'>void</span> SetUserInteractionEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view can receive user interaction or not.</p>
@@ -251,7 +263,7 @@ HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Get or Set the frame of current web view. The value is based on current <code>Screen.width</code> and <code>Screen.height</code>.
+<p>Gets or sets the frame of current web view. The value is based on current <code>Screen.width</code> and <code>Screen.height</code>.
 The first two values of <code>Rect</code> is <code>x</code> and <code>y</code> position and the followed two <code>width</code> and <code>height</code>. The original point is 
 top left corner:</p>
 <p><img src="https://docs.unity3d.com/StaticFiles/ScriptRefImages/RectXY.svg" alt=""></p>
@@ -372,7 +384,7 @@ webView<span class="token punctuation">.</span>BackgroundColor <span class="toke
     <div class='desc'>
       <div class='summary'>
 <p>Gets or sets the alpha value of the whole web view.</p>
-<p>You could make the game scene behind web view visible to make the web view transparent.</p>
+<p>You can make the game scene behind web view visible to make the web view transparent.</p>
 <p>The default value is <code>1.0f</code>, which means totally opaque. Set it to <code>0.0f</code> will make the web view totally transparent.</p>
 </div>
             <div class='example'>
@@ -407,7 +419,7 @@ webView<span class="token punctuation">.</span>Alpha <span class="token operator
   </li>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
-    <div class='parameter-item-desc'><p>The url which the web view begins to load.</p>
+    <div class='parameter-item-desc'><p>The url which the web view is about to load.</p>
 </div>
   </li>
 </ul></div>
@@ -433,7 +445,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
     <div class='desc'>
       <div class='summary'>
 <p>Raised when the web view finished to load a url successfully.</p>
-<p>This method will be invoked when a valid response received from the URL, regardless the response status.
+<p>This method will be invoked when a valid response received from the URL, regardless of the response status.
 If a URL loading fails before reaching to the server and getting a response, <code>OnPageErrorReceived</code> will be 
 raised instead.</p>
 </div>
@@ -487,12 +499,54 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
+  <div class="api-anchor" id='onpageprogresschanged'></div><div class='api-heading' data-id='onpageprogresschanged'><a href='#onpageprogresschanged'><span class='return-type'>event</span> OnPageProgressChanged(UniWebView webView, float progress)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the loading progress value changes in current web view.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>progress</span></div>
+    <div class='parameter-item-desc'><p>A value indicates the loading progress of current page. It is a value between 0.0f and 1.0f.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnPageProgressChanged <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> progress<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Progress: "</span> <span class="token operator">+</span> progress<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span />
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://uniwebview.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment" spellcheck="true">// => "Progress: 0.1"</span>
+<span class="token comment" spellcheck="true">// => "Progress: 0.3"</span>
+<span class="token comment" spellcheck="true">// => "Progress: 0.52"</span>
+<span class="token comment" spellcheck="true">// => "Progress: 0.87"</span>
+<span class="token comment" spellcheck="true">// => "Progress: 1.0"</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class="api-anchor" id='onpageerrorreceived'></div><div class='api-heading' data-id='onpageerrorreceived'><a href='#onpageerrorreceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
 <p>Raised when an error encountered during the loading process. 
-Such as host not found or no Internet connection will raise this event.</p>
+Such as the &quot;host not found&quot; error or &quot;no Internet connection&quot; error will raise this event.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -504,7 +558,7 @@ Such as host not found or no Internet connection will raise this event.</p>
   </li>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>errorCode</span></div>
-    <div class='parameter-item-desc'><p>The error code which indicates the error type. It is different from systems and platforms.</p>
+    <div class='parameter-item-desc'><p>The error code which indicates the error type. It can be different from systems and platforms.</p>
 </div>
   </li>
   <li>
@@ -521,7 +575,7 @@ Such as host not found or no Internet connection will raise this event.</p>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Error."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span />
-webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://onevcat-not-existing.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://site-not-existing.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => "Error."</span>
 <span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"unknown://host?param1=value1&amp;param2=value2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -543,7 +597,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 <p>Raised when a message from web view is received. </p>
 <p>Generally, the message comes from a navigation to a scheme which is observed by current web view. You could use <code>AddUrlScheme</code> and 
 <code>RemoveUrlScheme</code> to manipulate the scheme list.</p>
-<p>&quot;uniwebview://&quot; scheme is default in the list, so a clicking on link starts with &quot;uniwebview://&quot;
+<p>&quot;uniwebview://&quot; scheme is default in the list, so a clicking on link starting with &quot;uniwebview://&quot;
 will raise this event, if it is not removed.</p>
 </div>
             <div class='parameters'>
@@ -570,7 +624,9 @@ will raise this event, if it is not removed.</p>
     <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Args<span class="token punctuation">[</span><span class="token string">"param1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Args<span class="token punctuation">[</span><span class="token string">"param2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"uniwebview://host?param1=value1&amp;param2=value2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Run the JavaScript below in the web page:</span>
+<span class="token comment" spellcheck="true">// location.href = "uniwebview://host?param1=value1&amp;param2=value2"</span>
+<span />
 <span class="token comment" spellcheck="true">// => "uniwebview", "host", "value1", "value2"</span>
 <span />
 anotherWebView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
@@ -594,8 +650,10 @@ anotherWebView<span class="token punctuation">.</span><span class="token functio
     <div class='desc'>
       <div class='summary'>
 <p>Raised when the web view is about to close itself.</p>
-<p>This event is raised when the users close the web view by the Back button on Android, the Done button on iOS, or the Close button on Unity Editor. It gives a chance to make a final decision whether the web view should be closed and destroyed. You should also clean all related resources you created (such as a reference to
-the web view.)</p>
+<p>This event is raised when the users close the web view by the Back button on Android, 
+the Done button on iOS, or the Close button on Unity Editor. It gives a chance to make 
+a final decision whether the web view should be closed and destroyed. You can also clean 
+all related resources you created (such as a reference to the web view) in this event.</p>
 <p>If this event is not listened and implemented, the web view will be closed and destroyed by default when
 it needed.</p>
 </div>
@@ -631,44 +689,6 @@ it needed.</p>
 <span class="token comment" spellcheck="true">// Make the web view there without being closed</span>
 webView<span class="token punctuation">.</span>OnShouldClose <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre>
-</div>
-</div>
-    </div>
-  </div>
-</div>
-<div class='api-box method'>
-  <div class="api-anchor" id='onkeycodereceived'></div><div class='api-heading' data-id='onkeycodereceived'><a href='#onkeycodereceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a><div class='api-badge api-badge-green'>Android</div></div>
-  <div class='api-body'>
-    <div class='desc'>
-      <div class='summary'>
-<p>Raised when a key (like back button or volume up) on the device is pressed.</p>
-<p>This event only raised on Android. It is useful when you disabled the back button but still need to get the back button event. On iOS, user&#39;s key action is not available and this event will never be 
-raised.</p>
-</div>
-            <div class='parameters'>
-<div class='section-title'>Parameters</div>
-<div class='parameter-item-list'><ul>
-  <li>
-    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
-    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
-</div>
-  </li>
-  <li>
-    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>keyCode</span></div>
-    <div class='parameter-item-desc'><p>The key code of pressed key. See <a href="https://developer.android.com/reference/android/view/KeyEvent.html#KEYCODE_0">Android API for keycode</a> to know the possible values.</p>
-</div>
-  </li>
-</ul></div>
-</div>
-            <div class='example'>
-    <p class='example-title'>Example</p>
-<div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnKeyCodeReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> keyCode<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>keyCode <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Back Button was clicked."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
@@ -748,6 +768,60 @@ webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <sp
     </div>
   </div>
 </div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onkeycodereceived'></div><div class='api-heading' data-id='onkeycodereceived'><a href='#onkeycodereceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when a key (like back button or volume up) on the device is pressed.</p>
+<p>This event only raised on Android. It is useful when you disabled the back button but still need to get the back button event. On iOS, user&#39;s key action is not available and this event will never be 
+raised.</p>
+</div>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        This event is deprecated from version 4.0. Now UniWebView never intercepts device key code events. 
+So this event will be never raise anymore. Check <code>Input.GetKeyUp</code> in <code>Update()</code> instead.
+
+  </p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>keyCode</span></div>
+    <div class='parameter-item-desc'><p>The key code of pressed key. See <a href="https://developer.android.com/reference/android/view/KeyEvent.html#KEYCODE_0">Android API for keycode</a> to know the possible values.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// DON'T DO IT.</span>
+<span class="token comment" spellcheck="true">// webView.OnKeyCodeReceived += (view, keyCode) => {</span>
+<span class="token comment" spellcheck="true">//     if (keyCode == 4) {</span>
+<span class="token comment" spellcheck="true">//         Debug.Log("Back Button was clicked.");</span>
+<span class="token comment" spellcheck="true">//     }</span>
+<span class="token comment" spellcheck="true">// };</span>
+<span />
+<span class="token comment" spellcheck="true">// Check Input in Update():</span>
+<span class="token keyword">void</span> <span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>Input<span class="token punctuation">.</span><span class="token function">GetKeyUp</span><span class="token punctuation">(</span>KeyCode<span class="token punctuation">.</span>Escape<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Back Button was clicked."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
 
 ### Methods
 
@@ -756,14 +830,14 @@ webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <sp
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Load a url in current web view.</p>
+<p>Loads a url in current web view.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
-    <div class='parameter-item-desc'><p>The url to be loaded. This url should start with <code>http://</code> or <code>https://</code> scheme. You could even load a non-ascii url text if it is valid.</p>
+    <div class='parameter-item-desc'><p>The url to be loaded. This url should start with <code>http://</code> or <code>https://</code> scheme, or retrieved from the path methods in <code>UniWebViewHelper</code>.</p>
 </div>
   </li>
   <li>
@@ -787,9 +861,9 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 <span class="token comment" spellcheck="true">// Load a URL which is already escaped.</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com?email=support%40uniwebview.com"</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
-<span class="token comment" spellcheck="true">// Load a local file, with "local_app_folder/root/" as its read access path.</span>
-<span class="token keyword">var</span> indexURL <span class="token operator">=</span> <span class="token string">"file://"</span> <span class="token operator">+</span> <span class="token string">"/local_app_folder/root/page/index.html"</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> accessURL <span class="token operator">=</span> <span class="token string">"file://"</span> <span class="token operator">+</span> <span class="token string">"/local_app_folder/root/"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Load a local file, with "local_app_folder/root/images/" as its read access path.</span>
+<span class="token keyword">var</span> indexURL <span class="token operator">=</span> UniWebViewHelper<span class="token punctuation">.</span><span class="token function">StreamingAssetURLForPath</span><span class="token punctuation">(</span><span class="token string">"local_app_folder/root/page/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> accessURL <span class="token operator">=</span> UniWebViewHelper<span class="token punctuation">.</span><span class="token function">StreamingAssetURLForPath</span><span class="token punctuation">(</span><span class="token string">"/local_app_folder/root/images/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>indexURL<span class="token punctuation">,</span> <span class="token keyword">false</span><span class="token punctuation">,</span> accessURL<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
@@ -802,7 +876,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Load an HTML string in current web view.</p>
+<p>Loads an HTML string in current web view.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -952,7 +1026,7 @@ showing finishes.</p>
   </li>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>duration</span></div>
-    <div class='parameter-item-desc'><p>Duration of showing animation. Default is <code>0.4f</code>.</p>
+    <div class='parameter-item-desc'><p>Duration of the showing animation. Default is <code>0.4f</code>.</p>
 </div>
   </li>
   <li>
@@ -1000,7 +1074,7 @@ hiding finishes.</p>
       <div class='warning custom-block'>
   <p class="custom-block-title">NOTICE</p>
   <p>
-        Hiding the web view does not destroy or release it. You could always call <code>Show</code> on the web view again to make it visible.
+        Hiding the web view does not destroy or release it. You can always call <code>Show</code> on the web view again to make it visible.
 
 To release a web view and its resource, pass the web view component as the parameter of <code>Destroy</code>.
 
@@ -1110,7 +1184,7 @@ webView<span class="token punctuation">.</span><span class="token function">Anim
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Update and set current frame of web view to match the setting.</p>
+<p>Updates and sets current frame of web view to match the setting.</p>
 <p>This is useful if the <code>referenceRectTransform</code> is changed and you need to sync the frame change
 to the web view. This method follows the frame determining rules.</p>
 </div>
@@ -1497,9 +1571,9 @@ webView<span class="token punctuation">.</span><span class="token function">SetC
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Set allow auto-play for current web view. By default, 
+<p>Sets allow auto-play for current web view. By default, 
 users need to touch the play button to start playing a media resource.</p>
-<p>By setting this to <code>true</code>, you could start the playing automatically through
+<p>By setting this to <code>true</code>, you can start the playing automatically through
 corresponding media <a href="https://www.w3schools.com/tags/att_video_autoplay.asp">tag attributes</a>.</p>
 </div>
       <div class='warning custom-block'>
@@ -1540,7 +1614,7 @@ webView<span class="token punctuation">.</span><span class="token function">Show
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Set allow inline play for current web view. By default, on iOS, the video 
+<p>Sets allow inline play for current web view. By default, on iOS, the video 
 can only be played in a new full screen view.</p>
 <p>By setting this to <code>true</code>, you could play a video inline the page, instead of opening 
 a new full-screen window.</p>
@@ -1783,7 +1857,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetD
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Clean web view cache. This removes cached local data of web view.</p>
+<p>Cleans web view cache. This removes cached local data of web view.</p>
 <p>If you need to clear all cookies, use <code>ClearCookies</code> instead.</p>
 </div>
                             </div>
@@ -2287,6 +2361,64 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
   </div>
 </div>
 <div class='api-box method'>
+  <div class="api-anchor" id='settoolbargobackbuttontext'></div><div class='api-heading' data-id='settoolbargobackbuttontext'><a href='#settoolbargobackbuttontext'><span class='return-type'>void</span> SetToolbarGoBackButtonText(string text)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the go back button text in toolbar.</p>
+<p>By default, UniWebView will show a back arrow at the left side in the toolbar. You could change its text.</p>
+<p>This method is only for iOS and macOS Editor, since there is no toolbar on Android.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>text</span></div>
+    <div class='parameter-item-desc'><p>The text needed to be set as go back button.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">SetToolbarGoBackButtonText</span><span class="token punctuation">(</span><span class="token string">"返回"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='settoolbargoforwardbuttontext'></div><div class='api-heading' data-id='settoolbargoforwardbuttontext'><a href='#settoolbargoforwardbuttontext'><span class='return-type'>void</span> SetToolbarGoForwardButtonText(string text)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the go forward button text in toolbar.</p>
+<p>By default, UniWebView will show a forward arrow at the left side in the toolbar. You could change its text.</p>
+<p>This method is only for iOS and macOS Editor, since there is no toolbar on Android.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>text</span></div>
+    <div class='parameter-item-desc'><p>The text needed to be set as go forward button.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">SetToolbarGoForwardButtonText</span><span class="token punctuation">(</span><span class="token string">"前进"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class="api-anchor" id='setshowtoolbarnavigationbuttons'></div><div class='api-heading' data-id='setshowtoolbarnavigationbuttons'><a href='#setshowtoolbarnavigationbuttons'><span class='return-type'>void</span> SetShowToolbarNavigationButtons(bool show)</a><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
@@ -2303,6 +2435,29 @@ model is not for your case, call this method with <code>false</code> as <code>sh
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>show</span></div>
     <div class='parameter-item-desc'><p>Whether the navigation buttons on the toolbar should show or hide.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='settoolbartintcolor'></div><div class='api-heading' data-id='settoolbartintcolor'><a href='#settoolbartintcolor'><span class='return-type'>void</span> SetToolbarTintColor(Color color)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the background tint color for the toolbar.</p>
+<p>By default, UniWebView uses a default half-transparent iOS standard background for toolbar.
+You can change it by setting a new opaque color.</p>
+<p>This method is only for iOS, since there is no toolbar on Android.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>Color</span> <span class='parameter-item-name'>color</span></div>
+    <div class='parameter-item-desc'><p>The color should be used for the background tint of the toolbar.</p>
 </div>
   </li>
 </ul></div>

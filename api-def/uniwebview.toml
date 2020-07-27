@@ -10,7 +10,7 @@ as well as receive a message from the web view.
 name = "Frame"
 returnType = "Rect"
 hasSetter = true
-summary = """Get or Set the frame of current web view. The value is based on current `Screen.width` and `Screen.height`.
+summary = """Gets or sets the frame of current web view. The value is based on current `Screen.width` and `Screen.height`.
 The first two values of `Rect` is `x` and `y` position and the followed two `width` and `height`. The original point is 
 top left corner:
 
@@ -106,7 +106,7 @@ hasSetter = true
 summary = """
 Gets or sets the alpha value of the whole web view.
 
-You could make the game scene behind web view visible to make the web view transparent.
+You can make the game scene behind web view visible to make the web view transparent.
 
 The default value is `1.0f`, which means totally opaque. Set it to `0.0f` will make the web view totally transparent.
 """
@@ -121,7 +121,7 @@ webView.Alpha = 0.5f;
 name = "Load"
 syntax = "Load(string url, bool skipEncoding, string readAccessURL)"
 returnType = "void"
-summary = "Load a url in current web view."
+summary = "Loads a url in current web view."
 example = """
 ```csharp
 // Load a URL.
@@ -130,16 +130,16 @@ webView.Load("https://example.com");
 // Load a URL which is already escaped.
 webView.Load("https://example.com?email=support%40uniwebview.com", true);
 
-// Load a local file, with "local_app_folder/root/" as its read access path.
-var indexURL = "file://" + "/local_app_folder/root/page/index.html";
-var accessURL = "file://" + "/local_app_folder/root/";
+// Load a local file, with "local_app_folder/root/images/" as its read access path.
+var indexURL = UniWebViewHelper.StreamingAssetURLForPath("local_app_folder/root/page/index.html");
+var accessURL = UniWebViewHelper.StreamingAssetURLForPath("/local_app_folder/root/images/");
 webView.Load(indexURL, false, accessURL);
 ```
 """
 [[Methods.parameters]]
 name = "url"
 type = "string"
-summary = "The url to be loaded. This url should start with `http://` or `https://` scheme. You could even load a non-ascii url text if it is valid."
+summary = "The url to be loaded. This url should start with `http://` or `https://` scheme, or retrieved from the path methods in `UniWebViewHelper`."
 [[Methods.parameters]]
 name = "skipEncoding"
 type = "bool"
@@ -153,7 +153,7 @@ summary = "The URL to allow read access to. This parameter is only used when loa
 name = "LoadHTMLString"
 syntax = "LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)"
 returnType = "void"
-summary = "Load an HTML string in current web view."
+summary = "Loads an HTML string in current web view."
 example = """
 ```csharp
 webView.LoadHTMLString("<p>Hello World</p>", "https://domain.com");
@@ -277,7 +277,7 @@ summary = "The edge from which the web view showing. It simulates a modal effect
 [[Methods.parameters]]
 name = "duration"
 type = "float"
-summary = "Duration of showing animation. Default is `0.4f`."
+summary = "Duration of the showing animation. Default is `0.4f`."
 [[Methods.parameters]]
 name = "completionHandler"
 type = "Action"
@@ -295,7 +295,7 @@ If you pass `false` and `UniWebViewTransitionEdge.None` to the first two paramet
 Regardless there is an animation or not, the `completionHandler` will be called if not `null` when the web view
 hiding finishes.
 """
-notice = """Hiding the web view does not destroy or release it. You could always call `Show` on the web view again to make it visible.
+notice = """Hiding the web view does not destroy or release it. You can always call `Show` on the web view again to make it visible.
 
 To release a web view and its resource, pass the web view component as the parameter of `Destroy`.
 """
@@ -370,7 +370,7 @@ name = "UpdateFrame"
 syntax = "UpdateFrame()"
 returnType = "void"
 summary = """
-Update and set current frame of web view to match the setting.
+Updates and sets current frame of web view to match the setting.
 
 This is useful if the `referenceRectTransform` is changed and you need to sync the frame change
 to the web view. This method follows the frame determining rules.
@@ -641,10 +641,10 @@ syntax = "SetAllowAutoPlay(bool flag)"
 returnType = "void"
 
 summary = """
-Set allow auto-play for current web view. By default, 
+Sets allow auto-play for current web view. By default, 
 users need to touch the play button to start playing a media resource.
 
-By setting this to `true`, you could start the playing automatically through
+By setting this to `true`, you can start the playing automatically through
 corresponding media [tag attributes](https://www.w3schools.com/tags/att_video_autoplay.asp).
 """
 notice = "You need to set it before creating a web view. Existing web views are not affected."
@@ -675,7 +675,7 @@ name = "SetAllowInlinePlay"
 syntax = "SetAllowInlinePlay(bool flag)"
 returnType = "void"
 summary = """
-Set allow inline play for current web view. By default, on iOS, the video 
+Sets allow inline play for current web view. By default, on iOS, the video 
 can only be played in a new full screen view.
 
 By setting this to `true`, you could play a video inline the page, instead of opening 
@@ -873,7 +873,7 @@ color = "orange"
 name = "CleanCache"
 syntax = "CleanCache()"
 returnType = "void"
-summary = "Clean web view cache. This removes cached local data of web view.\n\nIf you need to clear all cookies, use `ClearCookies` instead."
+summary = "Cleans web view cache. This removes cached local data of web view.\n\nIf you need to clear all cookies, use `ClearCookies` instead."
 
 [[Methods]]
 name = "ClearCookies"
@@ -1248,6 +1248,60 @@ type = "string"
 summary = "The text needed to be set as done button title."
 
 [[Methods]]
+name = "SetToolbarGoBackButtonText"
+syntax = "SetToolbarGoBackButtonText(string text)"
+returnType = "void"
+summary = """
+Sets the go back button text in toolbar.
+
+By default, UniWebView will show a back arrow at the left side in the toolbar. You could change its text.
+
+This method is only for iOS and macOS Editor, since there is no toolbar on Android.
+"""
+example = """
+```csharp
+webView.SetToolbarGoBackButtonText("返回");
+```
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+[[Methods.parameters]]
+name = "text"
+type = "string"
+summary = "The text needed to be set as go back button."
+
+[[Methods]]
+name = "SetToolbarGoForwardButtonText"
+syntax = "SetToolbarGoForwardButtonText(string text)"
+returnType = "void"
+summary = """
+Sets the go forward button text in toolbar.
+
+By default, UniWebView will show a forward arrow at the left side in the toolbar. You could change its text.
+
+This method is only for iOS and macOS Editor, since there is no toolbar on Android.
+"""
+example = """
+```csharp
+webView.SetToolbarGoForwardButtonText("前进");
+```
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+[[Methods.parameters]]
+name = "text"
+type = "string"
+summary = "The text needed to be set as go forward button."
+
+[[Methods]]
 name = "SetShowToolbarNavigationButtons"
 syntax = "SetShowToolbarNavigationButtons(bool show)"
 returnType = "void"
@@ -1270,6 +1324,46 @@ color = "purple"
 name = "show"
 type = "bool"
 summary = "Whether the navigation buttons on the toolbar should show or hide."
+
+[[Methods]]
+name = "SetToolbarTintColor"
+syntax = "SetToolbarTintColor(Color color)"
+returnType = "void"
+summary = """
+Sets the background tint color for the toolbar.
+
+By default, UniWebView uses a default half-transparent iOS standard background for toolbar.
+You can change it by setting a new opaque color.
+
+This method is only for iOS, since there is no toolbar on Android.
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = "The color should be used for the background tint of the toolbar."
+
+[[Methods]]
+name = "SetToolbarTextColor"
+syntax = "SetToolbarTextColor(Color color)"
+returnType = "void"
+summary = """
+Sets the button text color for the toolbar.
+
+By default, UniWebView uses the default text color on iOS, which is blue for most cases.
+You can change it by setting a new opaque color.
+
+This method is only for iOS, since there is no toolbar on Android.
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = "The color should be used for the button text of the toolbar."
 
 [[Methods]]
 name = "SetUserInteractionEnabled"
@@ -1494,7 +1588,7 @@ summary = "The web view component which raises this event."
 [[Events.parameters]]
 name = "url"
 type = "string"
-summary = "The url which the web view begins to load."
+summary = "The url which the web view is about to load."
 
 [[Events]]
 name = "OnPageFinished"
@@ -1503,7 +1597,7 @@ returnType = "event"
 summary = """
 Raised when the web view finished to load a url successfully.
 
-This method will be invoked when a valid response received from the URL, regardless the response status.
+This method will be invoked when a valid response received from the URL, regardless of the response status.
 If a URL loading fails before reaching to the server and getting a response, `OnPageErrorReceived` will be 
 raised instead.
 """
@@ -1541,12 +1635,43 @@ type = "string"
 summary = "The url which the web view begins to load."
 
 [[Events]]
+name = "OnPageProgressChanged"
+syntax = "OnPageProgressChanged(UniWebView webView, float progress)"
+returnType = "event"
+summary = """
+Raised when the loading progress value changes in current web view.
+"""
+example = """
+```csharp
+webView.OnPageProgressChanged += (view, progress) => {
+    Debug.Log("Progress: " + progress);
+};
+
+webView.Load("https://uniwebview.com/");
+
+// => "Progress: 0.1"
+// => "Progress: 0.3"
+// => "Progress: 0.52"
+// => "Progress: 0.87"
+// => "Progress: 1.0"
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "progress"
+type = "float"
+summary = "A value indicates the loading progress of current page. It is a value between 0.0f and 1.0f."
+
+[[Events]]
 name = "OnPageErrorReceived"
 syntax = "OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)"
 returnType = "event"
 summary = """
 Raised when an error encountered during the loading process. 
-Such as host not found or no Internet connection will raise this event.
+Such as the "host not found" error or "no Internet connection" error will raise this event.
 """
 example = """
 ```csharp
@@ -1554,7 +1679,7 @@ webView.OnPageErrorReceived += (view, error, message) => {
     print("Error.");
 };
 
-webView.Load("https://onevcat-not-existing.com/");
+webView.Load("https://site-not-existing.com/");
 // => "Error."
 
 webView.Load("unknown://host?param1=value1&param2=value2");
@@ -1571,7 +1696,7 @@ summary = "The web view component which raises this event."
 [[Events.parameters]]
 name = "errorCode"
 type = "int"
-summary = "The error code which indicates the error type. It is different from systems and platforms."
+summary = "The error code which indicates the error type. It can be different from systems and platforms."
 [[Events.parameters]]
 name = "url"
 type = "string"
@@ -1587,7 +1712,7 @@ Raised when a message from web view is received.
 Generally, the message comes from a navigation to a scheme which is observed by current web view. You could use `AddUrlScheme` and 
 `RemoveUrlScheme` to manipulate the scheme list.
 
-"uniwebview://" scheme is default in the list, so a clicking on link starts with "uniwebview://"
+"uniwebview://" scheme is default in the list, so a clicking on link starting with "uniwebview://"
 will raise this event, if it is not removed.
 """
 example = """
@@ -1598,7 +1723,9 @@ webView.OnMessageReceived += (view, message) => {
     print(message.Args["param1"]);
     print(message.Args["param2"]);
 }
-webView.Load("uniwebview://host?param1=value1&param2=value2");
+// Run the JavaScript below in the web page:
+// location.href = "uniwebview://host?param1=value1&param2=value2"
+
 // => "uniwebview", "host", "value1", "value2"
 
 anotherWebView.OnMessageReceived += (view, message) => {
@@ -1628,8 +1755,10 @@ returnType = "event bool"
 summary = """
 Raised when the web view is about to close itself.
 
-This event is raised when the users close the web view by the Back button on Android, the Done button on iOS, or the Close button on Unity Editor. It gives a chance to make a final decision whether the web view should be closed and destroyed. You should also clean all related resources you created (such as a reference to
-the web view.)
+This event is raised when the users close the web view by the Back button on Android, 
+the Done button on iOS, or the Close button on Unity Editor. It gives a chance to make 
+a final decision whether the web view should be closed and destroyed. You can also clean 
+all related resources you created (such as a reference to the web view) in this event.
 
 If this event is not listened and implemented, the web view will be closed and destroyed by default when
 it needed.
@@ -1660,37 +1789,6 @@ webView.OnShouldClose += (view) => {
 name = "webView"
 type = "UniWebView"
 summary = "The web view component which raises this event."
-
-[[Events]]
-name = "OnKeyCodeReceived"
-syntax = "OnKeyCodeReceived(UniWebView webView, int keyCode)"
-returnType = "event"
-summary = """
-Raised when a key (like back button or volume up) on the device is pressed.
-
-This event only raised on Android. It is useful when you disabled the back button but still need to get the back button event. On iOS, user's key action is not available and this event will never be 
-raised.
-"""
-example = """
-```csharp
-webView.OnKeyCodeReceived += (view, keyCode) => {
-    if (keyCode == 4) {
-        print("Back Button was clicked.");
-    }
-};
-```
-"""
-[[Events.badges]]
-name = "Android"
-color = "green"
-[[Events.parameters]]
-name = "webView"
-type = "UniWebView"
-summary = "The web view component which raises this event."
-[[Events.parameters]]
-name = "keyCode"
-type = "int"
-summary = "The key code of pressed key. See [Android API for keycode](https://developer.android.com/reference/android/view/KeyEvent.html#KEYCODE_0) to know the possible values."
 
 [[Events]]
 name = "OnOrientationChanged"
@@ -1745,3 +1843,46 @@ color = "orange"
 name = "webView"
 type = "UniWebView"
 summary = "The web view component which raises this event."
+
+[[Events]]
+name = "OnKeyCodeReceived"
+syntax = "OnKeyCodeReceived(UniWebView webView, int keyCode)"
+returnType = "event"
+summary = """
+Raised when a key (like back button or volume up) on the device is pressed.
+
+This event only raised on Android. It is useful when you disabled the back button but still need to get the back button event. On iOS, user's key action is not available and this event will never be 
+raised.
+"""
+notice = """
+This event is deprecated from version 4.0. Now UniWebView never intercepts device key code events. 
+So this event will be never raise anymore. Check `Input.GetKeyUp` in `Update()` instead.
+"""
+example = """
+```csharp
+// DON'T DO IT.
+// webView.OnKeyCodeReceived += (view, keyCode) => {
+//     if (keyCode == 4) {
+//         Debug.Log("Back Button was clicked.");
+//     }
+// };
+
+// Check Input in Update():
+void Update() {
+    if (Input.GetKeyUp(KeyCode.Escape)) {
+        Debug.Log("Back Button was clicked.");
+    }
+}
+```
+"""
+[[Events.badges]]
+name = "Android"
+color = "green"
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "keyCode"
+type = "int"
+summary = "The key code of pressed key. See [Android API for keycode](https://developer.android.com/reference/android/view/KeyEvent.html#KEYCODE_0) to know the possible values."
