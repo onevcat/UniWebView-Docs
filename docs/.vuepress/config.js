@@ -29,12 +29,12 @@ module.exports = {
     ],
     sidebar: {
       "/guide/": [{
-          title: "Guide",
+          title: "Getting Started",
           collapsable: false,
           children: ["", "installation", "using-prefab", "working-with-code"]
         },
         {
-          title: "UniWebView In Depth",
+          title: "Common Tasks",
           collapsable: false,
           children: [
             "safe-browsing",
@@ -58,12 +58,12 @@ module.exports = {
           children: ["faq", "ticket"]
         },
         {
-          title: "Other",
+          title: "Resources",
           collapsable: false,
           children: [
             ["../api/", "API Reference"],
             "version-highlight",
-            ["migration-guide", "Migrating From 2.x"],
+            ["migration-guide", "Migrating From 3.x"],
             ["tos", "Term of Service"],
             "privacy",
             "../release-note/"
