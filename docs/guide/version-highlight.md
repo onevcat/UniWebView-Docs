@@ -1,72 +1,75 @@
 # Version Highlight
 
 ::: tip Upgrade Pricing
-If you have purchased UniWebView 2 before, we offer a discount on upgrade. For users purchased 
-UniWebView 2 from UniWebView Store, please visit our [home page](https://uniwebview.com/#prices) for more information.
-For Unity Asset Store users, you could login with your Asset Store and visit [our product page](https://www.assetstore.unity3d.com/#!/content/92605) 
-to find the Upgrade Price.
-:::
+If you have purchased UniWebView 3 before, we offer an upgrading discount.
 
-UniWebView 3 is rewritten from scratch. It contains more than 150 major and minor improvements 
-compared to its predecessor UniWebView 2. Here we will list a few of them to help you to 
-get an overview about what is improved.
+For users:
 
-### Main Activity Free
+- Purchased from our Gumroad Store - [Submit a ticket](https://onevcat.atlassian.net/servicedesk/customer/portal/2/group/2/create/10011) with your purchasing Email and we will send a coupon back.
+- Purchased from Unity Asset Store - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/175993)
+  to find the Upgrade Price.
+  :::
 
-On Android, UniWebView 2 requires its activity to be the main activity of your game, to get a workaround 
-for some internal Unity focus bugs. It could be quite hard to modify your existing "AndroidManifest.xml" 
-file, especially when you are already using some other third party activity as your main one. In UniWebView 3, 
-we worked really hard to adopt to a new mechanism to avoid it. At the same time, we ensured the web view keeps 
-fully functional.
+UniWebView 4 contains huge improvement and lots of fixes based on a rewritten structure compared to its predecessor UniWebView 3.
+Here we will list a few of them to help you to get an overview about what is improved.
 
-UniWebView 3 is now a non-invasion solution on Android. The integration is never easier. There are no steps like 
-resetting your main activity or recomping anymore. See our [Installation Guide](/latest/installation) to know how simple it could be!
+### Safe Browsing Mode
 
-### Modern Web View Component
+Safe Browsing Mode is an **out-of-the-box solution** to show the web page as it is in the browser. It
+wraps [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) on iOS
+and [Custom Tabs](https://developers.google.com/web/android/custom-tabs) on Android.
 
-UniWebView 3 is using the latest web view technology on both iOS and Android. 
+By adopting to Safe Browsing Mode, you can get a zero-configuration web browsing experience, with sharing cookies and
+certain credential information with the system browsers. Some platform features, such as Apple Pay or Google Sign-In,
+also require the Safe Browsing Mode to work properly.
 
-On iOS, we are providing you a fast and clean browsing experience powered by `WKWebView`. 
-The original `UIWebView` used in UniWebView 2 is marked as deprecated from iOS 8, which always takes more memory it needed
-and has some annoying shortcomings. The new `WKWebView` will use its own process so it is much easier to keep everything 
-in order. Additionally, the JavaScript underhood is mush faster and more powerful than it was.
+To know more about it, check the [Safe Browsing Mode](./safe-browsing.md) guide.
 
-On Andriod, the Chrome based `WebView` is adopted. It shares the same rendering engine and JavaScript engine with Chrome browser. 
-It supports remote debugging, vibration API and even more in the new version of web view.
+### Customizable Toolbar
 
-### Setting Position and Size based on Unity UI
+On iOS, the built-in toolbar is an important component for navigating. It is now fully customizable: text and color of
+the buttons, background color of the toolbar, and the state of the navigating buttons. It helps you create a better style
+of web browsing, matching your game design and providing a better immersive experience.
 
-In UniWebView, you need to set the positon and size of web view by calculating a set of inset from four sides of screen. 
-It was useful but sometimes, it is hard to get the correct value, especially when you were dealing with multiple resolutions.
+To know more about it, check the [Built-in Toolbar](./built-in-toolbar.md) guide.
 
-In UniWebView 3, we introduced a more intuitite way to set the position and size. It follows most popular mobile platforms to 
-define a rect for the web view's frame. Now you do not have to calculate the insets anymore, but set the value directly.
+### Non-injection Integration
 
-The better thing is, multiple resulutions are supported now. If you are using Unity UI to create a responsive UI for your game, 
-you are almost done. UniWebView now can refer to a UI element, get its position and size and then update its frame with the 
-reference UI.
+From Unity 2020.1, Unity changed its way of handling native tap events. It causes some problems in UniWebView 3, which was
+using a more invasion way to integrate to Unity on Android. In UniWebView 4, we rewrote the whole Android native part
+from scratch, to achieve the least affect to the original Unity scene.
 
-### API Redesigned
+This helps us to fix a few bugs that we cannot get work around in earlier versions, including:
 
-UniWebView 2 provided you a set of flexible APIs. In UniWebView 3, we did much better on API accuracy and naming convention 
-stability.
+- The soft keyboard is not overlapping on the text fields in the web view anymore.
+- Unity's setting of immersive mode and status bars is respected and no flickering.
+- You can click through from the outside of web view in Unity 2020.1 now. (Everything works as expected in earlier Unity versions.)
+- Focus can be switched between multiple web views now.
+- ...
 
-In the previous version, some JavaScript APIs are not easy to use. After you execute a JavaScript, you have to wait for the event be 
-raised and identify the invocation yourself. In UniWebView 3, all the JavaScript related APIs come with an `Action` parameter for 
-callback. That means you could use a lambda expressions and interact with these APIs with no effort. We also added more events to APIs like 
-`Show` or `Hide`, to help you take more accurate and refined control for your web view.
+Besides of these, some overheads can be also removed now, which helps to boost the performance by 10%~20% when rendering
+a complex page.
 
-### Better Editor Support
+### Less Permissions
 
-Currently, we pop up a standalone web view in macOS Unity Editor. Back to the age of UniWebView 2, we only support to render the web view in 
-the player tab. The old way is slow and difficult to interact with. Quite a few JavaScript features were not avaliable due to lack of web 
-view aniamtion.
+Android system is keeping introduces a more [reasonable](https://developer.android.com/guide/topics/permissions/overview) [permission model](https://developer.android.com/about/versions/10/privacy/changes). It gives us a chance to look back how UniWebView handles permissions.
 
-In UniWebView 3, by poping up a real web view, you now get a fully functional component when developing in Editor. It should improve your workflow and reduce the verifying effort drastically.
+UniWebView 3 requires the external write permission on Android to create some temporary files before uploading pictures.
+With the new disk access permission model in modern Android systems, it is not necessary any more in version 4. We also
+follows the best practice of permission request, to help your users start play your game as soon as possible. Now you can
+feel free to use the latest Android version as the target API Level.
+
+### Post Gradle Build
+
+Thanks to the [Gradle build system](https://gradle.org) which Unity started to fully support from 2018.3, UniWebView now uses
+it to configure your exported project. Instead of manipulating `AndroidManifest.xml` or `build.gradle` files yourself, now
+you can find the "UniWebView" tab in Unity's Preference panel (`Cmd+,`) to setup necessary permissions.
+
+UniWebView also use the post-build script to add dependencies. Integrating UniWebView to your project was never easier.
 
 ### Much More
 
-As we mentioned at start, we have more than 150 improvements and fixes in the new version. You can check our guides and 
-[API Documentation](/latest/api/overview) to know more. We strongly suggest you to upgrade to version 3 for a more 
-stable web view. We believe it would be good to free you from the detail of web page browsing and focus to your game 
-content. Hope you like UniWebView and it would be great if it could help you!
+Please check other guides in the side bar and the [API Documentation](/latest/api/overview) to know more about UniWebView.
+We strongly suggest you upgrade to the latest version for a more powerful and stable web view component.
+
+You can find other recent changes and all release logs in the [Release Note](../release-note) page.

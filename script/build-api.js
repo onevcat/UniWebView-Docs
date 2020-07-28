@@ -199,7 +199,7 @@ class Method extends Entry {
   }
 }
 
-class Event extends Method { }
+class Event extends Method {}
 
 function outputSummary(api) {
   var result = "### Summary\n\n";
@@ -291,6 +291,7 @@ function output(api) {
 const apiFolder = "./api-def";
 const allFiles = [
   "uniwebview.toml",
+  "uniwebviewsafebrowsing.toml",
   "uniwebviewmessage.toml",
   "uniwebviewnativelistener.toml",
   "uniwebviewnativeresultpayload.toml",

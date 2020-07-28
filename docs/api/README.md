@@ -6,8 +6,8 @@ sidebarDepth: 0
 
 ### Summary
 
-The main class of UniWebView. It represents a native web view and exposes a few APIs for you to use in 
-Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content, 
+The main class of UniWebView. It represents a native web view and exposes a few APIs for you to use in
+Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content,
 as well as receive a message from the web view.
 
 #### Properties Summary
@@ -228,6 +228,9 @@ hides the status bar and navigation bar with a sticky style.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbartintcolor'><span class='return-type'>void</span> SetToolbarTintColor(Color color)</a></div></td><td><div class='simple-summary'>
 <p>Sets the background tint color for the toolbar.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbartextcolor'><span class='return-type'>void</span> SetToolbarTextColor(Color color)</a></div></td><td><div class='simple-summary'>
+<p>Sets the button text color for the toolbar.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setuserinteractionenabled'><span class='return-type'>void</span> SetUserInteractionEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view can receive user interaction or not.</p>
@@ -2304,7 +2307,7 @@ parameters, you can control the animating and position of the toolbar. If the to
 </div>
   </li>
   <li>
-    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>opTop</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>onTop</span></div>
     <div class='parameter-item-desc'><p>Whether the toolbar should snap to top of screen or to bottom of screen. Default is <code>true</code></p>
 </div>
   </li>
@@ -2419,7 +2422,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setshowtoolbarnavigationbuttons'></div><div class='api-heading' data-id='setshowtoolbarnavigationbuttons'><a href='#setshowtoolbarnavigationbuttons'><span class='return-type'>void</span> SetShowToolbarNavigationButtons(bool show)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='setshowtoolbarnavigationbuttons'></div><div class='api-heading' data-id='setshowtoolbarnavigationbuttons'><a href='#setshowtoolbarnavigationbuttons'><span class='return-type'>void</span> SetShowToolbarNavigationButtons(bool show)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2466,6 +2469,29 @@ You can change it by setting a new opaque color.</p>
   </div>
 </div>
 <div class='api-box method'>
+  <div class="api-anchor" id='settoolbartextcolor'></div><div class='api-heading' data-id='settoolbartextcolor'><a href='#settoolbartextcolor'><span class='return-type'>void</span> SetToolbarTextColor(Color color)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the button text color for the toolbar.</p>
+<p>By default, UniWebView uses the default text color on iOS, which is blue for most cases.
+You can change it by setting a new opaque color.</p>
+<p>This method is only for iOS, since there is no toolbar on Android.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>Color</span> <span class='parameter-item-name'>color</span></div>
+    <div class='parameter-item-desc'><p>The color should be used for the button text of the toolbar.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class="api-anchor" id='setuserinteractionenabled'></div><div class='api-heading' data-id='setuserinteractionenabled'><a href='#setuserinteractionenabled'><span class='return-type'>void</span> SetUserInteractionEnabled(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
@@ -2500,7 +2526,7 @@ You could open Safari&#39;s developer tools to debug a web view on iOS.</p>
       <div class='warning custom-block'>
   <p class="custom-block-title">NOTICE</p>
   <p>
-        Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embedded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in the editor and never affect real devices. 
+        Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embedded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in the editor and never affect real devices.
 
 Please remember to disable this in your product build. This should be only used while development.
 
@@ -2721,4 +2747,3 @@ webView<span class="token punctuation">.</span><span class="token function">Scro
     </div>
   </div>
 </div>
-

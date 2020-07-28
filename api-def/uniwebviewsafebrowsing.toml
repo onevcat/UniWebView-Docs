@@ -1,0 +1,131 @@
+title = "UniWebViewSafeBrowsing"
+file = "uniwebviewsafebrowsing"
+
+summary = """
+UniWebView Safe Browsing provides a way for browsing the web content in a more browser-like way, such as Safari on 
+iOS and Chrome on Android.
+
+This class wraps `SFSafariViewController` on iOS and "Custom Tabs" on Android. It shares cookies, auto-fill 
+completion and other more data with the browser on device. Most of permissions are also built-in supported. You can
+use this class for some tasks that are limited for a normal web view, such as using Apple Pay or Progressive Web 
+Apps (PWA).
+
+You create a `UniWebViewSafeBrowsing` instance by calling the static `UniWebViewSafeBrowsing.Create` method with a
+destination URL. You cannot change this URL once the instance is created. To show the safe browsing, call `Show` on
+the instance. The web content will be displayed in full screen with a toolbar containing the loaded URL, as well
+as some basic controls like Go Back, Go Forward and Done. 
+
+Browsing web content in `UniWebViewSafeBrowsing` is only supported on iOS and Android. There is no such component in
+Unity Editor. Creating and showing a `UniWebViewSafeBrowsing` on Unity Editor will fall back to open the URL in 
+external browser by using Unity's `Application.OpenURL`.
+"""
+
+[[Methods]]
+name = "Create"
+syntax = "Create(string url)"
+returnType = "UniWebViewSafeBrowsing"
+summary = """
+Creates a new `UniWebViewSafeBrowsing` instance with a given URL.
+"""
+example = """
+```csharp
+var safeBrowsing = UniWebViewSafeBrowsing.Create("https://uniwebview.com");
+```
+"""
+[[Methods.parameters]]
+name = "url"
+type = "string"
+summary = """
+The URL to navigate to. The URL must use the `http` or `https` scheme.
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+
+[[Methods]]
+name = "Show"
+syntax = "Show()"
+returnType = "void"
+summary = """
+Shows the safe browsing content above current screen.
+"""
+example = """
+```csharp
+var safeBrowsing = UniWebViewSafeBrowsing.Create("https://uniwebview.com");
+safeBrowsing.Show();
+```
+"""
+
+[[Methods]]
+name = "SetToolbarColor"
+syntax = "SetToolbarColor(Color color)"
+returnType = "void"
+summary = """
+Sets the color for toolbar background in the safe browsing component. 
+
+The changes are ignored after `Show` method is called.
+"""
+example = """
+```csharp
+safeBrowsing.SetToolbarColor(Color.blue);
+```
+"""
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = """
+The color to tint the toolbar.
+"""
+
+[[Methods]]
+name = "SetToolbarItemColor"
+syntax = "SetToolbarItemColor(Color color)"
+returnType = "void"
+summary = """
+Sets the color for toolbar controls in the safe browsing component. 
+
+The changes are ignored after `Show` method is called.
+
+This method only works on iOS. On Android, the controls color is determined by system to keep a reasonable 
+contrast, based on the toolbar background color you provided in `SetToolbarColor`.
+"""
+example = """
+```csharp
+safeBrowsing.SetToolbarItemColor(Color.yellow);
+```
+"""
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = """
+The color to tint the controls on toolbar.
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+
+[[Events]]
+name = "OnSafeBrowsingFinished"
+syntax = "OnSafeBrowsingFinished(UniWebViewSafeBrowsing browsing)"
+returnType = "event"
+summary = """
+Raised when user dismisses safe browsing by tapping the Done button or Back button.
+
+The dismissed safe browsing instance will be invalid after this event being raised, and you should not use 
+it for another browsing purpose. Instead, create a new one for a new browsing session.
+"""
+notice = """
+This event will not happen in Unity Editor, because the whole `UniWebViewSafeBrowsing` will fall back to an 
+external browser.
+"""
+example = """
+```csharp
+safeBrowsing.OnSafeBrowsingFinished += (browsing) => { 
+    Debug.Log("UniWebViewSafeBrowsing closed.");
+};
+```
+"""
+[[Events.parameters]]
+name = "browsing"
+type = "UniWebViewSafeBrowsing"
+summary = "The `UniWebViewSafeBrowsing` object raised this event."

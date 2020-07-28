@@ -48,6 +48,7 @@ module.exports = {
             "playing-videos",
             "http-auth",
             "support-new-window",
+            "built-in-toolbar",
             "debugging"
           ]
         },
@@ -74,6 +75,7 @@ module.exports = {
         collapsable: false,
         children: [
           "",
+          "uniwebviewsafebrowsing",
           "uniwebviewmessage",
           "uniwebviewnativelistener",
           "uniwebviewnativeresultpayload",

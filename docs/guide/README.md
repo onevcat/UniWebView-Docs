@@ -19,7 +19,7 @@ It boosts your development process dramatically when you need to show an announc
 
 ### Interaction with Web Page
 
-- [Built-in Toolbar]()
+- [Built-in Toolbar](built-in-toolbar.md)
 - [Full JavaScript Support](using-javascript.md)
 - [Messaging System](messaging-system.md)
 

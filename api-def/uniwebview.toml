@@ -1215,7 +1215,7 @@ name = "animated"
 type = "bool"
 summary = "Whether the toolbar state changing should be with animation. Default is `false`."
 [[Methods.parameters]]
-name = "opTop"
+name = "onTop"
 type = "bool"
 summary = "Whether the toolbar should snap to top of screen or to bottom of screen. Default is `true`"
 [[Methods.parameters]]
