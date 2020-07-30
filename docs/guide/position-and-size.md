@@ -24,7 +24,7 @@ In this coordinate system, you could set the position and size of the web view q
 webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
 
 // Bottom half of screen:
-webView.Frame = new Rect(0, Screen.height, Screen.width, Screen.height / 2);
+webView.Frame = new Rect(0, Screen.height / 2, Screen.width, Screen.height / 2);
 
 // Insets from all sides by 10:
 webView.Frame = new Rect(10, 10, Screen.width - 20, Screen.height - 20);
