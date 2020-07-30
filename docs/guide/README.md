@@ -17,7 +17,7 @@ It boosts your development process dramatically when you need to show an announc
 - [Loading Events](/api/#events-summary)
 - [Safe Browsing Mode](safe-browsing.md)
 
-### Interaction with Web Page
+### Interacting with Web Page
 
 - [Built-in Toolbar](built-in-toolbar.md)
 - [Full JavaScript Support](using-javascript.md)
@@ -41,7 +41,7 @@ UniWebView v4 supports running on:
 - **Android 5.0** (API Level 21) or above
 
 :::tip EARLIER VERSION
-If you are looking for a UniWebView version for earlier Unity versions, check the [v3 version](https://assetstore.unity.com/packages/tools/network/uniwebview-3-92605). It supports from the same iOS and Android versions, but back to Unity 2017.3. However, it only ships a subset of features compared to the latest v4, and only receives critical bug fix.
+If you are looking for a UniWebView version for earlier Unity versions, check the [v3 version](https://assetstore.unity.com/packages/tools/network/uniwebview-3-92605). It supports from the **same iOS and Android versions**, but back to **Unity 2017.3**. However, it only ships a subset of features compared to the latest v4, and only receives critical bug fix.
 :::
 
 ## How It Works
@@ -56,19 +56,19 @@ It also provides a "Safe Browsing" mode, to help you get a system-level experien
 - On iOS, [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller)
 - On Android, [Custom Tabs](https://developers.google.com/web/android/custom-tabs)
 
-UniWebView also contains Unity Editor support on macOS for the debug purpose. You could bring up a standalone web view directly in the Play Mode of Unity Editor if you are developing your game on a Mac.
+UniWebView also contains Unity Editor support on macOS for the debug purpose. You can bring up a standalone web view directly in the Play Mode of Unity Editor if you are developing your game on macOS.
 
 :::warning WINDOWS EDITOR
-If you are working on a Windows PC, you can still build and use UniWebView on mobile devices, but you cannot see the result directly in the Windows Unity Editor. UniWebView does not come with a Unity Editor support on Windows.
+If you are working on a Windows PC, you can still build and use UniWebView on mobile devices, but you cannot see the result directly in the Windows Unity Editor. UniWebView does not come with Unity Editor support on Windows.
 :::
 
 :::tip MAC OS TARGET
-The macOS Editor plugin is a full-featured variety of its mobile version. Although UniWebView is designed for the mobile platforms, it does not prevent you from putting it into a standalone macOS game.
+UniWebView on macOS Editor is a full-featured variety of its iOS version. Although UniWebView is designed for the mobile platforms, it does not prevent you from putting it into a standalone macOS game.
 :::
 
 ## About Version 4
 
-The starting of the UniWebView project can be traced back to 2013. Until now, we shipped more than 100 versions to make sure the package works well with the latest technology. UniWebView version 4 is a step further. We worked even harder to clean up the codebase, rewrite the native side from scratch in a more reliable way, improve the performance on both platforms, and add a bunch of new features.
+The starting of the UniWebView project can be traced back to 2013. Until now, we shipped more than 100 versions to make sure the package works well with the latest technology. UniWebView version 4 is a huge step further. We worked even harder to clean up the codebase, rewrote the native side from scratch in a more reliable way, improved the performance on both platforms, and added a bunch of new features.
 
 At the same time, we are managed to keep the code compatibility for most of the APIs as they were in v3. That means upgrading from version 3 to version 4 is painless. For most of the projects, just reimport the new version and you can get all the new things immediately.
 

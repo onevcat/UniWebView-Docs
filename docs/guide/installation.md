@@ -6,25 +6,27 @@ We strongly recommend that you perform a backup before importing UniWebView to y
 
 ### Unity Asset Store
 
-If you purchased UniWebView from Unity Asset Store, open the Asset Store window from **Window → Asset Store** or **Window → Package Manager**. You could find UniWebView 4 there under **My Assets**, then click "Import".
+If you purchased UniWebView from [Unity Asset Store](https://assetstore.unity.com/packages/slug/175993), open the Asset Store window from **Window → Asset Store** or **Window → Package Manager**. You could find UniWebView 4 there under **My Assets**, then click "Import".
 
 ### UniWebView Store
 
-Besides of Unity Asset Store, we also have our own store. After purchasing from our store, you could download the `uniwebview_x_y_z.unitypackage` (`x_y_z` in the file name indicates the package version). Open your project in which you want to use UniWebView, then double-click the downloaded file to import it.
+Besides of Unity Asset Store, we also have [our own store](https://gumroad.com/l/MsaOO). After purchasing from our store, you could download the `uniwebview_x_y_z.unitypackage` (`x_y_z` in the file name indicates the package version). Open your project in which you want to use UniWebView, then double-click the downloaded file to import it.
 
 ## Importing Package
 
-Unity would prompt you with a window to confirm the importing files. Just click "Import" to add all files to your project.
+Unity will prompt you with a window to confirm the importing files. Just click "Import" to add all files to your project.
 
 ![](/images/importing-v4.png)
 
-### Optional Setups
+### Optional Steps
 
 ::: warning GRADLE
-UniWebView uses [Gradle](https://docs.unity3d.com/Manual/android-gradle-overview.html) to set up necessary dependencies on Android. On Unity versions until 2019.3, the deprecated "Internal" build system might be used in your project. To use UniWebView in such projects, you need to switch to the new Gradle build system first. From Unity 2019.3, the "Internal" is not an option in Unity anymore.
+UniWebView uses [Gradle](https://docs.unity3d.com/Manual/android-gradle-overview.html) to set up necessary dependencies on Android. There was a deprecated "Internal" build system until Unity 2019.3, and that might be what is used in your project. To use UniWebView in such projects, you need to switch to the new Gradle build system first.
+
+From Unity 2019.3, the "Internal" is not an option in Unity anymore.
 :::
 
-After importing, you can open the Unity Preferences panel (**Unity → Preferences**) to configure some necessary permissions. UniWebView uses a post-build script to modify the gradle project and "AndroidManifest.xml" file for the exported Android project.
+After imported, you can open the Unity Preferences panel (**Unity → Preferences**) to configure some necessary permissions. UniWebView uses a post-build script to modify the gradle project and "AndroidManifest.xml" file for the exported Android project.
 
 ![](/images/preferences.png)
 

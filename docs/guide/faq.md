@@ -16,6 +16,14 @@ UniWebView is a layer of the system UI and is added above of the whole Unity vie
 
 UniWebView is not designed for grabbing a page and rendering it to a texture in your game object. It is a view added above Unity's view, without interrupting the Unity game. You can use it to show something like a game FAQ page, events notification or release note. You can set the size of webview so you can decide if the Unity game scene can be seen or not, but it is not and will not be an in-game texture render solution.
 
+## The page does not load on Android but shows "net::ERR_CLEARTEXT_NOT_PERMITTED"
+
+From Android 9, all plain HTTP traffic are not permitted by default for security. You can find detail on this topic in this [Android documentation page](https://developer.android.com/training/articles/security-config).
+
+Developers are encouraged to secure traffic only, such as HTTPS. By hosting all of your content under a site with HTTPS enabled is the best solution. However, if that is not possible for you yet, you can enable the **"Uses Cleartext Traffic"** option in UniWebView's preference.
+
+You can find that option under the "UniWebView" tab of Unity's Preference Panel. Follow [the installation guide](installation.md#importing-package) if you are not sure where it is.
+
 ## Which platforms could UniWebView work on?
 
 UniWebView v4 supports running on:
@@ -93,4 +101,4 @@ The detail of the **Source Access License** is provided as below:
 > event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of
 > contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
 
-Feel free to [contact us](https://onevcat.zendesk.com/hc/en-us/requests/new) if you have any question on it. We are glad to help.
+Feel free to [contact us](https://onevcat.atlassian.net/servicedesk/customer/portal/2/group/2/create/10011) if you have any question on it. We are glad to help.
