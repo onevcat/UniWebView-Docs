@@ -18,13 +18,14 @@ footer: Copyright © 2016-present OneV's Den (@onevcat)
 ### As Easy as 1, 2, 3
 
 ```csharp
-// Add the UniWebView component to your Game Object.
+// Add a full-screen UniWebView component.
 var webView = gameObject.AddComponent<UniWebView>();
+webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
 
 // Load a URL.
 webView.Load("https://uniwebview.com");
 
-// Show it to the screen.
+// Show it.
 webView.Show();
 ```
 
