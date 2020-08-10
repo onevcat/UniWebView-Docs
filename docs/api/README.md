@@ -6,8 +6,8 @@ sidebarDepth: 0
 
 ### Summary
 
-The main class of UniWebView. It represents a native web view and exposes a few APIs for you to use in
-Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content,
+The main class of UniWebView. It represents a native web view and exposes a few APIs for you to use in 
+Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content, 
 as well as receive a message from the web view.
 
 #### Properties Summary
@@ -2526,7 +2526,7 @@ You could open Safari&#39;s developer tools to debug a web view on iOS.</p>
       <div class='warning custom-block'>
   <p class="custom-block-title">NOTICE</p>
   <p>
-        Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embedded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in the editor and never affect real devices.
+        Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embedded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in the editor and never affect real devices. 
 
 Please remember to disable this in your product build. This should be only used while development.
 
@@ -2747,3 +2747,4 @@ webView<span class="token punctuation">.</span><span class="token function">Scro
     </div>
   </div>
 </div>
+

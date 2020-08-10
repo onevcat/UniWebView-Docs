@@ -62,7 +62,7 @@ it for another browsing purpose. Instead, create a new one for a new browsing se
       <div class='warning custom-block'>
   <p class="custom-block-title">NOTICE</p>
   <p>
-        This event will not happen on Unity Editor, because the whole <code>UniWebViewSafeBrowsing</code> will fall back to an 
+        This event will not happen in Unity Editor, because the whole <code>UniWebViewSafeBrowsing</code> will fall back to an 
 external browser.
 
   </p>
