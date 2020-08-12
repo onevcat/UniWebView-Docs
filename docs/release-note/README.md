@@ -1,5 +1,39 @@
 # Release Note
 
+### 4.0.1 (12 Aug, 2020)
+
+#### Fix
+
+* A issue that prevents the Gradle file being processed correctly if inline comments are used.
+* Kotlin dependency for UniWebView Android can now be disabled in the preference panel. Turn it off if other plugins are already adding it for you.
+
+### 4.0.0 (1 Aug, 2020)
+
+::: danger
+4.0.0 is a major update of UniWebView. Although most of APIs in UniWebView 4 are compatible with UniWebView 3 and it should be easy enough to migrate, there are still a few breaking changes. For migration from UniWebView 3 in detail, visit the [Migration Guide](https://docs.uniwebview.com/guide/migration-guide.html). To know the highlight of the version, check [this page](https://docs.uniwebview.com/guide/version-highlight.html) for more.
+:::
+
+#### Add
+
+* **Safe Browsing Mode support.** Now UniWebView also contains a wrapper for [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) on iOS and [Custom Tabs](https://developers.google.com/web/android/custom-tabs) on Android. It allows you to browse web pages in a more browser-like level, including sharing cookies or credentials with the system browser. Check the [Safe Browsing guide](https://docs.uniwebview.com/guide/safe-browsing.html) for more information. 
+* **Customizable built-in toolbar on iOS.** Now you can set the bar background color, button text, and the text color in the toolbar. Check the [Built-in Toolbar](https://docs.uniwebview.com/guide/built-in-toolbar.html) guide for more information.
+* **Add support for Unity 2020.1.** In the latest Unity version, it changes its way of handling native touch events. It may cause some functionality broken in UniWebView 3. UniWebView 4 uses itself in a new way to handle events to ensure working fine on all supported Unity versions. UniWebView 4 itself **supports from Unity 2018.3**.
+* **New Post Build Processing system and Preference Panel.** They provide a better way to define the dependencies and help you modify the "AndroidManifest.xml" file without touch it directly.
+* **Better permission model.** UniWebView now does not require the write external permission for uploading a photo from the gallery or camera to the web. It also adopts to permission models for Android 10. Other possible needed permission can be setup in the UniWebView Preference Panel.
+* An `OnPageProgressChanged` event which will be raised every time the loading progress changes in the web view.
+
+#### Fix
+
+* Now the web view resizes itself when a soft keyboard is showing up and about to cover the text input fields on the page. It keeps the text input visible.
+* UniWebView now always respects Unity setting of immersive mode on Android. The navigation bar will not jump out or flicker when showing the web view in an immersive mode.
+* Audio resource can stop correctly when the web view is closed now.
+* The alert pop-up and its text edit views for JavaScript confirm window or HTTP auth now have a better style and alignment.
+
+#### Deprecate
+
+* `SetImmersiveMode` is not needed anymore since the Unity setting is now always respected. This method will not do anything but give an error log instead.
+* `OnKeyCodeReceived` will not be called anymore since UniWebView is not intercepting any native events. Try Unity's `Input.GetKeyUp` in `Update` to get key code events instead.
+
 ### 3.18.1 (4 Jul, 2020)
 
 #### Fix
@@ -433,7 +467,7 @@ UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using
 ### 3.0.0 (27 Jun, 2017)
 
 ::: danger
-3.0.0 is a major update of UniWebView. We rewrote the whole software from scratch to bring your experience of using a web view in Unity to a next level. Be caution it is not compatible with UniWebView 2, there are quite a few breaking changes in this version. For migration from UniWebView 2 in detail, visit our [Migration Guide](https://docs.uniwebview.com/#/migration-guide) in documentation. To know the highlight of the version, check [this page](https://docs.uniwebview.com/#/version-highlight) for more.
+3.0.0 is a major update of UniWebView. We rewrote the whole software from scratch to bring your experience of using a web view in Unity to a next level. Be caution it is not compatible with UniWebView 2, there are quite a few breaking changes in this version. For migration from UniWebView 2 in detail, visit our [Migration Guide](https://docs.uniwebview.com/guide/migration-guide.html) in documentation. To know the highlight of the version, check [this page](https://docs.uniwebview.com/guide/version-highlight.html) for more.
 :::
 
 #### Add
@@ -443,8 +477,8 @@ UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using
 * New pop-up style Unity Editor support on macOS. It is a fully functional tool for debugging purpose.
 * A new way to setup bridging between Unity and Cocoa native. Now there is no message sending delay.
 * You can now set the position of toolbar to top or bottom on iOS.
-* A leveled logger to log all UniWebView related information. See [UniWebViewLogger](https://docs.uniwebview.com/#/latest/api/uniwebviewlogger.html) documentation for more.
-* Use a payload based callback API like transition and JavaScript related methods. It takes more data. See [UniWebViewNativeResultPayload](https://docs.uniwebview.com/#/latest/api/uniwebviewnativeresultpayload.html).
+* A leveled logger to log all UniWebView related information. See [UniWebViewLogger](https://docs.uniwebview.com/api/uniwebviewlogger.html) documentation for more.
+* Use a payload based callback API like transition and JavaScript related methods. It takes more data. See [UniWebViewNativeResultPayload]https://docs.uniwebview.com(/api/uniwebviewnativeresultpayload.html).
 * SSL exception for white listed domain. It is useful for a un-trusted certification but you still want to access.
 * A method to get current web view HTML content as a string.
 
