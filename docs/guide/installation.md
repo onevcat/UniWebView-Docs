@@ -26,9 +26,16 @@ UniWebView uses [Gradle](https://docs.unity3d.com/Manual/android-gradle-overview
 From Unity 2019.3, the "Internal" is not an option in Unity anymore.
 :::
 
-After imported, you can open the Unity Preferences panel (**Unity → Preferences**) to configure some necessary permissions. UniWebView uses a post-build script to modify the gradle project and "AndroidManifest.xml" file for the exported Android project.
+After imported, you can open the Unity Preferences panel (**Unity → Preferences**) to configure some necessary permissions. In most cases, there is no need to adjust them and your project should
+build and run well. This panel provides a quick way to customize how UniWebView should adjust some behaviors or dependencies installation.
+
+UniWebView uses a post-build script to modify the gradle project and "AndroidManifest.xml" file for the exported Android project.
 
 ![](/images/preferences.png)
+
+### Android Manifest
+
+Settings in this section will be used to adjust the final `AndroidManifest.xml` file of the exported project.
 
 #### Uses Cleartext Traffic
 
@@ -41,6 +48,21 @@ Add `WRITE_EXTERNAL_STORAGE` permission to the "AndroidManifest.xml". It enables
 #### Access Fine Location
 
 Add `ACCESS_FINE_LOCATION` permission to the "AndroidManifest.xml". It enables the web view to use the location information. To get the location actually, you also need to call [`LocationService.Start`](https://docs.unity3d.com/ScriptReference/LocationService.Start.html) before you open a web page.
+
+### Gradle Build
+
+Settings in this section will be used to modify the `build.gradle` file of the exported project.
+
+#### Adds Kotlin
+
+Whether Kotlin runtime should be added to the project. UniWebView for Android is written in Kotlin and you need the runtime in your project to run the code. It is on by default.
+If any other packages of your project is already adding this, you can opt-out this option to skip adding Kotlin to the project.
+
+#### Adds Android Browser
+
+Whether the [androidx.browser package](https://developer.android.com/jetpack/androidx/releases/browser) should be added to the project.
+UniWebView uses some features in that package. It is on by default.
+If any other packages of your project is already adding this, you can opt-out this option to skip adding Kotlin to the project.
 
 ## Restarting Unity
 
