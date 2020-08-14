@@ -16,6 +16,14 @@ UniWebView is a layer of the system UI and is added above of the whole Unity vie
 
 UniWebView is not designed for grabbing a page and rendering it to a texture in your game object. It is a view added above Unity's view, without interrupting the Unity game. You can use it to show something like a game FAQ page, events notification or release note. You can set the size of webview so you can decide if the Unity game scene can be seen or not, but it is not and will not be an in-game texture render solution.
 
+## I have some error saying Duplicate class when exporting for Android
+
+UniWebView requires Kotlin and Android X Browser package as dependencies. By default, UniWebView will detect the Gradle file and add them automatically.
+However, if any other package in your project is adding the same libraries in an undetectable way, such as embedding them as a part of the library file, UniWebView will fail to detect them and
+add duplicated packages.
+
+You can manually turn off the "Adds Kotlin" or "Adds Android Browser" option in the Preference Panel. For more detail, see the [Installation - Optional Steps](installation.md#importing-package).
+
 ## The page does not load on Android but shows "net::ERR_CLEARTEXT_NOT_PERMITTED"
 
 From Android 9, all plain HTTP traffic are not permitted by default for security. You can find detail on this topic in this [Android documentation page](https://developer.android.com/training/articles/security-config).
