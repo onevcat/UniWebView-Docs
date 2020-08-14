@@ -1,5 +1,11 @@
 # Release Note
 
+### 4.0.2 (14 Aug, 2020)
+
+#### Fix
+
+* Android X browser dependency ('androidx.browser:browser') for UniWebView Android can now be disabled in the preference panel. Turn it off if other plugins are already adding it for you.
+
 ### 4.0.1 (12 Aug, 2020)
 
 #### Fix
