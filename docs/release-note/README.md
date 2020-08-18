@@ -1,5 +1,11 @@
 # Release Note
 
+### 4.0.3
+
+#### Fix
+
+* Fix an issue that causes keyboard overlaying not handled correctly on Android.
+
 ### 4.0.2 (14 Aug, 2020)
 
 #### Fix
