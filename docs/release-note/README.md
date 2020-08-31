@@ -1,5 +1,12 @@
 # Release Note
 
+### 4.0.4 (1 Sep, 2020)
+
+#### Fix
+
+* An issue causes the web view does not show up until switching the app from background on some customized Android distribution.
+* Now setting for "Accept" header will give a warning since iOS does not support customize this header field.
+
 ### 4.0.3 (18 Aug, 2020)
 
 #### Fix
