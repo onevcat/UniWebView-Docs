@@ -57,6 +57,19 @@ safeBrowsing.Show();
 """
 
 [[Methods]]
+name = "Dismiss"
+syntax = "Dismiss()"
+returnType = "void"
+summary = """
+Dismisses the safe browsing component.
+
+This method only works on iOS. On Android, there is no way to dismiss the safe browsing component 
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+
+[[Methods]]
 name = "SetToolbarColor"
 syntax = "SetToolbarColor(Color color)"
 returnType = "void"
