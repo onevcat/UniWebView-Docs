@@ -1,5 +1,16 @@
 # Release Note
 
+### 4.1.0 (26 Sep, 2020)
+
+#### Add
+
+* Add a method to dismiss the `UniWebViewSafeBrowsing` on iOS. To close an opened safe browsing component, call the `Dismiss` method.
+* Build support for iOS 14 and Xcode 12.
+
+#### Fix
+
+* An issue that `BackgroundColor` property not working on Android.
+
 ### 4.0.4 (1 Sep, 2020)
 
 #### Fix

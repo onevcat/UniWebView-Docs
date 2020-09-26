@@ -40,6 +40,9 @@ external browser by using Unity's `Application.OpenURL`.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#show'><span class='return-type'>void</span> Show()</a></div></td><td><div class='simple-summary'>
 <p>Shows the safe browsing content above current screen.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#dismiss'><span class='return-type'>void</span> Dismiss()</a></div></td><td><div class='simple-summary'>
+<p>Dismisses the safe browsing component.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbarcolor'><span class='return-type'>void</span> SetToolbarColor(Color color)</a></div></td><td><div class='simple-summary'>
 <p>Sets the color for toolbar background in the safe browsing component.</p>
 </div>
@@ -135,6 +138,17 @@ safeBrowsing<span class="token punctuation">.</span><span class="token function"
 </div>
 </div>
     </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='dismiss'></div><div class='api-heading' data-id='dismiss'><a href='#dismiss'><span class='return-type'>void</span> Dismiss()</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Dismisses the safe browsing component.</p>
+<p>This method only works on iOS. On Android, there is no way to dismiss the safe browsing component </p>
+</div>
+                            </div>
   </div>
 </div>
 <div class='api-box method'>
