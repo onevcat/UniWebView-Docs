@@ -712,6 +712,45 @@ type = "bool"
 summary = "A flag indicates whether inline playing of media is allowed or not."
 
 [[Methods]]
+name = "SetAllowUniversalAccessFromFileURLs"
+syntax = "SetAllowUniversalAccessFromFileURLs(bool flag)"
+returnType = "void"
+summary = """
+Sets allow universal access from file URLs. 
+
+By default, on iOS, the `WKWebView` forbids any load of local files through AJAX even when opening a local HTML file. 
+It checks the CORS rules and fails at web view level. This is useful when you want access these files by setting 
+the `allowUniversalAccessFromFileURLs` key of web view configuration.
+
+This only works for iOS and macOS Editor. It is using some "hidden" way of setting a config for WebKit. So it is
+possible that it stops working in a future version.
+
+On Android, the CORS rule checking is ignored by system `WebView`.
+"""
+notice = "You need to set it before creating a web view. Existing web views are not affected."
+example = """
+```csharp
+UniWebView.SetAllowUniversalAccessFromFileURLs(true);
+
+// Create a new web view.
+var webView = gameObject.AddComponent<UniWebView>();
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "A flag indicates whether the universal access for files are allowed or not."
+
+[[Methods]]
 name = "SetJavaScriptEnabled"
 syntax = "SetJavaScriptEnabled(bool enabled)"
 returnType = "void"
