@@ -1,5 +1,19 @@
 # Release Note
 
+### 4.2.0 (17 Oct, 2020)
+
+#### Add
+
+* A method `SetAllowUniversalAccessFromFileURLs` to allow local file loading by AJAX from a local HTML page. This ignores CORS checking on iOS `WKWebView` when loading both the page and resource locally.
+* Now you can enable the screen swipe gesture on iOS or macOS to perform back or forward navigation. Call `SetAllowBackForwardNavigationGestures` to allow it.
+* Add opening and closing events for multiple window. Now you can receive `OnMultipleWindowOpened` and `OnMultipleWindowClosed` event when a new window is opened or closed respectively.
+
+#### Fix
+
+* Now the Safe Browsing on Android only requires "androidx.browser:browser" version 1.0.0. This solves some conflicting with other "old and bad-behaved" packages which not upgrading to the latest dependency.
+* The JavaScript pop-up alert now has a better cancel button style. Also fixed the duplicated prompt text for input alert.
+* An issue which causes wrong parsing for Gradle build file when a string is defined inside a non-node block.
+
 ### 4.1.0 (26 Sep, 2020)
 
 #### Add

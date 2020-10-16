@@ -63,6 +63,12 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onwebcontentprocessterminated'><span class='return-type'>event</span> OnWebContentProcessTerminated(UniWebView webView)</a></div></td><td><div class='simple-summary'>
 <p>Raised when on iOS, when system calls <code>webViewWebContentProcessDidTerminate</code> method.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onmultiplewindowopened'><span class='return-type'>event</span> OnMultipleWindowOpened(UniWebView webView, string multipleWindowId)</a></div></td><td><div class='simple-summary'>
+<p>Raised when a new window is opened.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onmultiplewindowclosed'><span class='return-type'>event</span> OnMultipleWindowClosed(UniWebView webView, string multipleWindowId)</a></div></td><td><div class='simple-summary'>
+<p>Raised when the multiple window is closed.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onkeycodereceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a key (like back button or volume up) on the device is pressed.</p>
 </div>
@@ -140,6 +146,9 @@ are added to the adjusted content inset.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowinlineplay'><span class='return-type'>void</span> SetAllowInlinePlay(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets allow inline play for current web view.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowuniversalaccessfromfileurls'><span class='return-type'>void</span> SetAllowUniversalAccessFromFileURLs(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets allow universal access from file URLs.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setjavascriptenabled'><span class='return-type'>void</span> SetJavaScriptEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether JavaScript should be enabled in current web view.</p>
@@ -240,6 +249,9 @@ hides the status bar and navigation bar with a sticky style.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setwindowuserresizeenabled'><span class='return-type'>void</span> SetWindowUserResizeEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Enables user resizing for web view window.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowbackforwardnavigationgestures'><span class='return-type'>void</span> SetAllowBackForwardNavigationGestures(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether horizontal swipe gestures should trigger back-forward list navigation.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowfileaccessfromfileurls'><span class='return-type'>void</span> SetAllowFileAccessFromFileURLs(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether file access from file URLs is allowed.</p>
@@ -764,6 +776,77 @@ webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <sp
     <span class="token comment" spellcheck="true">// unusedAssets.Clean();</span>
 <span />
     webView<span class="token punctuation">.</span><span class="token function">Reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onmultiplewindowopened'></div><div class='api-heading' data-id='onmultiplewindowopened'><a href='#onmultiplewindowopened'><span class='return-type'>event</span> OnMultipleWindowOpened(UniWebView webView, string multipleWindowId)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when a new window is opened. This happens when you enable the <code>SetSupportMultipleWindows</code> and open a
+new pop-up window.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which opens the new multiple (pop-up) window.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>multipleWindowId</span></div>
+    <div class='parameter-item-desc'><p>The identifier of the opened new window.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token keyword">string</span> newWindow <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span>OnMultipleWindowOpened <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> windowId<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// A new window with identifier "windowId" is opened.</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onmultiplewindowclosed'></div><div class='api-heading' data-id='onmultiplewindowclosed'><a href='#onmultiplewindowclosed'><span class='return-type'>event</span> OnMultipleWindowClosed(UniWebView webView, string multipleWindowId)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the multiple window is closed. This happens when the pop-up window is closed by navigation operation
+or by a invocation of <code>close()</code> on the page.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which closes the multiple window.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>multipleWindowId</span></div>
+    <div class='parameter-item-desc'><p>The identifier of the closed new window.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnMultipleWindowClosed <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> windowId<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// The opened window with identifier "windowId" is closed.</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
@@ -1660,6 +1743,48 @@ webView<span class="token punctuation">.</span><span class="token function">Show
   </div>
 </div>
 <div class='api-box method'>
+  <div class="api-anchor" id='setallowuniversalaccessfromfileurls'></div><div class='api-heading' data-id='setallowuniversalaccessfromfileurls'><a href='#setallowuniversalaccessfromfileurls'><span class='return-type'>void</span> SetAllowUniversalAccessFromFileURLs(bool flag)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets allow universal access from file URLs. </p>
+<p>By default, on iOS, the <code>WKWebView</code> forbids any load of local files through AJAX even when opening a local HTML file. 
+It checks the CORS rules and fails at web view level. This is useful when you want access these files by setting 
+the <code>allowUniversalAccessFromFileURLs</code> key of web view configuration.</p>
+<p>This only works for iOS and macOS Editor. It is using some &quot;hidden&quot; way of setting a config for WebKit. So it is
+possible that it stops working in a future version.</p>
+<p>On Android, the CORS rule checking is ignored by system <code>WebView</code>.</p>
+</div>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        You need to set it before creating a web view. Existing web views are not affected.
+  </p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item-desc'><p>A flag indicates whether the universal access for files are allowed or not.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">SetAllowUniversalAccessFromFileURLs</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment" spellcheck="true">// Create a new web view.</span>
+<span class="token keyword">var</span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method function">AddComponent<span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class="api-anchor" id='setjavascriptenabled'></div><div class='api-heading' data-id='setjavascriptenabled'><a href='#setjavascriptenabled'><span class='return-type'>void</span> SetJavaScriptEnabled(bool enabled)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
@@ -2202,7 +2327,7 @@ you have trouble in granting users&#39; permission. It is not needed on iOS.
 <p>On Android, the device back button in navigation bar will navigate users to a back page. If there is no any back page available, the back button clicking will try to raise an <code>OnShouldClose</code> event and try to close the web view if <code>true</code> is return from the event. If the <code>OnShouldClose</code> event is not listened to,  the web view will be closed and the UniWebView component will be destroyed to release any resource in use.</p>
 <p>Listen to <code>OnKeyCodeReceived</code> if you need to disable the back button, but still, want to get the back button key pressing event.</p>
 <p>This method is only for Android. On iOS, you could show a toolbar with navigation and Done buttons for 
-similar purpose.</p>
+similar purpose or call <code>SetAllowBackForwardNavigationGestures</code> to enable gesture based navigation on iOS.</p>
 <p>The default is enabled.</p>
 </div>
             <div class='parameters'>
@@ -2570,6 +2695,38 @@ By enabling user resizing, you would be able to resize the window by dragging it
 </ul></div>
 </div>
                 </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setallowbackforwardnavigationgestures'></div><div class='api-heading' data-id='setallowbackforwardnavigationgestures'><a href='#setallowbackforwardnavigationgestures'><span class='return-type'>void</span> SetAllowBackForwardNavigationGestures(bool flag)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether horizontal swipe gestures should trigger back-forward list navigation.</p>
+<p>By setting with <code>true</code>, users can swipe from screen edge to perform a back or forward navigation.
+This method only works on iOS and macOS Editor. Default is <code>false</code>. </p>
+<p>On Android, the screen navigation gestures are simulating the traditional back button and it is enabled by 
+default. To disable gesture navigation on Android, you have to also disable the device back button. See 
+<code>SetBackButtonEnabled</code> for that purpose.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item-desc'><p>The value indicates whether a swipe gestures driven navigation should be allowed. Default is <code>false</code>.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">SetAllowBackForwardNavigationGestures</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
