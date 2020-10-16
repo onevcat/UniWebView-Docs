@@ -1914,6 +1914,55 @@ type = "UniWebView"
 summary = "The web view component which raises this event."
 
 [[Events]]
+name = "OnMultipleWindowOpened"
+syntax = "OnMultipleWindowOpened(UniWebView webView, string multipleWindowId)"
+returnType = "event"
+summary = """
+Raised when a new window is opened. This happens when you enable the `SetSupportMultipleWindows` and open a
+new pop-up window.
+"""
+example = """
+```csharp
+string newWindow = "";
+webView.OnMultipleWindowOpened += (view, windowId) => {
+    // A new window with identifier "windowId" is opened.
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which opens the new multiple (pop-up) window."
+[[Events.parameters]]
+name = "multipleWindowId"
+type = "string"
+summary = "The identifier of the opened new window."
+
+[[Events]]
+name = "OnMultipleWindowClosed"
+syntax = "OnMultipleWindowClosed(UniWebView webView, string multipleWindowId)"
+returnType = "event"
+summary = """
+Raised when the multiple window is closed. This happens when the pop-up window is closed by navigation operation
+or by a invocation of `close()` on the page.
+"""
+example = """
+```csharp
+webView.OnMultipleWindowClosed += (view, windowId) => {
+    // The opened window with identifier "windowId" is closed.
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which closes the multiple window."
+[[Events.parameters]]
+name = "multipleWindowId"
+type = "string"
+summary = "The identifier of the closed new window."
+
+[[Events]]
 name = "OnKeyCodeReceived"
 syntax = "OnKeyCodeReceived(UniWebView webView, int keyCode)"
 returnType = "event"
