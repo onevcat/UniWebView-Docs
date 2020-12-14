@@ -20,6 +20,25 @@ Unity Editor. Creating and showing a `UniWebViewSafeBrowsing` on Unity Editor wi
 external browser by using Unity's `Application.OpenURL`.
 """
 
+[[Properties]]
+name = "IsSafeBrowsingSupported"
+returnType = "bool"
+hasSetter = false
+summary = """
+Whether the safe browsing mode is supported in current runtime or not.
+
+If supported, the safe browsing mode will be used when `Show` is called on a `UniWebViewSafeBrowsing` instance.
+Otherwise, the system default browser will be used to open the page when `Show` is called.
+
+This property always returns `true` on iOS runtime platform. On Android, it depends on whether the Chrome app, 
+which underhood provides the ability of safe browsing, is installed or not.
+"""
+example = """
+if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
+    // Safe Browsing Mode is available on current device.
+}
+"""
+
 [[Methods]]
 name = "Create"
 syntax = "Create(string url)"
