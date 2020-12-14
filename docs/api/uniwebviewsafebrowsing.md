@@ -23,6 +23,14 @@ Browsing web content in `UniWebViewSafeBrowsing` is only supported on iOS and An
 Unity Editor. Creating and showing a `UniWebViewSafeBrowsing` on Unity Editor will fall back to open the URL in 
 external browser by using Unity's `Application.OpenURL`.
 
+#### Properties Summary
+
+<table>
+<tr><td><div class='api-summary-heading'><a href='#issafebrowsingsupported'><span class='return-type'>bool</span> IsSafeBrowsingSupported { get; }</a></div></td><td><div class='simple-summary'>
+<p>Whether the safe browsing mode is supported in current runtime or not.</p>
+</div>
+</td></tr></table>
+
 #### Events Summary
 
 <table>
@@ -50,6 +58,30 @@ external browser by using Unity's `Application.OpenURL`.
 <p>Sets the color for toolbar controls in the safe browsing component.</p>
 </div>
 </td></tr></table>
+
+### Properties
+
+<div class='api-box property'>
+  <div class="api-anchor" id='issafebrowsingsupported'></div><div class='api-heading' data-id='issafebrowsingsupported'><a href='#issafebrowsingsupported'><span class='return-type'>bool</span> IsSafeBrowsingSupported { get; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Whether the safe browsing mode is supported in current runtime or not.</p>
+<p>If supported, the safe browsing mode will be used when <code>Show</code> is called on a <code>UniWebViewSafeBrowsing</code> instance.
+Otherwise, the system default browser will be used to open the page when <code>Show</code> is called.</p>
+<p>This property always returns <code>true</code> on iOS runtime platform. On Android, it depends on whether the Chrome app, 
+which underhood provides the ability of safe browsing, is installed or not.</p>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<p>if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
+    // Safe Browsing Mode is available on current device.
+}</p>
+</div>
+</div>
+    </div>
+  </div>
+</div>
 
 ### Events
 
