@@ -4,14 +4,14 @@
 
 #### Add
 
-* A property to check whether the Safe Browsing Mode is supported on the device. Some Android devices may not have Chrome installed, so Safe Browsing Mode is not supported. Instead of ignoring the requests of opening the web page in Safe Browsing Mode, now UniWebView will open it in the installed system browser. Use `UniWebViewSafeBrowsing.IsSafeBrowsingSupported` to get the availability.
-* Add Assembly Definitions (`asmdef`) support. Now UniWebView will organize itself as a assembly. This should boost your compile time in Unity Editor.
+* A property to check whether the Safe Browsing Mode is supported on the device. Some Android devices may not have Chrome installed, so Safe Browsing Mode is not supported. Instead of ignoring the requests of opening the web page in Safe Browsing Mode, now UniWebView will open it in the installed system browser. Use `UniWebViewSafeBrowsing.IsSafeBrowsingSupported` to get availability.
+* Add Assembly Definitions (`asmdef`) support. Now UniWebView will organize itself as an assembly. This should boost your compile-time in Unity Editor.
 
 #### Fix
 
 * Better support for multiple windows. The pop-up new web page window can pop another new window now.
 * Now the script should compile when using Unity Editor even on Linux.
-* A gradle issue which causes error while exporting project when some certain customized gradle templates are used.
+* A Gradle issue which causes error while exporting project when some certain customized Gradle templates are used.
 * A potential problem that accessing to web page cookie might freeze the app in older iOS devices or systems.
 
 ### 4.2.0 (17 Oct, 2020)
