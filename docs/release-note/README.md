@@ -1,6 +1,12 @@
 # Release Note
 
-### 4.3.0 (14 Nov, 2020)
+### 4.3.1 (18 Dec, 2020)
+
+#### Fix
+
+* An issue which causes the app crashes on iOS 9 and 10 when closing the web view.
+
+### 4.3.0 (14 Dec, 2020)
 
 #### Add
 

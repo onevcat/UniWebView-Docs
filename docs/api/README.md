@@ -1831,7 +1831,13 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
 <p>Sets whether JavaScript can open windows without user interaction.</p>
 <p>By setting this to <code>true</code>, an automatically JavaScript navigation will be allowed in the web view.</p>
 </div>
-            <div class='parameters'>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        You need to set it before creating a web view. Existing web views are not affected.
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
