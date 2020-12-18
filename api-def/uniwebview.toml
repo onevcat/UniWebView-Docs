@@ -783,6 +783,7 @@ name = "SetAllowJavaScriptOpenWindow"
 syntax = "SetAllowJavaScriptOpenWindow(bool flag)"
 returnType = "void"
 summary = "Sets whether JavaScript can open windows without user interaction.\n\nBy setting this to `true`, an automatically JavaScript navigation will be allowed in the web view."
+notice = "You need to set it before creating a web view. Existing web views are not affected."
 example = """
 ```csharp
 // Allow JavaScript open window automatically.
