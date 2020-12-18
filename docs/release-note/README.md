@@ -4,7 +4,7 @@
 
 #### Fix
 
-* An issue which causes the app crashes on iOS 9 and 10 when closing the web view.
+* An issue that causes the app to crash on iOS 9 and 10 when closing the web view.
 
 ### 4.3.0 (14 Dec, 2020)
 
