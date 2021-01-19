@@ -1632,6 +1632,122 @@ name = "animated"
 type = "bool"
 summary = "If `true`, the scrolling happens with animation. Otherwise, it happens without animation and the content is set directly."
 
+[[Methods]]
+name = "AddDownloadURL"
+syntax = "AddDownloadURL(string urlString)"
+returnType = "void"
+summary = """
+Adds the URL to download inspecting list.
+
+If a response is received in main frame and its URL is already in the inspecting list, a download task will be 
+triggered. Check "Download Files" guide for more.
+
+This method only works on iOS and macOS Editor.
+"""
+example = """
+```csharp
+// On iOS, access to "https://example.com/file.pdf" will trigger a download task instead of being rendered in place.
+webView.AddDownloadURL("https://example.com/file.pdf");
+```
+"""
+[[Methods.parameters]]
+name = "urlString"
+type = "string"
+summary = "The inspected URL."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
+[[Methods]]
+name = "RemoveDownloadURL"
+syntax = "RemoveDownloadURL(string urlString)"
+returnType = "void"
+summary = """
+Removes the URL from download inspecting list.
+
+If a response is received in main frame and its URL is already in the inspecting list, a download task will be 
+triggered. Check "Download Files" guide for more.
+
+This method only works on iOS and macOS Editor.
+"""
+example = """
+```csharp
+// On iOS, access to "https://example.com/file.pdf" will be rendered in place.
+webView.RemoveDownloadURL("https://example.com/file.pdf");
+```
+"""
+[[Methods.parameters]]
+name = "urlString"
+type = "string"
+summary = "The inspected URL."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
+[[Methods]]
+name = "AddDownloadMIMEType"
+syntax = "AddDownloadMIMEType(string MIMEType)"
+returnType = "void"
+summary = """
+Adds the MIME type to download inspecting list.
+
+If a response is received in main frame and its MIME type is already in the inspecting list, a 
+download task will be triggered. Check "Download Files" guide for more.
+
+This method only works on iOS and macOS Editor.
+"""
+example = """
+```csharp
+// On iOS, access to any PDF files will trigger a download task instead of being rendered in place.
+webView.AddDownloadMIMEType("application/pdf");
+```
+"""
+[[Methods.parameters]]
+name = "MIMEType"
+type = "string"
+summary = "The inspected MIME type of the response."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
+[[Methods]]
+name = "RemoveDownloadMIMETypes"
+syntax = "RemoveDownloadMIMETypes(string MIMEType)"
+returnType = "void"
+summary = """
+Removes the MIME type from download inspecting list.
+
+If a response is received in main frame and its MIME type is already in the inspecting list, a 
+download task will be triggered. Check "Download Files" guide for more.
+
+This method only works on iOS and macOS Editor.
+"""
+example = """
+```csharp
+// On iOS, access to any PDF files will be rendered in place.
+webView.RemoveDownloadMIMETypes("application/pdf");
+```
+"""
+[[Methods.parameters]]
+name = "MIMEType"
+type = "string"
+summary = "The inspected MIME type of the response."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
 [[Events]]
 name = "OnPageStarted"
 syntax = "OnPageStarted(UniWebView webView, string url)"
@@ -1771,6 +1887,76 @@ summary = "The error code which indicates the error type. It can be different fr
 name = "url"
 type = "string"
 summary = "The error message which indicates the error."
+
+[[Events]]
+name = "OnFileDownloadStarted"
+syntax = "OnFileDownloadStarted(UniWebView webView, string remoteUrl, string fileName)"
+returnType = "void"
+summary = """
+Raised when a file download task starts.
+"""
+example = """
+```csharp
+webView.OnFileDownloadStarted += (view, remoteUrl, fileName) => {
+    print(string.Format("Download Started. From '{0}', file name '{1}'", remoteUrl, fileName));
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "remoteUrl"
+type = "string"
+summary = "The remote URL of this download task. This is also the download URL for the task."
+[[Events.parameters]]
+name = "fileName"
+type = "string"
+summary = "The file name which user chooses to use."
+
+[[Events]]
+name = "OnFileDownloadFinished"
+syntax = "OnFileDownloadFinished(UniWebView webView, int errorCode, string remoteUrl, string diskPath)"
+returnType = "void"
+summary = """
+Raised when a file download task finishes with either an error or success.
+"""
+example = """
+```csharp
+webView.OnFileDownloadFinished += (view, errorCode, remoteUrl, diskPath) => {
+    if (errorCode == 0) { // Success
+        print(string.Format("Download Finished. From '{0}', to '{1}'", remoteUrl, diskPath));
+    } else {
+        print("Download error: " + errorCode);
+    }
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "errorCode"
+type = "int"
+summary = """
+The error code of the download task result. Value `0` means the download finishes without a problem. 
+Any other non-`0` value indicates an issue. The detail meaning of the error code depends on system. 
+On iOS, it is usually the `errorCode` of the received `NSURLError`. On Android, the value usually represents
+an `ERROR_*` value in `DownloadManager`.
+"""
+[[Events.parameters]]
+name = "remoteUrl"
+type = "string"
+summary = "The remote URL of this download task."
+[[Events.parameters]]
+name = "diskPath"
+type = "string"
+summary = """
+The file path of the downloaded file. On iOS, the downloader file is in a temporary folder of your app sandbox.
+On Android, it is in the "Download" folder of your app.
+"""
 
 [[Events]]
 name = "OnMessageReceived"

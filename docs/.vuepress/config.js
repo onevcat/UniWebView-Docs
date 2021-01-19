@@ -45,6 +45,7 @@ module.exports = {
             "using-javascript",
             "loading-local-files",
             "uploading",
+            "download-files",
             "playing-videos",
             "http-auth",
             "support-new-window",

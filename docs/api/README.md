@@ -51,6 +51,12 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onpageerrorreceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
 <p>Raised when an error encountered during the loading process.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onfiledownloadstarted'><span class='return-type'>void</span> OnFileDownloadStarted(UniWebView webView, string remoteUrl, string fileName)</a></div></td><td><div class='simple-summary'>
+<p>Raised when a file download task starts.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onfiledownloadfinished'><span class='return-type'>void</span> OnFileDownloadFinished(UniWebView webView, int errorCode, string remoteUrl, string diskPath)</a></div></td><td><div class='simple-summary'>
+<p>Raised when a file download task finishes with either an error or success.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onmessagereceived'><span class='return-type'>event</span> OnMessageReceived(UniWebView webView, UniWebViewMessage message)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a message from web view is received.</p>
 </div>
@@ -268,6 +274,18 @@ HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#scrollto'><span class='return-type'>void</span> ScrollTo(int x, int y, bool animated)</a></div></td><td><div class='simple-summary'>
 <p>Scrolls the web view to a certain point.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#adddownloadurl'><span class='return-type'>void</span> AddDownloadURL(string urlString)</a></div></td><td><div class='simple-summary'>
+<p>Adds the URL to download inspecting list.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removedownloadurl'><span class='return-type'>void</span> RemoveDownloadURL(string urlString)</a></div></td><td><div class='simple-summary'>
+<p>Removes the URL from download inspecting list.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#adddownloadmimetype'><span class='return-type'>void</span> AddDownloadMIMEType(string MIMEType)</a></div></td><td><div class='simple-summary'>
+<p>Adds the MIME type to download inspecting list.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removedownloadmimetypes'><span class='return-type'>void</span> RemoveDownloadMIMETypes(string MIMEType)</a></div></td><td><div class='simple-summary'>
+<p>Removes the MIME type from download inspecting list.</p>
 </div>
 </td></tr></table>
 
@@ -598,6 +616,97 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 <span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => "Error."</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onfiledownloadstarted'></div><div class='api-heading' data-id='onfiledownloadstarted'><a href='#onfiledownloadstarted'><span class='return-type'>void</span> OnFileDownloadStarted(UniWebView webView, string remoteUrl, string fileName)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when a file download task starts.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>remoteUrl</span></div>
+    <div class='parameter-item-desc'><p>The remote URL of this download task. This is also the download URL for the task.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>fileName</span></div>
+    <div class='parameter-item-desc'><p>The file name which user chooses to use.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnFileDownloadStarted <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> remoteUrl<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">.</span><span class="token function">Format</span><span class="token punctuation">(</span><span class="token string">"Download Started. From '{0}', file name '{1}'"</span><span class="token punctuation">,</span> remoteUrl<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onfiledownloadfinished'></div><div class='api-heading' data-id='onfiledownloadfinished'><a href='#onfiledownloadfinished'><span class='return-type'>void</span> OnFileDownloadFinished(UniWebView webView, int errorCode, string remoteUrl, string diskPath)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when a file download task finishes with either an error or success.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>errorCode</span></div>
+    <div class='parameter-item-desc'><p>The error code of the download task result. Value <code>0</code> means the download finishes without a problem. 
+Any other non-<code>0</code> value indicates an issue. The detail meaning of the error code depends on system. 
+On iOS, it is usually the <code>errorCode</code> of the received <code>NSURLError</code>. On Android, the value usually represents
+an <code>ERROR_*</code> value in <code>DownloadManager</code>.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>remoteUrl</span></div>
+    <div class='parameter-item-desc'><p>The remote URL of this download task.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>diskPath</span></div>
+    <div class='parameter-item-desc'><p>The file path of the downloaded file. On iOS, the downloader file is in a temporary folder of your app sandbox.
+On Android, it is in the &quot;Download&quot; folder of your app.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnFileDownloadFinished <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> errorCode<span class="token punctuation">,</span> remoteUrl<span class="token punctuation">,</span> diskPath<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>errorCode <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// Success</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">.</span><span class="token function">Format</span><span class="token punctuation">(</span><span class="token string">"Download Finished. From '{0}', to '{1}'"</span><span class="token punctuation">,</span> remoteUrl<span class="token punctuation">,</span> diskPath<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Download error: "</span> <span class="token operator">+</span> errorCode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -2904,6 +3013,126 @@ This parameter only works on iOS and Android. On macOS editor, the scrolling alw
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code><span class="token comment" spellcheck="true">// Scroll the web page to top with animation.</span>
 webView<span class="token punctuation">.</span><span class="token function">ScrollTo</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='adddownloadurl'></div><div class='api-heading' data-id='adddownloadurl'><a href='#adddownloadurl'><span class='return-type'>void</span> AddDownloadURL(string urlString)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Adds the URL to download inspecting list.</p>
+<p>If a response is received in main frame and its URL is already in the inspecting list, a download task will be 
+triggered. Check &quot;Download Files&quot; guide for more.</p>
+<p>This method only works on iOS and macOS Editor.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>urlString</span></div>
+    <div class='parameter-item-desc'><p>The inspected URL.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">AddDownloadURL</span><span class="token punctuation">(</span><span class="token string">"https://example.com/file.pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='removedownloadurl'></div><div class='api-heading' data-id='removedownloadurl'><a href='#removedownloadurl'><span class='return-type'>void</span> RemoveDownloadURL(string urlString)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Removes the URL from download inspecting list.</p>
+<p>If a response is received in main frame and its URL is already in the inspecting list, a download task will be 
+triggered. Check &quot;Download Files&quot; guide for more.</p>
+<p>This method only works on iOS and macOS Editor.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>urlString</span></div>
+    <div class='parameter-item-desc'><p>The inspected URL.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">RemoveDownloadURL</span><span class="token punctuation">(</span><span class="token string">"https://example.com/file.pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='adddownloadmimetype'></div><div class='api-heading' data-id='adddownloadmimetype'><a href='#adddownloadmimetype'><span class='return-type'>void</span> AddDownloadMIMEType(string MIMEType)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Adds the MIME type to download inspecting list.</p>
+<p>If a response is received in main frame and its MIME type is already in the inspecting list, a 
+download task will be triggered. Check &quot;Download Files&quot; guide for more.</p>
+<p>This method only works on iOS and macOS Editor.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>MIMEType</span></div>
+    <div class='parameter-item-desc'><p>The inspected MIME type of the response.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">AddDownloadMIMEType</span><span class="token punctuation">(</span><span class="token string">"application/pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='removedownloadmimetypes'></div><div class='api-heading' data-id='removedownloadmimetypes'><a href='#removedownloadmimetypes'><span class='return-type'>void</span> RemoveDownloadMIMETypes(string MIMEType)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Removes the MIME type from download inspecting list.</p>
+<p>If a response is received in main frame and its MIME type is already in the inspecting list, a 
+download task will be triggered. Check &quot;Download Files&quot; guide for more.</p>
+<p>This method only works on iOS and macOS Editor.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>MIMEType</span></div>
+    <div class='parameter-item-desc'><p>The inspected MIME type of the response.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">RemoveDownloadMIMETypes</span><span class="token punctuation">(</span><span class="token string">"application/pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
