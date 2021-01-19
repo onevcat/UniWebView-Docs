@@ -29,7 +29,7 @@ If any one of the three conditions is `true`, UniWebView will pop up a dialog as
 Here is an example of adding items to the lists and its result on iOS:
 
 ```csharp
-// Instead of rendering the image.png in web view, this will trigger a download of the image at this specified URL.
+// Instead of rendering the image.png in the web view, this will trigger a download of the image at this specified URL.
 webView.AddDownloadURL("https://example.com/image.png");
 webView.Load("https://example.com/image.png");
 
@@ -44,7 +44,7 @@ webView.Load("https://example.com/files.zip");
 
 ### Post-Downloading Action
 
-The file permission on iOS is much stricter than on Android. Although the downloaded files are stored temporarily in your app's sandbox folder, your user cannot browse them directly before they choose to move these files to another location (eg. iCloud Disk or Dropbox) or to another app (eg. File app of iOS). By default, UniWebView will show a system default share panel to let user choose where to send the files to. Like this:
+The file permission on iOS is much stricter than on Android. Although the downloaded files are stored temporarily in your app's sandbox folder, your user cannot browse them directly before they choose to move these files to another location (eg. iCloud Disk or Dropbox) or another app (eg. File app of iOS). By default, UniWebView will show a system default share panel to let the user choose where to send the files to. Like this:
 
 ![](/images/file-share.png)
 
@@ -84,8 +84,8 @@ If you need to handle these errors, write code for different cases for different
 
 ## Some Limitation
 
-On iOS, there is no system-level of web view downloading support. So UniWebView starts a new standalone GET request to the URL to start a download.
-That means you have to host your downloadable content in a GET request instead of using a POST (say, downloading after submitting a HTML form with POST request).
+On iOS, there is no system-level web view downloading support. So UniWebView starts a new standalone GET request to the URL to start a download.
+That means you have to host your downloadable content in a GET request instead of using a POST (say, downloading after submitting an HTML form with POST request).
 
 The stored cookies for the downloading URL and [customized headers](/api/#setheaderfield) will be applied to download tasks.
 So if you need to implement some authentication when downloading, use either or both to identify your users, and provide the downloadable content with a GET request.
