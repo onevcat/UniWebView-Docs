@@ -1,5 +1,16 @@
 # Release Note
 
+### 4.4.0 (26 Jan, 2021)
+
+#### Add
+
+* Support download files in the general web view. Now, a download task will be triggered if the loading of resource cannot be rendered in place. See the [Downloading Files Guide](https://docs.uniwebview.com/guide/download-files.html) for more information.
+
+#### Fix
+
+* Now Jetifier is not required when Android exporting. If you need Jetifier for other third-party libraries, set it in UniWebView's setting panel.
+* The `Hide` method now correctly hides the web view even when a full-screen view is being used on Android.
+
 ### 4.3.1 (18 Dec, 2020)
 
 #### Fix

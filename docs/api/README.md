@@ -3042,7 +3042,8 @@ triggered. Check &quot;Download Files&quot; guide for more.</p>
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">AddDownloadURL</span><span class="token punctuation">(</span><span class="token string">"https://example.com/file.pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// On iOS, access to "https://example.com/file.pdf" will trigger a download task instead of being rendered in place.</span>
+webView<span class="token punctuation">.</span><span class="token function">AddDownloadURL</span><span class="token punctuation">(</span><span class="token string">"https://example.com/file.pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -3072,7 +3073,8 @@ triggered. Check &quot;Download Files&quot; guide for more.</p>
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">RemoveDownloadURL</span><span class="token punctuation">(</span><span class="token string">"https://example.com/file.pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// On iOS, access to "https://example.com/file.pdf" will be rendered in place.</span>
+webView<span class="token punctuation">.</span><span class="token function">RemoveDownloadURL</span><span class="token punctuation">(</span><span class="token string">"https://example.com/file.pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -3102,7 +3104,8 @@ download task will be triggered. Check &quot;Download Files&quot; guide for more
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">AddDownloadMIMEType</span><span class="token punctuation">(</span><span class="token string">"application/pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// On iOS, access to any PDF files will trigger a download task instead of being rendered in place.</span>
+webView<span class="token punctuation">.</span><span class="token function">AddDownloadMIMEType</span><span class="token punctuation">(</span><span class="token string">"application/pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -3132,7 +3135,8 @@ download task will be triggered. Check &quot;Download Files&quot; guide for more
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">RemoveDownloadMIMETypes</span><span class="token punctuation">(</span><span class="token string">"application/pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code><span class="token comment" spellcheck="true">// On iOS, access to any PDF files will be rendered in place.</span>
+webView<span class="token punctuation">.</span><span class="token function">RemoveDownloadMIMETypes</span><span class="token punctuation">(</span><span class="token string">"application/pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
