@@ -74,9 +74,11 @@ which underhood provides the ability of safe browsing, is installed or not.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<p>if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
-    // Safe Browsing Mode is available on current device.
-}</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>UniWebViewSafeBrowsing<span class="token punctuation">.</span>IsSafeBrowsingSupported<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Safe Browsing Mode is available on current device.</span>
+<span class="token punctuation">}</span>
+</code></pre>
 </div>
 </div>
     </div>
