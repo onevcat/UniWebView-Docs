@@ -1603,6 +1603,40 @@ name = "Android"
 color = "green"
 
 [[Methods]]
+name = "CaptureSnapshot"
+syntax = "CaptureSnapshot(string fileName)"
+returnType = "void"
+summary = """
+Capture the content of web view and store it to the cache path on disk with the given file name.
+
+When the capturing finishes, `OnCaptureSnapshotFinished` event will be raised, with an error code to indicate
+whether the operation succeeded and an accessible disk path of the image. 
+
+The captured image will be stored as a PNG file under the `fileName` in app's cache folder. If a file with the 
+same file name already exists, it will be overridden by the new captured image.
+"""
+example = """
+```csharp
+webView.OnCaptureSnapshotFinished += (view, errorCode, filePath) => {
+    if (errorCode != 0) { return; } 
+    byte[] bytes = File.ReadAllBytes(filePath);
+    Texture2D texture = new Texture2D(2, 2, TextureFormat.RGB24, false);
+    texture.LoadImage(bytes);
+    
+    // Use the texture.
+};
+webView.CaptureSnapshot("sample.png");
+```
+"""
+[[Methods.parameters]]
+name = "fileName"
+type = "string"
+summary = """
+The file name to which the captured image is stored to, for example "screenshot.png". If empty, UniWebView will pick a 
+random UUID with "png" file extension as the file name.
+"""
+
+[[Methods]]
 name = "ScrollTo"
 syntax = "ScrollTo(int x, int y, bool animated)"
 returnType = "void"
@@ -1887,6 +1921,42 @@ summary = "The error code which indicates the error type. It can be different fr
 name = "url"
 type = "string"
 summary = "The error message which indicates the error."
+
+[[Events]]
+name = "OnCaptureSnapshotFinished"
+syntax = "OnCaptureSnapshotFinished(UniWebView webView, int errorCode, string diskPath)"
+returnType = "void"
+summary = """
+Raised when an image captured and stored in a cache path on disk.
+"""
+example = """
+```csharp
+webView.OnCaptureSnapshotFinished += (view, errorCode, filePath) => {
+    if (errorCode != 0) { return; }
+    byte[] bytes = File.ReadAllBytes(filePath);
+    Texture2D texture = new Texture2D(2, 2, TextureFormat.RGB24, false);
+    texture.LoadImage(bytes);
+    
+    // Use the texture.
+};
+webView.CaptureSnapshot("sample.png");
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "errorCode"
+type = "int"
+summary = """
+The error code of the event. If the snapshot is captured and stored without a problem, the error code is 0. 
+Any other number indicates an error happened.
+"""
+[[Events.parameters]]
+name = "diskPath"
+type = "string"
+summary = "An accessible disk path to the captured snapshot image. If an error happens, it is an empty string."
 
 [[Events]]
 name = "OnFileDownloadStarted"

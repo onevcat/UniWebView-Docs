@@ -51,6 +51,9 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onpageerrorreceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
 <p>Raised when an error encountered during the loading process.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#oncapturesnapshotfinished'><span class='return-type'>void</span> OnCaptureSnapshotFinished(UniWebView webView, int result, string diskPath)</a></div></td><td><div class='simple-summary'>
+<p>Raised when an image captured and stored in a cache path on disk.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onfiledownloadstarted'><span class='return-type'>void</span> OnFileDownloadStarted(UniWebView webView, string remoteUrl, string fileName)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a file download task starts.</p>
 </div>
@@ -271,6 +274,9 @@ HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#print'><span class='return-type'>void</span> Print()</a></div></td><td><div class='simple-summary'>
 <p>Prints current page.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#capturesnapshot'><span class='return-type'>void</span> CaptureSnapshot(string fileName)</a></div></td><td><div class='simple-summary'>
+<p>Capture the content of web view and store it to the cache path on disk with the given file name.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#scrollto'><span class='return-type'>void</span> ScrollTo(int x, int y, bool animated)</a></div></td><td><div class='simple-summary'>
 <p>Scrolls the web view to a certain point.</p>
@@ -616,6 +622,52 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 <span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => "Error."</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='oncapturesnapshotfinished'></div><div class='api-heading' data-id='oncapturesnapshotfinished'><a href='#oncapturesnapshotfinished'><span class='return-type'>void</span> OnCaptureSnapshotFinished(UniWebView webView, int result, string diskPath)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when an image captured and stored in a cache path on disk.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>result</span></div>
+    <div class='parameter-item-desc'><p>The error code of the event. If the snapshot is captured and stored without a problem, the error code is 0. 
+Any other number indicates an error happened.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>diskPath</span></div>
+    <div class='parameter-item-desc'><p>An accessible disk path to the captured snapshot image. If an error happens, it is an empty string.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnCaptureSnapshotFinished <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> result<span class="token punctuation">,</span> filePath<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes <span class="token operator">=</span> File<span class="token punctuation">.</span><span class="token function">ReadAllBytes</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Texture2D texture <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Texture2D</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> TextureFormat<span class="token punctuation">.</span>RGB24<span class="token punctuation">,</span> <span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    texture<span class="token punctuation">.</span><span class="token function">LoadImage</span><span class="token punctuation">(</span>bytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+    <span class="token comment" spellcheck="true">// Use the texture.</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">CaptureSnapshot</span><span class="token punctuation">(</span><span class="token string">"sample.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -2976,6 +3028,46 @@ This method does nothing on macOS editor.</p>
   </p>
 </div>
                       </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='capturesnapshot'></div><div class='api-heading' data-id='capturesnapshot'><a href='#capturesnapshot'><span class='return-type'>void</span> CaptureSnapshot(string fileName)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Capture the content of web view and store it to the cache path on disk with the given file name.</p>
+<p>When the capturing finishes, <code>OnCaptureSnapshotFinished</code> event will be raised, with a result code to indicate
+whether the operation succeeded and an accessible disk path of the image. </p>
+<p>The captured image will be stored as a PNG file under the <code>fileName</code> in app&#39;s cache folder. If a file with the 
+same file name already exists, it will be overridden by the new captured image.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>fileName</span></div>
+    <div class='parameter-item-desc'><p>The file name to which the captured image is stored to, for example &quot;screenshot.png&quot;. If empty, UniWebView will pick a 
+random UUID with &quot;png&quot; file extension as the file name.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnCaptureSnapshotFinished <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> result<span class="token punctuation">,</span> filePath<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> 
+    <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes <span class="token operator">=</span> File<span class="token punctuation">.</span><span class="token function">ReadAllBytes</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Texture2D texture <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Texture2D</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> TextureFormat<span class="token punctuation">.</span>RGB24<span class="token punctuation">,</span> <span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    texture<span class="token punctuation">.</span><span class="token function">LoadImage</span><span class="token punctuation">(</span>bytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+    <span class="token comment" spellcheck="true">// Use the texture.</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">CaptureSnapshot</span><span class="token punctuation">(</span><span class="token string">"sample.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
