@@ -34,9 +34,11 @@ This property always returns `true` on iOS runtime platform. On Android, it depe
 which underhood provides the ability of safe browsing, is installed or not.
 """
 example = """
+```csharp
 if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
     // Safe Browsing Mode is available on current device.
 }
+```
 """
 
 [[Methods]]
