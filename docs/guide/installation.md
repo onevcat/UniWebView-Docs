@@ -62,7 +62,7 @@ If any other packages of your project is already adding this, you can opt-out th
 
 Whether the [androidx.browser package](https://developer.android.com/jetpack/androidx/releases/browser) should be added to the project.
 UniWebView uses some features in that package. It is on by default.
-If any other packages of your project is already adding this, you can opt-out this option to skip adding Kotlin to the project.
+If any other packages of your project is already adding this, you can opt-out this option to skip adding the browser package to the project.
 
 ## Restarting Unity
 
