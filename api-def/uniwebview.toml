@@ -1951,7 +1951,8 @@ name = "errorCode"
 type = "int"
 summary = """
 The error code of the event. If the snapshot is captured and stored without a problem, the error code is 0. 
-Any other number indicates an error happened.
+Any other number indicates an error happened. In most cases, the screenshot capturing only fails due to lack
+of disk storage.
 """
 [[Events.parameters]]
 name = "diskPath"
