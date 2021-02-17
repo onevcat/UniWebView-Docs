@@ -51,7 +51,7 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onpageerrorreceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
 <p>Raised when an error encountered during the loading process.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#oncapturesnapshotfinished'><span class='return-type'>void</span> OnCaptureSnapshotFinished(UniWebView webView, int result, string diskPath)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#oncapturesnapshotfinished'><span class='return-type'>void</span> OnCaptureSnapshotFinished(UniWebView webView, int errorCode, string diskPath)</a></div></td><td><div class='simple-summary'>
 <p>Raised when an image captured and stored in a cache path on disk.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onfiledownloadstarted'><span class='return-type'>void</span> OnFileDownloadStarted(UniWebView webView, string remoteUrl, string fileName)</a></div></td><td><div class='simple-summary'>
@@ -629,7 +629,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='oncapturesnapshotfinished'></div><div class='api-heading' data-id='oncapturesnapshotfinished'><a href='#oncapturesnapshotfinished'><span class='return-type'>void</span> OnCaptureSnapshotFinished(UniWebView webView, int result, string diskPath)</a></div>
+  <div class="api-anchor" id='oncapturesnapshotfinished'></div><div class='api-heading' data-id='oncapturesnapshotfinished'><a href='#oncapturesnapshotfinished'><span class='return-type'>void</span> OnCaptureSnapshotFinished(UniWebView webView, int errorCode, string diskPath)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -644,9 +644,10 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 </div>
   </li>
   <li>
-    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>result</span></div>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>errorCode</span></div>
     <div class='parameter-item-desc'><p>The error code of the event. If the snapshot is captured and stored without a problem, the error code is 0. 
-Any other number indicates an error happened.</p>
+Any other number indicates an error happened. In most cases, the screenshot capturing only fails due to lack
+of disk storage.</p>
 </div>
   </li>
   <li>
@@ -659,8 +660,8 @@ Any other number indicates an error happened.</p>
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnCaptureSnapshotFinished <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> result<span class="token punctuation">,</span> filePath<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnCaptureSnapshotFinished <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> errorCode<span class="token punctuation">,</span> filePath<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>errorCode <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
     <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes <span class="token operator">=</span> File<span class="token punctuation">.</span><span class="token function">ReadAllBytes</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
     Texture2D texture <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Texture2D</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> TextureFormat<span class="token punctuation">.</span>RGB24<span class="token punctuation">,</span> <span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     texture<span class="token punctuation">.</span><span class="token function">LoadImage</span><span class="token punctuation">(</span>bytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -3036,7 +3037,7 @@ This method does nothing on macOS editor.</p>
     <div class='desc'>
       <div class='summary'>
 <p>Capture the content of web view and store it to the cache path on disk with the given file name.</p>
-<p>When the capturing finishes, <code>OnCaptureSnapshotFinished</code> event will be raised, with a result code to indicate
+<p>When the capturing finishes, <code>OnCaptureSnapshotFinished</code> event will be raised, with an error code to indicate
 whether the operation succeeded and an accessible disk path of the image. </p>
 <p>The captured image will be stored as a PNG file under the <code>fileName</code> in app&#39;s cache folder. If a file with the 
 same file name already exists, it will be overridden by the new captured image.</p>
@@ -3055,8 +3056,8 @@ random UUID with &quot;png&quot; file extension as the file name.</p>
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnCaptureSnapshotFinished <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> result<span class="token punctuation">,</span> filePath<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> 
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnCaptureSnapshotFinished <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> errorCode<span class="token punctuation">,</span> filePath<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>errorCode <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> 
     <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes <span class="token operator">=</span> File<span class="token punctuation">.</span><span class="token function">ReadAllBytes</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
     Texture2D texture <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Texture2D</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> TextureFormat<span class="token punctuation">.</span>RGB24<span class="token punctuation">,</span> <span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     texture<span class="token punctuation">.</span><span class="token function">LoadImage</span><span class="token punctuation">(</span>bytes<span class="token punctuation">)</span><span class="token punctuation">;</span>

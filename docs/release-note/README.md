@@ -1,5 +1,15 @@
 # Release Note
 
+### 4.5.0
+
+#### Add
+
+* A new method to capture the current web view content and store it on a temporary folder on disk. Check `CaptureSnapshot` method and `OnCaptureSnapshotFinished` event for more.
+
+#### Fix
+
+* A potential issue that Safe Browsing crashes on certain devices without Chrome and Google Mobile Services (GMS) properly installed.
+
 ### 4.4.0 (26 Jan, 2021)
 
 #### Add
