@@ -1,13 +1,13 @@
 # Release Note
 
-### 4.5.1
+### 4.5.1 (12 Mar, 2021)
 
 #### Fix
 
 * Now file uploading from Android contains a more readable file name in its `Content-Disposition` field.
 * An issue which causes external keyboard input is not valid while opening the web view on iOS.
 
-### 4.5.0
+### 4.5.0 (17 Feb, 2021)
 
 #### Add
 
