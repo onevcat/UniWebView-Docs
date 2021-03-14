@@ -916,21 +916,6 @@ returnType = "void"
 summary = "Cleans web view cache. This removes cached local data of web view.\n\nIf you need to clear all cookies, use `ClearCookies` instead."
 
 [[Methods]]
-name = "ClearCookies"
-syntax = "ClearCookies()"
-returnType = "void"
-summary = "Clear all cookies from web views."
-notice = "This will clear cookies from all domains in the web view and previous. If you only need to remove cookies from a certain domain, use `SetCookie` instead."
-example = """
-```csharp
-UniWebView.ClearCookies();
-```
-"""
-[[Methods.badges]]
-name = "static"
-color = "blue"
-
-[[Methods]]
 name = "SetCookie"
 syntax = "SetCookie(string url, string cookie, bool skipEncoding)"
 returnType = "void"
@@ -994,6 +979,69 @@ summary = "The key for target cookie value."
 name = "skipEncoding"
 type = "bool"
 summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to get the cookie if it is valid. Default is `false`."
+
+[[Methods]]
+name = "RemoveCookies"
+syntax = "RemoveCookies(string url, bool skipEncoding)"
+returnType = "void"
+summary = "Removes all the cookies under a url."
+example = """
+```csharp
+UniWebView.RemoveCookies("https://example.com");
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "url"
+type = "string"
+summary = "The url (domain) where the target cookie is."
+[[Methods.parameters]]
+name = "skipEncoding"
+type = "bool"
+summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to get the cookie if it is valid. Default is `false`."
+
+[[Methods]]
+name = "RemoveCooke"
+syntax = "RemoveCookie(string url, string key, bool skipEncoding)"
+returnType = "void"
+summary = "Removes the certain cookie under a url for the specified key."
+example = """
+```csharp
+UniWebView.RemoveCookie("https://example.com", "SID");
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "url"
+type = "string"
+summary = "The url (domain) where the target cookie is."
+[[Methods.parameters]]
+name = "key"
+type = "string"
+summary = "The key for target cookie."
+[[Methods.parameters]]
+name = "skipEncoding"
+type = "bool"
+summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to get the cookie if it is valid. Default is `false`."
+
+[[Methods]]
+name = "ClearCookies"
+syntax = "ClearCookies()"
+returnType = "void"
+summary = "Clear all cookies from web views."
+notice = "This will clear cookies from all domains in the web view and previous. If you only need to remove cookies from a certain domain, use `RemoveCookies` instead."
+example = """
+```csharp
+UniWebView.ClearCookies();
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
 
 [[Methods]]
 name = "ClearHttpAuthUsernamePassword"

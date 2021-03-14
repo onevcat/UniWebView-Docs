@@ -180,14 +180,20 @@ are added to the adjusted content inset.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#cleancache'><span class='return-type'>void</span> CleanCache()</a></div></td><td><div class='simple-summary'>
 <p>Cleans web view cache.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#clearcookies'><span class='return-type'>void</span> ClearCookies()</a></div></td><td><div class='simple-summary'>
-<p>Clear all cookies from web views.</p>
-</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
 <p>Sets a cookie for a certain url.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#getcookie'><span class='return-type'>string</span> GetCookie(string url, string key, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
 <p>Gets the cookie value under a url and key.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removecookies'><span class='return-type'>void</span> RemoveCookies(string url, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+<p>Removes all the cookies under a url.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removecooke'><span class='return-type'>void</span> RemoveCookie(string url, string key, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+<p>Removes the certain cookie under a url for the specified key.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#clearcookies'><span class='return-type'>void</span> ClearCookies()</a></div></td><td><div class='simple-summary'>
+<p>Clear all cookies from web views.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#clearhttpauthusernamepassword'><span class='return-type'>void</span> ClearHttpAuthUsernamePassword(string host, string realm)</a></div></td><td><div class='simple-summary'>
 <p>Clears any saved credentials for HTTP authentication for both Basic and Digest.</p>
@@ -2160,29 +2166,6 @@ webView<span class="token punctuation">.</span><span class="token function">SetD
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='clearcookies'></div><div class='api-heading' data-id='clearcookies'><a href='#clearcookies'><span class='return-type'>void</span> ClearCookies()</a><div class='api-badge api-badge-blue'>static</div></div>
-  <div class='api-body'>
-    <div class='desc'>
-      <div class='summary'>
-<p>Clear all cookies from web views.</p>
-</div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
-  <p>
-        This will clear cookies from all domains in the web view and previous. If you only need to remove cookies from a certain domain, use <code>SetCookie</code> instead.
-  </p>
-</div>
-                  <div class='example'>
-    <p class='example-title'>Example</p>
-<div class="language-csharp extra-class">
-<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">ClearCookies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</div>
-</div>
-    </div>
-  </div>
-</div>
-<div class='api-box method'>
   <div class="api-anchor" id='setcookie'></div><div class='api-heading' data-id='setcookie'><a href='#setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
@@ -2261,6 +2244,98 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">GetCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token string">"testCookie"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// => The corresponding cookie value. Or "" if there is no such cookie.</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='removecookies'></div><div class='api-heading' data-id='removecookies'><a href='#removecookies'><span class='return-type'>void</span> RemoveCookies(string url, bool skipEncoding)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Removes all the cookies under a url.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
+    <div class='parameter-item-desc'><p>The url (domain) where the target cookie is.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
+    <div class='parameter-item-desc'><p>Whether UniWebView should skip encoding the url or not. If set to <code>false</code>, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to get the cookie if it is valid. Default is <code>false</code>.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">RemoveCookies</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='removecooke'></div><div class='api-heading' data-id='removecooke'><a href='#removecooke'><span class='return-type'>void</span> RemoveCookie(string url, string key, bool skipEncoding)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Removes the certain cookie under a url for the specified key.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
+    <div class='parameter-item-desc'><p>The url (domain) where the target cookie is.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>key</span></div>
+    <div class='parameter-item-desc'><p>The key for target cookie.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>skipEncoding</span></div>
+    <div class='parameter-item-desc'><p>Whether UniWebView should skip encoding the url or not. If set to <code>false</code>, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to get the cookie if it is valid. Default is <code>false</code>.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">RemoveCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token string">"SID"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='clearcookies'></div><div class='api-heading' data-id='clearcookies'><a href='#clearcookies'><span class='return-type'>void</span> ClearCookies()</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Clear all cookies from web views.</p>
+</div>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        This will clear cookies from all domains in the web view and previous. If you only need to remove cookies from a certain domain, use <code>RemoveCookies</code> instead.
+  </p>
+</div>
+                  <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">ClearCookies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
