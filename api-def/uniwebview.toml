@@ -1966,9 +1966,9 @@ name = "errorCode"
 type = "int"
 summary = "The error code which indicates the error type. It can be different from systems and platforms."
 [[Events.parameters]]
-name = "url"
+name = "errorMessage"
 type = "string"
-summary = "The error message which indicates the error."
+summary = "The error message which describes the detail of error."
 
 [[Events]]
 name = "OnCaptureSnapshotFinished"
