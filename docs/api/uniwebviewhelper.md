@@ -41,7 +41,7 @@ sidebarDepth: 0
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code><span class="token keyword">var</span> url <span class="token operator">=</span> UniWebViewHelper<span class="token punctuation">.</span><span class="token function">StreamingAssetURLForPath</span><span class="token punctuation">(</span><span class="token string">"www/localHTML.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> url <span class="token operator">=</span> UniWebViewHelper<span class="token punctuation">.</span><span class="token function">StreamingAssetURLForPath</span><span class="token punctuation">(</span><span class="token string">"www/localHTML.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
@@ -70,7 +70,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code><span class="token keyword">var</span> url <span class="token operator">=</span> UniWebViewHelper<span class="token punctuation">.</span><span class="token function">PersistentDataURLForPath</span><span class="token punctuation">(</span><span class="token string">"www/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> url <span class="token operator">=</span> UniWebViewHelper<span class="token punctuation">.</span><span class="token function">PersistentDataURLForPath</span><span class="token punctuation">(</span><span class="token string">"www/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>

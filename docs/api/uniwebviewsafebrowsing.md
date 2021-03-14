@@ -76,7 +76,7 @@ which underhood provides the ability of safe browsing, is installed or not.</p>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>UniWebViewSafeBrowsing<span class="token punctuation">.</span>IsSafeBrowsingSupported<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// Safe Browsing Mode is available on current device.</span>
+    <span class="token comment">// Safe Browsing Mode is available on current device.</span>
 <span class="token punctuation">}</span>
 </code></pre>
 </div>
@@ -117,7 +117,7 @@ external browser.
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>safeBrowsing<span class="token punctuation">.</span>OnSafeBrowsingFinished <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>browsing<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span> 
+<pre class="language-csharp"><code>safeBrowsing<span class="token punctuation">.</span>OnSafeBrowsingFinished <span class="token operator">+=</span> <span class="token punctuation">(</span>browsing<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> 
     Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"UniWebViewSafeBrowsing closed."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
@@ -149,7 +149,7 @@ external browser.
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code><span class="token keyword">var</span> safeBrowsing <span class="token operator">=</span> UniWebViewSafeBrowsing<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span><span class="token string">"https://uniwebview.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> safeBrowsing <span class="token operator">=</span> UniWebViewSafeBrowsing<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span><span class="token string">"https://uniwebview.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -166,7 +166,7 @@ external browser.
                         <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code><span class="token keyword">var</span> safeBrowsing <span class="token operator">=</span> UniWebViewSafeBrowsing<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span><span class="token string">"https://uniwebview.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> safeBrowsing <span class="token operator">=</span> UniWebViewSafeBrowsing<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span><span class="token string">"https://uniwebview.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 safeBrowsing<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>

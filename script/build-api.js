@@ -1,12 +1,14 @@
 const toml = require("toml");
 const fs = require("fs-extra");
 const marked = require("marked");
-const Prism = require("node-prismjs");
+const Prism = require("prismjs");
+const loadLanguages = require('prismjs/components/');
+loadLanguages(['csharp']);
 const escapeHtml = require("escape-html");
 
 marked.setOptions({
   highlight: function (code) {
-    return Prism.highlight(code, Prism.languages.csharp).replace(
+    return Prism.highlight(code, Prism.languages.csharp, 'csharp').replace(
       /\n\n/g,
       "\n<span />\n"
     );

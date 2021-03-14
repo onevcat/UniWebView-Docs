@@ -3,7 +3,6 @@
     "escape-html": "^1.0.3",
     "fs-extra": "^5.0.0",
     "marked": "^0.3.19",
-    "node-prismjs": "^0.1.1",
     "toml": "^2.3.3",
     "vuepress": "^1.0.0"
   },
@@ -17,5 +16,8 @@
     "dev": "./node_modules/.bin/vuepress dev docs",
     "build": "yarn api && ./node_modules/.bin/vuepress build docs",
     "api": "node ./script/build-api.js"
+  },
+  "devDependencies": {
+    "prismjs": "^1.23.0"
   }
 }
