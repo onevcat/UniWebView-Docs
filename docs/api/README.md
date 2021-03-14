@@ -607,8 +607,8 @@ Such as the &quot;host not found&quot; error or &quot;no Internet connection&quo
 </div>
   </li>
   <li>
-    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
-    <div class='parameter-item-desc'><p>The error message which indicates the error.</p>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>errorMessage</span></div>
+    <div class='parameter-item-desc'><p>The error message which describes the detail of error.</p>
 </div>
   </li>
 </ul></div>
