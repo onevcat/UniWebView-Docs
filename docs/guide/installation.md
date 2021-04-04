@@ -26,7 +26,7 @@ UniWebView uses [Gradle](https://docs.unity3d.com/Manual/android-gradle-overview
 From Unity 2019.3, the "Internal" is not an option in Unity anymore.
 :::
 
-After imported, you can open the Unity Preferences panel (**Unity → Preferences**) to configure some necessary permissions. In most cases, there is no need to adjust them and your project should
+After importing UniWebView, you can open the Unity Preferences panel (**Unity → Preferences**) to configure some necessary permissions. In most cases, there is no need to adjust them and your project should
 build and run well. This panel provides a quick way to customize how UniWebView should adjust some behaviors or dependencies installation.
 
 UniWebView uses a post-build script to modify the gradle project and "AndroidManifest.xml" file for the exported Android project.
@@ -51,7 +51,9 @@ Add `ACCESS_FINE_LOCATION` permission to the "AndroidManifest.xml". It enables t
 
 ### Gradle Build
 
-Settings in this section will be used to modify the `build.gradle` file of the exported project.
+You can use settings in this section to modify the `build.gradle` behavior when exporting the project. By default, UniWebView 
+will add all dependencies it needs. However, if you are using another package manager or some embedded libraries, a duplication might
+happen when exporting to Android APK file. In this case, you can try to disable a certain option below to let UniWebView use the existing package instead.
 
 #### Adds Kotlin
 
@@ -64,9 +66,16 @@ Whether the [androidx.browser package](https://developer.android.com/jetpack/and
 UniWebView uses some features in that package. It is on by default.
 If any other packages of your project is already adding this, you can opt-out this option to skip adding the browser package to the project.
 
+#### Enable Jetifier
+
+[Jetifier](https://developer.android.com/studio/command-line/jetifier) migrates your support-library-dependent libraries to compatible with AndroidX. 
+UniWebView requires `androidx.browser` package, which is only available as an AndroidX package, so keeping using AndroidX support libraries (if there are)
+makes your project cleaner. However, this is optional and if you have to use a legacy support library, disable this setting.
+
 ## Restarting Unity
 
-Restart the Unity app to give it a chance to load the UniWebView bundle for macOS Editor support. Also remember to switch your build target in Player Setting to either iOS or Android, since UniWebView will only work on these two platforms. Otherwise, UniWebView will give a warning, saying the platform is not supported yet.
+Restart the Unity app to give it a chance to load the UniWebView bundle for macOS Editor support. Remember to switch your build target in Player Setting
+to either iOS or Android, since UniWebView only works on these two platforms. Otherwise, UniWebView gives a warning, saying the platform is not supported yet.
 
 ## Next Step
 
