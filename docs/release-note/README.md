@@ -1,5 +1,11 @@
 # Release Note
 
+### 4.6.0 (4, Apr, 2021)
+
+#### Add
+
+* Methods to remove cookies under a URL and with a certain cookie name. It allows you to remove some of the stored cookies instead of clearing them all. Check the `RemoveCookies` and `RemoveCooke` methods respectively.
+
 ### 4.5.1 (12 Mar, 2021)
 
 #### Fix
