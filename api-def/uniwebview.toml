@@ -712,22 +712,85 @@ type = "bool"
 summary = "A flag indicates whether inline playing of media is allowed or not."
 
 [[Methods]]
+name = "SetAllowFileAccess"
+syntax = "SetAllowFileAccess(bool flag)"
+returnType = "void"
+summary = """
+Sets whether loading a local file is allowed.
+
+If set to `false`, any load from a file URL `file://` for `Load` method will be rejected and trigger an 
+`OnPageErrorReceived` event. That means you cannot load a web page from any local file. If you are not going to 
+load any local files, setting it to `false` helps to reduce the interface of web view and improve the security.
+
+By default, it is `true` and the local file URL loading is allowed.
+"""
+example = """
+```csharp
+// Forbid file:// URL loading.
+webView.SetAllowFileAccess(false);
+
+// This won't load and trigger an error in OnPageErrorReceived.
+var url = UniWebViewHelper.StreamingAssetURLForPath("www/index.html");
+webView.Load(url);
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the local file access by web view loading is allowed or not."
+
+
+[[Methods]]
+name = "SetAllowFileAccessFromFileURLs"
+syntax = "SetAllowFileAccessFromFileURLs(bool flag)"
+returnType = "void"
+summary = """
+Sets whether file access from file URLs is allowed.
+
+By setting with `true`, access to file URLs inside the web view will be enabled and you could access 
+sub-resources or make cross origin requests from local HTML files.
+
+On iOS, it uses some "hidden" way by setting `allowFileAccessFromFileURLs` in config preferences for WebKit.
+So it is possible that it stops working in a future version.
+
+On Android, it sets the `WebSettings.setAllowFileAccessFromFileURLs` for the current web view.
+"""
+notice = """
+By setting this to `true`, you will bring some potential security issue to your app. Some malicious script 
+would be able to read your sandbox. So we DO NOT recommend to enable it before you realize and understand the risk.
+"""
+example = """
+```csharp
+webView.SetAllowFileAccessFromFileURLs(true);
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the file access inside web view from file URLs is allowed or not."
+
+[[Methods]]
 name = "SetAllowUniversalAccessFromFileURLs"
 syntax = "SetAllowUniversalAccessFromFileURLs(bool flag)"
 returnType = "void"
 summary = """
-Sets allow universal access from file URLs. 
+Sets allow universal access from file URLs. By default, on iOS, the `WKWebView` forbids any load of local files
+through AJAX even when opening a local HTML file. It checks the CORS rules and fails at web view level. 
+This is useful when you want access these files by setting the `allowUniversalAccessFromFileURLs` key of web view
+configuration.
 
-By default, on iOS, the `WKWebView` forbids any load of local files through AJAX even when opening a local HTML file. 
-It checks the CORS rules and fails at web view level. This is useful when you want access these files by setting 
-the `allowUniversalAccessFromFileURLs` key of web view configuration.
+On iOS and macOS Editor. It uses some "hidden" way by setting `allowUniversalAccessFromFileURLs` in config 
+for WebKit. So it is possible that it stops working in a future version.
 
-This only works for iOS and macOS Editor. It is using some "hidden" way of setting a config for WebKit. So it is
-possible that it stops working in a future version.
-
-On Android, the CORS rule checking is ignored by system `WebView`.
+On Android, it sets the `WebSettings.setAllowUniversalAccessFromFileURLs` and any later-created web views uses
+that value.
 """
-notice = "You need to set it before creating a web view. Existing web views are not affected."
+notice = """
+You need to set it before creating a web view. Existing web views are not affected.
+
+By setting this to `true`, you will bring some potential security issue to your app. Some malicious script 
+would be able to read your sandbox. So we DO NOT recommend to enable it before you realize and understand the risk.
+"""
 example = """
 ```csharp
 UniWebView.SetAllowUniversalAccessFromFileURLs(true);
@@ -739,12 +802,6 @@ var webView = gameObject.AddComponent<UniWebView>();
 [[Methods.badges]]
 name = "static"
 color = "blue"
-[[Methods.badges]]
-name = "iOS"
-color = "orange"
-[[Methods.badges]]
-name = "macOS"
-color = "purple"
 [[Methods.parameters]]
 name = "flag"
 type = "bool"
@@ -1537,38 +1594,6 @@ webView.SetAllowBackForwardNavigationGestures(true);
 name = "flag"
 type = "bool"
 summary = "The value indicates whether a swipe gestures driven navigation should be allowed. Default is `false`."
-[[Methods.badges]]
-name = "iOS"
-color = "orange"
-[[Methods.badges]]
-name = "macOS"
-color = "purple"
-
-[[Methods]]
-name = "SetAllowFileAccessFromFileURLs"
-syntax = "SetAllowFileAccessFromFileURLs(bool flag)"
-returnType = "void"
-summary = """
-Sets whether file access from file URLs is allowed.
-
-By setting with `true`, access to file URLs inside the web view will be enabled and you could access sub-resources or 
-make cross origin requests from local HTML files. This method only works on iOS. The file accessing from file URLs on
-Android is available by default.
-"""
-notice = """
-By setting allowing access from file URLs, you will bring some potential security issue to your app. Some malicious script 
-would be able to read your sandbox. So we DO NOT recommend to enable it before you realize and understand the risk. 
-UniWebView cannot provide any warranty on this security issue.
-"""
-example = """
-```csharp
-webView.SetAllowFileAccessFromFileURLs(true);
-```
-"""
-[[Methods.parameters]]
-name = "flag"
-type = "bool"
-summary = "Whether the file access from file URLs is allowed or not."
 [[Methods.badges]]
 name = "iOS"
 color = "orange"
