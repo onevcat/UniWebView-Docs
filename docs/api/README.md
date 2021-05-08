@@ -156,6 +156,12 @@ are added to the adjusted content inset.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowinlineplay'><span class='return-type'>void</span> SetAllowInlinePlay(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets allow inline play for current web view.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowfileaccess'><span class='return-type'>void</span> SetAllowFileAccess(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether loading a local file is allowed.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowfileaccessfromfileurls'><span class='return-type'>void</span> SetAllowFileAccessFromFileURLs(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether file access from file URLs is allowed.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowuniversalaccessfromfileurls'><span class='return-type'>void</span> SetAllowUniversalAccessFromFileURLs(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets allow universal access from file URLs.</p>
 </div>
@@ -267,9 +273,6 @@ hides the status bar and navigation bar with a sticky style.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowbackforwardnavigationgestures'><span class='return-type'>void</span> SetAllowBackForwardNavigationGestures(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether horizontal swipe gestures should trigger back-forward list navigation.</p>
-</div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowfileaccessfromfileurls'><span class='return-type'>void</span> SetAllowFileAccessFromFileURLs(bool flag)</a></div></td><td><div class='simple-summary'>
-<p>Sets whether file access from file URLs is allowed.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowhttpauthpopupwindow'><span class='return-type'>void</span> SetAllowHTTPAuthPopUpWindow(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether a prompt alert should be displayed for collection username and password when the web view receives an
@@ -1911,22 +1914,103 @@ webView<span class="token punctuation">.</span><span class="token function">Show
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setallowuniversalaccessfromfileurls'></div><div class='api-heading' data-id='setallowuniversalaccessfromfileurls'><a href='#setallowuniversalaccessfromfileurls'><span class='return-type'>void</span> SetAllowUniversalAccessFromFileURLs(bool flag)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='setallowfileaccess'></div><div class='api-heading' data-id='setallowfileaccess'><a href='#setallowfileaccess'><span class='return-type'>void</span> SetAllowFileAccess(bool flag)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Sets allow universal access from file URLs. </p>
-<p>By default, on iOS, the <code>WKWebView</code> forbids any load of local files through AJAX even when opening a local HTML file. 
-It checks the CORS rules and fails at web view level. This is useful when you want access these files by setting 
-the <code>allowUniversalAccessFromFileURLs</code> key of web view configuration.</p>
-<p>This only works for iOS and macOS Editor. It is using some &quot;hidden&quot; way of setting a config for WebKit. So it is
-possible that it stops working in a future version.</p>
-<p>On Android, the CORS rule checking is ignored by system <code>WebView</code>.</p>
+<p>Sets whether loading a local file is allowed.</p>
+<p>If set to <code>false</code>, any load from a file URL <code>file://</code> for <code>Load</code> method will be rejected and trigger an 
+<code>OnPageErrorReceived</code> event. That means you cannot load a web page from any local file. If you are not going to 
+load any local files, setting it to <code>false</code> helps to reduce the interface of web view and improve the security.</p>
+<p>By default, it is <code>true</code> and the local file URL loading is allowed.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item-desc'><p>Whether the local file access by web view loading is allowed or not.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Forbid file:// URL loading.</span>
+webView<span class="token punctuation">.</span><span class="token function">SetAllowFileAccess</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// This won't load and trigger an error in OnPageErrorReceived.</span>
+<span class="token class-name"><span class="token keyword">var</span></span> url <span class="token operator">=</span> UniWebViewHelper<span class="token punctuation">.</span><span class="token function">StreamingAssetURLForPath</span><span class="token punctuation">(</span><span class="token string">"www/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setallowfileaccessfromfileurls'></div><div class='api-heading' data-id='setallowfileaccessfromfileurls'><a href='#setallowfileaccessfromfileurls'><span class='return-type'>void</span> SetAllowFileAccessFromFileURLs(bool flag)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether file access from file URLs is allowed.</p>
+<p>By setting with <code>true</code>, access to file URLs inside the web view will be enabled and you could access 
+sub-resources or make cross origin requests from local HTML files.</p>
+<p>On iOS, it uses some &quot;hidden&quot; way by setting <code>allowFileAccessFromFileURLs</code> in config preferences for WebKit.
+So it is possible that it stops working in a future version.</p>
+<p>On Android, it sets the <code>WebSettings.setAllowFileAccessFromFileURLs</code> for the current web view.</p>
+</div>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        By setting this to <code>true</code>, you will bring some potential security issue to your app. Some malicious script 
+would be able to read your sandbox. So we DO NOT recommend to enable it before you realize and understand the risk.
+
+  </p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item-desc'><p>Whether the file access inside web view from file URLs is allowed or not.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">SetAllowFileAccessFromFileURLs</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setallowuniversalaccessfromfileurls'></div><div class='api-heading' data-id='setallowuniversalaccessfromfileurls'><a href='#setallowuniversalaccessfromfileurls'><span class='return-type'>void</span> SetAllowUniversalAccessFromFileURLs(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets allow universal access from file URLs. By default, on iOS, the <code>WKWebView</code> forbids any load of local files
+through AJAX even when opening a local HTML file. It checks the CORS rules and fails at web view level. 
+This is useful when you want access these files by setting the <code>allowUniversalAccessFromFileURLs</code> key of web view
+configuration.</p>
+<p>On iOS and macOS Editor. It uses some &quot;hidden&quot; way by setting <code>allowUniversalAccessFromFileURLs</code> in config 
+for WebKit. So it is possible that it stops working in a future version.</p>
+<p>On Android, it sets the <code>WebSettings.setAllowUniversalAccessFromFileURLs</code> and any later-created web views uses
+that value.</p>
 </div>
       <div class='warning custom-block'>
   <p class="custom-block-title">NOTICE</p>
   <p>
         You need to set it before creating a web view. Existing web views are not affected.
+
+By setting this to <code>true</code>, you will bring some potential security issue to your app. Some malicious script 
+would be able to read your sandbox. So we DO NOT recommend to enable it before you realize and understand the risk.
+
   </p>
 </div>
       <div class='parameters'>
@@ -2966,45 +3050,6 @@ default. To disable gesture navigation on Android, you have to also disable the 
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">SetAllowBackForwardNavigationGestures</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</div>
-</div>
-    </div>
-  </div>
-</div>
-<div class='api-box method'>
-  <div class="api-anchor" id='setallowfileaccessfromfileurls'></div><div class='api-heading' data-id='setallowfileaccessfromfileurls'><a href='#setallowfileaccessfromfileurls'><span class='return-type'>void</span> SetAllowFileAccessFromFileURLs(bool flag)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
-  <div class='api-body'>
-    <div class='desc'>
-      <div class='summary'>
-<p>Sets whether file access from file URLs is allowed.</p>
-<p>By setting with <code>true</code>, access to file URLs inside the web view will be enabled and you could access sub-resources or 
-make cross origin requests from local HTML files. This method only works on iOS. The file accessing from file URLs on
-Android is available by default.</p>
-</div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
-  <p>
-        By setting allowing access from file URLs, you will bring some potential security issue to your app. Some malicious script 
-would be able to read your sandbox. So we DO NOT recommend to enable it before you realize and understand the risk. 
-UniWebView cannot provide any warranty on this security issue.
-
-  </p>
-</div>
-      <div class='parameters'>
-<div class='section-title'>Parameters</div>
-<div class='parameter-item-list'><ul>
-  <li>
-    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
-    <div class='parameter-item-desc'><p>Whether the file access from file URLs is allowed or not.</p>
-</div>
-  </li>
-</ul></div>
-</div>
-            <div class='example'>
-    <p class='example-title'>Example</p>
-<div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">SetAllowFileAccessFromFileURLs</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>

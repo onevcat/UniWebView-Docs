@@ -1,5 +1,11 @@
 # Release Note
 
+### 4.6.1
+
+#### Fix
+
+* An issue that extension format of `accept` field is not recognized when uploading through the input file form on Android. It causes the file picker not shown up in some cases.
+
 ### 4.6.0 (4, Apr, 2021)
 
 #### Add
