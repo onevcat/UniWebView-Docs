@@ -939,6 +939,28 @@ name = "Android"
 color = "green"
 
 [[Methods]]
+name = "SetTextZoom"
+syntax = "SetTextZoom(int textZoom)"
+returnType = "void"
+summary = """
+Sets the text zoom used in the web view.
+
+On Android, this method call [`WebSettings.setTextZoom`](https://developer.android.com/reference/android/webkit/WebSettings#setTextZoom(int)) 
+to the the text zoom used in the web view.
+
+This method only works on Android.
+"""
+[[Methods.parameters]]
+name = "textZoom"
+type = "int"
+summary = """
+The text zoom in percent.
+"""
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
 name = "SetDragInteractionEnabled"
 syntax = "SetDragInteractionEnabled(bool enabled)"
 returnType = "void"
