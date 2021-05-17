@@ -12,7 +12,7 @@ UniWebView provides a flexible solution for interacting with web content when co
 
 #### In return for these limitations, the benefits are also obvious:
 
-- **Excluded functionality.** Some features are only available in Safe Browsing Mode: such as **Apple Pay**, **sharing stored cookies** and **auto-fill** information with the system browser. A few **OAuth sign-in** services also [reject normal web view](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html), but you can still use them in Safe Browsing Mode.
+- **Excluded functionality.** Some features are only available in Safe Browsing Mode: such as **Apple Pay**, **Reader** and **Password Autofill**. A few **OAuth sign-in** services also [reject normal web view](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html), but you can still perform them in Safe Browsing Mode.
 - **Zero configurations.** You just give a URL and all other things are handled without further effort. No need to request for user permissions.
 - **Browser level of experience.** Users can feel at home with a standard browser UI. The rendering happens in lower level and you get a better performance.
 
