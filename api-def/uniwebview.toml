@@ -1877,6 +1877,37 @@ color = "orange"
 name = "macOS"
 color = "purple"
 
+[[Methods]]
+name = "SetDownloadEventForContextMenuEnabled"
+syntax = "SetDownloadEventForContextMenuEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the `OnFileDownloadStarted` and `OnFileDownloadFinished` events should be raised even for an image
+saving action triggered by the callout (context) menu on Android.
+
+By default, the image saving goes through a different route and it does not trigger the `OnFileDownloadStarted` 
+and `OnFileDownloadFinished` events like other normal download tasks. Setting this with enabled with `true` if
+you also need to get notified when user long-presses on the image and taps "Save Image" button. By default, the
+image will be saved to the Downloads directory and you can get the path from the parameter 
+of `OnFileDownloadFinished` event.
+"""
+notice = """
+This only works on Android. On iOS, there is no way to get a callback or any event from the "Add to Photos"
+button in the callout menu.
+"""
+example = """
+```csharp
+webView.SetDownloadEventForContextMenuEnabled(true);
+```
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether the context menu image saving action triggers the download related events."
+[[Events.badges]]
+name = "Android"
+color = "green"
+
 [[Events]]
 name = "OnPageStarted"
 syntax = "OnPageStarted(UniWebView webView, string url)"
