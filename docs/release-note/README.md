@@ -1,12 +1,23 @@
 # Release Note
 
-### 4.6.1 (8, May, 2021)
+### 4.7.0 (14 Jun, 2021)
+
+#### Add
+
+* A new method `SetTextZoom` on Android. It delegates setting to Android `WebSettings.setTextZoom` for the web view .
+* A new method `SetDownloadEventForContextMenuEnabled` on Android. This allows the image saving action in context menu also triggers the `OnFileDownloadStarted` and `OnFileDownloadFinished` events.
+
+#### Fix
+
+* A potential issue that on some old Android devices, the `Show` and `Hide` methods do not return correct value for the animation starting state.
+
+### 4.6.1 (8 May, 2021)
 
 #### Fix
 
 * An issue that extension format of `accept` field is not recognized when uploading through the input file form on Android. It causes the file picker not shown up in some cases.
 
-### 4.6.0 (4, Apr, 2021)
+### 4.6.0 (4 Apr, 2021)
 
 #### Add
 

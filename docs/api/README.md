@@ -180,6 +180,9 @@ are added to the adjusted content inset.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setdefaultfontsize'><span class='return-type'>void</span> SetDefaultFontSize(int size)</a></div></td><td><div class='simple-summary'>
 <p>Sets the default font size used in the web view.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settextzoom'><span class='return-type'>void</span> SetTextZoom(int textZoom)</a></div></td><td><div class='simple-summary'>
+<p>Sets the text zoom used in the web view.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setdraginteractionenabled'><span class='return-type'>void</span> SetDragInteractionEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the drag interaction should be enabled on iOS.</p>
 </div>
@@ -301,6 +304,10 @@ HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#removedownloadmimetypes'><span class='return-type'>void</span> RemoveDownloadMIMETypes(string MIMEType)</a></div></td><td><div class='simple-summary'>
 <p>Removes the MIME type from download inspecting list.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setdownloadeventforcontextmenuenabled'><span class='return-type'>void</span> SetDownloadEventForContextMenuEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the <code>OnFileDownloadStarted</code> and <code>OnFileDownloadFinished</code> events should be raised even for an image
+saving action triggered by the callout (context) menu on Android.</p>
 </div>
 </td></tr></table>
 
@@ -2207,6 +2214,29 @@ size setting in your CSS styles.</p>
   </div>
 </div>
 <div class='api-box method'>
+  <div class="api-anchor" id='settextzoom'></div><div class='api-heading' data-id='settextzoom'><a href='#settextzoom'><span class='return-type'>void</span> SetTextZoom(int textZoom)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the text zoom used in the web view.</p>
+<p>On Android, this method call <a href="https://developer.android.com/reference/android/webkit/WebSettings#setTextZoom(int"><code>WebSettings.setTextZoom</code></a>) 
+to the the text zoom used in the web view.</p>
+<p>This method only works on Android.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>textZoom</span></div>
+    <div class='parameter-item-desc'><p>The text zoom in percent.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class="api-anchor" id='setdraginteractionenabled'></div><div class='api-heading' data-id='setdraginteractionenabled'><a href='#setdraginteractionenabled'><span class='return-type'>void</span> SetDragInteractionEnabled(bool enabled)</a><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
@@ -3350,6 +3380,47 @@ download task will be triggered. Check &quot;Download Files&quot; guide for more
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code><span class="token comment">// On iOS, access to any PDF files will be rendered in place.</span>
 webView<span class="token punctuation">.</span><span class="token function">RemoveDownloadMIMETypes</span><span class="token punctuation">(</span><span class="token string">"application/pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setdownloadeventforcontextmenuenabled'></div><div class='api-heading' data-id='setdownloadeventforcontextmenuenabled'><a href='#setdownloadeventforcontextmenuenabled'><span class='return-type'>void</span> SetDownloadEventForContextMenuEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether the <code>OnFileDownloadStarted</code> and <code>OnFileDownloadFinished</code> events should be raised even for an image
+saving action triggered by the callout (context) menu on Android.</p>
+<p>By default, the image saving goes through a different route and it does not trigger the <code>OnFileDownloadStarted</code> 
+and <code>OnFileDownloadFinished</code> events like other normal download tasks. Setting this with enabled with <code>true</code> if
+you also need to get notified when user long-presses on the image and taps &quot;Save Image&quot; button. By default, the
+image will be saved to the Downloads directory and you can get the path from the parameter 
+of <code>OnFileDownloadFinished</code> event.</p>
+</div>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        This only works on Android. On iOS, there is no way to get a callback or any event from the &quot;Add to Photos&quot;
+button in the callout menu.
+
+  </p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item-desc'><p>Whether the context menu image saving action triggers the download related events.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">SetDownloadEventForContextMenuEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>

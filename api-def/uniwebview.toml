@@ -1904,7 +1904,7 @@ webView.SetDownloadEventForContextMenuEnabled(true);
 name = "enabled"
 type = "bool"
 summary = "Whether the context menu image saving action triggers the download related events."
-[[Events.badges]]
+[[Methods.badges]]
 name = "Android"
 color = "green"
 
