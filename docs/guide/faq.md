@@ -16,13 +16,15 @@ UniWebView is a layer of the system UI and is added above of the whole Unity vie
 
 UniWebView is not designed for grabbing a page and rendering it to a texture in your game object. It is a view added above Unity's view, without interrupting the Unity game. You can use it to show something like a game FAQ page, events notification or release note. You can set the size of webview so you can decide if the Unity game scene can be seen or not, but it is not and will not be an in-game texture render solution.
 
-## I have some error saying Duplicate class when exporting for Android
+## I cannot build for Android after importing UniWebView 
 
-UniWebView requires Kotlin and Android X Browser package as dependencies. By default, UniWebView will detect the Gradle file and add them automatically.
+In most cases, it might be some errors saying "duplicate class" when exporting for Android. It happens if you have another package already adding the same package UniWebView requires.
+
+UniWebView needs Kotlin and Android X Browser package as dependencies. By default, UniWebView will detect the Gradle file and add them automatically.
 However, if any other package in your project is already adding the same libraries in an undetectable way (such as embedding them as a part of the library file, or download the duplicated package into "Plugins/Android" folder), UniWebView will fail to detect them and
 add duplicated packages.
 
-If you can confirm which package causes the issue, you can manually turn off the "Adds Kotlin" or "Adds Android Browser" option in the Preference Panel. For more detail, see the [Installation - Optional Steps](installation.md#importing-package).
+You can manually turn off the "Adds Kotlin" or "Adds Android Browser" option in the Preference Panel, to let UniWebView skip adding them again and just use the one you already have. For more detail, see the [Installation - Optional Steps](installation.md#importing-package).
 
 ## The page does not load on Android but shows "net::ERR_CLEARTEXT_NOT_PERMITTED"
 
