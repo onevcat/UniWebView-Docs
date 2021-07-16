@@ -16,6 +16,10 @@ Besides of Unity Asset Store, we also have [our own store](https://gumroad.com/l
 
 Unity will prompt you with a window to confirm the importing files. Just click "Import" to add all files to your project.
 
+> The minimum deploy target of UniWebView is from iOS 9.0 and Android 5.0 (API Level 21). If you are still using an older deploy target for you
+> Unity project, you may have some issues when exporting the project to the final product. Please make sure to update the
+> Target minimum iOS Version and Minimum API Level in the player settings.
+
 ![](/images/importing-v4.png)
 
 ### Optional Steps

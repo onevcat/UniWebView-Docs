@@ -19,10 +19,10 @@ UniWebView is not designed for grabbing a page and rendering it to a texture in 
 ## I have some error saying Duplicate class when exporting for Android
 
 UniWebView requires Kotlin and Android X Browser package as dependencies. By default, UniWebView will detect the Gradle file and add them automatically.
-However, if any other package in your project is adding the same libraries in an undetectable way, such as embedding them as a part of the library file, UniWebView will fail to detect them and
+However, if any other package in your project is already adding the same libraries in an undetectable way (such as embedding them as a part of the library file, or download the duplicated package into "Plugins/Android" folder), UniWebView will fail to detect them and
 add duplicated packages.
 
-You can manually turn off the "Adds Kotlin" or "Adds Android Browser" option in the Preference Panel. For more detail, see the [Installation - Optional Steps](installation.md#importing-package).
+If you can confirm which package causes the issue, you can manually turn off the "Adds Kotlin" or "Adds Android Browser" option in the Preference Panel. For more detail, see the [Installation - Optional Steps](installation.md#importing-package).
 
 ## The page does not load on Android but shows "net::ERR_CLEARTEXT_NOT_PERMITTED"
 
