@@ -808,6 +808,38 @@ type = "bool"
 summary = "A flag indicates whether the universal access for files are allowed or not."
 
 [[Methods]]
+name = "SetEnableKeyboardAvoidance"
+syntax = "SetEnableKeyboardAvoidance(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the web view area should avoid soft keyboard. It `true`, when the keyboard shows up, the web views
+content view will resize itself to avoid keyboard overlap the web content. Otherwise, the web view will not resize
+and just leave the content below under the soft keyboard.
+"""
+notice = """
+This method is only for Android. On iOS, the keyboard avoidance is built into the system directly and there is 
+no way to change its behavior.
+"""
+example = """
+```csharp
+UniWebView.SetEnableKeyboardAvoidance(false);
+
+// Create a new web view.
+var webView = gameObject.AddComponent<UniWebView>();
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the keyboard should avoid web view content."
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
 name = "SetJavaScriptEnabled"
 syntax = "SetJavaScriptEnabled(bool enabled)"
 returnType = "void"
