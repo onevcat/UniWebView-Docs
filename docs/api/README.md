@@ -165,6 +165,9 @@ are added to the adjusted content inset.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowuniversalaccessfromfileurls'><span class='return-type'>void</span> SetAllowUniversalAccessFromFileURLs(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets allow universal access from file URLs.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setenablekeyboardavoidance'><span class='return-type'>void</span> SetEnableKeyboardAvoidance(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the web view area should avoid soft keyboard.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setjavascriptenabled'><span class='return-type'>void</span> SetJavaScriptEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether JavaScript should be enabled in current web view.</p>
 </div>
@@ -2034,6 +2037,46 @@ would be able to read your sandbox. So we DO NOT recommend to enable it before y
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">SetAllowUniversalAccessFromFileURLs</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Create a new web view.</span>
+<span class="token class-name"><span class="token keyword">var</span></span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddComponent</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setenablekeyboardavoidance'></div><div class='api-heading' data-id='setenablekeyboardavoidance'><a href='#setenablekeyboardavoidance'><span class='return-type'>void</span> SetEnableKeyboardAvoidance(bool flag)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether the web view area should avoid soft keyboard. It <code>true</code>, when the keyboard shows up, the web views
+content view will resize itself to avoid keyboard overlap the web content. Otherwise, the web view will not resize
+and just leave the content below under the soft keyboard.</p>
+</div>
+      <div class='warning custom-block'>
+  <p class="custom-block-title">NOTICE</p>
+  <p>
+        This method is only for Android. On iOS, the keyboard avoidance is built into the system directly and there is 
+no way to change its behavior.
+
+  </p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item-desc'><p>Whether the keyboard should avoid web view content.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">SetEnableKeyboardAvoidance</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment">// Create a new web view.</span>
 <span class="token class-name"><span class="token keyword">var</span></span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddComponent</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>

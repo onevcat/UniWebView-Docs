@@ -1,5 +1,17 @@
 # Release Note
 
+### 4.8.0
+
+#### Add
+
+* A method to disable the keyboard avoidance behavior on Android. It can prevent the web view layout changing when showing keyboard on Android.
+
+#### Fix
+
+* A gradle parser issue that ignores tab in a gradle node. This may lead some gradle build failing if a tab is used in the gradle file.
+* Now the SSL error exception works properly even for resource on the allowed page.
+* An issue which causes the video auto play not working on Android.
+
 ### 4.7.0 (14 Jun, 2021)
 
 #### Add
