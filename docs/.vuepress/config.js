@@ -50,6 +50,7 @@ module.exports = {
             "http-auth",
             "support-new-window",
             "built-in-toolbar",
+            "transparency-through",
             "debugging"
           ]
         },

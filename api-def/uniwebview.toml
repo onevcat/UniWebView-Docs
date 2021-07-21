@@ -1600,6 +1600,23 @@ with the web view.
 Only clicks on transparent part on the web view will be delivered to Unity scene. The web view still intercepts
 and handles other touches on visible pixels on the web view.
 """
+example = """
+```csharp
+// Allow transparency clicking through.
+webView.SetTransparencyClickingThroughEnabled(true);
+
+// Make Unity scene visible.
+webView.BackgroundColor = Color.clear;
+
+// Disable the scrolling bounces effect to fix the web UI.
+webView.SetBouncesEnabled(false);
+
+// Other configuration, usually handle some messages from web view.
+webView.OnMessageReceived += (view, message) => {
+    // ...
+};
+```
+"""
 [[Methods.parameters]]
 name = "enabled"
 type = "bool"

@@ -28,6 +28,7 @@ It boosts your development process dramatically when you need to show an announc
 - [Videos, inline or full-screen](playing-videos.md)
 - [Image Picking & Uploading](uploading.md)
 - [User Agent & Cookie](/api/#setuseragent)
+- [Allow clicks passing through](transparency-through.md)
 - [Full Log & Debugging](debugging.md)
 
 And much more. Please check the [full API Reference](/api).

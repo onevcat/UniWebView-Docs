@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #top, #bottom, #left, #right {
+            background: #a5ebff;
+            position: fixed;
+        }
+        #left, #right {
+            top: 0; bottom: 0;
+            width: 15px;
+        }
+        #left { left: 0; }
+        #right { right: 0; }
+        
+        #top, #bottom {
+            left: 0; right: 0;
+            height: 15px;
+        }
+        #top { top: 0; }
+        #bottom { bottom: 0; }
+        .container { 
+            margin: 16px;
+            height: 200px;
+            position: relative;
+        }
+        
+        .center {
+            margin: 0;
+            position: absolute;
+        }
+        
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .button-close {
+            background-color: #c03737;
+        }
+        .button:active {
+            background-color: #3e8e41;
+        }
+        .button-close:active {
+            background-color: #8e3e3e;
+        }
+    </style>
+    <script type="text/javascript">
+        function sayHello() {
+            window.location.href = "uniwebview://hello"
+        }
+        function performClose() {
+            window.location.href = "uniwebview://close"
+        }
+    </script>
+</head>
+<body>
+    <div id="left"></div>
+    <div id="right"></div>
+    <div id="top"></div>
+    <div id="bottom"></div>
+    <div class="container">
+        <div class="center">
+            <h2>This is a full screen web view</h2>
+            <button class="button" onclick="sayHello()">Set Sample Text</button>
+            <button class="button button-close" onclick="performClose()">Close From Web</button>
+        </div>
+    </div>
+    
+</body>
+</html>
+

@@ -271,6 +271,9 @@ hides the status bar and navigation bar with a sticky style.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setuserinteractionenabled'><span class='return-type'>void</span> SetUserInteractionEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view can receive user interaction or not.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settransparencyclickingthroughenabled'><span class='return-type'>void</span> SetTransparencyClickingThroughEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the web view should pass through clicks at its clear pixels to Unity scene.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setwebcontentsdebuggingenabled'><span class='return-type'>void</span> SetWebContentsDebuggingEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Enables debugging of web contents.</p>
 </div>
@@ -3036,6 +3039,57 @@ scroll the page.</p>
 </ul></div>
 </div>
                 </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='settransparencyclickingthroughenabled'></div><div class='api-heading' data-id='settransparencyclickingthroughenabled'><a href='#settransparencyclickingthroughenabled'><span class='return-type'>void</span> SetTransparencyClickingThroughEnabled(bool enabled)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether the web view should pass through clicks at its clear pixels to Unity scene.</p>
+<p>Setting this method is a pre-condition for the whole passing-through feature to work. To allow your touch passing through
+to Unity scene, the following conditions should be met at the same time:</p>
+<ol>
+<li>This method is called with <code>true</code>. It enables the web view to check every touch on the web view.</li>
+<li>The web view has a transparent background in body style for its content by CSS.</li>
+<li>The web view itself has a transparent background color by setting <code>BackgroundColor</code> with a clear color.</li>
+</ol>
+<p>Then, when user clicks on the clear pixel on the web view, the touch events will not be handled by the web view.
+Instead, these events are passed to Unity scene. By using this feature, it is possible to create a UI for your game 
+with the web view.</p>
+<p>Only clicks on transparent part on the web view will be delivered to Unity scene. The web view still intercepts
+and handles other touches on visible pixels on the web view.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item-desc'><p>Whether the transparency clicking through feature should be enabled in this web view.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Allow transparency clicking through.</span>
+webView<span class="token punctuation">.</span><span class="token function">SetTransparencyClickingThroughEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Make Unity scene visible.</span>
+webView<span class="token punctuation">.</span>BackgroundColor <span class="token operator">=</span> Color<span class="token punctuation">.</span>clear<span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Disable the scrolling bounces effect to fix the web UI.</span>
+webView<span class="token punctuation">.</span><span class="token function">SetBouncesEnabled</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Other configuration, usually handle some messages from web view.</span>
+webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
