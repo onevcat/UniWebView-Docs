@@ -1,5 +1,15 @@
 # Release Note
 
+### 4.9.0 (26 Jul, 2021)
+
+#### Add
+
+* New feature Transparency Clicking Through. Now you can use `SetTransparencyClickingThroughEnabled` and set the `BackgroundColor` of web view to a clear color to allow the user tap through the web view background. Those taps will be delivered to Unity scene.
+
+#### Fix
+
+* A potential issue that in some cases the `Hide` or `Show` method freeze the game for a few seconds.
+
 ### 4.8.0 (19 Jul, 2021)
 
 #### Add
