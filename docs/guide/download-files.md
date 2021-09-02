@@ -42,6 +42,23 @@ webView.Load("https://example.com/receipt.pdf");
 webView.Load("https://example.com/files.zip");
 ```
 
+#### Using Regular Expression
+
+The default behavior tries to match the exact values for URL and MIME type. For example, adding download URL `https://example.com/image.png` won't make `https://example.com/image.png?size=100x100` downloadable. To allow a pattern, use `UniWebViewDownloadMatchingType.RegularExpression` to call the related APIs:
+
+```csharp
+webView.AddDownloadURL("https://example.com/image.png*", UniWebViewDownloadMatchingType.RegularExpression);
+// Download from "https://example.com/image.png", "https://example.com/image.png?size=100x100" or "https://example.com/image.png/download", etc.
+// But not from "https://example.com/image.jpg" since it does not match.
+
+webView.AddDownloadMIMEType("image/*", UniWebViewDownloadMatchingType.RegularExpression);
+// Download resources with MIME type "image/jpg", "image/png" and more. But not "application/pdf".
+```
+
+When using `UniWebViewDownloadMatchingType.RegularExpression`, the first parameter accepts a regular expression pattern string. 
+Since these APIs are only for iOS, you need to pass a regular expression pattern following Objective-C regular express syntax. 
+Read the [related documentation](https://developer.apple.com/documentation/foundation/nsregularexpression#1661042) from Apple for more.
+
 ### Post-Downloading Action
 
 The file permission on iOS is much stricter than on Android. Although the downloaded files are stored temporarily in your app's sandbox folder, your user cannot browse them directly before they choose to move these files to another location (eg. iCloud Disk or Dropbox) or another app (eg. File app of iOS). By default, UniWebView will show a system default share panel to let the user choose where to send the files to. Like this:
