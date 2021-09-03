@@ -300,6 +300,7 @@ const allFiles = [
   "uniwebviewtransitionedge.toml",
   "uniwebviewtoolbarposition.toml",
   "uniwebviewcontentinsetadjustmentbehavior.toml",
+  "uniwebviewdownloadmatchingtype.toml",
   "uniwebviewlogger.toml",
   "uniwebviewhelper.toml"
 ];

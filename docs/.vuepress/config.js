@@ -84,6 +84,7 @@ module.exports = {
           "uniwebviewtransitionedge",
           "uniwebviewtoolbarposition",
           "uniwebviewcontentinsetadjustmentbehavior",
+          "uniwebviewdownloadmatchingtype",
           "uniwebviewlogger",
           "uniwebviewhelper"
         ]
