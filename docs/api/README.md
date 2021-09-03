@@ -299,16 +299,16 @@ HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#scrollto'><span class='return-type'>void</span> ScrollTo(int x, int y, bool animated)</a></div></td><td><div class='simple-summary'>
 <p>Scrolls the web view to a certain point.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#adddownloadurl'><span class='return-type'>void</span> AddDownloadURL(string urlString)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#adddownloadurl'><span class='return-type'>void</span> AddDownloadURL(string urlString, UniWebViewDownloadMatchingType type)</a></div></td><td><div class='simple-summary'>
 <p>Adds the URL to download inspecting list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#removedownloadurl'><span class='return-type'>void</span> RemoveDownloadURL(string urlString)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removedownloadurl'><span class='return-type'>void</span> RemoveDownloadURL(string urlString, UniWebViewDownloadMatchingType type)</a></div></td><td><div class='simple-summary'>
 <p>Removes the URL from download inspecting list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#adddownloadmimetype'><span class='return-type'>void</span> AddDownloadMIMEType(string MIMEType)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#adddownloadmimetype'><span class='return-type'>void</span> AddDownloadMIMEType(string MIMEType, UniWebViewDownloadMatchingType type)</a></div></td><td><div class='simple-summary'>
 <p>Adds the MIME type to download inspecting list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#removedownloadmimetypes'><span class='return-type'>void</span> RemoveDownloadMIMETypes(string MIMEType)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removedownloadmimetypes'><span class='return-type'>void</span> RemoveDownloadMIMETypes(string MIMEType, UniWebViewDownloadMatchingType type)</a></div></td><td><div class='simple-summary'>
 <p>Removes the MIME type from download inspecting list.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setdownloadeventforcontextmenuenabled'><span class='return-type'>void</span> SetDownloadEventForContextMenuEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
@@ -3360,7 +3360,7 @@ webView<span class="token punctuation">.</span><span class="token function">Scro
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='adddownloadurl'></div><div class='api-heading' data-id='adddownloadurl'><a href='#adddownloadurl'><span class='return-type'>void</span> AddDownloadURL(string urlString)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='adddownloadurl'></div><div class='api-heading' data-id='adddownloadurl'><a href='#adddownloadurl'><span class='return-type'>void</span> AddDownloadURL(string urlString, UniWebViewDownloadMatchingType type)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3374,7 +3374,12 @@ triggered. Check &quot;Download Files&quot; guide for more.</p>
 <div class='parameter-item-list'><ul>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>urlString</span></div>
-    <div class='parameter-item-desc'><p>The inspected URL.</p>
+    <div class='parameter-item-desc'><p>The inspected URL string or a regular expression.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewDownloadMatchingType</span> <span class='parameter-item-name'>type</span></div>
+    <div class='parameter-item-desc'><p>The download matching type used to match the URL. Default is <code>ExactValue</code>.</p>
 </div>
   </li>
 </ul></div>
@@ -3384,6 +3389,9 @@ triggered. Check &quot;Download Files&quot; guide for more.</p>
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code><span class="token comment">// On iOS, access to "https://example.com/file.pdf" will trigger a download task instead of being rendered in place.</span>
 webView<span class="token punctuation">.</span><span class="token function">AddDownloadURL</span><span class="token punctuation">(</span><span class="token string">"https://example.com/file.pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// You can also use a regular expression.</span>
+webView<span class="token punctuation">.</span><span class="token function">AddDownloadURL</span><span class="token punctuation">(</span><span class="token string">"https://example.com/file*"</span><span class="token punctuation">,</span> UniWebViewDownloadMatchingType<span class="token punctuation">.</span>RegularExpression<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -3391,7 +3399,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddD
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='removedownloadurl'></div><div class='api-heading' data-id='removedownloadurl'><a href='#removedownloadurl'><span class='return-type'>void</span> RemoveDownloadURL(string urlString)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='removedownloadurl'></div><div class='api-heading' data-id='removedownloadurl'><a href='#removedownloadurl'><span class='return-type'>void</span> RemoveDownloadURL(string urlString, UniWebViewDownloadMatchingType type)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3405,7 +3413,12 @@ triggered. Check &quot;Download Files&quot; guide for more.</p>
 <div class='parameter-item-list'><ul>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>urlString</span></div>
-    <div class='parameter-item-desc'><p>The inspected URL.</p>
+    <div class='parameter-item-desc'><p>The inspected URL string or a regular expression.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewDownloadMatchingType</span> <span class='parameter-item-name'>type</span></div>
+    <div class='parameter-item-desc'><p>The download matching type used to match the URL. Default is <code>ExactValue</code>.</p>
 </div>
   </li>
 </ul></div>
@@ -3422,7 +3435,7 @@ webView<span class="token punctuation">.</span><span class="token function">Remo
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='adddownloadmimetype'></div><div class='api-heading' data-id='adddownloadmimetype'><a href='#adddownloadmimetype'><span class='return-type'>void</span> AddDownloadMIMEType(string MIMEType)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='adddownloadmimetype'></div><div class='api-heading' data-id='adddownloadmimetype'><a href='#adddownloadmimetype'><span class='return-type'>void</span> AddDownloadMIMEType(string MIMEType, UniWebViewDownloadMatchingType type)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3439,6 +3452,11 @@ download task will be triggered. Check &quot;Download Files&quot; guide for more
     <div class='parameter-item-desc'><p>The inspected MIME type of the response.</p>
 </div>
   </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewDownloadMatchingType</span> <span class='parameter-item-name'>type</span></div>
+    <div class='parameter-item-desc'><p>The download matching type used to match the MIME type. Default is <code>ExactValue</code></p>
+</div>
+  </li>
 </ul></div>
 </div>
             <div class='example'>
@@ -3446,6 +3464,9 @@ download task will be triggered. Check &quot;Download Files&quot; guide for more
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code><span class="token comment">// On iOS, access to any PDF files will trigger a download task instead of being rendered in place.</span>
 webView<span class="token punctuation">.</span><span class="token function">AddDownloadMIMEType</span><span class="token punctuation">(</span><span class="token string">"application/pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// You can also use a regular expression.</span>
+webView<span class="token punctuation">.</span><span class="token function">AddDownloadMIMEType</span><span class="token punctuation">(</span><span class="token string">"image/*"</span><span class="token punctuation">,</span> UniWebViewDownloadMatchingType<span class="token punctuation">.</span>RegularExpression<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -3453,7 +3474,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddD
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='removedownloadmimetypes'></div><div class='api-heading' data-id='removedownloadmimetypes'><a href='#removedownloadmimetypes'><span class='return-type'>void</span> RemoveDownloadMIMETypes(string MIMEType)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='removedownloadmimetypes'></div><div class='api-heading' data-id='removedownloadmimetypes'><a href='#removedownloadmimetypes'><span class='return-type'>void</span> RemoveDownloadMIMETypes(string MIMEType, UniWebViewDownloadMatchingType type)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3468,6 +3489,11 @@ download task will be triggered. Check &quot;Download Files&quot; guide for more
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>MIMEType</span></div>
     <div class='parameter-item-desc'><p>The inspected MIME type of the response.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewDownloadMatchingType</span> <span class='parameter-item-name'>type</span></div>
+    <div class='parameter-item-desc'><p>The download matching type used to match the MIME type. Default is <code>ExactValue</code></p>
 </div>
   </li>
 </ul></div>
