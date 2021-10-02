@@ -1,5 +1,17 @@
 # Release Note
 
+### 4.10.0 (2 Oct, 2021)
+
+#### Add
+
+* Add option to support for using regular expression matching in `AddDownloadURL` or `AddDownloadMIMEType` methods.
+
+#### Fix
+
+* Now the `Load` method allows a `null` URL on Android instead of crash the game.
+* The file downloading respects the SSL exception settings of the host web view now.
+* The UniWebView message system now support URLs without authority part. Now, a URL like `myscheme:this_is_the_message?foo=bar` can be parsed without problem.
+
 ### 4.9.0 (26 Jul, 2021)
 
 #### Add
