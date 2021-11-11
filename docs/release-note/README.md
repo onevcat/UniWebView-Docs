@@ -1,5 +1,11 @@
 # Release Note
 
+### 4.10.1 (11 Nov, 2021)
+
+#### Fix
+
+* An issue that `UniWebViewSafeBrowsing.IsSafeBrowsingSupported` may always return `false` wrongly when build against Android API 30 or above.
+
 ### 4.10.0 (2 Oct, 2021)
 
 #### Add
