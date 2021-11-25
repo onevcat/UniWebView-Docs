@@ -22,6 +22,45 @@ In the Safe Browsing Mode, the web content will be displayed full-screen with a 
 
 ![](/images/safe-browsing-mode-compare.png)
 
+# Checking Availability
+
+Before creating and showing a page, please ensure that the Safe Browsing Mode is available on the device. To do so, call
+`IsSafeBrowsingSupported` and check its result:
+
+```csharp
+if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
+    // Safe Browsing Mode is available on current device.
+}
+```
+
+This property always returns `true` on iOS runtime platform. On Android, it depends on whether there is an Intent 
+can handle the safe browsing request. Usually this ability is provided by Chrome, but there are also other browser apps
+might implement that. If there is no Intent can open the URL in safe browsing mode, or the handling app is set to 
+disabled in Android system, this property returns `false`.
+
+To use this and any other Safe Browsing APIs on Android when you set your **Target API Level to Android 11 (30) or later**, you 
+need to add the correct intent query explicitly in your `AndroidManifest.xml` file, to follow the 
+[Package Visibility](https://developer.android.com/about/versions/11/privacy/package-visibility). Add `queries` as a 
+sub-node of the `manifest` tag:
+
+```xml{6-10}
+<manifest>
+  // ...
+
+  </application>
+
+  <queries>
+    <intent>
+      <action android:name="android.support.customtabs.action.CustomTabsService" />
+    </intent>
+  </queries>
+</manifest>
+```
+::: warning Package Visibility from Android 11 
+If you are setting Target API Level higher than Android 11 (API Level 30), but not setting the `queries` in your 
+`AndroidManifest.xml`, the `UniWebViewSafeBrowsing` related APIs might not work expectedly.
+:::
+
 ## Opening a URL in Safe Browsing Mode
 
 Besides of [using the prefab](./using-prefab.md#using-uniwebviewsafebrowsing-prefab), you can create a safe browsing view by code:
@@ -39,40 +78,6 @@ Once created, the URL cannot be modified anymore. It is also the only chance you
 ::: danger HTTP & HTTPS
 Only web content hosted by HTTP or HTTPS is supported in Safe Browsing Mode. Attempts to load a local file URL in Safe Browsing Mode causes a runtime error.
 :::
-
-# Checking Availability
-
-Sometimes you may want to ensure that the Safe Browsing Mode is available before opening a page with it. To do so, call
-`IsSafeBrowsingSupported` and check its result:
-
-```csharp
-if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
-    // Safe Browsing Mode is available on current device.
-}
-```
-
-This property always returns `true` on iOS runtime platform. On Android, it depends on whether there is an Intent 
-can handle the safe browsing request. Usually this ability is provided by Chrome, but there are also other browser app
-might implement that. If there is no Intent can open the URL in safe browsing mode, or the handling app is set to 
-disabled in Android system, this property returns `false`.
-
-To use this API on Android when you set your **Target SDK to Android 11 or later**, you need to add the correct 
-intent query explicitly in your `AndroidManifest.xml` file, to follow the [Package Visibility](https://developer.android.com/about/versions/11/privacy/package-visibility).
-Add `queries` as a sub-node of the `manifest` tag:
-
-```xml{6-10}
-<manifest>
-  // ...
-
-  </application>
-
-  <queries>
-    <intent>
-      <action android:name="android.support.customtabs.action.CustomTabsService" />
-    </intent>
-  </queries>
-</manifest>
-```
 
 ## Customization & Events
 
