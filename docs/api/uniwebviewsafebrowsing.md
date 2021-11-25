@@ -69,8 +69,26 @@ external browser by using Unity's `Application.OpenURL`.
 <p>Whether the safe browsing mode is supported in current runtime or not.</p>
 <p>If supported, the safe browsing mode will be used when <code>Show</code> is called on a <code>UniWebViewSafeBrowsing</code> instance.
 Otherwise, the system default browser will be used to open the page when <code>Show</code> is called.</p>
-<p>This property always returns <code>true</code> on iOS runtime platform. On Android, it depends on whether the Chrome app, 
-which underhood provides the ability of safe browsing, is installed or not.</p>
+<p>This property always returns <code>true</code> on iOS runtime platform. On Android, it depends on whether there is an Intent 
+can handle the safe browsing request. Usually this ability is provided by Chrome, but there are also other browser app
+might implement that. If there is no Intent can open the URL in safe browsing mode, or the handling app is set to 
+disabled in Android system, this property returns <code>false</code>.</p>
+<p>To use this API on Android when you set your Target SDK to Android 11 or later, you need to add the correct 
+intent query explicitly in your AndroidManifest.xml, to follow the Package Visibility 
+(<a href="https://developer.android.com/about/versions/11/privacy/package-visibility)">https://developer.android.com/about/versions/11/privacy/package-visibility)</a>. Add <code>queries</code> as a subnode of the 
+<code>manifest</code> tag:</p>
+<pre><code class="lang-xml"><span class="token operator">&lt;</span>manifest<span class="token operator">></span>
+  <span class="token comment">// ...</span>
+<span />
+  <span class="token operator">&lt;</span><span class="token operator">/</span>application<span class="token operator">></span>
+<span />
+  <span class="token operator">&lt;</span>queries<span class="token operator">></span>
+    <span class="token operator">&lt;</span>intent<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token class-name">action</span> android<span class="token punctuation">:</span>name<span class="token operator">=</span><span class="token string">"android.support.customtabs.action.CustomTabsService"</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>intent<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>queries<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>manifest<span class="token operator">></span>
+</code></pre>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>

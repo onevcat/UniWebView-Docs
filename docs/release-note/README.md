@@ -1,5 +1,15 @@
 # Release Note
 
+### 4.10.2 (25 Nov, 2021)
+
+#### Fix
+
+* Now UniWebView also supports NTLM authentication method.
+* Uses the intent-based way to detect availability of SafeBrowsing. Now the `IsSafeBrowsingSupported` API would give back a more accurate result.
+* Removes the requirement of Gradle plugin version of 4.0.1 or later. This fixes some Android build errors on earlier Unity versions which ships with an older Gradle Plugin. However, if you are using `UniWebViewSafeBrowsing` and setting the Target API Level to Android 11 (Level 30), you still need a newer version of Unity and follow the [related guide](https://docs.uniwebview.com/guide/safe-browsing.html) to add `queries` to the `AndroidManifest.xml` file.
+* An issue that the toolbar on iOS can be clicked through to the Unity scene.
+
+
 ### 4.10.1 (11 Nov, 2021)
 
 #### Fix
