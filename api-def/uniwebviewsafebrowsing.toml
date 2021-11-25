@@ -30,8 +30,29 @@ Whether the safe browsing mode is supported in current runtime or not.
 If supported, the safe browsing mode will be used when `Show` is called on a `UniWebViewSafeBrowsing` instance.
 Otherwise, the system default browser will be used to open the page when `Show` is called.
 
-This property always returns `true` on iOS runtime platform. On Android, it depends on whether the Chrome app, 
-which underhood provides the ability of safe browsing, is installed or not.
+This property always returns `true` on iOS runtime platform. On Android, it depends on whether there is an Intent 
+can handle the safe browsing request. Usually this ability is provided by Chrome, but there are also other browser app
+might implement that. If there is no Intent can open the URL in safe browsing mode, or the handling app is set to 
+disabled in Android system, this property returns `false`.
+
+To use this API on Android when you set your Target SDK to Android 11 or later, you need to add the correct 
+intent query explicitly in your AndroidManifest.xml, to follow the Package Visibility 
+(https://developer.android.com/about/versions/11/privacy/package-visibility). Add `queries` as a subnode of the 
+`manifest` tag:
+
+```xml
+<manifest>
+  // ...
+
+  </application>
+
+  <queries>
+    <intent>
+      <action android:name="android.support.customtabs.action.CustomTabsService" />
+    </intent>
+  </queries>
+</manifest>
+```
 """
 example = """
 ```csharp
