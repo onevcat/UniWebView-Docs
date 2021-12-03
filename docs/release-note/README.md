@@ -1,5 +1,12 @@
 # Release Note
 
+### 4.10.3 (3 Dec, 2021)
+
+#### Fix
+
+* A crash when scrolling outside of the web view area when `SetTransparencyClickingThroughEnabled` is set to `true`.
+* Now Android supports RTL languages layout.
+
 ### 4.10.2 (25 Nov, 2021)
 
 #### Fix
