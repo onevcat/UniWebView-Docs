@@ -13,7 +13,10 @@ as well as receive a message from the web view.
 #### Properties Summary
 
 <table>
-<tr><td><div class='api-summary-heading'><a href='#frame'><span class='return-type'>Rect</span> Frame { get; set; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#iswebviewsupported'><span class='return-type'>bool</span> IsWebViewSupported { get; }</a></div></td><td><div class='simple-summary'>
+<p>Whether the web view is supported in current runtime or not.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#frame'><span class='return-type'>Rect</span> Frame { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Gets or sets the frame of current web view.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#referencerecttransform'><span class='return-type'>RectTransform</span> ReferenceRectTransform { get; set; }</a></div></td><td><div class='simple-summary'>
@@ -319,6 +322,32 @@ saving action triggered by the callout (context) menu on Android.</p>
 
 ### Properties
 
+<div class='api-box property'>
+  <div class="api-anchor" id='iswebviewsupported'></div><div class='api-heading' data-id='iswebviewsupported'><a href='#iswebviewsupported'><span class='return-type'>bool</span> IsWebViewSupported { get; }</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Whether the web view is supported in current runtime or not.</p>
+<p>On some certain Android customized builds, the manufacturer prefers not containing the web view package in the 
+system or blocks the web view package from being installed. If this happens, using of any web view related APIs will
+throw a <code>MissingWebViewPackageException</code> exception.</p>
+<p>Use this method to check whether the web view is available on the current running system. If this parameter returns <code>false</code>, 
+you should not use the web view.</p>
+<p>This property always returns <code>true</code> on other supported platforms, such as iOS or macOS editor. It only performs 
+runtime checking on Android. On other not supported platforms such as Windows or Linux, it always returns <code>false</code>.</p>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>UniWebView<span class="token punctuation">.</span>IsWebViewSupported<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Do other things with UniWebView.</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
 <div class='api-box property'>
   <div class="api-anchor" id='frame'></div><div class='api-heading' data-id='frame'><a href='#frame'><span class='return-type'>Rect</span> Frame { get; set; }</a></div>
   <div class='api-body'>

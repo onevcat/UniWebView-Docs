@@ -62,7 +62,7 @@ external browser by using Unity's `Application.OpenURL`.
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='issafebrowsingsupported'></div><div class='api-heading' data-id='issafebrowsingsupported'><a href='#issafebrowsingsupported'><span class='return-type'>bool</span> IsSafeBrowsingSupported { get; }</a></div>
+  <div class="api-anchor" id='issafebrowsingsupported'></div><div class='api-heading' data-id='issafebrowsingsupported'><a href='#issafebrowsingsupported'><span class='return-type'>bool</span> IsSafeBrowsingSupported { get; }</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

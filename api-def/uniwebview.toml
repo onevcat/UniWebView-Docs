@@ -7,6 +7,34 @@ as well as receive a message from the web view.
 """
 
 [[Properties]]
+name = "IsWebViewSupported"
+returnType = "bool"
+hasSetter = false
+summary = """
+Whether the web view is supported in current runtime or not.
+
+On some certain Android customized builds, the manufacturer prefers not containing the web view package in the 
+system or blocks the web view package from being installed. If this happens, using of any web view related APIs will
+throw a `MissingWebViewPackageException` exception.
+
+Use this method to check whether the web view is available on the current running system. If this parameter returns `false`, 
+you should not use the web view.
+
+This property always returns `true` on other supported platforms, such as iOS or macOS editor. It only performs 
+runtime checking on Android. On other not supported platforms such as Windows or Linux, it always returns `false`.
+"""
+example = """
+```csharp
+if (UniWebView.IsWebViewSupported) {
+    // Do other things with UniWebView.
+}
+```
+"""
+[[Properties.badges]]
+name = "static"
+color = "blue"
+
+[[Properties]]
 name = "Frame"
 returnType = "Rect"
 hasSetter = true
