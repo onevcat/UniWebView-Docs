@@ -1,5 +1,11 @@
 # Release Note
 
+### 4.11.0 (26 Jan, 2022)
+
+#### Add
+
+* An `IsWebViewSupported` property on `UniWebView` to check whether the current device supports web view.
+
 ### 4.10.3 (3 Dec, 2021)
 
 #### Fix
