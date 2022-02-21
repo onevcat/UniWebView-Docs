@@ -2,7 +2,7 @@
   "dependencies": {
     "escape-html": "^1.0.3",
     "fs-extra": "^5.0.0",
-    "marked": "^0.3.19",
+    "marked": "^4.0.10",
     "toml": "^2.3.3",
     "vuepress": "^1.0.0"
   },
