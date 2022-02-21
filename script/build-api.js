@@ -8,10 +8,9 @@ const escapeHtml = require("escape-html");
 
 marked.setOptions({
   highlight: function (code) {
-    return Prism.highlight(code, Prism.languages.csharp, 'csharp').replace(
-      /\n\n/g,
-      "\n<span />\n"
-    );
+    return Prism.highlight(code, Prism.languages.csharp, 'csharp')
+    .replace(/\n\n/g, "\n<span />\n")
+    .replace(/\n    \n/g, "\n<span />\n");
   }
 });
 
@@ -27,8 +26,8 @@ class Entry {
       example =
         "<div class='example'>\n" +
         "    <p class='example-title'>Example</p>\n" +
-        marked(this.entry.example).replace(
-          '<pre><code class="lang-csharp">',
+        marked.parse(this.entry.example).replace(
+          '<pre><code class="language-csharp">',
           '<div class="language-csharp extra-class">\n<pre class="language-csharp"><code>'
         ) +
         "</div>\n</div>\n";
@@ -39,8 +38,8 @@ class Entry {
   summaryText() {
     return (
       "<div class='summary'>\n" +
-      marked(this.entry.summary).replace(
-        '<pre><code class="lang-csharp">',
+      marked.parse(this.entry.summary).replace(
+        '<pre><code class="language-csharp">',
         '<pre v-pre="" data-lang="csharp"><code class="lang-csharp">'
       ) +
       "</div>\n"
@@ -51,8 +50,8 @@ class Entry {
     let summaryText = this.entry.summary.split(".")[0] + ".";
     return (
       "<div class='simple-summary'>\n" +
-      marked(summaryText).replace(
-        '<pre><code class="lang-csharp">',
+      marked.parse(summaryText).replace(
+        '<pre><code class="language-csharp">',
         '<pre v-pre="" data-lang="csharp"><code class="lang-csharp">'
       ) +
       "</div>\n"
@@ -65,7 +64,7 @@ class Entry {
       notice = `<div class='warning custom-block'>
   <p class="custom-block-title">NOTICE</p>
   <p>
-        ${marked.inlineLexer(
+        ${marked.parseInline(
           this.entry.notice,
           [],
           {}
@@ -153,7 +152,7 @@ class Method extends Entry {
         )}</span> <span class='parameter-item-name'>${
         parameter.name
         }</span></div>\n` +
-        `    <div class='parameter-item-desc'>${marked(
+        `    <div class='parameter-item-desc'>${marked.parse(
           parameter.summary
         )}</div>\n` +
         "  </li>\n";
@@ -168,7 +167,7 @@ class Method extends Entry {
     if (!this.entry.returnValue) {
       return "";
     }
-    return `<div class='section-title'>Return Value</div>\n<div class='method-return'>${marked(
+    return `<div class='section-title'>Return Value</div>\n<div class='method-return'>${marked.parse(
       escapeHtml(this.entry.returnValue)
     )}</div>\n`;
   }

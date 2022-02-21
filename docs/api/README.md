@@ -2294,7 +2294,7 @@ size setting in your CSS styles.</p>
     <div class='desc'>
       <div class='summary'>
 <p>Sets the text zoom used in the web view.</p>
-<p>On Android, this method call <a href="https://developer.android.com/reference/android/webkit/WebSettings#setTextZoom(int"><code>WebSettings.setTextZoom</code></a>) 
+<p>On Android, this method call <a href="https://developer.android.com/reference/android/webkit/WebSettings#setTextZoom(int)"><code>WebSettings.setTextZoom</code></a> 
 to the the text zoom used in the web view.</p>
 <p>This method only works on Android.</p>
 </div>

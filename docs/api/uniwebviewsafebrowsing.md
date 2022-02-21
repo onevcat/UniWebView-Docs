@@ -75,9 +75,9 @@ might implement that. If there is no Intent can open the URL in safe browsing mo
 disabled in Android system, this property returns <code>false</code>.</p>
 <p>To use this API on Android when you set your Target SDK to Android 11 or later, you need to add the correct 
 intent query explicitly in your AndroidManifest.xml, to follow the Package Visibility 
-(<a href="https://developer.android.com/about/versions/11/privacy/package-visibility)">https://developer.android.com/about/versions/11/privacy/package-visibility)</a>. Add <code>queries</code> as a subnode of the 
+(<a href="https://developer.android.com/about/versions/11/privacy/package-visibility">https://developer.android.com/about/versions/11/privacy/package-visibility</a>). Add <code>queries</code> as a subnode of the 
 <code>manifest</code> tag:</p>
-<pre><code class="lang-xml"><span class="token operator">&lt;</span>manifest<span class="token operator">></span>
+<pre><code class="language-xml"><span class="token operator">&lt;</span>manifest<span class="token operator">></span>
   <span class="token comment">// ...</span>
 <span />
   <span class="token operator">&lt;</span><span class="token operator">/</span>application<span class="token operator">></span>
