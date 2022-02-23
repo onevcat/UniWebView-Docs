@@ -51,6 +51,7 @@ module.exports = {
             "support-new-window",
             "built-in-toolbar",
             "transparency-through",
+            "webrtc-support",
             "debugging"
           ]
         },
