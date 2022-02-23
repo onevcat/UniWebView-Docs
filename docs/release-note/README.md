@@ -1,5 +1,13 @@
 # Release Note
 
+### 4.11.1 (23 Feb, 2022)
+
+#### Fix
+
+* Now UniWebView can build with Unity's new Input System enabled. But due to a bug in Unity's Input System, the back button detection on some Android devices may break and cause a stuck state. Before Unity can fix that, it is strongly recommended to use the "Both" option for Input System to get a stable experience.
+* An issue that when header is set, the HTML content in iframe tag not shows properly in some cases.
+* Fix a problem that the Post Build script edits format of some embedded variables in gradle file incorrectly.
+
 ### 4.11.0 (26 Jan, 2022)
 
 #### Add
