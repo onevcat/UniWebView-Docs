@@ -6,7 +6,7 @@ First, you need to choose either using the **Safe Browsing Mode** (if you only n
 
 ### Using Safe Browsing Mode
 
-It is recommended that you use the [Safe Browsing Mode](https://docs.uniwebview.com/guide/safe-browsing.html) to show WebRTC contents. It launches an environment closer to a real browser, where WebRTC can work seamlessly.
+It is recommended that you use the [Safe Browsing Mode](safe-browsing.md) to show WebRTC contents. It launches an environment closer to a real browser, where WebRTC can work seamlessly.
 
 ```csharp
 if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
