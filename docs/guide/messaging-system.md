@@ -28,6 +28,13 @@ message.Path   // "action"
 message.Args   // {"key": value, "anotherKey": "anotherValue"}
 ```
 
+::: warning Using a Valid URL
+From iOS 15.4, Apple applied a limitation that an invalid URL is not triggering the necessary events for UniWebView to deliver the message anymore. 
+That means you cannot use things like `uniwebview://{\"title\"=\"hello\"}` to send a message. Instead, you need to make sure to pass a valid URL, like `uniwebview://event?title=hello` or `uniwebview://event?payload={\"title\"=\"hello\"}`.
+
+Using URL query to pass detail information is recommended. For more about what is a "valid URL", please check [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986) and other related specifications.
+:::
+
 ::: tip DUPLICATED KEY
 If you are using the same key in the URL query, `UniWebViewMessage` will parse them to the same key as well, with the values concatenated by a comma. For example, a URL like `uniwebview://action?key=1&key=2` will be parsed to a message with `Args` as `{"key": "1,2"}`.
 :::
