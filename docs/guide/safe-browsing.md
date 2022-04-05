@@ -79,6 +79,11 @@ Once created, the URL cannot be modified anymore. It is also the only chance you
 Only web content hosted by HTTP or HTTPS is supported in Safe Browsing Mode. Attempts to load a local file URL in Safe Browsing Mode causes a runtime error.
 :::
 
+::: warning Safe Browsing Memory
+Once created, the Safe Browsing component in native side will be there and taking memory until dismissed. 
+In other words, you need to at least call `Show` once you create a Safe Browsing. Otherwise, its memory will be leaked.
+:::
+
 ## Customization & Events
 
 ### Color
