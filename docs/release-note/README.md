@@ -1,5 +1,11 @@
 # Release Note
 
+### 4.11.2 (6 Apr, 2022)
+
+#### Fix
+
+* An issue that Safe Browsing on iOS will leak its memory when using `Dismiss` to close the web page by code.
+
 ### 4.11.1 (23 Feb, 2022)
 
 #### Fix
