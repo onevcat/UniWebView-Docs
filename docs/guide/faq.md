@@ -12,9 +12,11 @@ No, you can't.
 
 UniWebView is a layer of the system UI and is added above of the whole Unity view. That means it is always floating over your Unity scene. You can never put your elements from Unity above of the web page. However, you can organize the layout of your Unity elements and the web view to make them look good together. With the help of `ReferenceRectTransform`, it should be quite easy. Please check the [Position and Size](./position-and-size.md) guide for detail.
 
-## Can I get a texture of the web view?
+## Can I render web view as an in-game texture?
 
-UniWebView is not designed for grabbing a page and rendering it to a texture in your game object. It is a view added above Unity's view, without interrupting the Unity game. You can use it to show something like a game FAQ page, events notification or release note. You can set the size of webview so you can decide if the Unity game scene can be seen or not, but it is not and will not be an in-game texture render solution.
+A typical use of UniWebView is to show something like a game FAQ page, events notification or release note. You can set the size of webview, so you can decide if the Unity game scene can be seen or not, meanwhile keeping interaction on the web view (links or buttons). 
+
+Although it is not designed as an in-game texture render solution, if you do not require your web view to be able to interact with, but just for a purely display purpose, you can use the [`CaptureSnapshot`](/api/#capturesnapshot) method to get a static image of the web view, then render it as a Unity texture on your game object.
 
 ## I cannot build for Android after importing UniWebView 
 
