@@ -951,7 +951,7 @@ summary = "Whether a callout menu should be displayed when user long pressing or
 
 [[Methods]]
 name = "SetSupportMultipleWindows"
-syntax = "SetSupportMultipleWindows(bool enabled)"
+syntax = "SetSupportMultipleWindows(bool enabled, bool allowJavaScriptOpening)"
 returnType = "void"
 summary = """
 Sets whether the web view should support a pop up web view triggered by user in a new tab.
@@ -965,6 +965,10 @@ It works for most cases, but if this is a problem to your app logic, you can cha
 this method with `true`. It enables the "opening in new tab" behavior in a limited way, by adding the new tab 
 web view above to the current web view, with the same size and position. When the opened new tab is closed, 
 it will be removed from the view hierarchy automatically.
+
+By default, only user triggered action is allowed to open a new window for security reason. That means, if you 
+are using some JavaScript like `window.open`, unless you set `allowJavaScriptOpening` to `true`, it won't work. 
+This default behavior prevents any other third party JavaScript code from opening a window arbitrarily.
 """
 [[Methods.parameters]]
 name = "enabled"
@@ -972,6 +976,16 @@ type = "bool"
 summary = """
 Whether to support multiple windows. If `true`, the `target="_blank"` link will be opened in a new web view. 
 Default is `false`.
+"""
+[[Methods.parameters]]
+name = "allowJavaScriptOpening"
+type = "bool"
+summary = """
+Whether to support open the new window with JavaScript by `window.open`. Setting this to `true` means any JavaScript
+code, even from third party (in an iframe or a library on the page), can open a new window. Use it as your risk.
+
+Usually, when passing `true` to this parameter, you may also want to call `SetAllowJavaScriptOpenWindow` with `true`
+before creating the web view.
 """
 
 [[Methods]]
