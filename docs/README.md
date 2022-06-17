@@ -30,7 +30,7 @@ webView.Show();
 ```
 
 ::: warning About UniWebView 3
-UniWebView 4 requires Unity >= 2018.3. It runs on iOS >= 9.0 and Android >= 5.0.
+UniWebView 4 requires Unity >= 2019.4. It runs on iOS >= 9.0 and Android >= 5.0.
 
 Needs to show a page in an earlier version of Unity? Looking for documentation of UniWebView 3? Check the [v3 doc site](https://docs-v3.uniwebview.com) instead.
 :::

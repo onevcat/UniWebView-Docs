@@ -40,7 +40,7 @@ You can find that option under the "UniWebView" tab of Unity's Preference Panel.
 
 UniWebView v4 supports running on:
 
-- **Unity 2018.3** or above
+- **Unity 2019.4** or above
 - **iOS 9.0** or above
 - **Android 5.0** (API Level 21) or above
 
