@@ -1,5 +1,17 @@
 # Release Note
 
+### 4.12.0 (17 Jun, 2022)
+
+#### Add
+
+* An `allowJavaScriptOpening` parameter in `SetSupportMultipleWindows` to allow the web view opens a new window even triggered by JavaScript instead of user action.
+
+#### Fix
+
+* An issue which prevents "uploading from camera" from working properly on some Android 11 and Android 12 devices.
+* an issue which causes getting JavaScript evaluating result on the pages with UTF code format (a.k.a, characters as `\uXXXX`) will fail on Android.
+* Now UniWebView 4 supports from Unity 2019.4. This is a requirement of Unity publisher submission guidelines. If you need to continue using UniWebView 4.12.0 and later versions, please consider to upgrade your Unity version.
+
 ### 4.11.2 (6 Apr, 2022)
 
 #### Fix
