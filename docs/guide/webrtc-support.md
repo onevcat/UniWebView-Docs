@@ -15,6 +15,10 @@ if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
 }
 ```
 
+::: warning NOTICE
+On Android, you need to add an additional intent query to allow `UniWebViewSafeBrowsing` API available. Please follow the "Checking Availability" part in [Safe Browsing Mode](safe-browsing.md#checking-availability) guide.
+:::
+
 ### Using Regular Web View
 
 If you need to take more control over the web view, you can still use the regular web view. Before the WebRTC APIs can work on your page, you need to configure the web view and project. In the example below, we try to use the camera. If you need other hardwares such as the microphone, you can add the corresponding permissions as well.
