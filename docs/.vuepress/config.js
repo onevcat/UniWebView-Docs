@@ -5,15 +5,21 @@ module.exports = {
   title: "UniWebView",
   description: "UniWebView is a modern web view component for mobile Unity 3D games. Integrating web content to your games was never easier. It is a plugin built on native iOS/Android technology, which helps your users to enjoy web content and interact with your game through the web views.",
   head: [
-    ["link", {
-      rel: "icon",
-      href: `/logo.png`
-    }]
+    [
+      "link", 
+      {
+        rel: "icon",
+        type: "image/png",
+        href: "/images/logo108.png"
+      }
+    ]
   ],
   serviceWorker: true,
   dest: "dist",
   theme: defaultTheme({
+    logo: "/images/logo108.png",
     repo: "onevcat/UniWebView-Docs",
+    docsBranch: 'master',
     editLink: true,
     docsDir: "docs",
     navbar: [{
