@@ -1,3 +1,6 @@
+const { defaultTheme } = require('@vuepress/theme-default')
+const { searchPlugin } = require('@vuepress/plugin-search')
+
 module.exports = {
   title: "UniWebView",
   description: "UniWebView is a modern web view component for mobile Unity 3D games. Integrating web content to your games was never easier. It is a plugin built on native iOS/Android technology, which helps your users to enjoy web content and interact with your game through the web views.",
@@ -9,12 +12,11 @@ module.exports = {
   ],
   serviceWorker: true,
   dest: "dist",
-  themeConfig: {
+  theme: defaultTheme({
     repo: "onevcat/UniWebView-Docs",
-    editLinks: true,
+    editLink: true,
     docsDir: "docs",
-    lastUpdated: 'Last Updated',
-    nav: [{
+    navbar: [{
         text: "Guide",
         link: "/guide/"
       },
@@ -29,13 +31,13 @@ module.exports = {
     ],
     sidebar: {
       "/guide/": [{
-          title: "Getting Started",
-          collapsable: false,
-          children: ["", "installation", "using-prefab", "working-with-code"]
+          text: "Getting Started",
+          collapsible: false,
+          children: ["installation", "using-prefab", "working-with-code"]
         },
         {
-          title: "Common Tasks",
-          collapsable: false,
+          text: "Common Tasks",
+          collapsible: false,
           children: [
             "safe-browsing",
             "position-and-size",
@@ -56,40 +58,87 @@ module.exports = {
           ]
         },
         {
-          title: "Help Center",
-          collapsable: false,
+          text: "Help Center",
+          collapsible: false,
           children: ["faq", "ticket"]
         },
         {
-          title: "Resources",
-          collapsable: false,
+          text: "Resources",
+          collapsible: false,
           children: [
-            ["../api/", "API Reference"],
+            {
+              text: "API Reference",
+              link: "../api/"
+            },
             "version-highlight",
-            ["migration-guide", "Migrating From 3.x"],
-            ["tos", "Term of Service"],
+            {
+              text: "Migrating From 3.x",
+              link: "migration-guide"
+            },
+            {
+              text: "Term of Service",
+              link: "tos"
+            },
             "privacy",
             "../release-note/"
           ]
         }
       ],
       "/api/": [{
-        title: "API Reference",
-        collapsable: false,
+        text: "API Reference",
+        collapsible: false,
         children: [
-          "",
-          "uniwebviewsafebrowsing",
-          "uniwebviewmessage",
-          "uniwebviewnativelistener",
-          "uniwebviewnativeresultpayload",
-          "uniwebviewtransitionedge",
-          "uniwebviewtoolbarposition",
-          "uniwebviewcontentinsetadjustmentbehavior",
-          "uniwebviewdownloadmatchingtype",
-          "uniwebviewlogger",
-          "uniwebviewhelper"
+          {
+            text: "UniWebView",
+            link: "./"
+          },
+          {
+            text: "UniWebViewSafeBrowsing",
+            link: "uniwebviewsafebrowsing"
+          },
+          {
+            text: "UniWebViewMessage",
+            link: "uniwebviewmessage"
+          },
+          {
+            text: "UniWebViewNativeListener",
+            link: "uniwebviewnativelistener"
+          },
+          {
+            text: "UniWebViewNativeResultPayload",
+            link: "uniwebviewnativeresultpayload"
+          },
+          {
+            text: "UniWebViewTransitionEdge",
+            link: "uniwebviewtransitionedge"
+          },
+          {
+            text: "UniWebViewToolbarPosition",
+            link: "uniwebviewtoolbarposition"
+          },
+          {
+            text: "UniWebViewContentInsetAdjustmentBehavior",
+            link: "uniwebviewcontentinsetadjustmentbehavior"
+          },
+          {
+            text: "UniWebViewDownloadMatchingType",
+            link: "uniwebviewdownloadmatchingtype"
+          },
+          {
+            text: "UniWebViewLogger",
+            link: "uniwebviewlogger"
+          },
+          {
+            text: "UniWebViewHelper",
+            link: "uniwebviewhelper"
+          },
         ]
       }]
     }
-  }
+  }),
+  plugins: [
+    searchPlugin({
+      
+    }),
+  ],
 };
