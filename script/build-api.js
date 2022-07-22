@@ -61,8 +61,8 @@ class Entry {
   noticeText() {
     var notice = "";
     if (this.entry.notice) {
-      notice = `<div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      notice = `<div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         ${marked.parseInline(
           this.entry.notice,

@@ -358,8 +358,8 @@ The first two values of <code>Rect</code> is <code>x</code> and <code>y</code> p
 top left corner:</p>
 <p><img src="https://docs.unity3d.com/StaticFiles/ScriptRefImages/RectXY.svg" alt=""></p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         <code>Frame</code> will be ignored if <code>ReferenceRectTransform</code> is set.
   </p>
@@ -539,8 +539,8 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 If a URL loading fails before reaching to the server and getting a response, <code>OnPageErrorReceived</code> will be 
 raised instead.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         Android did not provide a way to get the HTTP status code until API Level 23 (Android 6). 
 The <code>statusCode</code> is not trustable and will be always 200 on Android devices running a system before Android 6.
@@ -1076,8 +1076,8 @@ or by a invocation of <code>close()</code> on the page.</p>
 <p>This event only raised on Android. It is useful when you disabled the back button but still need to get the back button event. On iOS, user&#39;s key action is not available and this event will never be 
 raised.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         This event is deprecated from version 4.0. Now UniWebView never intercepts device key code events. 
 So this event will be never raise anymore. Check <code>Input.GetKeyUp</code> in <code>Update()</code> instead.
@@ -1370,8 +1370,8 @@ webView<span class="token punctuation">.</span><span class="token function">Show
 <p>Regardless there is an animation or not, the <code>completionHandler</code> will be called if not <code>null</code> when the web view
 hiding finishes.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         Hiding the web view does not destroy or release it. You can always call <code>Show</code> on the web view again to make it visible.
 
@@ -1659,8 +1659,8 @@ webView<span class="token punctuation">.</span><span class="token function">AddU
 the web view will prevent its loading. If you could confirm that this site is trusted,
 you can add the domain as an SSL exception, so you could visit it.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         We strongly suggest you upgrade your site certification to a trusted one. It would be dangerous to add a site as SSL exception and your user might be exposed to the risk of Man-in-the-middle attack. You should know exactly what you will do before adding a domain to the whitelist.
   </p>
@@ -1729,8 +1729,8 @@ Pass <code>null</code> as value to unset a header field.</p>
 <p>Some reserved headers like user agent are not able to override by setting here, 
 use the <code>SetUserAgent</code> method for them instead.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         Customized header fields will only be set for <code>GET</code> requests. The header fields set by this 
 method will not be added when a form is submitted as <code>POST</code> requests, due to some limitation of WebKit on iOS 
@@ -1835,8 +1835,8 @@ webView<span class="token punctuation">.</span><span class="token function">GetU
 are added to the adjusted content inset. It is a wrapper of <a href="https://developer.apple.com/documentation/uikit/uiscrollview/2902261-contentinsetadjustmentbehavior"><code>contentInsetAdjustmentBehavior</code></a> on iOS.</p>
 <p>It only works on iOS 11 and above.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         You need to call this method as soon as you create a web view,
 before you call any other methods related to web view layout (like <code>Show</code> or <code>SetShowToolbar</code>).
@@ -1875,8 +1875,8 @@ users need to touch the play button to start playing a media resource.</p>
 <p>By setting this to <code>true</code>, you can start the playing automatically through
 corresponding media <a href="https://www.w3schools.com/tags/att_video_autoplay.asp">tag attributes</a>.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         You need to set it before creating a web view. Existing web views are not affected.
   </p>
@@ -1921,8 +1921,8 @@ a new full-screen window.</p>
 On Android, you could play videos inline by default and calling this method does nothing.</p>
 <p>Remember you also need to add &quot;playsinline&quot; attribute to your video tag in the HTML page.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         You need to set it before creating a web view. Existing web views are not affected.
   </p>
@@ -2003,8 +2003,8 @@ sub-resources or make cross origin requests from local HTML files.</p>
 So it is possible that it stops working in a future version.</p>
 <p>On Android, it sets the <code>WebSettings.setAllowFileAccessFromFileURLs</code> for the current web view.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         By setting this to <code>true</code>, you will bring some potential security issue to your app. Some malicious script 
 would be able to read your sandbox. So we DO NOT recommend to enable it before you realize and understand the risk.
@@ -2045,8 +2045,8 @@ for WebKit. So it is possible that it stops working in a future version.</p>
 <p>On Android, it sets the <code>WebSettings.setAllowUniversalAccessFromFileURLs</code> and any later-created web views uses
 that value.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         You need to set it before creating a web view. Existing web views are not affected.
 
@@ -2087,8 +2087,8 @@ would be able to read your sandbox. So we DO NOT recommend to enable it before y
 content view will resize itself to avoid keyboard overlap the web content. Otherwise, the web view will not resize
 and just leave the content below under the soft keyboard.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         This method is only for Android. On iOS, the keyboard avoidance is built into the system directly and there is 
 no way to change its behavior.
@@ -2127,8 +2127,8 @@ no way to change its behavior.
 <p>For a modern page, you may always want JavaScript enabled. However, if you could confirm that you are
 not using any JavaScript in your page, you could turn it off to get better performance and safety.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         You need to set it before creating a web view. Existing web views are not affected.
   </p>
@@ -2165,8 +2165,8 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
 <p>Sets whether JavaScript can open windows without user interaction.</p>
 <p>By setting this to <code>true</code>, an automatically JavaScript navigation will be allowed in the web view.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         You need to set it before creating a web view. Existing web views are not affected.
   </p>
@@ -2526,8 +2526,8 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
       <div class='summary'>
 <p>Clear all cookies from web views.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         This will clear cookies from all domains in the web view and previous. If you only need to remove cookies from a certain domain, use <code>RemoveCookies</code> instead.
   </p>
@@ -2712,8 +2712,8 @@ On Android, it only clears from disk database, the authentication might be still
 <p>You only need this on Android devices with the system before 6.0 when a site needs the location or camera permission. It will allow the permission gets approved so you could access the corresponding devices.
 From Android 6.0, the permission requests method is changed and this is not needed anymore.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         This method is not the same to <code>AddSslExceptionDomain</code>, 
 which is for bypassing SSL checking. You only need this method when 
@@ -3142,8 +3142,8 @@ web view by using a browser development tool of Chrome for Android or Safari for
 <p>This method is only for Android and macOS Editor. On iOS, you do not need an additional step. 
 You could open Safari&#39;s developer tools to debug a web view on iOS.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embedded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in the editor and never affect real devices. 
 
@@ -3172,8 +3172,8 @@ Please remember to disable this in your product build. This should be only used 
 <p>Enables user resizing for web view window. By default, you can only set the window size by setting its frame on mac Editor. 
 By enabling user resizing, you would be able to resize the window by dragging its border as a normal macOS window.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         This method only works for macOS for debugging purpose. It does nothing on iOS and Android.
   </p>
@@ -3309,8 +3309,8 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 <p>By calling this method, a native print preview panel will be brought up on iOS and Android. 
 This method does nothing on macOS editor.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         On iOS and Android, the web view does not support JavaScript (window.print()), you can only initialize a print job from Unity by this method.
   </p>
@@ -3562,8 +3562,8 @@ you also need to get notified when user long-presses on the image and taps &quot
 image will be saved to the Downloads directory and you can get the path from the parameter 
 of <code>OnFileDownloadFinished</code> event.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         This only works on Android. On iOS, there is no way to get a callback or any event from the &quot;Add to Photos&quot;
 button in the callout menu.

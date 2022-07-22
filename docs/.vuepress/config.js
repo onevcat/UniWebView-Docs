@@ -1,6 +1,8 @@
 const { defaultTheme } = require('@vuepress/theme-default')
 const { searchPlugin } = require('@vuepress/plugin-search')
 
+const json = require('./version.json');
+
 module.exports = {
   title: "UniWebView",
   description: "UniWebView is a modern web view component for mobile Unity 3D games. Integrating web content to your games was never easier. It is a plugin built on native iOS/Android technology, which helps your users to enjoy web content and interact with your game through the web views.",
@@ -31,9 +33,22 @@ module.exports = {
         link: "/api/"
       },
       {
-        text: "v3",
-        link: "https://docs-v3.uniwebview.com"
-      }
+        text: `v${json.version}`,
+        children: [
+          {
+            text: 'Release Note',
+            link: '../release-note/',
+          },
+          {
+            text: 'v4.x',
+            link: 'https://docs-v4.uniwebview.com',
+          },
+          {
+            text: 'v3.x',
+            link: 'https://docs-v3.uniwebview.com',
+          },
+        ],
+      },
     ],
     sidebar: {
       "/guide/": [{

@@ -96,8 +96,8 @@ anotherWebView<span class="token punctuation">.</span><span class="token functio
       <div class='summary'>
 <p>The path of this UniWebViewMessage.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         This will be the decoded value for the path of original url.
   </p>
@@ -133,8 +133,8 @@ a dictionary. </p>
 <p>When received url &quot;uniwebview://yourPath?param1=value1&amp;param2=value2&quot;, 
 the args is a <code>Dictionary</code> with: Args[&quot;param1&quot;] = value1, Args[&quot;param2&quot;] = value2</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         Both the key and value will be url decoded from the original url.
   </p>

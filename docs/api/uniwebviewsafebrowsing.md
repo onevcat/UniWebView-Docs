@@ -114,8 +114,8 @@ intent query explicitly in your AndroidManifest.xml, to follow the Package Visib
 <p>The dismissed safe browsing instance will be invalid after this event being raised, and you should not use 
 it for another browsing purpose. Instead, create a new one for a new browsing session.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         This event will not happen in Unity Editor, because the whole <code>UniWebViewSafeBrowsing</code> will fall back to an 
 external browser.
