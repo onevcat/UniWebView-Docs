@@ -24,7 +24,8 @@ module.exports = {
     docsBranch: 'master',
     editLink: true,
     docsDir: "docs",
-    navbar: [{
+    navbar: [
+      {
         text: "Guide",
         link: "/guide/"
       },
@@ -49,12 +50,21 @@ module.exports = {
           },
         ],
       },
+      {
+        text: "Home",
+        link: "https://uniwebview.com"
+      }
     ],
     sidebar: {
       "/guide/": [{
           text: "Getting Started",
           collapsible: false,
-          children: ["installation", "using-prefab", "working-with-code"]
+          children: [
+            "./",
+            "installation", 
+            "using-prefab", 
+            "working-with-code"
+          ]
         },
         {
           text: "Common Tasks",
@@ -66,6 +76,7 @@ module.exports = {
             "memory-management",
             "messaging-system",
             "using-javascript",
+            "oauth2",
             "loading-local-files",
             "uploading",
             "download-files",
@@ -107,7 +118,6 @@ module.exports = {
       ],
       "/api/": [{
         text: "API Reference",
-        collapsible: false,
         children: [
           {
             text: "UniWebView",
