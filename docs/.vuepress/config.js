@@ -61,16 +61,23 @@ module.exports = {
           collapsible: false,
           children: [
             "./",
-            "installation", 
-            "using-prefab", 
-            "working-with-code"
+            "installation"
           ]
         },
         {
-          text: "Common Tasks",
+          text: "Essentials",
           collapsible: false,
           children: [
+            "overview",
+            "using-prefab", 
+            "working-with-code",
             "safe-browsing",
+          ]
+        },
+        {
+          text: "Topics",
+          collapsible: true,
+          children: [
             "position-and-size",
             "transition",
             "memory-management",

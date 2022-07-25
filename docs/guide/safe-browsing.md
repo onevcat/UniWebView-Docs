@@ -1,5 +1,21 @@
 # Safe Browsing Mode
 
+### Using UniWebViewSafeBrowsing.prefab
+
+The steps of using the safe browsing prefab are almost the same as above: drag the prefab to your scene, configure it, and play the scene. UniWebViewSafeBrowsing prefab only provides one property:
+
+![](/images/webview-safe-browsing-prefab.png)
+
+Similarly, set it to `https://uniwebview.com`, and build the scene to a device. The web page with a default title and toolbar UI will be displayed:
+
+![](/images/webview-safebrowsing-sample.png)
+
+> Remember to remove the previous `UniWebView.prefab` if you are trying this `UniWebViewSafeBrowsing.prefab`. Both would show the web page up in the `Start` method, so you may get into a conflict.
+
+::: warning Safe Browsing Mode in Editor
+The native component which is required in Safe Browsing Mode does not exist in the macOS system. In macOS Unity Editor, the Safe Browsing Mode will fallback to opening the external browser like Safari or Chrome and all its lifecycle events will not work.
+:::
+
 ## What is Safe Browsing Mode
 
 UniWebView provides a flexible solution for interacting with web content when configured correctly. However, sometimes you may want a simpler way. Safe Browsing Mode is an **out-of-the-box solution** to show the web page as it is in the browser.
@@ -33,14 +49,14 @@ if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
 }
 ```
 
-This property always returns `true` on iOS runtime platform. On Android, it depends on whether there is an Intent 
+This property always returns `true` on iOS runtime platform. On Android, it depends on whether there is an Intent
 can handle the safe browsing request. Usually this ability is provided by Chrome, but there are also other browser apps
-might implement that. If there is no Intent can open the URL in safe browsing mode, or the handling app is set to 
+might implement that. If there is no Intent can open the URL in safe browsing mode, or the handling app is set to
 disabled in Android system, this property returns `false`.
 
-To use this and any other Safe Browsing APIs on Android when you set your **Target API Level to Android 11 (30) or later**, you 
-need to add the correct intent query explicitly in your `AndroidManifest.xml` file, to follow the 
-[Package Visibility](https://developer.android.com/about/versions/11/privacy/package-visibility). Add `queries` as a 
+To use this and any other Safe Browsing APIs on Android when you set your **Target API Level to Android 11 (30) or later**, you
+need to add the correct intent query explicitly in your `AndroidManifest.xml` file, to follow the
+[Package Visibility](https://developer.android.com/about/versions/11/privacy/package-visibility). Add `queries` as a
 sub-node of the `manifest` tag:
 
 ```xml{6-10}
@@ -56,8 +72,9 @@ sub-node of the `manifest` tag:
   </queries>
 </manifest>
 ```
-::: warning Package Visibility from Android 11 
-If you are setting Target API Level higher than Android 11 (API Level 30), but not setting the `queries` in your 
+
+::: warning Package Visibility from Android 11
+If you are setting Target API Level higher than Android 11 (API Level 30), but not setting the `queries` in your
 `AndroidManifest.xml`, the `UniWebViewSafeBrowsing` related APIs might not work expectedly.
 :::
 
@@ -80,7 +97,7 @@ Only web content hosted by HTTP or HTTPS is supported in Safe Browsing Mode. Att
 :::
 
 ::: warning Safe Browsing Memory
-Once created, the Safe Browsing component in native side will be there and taking memory until dismissed. 
+Once created, the Safe Browsing component in native side will be there and taking memory until dismissed.
 In other words, you need to at least call `Show` once you create a Safe Browsing. Otherwise, its memory will be leaked.
 :::
 
