@@ -4,7 +4,7 @@ The transition effect in UniWebView is easy. We provide several built-in show/hi
 
 ## Show / Hide Transition
 
-`Show` and `Hide` methods accept several parameters to define a better visual effect and natural transition experience. The full signatures of these methods are:
+`Show` and `Hide` methods accept several parameters to define a better visual effect and natural transition experience. The full signatures (and their default values) of these methods are:
 
 ```csharp
 bool Show(
@@ -22,9 +22,9 @@ bool Hide(
 )
 ```
 
-By default, if no parameters are given when called, the `Show` and `Hide` happens without animation. If you set either the `fade` to `true` or the `edge` to any value except for `UniWebViewTransitionEdge.None`, the operation will happen with a transition animation.
+By default, if no parameters are given when called, the `Show` and `Hide` happens without animation. If you set either the `fade` to `true` or the `edge` to any value except for `UniWebViewTransitionEdge.None`, there will be a transition animation.
 
-- `fade` - Fades in or out the web view while show or hide
+- `fade` - Fades in or out the web view while show or hide.
 - `edge` - Defines the **show from** or **hide to** edge. The edge transition is a modal presenting or dismissing animation.
 
 These sample code below:
@@ -37,7 +37,7 @@ webView.Show(true, UniWebViewTransitionEdge.Bottom, 0.35f);
 webView.Hide(true, UniWebViewTransitionEdge.Bottom, 0.35f);
 ```
 
-produce the result:
+produces the result in the video below:
 
 <div>
 <video class="video-player" src="/images/transition.mp4" controls="controls"></video>

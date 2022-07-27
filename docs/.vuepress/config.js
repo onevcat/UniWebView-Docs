@@ -24,6 +24,7 @@ module.exports = {
     docsBranch: 'master',
     editLink: true,
     docsDir: "docs",
+    contributors: false,
     navbar: [
       {
         text: "Guide",
@@ -79,6 +80,7 @@ module.exports = {
           collapsible: true,
           children: [
             "position-and-size",
+            "embedded-toolbar",
             "transition",
             "memory-management",
             "messaging-system",
@@ -90,7 +92,6 @@ module.exports = {
             "playing-videos",
             "http-auth",
             "support-new-window",
-            "built-in-toolbar",
             "transparency-through",
             "webrtc-support",
             "debugging"
@@ -111,8 +112,8 @@ module.exports = {
             },
             "version-highlight",
             {
-              text: "Migrating From 3.x",
-              link: "migration-guide"
+              text: "Migrating From 4.x",
+              link: "migration-guide-v4-to-v5"
             },
             {
               text: "Term of Service",

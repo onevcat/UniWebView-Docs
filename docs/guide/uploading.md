@@ -2,13 +2,13 @@
 
 UniWebView supports uploading files from the disk of your device or from a cloud service to your website.
 
-To show a upload field, use the standard input tag with proper type:
+To show an upload field, use the standard input tag with proper type:
 
 ```html
 <input type="file" name="filename" accept="image/*" />
 ```
 
-When the user clicks the select file button, UniWebView will prompt the user from where they want to choose a file.
+When the user clicks the select file button, UniWebView will prompt the user from where they want to choose a file.
 If you specified the "accept" to `image/*` as the sample above, only photo sources and image files will be available.
 You can also change the "accept" type to a wider `*/*`, which will cause all types of files be choosable.
 

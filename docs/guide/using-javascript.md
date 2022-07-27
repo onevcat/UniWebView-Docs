@@ -19,7 +19,9 @@ webView.OnPageFinished += (view, statusCode, url) => {
 If any error occurs when you adding the JavaScript (syntax error, in most cases), the `resultCode` will not be "0".
 
 ::: tip JavaScript Related Methods
-In the example above, we add the JavaScript inside the `OnPageFinished` event callback. The JavaScript is always bound to a context, or say, the current web page. You can only add functions to a page, or execute a function which is already on the page. Usually, it is a good idea to perform JavaScript related operation **after the page being loaded**.
+In the example above, we add the JavaScript inside the `OnPageFinished` event callback.
+
+The JavaScript is always bound to a context, or say, the current web page. You can only add functions to a page, or execute a function which is already on the page. Usually, it is a good idea to perform JavaScript related operation **after the page being loaded** (inside `OnPageFinished`).
 :::
 
 ## Run a Function
@@ -56,4 +58,4 @@ Thanks to the modern mobile web view component, UniWebView is fully compatible w
 
 ## Disabling
 
-If you are not using any JavaScript, you could disable it by `UniWebView.SetJavaScriptEnabled(false)`. All web view created after this setting does not support JavaScript, it would give you a faster speed when browsing non-JavaScript content.
+If you are not using any JavaScript, you could disable it by `UniWebView.SetJavaScriptEnabled(false)`. All web view created after this setting does not support JavaScript, it would give you a faster speed when browsing non-JavaScript content or for certain security purposes.
