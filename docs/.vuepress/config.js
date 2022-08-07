@@ -128,48 +128,74 @@ module.exports = {
         text: "API Reference",
         children: [
           {
-            text: "UniWebView",
-            link: "./"
+            text: "Essentials", 
+            children: [
+              {
+                text: "UniWebView",
+                link: "./"
+              },
+              {
+                text: "UniWebViewSafeBrowsing",
+                link: "uniwebviewsafebrowsing"
+              },
+            ]
           },
           {
-            text: "UniWebViewSafeBrowsing",
-            link: "uniwebviewsafebrowsing"
+            text: "OAuth 2", 
+            children: [
+              
+            ]
           },
           {
-            text: "UniWebViewMessage",
-            link: "uniwebviewmessage"
+            text: "Models", 
+            children: [
+              {
+                text: "UniWebViewMessage",
+                link: "uniwebviewmessage"
+              },
+              {
+                text: "UniWebViewNativeResultPayload",
+                link: "uniwebviewnativeresultpayload"
+              },
+            ]
           },
           {
-            text: "UniWebViewNativeListener",
-            link: "uniwebviewnativelistener"
+            text: "Enums", 
+            children: [
+              {
+                text: "UniWebViewTransitionEdge",
+                link: "uniwebviewtransitionedge"
+              },
+              {
+                text: "UniWebViewToolbarPosition",
+                link: "uniwebviewtoolbarposition"
+              },
+              {
+                text: "UniWebViewContentInsetAdjustmentBehavior",
+                link: "uniwebviewcontentinsetadjustmentbehavior"
+              },
+              {
+                text: "UniWebViewDownloadMatchingType",
+                link: "uniwebviewdownloadmatchingtype"
+              },
+            ]
           },
           {
-            text: "UniWebViewNativeResultPayload",
-            link: "uniwebviewnativeresultpayload"
-          },
-          {
-            text: "UniWebViewTransitionEdge",
-            link: "uniwebviewtransitionedge"
-          },
-          {
-            text: "UniWebViewToolbarPosition",
-            link: "uniwebviewtoolbarposition"
-          },
-          {
-            text: "UniWebViewContentInsetAdjustmentBehavior",
-            link: "uniwebviewcontentinsetadjustmentbehavior"
-          },
-          {
-            text: "UniWebViewDownloadMatchingType",
-            link: "uniwebviewdownloadmatchingtype"
-          },
-          {
-            text: "UniWebViewLogger",
-            link: "uniwebviewlogger"
-          },
-          {
-            text: "UniWebViewHelper",
-            link: "uniwebviewhelper"
+            text: "Misc", 
+            children: [
+              {
+                text: "UniWebViewNativeListener",
+                link: "uniwebviewnativelistener"
+              },
+              {
+                text: "UniWebViewLogger",
+                link: "uniwebviewlogger"
+              },
+              {
+                text: "UniWebViewHelper",
+                link: "uniwebviewhelper"
+              }
+            ]
           },
         ]
       }]

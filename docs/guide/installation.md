@@ -6,7 +6,7 @@ We strongly recommend that you perform a backup before importing UniWebView to y
 
 ### Unity Asset Store
 
-If you purchased UniWebView from [Unity Asset Store](https://assetstore.unity.com/packages/slug/175993), open the Asset Store window from **Window → Asset Store** or **Window → Package Manager**. You could find UniWebView 5 there under **My Assets**, then click "Import".
+If you purchased UniWebView from [Unity Asset Store](https://assetstore.unity.com/packages/slug/229334), open the Asset Store window from **Window → Asset Store** or **Window → Package Manager**. You could find UniWebView 5 there under **My Assets**, then click "Import".
 
 ### UniWebView Store
 

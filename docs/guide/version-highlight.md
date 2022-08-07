@@ -1,75 +1,63 @@
 # Version Highlight
 
 ::: tip Upgrade Pricing
-If you have purchased UniWebView 3 before, we offer an upgrading discount.
+If you have purchased UniWebView 4 before, we offer an upgrading discount.
 
 For users:
 
 - Purchased from our Gumroad Store - [Submit a ticket](https://onevcat.atlassian.net/servicedesk/customer/portal/2/group/2/create/10011) with your purchasing Email and we will send a coupon back.
-- Purchased from Unity Asset Store - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/175993)
+- Purchased from Unity Asset Store - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229334)
   to find the Upgrade Price.
   :::
 
-UniWebView 4 contains huge improvement and lots of fixes based on a rewritten structure compared to its predecessor UniWebView 3.
-Here we will list a few of them to help you to get an overview about what is improved.
+UniWebView contains some significant improvements over its predecessor UniWebView 4. Here we will list a few of them to
+give you an overview about what are added and changed.
 
-### Safe Browsing Mode
+### Built-in OAuth 2.0 Support
 
-Safe Browsing Mode is an **out-of-the-box solution** to show the web page as it is in the browser. It
-wraps [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) on iOS
-and [Custom Tabs](https://developers.google.com/web/android/custom-tabs) on Android.
+UniWebView 5 supports OAuth 2.0 authentication. It provides an easy way to integrate OAuth 2.0 authentication into your
+app for most popular service providers. If you are planning to let your users log in with one of these built-in supported
+platform, UniWebView 5 gives you an out-of-the-box solution:
 
-By adopting to Safe Browsing Mode, you can get a zero-configuration web browsing experience, with sharing cookies and
-certain credential information with the system browsers. Some platform features, such as Apple Pay or Google Sign-In,
-also require the Safe Browsing Mode to work properly.
+| Service Provider | UniWebView Auth Class                | Provider Documentation                                                                                          |
+| ---------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| Google           | UniWebViewAuthenticationFlowGoogle   | [OAuth 2.0 for Mobile & Desktop Apps](https://developers.google.com/identity/protocols/oauth2/native-app?hl=en) |
+| Facebook         | UniWebViewAuthenticationFlowFacebook | [Manually Build a Login Flow](https://developers.facebook.com/docs/facebook-login/guides/advanced/manual-flow)  |
+| Twitter          | UniWebViewAuthenticationFlowTwitter  | [Authentication](https://developer.twitter.com/en/docs/authentication/oauth-2-0/authorization-code)             |
+| GitHub           | UniWebViewAuthenticationFlowGitHub   | [Authorizing OAuth Apps](https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps) |
+| Discord          | UniWebViewAuthenticationFlowDiscord  | [OAuth2 in Discord](https://discord.com/developers/docs/topics/oauth2)                                          |
+| LINE             | UniWebViewAuthenticationFlowLine     | [LINE Login v2.1 API reference](https://developers.line.biz/en/reference/line-login/)                           |
 
-To know more about it, check the [Safe Browsing Mode](./safe-browsing.md) guide.
+Besides of them, UniWebView also a customizable common setup for **any other services which provides a standard OAuth 2.0 code flow**.
 
-### Customizable Toolbar
+For more information of the built-in OAuth 2.0 authentication, please check the related [OAuth 2.0 Support Guide](./oauth2.md).
 
-On iOS, the built-in toolbar is an important component for navigating. It is now fully customizable: text and color of
-the buttons, background color of the toolbar, and the state of the navigating buttons. It helps you create a better style
-of web browsing, matching your game design and providing a better immersive experience.
+### Embedded Toolbar
 
-To know more about it, check the [Built-in Toolbar](./built-in-toolbar.md) guide.
+Instead of the toolbar in previous versions, now UniWebView 5 has an embedded toolbar for both iOS and Android.
+It adopts to better layout methods and gives a more stable toolbar style. This new embedded toolbar contains the
+navigation buttons and a title to provide a context to your users. The size and position of toolbar now also follows the
+web view's size and position. It provides a much better immersive experience for your users.
 
-### Non-injection Integration
+For more information of the embedded toolbar, please check the related [Embedded Toolbar Guide](./embedded-toolbar.md).
 
-From Unity 2020.1, Unity changed its way of handling native tap events. It causes some problems in UniWebView 3, which was
-using a more invasion way to integrate to Unity on Android. In UniWebView 4, we rewrote the whole Android native part
-from scratch, to achieve the least affect to the original Unity scene.
+### Uploading Rewriting
 
-This helps us to fix a few bugs that we cannot get work around in earlier versions, including:
+The image uploading support is rewritten from scratch. If you need to upload some files, especially photos and images
+to a server through the HTTP `<input>` form, you will find now it is much more stable on almost all types of Android
+devices and system versions.
 
-- The soft keyboard is not overlapping on the text fields in the web view anymore.
-- Unity's setting of immersive mode and status bars is respected and no flickering.
-- You can click through from the outside of web view in Unity 2020.1 now. (Everything works as expected in earlier Unity versions.)
-- Focus can be switched between multiple web views now.
-- ...
+### Improved Export Phase
 
-Besides of these, some overheads can be also removed now, which helps to boost the performance by 10%~20% when rendering
-a complex page.
-
-### Less Permissions
-
-Android system is keeping introduces a more [reasonable](https://developer.android.com/guide/topics/permissions/overview) [permission model](https://developer.android.com/about/versions/10/privacy/changes). It gives us a chance to look back how UniWebView handles permissions.
-
-UniWebView 3 requires the external write permission on Android to create some temporary files before uploading pictures.
-With the new disk access permission model in modern Android systems, it is not necessary any more in version 4. We also
-follows the best practice of permission request, to help your users start play your game as soon as possible. Now you can
-feel free to use the latest Android version as the target API Level.
-
-### Post Gradle Build
-
-Thanks to the [Gradle build system](https://gradle.org) which Unity started to fully support from 2018.3, UniWebView now uses
-it to configure your exported project. Instead of manipulating `AndroidManifest.xml` or `build.gradle` files yourself, now
-you can find the "UniWebView" tab in Unity's Preference panel (`Cmd+,`) to setup necessary permissions.
-
-UniWebView also use the post-build script to add dependencies. Integrating UniWebView to your project was never easier.
+In previous versions, when exporting with Release configuration and project minifying on, it is possible that the required
+symbols gets stripped out on Android. In UniWebView 5, we have a deeper integration with Unity's build pipeline to make sure
+this not happen again. Now the exporting behavior should be much more stable under different build configurations.
 
 ### Much More
 
 Please check other guides in the side bar and the [API Documentation](/latest/api/overview) to know more about UniWebView.
 We strongly suggest you upgrade to the latest version for a more powerful and stable web view component.
+
+If you need to migrate from UniWebView 4 to the latest UniWebView 5, please refer to the [Migration Guide](./migration-guide-v4-to-v5.md).
 
 You can find other recent changes and all release logs in the [Release Note](../release-note) page.
