@@ -41,17 +41,22 @@ web view's size and position. It provides a much better immersive experience for
 
 For more information of the embedded toolbar, please check the related [Embedded Toolbar Guide](./embedded-toolbar.md).
 
-### Uploading Rewriting
+### Rewriting Image Uploading
 
-The image uploading support is rewritten from scratch. If you need to upload some files, especially photos and images
+The image uploading support is rewritten from scratch. If you need to upload multiple files, especially photos and images
 to a server through the HTTP `<input>` form, you will find now it is much more stable on almost all types of Android
 devices and system versions.
+
+The pure JavaScript uploading controls are now also supported. For more, please read the [Uploading](./uploading.md) guide.
 
 ### Improved Export Phase
 
 In previous versions, when exporting with Release configuration and project minifying on, it is possible that the required
 symbols gets stripped out on Android. In UniWebView 5, we have a deeper integration with Unity's build pipeline to make sure
 this not happen again. Now the exporting behavior should be much more stable under different build configurations.
+
+Starting from UniWebView 5, the library on Android now are also built with minify enabled, which means a smaller binary
+size and an improvement of project security.
 
 ### Much More
 
