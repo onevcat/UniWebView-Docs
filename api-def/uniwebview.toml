@@ -798,6 +798,28 @@ type = "bool"
 summary = "Whether the file access inside web view from file URLs is allowed or not."
 
 [[Methods]]
+name = "SetAcceptThirdPartyCookies"
+syntax = "SetAcceptThirdPartyCookies(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the UniWebView should allow third party cookies to be set. 
+
+By default, on Android, the third party
+cookies are disallowed due to security reason. Setting this to `true` will allow the cookie manager to accept
+third party cookies you set. 
+
+This method only works for Android. On iOS, this method does nothing and the third party cookies are always 
+allowed.
+"""
+[[Methods.badges]]
+name = "Android"
+color = "green"
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the third party cookies should be allowed."
+
+[[Methods]]
 name = "SetAllowUniversalAccessFromFileURLs"
 syntax = "SetAllowUniversalAccessFromFileURLs(bool flag)"
 returnType = "void"

@@ -165,6 +165,9 @@ are added to the adjusted content inset.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowfileaccessfromfileurls'><span class='return-type'>void</span> SetAllowFileAccessFromFileURLs(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether file access from file URLs is allowed.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setacceptthirdpartycookies'><span class='return-type'>void</span> SetAcceptThirdPartyCookies(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the UniWebView should allow third party cookies to be set.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowuniversalaccessfromfileurls'><span class='return-type'>void</span> SetAllowUniversalAccessFromFileURLs(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets allow universal access from file URLs.</p>
 </div>
@@ -2029,6 +2032,31 @@ would be able to read your sandbox. So we DO NOT recommend to enable it before y
 </div>
 </div>
     </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setacceptthirdpartycookies'></div><div class='api-heading' data-id='setacceptthirdpartycookies'><a href='#setacceptthirdpartycookies'><span class='return-type'>void</span> SetAcceptThirdPartyCookies(bool flag)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether the UniWebView should allow third party cookies to be set. </p>
+<p>By default, on Android, the third party
+cookies are disallowed due to security reason. Setting this to <code>true</code> will allow the cookie manager to accept
+third party cookies you set. </p>
+<p>This method only works for Android. On iOS, this method does nothing and the third party cookies are always 
+allowed.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item-desc'><p>Whether the third party cookies should be allowed.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
   </div>
 </div>
 <div class='api-box method'>
