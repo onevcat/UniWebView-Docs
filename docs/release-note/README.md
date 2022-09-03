@@ -1,5 +1,17 @@
 # Release Note
 
+### 4.13.0
+
+#### Add
+
+* A `SetAcceptThirdPartyCookies` method to allow third party cookies on Android. By default, the third party cookies are not allowed for security reason.
+
+### 4.12.1 (24 Jun, 2022)
+
+#### Fix
+
+* An issue that a stored cookie cannot be read when using `GetCookie` method on iOS if its domain starting with a dot. According to RFC6265, the leading dot should be ignored when matching a cookie.
+
 ### 4.12.0 (17 Jun, 2022)
 
 #### Add
