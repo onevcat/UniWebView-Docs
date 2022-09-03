@@ -42,4 +42,35 @@ any) from your project:
 
 ### Installing UniWebView 5
 
-Now, you have completely removed UniWebView 4 from you project. Please make sure that you no longer have a "UniWebView" folder in "Assets". Then follow the [Installation Guide](./installation.md) to integrate UniWebView 5 into your project.
+Now, you have completely removed UniWebView 4 from you project. Please make sure that you no longer have a "UniWebView"
+folder in "Assets". Then follow the [Installation Guide](./installation.md) to integrate UniWebView 5 into your project.
+
+### Deprecated Methods
+
+In UniWebView, the old **built-in toolbar** (iOS only) is deprecated and will be removed in the future. Although the 
+code will still work for a while, we suggest you to use the new **embedded toolbar** instead. The new toolbar works for
+both iOS and Android, and is more flexible and customizable. If you are using any of these methods of `UniWebView` in 
+your project, consider to replace them with the new ones:
+
+
+|              Deprecated                 |                  New                 | 
+| --------------------------------------- | ------------------------------------ | 
+| webView.SetShowToolbar                  | webView.EmbeddedToolbar.Show         |
+| webView.SetToolbarDoneButtonText        | webView.EmbeddedToolbar.SetDoneButtonText |
+| webView.SetToolbarGoBackButtonText      | webView.EmbeddedToolbar.SetGoBackButtonText  |
+| webView.SetToolbarGoForwardButtonText   | webView.EmbeddedToolbar.SetGoForwardButtonText  |
+| webView.SetShowToolbarNavigationButtons | webView.EmbeddedToolbar.ShowNavigationButtons  |
+| webView.SetToolbarTintColor             | webView.EmbeddedToolbar.SetButtonTextColor  |
+| webView.SetToolbarTextColor             | webView.EmbeddedToolbar.SetButtonTextColor  |
+
+There are also some new methods in the new `EmbeddedToolbar` class. You can check them in the
+[Embedded Toolbar](./embedded-toolbar.md) guide for more information.
+
+### Checking New Features
+
+The most noticeable change in UniWebView 5 is the new built-in OAuth 2.0 support. If you are using OAuth 2 in your project,
+regardless of using UniWebView to perform the user login or another plugin, now it is possible to use a "UniWebViewAuthenticationFlow"
+prefab to simplify the work. UniWebView provides the out-of-box level support for most popular OAuth 2.0 providers. If you
+need to support a new provider, you can also create your own auth flow. To get started, read the [OAuth 2.0 Support Guide](./oauth2.md).
+
+For other features and fixes in new versions of UniWebView v5, please check the [Release Notes](./release-notes.md).
