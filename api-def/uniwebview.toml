@@ -145,6 +145,24 @@ webView.Alpha = 0.5f;
 ```
 """
 
+[[Properties]]
+name = "EmbeddedToolbar"
+returnType = "UniWebViewEmbeddedToolbar"
+hasSetter = false
+summary = """
+Represents the embedded toolbar in the current web view.
+
+A toolbar is a built-in area inside the web view, shown at the top or bottom of the web view. It contains navigation buttons
+like "Back" and "Forward", as well as a "Done" button to close the web view. You can use APIs under `UniWebViewEmbeddedToolbar` 
+to customize the toolbar. See its APIs for more details.
+"""
+example = """
+```csharp
+// Show the embedded toolbar.
+webView.EmbeddedToolbar.Show();
+```
+"""
+
 [[Methods]]
 name = "Load"
 syntax = "Load(string url, bool skipEncoding, string readAccessURL)"

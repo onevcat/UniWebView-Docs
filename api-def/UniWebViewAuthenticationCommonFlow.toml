@@ -1,0 +1,71 @@
+title = "UniWebViewAuthenticationCommonFlow"
+file = "UniWebViewAuthenticationCommonFlow"
+
+summary = """
+Abstract class and general control for other authentication flows. This class determines the global behaviors of the 
+authentication flow, such as whether to start authentication as soon as the script `Start`s, and whether to use private
+mode to authenticate the user.
+
+This is a super and abstract class for all concrete auth flow. You are not expected to use this class directly.
+Instead, to start a customized auth flow, you can use the `UniWebViewAuthenticationFlowCustomize` class.
+"""
+
+[[Properties]]
+name = "authorizeOnStart"
+returnType = "bool"
+hasSetter = true
+summary = """
+Whether to start authentication as soon as the script `Start`s.
+"""
+
+[[Properties]]
+name = "privateMode"
+returnType = "bool"
+hasSetter = true
+summary = """
+Whether to use private mode to authenticate the user. If `true` and the device supports, the authentication
+will begin under the incognito mode.
+
+On iOS, this works on iOS 13 and later.
+
+On Android, it depends on the Chrome version and might require users to enable the incognito mode (and support
+for third-party use) in Chrome's settings. Check settings with `chrome://flags/#cct-incognito` and
+`chrome://flags/#cct-incognito-available-to-third-party` in Chrome to see the current status.
+"""
+
+[[Methods]]
+name = "StartAuthenticationFlow"
+syntax = "StartAuthenticationFlow()"
+returnType = "abstract void"
+summary = """
+Subclass should override this method to start the authentication flow. Usually it starts
+a `UniWebViewAuthenticationFlow`. But you can also choose whatever you need to do.
+"""
+
+[[Methods]]
+name = "GenerateAndStoreState"
+syntax = "GenerateAndStoreState()"
+returnType = "string"
+summary = """
+Child classes are expected to call this method to request a `state` (and store it for later check) if the 
+`state` verification is enabled.
+"""
+
+[[Methods]]
+name = "GenerateCodeChallengeAndStoreCodeVerify"
+syntax = "GenerateCodeChallengeAndStoreCodeVerify(UniWebViewAuthenticationPKCE method)"
+returnType = "string"
+summary = """
+Child classes are expected to call this method to request a `code_challenge`. Later when exchanging the access
+token, the `code_verifier` will be used to verify the `code_challenge`. Subclass can read it from `CodeVerify`.
+"""
+
+[[Methods]]
+name = "VerifyState"
+syntax = "VerifyState(VerifyState(Dictionary<string, string> parameters, string key)"
+returnType = "void"
+summary = """
+Perform verifying for `state`. Child classes are expected to call this method to verify the `state`.
+If the `state` is invalid, the authentication flow will be stopped and an `AuthenticationResponseException.InvalidState`
+thrown.
+"""

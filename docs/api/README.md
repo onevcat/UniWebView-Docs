@@ -37,6 +37,9 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#alpha'><span class='return-type'>float</span> Alpha { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Gets or sets the alpha value of the whole web view.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#embeddedtoolbar'><span class='return-type'>UniWebViewEmbeddedToolbar</span> EmbeddedToolbar { get; }</a></div></td><td><div class='simple-summary'>
+<p>Represents the embedded toolbar in the current web view.</p>
+</div>
 </td></tr></table>
 
 #### Events Summary
@@ -485,6 +488,27 @@ webView<span class="token punctuation">.</span>BackgroundColor <span class="toke
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code><span class="token comment">// Set the web view half transparent.</span>
 webView<span class="token punctuation">.</span>Alpha <span class="token operator">=</span> <span class="token number">0.5f</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box property'>
+  <div class="api-anchor" id='embeddedtoolbar'></div><div class='api-heading' data-id='embeddedtoolbar'><a href='#embeddedtoolbar'><span class='return-type'>UniWebViewEmbeddedToolbar</span> EmbeddedToolbar { get; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Represents the embedded toolbar in the current web view.</p>
+<p>A toolbar is a built-in area inside the web view, shown at the top or bottom of the web view. It contains navigation buttons
+like &quot;Back&quot; and &quot;Forward&quot;, as well as a &quot;Done&quot; button to close the web view. You can use APIs under <code>UniWebViewEmbeddedToolbar</code> 
+to customize the toolbar. See its APIs for more details.</p>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Show the embedded toolbar.</span>
+webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
