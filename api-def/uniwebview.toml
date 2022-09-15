@@ -2090,7 +2090,7 @@ color = "green"
 [[Events]]
 name = "OnPageStarted"
 syntax = "OnPageStarted(UniWebView webView, string url)"
-returnType = "event"
+returnType = "void"
 summary = """
 Raised when the web view starts loading a url.
 
@@ -2118,7 +2118,7 @@ summary = "The url which the web view is about to load."
 [[Events]]
 name = "OnPageFinished"
 syntax = "OnPageFinished(UniWebView webView, int statusCode, string url)"
-returnType = "event"
+returnType = "void"
 summary = """
 Raised when the web view finished to load a url successfully.
 
@@ -2162,7 +2162,7 @@ summary = "The url which the web view begins to load."
 [[Events]]
 name = "OnPageProgressChanged"
 syntax = "OnPageProgressChanged(UniWebView webView, float progress)"
-returnType = "event"
+returnType = "void"
 summary = """
 Raised when the loading progress value changes in current web view.
 """
@@ -2193,7 +2193,7 @@ summary = "A value indicates the loading progress of current page. It is a value
 [[Events]]
 name = "OnPageErrorReceived"
 syntax = "OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)"
-returnType = "event"
+returnType = "void"
 summary = """
 Raised when an error encountered during the loading process. 
 Such as the "host not found" error or "no Internet connection" error will raise this event.
@@ -2337,7 +2337,7 @@ On Android, it is in the "Download" folder of your app.
 [[Events]]
 name = "OnMessageReceived"
 syntax = "OnMessageReceived(UniWebView webView, UniWebViewMessage message)"
-returnType = "event"
+returnType = "void"
 summary = """
 Raised when a message from web view is received. 
 
@@ -2383,7 +2383,7 @@ summary = "The message object which contains information like message path and a
 [[Events]]
 name = "OnShouldClose"
 syntax = "OnShouldClose(UniWebView webView)"
-returnType = "event bool"
+returnType = "bool"
 summary = """
 Raised when the web view is about to close itself.
 
@@ -2425,7 +2425,7 @@ summary = "The web view component which raises this event."
 [[Events]]
 name = "OnOrientationChanged"
 syntax = "OnOrientationChanged(UniWebView webView, ScreenOrientation orientation)"
-returnType = "event"
+returnType = "void"
 summary = """
 Raised when the screen orientation is changed. It is a good time to set the web view frame if you 
 need to support multiple orientations in your game.
@@ -2451,7 +2451,7 @@ summary = "The screen orientation for current state."
 [[Events]]
 name = "OnWebContentProcessTerminated"
 syntax = "OnWebContentProcessTerminated(UniWebView webView)"
-returnType = "event"
+returnType = "void"
 summary = """
 Raised when on iOS, when system calls `webViewWebContentProcessDidTerminate` method. 
 It is usually due to a low memory when loading the web content and leaves you a blank white screen. 
@@ -2479,7 +2479,7 @@ summary = "The web view component which raises this event."
 [[Events]]
 name = "OnMultipleWindowOpened"
 syntax = "OnMultipleWindowOpened(UniWebView webView, string multipleWindowId)"
-returnType = "event"
+returnType = "void"
 summary = """
 Raised when a new window is opened. This happens when you enable the `SetSupportMultipleWindows` and open a
 new pop-up window.
@@ -2504,7 +2504,7 @@ summary = "The identifier of the opened new window."
 [[Events]]
 name = "OnMultipleWindowClosed"
 syntax = "OnMultipleWindowClosed(UniWebView webView, string multipleWindowId)"
-returnType = "event"
+returnType = "void"
 summary = """
 Raised when the multiple window is closed. This happens when the pop-up window is closed by navigation operation
 or by a invocation of `close()` on the page.
@@ -2528,7 +2528,7 @@ summary = "The identifier of the closed new window."
 [[Events]]
 name = "OnKeyCodeReceived"
 syntax = "OnKeyCodeReceived(UniWebView webView, int keyCode)"
-returnType = "event"
+returnType = "void"
 summary = """
 Raised when a key (like back button or volume up) on the device is pressed.
 

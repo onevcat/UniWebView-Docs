@@ -1,2 +1,198 @@
 title = "UniWebViewAuthenticationSession"
 file = "UniWebViewAuthenticationSession"
+
+summary = """
+Represents a session that can be used to authenticate a user through a web service.
+
+Initialize the session with a URL that points to the authentication webpage. A browser or a secure web view loads
+and displays the page. On completion, the service sends a callback URL to the session with an authentication token,
+and this triggers the `OnAuthenticationFinished` with the received URL. To make your app be invoked by the system,
+you need to also add the correct callback URL starting with the value of `CallbackScheme` to UniWebView's preferences.
+
+Usually this session processes an OAuth 2 flow. It will be used along with a following "exchange token" request, to
+finally get the user's access token to allow you use the service APIs on behalf of the user. This token exchange can
+happen in the client app, or you can pass the code to your server and let your server do the left work.
+
+UniWebView also provides built-in integrated authentication flows for several popular service. The the
+`UniWebViewAuthenticationFlow` cluster classes to use them and simplify your work. If the built-in models do not
+fit your work, you can use this class as a starting point of your own authentication integration. 
+
+See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of authentication in UniWebView.
+"""
+
+[[Events]]
+name = "OnAuthenticationFinished"
+syntax = "OnAuthenticationFinished(UniWebViewAuthenticationSession session, string url)"
+returnType = "void"
+summary = """
+Raised when the session finishes authentication.
+
+This event will be invoked when the service provider calls the callback URL. regardless of the authentication code
+is retrieved or an error is returned in the callback URL.
+"""
+[[Events.parameters]]
+name = "session"
+type = "UniWebViewAuthenticationSession"
+summary = "The session which raised this event."
+[[Events.parameters]]
+name = "url"
+type = "string"
+summary = "The received URL from service. It might contain a valid `code` from the service, or an error."
+
+[[Events]]
+name = "OnAuthenticationErrorReceived"
+syntax = "OnAuthenticationErrorReceived(UniWebViewAuthenticationSession session, int errorCode, string errorMessage)"
+returnType = "void"
+summary = """
+Raised when the session encounters an error.
+
+This event will be invoked when the authentication session cannot finishes with a URL callback. This usually
+happens when a network error or the user dismisses the authentication page from native UI.
+"""
+[[Events.parameters]]
+name = "session"
+type = "UniWebViewAuthenticationSession"
+summary = "The session which raised this event."
+[[Events.parameters]]
+name = "errorCode"
+type = "int"
+summary = "The error code represents the error type."
+[[Events.parameters]]
+name = "errorMessage"
+type = "string"
+summary = "The error message describes the error in detail."
+
+[[Properties]]
+name = "IsAuthenticationSupported"
+returnType = "bool"
+hasSetter = false
+summary = """
+Check whether the current device and system supports the authentication session.
+
+Returns `true` if the safe browsing mode is supported and the page will be opened in safe browsing 
+mode. Otherwise, `false`.
+
+This property always returns `true` on iOS 11, macOS 10.15 and later. On Android, it depends on whether there
+is an Intent can handle the safe browsing request,  which is use to display the authentication page. Usually
+it is provided by Chrome. If there is no Intent can open the URL in safe browsing mode, this property will
+return `false`.
+
+To use this API on Android when you set your Target SDK to Android 11 or later, you need to declare the correct 
+intent query explicitly in your AndroidManifest.xml, to follow the [Package Visibility](https://developer.android.com/about/versions/11/privacy/package-visibility):
+"""
+example = """
+```csharp
+<queries>
+  <intent>
+    <action android:name="android.support.customtabs.action.CustomTabsService" />
+  </intent>
+</queries>
+
+// To use it:
+if (UniWebViewAuthenticationSession.IsAuthenticationSupported) {
+    // Continue to create and start the authentication session.
+}
+```
+"""
+[[Properties.badges]]
+name = "static"
+color = "blue"
+
+[[Properties]]
+name = "Url"
+returnType = "string"
+hasSetter = false
+summary = "The URL of the authentication webpage. This is the value you used to create this session."
+
+[[Properties]]
+name = "CallbackScheme"
+returnType = "string"
+hasSetter = false
+summary = """
+The callback scheme of the authentication webpage. This is the value you used to create this session. The service
+is expected to use a URL with this scheme to return to your app.
+"""
+
+[[Methods]]
+name = "Create"
+syntax = "Create(string url, string callbackScheme)"
+returnType = "UniWebViewAuthenticationSession"
+summary = """
+Creates a new authentication session with a given authentication page URL and a callback scheme.
+"""
+example = """
+```csharp
+// For example: 
+// - Auth entrypoint: "example.com/oauth/authorize"
+// - Callback Url: "authExample://auth"
+var session = UniWebViewAuthenticationSession.Create(
+  "https://example.com/oauth/authorize?client_id=12345&&scope=profile",
+  "authExample"
+);
+// Use the `session` to start the authentication flow.
+```
+"""
+[[Methods.parameters]]
+name = "url"
+type = "string"
+summary = """
+The authentication page which is provided by the service. It should be a URL with some information like your app's
+client id and required scopes, etc.
+"""
+[[Methods.parameters]]
+name = "callbackScheme"
+type = "string"
+summary = """
+The URL scheme which the service will use to navigate back to your client app.
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+
+[[Methods]]
+name = "Start"
+syntax = "Start()"
+returnType = "void"
+summary = """
+Start the authentication session process. It will show up a secured web page and navigate users to the `Url`.
+"""
+example = """
+```csharp
+
+var session = UniWebViewAuthenticationSession.Create(
+  "https://example.com/oauth/authorize?client_id=12345&&scope=profile",
+  "authExample"
+);
+session.OnAuthenticationFinished += (_, resultUrl) =>  {
+  Debug.Log("Auth flow received callback url: " + resultUrl);
+  // Continue to exchange the code to the access token.
+};
+
+session.OnAuthenticationErrorReceived += (_, errorCode, message) => {
+  // Error handling.
+};
+
+session.Start();
+```
+"""
+
+[[Methods]]
+name = "SetPrivateMode"
+syntax = "SetPrivateMode(bool flag)"
+returnType = "void"
+summary = """
+Sets to use the private mode for the authentication. 
+
+If running under private mode, the previous stored authentication information will not be used.
+
+On Apple's platform, this works from iOS 13 and macOS 10.15. On Android, this depends on the Chrome setting on the
+device. The users should enable the "incognito" and "third-party incognito" to allow to use this feature.
+
+Check them in Chrome app:
+-  chrome://flags/#cct-incognito
+-  chrome://flags/#cct-incognito-available-to-third-party
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the session should run in private mode or not."

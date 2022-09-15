@@ -45,16 +45,16 @@ as well as receive a message from the web view.
 #### Events Summary
 
 <table>
-<tr><td><div class='api-summary-heading'><a href='#onpagestarted'><span class='return-type'>event</span> OnPageStarted(UniWebView webView, string url)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#onpagestarted'><span class='return-type'>void</span> OnPageStarted(UniWebView webView, string url)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view starts loading a url.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onpagefinished'><span class='return-type'>event</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onpagefinished'><span class='return-type'>void</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view finished to load a url successfully.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onpageprogresschanged'><span class='return-type'>event</span> OnPageProgressChanged(UniWebView webView, float progress)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onpageprogresschanged'><span class='return-type'>void</span> OnPageProgressChanged(UniWebView webView, float progress)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the loading progress value changes in current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onpageerrorreceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onpageerrorreceived'><span class='return-type'>void</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
 <p>Raised when an error encountered during the loading process.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#oncapturesnapshotfinished'><span class='return-type'>void</span> OnCaptureSnapshotFinished(UniWebView webView, int errorCode, string diskPath)</a></div></td><td><div class='simple-summary'>
@@ -66,25 +66,25 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onfiledownloadfinished'><span class='return-type'>void</span> OnFileDownloadFinished(UniWebView webView, int errorCode, string remoteUrl, string diskPath)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a file download task finishes with either an error or success.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onmessagereceived'><span class='return-type'>event</span> OnMessageReceived(UniWebView webView, UniWebViewMessage message)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onmessagereceived'><span class='return-type'>void</span> OnMessageReceived(UniWebView webView, UniWebViewMessage message)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a message from web view is received.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onshouldclose'><span class='return-type'>event bool</span> OnShouldClose(UniWebView webView)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onshouldclose'><span class='return-type'>bool</span> OnShouldClose(UniWebView webView)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view is about to close itself.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onorientationchanged'><span class='return-type'>event</span> OnOrientationChanged(UniWebView webView, ScreenOrientation orientation)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onorientationchanged'><span class='return-type'>void</span> OnOrientationChanged(UniWebView webView, ScreenOrientation orientation)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the screen orientation is changed.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onwebcontentprocessterminated'><span class='return-type'>event</span> OnWebContentProcessTerminated(UniWebView webView)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onwebcontentprocessterminated'><span class='return-type'>void</span> OnWebContentProcessTerminated(UniWebView webView)</a></div></td><td><div class='simple-summary'>
 <p>Raised when on iOS, when system calls <code>webViewWebContentProcessDidTerminate</code> method.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onmultiplewindowopened'><span class='return-type'>event</span> OnMultipleWindowOpened(UniWebView webView, string multipleWindowId)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onmultiplewindowopened'><span class='return-type'>void</span> OnMultipleWindowOpened(UniWebView webView, string multipleWindowId)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a new window is opened.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onmultiplewindowclosed'><span class='return-type'>event</span> OnMultipleWindowClosed(UniWebView webView, string multipleWindowId)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onmultiplewindowclosed'><span class='return-type'>void</span> OnMultipleWindowClosed(UniWebView webView, string multipleWindowId)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the multiple window is closed.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onkeycodereceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onkeycodereceived'><span class='return-type'>void</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a key (like back button or volume up) on the device is pressed.</p>
 </div>
 </td></tr></table>
@@ -519,7 +519,7 @@ webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token
 ### Events
 
 <div class='api-box method'>
-  <div class="api-anchor" id='onpagestarted'></div><div class='api-heading' data-id='onpagestarted'><a href='#onpagestarted'><span class='return-type'>event</span> OnPageStarted(UniWebView webView, string url)</a></div>
+  <div class="api-anchor" id='onpagestarted'></div><div class='api-heading' data-id='onpagestarted'><a href='#onpagestarted'><span class='return-type'>void</span> OnPageStarted(UniWebView webView, string url)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -557,7 +557,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onpagefinished'></div><div class='api-heading' data-id='onpagefinished'><a href='#onpagefinished'><span class='return-type'>event</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div>
+  <div class="api-anchor" id='onpagefinished'></div><div class='api-heading' data-id='onpagefinished'><a href='#onpagefinished'><span class='return-type'>void</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -616,7 +616,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onpageprogresschanged'></div><div class='api-heading' data-id='onpageprogresschanged'><a href='#onpageprogresschanged'><span class='return-type'>event</span> OnPageProgressChanged(UniWebView webView, float progress)</a></div>
+  <div class="api-anchor" id='onpageprogresschanged'></div><div class='api-heading' data-id='onpageprogresschanged'><a href='#onpageprogresschanged'><span class='return-type'>void</span> OnPageProgressChanged(UniWebView webView, float progress)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -658,7 +658,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onpageerrorreceived'></div><div class='api-heading' data-id='onpageerrorreceived'><a href='#onpageerrorreceived'><span class='return-type'>event</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div>
+  <div class="api-anchor" id='onpageerrorreceived'></div><div class='api-heading' data-id='onpageerrorreceived'><a href='#onpageerrorreceived'><span class='return-type'>void</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -845,7 +845,7 @@ On Android, it is in the &quot;Download&quot; folder of your app.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onmessagereceived'></div><div class='api-heading' data-id='onmessagereceived'><a href='#onmessagereceived'><span class='return-type'>event</span> OnMessageReceived(UniWebView webView, UniWebViewMessage message)</a></div>
+  <div class="api-anchor" id='onmessagereceived'></div><div class='api-heading' data-id='onmessagereceived'><a href='#onmessagereceived'><span class='return-type'>void</span> OnMessageReceived(UniWebView webView, UniWebViewMessage message)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -900,7 +900,7 @@ anotherWebView<span class="token punctuation">.</span><span class="token functio
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onshouldclose'></div><div class='api-heading' data-id='onshouldclose'><a href='#onshouldclose'><span class='return-type'>event bool</span> OnShouldClose(UniWebView webView)</a></div>
+  <div class="api-anchor" id='onshouldclose'></div><div class='api-heading' data-id='onshouldclose'><a href='#onshouldclose'><span class='return-type'>bool</span> OnShouldClose(UniWebView webView)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -952,7 +952,7 @@ webView<span class="token punctuation">.</span>OnShouldClose <span class="token 
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onorientationchanged'></div><div class='api-heading' data-id='onorientationchanged'><a href='#onorientationchanged'><span class='return-type'>event</span> OnOrientationChanged(UniWebView webView, ScreenOrientation orientation)</a></div>
+  <div class="api-anchor" id='onorientationchanged'></div><div class='api-heading' data-id='onorientationchanged'><a href='#onorientationchanged'><span class='return-type'>void</span> OnOrientationChanged(UniWebView webView, ScreenOrientation orientation)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -989,7 +989,7 @@ webView<span class="token punctuation">.</span>OnOrientationChanged <span class=
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onwebcontentprocessterminated'></div><div class='api-heading' data-id='onwebcontentprocessterminated'><a href='#onwebcontentprocessterminated'><span class='return-type'>event</span> OnWebContentProcessTerminated(UniWebView webView)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='onwebcontentprocessterminated'></div><div class='api-heading' data-id='onwebcontentprocessterminated'><a href='#onwebcontentprocessterminated'><span class='return-type'>void</span> OnWebContentProcessTerminated(UniWebView webView)</a><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1024,7 +1024,7 @@ webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <sp
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onmultiplewindowopened'></div><div class='api-heading' data-id='onmultiplewindowopened'><a href='#onmultiplewindowopened'><span class='return-type'>event</span> OnMultipleWindowOpened(UniWebView webView, string multipleWindowId)</a></div>
+  <div class="api-anchor" id='onmultiplewindowopened'></div><div class='api-heading' data-id='onmultiplewindowopened'><a href='#onmultiplewindowopened'><span class='return-type'>void</span> OnMultipleWindowOpened(UniWebView webView, string multipleWindowId)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1060,7 +1060,7 @@ webView<span class="token punctuation">.</span>OnMultipleWindowOpened <span clas
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onmultiplewindowclosed'></div><div class='api-heading' data-id='onmultiplewindowclosed'><a href='#onmultiplewindowclosed'><span class='return-type'>event</span> OnMultipleWindowClosed(UniWebView webView, string multipleWindowId)</a></div>
+  <div class="api-anchor" id='onmultiplewindowclosed'></div><div class='api-heading' data-id='onmultiplewindowclosed'><a href='#onmultiplewindowclosed'><span class='return-type'>void</span> OnMultipleWindowClosed(UniWebView webView, string multipleWindowId)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1095,7 +1095,7 @@ or by a invocation of <code>close()</code> on the page.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onkeycodereceived'></div><div class='api-heading' data-id='onkeycodereceived'><a href='#onkeycodereceived'><span class='return-type'>event</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='onkeycodereceived'></div><div class='api-heading' data-id='onkeycodereceived'><a href='#onkeycodereceived'><span class='return-type'>void</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
