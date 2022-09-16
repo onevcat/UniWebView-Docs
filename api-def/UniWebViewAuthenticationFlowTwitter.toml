@@ -1,0 +1,105 @@
+title = "UniWebViewAuthenticationFlowTwitter"
+file = "UniWebViewAuthenticationFlowTwitter"
+
+summary = """
+A predefined authentication flow for Twitter.
+
+This implementation follows the flow described [here](https://developer.twitter.com/en/docs/authentication/oauth-2-0/authorization-code).
+
+See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of authentication in UniWebView.
+
+To allow the Twitter flow working, at least you need these steps:
+
+1. Setting `Client Id`, `Redirect Uri` in the `UniWebViewAuthenticationFlowTwitter` inspector.
+2. Setting `Scope` and at least contains `users.read` in the `UniWebViewAuthenticationFlowTwitter` inspector.
+3. Setting the `Auth Callbacks Urls` to contain the Redirect Uri in the `UniWebView` preference panel.
+"""
+
+[[Properties]]
+name = "clientId"
+returnType = "string"
+hasSetter = true
+summary = """
+The client ID of your Twitter application.
+"""
+
+[[Properties]]
+name = "redirectUri"
+returnType = "string"
+hasSetter = true
+summary = """
+The redirect URI of your Twitter application.
+"""
+
+[[Properties]]
+name = "scope"
+returnType = "string"
+hasSetter = true
+summary = """
+The scope string of all your required scopes.
+"""
+
+[[Properties]]
+name = "optional"
+returnType = "UniWebViewAuthenticationFlowTwitterOptional"
+hasSetter = true
+summary = """
+Optional to control this flow's behaviour.
+"""
+
+[[Properties]]
+name = "optional.PKCESupport"
+returnType = "UniWebViewAuthenticationPKCE"
+hasSetter = true
+summary = """
+Whether to enable PKCE when performing authentication.This has to be enabled as `S256`,
+otherwise, Twitter will reject the authentication request.
+"""
+
+[[Properties]]
+name = "optional.enableState"
+returnType = "bool"
+hasSetter = true
+summary = """
+Whether to enable the state verification. If enabled, the state will be generated and verified in the
+authentication callback. This has to be `true`, otherwise, Twitter will reject the authentication request.
+"""
+
+[[Events]]
+name = "OnAuthenticationFinished"
+syntax = "OnAuthenticationFinished"
+returnType = "UnityEvent<UniWebViewAuthenticationTwitterToken>"
+summary = "Called when the authentication flow succeeds and a valid token is generated."
+example = """
+```csharp
+twitterFlow.OnAuthenticationFinished.AddListener(OnTwitterTokenReceived)
+
+void OnTwitterTokenReceived(UniWebViewAuthenticationTwitterToken token) {
+  Debug.Log("Twitter Access Token: " + token.AccessToken);
+}
+```
+"""
+
+[[Events]]
+name = "OnAuthenticationErrored"
+syntax = "OnAuthenticationErrored"
+returnType = "UnityEvent<long, string>"
+summary = "Called when any error (including user cancellation) happens during the authentication flow."
+example = """
+```csharp
+twitterFlow.OnAuthenticationErrored.AddListener(OnTwitterAuthError);
+
+void OnTwitterAuthError(long error, string message) {
+  Debug.Log("Error code: " + error + " Message: " + message);
+}
+```
+"""
+
+[[Methods]]
+name = "StartAuthenticationFlow"
+syntax = "void StartAuthenticationFlow()"
+returnType = "void"
+summary = """
+Starts the authentication flow with the standard OAuth 2.0.
+This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
+"""

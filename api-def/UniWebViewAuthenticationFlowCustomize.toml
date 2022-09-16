@@ -1,0 +1,102 @@
+title = "UniWebViewAuthenticationFlowCustomize"
+file = "UniWebViewAuthenticationFlowCustomize"
+
+summary = """
+A customizable authentication flow behavior.
+
+For a guide of using this class, please refer to the [Common Flow](/guide/oauth2.html#common-flow)
+section in theOAuth 2.0 Support guide.
+
+Besides of the predefined authentication flows, such as Twitter (`UniWebViewAuthenticationFlowTwitter`) or Google
+(`UniWebViewAuthenticationFlowGoogle`), this class allows you to determine the details of the authentication flow,
+such as entry points, grant types, scopes and more. But similar to other target-specified flows, it follows the same
+OAuth 2.0 code auth pattern.
+
+If you need to support other authentication flows for the platform targets other than the predefined ones, you can
+use this class and set all necessary parameters. It conforms to the `IUniWebViewAuthenticationFlow` and runs the 
+standard OAuth 2.0 flow and gives out a `UniWebViewAuthenticationStandardToken` as the result.
+
+If you need to support authentication flows other than `code` based OAuth 2.0, try to derive from
+`UniWebViewAuthenticationCommonFlow` and implement `IUniWebViewAuthenticationFlow` interface, or even use the underneath
+`UniWebViewAuthenticationSession` to get a highly customizable flow.
+
+It inherits from `UniWebViewAuthenticationCommonFlow`, which is in turn a `MonoBehaviour` and can be attached to a Game 
+Object. The usual way to use this class is attaching it to an existing Game Object in the scene and setup it in the inspector.
+"""
+
+[[Properties]]
+name = "config"
+returnType = "UniWebViewAuthenticationFlowCustomizeConfig"
+hasSetter = true
+summary = """
+The config object which defines the basic information of the authentication flow.
+
+It contains basic information of an OAuth 2.0 service provider, including the `authorizationEndpoint`, `tokenEndpoint`
+and `responseType`, etc.
+
+Although you can set the values for a `config` instance by code, a more common way is attaching this
+script to a Game Object and setup it in the Unity inspector UI.
+"""
+
+[[Properties]]
+name = "clientId"
+returnType = "string"
+hasSetter = true
+summary = """
+The client Id of your OAuth application.
+
+Usually, when you create an application on the provider platform, you will get a client Id to identify your application
+on the platform. It is used as the "Client Identifier" in OAuth 2.0 specification.
+"""
+
+[[Properties]]
+name = "redirectUri"
+returnType = "string"
+hasSetter = true
+summary = """
+The redirect URI of your OAuth application. The service provider is expected to call this URI to pass back the
+authorization code. It should be something also set to your OAuth application.
+
+Also remember to add it to the "Auth Callback Urls" field in UniWebView's preference panel. 
+
+It is used as the "Redirection Endpoint"  in OAuth 2.0 specification.
+"""
+
+[[Properties]]
+name = "scopes"
+returnType = "string"
+hasSetter = true
+summary = """
+The scope of the authentication request.
+"""
+
+[[Properties]]
+name = "optional"
+returnType = "UniWebViewAuthenticationFlowCustomizeOptional"
+hasSetter = true
+summary = """
+The optional object which defines some optional parameters of the authentication flow, such as whether supports
+`state` or `PKCE`.
+
+Although you can set values for an `optional` instance by code, a more common way is attaching this
+script to a Game Object and setup it in the Unity inspector UI.
+"""
+example = """
+```csharp
+public UniWebViewAuthenticationFlowCustomize customize;
+
+customize.optional.enableState = true;
+customize.optional.PKCESupport = UniWebViewAuthenticationPKCE.S256;
+
+customize.StartAuthenticationFlow();
+```
+"""
+
+[[Methods]]
+name = "StartAuthenticationFlow"
+syntax = "void StartAuthenticationFlow()"
+returnType = "void"
+summary = """
+Starts the authentication flow with the standard OAuth 2.0.
+This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
+"""

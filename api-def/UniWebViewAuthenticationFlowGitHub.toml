@@ -1,0 +1,143 @@
+title = "UniWebViewAuthenticationFlowGitHub"
+file = "UniWebViewAuthenticationFlowGitHub"
+
+summary = """
+A predefined authentication flow for GitHub.
+
+This implementation follows the flow described [here](https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps).
+
+See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of authentication in UniWebView.
+
+To allow the GitHub flow working, at least you need these steps: 
+
+1. Setting `Client Id`, `Client Secret`, `Callback Url` in the `UniWebViewAuthenticationFlowGitHub` inspector.
+2. Setting the `Auth Callbacks Urls` containing the `Callback Url` in the `UniWebView` preference panel.
+"""
+
+[[Properties]]
+name = "clientId"
+returnType = "string"
+hasSetter = true
+summary = """
+The client ID of your GitHub application.
+"""
+example = """
+At the day of writing, the client Id from GitHub is something like:
+
+```csharp
+githubFlow.clientId = "lv1.1234567890abcdef1234";
+```
+"""
+
+[[Properties]]
+name = "clientSecret"
+returnType = "string"
+hasSetter = true
+summary = """
+The client secret of your GitHub application.
+"""
+
+[[Properties]]
+name = "callbackUrl"
+returnType = "string"
+hasSetter = true
+summary = """
+The callback URL of your GitHub application.
+"""
+example = """
+```csharp
+githubFlow.callbackUrl = "authhub://auth";
+```
+"""
+
+[[Properties]]
+name = "optional"
+returnType = "UniWebViewAuthenticationFlowGitHubOptional"
+hasSetter = true
+summary = """
+Optional to control this flow's behaviour.
+"""
+
+[[Properties]]
+name = "optional.redirectUri"
+returnType = "string"
+hasSetter = true
+summary = """
+The redirect URI should be used in exchange token request.
+"""
+
+[[Properties]]
+name = "optional.login"
+returnType = "string"
+hasSetter = true
+summary = """
+Suggests a specific account to use for signing in and authorizing the app.
+"""
+
+[[Properties]]
+name = "optional.scope"
+returnType = "string"
+hasSetter = true
+summary = """
+The scope string of all your required scopes.
+"""
+
+[[Properties]]
+name = "optional.enableState"
+returnType = "bool"
+hasSetter = true
+summary = """
+Whether to enable the state verification. If enabled, the state will be generated and verified in the
+authentication callback.
+
+Default is `false`.
+"""
+
+[[Properties]]
+name = "optional.allowSignup"
+returnType = "bool"
+hasSetter = true
+summary = """
+Whether or not unauthenticated users will be offered an option to sign up for GitHub during the OAuth flow.
+
+Default is `true`.
+"""
+
+[[Events]]
+name = "OnAuthenticationFinished"
+syntax = "OnAuthenticationFinished"
+returnType = "UnityEvent<UniWebViewAuthenticationGitHubToken>"
+summary = "Called when the authentication flow succeeds and a valid token is generated."
+example = """
+```csharp
+githubFlow.OnAuthenticationFinished.AddListener(OnGitHubTokenReceived)
+
+void OnGitHubTokenReceived(UniWebViewAuthenticationGitHubToken token) {
+  Debug.Log("Github Access Token: " + token.AccessToken);
+}
+```
+"""
+
+[[Events]]
+name = "OnAuthenticationErrored"
+syntax = "OnAuthenticationErrored"
+returnType = "UnityEvent<long, string>"
+summary = "Called when any error (including user cancellation) happens during the authentication flow."
+example = """
+```csharp
+github.OnAuthenticationErrored.AddListener(OnGitHubAuthError);
+
+void OnGitHubAuthError(long error, string message) {
+  Debug.Log("Error code: " + error + " Message: " + message);
+}
+```
+"""
+
+[[Methods]]
+name = "StartAuthenticationFlow"
+syntax = "void StartAuthenticationFlow()"
+returnType = "void"
+summary = """
+Starts the authentication flow with the standard OAuth 2.0.
+This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
+"""

@@ -77,7 +77,11 @@ disabled in Android system, this property returns <code>false</code>.</p>
 intent query explicitly in your AndroidManifest.xml, to follow the Package Visibility 
 (<a href="https://developer.android.com/about/versions/11/privacy/package-visibility">https://developer.android.com/about/versions/11/privacy/package-visibility</a>). Add <code>queries</code> as a subnode of the 
 <code>manifest</code> tag:</p>
-<pre><code class="language-xml"><span class="token operator">&lt;</span>manifest<span class="token operator">></span>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token operator">&lt;</span>manifest<span class="token operator">></span>
   <span class="token comment">// ...</span>
 <span />
   <span class="token operator">&lt;</span><span class="token operator">/</span>application<span class="token operator">></span>
@@ -88,12 +92,9 @@ intent query explicitly in your AndroidManifest.xml, to follow the Package Visib
     <span class="token operator">&lt;</span><span class="token operator">/</span>intent<span class="token operator">></span>
   <span class="token operator">&lt;</span><span class="token operator">/</span>queries<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>manifest<span class="token operator">></span>
-</code></pre>
-</div>
-            <div class='example'>
-    <p class='example-title'>Example</p>
-<div class="language-csharp extra-class">
-<pre class="language-csharp"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>UniWebViewSafeBrowsing<span class="token punctuation">.</span>IsSafeBrowsingSupported<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span />
+<span class="token comment">// To use it:</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>UniWebViewSafeBrowsing<span class="token punctuation">.</span>IsSafeBrowsingSupported<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// Safe Browsing Mode is available on current device.</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -114,8 +115,8 @@ intent query explicitly in your AndroidManifest.xml, to follow the Package Visib
 <p>The dismissed safe browsing instance will be invalid after this event being raised, and you should not use 
 it for another browsing purpose. Instead, create a new one for a new browsing session.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         This event will not happen in Unity Editor, because the whole <code>UniWebViewSafeBrowsing</code> will fall back to an 
 external browser.

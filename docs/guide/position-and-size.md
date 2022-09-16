@@ -43,11 +43,11 @@ If you want more control on the position and size, UniWebView supports another w
 
 ### Orientation Change
 
-When setting `Frame` property, it is only for the current screen. If your game supports different orientation, you need to update the `Frame` to a new value.
+When setting `Frame` property, it is **only for the current screen**. If your game supports different orientation, you need to update the `Frame` to a new value when the screen orientation changes.
 
-Listen to the `OnOrientationChanged` event and take the response to update `Frame` property when this event raised. For example, the code below will set the web view full screen and also keep it full screen when the orientation changes:
+Listen to the `OnOrientationChanged` event and update `Frame` property there. For example, the code below will set the web view full screen and also keep it full screen when the orientation changes:
 
-```csharp
+```csharp{4-8}
 // Set the frame to full screen. Say it is portrait 320x640.
 webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
 

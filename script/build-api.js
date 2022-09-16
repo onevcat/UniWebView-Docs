@@ -61,8 +61,8 @@ class Entry {
   noticeText() {
     var notice = "";
     if (this.entry.notice) {
-      notice = `<div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      notice = `<div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         ${marked.parseInline(
           this.entry.notice,
@@ -290,27 +290,15 @@ function output(api) {
 }
 
 const apiFolder = "./api-def";
-const allFiles = [
-  "uniwebview.toml",
-  "uniwebviewsafebrowsing.toml",
-  "uniwebviewmessage.toml",
-  "uniwebviewnativelistener.toml",
-  "uniwebviewnativeresultpayload.toml",
-  "uniwebviewtransitionedge.toml",
-  "uniwebviewtoolbarposition.toml",
-  "uniwebviewcontentinsetadjustmentbehavior.toml",
-  "uniwebviewdownloadmatchingtype.toml",
-  "uniwebviewlogger.toml",
-  "uniwebviewhelper.toml"
-];
-
-allFiles.forEach(file => {
-  var result = `---
+fs.readdir(apiFolder, function (err, files) {
+  files.forEach(file => {
+    var result = `---
 sidebarDepth: 0
 ---\n\n`;
-  const s = fs.readFileSync(`${apiFolder}/${file}`, "utf8");
-  let api = toml.parse(s);
-  result += output(api);
-
-  fs.writeFileSync(`./docs/api/${api.file}.md`, result);
+    const s = fs.readFileSync(`${apiFolder}/${file}`, "utf8");
+    let api = toml.parse(s);
+    result += output(api);
+  
+    fs.writeFileSync(`./docs/api/${api.file}.md`, result);
+  });
 });

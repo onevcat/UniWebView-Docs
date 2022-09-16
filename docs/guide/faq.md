@@ -14,11 +14,11 @@ UniWebView is a layer of the system UI and is added above of the whole Unity vie
 
 ## Can I render web view as an in-game texture?
 
-A typical use of UniWebView is to show something like a game FAQ page, events notification or release note. You can set the size of webview, so you can decide if the Unity game scene can be seen or not, meanwhile keeping interaction on the web view (links or buttons). 
+A typical use of UniWebView is to show something like a game FAQ page, events notification or release note. You can set the size of webview, so you can decide if the Unity game scene can be seen or not, meanwhile keeping interaction on the web view (links or buttons).
 
 Although it is not designed as an in-game texture render solution, if you do not require your web view to be able to interact with, but just for a purely display purpose, you can use the [`CaptureSnapshot`](/api/#capturesnapshot) method to get a static image of the web view, then render it as a Unity texture on your game object.
 
-## I cannot build for Android after importing UniWebView 
+## I cannot build for Android after importing UniWebView
 
 In most cases, it might be some errors saying "duplicate class" when exporting for Android. It happens if you have another package already adding the same package UniWebView requires.
 
@@ -40,7 +40,7 @@ You can find that option under the "UniWebView" tab of Unity's Preference Panel.
 
 UniWebView v4 supports running on:
 
-- **Unity 2019.4** or above
+- **Unity 2020.1** or above
 - **iOS 9.0** or above
 - **Android 5.0** (API Level 21) or above
 

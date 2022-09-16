@@ -1,8 +1,16 @@
 # Built-in Toolbar
 
+::: danger DEPRECATED
+This guide and the built-in toolbar is deprecated.
+
+The built-in toolbar is fully replaced by the [Embedded Toolbar](./embedded-toolbar.md). Check and use that instead. If you are using the built-in toolbar, try to check the [migration guide](./migration-guide-v4-to-v5.md) and switch to the Embedded Toolbar as soon as possible.
+:::
+
 ::: warning NOTICE
 This guide is only for general-purpose web view on iOS. For Safe Browsing Mode, it is always presented with a toolbar,
-containing navigation controls and the close button. For the general-purpose web view running on Android, users may choose
+containing navigation controls and the close button.
+
+For the general-purpose web view running on Android, users may choose
 to use system navigation buttons or gestures.
 :::
 

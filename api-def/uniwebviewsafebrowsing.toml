@@ -40,7 +40,9 @@ intent query explicitly in your AndroidManifest.xml, to follow the Package Visib
 (https://developer.android.com/about/versions/11/privacy/package-visibility). Add `queries` as a subnode of the 
 `manifest` tag:
 
-```xml
+"""
+example = """
+```csharp
 <manifest>
   // ...
 
@@ -52,10 +54,8 @@ intent query explicitly in your AndroidManifest.xml, to follow the Package Visib
     </intent>
   </queries>
 </manifest>
-```
-"""
-example = """
-```csharp
+
+// To use it:
 if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
     // Safe Browsing Mode is available on current device.
 }

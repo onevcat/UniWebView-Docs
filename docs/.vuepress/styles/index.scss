@@ -1,11 +1,15 @@
+:root {
+  --content-width: 1000px;
+}
+
 .api-box {
-  background: #fff;
-  border: 1px solid #eee;
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
   margin: 1.5em 0;
 }
 
 .api-box .api-heading {
-  background: #f8f8f8;
+  background: var(--c-border);
   padding: 1rem 1rem 1rem;
 }
 
@@ -21,19 +25,19 @@
 }
 
 .api-summary-heading a {
-  color: #34495e;
+  color: var(--c-text);
   text-decoration: none;
 }
 .api-summary-heading .return-type {
-  color: #2a9555;
+  color: var(--c-brand);
 }
 
 .api-box .api-heading a {
-  color: #34495e;
+  color: var(--c-text);
   text-decoration: none;
 }
 .api-box .api-heading .return-type {
-  color: #2a9555;
+  color: var(--c-brand);
 }
 
 .api-box .api-body {
@@ -74,7 +78,7 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #999;
+  color: var(--c-text-lighter);
   margin: 0.2rem 1rem 0.2rem;
 }
 
@@ -97,7 +101,7 @@
   margin-right: 5px;
 }
 .parameter-item-name {
-  color: #666;
+  color: var(--c-text-light);
   font-weight: 500;
 }
 .parameter-item-desc p {
@@ -112,7 +116,7 @@
 }
 
 .example .example-title {
-  color: #555;
+  color: var(--c-text-light);
   font-weight: 600;
   padding: 1rem 0.2rem 0rem;
   margin: -0.5em 0;
@@ -140,6 +144,12 @@ code .token {
   min-height: 1.5rem;
 }
 
-div[class~="language-csharp"]
-  &:before
-    content "c#"
+div[class*="language-csharp"] {
+  &::before {
+    content: "c#";
+  }
+}
+
+div[class*=language-].ext-cs:before {
+  content: "c#";
+}

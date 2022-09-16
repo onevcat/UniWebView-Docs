@@ -1,10 +1,12 @@
 # Supporting New Window
 
 ::: tip Choose Safe Browser Mode
-To get full support for a new window or new tab, choose to use the Safe Browsing Mode, which gives a browser level experience.
+This guide is for the general-purpose web view.
+
+To get full support for a new window or new tab, we suggest you choose to use the Safe Browsing Mode, which gives a browser level experience.
 :::
 
-### Links with "_blank" attribute
+### Links with "\_blank" attribute
 
 In a general web browser (like Chrome or Safari), a URL with `target="_blank"` attribute is intended
 to be opened in a new tab. However, in the context of web view, there is no way to handle new tabs without
@@ -28,8 +30,8 @@ a JavaScript to call `window.close()`. Otherwise, the original web view will be 
 
 ### Opening window with JavaScript
 
-Besides of a link with "_blank" attribute, there is another way to open a new window: JavaScript. An invocation of `window.open`
-will ask the web view to open a new window. To support it, make sure you pass `true` as the second parameter (`allowJavaScriptOpening`) to the 
+Besides of a link with "\_blank" attribute, there is another way to open a new window: JavaScript. An invocation of `window.open`
+will ask the web view to open a new window. To support it, make sure you pass `true` as the second parameter (`allowJavaScriptOpening`) to the
 `SetSupportMultipleWindows` method. On some devices, you also need to call `SetAllowJavaScriptOpenWindow` before creating
 the web view to allow UniWebView can receive the opening request:
 
@@ -46,3 +48,4 @@ webView.SetSupportMultipleWindows(true, true);
 > especially if you are using an iframe to display an external page, or some un-controlled third-party JavaScript
 > code is contained in your page. Use it at your own risk.
 
+For more about this topic, please check the [API reference](/api/#setsupportmultiplewindows) of `SetSupportMultipleWindows`.
