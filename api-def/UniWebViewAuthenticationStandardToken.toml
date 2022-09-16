@@ -1,2 +1,87 @@
 title = "UniWebViewAuthenticationStandardToken"
 file = "UniWebViewAuthenticationStandardToken"
+
+summary = """
+Represents the standard token used in the OAuth 2 process.
+
+Most of the built-in authentication flows in UniWebView are using the same model of this standard token.
+It contains the information of the access token, the refresh token, the expiration time and the token type.
+When received a token from the server, UniWebView tries to parse it into this standard token and then pass it to the 
+`OnAuthenticationFinished` event.
+"""
+
+[[Properties]]
+name = "AccessToken"
+returnType = "string"
+summary = """
+The access token retrieved from the service provider.
+
+This usually comes from the `access_token` field in the response.
+Use this token to access the service provider's API.
+
+If you do not need the token "offline", just use it and discard. UniWebView will not store this token, if you
+need to keep it for other purpose, please make sure you do not violate any policies and put it to a secure
+place yourself.
+"""
+
+[[Properties]]
+name = "Scope"
+returnType = "string"
+summary = """
+The granted scopes of the token. This is usually comes from the `scope` field in the response.
+
+If there are optional scopes in the initial auth request, the user can choose to not give you some of the
+permissions. Check this field before you use the access token to perform certain actions to avoid failure
+before actual attempts.
+"""
+
+[[Properties]]
+name = "TokenType"
+returnType = "string"
+summary = """
+The token type. This usually comes from the `token_type` field in the response.
+
+For most OAuth 2.0 services, it is fixed to `Bearer`.
+"""
+
+[[Properties]]
+name = "RefreshToken"
+returnType = "string"
+summary = """
+The refresh token retrieved from the service provider. This usually comes from the `refresh_token` field in the
+response.
+
+If the access token is refreshable, you can use this
+refresh token to perform a refresh operation and get a new access token without the user's consent again.
+
+The refresh policy can be different from the service providers. Read the documentation of the service provider
+to determine the use of refresh token.
+
+If the response does not contain a refresh token, this field will be `null`.
+"""
+
+[[Properties]]
+name = "ExpiresIn"
+returnType = "long"
+summary = """
+How long does this token remain valid. This usually comes from the `expires_in` field in the response.
+"""
+
+[[Properties]]
+name = "IdToken"
+returnType = "string"
+summary = """
+The ID token retrieved from the service provider. This usually comes from the `id_token` field in the response.
+
+If the service provider does not support ID token or you did not apply for it, this field will be `null`.
+The ID token is usually a JWT token that contains information about the user.
+"""
+
+[[Properties]]
+name = "RawValue"
+returnType = "string"
+summary = """
+The raw value of the response of the exchange token request.
+
+If the predefined fields are not enough, you can parse the raw value to get the extra information.
+"""

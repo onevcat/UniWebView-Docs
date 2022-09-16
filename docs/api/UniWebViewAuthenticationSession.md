@@ -240,7 +240,7 @@ client id and required scopes, etc.</p>
   <span class="token string">"authExample"</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 session<span class="token punctuation">.</span>OnAuthenticationFinished <span class="token operator">+=</span> <span class="token punctuation">(</span>_<span class="token punctuation">,</span> resultUrl<span class="token punctuation">)</span> <span class="token operator">=></span>  <span class="token punctuation">{</span>
-  UniWebViewLogger<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span><span class="token function">Verbose</span><span class="token punctuation">(</span><span class="token string">"Auth flow received callback url: "</span> <span class="token operator">+</span> resultUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Auth flow received callback url: "</span> <span class="token operator">+</span> resultUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token comment">// Continue to exchange the code to the access token.</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span />
