@@ -1,5 +1,31 @@
 # Release Note
 
+### 5.0.0 (18 Sep, 2022)
+
+::: danger
+5.0.0 is a major update of UniWebView. Although most of APIs in UniWebView 5 are compatible with UniWebView 4 and it should be easy enough to migrate, there are still a few breaking changes. If you are using the toolbar in UniWebView 4, although it is still available, but it is deprecated and replaced by the new embedded toolbar. For migration from UniWebView 4 in detail, visit the [Migration Guide](https://docs.uniwebview.com/guide/migration-guide-v4-to-v5.html). To know the highlight of the version, check [this page](https://docs.uniwebview.com/guide/version-highlight.html) for more.
+:::
+
+#### Add
+
+* **Built-in OAuth 2.0 support** for Google, Twitter, Facebook, LINE and GitHub. Now your user can login with their account easily and get access token for other API calls on those service. For more about OAuth 2.0 support in UniWebView, check [this guide](https://docs.uniwebview.com/guide/oauth2.html).
+* **Customized OAuth 2.0 support** for any other service provider which defines a standard OAuth 2.0 Authorization Code Flow.
+* Embedded toolbar for both iOS and Android. It replaces the old toolbar on iOS. The new toolbar contains a set of navigation buttons and a title, showing as a part of the web view on top or bottom of the web view frame. For more about embedded toolbar, check [this guide](https://docs.uniwebview.com/guide/embedded-toolbar.html).
+
+#### Fix
+
+* A layout issue which occasionally happens when opening the old toolbar. Now the buttons position should be always correct.
+* An issue which causes web view's `Url` property not parsing correctly when it contains some special characters.
+
+#### Deprecate
+
+* The original iOS-only toolbar is now deprecated. Use the new embedded toolbar instead.
+* As Xcode 14 drops the support of 32-bit iOS devices, UniWebView 5 will not support 32-bit iOS devices anymore. If you are using UniWebView 4 and still need to support 32-bit iOS devices for a while, please stay with UniWebView 4.
+
+#### Known Issues
+
+* The `WKWebView` on iOS 16 Simulator is broken: the web view process won't connect and no content can be loaded due to a bug inside WebKit and Apple's system. To develop on iOS simulators, please use iOS 15 or earlier versions for now. This issue does not affect any physical devices running iOS 16.
+
 ### 4.13.0 (3 Sep, 2022)
 
 #### Add
@@ -226,7 +252,7 @@
 ### 4.0.0 (1 Aug, 2020)
 
 ::: danger
-4.0.0 is a major update of UniWebView. Although most of APIs in UniWebView 4 are compatible with UniWebView 3 and it should be easy enough to migrate, there are still a few breaking changes. For migration from UniWebView 3 in detail, visit the [Migration Guide](https://docs.uniwebview.com/guide/migration-guide.html). To know the highlight of the version, check [this page](https://docs.uniwebview.com/guide/version-highlight.html) for more.
+4.0.0 is a major update of UniWebView. Although most of APIs in UniWebView 4 are compatible with UniWebView 3 and it should be easy enough to migrate, there are still a few breaking changes. For migration from UniWebView 3 in detail, visit the [Migration Guide](https://docs-v4.uniwebview.com/guide/migration-guide.html). To know the highlight of the version, check [this page](https://docs-v4.uniwebview.com/guide/version-highlight.html) for more.
 :::
 
 #### Add
@@ -683,7 +709,7 @@ UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using
 ### 3.0.0 (27 Jun, 2017)
 
 ::: danger
-3.0.0 is a major update of UniWebView. We rewrote the whole software from scratch to bring your experience of using a web view in Unity to a next level. Be caution it is not compatible with UniWebView 2, there are quite a few breaking changes in this version. For migration from UniWebView 2 in detail, visit our [Migration Guide](https://docs.uniwebview.com/guide/migration-guide.html) in documentation. To know the highlight of the version, check [this page](https://docs.uniwebview.com/guide/version-highlight.html) for more.
+3.0.0 is a major update of UniWebView. We rewrote the whole software from scratch to bring your experience of using a web view in Unity to a next level. Be caution it is not compatible with UniWebView 2, there are quite a few breaking changes in this version. For migration from UniWebView 2 in detail, visit our [Migration Guide](https://docs-v3.uniwebview.com/guide/migration-guide.html) in documentation. To know the highlight of the version, check [this page](https://docs-v3.uniwebview.com/guide/version-highlight.html) for more.
 :::
 
 #### Add

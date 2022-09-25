@@ -10,7 +10,7 @@ If you purchased UniWebView from [Unity Asset Store](https://assetstore.unity.co
 
 ### UniWebView Store
 
-Besides of Unity Asset Store, we also have [our own store](https://gumroad.com/l/MsaOO). After purchasing from our store, you could download the `uniwebview_x_y_z.unitypackage` (`x_y_z` in the file name indicates the package version). Open your project in which you want to use UniWebView, then double-click the downloaded file to import it.
+Besides of Unity Asset Store, we also have [our own store](https://onevcat.gumroad.com/l/uniwebview-5). After purchasing from our store, you could download the `uniwebview_x_y_z.unitypackage` (`x_y_z` in the file name indicates the package version). Open your project in which you want to use UniWebView, then double-click the downloaded file to import it.
 
 ## Importing Package
 
