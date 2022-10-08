@@ -1,8 +1,8 @@
 # Release Note
 
-### 5.0.1
+### 5.0.1 (8 Oct, 2022)
 
-#### Fix (8 Oct, 2022)
+#### Fix
 
 * An issue that the exported iOS project cannot be built with Xcode 13.
 * A problem which stops the project from compiling when ".Net Framework" profile is used in Unity.
