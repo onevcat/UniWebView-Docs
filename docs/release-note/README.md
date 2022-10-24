@@ -1,5 +1,12 @@
 # Release Note
 
+### 5.0.2 (24 Oct, 2022)
+
+#### Fix
+
+* A potential issue that the post-build Gradle file parses wrongly when using variables.
+* The loading spinner is now not shown wrongly when a mail link tapped.
+
 ### 5.0.1 (8 Oct, 2022)
 
 #### Fix
