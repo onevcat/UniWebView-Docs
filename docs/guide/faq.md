@@ -22,17 +22,22 @@ Although it is not designed as an in-game texture render solution, if you do not
 
 In most cases, it might be some errors saying "duplicate class" when exporting for Android. It happens if you have another package already adding the same package UniWebView requires.
 
-UniWebView needs Kotlin and Android X Browser package as dependencies. By default, UniWebView will detect the Gradle file and add them automatically.
-However, if any other package in your project is already adding the same libraries in an undetectable way (such as embedding them as a part of the library file, or download the duplicated package into "Plugins/Android" folder), UniWebView will fail to detect them and
+UniWebView needs Kotlin and Android X Browser packages as dependencies. By default, UniWebView will detect the Gradle file and add them automatically.
+However, if any other package in your project is already adding the same libraries in an undetectable way (such as embedding them as a part of the library file, or downloading the duplicated package into "Plugins/Android" folder), UniWebView will fail to detect them and
 add duplicated packages.
 
-You can manually turn off the "Adds Kotlin" or "Adds Android Browser" option in the Preference Panel, to let UniWebView skip adding them again and just use the one you already have. For more detail, see the [Installation - Optional Steps](installation.md#importing-package).
+You can try:
+
+1. Manually turn off the "Adds Kotlin" or "Adds Android Browser" option in the Preference Panel, to let UniWebView skip adding them again and just use the one you already have. For more detail.
+2. Then do a Clean Build to make sure the old packages and settings are removed. You can find the Clean Build action in the drop-down Build button in Unity's Build Settings panel.
+
+For more, please check the [Installation - Optional Steps](installation.md#importing-package).
 
 ## The page does not load on Android but shows "net::ERR_CLEARTEXT_NOT_PERMITTED"
 
-From Android 9, all plain HTTP traffic are not permitted by default for security. You can find detail on this topic in this [Android documentation page](https://developer.android.com/training/articles/security-config).
+From Android 9, all plain HTTP traffic is not permitted by default for security. You can find detail on this topic in this [Android documentation page](https://developer.android.com/training/articles/security-config).
 
-Developers are encouraged to secure traffic only, such as HTTPS. By hosting all of your content under a site with HTTPS enabled is the best solution. However, if that is not possible for you yet, you can enable the **"Uses Cleartext Traffic"** option in UniWebView's preference.
+Developers are encouraged to secure traffic only, such as HTTPS. Hosting all of your content under a site with HTTPS enabled is the best solution. However, if that is not possible for you yet, you can enable the **"Uses Cleartext Traffic"** option in UniWebView's preference.
 
 You can find that option under the "UniWebView" tab of Unity's Preference Panel. Follow [the installation guide](installation.md#importing-package) if you are not sure where it is.
 
