@@ -28,10 +28,10 @@ add duplicated packages.
 
 You can try:
 
-1. Manually turn off the "Adds Kotlin" or "Adds Android Browser" option in the Preference Panel, to let UniWebView skip adding them again and just use the one you already have. For more detail.
+1. Manually turn off the "Adds Kotlin" or "Adds Android Browser" option in the Preference Panel, to let UniWebView skip adding them again and just use the one you already have.
 2. Then do a Clean Build to make sure the old packages and settings are removed. You can find the Clean Build action in the drop-down Build button in Unity's Build Settings panel.
 
-For more, please check the [Installation - Optional Steps](installation.md#importing-package).
+For more detail, please check the [Installation - Optional Steps](installation.md#importing-package).
 
 ## The page does not load on Android but shows "net::ERR_CLEARTEXT_NOT_PERMITTED"
 
