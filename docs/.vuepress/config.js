@@ -77,7 +77,7 @@ module.exports = {
         },
         {
           text: "Topics",
-          collapsible: true,
+          collapsible: false,
           children: [
             "position-and-size",
             "embedded-toolbar",
