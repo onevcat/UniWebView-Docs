@@ -26,7 +26,7 @@ If you need to take more control over the web view, you can still use the regula
 #### On iOS
 
 1. Make sure you are targeting iOS 14.3 or later. Before iOS 14.3, there is no support of WebRTC on iOS system.
-2. Add the code below to enable auto play on iOS before you create a web view. Otherwise, the captured video won't play correctly.
+2. Add the code below to enable auto-play on iOS before you create a web view. Otherwise, the captured video won't play correctly.
 
    ```csharp
    UniWebView.SetAllowAutoPlay(true);
@@ -41,7 +41,18 @@ If you need to take more control over the web view, you can still use the regula
 
 #### On Android
 
-1. Request the camera permission in either the AndroidManifest.xml or through Unity's `Permission` class. It depends on the target Android API level of your game. For newer versions of Android, a `Permission` request should be sufficient.
+1. Add the code below to enable auto-play on Android before you create a web view. Otherwise, the captured video won't play correctly on certain API Levels.
+
+   ```csharp
+   UniWebView.SetAllowAutoPlay(true);
+   UniWebView.SetAllowInlinePlay(true);
+
+   // Now, you can create the web view.
+   var webView = webViewGameObject.AddComponent<UniWebView>();
+   // ...
+   ```
+
+2. Request the camera permission in either the AndroidManifest.xml or through Unity's `Permission` class. It depends on the target Android API level of your game. For newer versions of Android, a `Permission` request should be sufficient.
 
    ```csharp
    Permission.RequestUserPermission(Permission.Camera);
@@ -50,7 +61,9 @@ If you need to take more control over the web view, you can still use the regula
    <uses-permission android:name="android.permission.CAMERA" />
    ```
 
-2. Call `AddPermissionTrustDomain` and add the domain of your WebRTC content before you load the page. It allows requests from a certain domain to use the camera hardware. Please note that you need to only add the domain part instead of the whole URL.
+   > If you also need to access other hardware such as the microphone, you can add the corresponding permissions as well.
+
+3. Call `AddPermissionTrustDomain` and add the domain of your WebRTC content before you load the page. It allows requests from a certain domain to use the camera hardware. Please note that you need to only add the domain part instead of the whole URL.
 
    ```csharp
    webView.AddPermissionTrustDomain("webrtc.github.io");
