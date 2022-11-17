@@ -33,7 +33,7 @@ There is no additional step for inspecting pages on iOS. You could just run and 
 
 ### Android
 
-On Android, you need to call the [`SetWebContentsDebuggingEnabled`](/api/#setwebcontentsdebuggingenabled) method first. It will allow Chrome to discover and connect to the web view on Android. Follow the [Remote Debugging WebViews](https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews) topic to know how to use Chrome DevTools with UniWebView.
+On Android, you need to call the [`SetWebContentsDebuggingEnabled`](/api/#setwebcontentsdebuggingenabled) method first. It will allow Chrome to discover and connect to the web view on Android. Follow the [Remote Debugging WebViews](https://developer.chrome.com/docs/devtools/remote-debugging/webviews/) topic to know how to use Chrome DevTools with UniWebView.
 
 ### macOS
 

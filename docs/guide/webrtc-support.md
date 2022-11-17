@@ -52,13 +52,18 @@ If you need to take more control over the web view, you can still use the regula
    // ...
    ```
 
-2. Request the camera permission in either the AndroidManifest.xml or through Unity's `Permission` class. It depends on the target Android API level of your game. For newer versions of Android, a `Permission` request should be sufficient.
+2. Request the camera permission in either the AndroidManifest.xml and through Unity's `Permission` class.
 
    ```csharp
    Permission.RequestUserPermission(Permission.Camera);
 
    // Maybe you need these too in some cases in AndroidManifest.xml:
-   <uses-permission android:name="android.permission.CAMERA" />
+
+   <manifest xlmns:android...>
+     ...
+     <uses-permission android:name="android.permission.CAMERA" />
+   <application ...
+   </manifest>
    ```
 
    > If you also need to access other hardware such as the microphone, you can add the corresponding permissions as well.
