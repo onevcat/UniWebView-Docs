@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.0.3
+
+#### Fix
+
+* Improve the delay that on Android the received cookies are not flushed fast enough in some cases. Now a forcibly cookie flush is always performed when closing the web view.
+
 ### 5.0.2 (24 Oct, 2022)
 
 #### Fix
