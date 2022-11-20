@@ -225,6 +225,15 @@ are added to the adjusted content inset.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setspinnertext'><span class='return-type'>void</span> SetSpinnerText(string text)</a></div></td><td><div class='simple-summary'>
 <p>Sets the text displayed in the loading indicator, if <code>SetShowSpinnerWhileLoading</code> is set to <code>true</code>.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowuserdismissspinner'><span class='return-type'>void</span> SetAllowUserDismissSpinner(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the user can dismiss the loading indicator by tapping on it or the greyed-out background around.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#showspinner'><span class='return-type'>void</span> ShowSpinner()</a></div></td><td><div class='simple-summary'>
+<p>Shows the loading spinner.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#hidespinner'><span class='return-type'>void</span> HideSpinner()</a></div></td><td><div class='simple-summary'>
+<p>Hides the loading spinner.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#sethorizontalscrollbarenabled'><span class='return-type'>void</span> SetHorizontalScrollBarEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the horizontal scroll bar should show when the web content beyonds web view bounds.</p>
 </div>
@@ -2670,6 +2679,54 @@ On Android, it only clears from disk database, the authentication might be still
 </ul></div>
 </div>
                 </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setallowuserdismissspinner'></div><div class='api-heading' data-id='setallowuserdismissspinner'><a href='#setallowuserdismissspinner'><span class='return-type'>void</span> SetAllowUserDismissSpinner(bool flag)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether the user can dismiss the loading indicator by tapping on it or the greyed-out background around.</p>
+<p>By default, when the loading spinner is shown, the user can dismiss it by a single tapping. Call this method
+with <code>false</code> to disable this behavior.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item-desc'><p>Whether the user can dismiss the loading indicator.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='showspinner'></div><div class='api-heading' data-id='showspinner'><a href='#showspinner'><span class='return-type'>void</span> ShowSpinner()</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Shows the loading spinner.</p>
+<p>Calling this method will show the loading spinner, regardless if the <code>SetShowSpinnerWhileLoading</code> is set to
+<code>true</code> or <code>false</code>. However, if <code>SetShowSpinnerWhileLoading</code> was called with <code>true</code>, UniWebView will still hide
+the spinner when the loading finishes.</p>
+</div>
+                            </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='hidespinner'></div><div class='api-heading' data-id='hidespinner'><a href='#hidespinner'><span class='return-type'>void</span> HideSpinner()</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Hides the loading spinner.</p>
+<p>Calling this method will hide the loading spinner, regardless if the <code>SetShowSpinnerWhileLoading</code> is set to
+<code>true</code> or <code>false</code>. However, if <code>SetShowSpinnerWhileLoading</code> was called with <code>false</code>, UniWebView will still show
+the spinner when the loading starts.</p>
+</div>
+                            </div>
   </div>
 </div>
 <div class='api-box method'>

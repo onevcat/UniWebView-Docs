@@ -1292,6 +1292,45 @@ type = "string"
 summary = "The text to display while loading indicator visible. Default is \"Loading...\""
 
 [[Methods]]
+name = "SetAllowUserDismissSpinner"
+syntax = "SetAllowUserDismissSpinner(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the user can dismiss the loading indicator by tapping on it or the greyed-out background around.
+
+By default, when the loading spinner is shown, the user can dismiss it by a single tapping. Call this method
+with `false` to disable this behavior.
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the user can dismiss the loading indicator."
+
+[[Methods]]
+name = "ShowSpinner"
+syntax = "ShowSpinner()"
+returnType = "void"
+summary = """
+Shows the loading spinner.
+
+Calling this method will show the loading spinner, regardless if the `SetShowSpinnerWhileLoading` is set to
+`true` or `false`. However, if `SetShowSpinnerWhileLoading` was called with `true`, UniWebView will still hide
+the spinner when the loading finishes.
+"""
+
+[[Methods]]
+name = "HideSpinner"
+syntax = "HideSpinner()"
+returnType = "void"
+summary = """
+Hides the loading spinner.
+
+Calling this method will hide the loading spinner, regardless if the `SetShowSpinnerWhileLoading` is set to
+`true` or `false`. However, if `SetShowSpinnerWhileLoading` was called with `false`, UniWebView will still show
+the spinner when the loading starts.
+"""
+
+[[Methods]]
 name = "SetHorizontalScrollBarEnabled"
 syntax = "SetHorizontalScrollBarEnabled(bool enabled)"
 returnType = "void"
