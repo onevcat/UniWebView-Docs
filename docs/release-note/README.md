@@ -1,10 +1,17 @@
 # Release Note
 
-### 5.0.3
+### 5.1.0 (21 Nov, 2022)
+
+#### Add
+
+* New methods to control the behavior of the loading spinner. Use `SetAllowUserDismissSpinner` to allow or forbid users dismissing the loading indicator; Use `ShowSpinner` and `HideSpinner` to control its visibility programmatically.
+* A new API `SetLimitsNavigationsToAppBoundDomains`, it is a wrapper of `limitsNavigationsToAppBoundDomains` for iOS. It limits user's navigation to only pre-defined domains on iOS.
 
 #### Fix
 
 * Improve the delay that on Android the received cookies are not flushed fast enough in some cases. Now a forcibly cookie flush is always performed when closing the web view.
+* The Unity InputSystem assembly reference is added explicitly to prevent compiling error on Unity's versions without InputSystem support.
+* An issue prevents the package built on macOS 13 SDK.
 
 ### 5.0.2 (24 Oct, 2022)
 
