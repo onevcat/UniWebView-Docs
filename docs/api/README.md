@@ -2251,7 +2251,7 @@ and the <a href="https://webkit.org/blog/10882/app-bound-domains/">App-Bound Dom
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code><span class="token comment">// Enable navigation limitation in web views created later.</span>
-UniWebView<span class="token punctuation">.</span><span class="token function">SetLimitsNavigationsToAppBoundDomains</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+UniWebView<span class="token punctuation">.</span><span class="token function">SetLimitsNavigationsToAppBoundDomains</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment">// This config is applied in this web view.</span>
 <span class="token class-name"><span class="token keyword">var</span></span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddComponent</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
