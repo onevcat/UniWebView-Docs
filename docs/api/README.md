@@ -180,6 +180,9 @@ are added to the adjusted content inset.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setjavascriptenabled'><span class='return-type'>void</span> SetJavaScriptEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether JavaScript should be enabled in current web view.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setlimitsnavigationstoappbounddomains'><span class='return-type'>void</span> SetLimitsNavigationsToAppBoundDomains(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the web view limits navigation to pages within the app’s domain.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowjavascriptopenwindow'><span class='return-type'>void</span> SetAllowJavaScriptOpenWindow(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether JavaScript can open windows without user interaction.</p>
 </div>
@@ -2211,6 +2214,46 @@ not using any JavaScript in your page, you could turn it off to get better perfo
 UniWebView<span class="token punctuation">.</span><span class="token function">SetJavaScriptEnabled</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment">// JavaScript is disabled in this web view.</span>
+<span class="token class-name"><span class="token keyword">var</span></span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddComponent</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setlimitsnavigationstoappbounddomains'></div><div class='api-heading' data-id='setlimitsnavigationstoappbounddomains'><a href='#setlimitsnavigationstoappbounddomains'><span class='return-type'>void</span> SetLimitsNavigationsToAppBoundDomains(bool flag)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether the web view limits navigation to pages within the app’s domain.</p>
+<p>This only works on iOS 14.0+. For more information, refer to the <a href="https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai">Apple&#39;s documentation</a>
+and the <a href="https://webkit.org/blog/10882/app-bound-domains/">App-Bound Domains</a> page. This requires additional setup in <code>WKAppBoundDomains</code> key in the Info.plist file.</p>
+<p>On Android, this method does nothing.</p>
+</div>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        You need to set it before creating a web view. Existing web views are not affected.
+  </p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item-desc'><p>Whether limiting navigation should be enabled.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Enable navigation limitation in web views created later.</span>
+UniWebView<span class="token punctuation">.</span><span class="token function">SetLimitsNavigationsToAppBoundDomains</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// This config is applied in this web view.</span>
 <span class="token class-name"><span class="token keyword">var</span></span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddComponent</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>

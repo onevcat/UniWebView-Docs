@@ -936,6 +936,42 @@ type = "bool"
 summary = "Whether JavaScript should be enabled."
 
 [[Methods]]
+name = "SetLimitsNavigationsToAppBoundDomains"
+syntax = "SetLimitsNavigationsToAppBoundDomains(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the web view limits navigation to pages within the app’s domain.
+
+This only works on iOS 14.0+. For more information, refer to the [Apple's documentation](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai)
+and the [App-Bound Domains](https://webkit.org/blog/10882/app-bound-domains/) page. This requires additional setup in `WKAppBoundDomains` key in the Info.plist file.
+
+On Android, this method does nothing.
+"""
+notice = "You need to set it before creating a web view. Existing web views are not affected."
+example = """
+```csharp
+// Enable navigation limitation in web views created later.
+UniWebView.SetLimitsNavigationsToAppBoundDomains(false);
+
+// This config is applied in this web view.
+var webView = gameObject.AddComponent<UniWebView>();
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether limiting navigation should be enabled."
+
+[[Methods]]
 name = "SetAllowJavaScriptOpenWindow"
 syntax = "SetAllowJavaScriptOpenWindow(bool flag)"
 returnType = "void"
