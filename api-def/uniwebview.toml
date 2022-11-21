@@ -951,7 +951,7 @@ notice = "You need to set it before creating a web view. Existing web views are 
 example = """
 ```csharp
 // Enable navigation limitation in web views created later.
-UniWebView.SetLimitsNavigationsToAppBoundDomains(false);
+UniWebView.SetLimitsNavigationsToAppBoundDomains(true);
 
 // This config is applied in this web view.
 var webView = gameObject.AddComponent<UniWebView>();
