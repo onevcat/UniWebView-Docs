@@ -28,8 +28,10 @@ add duplicated packages.
 
 You can try:
 
-1. Manually turn off the "Adds Kotlin" or "Adds Android Browser" option in the Preference Panel, to let UniWebView skip adding them again and just use the one you already have.
-2. Then do a Clean Build to make sure the old packages and settings are removed. You can find the Clean Build action in the drop-down Build button in Unity's Build Settings panel.
+1. If you have an error saying "duplicate class ... androidx.browser", turn off "Adds Android Browser" option in the Preference Panel, to let UniWebView skip adding it again and use the one already in your project.
+2. If you have an error related to "jetified-androidx" packages, turn off "Enable Jetifier".
+3. If you have an error related to "kotlin", turn off "Adds Kotlin".
+4. Then do a Clean Build to make sure the old packages and settings are removed. You can find the Clean Build action in the drop-down Build button in Unity's Build Settings panel.
 
 For more detail, please check the [Installation - Optional Steps](installation.md#importing-package).
 
