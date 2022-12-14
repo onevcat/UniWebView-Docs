@@ -127,11 +127,50 @@ void OnGoogleAuthError(long error, string message) {
 ```
 """
 
+[[Events]]
+name = "OnRefreshTokenFinished"
+syntax = "OnRefreshTokenFinished"
+returnType = "UnityEvent<UniWebViewAuthenticationGoogleToken>"
+summary = "Called when the access token refresh request finishes and a valid refreshed token is generated."
+example = """
+```csharp
+googleFlow.OnRefreshTokenFinished.AddListener(OnRefreshTokenReceived)
+
+void OnRefreshTokenReceived(UniWebViewAuthenticationGoogleToken token) {
+  Debug.Log("Access Token: " + token.AccessToken);
+}
+```
+"""
+
+[[Events]]
+name = "OnRefreshTokenErrored"
+syntax = "OnRefreshTokenErrored"
+returnType = "UnityEvent<long, string>"
+summary = "Called when any error (including user cancellation) happens during the authentication flow."
+example = """
+```csharp
+googleFlow.OnRefreshTokenErrored.AddListener(OnRefreshTokenError);
+
+void OnRefreshTokenError(long error, string message) {
+  Debug.Log("Error code: " + error + " Message: " + message);
+}
+```
+"""
+
 [[Methods]]
 name = "StartAuthenticationFlow"
 syntax = "void StartAuthenticationFlow()"
 returnType = "void"
 summary = """
 Starts the authentication flow with the standard OAuth 2.0.
+This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
+"""
+
+[[Methods]]
+name = "StartRefreshTokenFlow"
+syntax = "void StartRefreshTokenFlow(string refreshToken)"
+returnType = "void"
+summary = """
+Starts the refresh flow with the standard OAuth 2.0.
 This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
 """

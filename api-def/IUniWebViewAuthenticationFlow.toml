@@ -25,6 +25,18 @@ syntax = "OnAuthenticationErrored"
 returnType = "UnityEvent<long, string>"
 summary = "Called when any error (including user cancellation) happens during the authentication flow."
 
+[[Events]]
+name = "OnRefreshTokenFinished"
+syntax = "OnRefreshTokenFinished"
+returnType = "UnityEvent<TTokenType>"
+summary = "Called when the access token refresh request finishes and a valid refreshed token is generated."
+
+[[Events]]
+name = "OnRefreshTokenErrored"
+syntax = "OnRefreshTokenErrored"
+returnType = "UnityEvent<long, string>"
+summary = "Called when any error (including user cancellation) happens during the authentication flow."
+
 [[Methods]]
 name = "GetCallbackUrl"
 syntax = "GetCallbackUrl()"
@@ -77,6 +89,25 @@ The response from authentication request. If the authentication succeeds, it is
 usually a custom scheme URL with a `code` query as its parameter. Base on this, you could construct the body of the
 access token exchange request.
 """
+
+[[Methods]]
+name = "GetRefreshTokenRequestParameters"
+syntax = "GetRefreshTokenRequestParameters(string refreshToken)"
+returnType = "Dictionary<string, string>"
+returnValue = "he dictionary indicates parameters that are used to perform the access token refresh request."
+summary = """
+Returns a dictionary contains the parameters that are used to perform the access token refresh request.
+    /// The key value pairs in the dictionary are used to construct the HTTP form body of the access token refresh request.
+"""
+[[Methods.parameters]]
+name = "refreshToken"
+type = "string"
+summary = """
+The refresh token you received from a previous access token exchange request. If the access token can be refreshed, the
+service provider should provide you a refresh token under the `refresh_token` field of the response body along side with
+the access token exchange when you issue the access token.
+"""
+
 
 [[Methods]]
 name = "GenerateTokenFromExchangeResponse"

@@ -43,6 +43,15 @@ a `UniWebViewAuthenticationFlow`. But you can also choose whatever you need to d
 """
 
 [[Methods]]
+name = "StartRefreshTokenFlow"
+syntax = "StartRefreshTokenFlow(string refreshToken)"
+returnType = "abstract void"
+summary = """
+Subclass should override this method to start the authentication flow. Usually it starts
+a Unity Web Request against the authentication flow's token entry point to refresh the token.
+"""
+
+[[Methods]]
 name = "GenerateAndStoreState"
 syntax = "GenerateAndStoreState()"
 returnType = "string"
