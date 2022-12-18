@@ -25,6 +25,12 @@ To use the common flow, any customize authentication flow must implement this in
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnAuthenticationErrored</a></div></td><td><div class='simple-summary'>
 <p>Called when any error (including user cancellation) happens during the authentication flow.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onrefreshtokenfinished'><span class='return-type'>UnityEvent&lt;TTokenType&gt;</span> OnRefreshTokenFinished</a></div></td><td><div class='simple-summary'>
+<p>Called when the access token refresh request finishes and a valid refreshed token is generated.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onrefreshtokenerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnRefreshTokenErrored</a></div></td><td><div class='simple-summary'>
+<p>Called when any error (including user cancellation) happens during the authentication flow.</p>
+</div>
 </td></tr></table>
 
 #### Methods Summary
@@ -41,6 +47,9 @@ To use the common flow, any customize authentication flow must implement this in
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#getaccesstokenrequestparameters'><span class='return-type'>Dictionary&lt;string, string&gt;</span> GetAccessTokenRequestParameters(string authResponse)</a></div></td><td><div class='simple-summary'>
 <p>Returns a dictionary contains the parameters that are used to perform the access token exchange request.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getrefreshtokenrequestparameters'><span class='return-type'>Dictionary&lt;string, string&gt;</span> GetRefreshTokenRequestParameters(string refreshToken)</a></div></td><td><div class='simple-summary'>
+<p>Returns a dictionary contains the parameters that are used to perform the access token refresh request.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#generatetokenfromexchangeresponse'><span class='return-type'>TTokenType</span> GenerateTokenFromExchangeResponse(string exchangeResponse)</a></div></td><td><div class='simple-summary'>
 <p>Returns the strong-typed token for the authentication process.</p>
@@ -61,6 +70,26 @@ To use the common flow, any customize authentication flow must implement this in
 </div>
 <div class='api-box method'>
   <div class="api-anchor" id='onauthenticationerrored'></div><div class='api-heading' data-id='onauthenticationerrored'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnAuthenticationErrored</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Called when any error (including user cancellation) happens during the authentication flow.</p>
+</div>
+                            </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onrefreshtokenfinished'></div><div class='api-heading' data-id='onrefreshtokenfinished'><a href='#onrefreshtokenfinished'><span class='return-type'>UnityEvent&lt;TTokenType&gt;</span> OnRefreshTokenFinished</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Called when the access token refresh request finishes and a valid refreshed token is generated.</p>
+</div>
+                            </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onrefreshtokenerrored'></div><div class='api-heading' data-id='onrefreshtokenerrored'><a href='#onrefreshtokenerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnRefreshTokenErrored</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -139,6 +168,32 @@ access token exchange request.</p>
 </div>
       <div class='section-title'>Return Value</div>
 <div class='method-return'><p>The dictionary indicates parameters that are used to perform the access token exchange request.</p>
+</div>
+          </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='getrefreshtokenrequestparameters'></div><div class='api-heading' data-id='getrefreshtokenrequestparameters'><a href='#getrefreshtokenrequestparameters'><span class='return-type'>Dictionary&lt;string, string&gt;</span> GetRefreshTokenRequestParameters(string refreshToken)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Returns a dictionary contains the parameters that are used to perform the access token refresh request.
+    /// The key value pairs in the dictionary are used to construct the HTTP form body of the access token refresh request.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>refreshToken</span></div>
+    <div class='parameter-item-desc'><p>The refresh token you received from a previous access token exchange request. If the access token can be refreshed, the
+service provider should provide you a refresh token under the <code>refresh_token</code> field of the response body along side with
+the access token exchange when you issue the access token.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+      <div class='section-title'>Return Value</div>
+<div class='method-return'><p>he dictionary indicates parameters that are used to perform the access token refresh request.</p>
 </div>
           </div>
   </div>

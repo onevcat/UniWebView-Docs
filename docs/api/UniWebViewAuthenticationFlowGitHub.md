@@ -58,6 +58,12 @@ To allow the GitHub flow working, at least you need these steps:
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnAuthenticationErrored</a></div></td><td><div class='simple-summary'>
 <p>Called when any error (including user cancellation) happens during the authentication flow.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onrefreshtokenfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationGitHubToken&gt;</span> OnRefreshTokenFinished</a></div></td><td><div class='simple-summary'>
+<p>Called when the access token refresh request finishes and a valid refreshed token is generated.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onrefreshtokenerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnRefreshTokenErrored</a></div></td><td><div class='simple-summary'>
+<p>Called when any error (including user cancellation) happens during the authentication flow.</p>
+</div>
 </td></tr></table>
 
 #### Methods Summary
@@ -65,6 +71,9 @@ To allow the GitHub flow working, at least you need these steps:
 <table>
 <tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>void</span> void StartAuthenticationFlow()</a></div></td><td><div class='simple-summary'>
 <p>Starts the authentication flow with the standard OAuth 2.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#startrefreshtokenflow'><span class='return-type'>void</span> void StartRefreshTokenFlow(string refreshToken)</a></div></td><td><div class='simple-summary'>
+<p>Starts the refresh flow with the standard OAuth 2.</p>
 </div>
 </td></tr></table>
 
@@ -223,6 +232,48 @@ authentication callback.</p>
     </div>
   </div>
 </div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onrefreshtokenfinished'></div><div class='api-heading' data-id='onrefreshtokenfinished'><a href='#onrefreshtokenfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationGitHubToken&gt;</span> OnRefreshTokenFinished</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Called when the access token refresh request finishes and a valid refreshed token is generated.</p>
+</div>
+                        <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>githubFlow<span class="token punctuation">.</span>OnRefreshTokenFinished<span class="token punctuation">.</span><span class="token function">AddListener</span><span class="token punctuation">(</span>OnRefreshTokenReceived<span class="token punctuation">)</span>
+<span />
+<span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">OnRefreshTokenReceived</span><span class="token punctuation">(</span><span class="token class-name">UniWebViewAuthenticationGitHubToken</span> token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Access Token: "</span> <span class="token operator">+</span> token<span class="token punctuation">.</span>AccessToken<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onrefreshtokenerrored'></div><div class='api-heading' data-id='onrefreshtokenerrored'><a href='#onrefreshtokenerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnRefreshTokenErrored</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Called when any error (including user cancellation) happens during the authentication flow.</p>
+</div>
+                        <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>githubFlow<span class="token punctuation">.</span>OnRefreshTokenErrored<span class="token punctuation">.</span><span class="token function">AddListener</span><span class="token punctuation">(</span>OnRefreshTokenError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">OnRefreshTokenError</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">long</span></span> error<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">string</span></span> message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Error code: "</span> <span class="token operator">+</span> error <span class="token operator">+</span> <span class="token string">" Message: "</span> <span class="token operator">+</span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
 
 ### Methods
 
@@ -232,6 +283,17 @@ authentication callback.</p>
     <div class='desc'>
       <div class='summary'>
 <p>Starts the authentication flow with the standard OAuth 2.0.
+This implements the abstract method in <code>UniWebViewAuthenticationCommonFlow</code>.</p>
+</div>
+                            </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='startrefreshtokenflow'></div><div class='api-heading' data-id='startrefreshtokenflow'><a href='#startrefreshtokenflow'><span class='return-type'>void</span> void StartRefreshTokenFlow(string refreshToken)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Starts the refresh flow with the standard OAuth 2.0.
 This implements the abstract method in <code>UniWebViewAuthenticationCommonFlow</code>.</p>
 </div>
                             </div>

@@ -30,6 +30,9 @@ Instead, to start a customized auth flow, you can use the `UniWebViewAuthenticat
 <tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>abstract void</span> StartAuthenticationFlow()</a></div></td><td><div class='simple-summary'>
 <p>Subclass should override this method to start the authentication flow.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#startrefreshtokenflow'><span class='return-type'>abstract void</span> StartRefreshTokenFlow(string refreshToken)</a></div></td><td><div class='simple-summary'>
+<p>Subclass should override this method to start the authentication flow.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#generateandstorestate'><span class='return-type'>string</span> GenerateAndStoreState()</a></div></td><td><div class='simple-summary'>
 <p>Child classes are expected to call this method to request a <code>state</code> (and store it for later check) if the 
 <code>state</code> verification is enabled.</p>
@@ -79,6 +82,17 @@ for third-party use) in Chrome&#39;s settings. Check settings with <code>chrome:
       <div class='summary'>
 <p>Subclass should override this method to start the authentication flow. Usually it starts
 a <code>UniWebViewAuthenticationFlow</code>. But you can also choose whatever you need to do.</p>
+</div>
+                            </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='startrefreshtokenflow'></div><div class='api-heading' data-id='startrefreshtokenflow'><a href='#startrefreshtokenflow'><span class='return-type'>abstract void</span> StartRefreshTokenFlow(string refreshToken)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Subclass should override this method to start the authentication flow. Usually it starts
+a Unity Web Request against the authentication flow&#39;s token entry point to refresh the token.</p>
 </div>
                             </div>
   </div>
