@@ -118,11 +118,11 @@ Create an empty game object (Unity Menu, GameObject -> Create Empty) to the scen
 In the new `OAuthHandler.cs`, add the following code:
 
 ```csharp
-public void GitHubOAuthDone(UniWebViewAuthenticationGitHubToken token) {
+public void OnGitHubTokenReceived(UniWebViewAuthenticationGitHubToken token) {
     Debug.Log("Token received: " + token.AccessToken);
 }
 
-public void GitHubOAuthFailed(long errorCode, string errorMessage) {
+public void OnGitHubAuthError(long errorCode, string errorMessage) {
     Debug.Log("Error happened: " + errorCode + " " + errorMessage);
 }
 ```
@@ -149,7 +149,7 @@ Alternative, you can turn on the "Authorize On Start" option in the `UniWebViewA
 provides an easy way if you want to start the authentication flow automatically when the component starts.
 :::
 
-The GitHub authentication should work now. By running the scene, a web view will be opened and navigate to the GitHub authorization page. You can now log in with your GitHub account to the GitHub app, and get a valid access token in `GitHubOAuthDone` callback:
+The GitHub authentication should work now. By running the scene, a web view will be opened and navigate to the GitHub authorization page. You can now log in with your GitHub account to the GitHub app, and get a valid access token in `OnGitHubTokenReceived` callback:
 
 ![](/images/github-login.png)
 
@@ -157,6 +157,49 @@ When log in successfully, you can find the following console log with the retrie
 
 ```
 Token received: ${YOUR_ACCESS_TOKEN}
+```
+
+### Store & Read the Token
+
+Sometimes, you may want to store the token locally. UniWebView, as a web view component and with its OAuth support, does not provide any storage for the token. You need to implement it yourself.
+
+You can read the [`RawValue` string of the token](/api/UniWebViewAuthenticationStandardToken.html#rawvalue), and store it on the device or on your server. Remember the token is sensitive data, you should not store it in plain text. Usually, it is a good idea to encrypt it before storing it.
+
+> There are several ways to encrypt and store a string in Unity, for example, the [SecurePlayerPrefs](https://assetstore.unity.com/packages/tools/input-management/secureplayerprefs-35160) is a good one.
+
+When you need to use the token, you can read it from the storage and create a new `UniWebViewAuthenticationStandardToken` object with the raw value:
+
+```csharp
+var rawValue = // Read the raw value from the storage
+var token = new UniWebViewAuthenticationGitHubToken(rawValue);
+
+// Or, if you are using a subclass of UniWebViewAuthenticationStandardToken, use its `Parse` method:
+var token = UniWebViewAuthenticationTokenFactory<UniWebViewAuthenticationTwitterToken>.Parse(rawValue);
+```
+
+### Refresh Token
+
+If in the token, there is a non-null `RefreshToken` property, it usually suggests that you can use it to refresh the access token.
+
+In any compatible flow (in this example, the `UniWebViewAuthenticationFlowGitHub`), there is a `StartRefreshTokenFlow` method. You can pass the refresh token in, and the flow will try to communicate with 
+the service provider and refresh the token. Similar to the access token authentication flow, the refresh token result will be returned in the callback too. 
+
+But instead of setting the methods for "On Authentication Finished" and "On Authentication Errored", this time you need to set "On Refresh Token Finished" and "On Refresh Token Errored":
+
+
+![](/images/refresh-action-list.png)
+
+
+```csharp
+public void OnGitHubTokenRefreshed(UniWebViewAuthenticationGitHubToken token) {
+    Debug.Log("Token refreshed: " + token.AccessToken);
+}
+
+var rawValue = // Read the raw value from the storage
+var token = new UniWebViewAuthenticationGitHubToken(rawValue);
+if (token.RefreshToken != null) {
+    githubFlow.StartRefreshTokenFlow(token.RefreshToken);
+}
 ```
 
 ## Other Properties
@@ -173,7 +216,7 @@ When this is enabled, the authentication flow will start automatically when the 
 
 The system will remember the session for a certain service. Unless the user logs out from the service in the web view,
 it will just reuse the last credentials if available when the user tries to log in again. To disable this behavior and
-allow user to choose another account, set the "Private Mode" option to "true".
+allow the user to choose another account, set the "Private Mode" option to "true".
 
 ::: warning VERSIONS
 When enabled, the web view will try to open the authorization page in private (incognito) mode.
@@ -187,8 +230,8 @@ mode (and support for third-party use) in Chrome's settings. Check settings with
 
 ## Common Flow
 
-Besides of the built-in supported OAuth 2.0 providers, you can also use the common flow to let your user log in to any
-standard OAuth 2.0 provider. To adopt to a common flow, add the `UniWebViewAuthenticationFlowCustomize` component instead,
+Besides the built-in supported OAuth 2.0 providers, you can also use the common flow to let your user log in to any
+standard OAuth 2.0 provider. To adapt to a common flow, add the `UniWebViewAuthenticationFlowCustomize` component instead,
 and set the necessary properties like "Authorization Endpoint", "Token Endpoint", "Client Id" and other more:
 
 ![](/images/common-flow-component.png)
