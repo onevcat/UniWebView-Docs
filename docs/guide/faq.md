@@ -35,13 +35,24 @@ You can try:
 
 For more detail, please check the [Installation - Optional Steps](installation.md#importing-package).
 
-## The page does not load on Android but shows "net::ERR_CLEARTEXT_NOT_PERMITTED"
+## The page does not load on Android but shows "net::ERR_CLEARTEXT_NOT_PERMITTED".
 
 From Android 9, all plain HTTP traffic is not permitted by default for security. You can find detail on this topic in this [Android documentation page](https://developer.android.com/training/articles/security-config).
 
 Developers are encouraged to secure traffic only, such as HTTPS. Hosting all of your content under a site with HTTPS enabled is the best solution. However, if that is not possible for you yet, you can enable the **"Uses Cleartext Traffic"** option in UniWebView's preference.
 
 You can find that option under the "UniWebView" tab of Unity's Preference Panel. Follow [the installation guide](installation.md#importing-package) if you are not sure where it is.
+
+## I encountered "net::ERR_UNKNOWN_URL_SCHEME" when opening an app link on Android.
+
+UniWebView is already trying to bring up an intent (trying to open a third-party app if a custom scheme URL is received) internally. 
+But UniWebView has to use the [`queryIntentActivities` method](https://developer.android.com/reference/kotlin/android/content/pm/PackageManager#queryintentactivities) 
+to check if the target app is existing before opening it. 
+
+It worked perfectly without any modification if you are using a Target API Level before Android 11 (Level 31) or on devices with lower system versions. 
+But from API Level 31, you have to add the related query to the Android manifest file to allow this querying work. For more details, I suggest you check 
+the [Package visibility filtering on Android](https://developer.android.com/training/basics/intents/package-visibility) documentation and try to add the 
+target package names you need to open to the `<queries>` tag to your Android Manifest file, then try again to see if it goes fine.
 
 ## Which platforms could UniWebView work on?
 
