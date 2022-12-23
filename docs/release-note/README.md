@@ -1,5 +1,17 @@
 # Release Note
 
+### 5.2.0
+
+#### Add
+
+* Most of the OAuth flows now support refresh token. Use `StartRefreshTokenFlow` on the flow to start token refresh. For more about OAuth 2.0 support in UniWebView, check [this guide](https://docs.uniwebview.com/guide/oauth2.html#refresh-token).
+
+#### Fix
+
+* A workaround for Facebook login on Android. Facebook is preventing a web view to perform OAuth login on Android, now the `UniWebViewAuthenticationFlowFacebook` will use a desktop browser user-agent to open the login page.
+* A crash that caused by orientation change when the camera is presented on Android while the game is landscape but the camera is portrait.
+* A crash when taking screenshot when the web view has a zero or negative size. Now under this case, the `CaptureSnapshot` method will give an error `-1002` in its `OnCaptureSnapshotFinished` event.
+
 ### 5.1.0 (21 Nov, 2022)
 
 #### Add
