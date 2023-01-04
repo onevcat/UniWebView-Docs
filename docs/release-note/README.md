@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.2.1 (4 Jan, 2023)
+
+#### Fix
+
+* A crash when an SSL error is encountered during loading a scheme other than "http" or "https" (for example, "wss://" links) on Android.
+
 ### 5.2.0 (23 Dec, 2022)
 
 #### Add
