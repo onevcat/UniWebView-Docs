@@ -1,5 +1,16 @@
 # Release Note
 
+### 5.3.0 (28 Jan, 2023)
+
+#### Add
+
+* Support for customization of Kotlin and Android Browser package versions. This can help to resolve the conflict with other plugins which use another version of these packages.
+
+#### Fix
+
+* Improve the visual effect of the Embedded Toolbar on iOS. Now it has a larger and bold font for the title.
+* A better way to find the root view controller for adding UniWebView to on iOS. Now you can implement a `rootViewControllerForUniWebView` method in your app delegate and return the view controller you want UniWebView to be added to. By default, if the app delegate does not implement either `rootViewControllerForUniWebView` or `rootViewController`, UniWebView now also tries to find the top-most view controller instead of the window's direct root view controller.
+
 ### 5.2.1 (4 Jan, 2023)
 
 #### Fix
