@@ -1,5 +1,12 @@
 # Release Note
 
+### 5.3.1 (18 Feb, 2023)
+
+#### Fix
+
+* An issue that `SetOpenLinksInExternalBrowser` setting is ignored for links with "target=_blank" attribute. Now the external browser will be used for such links instead of opening the page in place. If `SetOpenLinksInExternalBrowser` and `SetSupportMultipleWindows` is set to `true` at the same time, the external browser will be used.
+* Now the activity for OAuth 2.0 flow on Android allows orientation changes. It won't throw an exception anymore when the device is rotated during the flow.
+
 ### 5.3.0 (28 Jan, 2023)
 
 #### Add
