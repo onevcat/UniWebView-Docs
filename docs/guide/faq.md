@@ -45,14 +45,22 @@ You can find that option under the "UniWebView" tab of Unity's Preference Panel.
 
 ## I encountered "net::ERR_UNKNOWN_URL_SCHEME" when opening an app link on Android.
 
-UniWebView is already trying to bring up an intent (trying to open a third-party app if a custom scheme URL is received) internally. 
-But UniWebView has to use the [`queryIntentActivities` method](https://developer.android.com/reference/kotlin/android/content/pm/PackageManager#queryintentactivities) 
-to check if the target app is existing before opening it. 
+UniWebView is already trying to bring up an intent (trying to open a third-party app if a custom scheme URL is received) internally.
+But UniWebView has to use the [`queryIntentActivities` method](https://developer.android.com/reference/kotlin/android/content/pm/PackageManager#queryintentactivities)
+to check if the target app is existing before opening it.
 
-It worked perfectly without any modification if you are using a Target API Level before Android 11 (Level 31) or on devices with lower system versions. 
-But from API Level 31, you have to add the related query to the Android manifest file to allow this querying work. For more details, I suggest you check 
-the [Package visibility filtering on Android](https://developer.android.com/training/basics/intents/package-visibility) documentation and try to add the 
+It worked perfectly without any modification if you are using a Target API Level before Android 11 (Level 31) or on devices with lower system versions.
+But from API Level 31, you have to add the related query to the Android manifest file to allow this querying work. For more details, I suggest you check
+the [Package visibility filtering on Android](https://developer.android.com/training/basics/intents/package-visibility) documentation and try to add the
 target package names you need to open to the `<queries>` tag to your Android Manifest file, then try again to see if it goes fine.
+
+## I encountered "could not reparse object file in bitcode bundle: 'Invalid bitcode version" when archiving the iOS app in Xcode.
+
+Please try to disable the BitCode in your Xcode project. In your exported project, select "Unity-iPhone" project file in the left Project navigator panel.
+In the editor area on right, select "Unity-iPhone" under the "PROJECT" section (be noted, do not select the "Unity-iPhone" under "TARGETS" section),
+then in the "Build Settings" tab, search for "Enable Bitcode" item and change its value to "No".
+
+> From Xcode 14, BitCode is no longer required or supported. UniWebView will also remove the support of BitCode eventually.
 
 ## Which platforms could UniWebView work on?
 
