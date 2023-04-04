@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.3.2 (5 Apr, 2023)
+
+#### Fix
+
+* Strip using of methods from `System.Web.HttpUtility` internally to resolve a runtime issue in older Unity versions.
+
 ### 5.3.1 (18 Feb, 2023)
 
 #### Fix
