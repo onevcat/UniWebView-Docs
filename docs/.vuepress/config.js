@@ -246,6 +246,10 @@ module.exports = {
             text: "Misc", 
             children: [
               {
+                text: "UniWebViewEmbeddedToolbar",
+                link: "UniWebViewEmbeddedToolbar"
+              },
+              {
                 text: "UniWebViewNativeListener",
                 link: "uniwebviewnativelistener"
               },

@@ -64,10 +64,10 @@ To allow the Discord flow working, at least you need these steps:
 #### Methods Summary
 
 <table>
-<tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>void</span> void StartAuthenticationFlow()</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>void</span> StartAuthenticationFlow()</a></div></td><td><div class='simple-summary'>
 <p>Starts the authentication flow with the standard OAuth 2.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#startrefreshtokenflow'><span class='return-type'>void</span> void StartRefreshTokenFlow(string refreshToken)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#startrefreshtokenflow'><span class='return-type'>void</span> StartRefreshTokenFlow(string refreshToken)</a></div></td><td><div class='simple-summary'>
 <p>Starts the refresh flow with the standard OAuth 2.</p>
 </div>
 </td></tr></table>
@@ -237,7 +237,7 @@ authentication callback. Default is <code>true</code>.</p>
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='startauthenticationflow'></div><div class='api-heading' data-id='startauthenticationflow'><a href='#startauthenticationflow'><span class='return-type'>void</span> void StartAuthenticationFlow()</a></div>
+  <div class="api-anchor" id='startauthenticationflow'></div><div class='api-heading' data-id='startauthenticationflow'><a href='#startauthenticationflow'><span class='return-type'>void</span> StartAuthenticationFlow()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -248,7 +248,7 @@ This implements the abstract method in <code>UniWebViewAuthenticationCommonFlow<
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='startrefreshtokenflow'></div><div class='api-heading' data-id='startrefreshtokenflow'><a href='#startrefreshtokenflow'><span class='return-type'>void</span> void StartRefreshTokenFlow(string refreshToken)</a></div>
+  <div class="api-anchor" id='startrefreshtokenflow'></div><div class='api-heading' data-id='startrefreshtokenflow'><a href='#startrefreshtokenflow'><span class='return-type'>void</span> StartRefreshTokenFlow(string refreshToken)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

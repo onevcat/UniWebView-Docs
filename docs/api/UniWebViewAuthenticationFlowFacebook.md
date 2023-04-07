@@ -51,7 +51,7 @@ To allow the Facebook flow working, at least you need to set the `App Id` in the
 #### Methods Summary
 
 <table>
-<tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>void</span> void StartAuthenticationFlow()</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>void</span> StartAuthenticationFlow()</a></div></td><td><div class='simple-summary'>
 <p>Starts the authentication flow with the standard OAuth 2.</p>
 </div>
 </td></tr></table>
@@ -137,7 +137,7 @@ To allow the Facebook flow working, at least you need to set the `App Id` in the
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='startauthenticationflow'></div><div class='api-heading' data-id='startauthenticationflow'><a href='#startauthenticationflow'><span class='return-type'>void</span> void StartAuthenticationFlow()</a></div>
+  <div class="api-anchor" id='startauthenticationflow'></div><div class='api-heading' data-id='startauthenticationflow'><a href='#startauthenticationflow'><span class='return-type'>void</span> StartAuthenticationFlow()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

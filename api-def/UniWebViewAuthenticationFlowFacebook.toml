@@ -71,7 +71,7 @@ void OnFacebookAuthError(long error, string message) {
 
 [[Methods]]
 name = "StartAuthenticationFlow"
-syntax = "void StartAuthenticationFlow()"
+syntax = "StartAuthenticationFlow()"
 returnType = "void"
 summary = """
 Starts the authentication flow with the standard OAuth 2.0.
