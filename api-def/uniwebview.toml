@@ -2162,6 +2162,50 @@ summary = "Whether the context menu image saving action triggers the download re
 name = "Android"
 color = "green"
 
+[[Methods]]
+name = "RegisterShouldHandleRequest"
+syntax = "RegisterShouldHandleRequest(Func<UniWebViewChannelMethodHandleRequest, bool> handler)"
+returnType = "void"
+summary = """
+Registers a method handler for deciding whether UniWebView should handle the request received by the web view.
+
+The handler is called before the web view actually starts to load the new request. You can check the request
+properties, such as the URL, to decide whether UniWebView should continue to handle the request or not. If you
+return `true` from the handler function, UniWebView will continue to load the request. Otherwise, UniWebView
+will stop the loading.
+"""
+example = """
+```csharp
+webView.RegisterShouldHandleRequest(request => {
+  
+  // Stop loading if the URL contains "example.com".
+  if (request.Url.Contains("example.com")) {
+    return false;
+  }
+
+  // For other URLs, return `true` and UniWebView can continue to load.
+  return true;
+});
+```
+"""
+[[Methods.parameters]]
+name = "handler"
+type = "Func<UniWebViewChannelMethodHandleRequest, bool>"
+summary = """
+A handler you can implement your own logic against the input request value. You need to return a boolean value
+to indicate whether UniWebView should continue to load the request or not as soon as possible.
+"""
+
+[[Methods]]
+name = "UnregisterShouldHandleRequest"
+syntax = "UnregisterShouldHandleRequest()"
+returnType = "void"
+summary = """
+Unregisters the method handler for handling request received by the web view.
+
+This clears the handler registered by `RegisterHandlingRequest` method.
+"""
+
 [[Events]]
 name = "OnPageStarted"
 syntax = "OnPageStarted(UniWebView webView, string url)"

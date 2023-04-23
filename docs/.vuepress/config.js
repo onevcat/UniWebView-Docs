@@ -219,6 +219,10 @@ module.exports = {
                 text: "UniWebViewNativeResultPayload",
                 link: "uniwebviewnativeresultpayload"
               },
+              {
+                text: "UniWebViewChannelMethodHandleRequest",
+                link: "UniWebViewChannelMethodHandleRequest"
+              }
             ]
           },
           {
