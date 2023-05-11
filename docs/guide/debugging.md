@@ -29,7 +29,9 @@ Sometimes, you need to inspect your web page, to modify some DOMs, stylesheets, 
 
 ### iOS
 
-There is no additional step for inspecting pages on iOS. You could just run and show your web page in UniWebView on an iOS device or simulator, then follow the [Safari Web Inspector Guide](https://developer.apple.com/library/content/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html) to set up your inspector.
+On iOS, you need to call the [`SetWebContentsDebuggingEnabled`](/api/#setwebcontentsdebuggingenabled) method first. Then you could just run and show your web page in UniWebView on an iOS device or simulator. 
+Follow the [Safari Web Inspector Guide](https://developer.apple.com/library/content/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html) to set up your inspector in Safari.
+Please be noted, only binaries built with the Debug configuration can be inspected. The Release build does not work.
 
 ### Android
 
@@ -37,7 +39,7 @@ On Android, you need to call the [`SetWebContentsDebuggingEnabled`](/api/#setweb
 
 ### macOS
 
-On macOS you need to call the [`SetWebContentsDebuggingEnabled`](/api/#setwebcontentsdebuggingenabled) method first. Then you are able to right click on the web view in macOS editor to bring up the context menu. Select the "Inspect Element" in that menu.
+On macOS you need to call the [`SetWebContentsDebuggingEnabled`](/api/#setwebcontentsdebuggingenabled) method first. Then you can right-click on the web view in macOS editor to bring up the context menu. Select the "Inspect Element" in that menu.
 
 ![](/images/editor-inspector.png)
 
