@@ -2177,8 +2177,7 @@ will stop the loading.
 example = """
 ```csharp
 webView.RegisterShouldHandleRequest(request => {
-  
-  // Stop loading if the URL contains "example.com".
+  // Stop loading if the URL contains `example.com`.
   if (request.Url.Contains("example.com")) {
     return false;
   }

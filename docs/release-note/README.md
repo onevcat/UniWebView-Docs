@@ -1,5 +1,15 @@
 # Release Note
 
+### 5.4.0 (13 May, 2023)
+
+#### Add
+
+* A method to control whether a loading should be started or not. Use `RegisterShouldHandleRequest` to register a callback and returns whether the loading should be started or not. Check [its reference](https://docs.uniwebview.com/api/#registershouldhandlerequest) for more.
+
+#### Fix
+
+* Now web view on iOS 16.4 can also be inspected. However, different from previous versions, you need to call `SetWebContentsDebuggingEnabled` to enable the debugging mode before inspecting the web view on all platforms.
+
 ### 5.3.2 (5 Apr, 2023)
 
 #### Fix

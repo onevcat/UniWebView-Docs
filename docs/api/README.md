@@ -3774,8 +3774,7 @@ to indicate whether UniWebView should continue to load the request or not as soo
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">RegisterShouldHandleRequest</span><span class="token punctuation">(</span>request <span class="token operator">=></span> <span class="token punctuation">{</span>
-  
-  <span class="token comment">// Stop loading if the URL contains "example.com".</span>
+  <span class="token comment">// Stop loading if the URL contains `example.com`.</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span>Url<span class="token punctuation">.</span><span class="token function">Contains</span><span class="token punctuation">(</span><span class="token string">"example.com"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
