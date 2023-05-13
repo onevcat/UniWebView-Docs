@@ -336,6 +336,12 @@ HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
 <p>Sets whether the <code>OnFileDownloadStarted</code> and <code>OnFileDownloadFinished</code> events should be raised even for an image
 saving action triggered by the callout (context) menu on Android.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#registershouldhandlerequest'><span class='return-type'>void</span> RegisterShouldHandleRequest(Func&lt;UniWebViewChannelMethodHandleRequest, bool&gt; handler)</a></div></td><td><div class='simple-summary'>
+<p>Registers a method handler for deciding whether UniWebView should handle the request received by the web view.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#unregistershouldhandlerequest'><span class='return-type'>void</span> UnregisterShouldHandleRequest()</a></div></td><td><div class='simple-summary'>
+<p>Unregisters the method handler for handling request received by the web view.</p>
+</div>
 </td></tr></table>
 
 ### Properties
@@ -3740,6 +3746,58 @@ button in the callout menu.
 </div>
 </div>
     </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='registershouldhandlerequest'></div><div class='api-heading' data-id='registershouldhandlerequest'><a href='#registershouldhandlerequest'><span class='return-type'>void</span> RegisterShouldHandleRequest(Func&lt;UniWebViewChannelMethodHandleRequest, bool&gt; handler)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Registers a method handler for deciding whether UniWebView should handle the request received by the web view.</p>
+<p>The handler is called before the web view actually starts to load the new request. You can check the request
+properties, such as the URL, to decide whether UniWebView should continue to handle the request or not. If you
+return <code>true</code> from the handler function, UniWebView will continue to load the request. Otherwise, UniWebView
+will stop the loading.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>Func&lt;UniWebViewChannelMethodHandleRequest, bool&gt;</span> <span class='parameter-item-name'>handler</span></div>
+    <div class='parameter-item-desc'><p>A handler you can implement your own logic against the input request value. You need to return a boolean value
+to indicate whether UniWebView should continue to load the request or not as soon as possible.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">RegisterShouldHandleRequest</span><span class="token punctuation">(</span>request <span class="token operator">=></span> <span class="token punctuation">{</span>
+  
+  <span class="token comment">// Stop loading if the URL contains "example.com".</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span>Url<span class="token punctuation">.</span><span class="token function">Contains</span><span class="token punctuation">(</span><span class="token string">"example.com"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span />
+  <span class="token comment">// For other URLs, return `true` and UniWebView can continue to load.</span>
+  <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='unregistershouldhandlerequest'></div><div class='api-heading' data-id='unregistershouldhandlerequest'><a href='#unregistershouldhandlerequest'><span class='return-type'>void</span> UnregisterShouldHandleRequest()</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Unregisters the method handler for handling request received by the web view.</p>
+<p>This clears the handler registered by <code>RegisterHandlingRequest</code> method.</p>
+</div>
+                            </div>
   </div>
 </div>
 
