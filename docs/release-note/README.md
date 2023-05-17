@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.4.1 (17 May, 2023)
+
+#### Fix
+
+* An issue that the web view crashes on some Android devices when there is no loading callback is registered under Release mode. This was a regression introduced in 5.4.0. If you are using 5.4.0 and has this crash, please upgrade to 5.4.1 to get a fix.
+
 ### 5.4.0 (13 May, 2023)
 
 #### Add
