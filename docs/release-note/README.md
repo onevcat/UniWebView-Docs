@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.4.2 (9 Jun, 2023)
+
+#### Fix
+
+* The method `AddDownloadMIMEType` did not work as expected even when the target MIME type is detected. Now it should trigger the download as expected.
+
 ### 5.4.1 (17 May, 2023)
 
 #### Fix
