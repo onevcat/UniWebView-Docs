@@ -45,7 +45,13 @@ message.Args   // {"key": "value", "anotherKey": "anotherValue"}
 
 ::: warning Using a Valid URL
 From iOS 15.4, Apple applied a limitation that an invalid URL is not triggering the necessary events for UniWebView to deliver the message anymore.
-That means you cannot use things like `uniwebview://{\"title\"=\"hello\"}` to send a message. Instead, you need to make sure to pass a valid URL, like `uniwebview://event?title=hello` or `uniwebview://event?payload={\"title\"=\"hello\"}`.
+That means you **cannot** use things like `location.href = "uniwebview://{\"title\":\"hello\"}"` to send a message. Instead, you need to make sure to pass a valid URL, like `location.href = "uniwebview://event?title=hello"` or `location.href = "uniwebview://event?payload={\"title\":\"hello\"}"`.
+
+Furthermore, if you prefer an HTML link instead of the `location.href` above, remember to encode your URL query:
+
+```html
+<a href="uniwebview://event?payload=%7B%22title%22:%22hello%22%7D">Hello</a>
+```
 
 Using URL query to pass detail information is recommended. For more about what is a "valid URL", please check [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986) and other related specifications.
 :::
