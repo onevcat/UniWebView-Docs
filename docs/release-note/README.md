@@ -1,5 +1,12 @@
 # Release Note
 
+### 5.4.3 (26 Jul, 2023)
+
+#### Fix
+
+* A potential issue that code obfuscation on Android might cause class conflicting with other plugins which also perform a full obfuscation. Now UniWebView uses a more stable way to obfuscate its native code.
+* A bug that `OnOrientationChanged` event might be called too early in some cases, which causes the received value is not yet correct.
+
 ### 5.4.2 (9 Jun, 2023)
 
 #### Fix
