@@ -39,7 +39,7 @@ h1 {
 Then your style file can be loaded and the page is styled. It is the same for other resources, such as images and videos.
 
 ::: warning Resource Folder
-On iOS, when you use the `Load` method to load a local page, by default, only the resources in the same folder are visible to your page.
+On iOS and macOS, when you use the `Load` method to load a local page, by default, only the resources in the same folder are visible to your page.
 
 If your resources are located in another folder, you could pass a `readAccessURL` parameter when you call `Load`. See the [API Reference](https://docs.uniwebview.com/api/#load) of this parameter for more.
 :::
@@ -50,16 +50,15 @@ If you are using "Split Application Binary" for Android build (OBB files), you s
 
 #### Before Unity 2021.2
 
-Instead, if you are still using Unity 2021.1 or any earlier version, you can put them to `Assets/Plugins/Android/assets/` 
+Instead, if you are still using Unity 2021.1 or any earlier version, you can put them to `Assets/Plugins/Android/assets/`
 and then you use the same way as you did for normal streaming assets resource to load it from the new location.
 
 #### Unity 2021.2 and later
 
-From Unity 2021.2, the Unity Editor prevents the existing of `Assets/Plugins/Android/assets/`. Any file under that 
-folder would trigger a build error. There is very little UniWebView can do. As a workaround, you can export your game as an 
+From Unity 2021.2, the Unity Editor prevents the existing of `Assets/Plugins/Android/assets/`. Any file under that
+folder would trigger a build error. There is very little UniWebView can do. As a workaround, you can export your game as an
 Android Gradle Project first and then put your local files under the "unityLibrary/src/main/assets" folder in the exported project.
 After building to APK from the exported project, the local files will be located in the "assets" folder in the APK bundle, where you can load them with the same method above.
-
 
 ## From Persistent Data Path
 
