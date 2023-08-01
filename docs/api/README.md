@@ -57,6 +57,9 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onpageerrorreceived'><span class='return-type'>void</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
 <p>Raised when an error encountered during the loading process.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onloadingerrorreceived'><span class='return-type'>void</span> OnLoadingErrorReceived(UniWebView webView, int errorCode, string errorMessage, UniWebViewNativeResultPayload payload)</a></div></td><td><div class='simple-summary'>
+<p>Raised when an error encountered during the loading process.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#oncapturesnapshotfinished'><span class='return-type'>void</span> OnCaptureSnapshotFinished(UniWebView webView, int errorCode, string diskPath)</a></div></td><td><div class='simple-summary'>
 <p>Raised when an image captured and stored in a cache path on disk.</p>
 </div>
@@ -581,7 +584,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
       <div class='summary'>
 <p>Raised when the web view finished to load a url successfully.</p>
 <p>This method will be invoked when a valid response received from the URL, regardless of the response status.
-If a URL loading fails before reaching to the server and getting a response, <code>OnPageErrorReceived</code> will be 
+If a URL loading fails before reaching to the server and getting a response, <code>OnLoadingErrorReceived</code> will be 
 raised instead.</p>
 </div>
       <div class='custom-container warning'>
@@ -683,7 +686,16 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 <p>Raised when an error encountered during the loading process. 
 Such as the &quot;host not found&quot; error or &quot;no Internet connection&quot; error will raise this event.</p>
 </div>
-            <div class='parameters'>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        This event is deprecated. Use <code>OnLoadingErrorReceived</code> instead.
+If both <code>OnPageErrorReceived</code> and <code>OnLoadingErrorReceived</code> are listened, only the new <code>OnLoadingErrorReceived</code> will be 
+raised, <code>OnPageErrorReceived</code> will not be called.
+
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
@@ -708,6 +720,66 @@ Such as the &quot;host not found&quot; error or &quot;no Internet connection&quo
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnPageErrorReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> error<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Error."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span />
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://site-not-existing.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// => "Error."</span>
+<span />
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"unknown://host?param1=value1&amp;param2=value2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// => "Error."</span>
+<span />
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// => "Error."</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onloadingerrorreceived'></div><div class='api-heading' data-id='onloadingerrorreceived'><a href='#onloadingerrorreceived'><span class='return-type'>void</span> OnLoadingErrorReceived(UniWebView webView, int errorCode, string errorMessage, UniWebViewNativeResultPayload payload)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when an error encountered during the loading process.
+Such as the &quot;host not found&quot; error or &quot;no Internet connection&quot; error will raise this event.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>errorCode</span></div>
+    <div class='parameter-item-desc'><p>The error code which indicates the error type. It can be different from systems and platforms.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>errorMessage</span></div>
+    <div class='parameter-item-desc'><p>The error message which describes the detail of error.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewNativeResultPayload</span> <span class='parameter-item-name'>payload</span></div>
+    <div class='parameter-item-desc'><p>The payload received from native side, which contains the error information, such as the failing URL, in its <code>Extra</code>.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnLoadingErrorReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> error<span class="token punctuation">,</span> message<span class="token punctuation">,</span> payload<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Error."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>payload<span class="token punctuation">.</span>Extra <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> 
+        payload<span class="token punctuation">.</span>Extra<span class="token punctuation">.</span><span class="token function">TryGetValue</span><span class="token punctuation">(</span>UniWebViewNativeResultPayload<span class="token punctuation">.</span>ExtraFailingURLKey<span class="token punctuation">,</span> <span class="token keyword">out</span> <span class="token class-name"><span class="token keyword">var</span></span> <span class="token keyword">value</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+    <span class="token punctuation">{</span>
+        <span class="token class-name"><span class="token keyword">var</span></span> url <span class="token operator">=</span> <span class="token keyword">value</span> <span class="token keyword">as</span> <span class="token class-name"><span class="token keyword">string</span></span>
+        <span class="token comment">// The `url` contains the failing URL causes the error, if available.</span>
+    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://site-not-existing.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -2007,7 +2079,7 @@ webView<span class="token punctuation">.</span><span class="token function">Show
       <div class='summary'>
 <p>Sets whether loading a local file is allowed.</p>
 <p>If set to <code>false</code>, any load from a file URL <code>file://</code> for <code>Load</code> method will be rejected and trigger an 
-<code>OnPageErrorReceived</code> event. That means you cannot load a web page from any local file. If you are not going to 
+<code>OnLoadingErrorReceived</code> event. That means you cannot load a web page from any local file. If you are not going to 
 load any local files, setting it to <code>false</code> helps to reduce the interface of web view and improve the security.</p>
 <p>By default, it is <code>true</code> and the local file URL loading is allowed.</p>
 </div>
@@ -2027,7 +2099,7 @@ load any local files, setting it to <code>false</code> helps to reduce the inter
 <pre class="language-csharp"><code><span class="token comment">// Forbid file:// URL loading.</span>
 webView<span class="token punctuation">.</span><span class="token function">SetAllowFileAccess</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
-<span class="token comment">// This won't load and trigger an error in OnPageErrorReceived.</span>
+<span class="token comment">// This won't load and trigger an error in OnLoadingErrorReceived.</span>
 <span class="token class-name"><span class="token keyword">var</span></span> url <span class="token operator">=</span> UniWebViewHelper<span class="token punctuation">.</span><span class="token function">StreamingAssetURLForPath</span><span class="token punctuation">(</span><span class="token string">"www/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>

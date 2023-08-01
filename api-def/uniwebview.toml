@@ -765,7 +765,7 @@ summary = """
 Sets whether loading a local file is allowed.
 
 If set to `false`, any load from a file URL `file://` for `Load` method will be rejected and trigger an 
-`OnPageErrorReceived` event. That means you cannot load a web page from any local file. If you are not going to 
+`OnLoadingErrorReceived` event. That means you cannot load a web page from any local file. If you are not going to 
 load any local files, setting it to `false` helps to reduce the interface of web view and improve the security.
 
 By default, it is `true` and the local file URL loading is allowed.
@@ -775,7 +775,7 @@ example = """
 // Forbid file:// URL loading.
 webView.SetAllowFileAccess(false);
 
-// This won't load and trigger an error in OnPageErrorReceived.
+// This won't load and trigger an error in OnLoadingErrorReceived.
 var url = UniWebViewHelper.StreamingAssetURLForPath("www/index.html");
 webView.Load(url);
 ```
@@ -2241,7 +2241,7 @@ summary = """
 Raised when the web view finished to load a url successfully.
 
 This method will be invoked when a valid response received from the URL, regardless of the response status.
-If a URL loading fails before reaching to the server and getting a response, `OnPageErrorReceived` will be 
+If a URL loading fails before reaching to the server and getting a response, `OnLoadingErrorReceived` will be 
 raised instead.
 """
 notice = """
@@ -2312,6 +2312,11 @@ summary = "A value indicates the loading progress of current page. It is a value
 name = "OnPageErrorReceived"
 syntax = "OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)"
 returnType = "void"
+notice = """
+This event is deprecated. Use `OnLoadingErrorReceived` instead.
+If both `OnPageErrorReceived` and `OnLoadingErrorReceived` are listened, only the new `OnLoadingErrorReceived` will be 
+raised, `OnPageErrorReceived` will not be called.
+"""
 summary = """
 Raised when an error encountered during the loading process. 
 Such as the "host not found" error or "no Internet connection" error will raise this event.
@@ -2344,6 +2349,53 @@ summary = "The error code which indicates the error type. It can be different fr
 name = "errorMessage"
 type = "string"
 summary = "The error message which describes the detail of error."
+
+[[Events]]
+name = "OnLoadingErrorReceived"
+syntax = "OnLoadingErrorReceived(UniWebView webView, int errorCode, string errorMessage, UniWebViewNativeResultPayload payload)"
+returnType = "void"
+summary = """
+Raised when an error encountered during the loading process.
+Such as the "host not found" error or "no Internet connection" error will raise this event.
+"""
+example = """
+```csharp
+webView.OnLoadingErrorReceived += (view, error, message, payload) => {
+    print("Error.");
+    if (payload.Extra != null && 
+        payload.Extra.TryGetValue(UniWebViewNativeResultPayload.ExtraFailingURLKey, out var value)) 
+    {
+        var url = value as string
+        // The `url` contains the failing URL causes the error, if available.
+    }
+};
+
+webView.Load("https://site-not-existing.com/");
+// => "Error."
+
+webView.Load("unknown://host?param1=value1&param2=value2");
+// => "Error."
+
+webView.Load("https://self-signed.badssl.com");
+// => "Error."
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "errorCode"
+type = "int"
+summary = "The error code which indicates the error type. It can be different from systems and platforms."
+[[Events.parameters]]
+name = "errorMessage"
+type = "string"
+summary = "The error message which describes the detail of error."
+[[Events.parameters]]
+name = "payload"
+type = "UniWebViewNativeResultPayload"
+summary = "The payload received from native side, which contains the error information, such as the failing URL, in its `Extra`."
 
 [[Events]]
 name = "OnCaptureSnapshotFinished"
