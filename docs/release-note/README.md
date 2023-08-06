@@ -1,5 +1,20 @@
 # Release Note
 
+### 5.5.0 (6 Aug, 2023)
+
+#### Add
+
+* A new `OnLoadingErrorReceived` event, which is triggered when the web view loading encounters an error. This replaces the original `OnPageErrorReceived` event. The new event contains an additional `payload` parameter, in which some error detail (such as the failing URL) is contained.
+* Add a build option for adding `androidx.core` package in UniWebView's preference panel. This should fix the problem of crashing due to missing class `FileProvider` on Android 11 or above on Android when disabling the `androidx.browser` package. For more about building issues on Android, we also prepared a new [trouble shooting guide page](https://docs.uniwebview.com/guide/trouble-shooting.html).
+
+#### Fix
+
+* A potential issue that cookie values sometimes are not treated correctly when requesting following resource request inside an iframe target.
+
+#### Deprecate
+
+* `OnPageErrorReceived` is now deprecated. Use `OnLoadingErrorReceived` instead.
+
 ### 5.4.3 (26 Jul, 2023)
 
 #### Fix
