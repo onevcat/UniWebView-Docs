@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.5.1 (29 Aug, 2023)
+
+#### Fix
+
+* An issue that causes OAuth 2.0 flow crashing on some browser implementation (such as Firefox and Amazon Silk) which does not provide a correct support. Chrome and some other browsers are not affected. You need a clean build after upgrading to get this fix.
+
 ### 5.5.0 (6 Aug, 2023)
 
 #### Add
