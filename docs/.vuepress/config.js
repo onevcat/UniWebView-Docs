@@ -93,6 +93,7 @@ module.exports = {
             "http-auth",
             "support-new-window",
             "transparency-through",
+            "render-as-texture",
             "webrtc-support",
             "debugging"
           ]
