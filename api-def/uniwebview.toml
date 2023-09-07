@@ -1965,18 +1965,32 @@ random UUID with "png" file extension as the file name.
 
 [[Methods]]
 name = "StartSnapshotForRendering"
-syntax = "StartSnapshotForRendering()"
+syntax = "StartSnapshotForRendering(Rect? rect = null, Action<Texture> onStarted = null)"
 returnType = "void"
 summary = """
 Starts the process of continually rendering the snapshot.
 
-You take the responsibility of calling this method before you use either `GetRenderedData(InRect)` or
-`CreateRenderedTexture(InRect)` to get the rendered data or texture. It prepares a render buffer for the image
+You take the responsibility of calling this method before you use either `GetRenderedData` or
+`CreateRenderedTexture(Rect?)` to get the rendered data or texture. It prepares a render buffer for the image
 data and performs the initial rendering for later use.
 """
 notice = """
-If not called, the related data or texture methods will not work either and only return `null`. Once you do not
-need the web view to be rendered as texture, you should call `StopSnapshotForRendering` to clean the resources.
+If this method is not called, the related data or texture methods will not work and will only return `null`. Once you
+no longer need the web view to be rendered as a texture, you should call `StopSnapshotForRendering` to clean up
+the associated resources.
+"""
+[[Methods.parameters]]
+name = "rect"
+type = "Rect?"
+summary = """
+The optional rectangle to specify the area for rendering. If `null` (by default), the entire view is rendered.
+"""
+[[Methods.parameters]]
+name = "onStarted"
+type = "Action<Texture>"
+summary = """
+An optional callback to execute when rendering has started. The callback receives a `Texture2D` parameter
+representing the rendered texture. This is useful if you want to perform a one-time rendering of the web view.
 """
 
 [[Methods]]
@@ -1986,120 +2000,75 @@ returnType = "void"
 summary = """
 Stops the process of continually rendering the snapshot.
 
-You take the responsibility of calling this method when you do not need any further data or texture from
-`GetRenderedData(InRect)` or `CreateRenderedTexture(InRect)` methods.
+You should call this method when you no longer need any further data or texture from the
+`GetRenderedData` or `CreateRenderedTexture` methods. This helps in releasing
+resources and terminating the rendering process.
 """
 
 [[Methods]]
 name = "GetRenderedData"
-syntax = "GetRenderedData()"
+syntax = "GetRenderedData(Rect? rect = null)"
 returnType = "byte[]"
 summary = """
-Gets the data of rendered image for the current web view.
+Gets the data of the rendered image for the current web view.
 
-This gives you the raw bytes of the rendered image data in PNG format. You should call
-`StartSnapshotForRendering` before you try to use this method to get the current rendered data. Otherwise, this
-method returns `null`.
+This method provides you with the raw bytes of the rendered image data in PNG format. To successfully retrieve the
+current rendered data, you should first call `StartSnapshotForRendering` to initiate the rendering process.
+If `StartSnapshotForRendering` has not been called, this method will return `null`.
+
+The rendering area specified by the `rect` parameter is based on the local coordinates of the web view.
+For example, `new Rect(webView.frame.width / 2, webView.frame.height / 2, 100, 100)` means setting the origin to the
+center of the web view and taking a 100x100 square as the snapshot area.
 """
 returnValue = """
-The raw bytes of the rendered image data in PNG format, or `null` if the rendering process fails or the data
-is not prepared.
+An array of raw bytes representing the rendered image data in PNG format, or `null` if the rendering process fails
+or if the data is not prepared.
 """
 notice = """
-Only software-rendered content is supported. Content rendered by hardware, such as videos and WebGL content, will
-only be rendered as a black rectangle.
-"""
-
-[[Methods]]
-name = "GetRenderedDataInRect"
-syntax = "GetRenderedDataInRect(Rect rect)"
-returnType = "byte[]"
-summary = """
-Gets the data of rendered image for the current web view in the given rect.
-
-This gives you the raw bytes of the rendered image data in PNG format for the give rect area of the web view.
-You should call `StartSnapshotForRendering` before you try to use this method to get the current rendered data.
-Otherwise, this method returns `null`.
-"""
-returnValue = """
-The raw bytes of the rendered image data in PNG format, or `null` if the rendering process fails or the data
-is not prepared.
-"""
-notice = """
-Only software-rendered content is supported. Content rendered by hardware, such as videos and WebGL content, will
-only be rendered as a black rectangle.
+Please note that this method supports only software-rendered content. Content rendered by hardware, such as videos
+and WebGL content, will appear as a black rectangle in the rendered image.
 """
 [[Methods.parameters]]
 name = "rect"
-type = "Rect"
+type = "Rect?"
 summary = """
-The desired rect which the snapshot rendering should happen in the web view.
-
-It is based on the local coordinate of the web view. For example,
-`new Rect(webView.frame.width / 2, webView.frame.height / 2, 100, 100)` means setting origin to the center of
-the web view, taking a 100x100 square as the snapshot area.
+The desired rectangle within which the snapshot rendering should occur in the web view. If default value `null` is used,
+the whole web view frame will be used as the snapshot area.
 """
 
 [[Methods]]
 name = "CreateRenderedTexture"
-syntax = "CreateRenderedTexture()"
+syntax = "CreateRenderedTexture(Rect? rect = null)"
 returnType = "Texture2D"
 summary = """
-Creates a rendered texture for the current web view. 
+Creates a rendered texture for the current web view.
 
-This gives you a texture of the rendered image for the web view, which you can use in your 3D game world.
-You should call `StartSnapshotForRendering` before you try to use this method to get the current rendered data.
-Otherwise, this method returns `null`.
+You should destroy the returned texture using the `Destroy` method when you no longer need it to free up resources.
 
-This returns a plain `Texture2D` object. The texture is not user interactive and can only be used for displaying
-purpose. You take the responsibility to call `Destroy` on this texture when you do not need it anymore.
+This method provides you with a texture of the rendered image for the web view, which you can use in your 3D game world.
+To obtain the current rendered data, you should call `StartSnapshotForRendering` before using this method.
+If `StartSnapshotForRendering` has not been called, this method will return `null`.
+
+This method returns a plain `Texture2D` object. The texture is not user interactive and can only be used for
+display purposes. It is your responsibility to call the `Destroy` method on this texture when you no longer need it.
 
 Check the [Render as Texture](/guide/render-as-texture.html) guide for more.
 """
 notice = """
 You need to destroy the returned texture when you do not need it anymore.
 
-Only software-rendered content is supported. Content rendered by hardware, such as videos and WebGL content, will
-only be rendered as a black rectangle.
-"""
-returnValue = """
-A rendered texture of the current web view, or `null` if the rendering process fails or the data is not prepared.
-"""
-
-[[Methods]]
-name = "CreateRenderedTextureInRect"
-syntax = "CreateRenderedTextureInRect(Rect rect)"
-returnType = "Texture2D"
-summary = """
-Creates a rendered texture for the current web view in the given rect.
-
-This gives you a texture of the rendered image for the web view, which you can use in your 3D game world.
-You should call `StartSnapshotForRendering` before you try to use this method to get the current rendered data.
-Otherwise, this method returns `null`.
-
-This returns a plain `Texture2D` object. The texture is not user interactive and can only be used for displaying
-purpose. You take the responsibility to call `Destroy` on this texture when you do not need it anymore. 
-
-Check the [Render as Texture](/guide/render-as-texture.html) guide for more.
-"""
-notice = """
-You need to destroy the returned texture when you do not need it anymore.
-
-Only software rendered content is supported. Content rendered by hardware, such as videos and WebGL content, will
-only be rendered as a black rectangle.
+Please note that this method supports only software-rendered content. Content rendered by hardware, such as videos
+and WebGL content, will appear as a black rectangle in the rendered image.
 """
 returnValue = """
 A rendered texture of the current web view, or `null` if the rendering process fails or the data is not prepared.
 """
 [[Methods.parameters]]
 name = "rect"
-type = "Rect"
+type = "Rect?"
 summary = """
-The desired rect which the snapshot rendering should happen in the web view.
-
-It is based on the local coordinate of the web view. For example,
-`new Rect(webView.frame.width / 2, webView.frame.height / 2, 100, 100)` means setting origin to the center of
-the web view, taking a 100x100 square as the snapshot area.
+The desired rectangle within which the snapshot rendering should occur in the web view. If default value `null` is used,
+the whole web view frame will be used as the snapshot area.
 """
 
 [[Methods]]

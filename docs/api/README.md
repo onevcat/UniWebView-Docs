@@ -320,23 +320,17 @@ HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#capturesnapshot'><span class='return-type'>void</span> CaptureSnapshot(string fileName)</a></div></td><td><div class='simple-summary'>
 <p>Capture the content of web view and store it to the cache path on disk with the given file name.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> StartSnapshotForRendering()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> StartSnapshotForRendering(Rect? rect = null, Action&lt;Texture&gt; onStarted = null)</a></div></td><td><div class='simple-summary'>
 <p>Starts the process of continually rendering the snapshot.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#stopsnapshotforrendering'><span class='return-type'>void</span> StopSnapshotForRendering()</a></div></td><td><div class='simple-summary'>
 <p>Stops the process of continually rendering the snapshot.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#getrendereddata'><span class='return-type'>byte[]</span> GetRenderedData()</a></div></td><td><div class='simple-summary'>
-<p>Gets the data of rendered image for the current web view.</p>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getrendereddata'><span class='return-type'>byte[]</span> GetRenderedData(Rect? rect = null)</a></div></td><td><div class='simple-summary'>
+<p>Gets the data of the rendered image for the current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#getrendereddatainrect'><span class='return-type'>byte[]</span> GetRenderedDataInRect(Rect rect)</a></div></td><td><div class='simple-summary'>
-<p>Gets the data of rendered image for the current web view in the given rect.</p>
-</div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#createrenderedtexture'><span class='return-type'>Texture2D</span> CreateRenderedTexture()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#createrenderedtexture'><span class='return-type'>Texture2D</span> CreateRenderedTexture(Rect? rect = null)</a></div></td><td><div class='simple-summary'>
 <p>Creates a rendered texture for the current web view.</p>
-</div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#createrenderedtextureinrect'><span class='return-type'>Texture2D</span> CreateRenderedTextureInRect(Rect rect)</a></div></td><td><div class='simple-summary'>
-<p>Creates a rendered texture for the current web view in the given rect.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#scrollto'><span class='return-type'>void</span> ScrollTo(int x, int y, bool animated)</a></div></td><td><div class='simple-summary'>
 <p>Scrolls the web view to a certain point.</p>
@@ -3607,24 +3601,41 @@ webView<span class="token punctuation">.</span><span class="token function">Capt
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='startsnapshotforrendering'></div><div class='api-heading' data-id='startsnapshotforrendering'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> StartSnapshotForRendering()</a></div>
+  <div class="api-anchor" id='startsnapshotforrendering'></div><div class='api-heading' data-id='startsnapshotforrendering'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> StartSnapshotForRendering(Rect? rect = null, Action&lt;Texture&gt; onStarted = null)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
 <p>Starts the process of continually rendering the snapshot.</p>
-<p>You take the responsibility of calling this method before you use either <code>GetRenderedData(InRect)</code> or
-<code>CreateRenderedTexture(InRect)</code> to get the rendered data or texture. It prepares a render buffer for the image
+<p>You take the responsibility of calling this method before you use either <code>GetRenderedData</code> or
+<code>CreateRenderedTexture(Rect?)</code> to get the rendered data or texture. It prepares a render buffer for the image
 data and performs the initial rendering for later use.</p>
 </div>
       <div class='custom-container warning'>
   <p class="custom-container-title">NOTICE</p>
   <p>
-        If not called, the related data or texture methods will not work either and only return <code>null</code>. Once you do not
-need the web view to be rendered as texture, you should call <code>StopSnapshotForRendering</code> to clean the resources.
+        If this method is not called, the related data or texture methods will not work and will only return <code>null</code>. Once you
+no longer need the web view to be rendered as a texture, you should call <code>StopSnapshotForRendering</code> to clean up
+the associated resources.
 
   </p>
 </div>
-                      </div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>Rect?</span> <span class='parameter-item-name'>rect</span></div>
+    <div class='parameter-item-desc'><p>The optional rectangle to specify the area for rendering. If <code>null</code> (by default), the entire view is rendered.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>Action&lt;Texture&gt;</span> <span class='parameter-item-name'>onStarted</span></div>
+    <div class='parameter-item-desc'><p>An optional callback to execute when rendering has started. The callback receives a <code>Texture2D</code> parameter
+representing the rendered texture. This is useful if you want to perform a one-time rendering of the web view.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
   </div>
 </div>
 <div class='api-box method'>
@@ -3633,52 +3644,31 @@ need the web view to be rendered as texture, you should call <code>StopSnapshotF
     <div class='desc'>
       <div class='summary'>
 <p>Stops the process of continually rendering the snapshot.</p>
-<p>You take the responsibility of calling this method when you do not need any further data or texture from
-<code>GetRenderedData(InRect)</code> or <code>CreateRenderedTexture(InRect)</code> methods.</p>
+<p>You should call this method when you no longer need any further data or texture from the
+<code>GetRenderedData</code> or <code>CreateRenderedTexture</code> methods. This helps in releasing
+resources and terminating the rendering process.</p>
 </div>
                             </div>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='getrendereddata'></div><div class='api-heading' data-id='getrendereddata'><a href='#getrendereddata'><span class='return-type'>byte[]</span> GetRenderedData()</a></div>
+  <div class="api-anchor" id='getrendereddata'></div><div class='api-heading' data-id='getrendereddata'><a href='#getrendereddata'><span class='return-type'>byte[]</span> GetRenderedData(Rect? rect = null)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Gets the data of rendered image for the current web view.</p>
-<p>This gives you the raw bytes of the rendered image data in PNG format. You should call
-<code>StartSnapshotForRendering</code> before you try to use this method to get the current rendered data. Otherwise, this
-method returns <code>null</code>.</p>
+<p>Gets the data of the rendered image for the current web view.</p>
+<p>This method provides you with the raw bytes of the rendered image data in PNG format. To successfully retrieve the
+current rendered data, you should first call <code>StartSnapshotForRendering</code> to initiate the rendering process.
+If <code>StartSnapshotForRendering</code> has not been called, this method will return <code>null</code>.</p>
+<p>The rendering area specified by the <code>rect</code> parameter is based on the local coordinates of the web view.
+For example, <code>new Rect(webView.frame.width / 2, webView.frame.height / 2, 100, 100)</code> means setting the origin to the
+center of the web view and taking a 100x100 square as the snapshot area.</p>
 </div>
       <div class='custom-container warning'>
   <p class="custom-container-title">NOTICE</p>
   <p>
-        Only software-rendered content is supported. Content rendered by hardware, such as videos and WebGL content, will
-only be rendered as a black rectangle.
-
-  </p>
-</div>
-            <div class='section-title'>Return Value</div>
-<div class='method-return'><p>The raw bytes of the rendered image data in PNG format, or <code>null</code> if the rendering process fails or the data
-is not prepared.</p>
-</div>
-          </div>
-  </div>
-</div>
-<div class='api-box method'>
-  <div class="api-anchor" id='getrendereddatainrect'></div><div class='api-heading' data-id='getrendereddatainrect'><a href='#getrendereddatainrect'><span class='return-type'>byte[]</span> GetRenderedDataInRect(Rect rect)</a></div>
-  <div class='api-body'>
-    <div class='desc'>
-      <div class='summary'>
-<p>Gets the data of rendered image for the current web view in the given rect.</p>
-<p>This gives you the raw bytes of the rendered image data in PNG format for the give rect area of the web view.
-You should call <code>StartSnapshotForRendering</code> before you try to use this method to get the current rendered data.
-Otherwise, this method returns <code>null</code>.</p>
-</div>
-      <div class='custom-container warning'>
-  <p class="custom-container-title">NOTICE</p>
-  <p>
-        Only software-rendered content is supported. Content rendered by hardware, such as videos and WebGL content, will
-only be rendered as a black rectangle.
+        Please note that this method supports only software-rendered content. Content rendered by hardware, such as videos
+and WebGL content, will appear as a black rectangle in the rendered image.
 
   </p>
 </div>
@@ -3686,33 +3676,32 @@ only be rendered as a black rectangle.
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div class='parameter-item'><span class='parameter-item-type'>Rect</span> <span class='parameter-item-name'>rect</span></div>
-    <div class='parameter-item-desc'><p>The desired rect which the snapshot rendering should happen in the web view.</p>
-<p>It is based on the local coordinate of the web view. For example,
-<code>new Rect(webView.frame.width / 2, webView.frame.height / 2, 100, 100)</code> means setting origin to the center of
-the web view, taking a 100x100 square as the snapshot area.</p>
+    <div class='parameter-item'><span class='parameter-item-type'>Rect?</span> <span class='parameter-item-name'>rect</span></div>
+    <div class='parameter-item-desc'><p>The desired rectangle within which the snapshot rendering should occur in the web view. If default value <code>null</code> is used,
+the whole web view frame will be used as the snapshot area.</p>
 </div>
   </li>
 </ul></div>
 </div>
       <div class='section-title'>Return Value</div>
-<div class='method-return'><p>The raw bytes of the rendered image data in PNG format, or <code>null</code> if the rendering process fails or the data
-is not prepared.</p>
+<div class='method-return'><p>An array of raw bytes representing the rendered image data in PNG format, or <code>null</code> if the rendering process fails
+or if the data is not prepared.</p>
 </div>
           </div>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='createrenderedtexture'></div><div class='api-heading' data-id='createrenderedtexture'><a href='#createrenderedtexture'><span class='return-type'>Texture2D</span> CreateRenderedTexture()</a></div>
+  <div class="api-anchor" id='createrenderedtexture'></div><div class='api-heading' data-id='createrenderedtexture'><a href='#createrenderedtexture'><span class='return-type'>Texture2D</span> CreateRenderedTexture(Rect? rect = null)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Creates a rendered texture for the current web view. </p>
-<p>This gives you a texture of the rendered image for the web view, which you can use in your 3D game world.
-You should call <code>StartSnapshotForRendering</code> before you try to use this method to get the current rendered data.
-Otherwise, this method returns <code>null</code>.</p>
-<p>This returns a plain <code>Texture2D</code> object. The texture is not user interactive and can only be used for displaying
-purpose. You take the responsibility to call <code>Destroy</code> on this texture when you do not need it anymore.</p>
+<p>Creates a rendered texture for the current web view.</p>
+<p>You should destroy the returned texture using the <code>Destroy</code> method when you no longer need it to free up resources.</p>
+<p>This method provides you with a texture of the rendered image for the web view, which you can use in your 3D game world.
+To obtain the current rendered data, you should call <code>StartSnapshotForRendering</code> before using this method.
+If <code>StartSnapshotForRendering</code> has not been called, this method will return <code>null</code>.</p>
+<p>This method returns a plain <code>Texture2D</code> object. The texture is not user interactive and can only be used for
+display purposes. It is your responsibility to call the <code>Destroy</code> method on this texture when you no longer need it.</p>
 <p>Check the <a href="/guide/render-as-texture.html">Render as Texture</a> guide for more.</p>
 </div>
       <div class='custom-container warning'>
@@ -3720,37 +3709,8 @@ purpose. You take the responsibility to call <code>Destroy</code> on this textur
   <p>
         You need to destroy the returned texture when you do not need it anymore.
 
-Only software-rendered content is supported. Content rendered by hardware, such as videos and WebGL content, will
-only be rendered as a black rectangle.
-
-  </p>
-</div>
-            <div class='section-title'>Return Value</div>
-<div class='method-return'><p>A rendered texture of the current web view, or <code>null</code> if the rendering process fails or the data is not prepared.</p>
-</div>
-          </div>
-  </div>
-</div>
-<div class='api-box method'>
-  <div class="api-anchor" id='createrenderedtextureinrect'></div><div class='api-heading' data-id='createrenderedtextureinrect'><a href='#createrenderedtextureinrect'><span class='return-type'>Texture2D</span> CreateRenderedTextureInRect(Rect rect)</a></div>
-  <div class='api-body'>
-    <div class='desc'>
-      <div class='summary'>
-<p>Creates a rendered texture for the current web view in the given rect.</p>
-<p>This gives you a texture of the rendered image for the web view, which you can use in your 3D game world.
-You should call <code>StartSnapshotForRendering</code> before you try to use this method to get the current rendered data.
-Otherwise, this method returns <code>null</code>.</p>
-<p>This returns a plain <code>Texture2D</code> object. The texture is not user interactive and can only be used for displaying
-purpose. You take the responsibility to call <code>Destroy</code> on this texture when you do not need it anymore. </p>
-<p>Check the <a href="/guide/render-as-texture.html">Render as Texture</a> guide for more.</p>
-</div>
-      <div class='custom-container warning'>
-  <p class="custom-container-title">NOTICE</p>
-  <p>
-        You need to destroy the returned texture when you do not need it anymore.
-
-Only software rendered content is supported. Content rendered by hardware, such as videos and WebGL content, will
-only be rendered as a black rectangle.
+Please note that this method supports only software-rendered content. Content rendered by hardware, such as videos
+and WebGL content, will appear as a black rectangle in the rendered image.
 
   </p>
 </div>
@@ -3758,11 +3718,9 @@ only be rendered as a black rectangle.
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
-    <div class='parameter-item'><span class='parameter-item-type'>Rect</span> <span class='parameter-item-name'>rect</span></div>
-    <div class='parameter-item-desc'><p>The desired rect which the snapshot rendering should happen in the web view.</p>
-<p>It is based on the local coordinate of the web view. For example,
-<code>new Rect(webView.frame.width / 2, webView.frame.height / 2, 100, 100)</code> means setting origin to the center of
-the web view, taking a 100x100 square as the snapshot area.</p>
+    <div class='parameter-item'><span class='parameter-item-type'>Rect?</span> <span class='parameter-item-name'>rect</span></div>
+    <div class='parameter-item-desc'><p>The desired rectangle within which the snapshot rendering should occur in the web view. If default value <code>null</code> is used,
+the whole web view frame will be used as the snapshot area.</p>
 </div>
   </li>
 </ul></div>
