@@ -8,15 +8,12 @@ sidebarDepth: 0
 
 ## Can I put some Unity GUI/object above of UniWebView?
 
-No, you can't.
+By default, the UniWebView is a layer of the system UI and is added above the whole Unity view. You can never put your
+elements from Unity above the native web page.
 
-UniWebView is a layer of the system UI and is added above of the whole Unity view. That means it is always floating over your Unity scene. You can never put your elements from Unity above of the web page. However, you can organize the layout of your Unity elements and the web view to make them look good together. With the help of `ReferenceRectTransform`, it should be quite easy. Please check the [Position and Size](./position-and-size.md) guide for detail.
-
-## Can I render web view as an in-game texture?
-
-A typical use of UniWebView is to show something like a game FAQ page, events notification or release note. You can set the size of webview, so you can decide if the Unity game scene can be seen or not, meanwhile keeping interaction on the web view (links or buttons).
-
-Although it is not designed as an in-game texture render solution, if you do not require your web view to be able to interact with, but just for a purely display purpose, you can use the [`CaptureSnapshot`](/api/#capturesnapshot) method to get a static image of the web view, then render it as a Unity texture on your game object.
+However, you can **render the web page to a texture** and use it in your 3D world. In this way, it is possible to put Unity
+elements above the web view. But it comes with some limitations, such as not interactive and no video rendering.
+See the [Render as Texture](/guide/render-as-texture.md) guide for more details.
 
 ## I cannot build for Android after importing UniWebView
 
@@ -93,17 +90,17 @@ You should observe the [EULA of Unity Asset Store](https://unity3d.com/company/l
 
 ## Can I get the source code?
 
-All C# source code of the Unity side is included in the package. But the native side is only distributed in binary format. The source code (Objective-C for iOS and macOS, Kotlin for Android) are not included in the asset store package.
+All C# source code for the Unity side is included in the package. However, the native side is only distributed in binary format. The source code (Objective-C for iOS and macOS, Kotlin for Android) is not included in the asset store package.
 
-If you need the native side source code, we provide a **Source Access License** for our main development repository. We host this project and all its code on GitHub. With the Source Access License, your GitHub account will be added to our repository and you can access or modify the source code as you need. To purchase a Source Access License, check the [price on our website](https://uniwebview.com/#prices).
+If you need access to the native side source code, we offer a **Source Access License** for our main development repository. We host this project and all its code on GitHub. With the Source Access License, your GitHub account will be added to our repository, allowing you to access or modify the source code as needed. To purchase a Source Access License, please check the [pricing on our website](https://uniwebview.com/#prices).
 
 ## How long will I get the free updates for it?
 
-You can buy this package in both our digital store and the Unity Asset Store. Please see our [official site](https://uniwebview.com/#prices) for more. Although you can get full support from either store, we suggest you purchase it from our digital store to get updated versions more quickly.
+You can purchase this package from both our digital store and the Unity Asset Store. Please visit our [official site](https://uniwebview.com/#prices) for more information. While you can receive full support from either store, we recommend buying it from our digital store to receive quicker updates.
 
-You get all minor and patch updates for free until (but not including) the next major version. If there is huge changes in either Unity or the system webview, we might have to introduce breaking changes and maintain (or even re-create) the package for usability and stability. When this occurs, we will release a new major version.
+You will receive all minor and patch updates for free until the next major version (excluding the major version itself). In the event of significant changes in Unity or the system webview, we may need to introduce breaking changes and maintain (or even re-create) the package for improved usability and stability. When this happens, we will release a new major version.
 
-The Source Access License life-time upgrades for free, even for major version upgrades.
+The Source Access License includes free lifetime upgrades, even for major version updates.
 
 ## Can I embed UniWebView in my own assets?
 
