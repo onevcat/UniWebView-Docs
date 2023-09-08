@@ -28,6 +28,7 @@ It boosts your development process dramatically when you need to show an announc
 - [OAuth 2.0 Support](oauth2.md)
 - [Videos, inline or full-screen](playing-videos.md)
 - [Image Picking & Uploading](uploading.md)
+- [Render As Texture](render-as-texture.md)
 - [User Agent & Cookie](/api/#setuseragent)
 - [Allow clicks to pass through](transparency-through.md)
 - [Full Log & Debugging](debugging.md)
