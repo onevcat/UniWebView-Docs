@@ -101,7 +101,7 @@ module.exports = {
         {
           text: "Help Center",
           collapsible: false,
-          children: ["faq", "ticket"]
+          children: ["faq", "trouble-shooting", "ticket"]
         },
         {
           text: "Resources",

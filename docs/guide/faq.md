@@ -20,20 +20,7 @@ Although it is not designed as an in-game texture render solution, if you do not
 
 ## I cannot build for Android after importing UniWebView
 
-In most cases, it might be some errors saying "duplicate class" when exporting for Android. It happens if you have another package already adding the same package UniWebView requires.
-
-UniWebView needs Kotlin and Android X Browser packages as dependencies. By default, UniWebView will detect the Gradle file and add them automatically.
-However, if any other package in your project is already adding the same libraries in an undetectable way (such as embedding them as a part of the library file, or downloading the duplicated package into "Plugins/Android" folder), UniWebView will fail to detect them and
-add duplicated packages.
-
-You can try:
-
-1. If you have an error saying "duplicate class ... androidx.browser", turn off "Adds Android Browser" option in the Preference Panel, to let UniWebView skip adding it again and use the one already in your project.
-2. If you have an error related to "jetified-androidx" packages, turn off "Enable Jetifier".
-3. If you have an error related to "kotlin", turn off "Adds Kotlin".
-4. Then do a Clean Build to make sure the old packages and settings are removed. You can find the Clean Build action in the drop-down Build button in Unity's Build Settings panel.
-
-For more detail, please check the [Installation - Optional Steps](installation.md#importing-package).
+We prepared a [Trouble Shooting guide](./trouble-shooting.md) for this issue. Please check and follow the Android Section there to see if it helps.
 
 ## The page does not load on Android but shows "net::ERR_CLEARTEXT_NOT_PERMITTED".
 
@@ -47,7 +34,7 @@ You can find that option under the "UniWebView" tab of Unity's Preference Panel.
 
 UniWebView is already trying to bring up an intent (trying to open a third-party app if a custom scheme URL is received) internally.
 But UniWebView has to use the [`queryIntentActivities` method](https://developer.android.com/reference/kotlin/android/content/pm/PackageManager#queryintentactivities)
-to check if the target app is existing before opening it.
+to check if the target app exists before opening it.
 
 It worked perfectly without any modification if you are using a Target API Level before Android 11 (Level 31) or on devices with lower system versions.
 But from API Level 31, you have to add the related query to the Android manifest file to allow this querying work. For more details, I suggest you check
