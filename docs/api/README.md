@@ -3804,7 +3804,7 @@ triggered. Check &quot;Download Files&quot; guide for more.</p>
 webView<span class="token punctuation">.</span><span class="token function">AddDownloadURL</span><span class="token punctuation">(</span><span class="token string">"https://example.com/file.pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment">// You can also use a regular expression.</span>
-webView<span class="token punctuation">.</span><span class="token function">AddDownloadURL</span><span class="token punctuation">(</span><span class="token string">"https://example.com/file*"</span><span class="token punctuation">,</span> UniWebViewDownloadMatchingType<span class="token punctuation">.</span>RegularExpression<span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">AddDownloadURL</span><span class="token punctuation">(</span><span class="token string">"^https://example\.com/file\.pdf.*$"</span><span class="token punctuation">,</span> UniWebViewDownloadMatchingType<span class="token punctuation">.</span>RegularExpression<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -3879,7 +3879,7 @@ download task will be triggered. Check &quot;Download Files&quot; guide for more
 webView<span class="token punctuation">.</span><span class="token function">AddDownloadMIMEType</span><span class="token punctuation">(</span><span class="token string">"application/pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment">// You can also use a regular expression.</span>
-webView<span class="token punctuation">.</span><span class="token function">AddDownloadMIMEType</span><span class="token punctuation">(</span><span class="token string">"image/*"</span><span class="token punctuation">,</span> UniWebViewDownloadMatchingType<span class="token punctuation">.</span>RegularExpression<span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">AddDownloadMIMEType</span><span class="token punctuation">(</span><span class="token string">"^image/.*$"</span><span class="token punctuation">,</span> UniWebViewDownloadMatchingType<span class="token punctuation">.</span>RegularExpression<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>

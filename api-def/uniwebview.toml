@@ -2119,7 +2119,7 @@ example = """
 webView.AddDownloadURL("https://example.com/file.pdf");
 
 // You can also use a regular expression.
-webView.AddDownloadURL("https://example.com/file*", UniWebViewDownloadMatchingType.RegularExpression);
+webView.AddDownloadURL("^https://example\\.com/file\\.pdf.*$", UniWebViewDownloadMatchingType.RegularExpression);
 ```
 """
 [[Methods.parameters]]
@@ -2188,7 +2188,7 @@ example = """
 webView.AddDownloadMIMEType("application/pdf");
 
 // You can also use a regular expression.
-webView.AddDownloadMIMEType("image/*", UniWebViewDownloadMatchingType.RegularExpression);
+webView.AddDownloadMIMEType("^image/.*$", UniWebViewDownloadMatchingType.RegularExpression);
 ```
 """
 [[Methods.parameters]]
