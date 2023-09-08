@@ -1,10 +1,22 @@
 # Release Note
 
+### 5.6.0 (8 Sep, 2023)
+
+#### Add
+
+* New feature of rendering the web view to a texture. Now you can use `CreateRenderedTexture` to render the web view to a texture and use it in the game world. Check [this guide](https://docs.uniwebview.com/guide/render-to-texture.html) for more information and the implementation steps.
+
+#### Fix
+
+* Replace using of `NameValueCollection` in OAuth flows to prevent potential issues with different .Net versions.
+* An issue that a crash may happen when adding downloading URL or MIME type with `UniWebViewDownloadMatchingType.RegularExpression` option.
+
+
 ### 5.5.1 (29 Aug, 2023)
 
 #### Fix
 
-* An issue that causes OAuth 2.0 flow crashing on some browser implementation (such as Firefox and Amazon Silk) which does not provide a correct support. Chrome and some other browsers are not affected. You need a clean build after upgrading to get this fix.
+* An issue that causes OAuth 2.0 flow crash on some browser implementations (such as Firefox and Amazon Silk) which does not provide the correct support. Chrome and some other browsers are not affected. You need a clean build after upgrading to get this fix.
 
 ### 5.5.0 (6 Aug, 2023)
 
