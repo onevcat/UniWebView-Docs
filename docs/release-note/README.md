@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.6.1 (9 Sep, 2023)
+
+#### Fix
+
+* A compile error when using UniWebView on Windows Editor introduced in 5.6.0. Now you should be able to compile the project on Windows Editor. Mac Editor is not affected.
+
 ### 5.6.0 (8 Sep, 2023)
 
 #### Add
