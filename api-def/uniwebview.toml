@@ -880,9 +880,11 @@ name = "SetEnableKeyboardAvoidance"
 syntax = "SetEnableKeyboardAvoidance(bool flag)"
 returnType = "void"
 summary = """
-Sets whether the web view area should avoid soft keyboard. It `true`, when the keyboard shows up, the web views
+Sets whether the web view area should avoid soft keyboard. If `true`, when the keyboard shows up, the web views
 content view will resize itself to avoid keyboard overlap the web content. Otherwise, the web view will not resize
 and just leave the content below under the soft keyboard.
+
+Default is `true`.
 """
 notice = """
 This method is only for Android. On iOS, the keyboard avoidance is built into the system directly and there is 

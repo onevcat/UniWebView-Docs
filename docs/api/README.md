@@ -2237,9 +2237,10 @@ would be able to read your sandbox. So we DO NOT recommend to enable it before y
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Sets whether the web view area should avoid soft keyboard. It <code>true</code>, when the keyboard shows up, the web views
+<p>Sets whether the web view area should avoid soft keyboard. If <code>true</code>, when the keyboard shows up, the web views
 content view will resize itself to avoid keyboard overlap the web content. Otherwise, the web view will not resize
 and just leave the content below under the soft keyboard.</p>
+<p>Default is <code>true</code>.</p>
 </div>
       <div class='custom-container warning'>
   <p class="custom-container-title">NOTICE</p>
