@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.6.2 (29 Sep, 2023)
+
+#### Fix
+
+* Support for Android 14. Solve a crash when setting Android 14 (API Level 34) as the target SDK for the game, and opening a web view on Android 14 devices.
+
 ### 5.6.1 (9 Sep, 2023)
 
 #### Fix
