@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.6.3 (4 Oct, 2023)
+
+#### Fix
+
+* An issue that the web view disappears when switching back to foreground in some newer Unity versions (2021.3.31f1, 2022.3.10f1, 2023.3.0a1). This is a regression of the particular Unity versions when it tries to fix [UUM-30881](https://issuetracker.unity3d.com/issues/android-a-black-screen-appears-for-a-few-seconds-when-returning-to-the-game-from-the-lock-screen-after-idle-time).
+
 ### 5.6.2 (29 Sep, 2023)
 
 #### Fix
