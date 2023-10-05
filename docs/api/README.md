@@ -207,6 +207,9 @@ are added to the adjusted content inset.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#cleancache'><span class='return-type'>void</span> CleanCache()</a></div></td><td><div class='simple-summary'>
 <p>Cleans web view cache.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setforwardwebconsoletonativeoutput'><span class='return-type'>void</span> SetForwardWebConsoleToNativeOutput(bool flag)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the web page console output should be forwarded to native console.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
 <p>Sets a cookie for a certain url.</p>
 </div>
@@ -2558,6 +2561,64 @@ webView<span class="token punctuation">.</span><span class="token function">SetD
 <p>If you need to clear all cookies, use <code>ClearCookies</code> instead.</p>
 </div>
                             </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setforwardwebconsoletonativeoutput'></div><div class='api-heading' data-id='setforwardwebconsoletonativeoutput'><a href='#setforwardwebconsoletonativeoutput'><span class='return-type'>void</span> SetForwardWebConsoleToNativeOutput(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether the web page console output should be forwarded to native console.</p>
+<p>By setting this to <code>true</code>, UniWebView will try to intercept the web page console output methods and forward
+them to the native console, for example, Xcode console on iOS, Android logcat on Android and Unity Console when
+using Unity Editor on macOS. It provides a way to debug the web page by using the native console without opening
+the web inspector. The forwarded logs in native side contains a &quot;&lt;UniWebView-Web&gt;&quot; tag. </p>
+<p>Logs from the methods below will be forwarded:</p>
+<ul>
+<li>console.log</li>
+<li>console.warn</li>
+<li>console.error</li>
+<li>console.debug</li>
+</ul>
+</div>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        Default is <code>false</code>. You need to set it before you create a web view instance to apply this setting. Any existing
+web views are not affected.
+
+  </p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
+    <div class='parameter-item-desc'><p>Whether the web page console output should be forwarded to native output.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Do it before you create the web view.</span>
+UniWebView<span class="token punctuation">.</span><span class="token function">SetForwardWebConsoleToNativeOutput</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Create a new web view.</span>
+<span class="token class-name"><span class="token keyword">var</span></span> webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddComponent</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ...</span>
+<span />
+<span class="token comment">// Later, in the web page JavaScript.</span>
+<span class="token return-type class-name">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello from web page!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span />
+<span class="token comment">// "Hello from web page!" will be printed in the native console.</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>

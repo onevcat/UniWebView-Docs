@@ -1147,6 +1147,54 @@ returnType = "void"
 summary = "Cleans web view cache. This removes cached local data of web view.\n\nIf you need to clear all cookies, use `ClearCookies` instead."
 
 [[Methods]]
+name = "SetForwardWebConsoleToNativeOutput"
+syntax = "SetForwardWebConsoleToNativeOutput(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the web page console output should be forwarded to native console.
+
+By setting this to `true`, UniWebView will try to intercept the web page console output methods and forward
+them to the native console, for example, Xcode console on iOS, Android logcat on Android and Unity Console when
+using Unity Editor on macOS. It provides a way to debug the web page by using the native console without opening
+the web inspector. The forwarded logs in native side contains a "&lt;UniWebView-Web&gt;" tag. 
+
+Logs from the methods below will be forwarded:
+
+- console.log
+- console.warn
+- console.error
+- console.debug
+"""
+notice = """
+Default is `false`. You need to set it before you create a web view instance to apply this setting. Any existing
+web views are not affected.
+"""
+example = """
+```csharp
+// Do it before you create the web view.
+UniWebView.SetForwardWebConsoleToNativeOutput(true);
+
+// Create a new web view.
+var webView = gameObject.AddComponent<UniWebView>();
+// ...
+
+// Later, in the web page JavaScript.
+function sayHello() {
+  console.log("Hello from web page!");
+}
+
+// "Hello from web page!" will be printed in the native console.
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the web page console output should be forwarded to native output."
+[[Methods.badges]]
+name = "static"
+color = "blue"
+
+[[Methods]]
 name = "SetCookie"
 syntax = "SetCookie(string url, string cookie, bool skipEncoding)"
 returnType = "void"
