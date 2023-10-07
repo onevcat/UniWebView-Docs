@@ -79,7 +79,7 @@ as well as receive a message from the web view.
 <p>Raised when the screen orientation is changed.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onwebcontentprocessterminated'><span class='return-type'>void</span> OnWebContentProcessTerminated(UniWebView webView)</a></div></td><td><div class='simple-summary'>
-<p>Raised when on iOS, when system calls <code>webViewWebContentProcessDidTerminate</code> method.</p>
+<p>On iOS, raise when the system calls <code>webViewWebContentProcessDidTerminate</code> method.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onmultiplewindowopened'><span class='return-type'>void</span> OnMultipleWindowOpened(UniWebView webView, string multipleWindowId)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a new window is opened.</p>
@@ -1094,13 +1094,16 @@ webView<span class="token punctuation">.</span>OnOrientationChanged <span class=
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onwebcontentprocessterminated'></div><div class='api-heading' data-id='onwebcontentprocessterminated'><a href='#onwebcontentprocessterminated'><span class='return-type'>void</span> OnWebContentProcessTerminated(UniWebView webView)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='onwebcontentprocessterminated'></div><div class='api-heading' data-id='onwebcontentprocessterminated'><a href='#onwebcontentprocessterminated'><span class='return-type'>void</span> OnWebContentProcessTerminated(UniWebView webView)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Raised when on iOS, when system calls <code>webViewWebContentProcessDidTerminate</code> method. 
-It is usually due to a low memory when loading the web content and leaves you a blank white screen. 
-You need to free as much as the memory you could and then do a page reload.</p>
+<p>On iOS, raise when the system calls <code>webViewWebContentProcessDidTerminate</code> method. On Android, raise when the
+system calls <code>onRenderProcessGone</code> method.</p>
+<p>It is usually due to a low memory or the render process crashes when loading the web content. When this happens,
+the web view will leave you a blank white screen.</p>
+<p>Usually you should close the web view and clean all the resource since there is no good way to restore. In some
+cases, you can also try to free as much as memory and do a page <code>Reload</code>.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>

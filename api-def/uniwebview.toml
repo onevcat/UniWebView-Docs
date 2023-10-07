@@ -2781,9 +2781,14 @@ name = "OnWebContentProcessTerminated"
 syntax = "OnWebContentProcessTerminated(UniWebView webView)"
 returnType = "void"
 summary = """
-Raised when on iOS, when system calls `webViewWebContentProcessDidTerminate` method. 
-It is usually due to a low memory when loading the web content and leaves you a blank white screen. 
-You need to free as much as the memory you could and then do a page reload.
+On iOS, raise when the system calls `webViewWebContentProcessDidTerminate` method. On Android, raise when the
+system calls `onRenderProcessGone` method.
+
+It is usually due to a low memory or the render process crashes when loading the web content. When this happens,
+the web view will leave you a blank white screen.
+
+Usually you should close the web view and clean all the resource since there is no good way to restore. In some
+cases, you can also try to free as much as memory and do a page `Reload`.
 """
 example = """
 ```csharp
@@ -2796,9 +2801,6 @@ webView.OnWebContentProcessTerminated += (view) => {
 };
 ```
 """
-[[Events.badges]]
-name = "iOS"
-color = "orange"
 [[Events.parameters]]
 name = "webView"
 type = "UniWebView"
