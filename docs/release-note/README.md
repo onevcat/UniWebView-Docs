@@ -1,5 +1,17 @@
 # Release Note
 
+### 5.7.0 (25 Oct, 2023)
+
+#### Add
+
+* A new `SetForwardWebConsoleToNativeOutput` method which enables forwarding the web console log (such as `console.log` or `console.error`) to the native log output. On iOS, it prints the log to Xcode console, on Android to the Android logcat, and on macOS Editor to the Unity console. This is useful for debugging issues from the web page.
+* Now the `OnWebContentProcessTerminated` event will also be invoked when the render process is gone on Android (when the `OnRenderProcessGone` event is raise). This is a new behavior on Android 11 and above and the default handling will only prevent the whole app crash. You need to implement this event and 
+try to release resource and/or perform a reload to recover.
+
+#### Fix
+
+* An issue that the keyboard avoidance behavior on Android is not working properly and contains an undesired offset when the web view is not placed at the top of the screen.
+
 ### 5.6.3 (4 Oct, 2023)
 
 #### Fix
