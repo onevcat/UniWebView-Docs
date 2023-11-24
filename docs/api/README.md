@@ -2524,15 +2524,18 @@ to the the text zoom used in the web view.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setdraginteractionenabled'></div><div class='api-heading' data-id='setdraginteractionenabled'><a href='#setdraginteractionenabled'><span class='return-type'>void</span> SetDragInteractionEnabled(bool enabled)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='setdraginteractionenabled'></div><div class='api-heading' data-id='setdraginteractionenabled'><a href='#setdraginteractionenabled'><span class='return-type'>void</span> SetDragInteractionEnabled(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
 <p>Sets whether the drag interaction should be enabled on iOS.</p>
-<p>From iOS 11, the iPad web view supports the drag interaction when user long presses an image, link or text.
+<p>From iOS 11, the web view on iOS supports the drag interaction when user long presses an image, link or text.
 Setting this to <code>false</code> would disable the drag feather on the web view.</p>
-<p>This method only works on iOS. It does nothing on Android or macOS editor. Default is <code>true</code>, which means
-drag interaction on iPad is enabled.</p>
+<p>On Android, there is no direct native way to disable drag only. This method instead disables the long touch
+event, which is used as a trigger for drag interaction. So, setting this to <code>false</code> would disable the long
+touch gesture as a side effect. </p>
+<p>It does nothing on macOS editor. Default is <code>true</code>, which means drag interaction is enabled if the device and
+system version supports it.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>

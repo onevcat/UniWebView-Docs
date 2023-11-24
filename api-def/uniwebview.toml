@@ -1121,7 +1121,7 @@ Sets whether the drag interaction should be enabled on iOS.
 
 From iOS 11, the web view on iOS supports the drag interaction when user long presses an image, link or text.
 Setting this to `false` would disable the drag feather on the web view.
-    ///
+
 On Android, there is no direct native way to disable drag only. This method instead disables the long touch
 event, which is used as a trigger for drag interaction. So, setting this to `false` would disable the long
 touch gesture as a side effect. 

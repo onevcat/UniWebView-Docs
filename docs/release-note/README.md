@@ -1,5 +1,13 @@
 # Release Note
 
+### 5.7.1 (24 Nov, 2023)
+
+#### Fix
+
+* The `SetDragInteractionEnabled` method also works on Android now. It allows you to disable the drag interaction on Android devices which support drag and drop gesture.
+* Mark several methods in `UniWebViewAuthenticationFlowCustomize` as `virtual` to allow overriding them in subclasses.
+* Now the OAuth 2.0 flow will ignore the letter case when receiving the response code URL from server. It allows you register the redirect URL with different letter case in the OAuth provider and in UniWebView.
+
 ### 5.7.0 (25 Oct, 2023)
 
 #### Add
