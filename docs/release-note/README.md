@@ -1,12 +1,18 @@
 # Release Note
 
+### 5.7.2 (4 Dec, 2023)
+
+#### Fix
+
+* A potential issue that on some Android browser implementation, the OAuth support crashes due to a "null activity handler found!" error. Now UniWebView will use a workaround to prevent the crash.
+
 ### 5.7.1 (24 Nov, 2023)
 
 #### Fix
 
-* The `SetDragInteractionEnabled` method also works on Android now. It allows you to disable the drag interaction on Android devices which support drag and drop gesture.
+* The `SetDragInteractionEnabled` method also works on Android now. It allows you to disable the drag interaction on Android devices that support drag and drop gesture.
 * Mark several methods in `UniWebViewAuthenticationFlowCustomize` as `virtual` to allow overriding them in subclasses.
-* Now the OAuth 2.0 flow will ignore the letter case when receiving the response code URL from server. It allows you register the redirect URL with different letter case in the OAuth provider and in UniWebView.
+* Now the OAuth 2.0 flow will ignore the letter case when receiving the response code URL from the server. It allows you register the redirect URL with different letter case in the OAuth provider and in UniWebView.
 
 ### 5.7.0 (25 Oct, 2023)
 
@@ -36,7 +42,7 @@ try to release resource and/or perform a reload to recover.
 
 #### Fix
 
-* A compile error when using UniWebView on Windows Editor introduced in 5.6.0. Now you should be able to compile the project on Windows Editor. Mac Editor is not affected.
+* A compile error when using UniWebView on Windows Editor was introduced in 5.6.0. Now you should be able to compile the project on Windows Editor. Mac Editor is not affected.
 
 ### 5.6.0 (8 Sep, 2023)
 
