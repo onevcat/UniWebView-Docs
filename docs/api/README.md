@@ -538,7 +538,7 @@ webView<span class="token punctuation">.</span>Alpha <span class="token operator
 <p>Represents the embedded toolbar in the current web view.</p>
 <p>A toolbar is a built-in area inside the web view, shown at the top or bottom of the web view. It contains navigation buttons
 like &quot;Back&quot; and &quot;Forward&quot;, as well as a &quot;Done&quot; button to close the web view. You can use APIs under <code>UniWebViewEmbeddedToolbar</code> 
-to customize the toolbar. See its APIs for more details.</p>
+to customize the toolbar. See <a href="/api/UniWebViewEmbeddedToolbar.html">its APIs</a> for more details.</p>
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
@@ -3171,7 +3171,14 @@ hides the status bar and navigation bar with a sticky style.</p>
 parameters, you can control the animating and position of the toolbar. If the toolbar is overlapping with some part of your web view, pass <code>adjustInset</code> with <code>true</code> to have the web view relocating itself to avoid the overlap.</p>
 <p>This method is only for iOS. The toolbar is hidden by default.</p>
 </div>
-            <div class='parameters'>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        This method is deprecated. Use <code>EmbeddedToolbar.Show()</code> or <code>EmbeddedToolbar.Hide()</code> instead. See <a href="/guide/embedded-toolbar.html">EmbeddedToolbar</a> for more information.
+
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
@@ -3221,7 +3228,14 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
 <p>By default, UniWebView will show a &quot;Done&quot; button at bottom-right corner in the toolbar. You could change its title by passing a text.</p>
 <p>This method is only for iOS since there is no toolbar on Android.</p>
 </div>
-            <div class='parameters'>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        This method is deprecated. Use <code>EmbeddedToolbar.SetDoneButtonText</code> instead. See <a href="/guide/embedded-toolbar.html">EmbeddedToolbar</a> for more information.
+
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
@@ -3250,7 +3264,14 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
 <p>By default, UniWebView will show a back arrow at the left side in the toolbar. You could change its text.</p>
 <p>This method is only for iOS and macOS Editor, since there is no toolbar on Android.</p>
 </div>
-            <div class='parameters'>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        This method is deprecated. Use <code>EmbeddedToolbar.SetGoBackButtonText</code> instead. See <a href="/guide/embedded-toolbar.html">EmbeddedToolbar</a> for more information.
+
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
@@ -3279,7 +3300,14 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
 <p>By default, UniWebView will show a forward arrow at the left side in the toolbar. You could change its text.</p>
 <p>This method is only for iOS and macOS Editor, since there is no toolbar on Android.</p>
 </div>
-            <div class='parameters'>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        This method is deprecated. Use <code>EmbeddedToolbar.SetGoForwardButtonText</code> instead. See <a href="/guide/embedded-toolbar.html">EmbeddedToolbar</a> for more information.
+
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
@@ -3310,7 +3338,14 @@ Users can use these buttons to perform go back or go forward action just like in
 model is not for your case, call this method with <code>false</code> as <code>show</code> parameter to hide them.</p>
 <p>This method is only for iOS, since there is no toolbar on Android.</p>
 </div>
-            <div class='parameters'>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        This method is deprecated. Use <code>EmbeddedToolbar.ShowNavigationButtons</code> or <code>EmbeddedToolbar.HideNavigationButtons</code> instead. See <a href="/guide/embedded-toolbar.html">EmbeddedToolbar</a> for more information.
+
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
@@ -3333,7 +3368,14 @@ model is not for your case, call this method with <code>false</code> as <code>sh
 You can change it by setting a new opaque color.</p>
 <p>This method is only for iOS, since there is no toolbar on Android.</p>
 </div>
-            <div class='parameters'>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        This method is deprecated. Use <code>EmbeddedToolbar.SetBackgroundColor</code> instead. See <a href="/guide/embedded-toolbar.html">EmbeddedToolbar</a> for more information.
+
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
@@ -3356,7 +3398,14 @@ You can change it by setting a new opaque color.</p>
 You can change it by setting a new opaque color.</p>
 <p>This method is only for iOS, since there is no toolbar on Android.</p>
 </div>
-            <div class='parameters'>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        This method is deprecated. Use <code>EmbeddedToolbar.SetButtonTextColor</code> or <code>EmbeddedToolbar.SetTitleTextColor</code> instead. See <a href="/guide/embedded-toolbar.html">EmbeddedToolbar</a> for more information.
+
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>

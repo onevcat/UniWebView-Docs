@@ -154,7 +154,7 @@ Represents the embedded toolbar in the current web view.
 
 A toolbar is a built-in area inside the web view, shown at the top or bottom of the web view. It contains navigation buttons
 like "Back" and "Forward", as well as a "Done" button to close the web view. You can use APIs under `UniWebViewEmbeddedToolbar` 
-to customize the toolbar. See its APIs for more details.
+to customize the toolbar. See [its APIs](/api/UniWebViewEmbeddedToolbar.html) for more details.
 """
 example = """
 ```csharp
@@ -1598,6 +1598,9 @@ parameters, you can control the animating and position of the toolbar. If the to
 
 This method is only for iOS. The toolbar is hidden by default.
 """
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.Show()` or `EmbeddedToolbar.Hide()` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
+"""
 example = """
 ```csharp
 // Show a toolbar at top of screen with animation.
@@ -1640,6 +1643,9 @@ By default, UniWebView will show a "Done" button at bottom-right corner in the t
 
 This method is only for iOS since there is no toolbar on Android.
 """
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.SetDoneButtonText` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
+"""
 example = """
 ```csharp
 webView.SetToolbarDoneButtonText("关闭");
@@ -1663,6 +1669,9 @@ Sets the go back button text in toolbar.
 By default, UniWebView will show a back arrow at the left side in the toolbar. You could change its text.
 
 This method is only for iOS and macOS Editor, since there is no toolbar on Android.
+"""
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.SetGoBackButtonText` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
 """
 example = """
 ```csharp
@@ -1690,6 +1699,9 @@ Sets the go forward button text in toolbar.
 By default, UniWebView will show a forward arrow at the left side in the toolbar. You could change its text.
 
 This method is only for iOS and macOS Editor, since there is no toolbar on Android.
+"""
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.SetGoForwardButtonText` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
 """
 example = """
 ```csharp
@@ -1720,6 +1732,9 @@ model is not for your case, call this method with `false` as `show` parameter to
 
 This method is only for iOS, since there is no toolbar on Android.
 """
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.ShowNavigationButtons` or `EmbeddedToolbar.HideNavigationButtons` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
+"""
 [[Methods.badges]]
 name = "iOS"
 color = "orange"
@@ -1743,6 +1758,9 @@ You can change it by setting a new opaque color.
 
 This method is only for iOS, since there is no toolbar on Android.
 """
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.SetBackgroundColor` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
+"""
 [[Methods.badges]]
 name = "iOS"
 color = "orange"
@@ -1762,6 +1780,9 @@ By default, UniWebView uses the default text color on iOS, which is blue for mos
 You can change it by setting a new opaque color.
 
 This method is only for iOS, since there is no toolbar on Android.
+"""
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.SetButtonTextColor` or `EmbeddedToolbar.SetTitleTextColor` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
 """
 [[Methods.badges]]
 name = "iOS"

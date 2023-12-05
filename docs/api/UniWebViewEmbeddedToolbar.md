@@ -77,7 +77,16 @@ class to customize the toolbar to match your app's style.
   </li>
 </ul></div>
 </div>
-                </div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Sets the web view shows the toolbar at the bottom.</span>
+webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetPosition</span><span class="token punctuation">(</span>UniWebViewToolbarPosition<span class="token punctuation">.</span>Bottom<span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
@@ -87,7 +96,14 @@ class to customize the toolbar to match your app's style.
       <div class='summary'>
 <p>Shows the toolbar.</p>
 </div>
-                            </div>
+                        <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
@@ -97,7 +113,14 @@ class to customize the toolbar to match your app's style.
       <div class='summary'>
 <p>Hides the toolbar.</p>
 </div>
-                            </div>
+                        <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">Hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
@@ -118,7 +141,14 @@ class to customize the toolbar to match your app's style.
   </li>
 </ul></div>
 </div>
-                </div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetDoneButtonText</span><span class="token punctuation">(</span><span class="token string">"关闭"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
@@ -139,7 +169,14 @@ class to customize the toolbar to match your app's style.
   </li>
 </ul></div>
 </div>
-                </div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetDoneButtonText</span><span class="token punctuation">(</span><span class="token string">"返回"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
@@ -160,7 +197,14 @@ class to customize the toolbar to match your app's style.
   </li>
 </ul></div>
 </div>
-                </div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetDoneButtonText</span><span class="token punctuation">(</span><span class="token string">"前进"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
@@ -182,7 +226,14 @@ not fit in the space.</p>
   </li>
 </ul></div>
 </div>
-                </div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetDoneButtonText</span><span class="token punctuation">(</span><span class="token string">"My Game"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
@@ -202,7 +253,14 @@ not fit in the space.</p>
   </li>
 </ul></div>
 </div>
-                </div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetBackgroundColor</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span>yellow<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
@@ -223,7 +281,14 @@ not fit in the space.</p>
   </li>
 </ul></div>
 </div>
-                </div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetButtonTextColor</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span>red<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
@@ -243,7 +308,14 @@ not fit in the space.</p>
   </li>
 </ul></div>
 </div>
-                </div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetTitleTextColor</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span>blue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
@@ -255,7 +327,15 @@ not fit in the space.</p>
 <p>When called, the back button and forward button will not be shown. 
 By default, the navigation buttons are shown.</p>
 </div>
-                            </div>
+                        <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Do not show the navigation buttons (go back and go forward).</span>
+webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">HideNavigationButtons</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>
