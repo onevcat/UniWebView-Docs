@@ -1,18 +1,31 @@
 # Release Note
 
+### 5.7.3
+
+#### Fix
+
+* The context menu image downloading now should work correctly on Android 14.
+* An issue that the downloading URL was converted to lower case when triggering a context menu download on Android.
+* Refine the gradle properties file patcher to not add a trailing new line when patching the file.
+* A potential vulnerability scanner warning that the file provider can read files from a wider scope than needed.
+
+#### Deprecate
+
+* Completely mark the legacy toolbar related methods as deprecated. Use the new embedded toolbar instead whenever possible.
+
 ### 5.7.2 (4 Dec, 2023)
 
 #### Fix
 
-* A potential issue that on some Android browser implementation, the OAuth support crashes due to a "null activity handler found!" error. Now UniWebView will use a workaround to prevent the crash.
+* A potential issue on some Android browser implementations, the OAuth support crashes due to a "null activity handler found!" error. Now UniWebView will use a workaround to prevent the crash.
 
 ### 5.7.1 (24 Nov, 2023)
 
 #### Fix
 
-* The `SetDragInteractionEnabled` method also works on Android now. It allows you to disable the drag interaction on Android devices that support drag and drop gesture.
+* The `SetDragInteractionEnabled` method also works on Android now. It allows you to disable the drag interaction on Android devices that support drag-and-drop gesture.
 * Mark several methods in `UniWebViewAuthenticationFlowCustomize` as `virtual` to allow overriding them in subclasses.
-* Now the OAuth 2.0 flow will ignore the letter case when receiving the response code URL from the server. It allows you register the redirect URL with different letter case in the OAuth provider and in UniWebView.
+* Now the OAuth 2.0 flow will ignore the letter case when receiving the response code URL from the server. It allows you to register the redirect URL with different letter cases in the OAuth provider and UniWebView.
 
 ### 5.7.0 (25 Oct, 2023)
 
@@ -20,7 +33,7 @@
 
 * A new `SetForwardWebConsoleToNativeOutput` method which enables forwarding the web console log (such as `console.log` or `console.error`) to the native log output. On iOS, it prints the log to Xcode console, on Android to the Android logcat, and on macOS Editor to the Unity console. This is useful for debugging issues from the web page.
 * Now the `OnWebContentProcessTerminated` event will also be invoked when the render process is gone on Android (when the `OnRenderProcessGone` event is raise). This is a new behavior on Android 11 and above and the default handling will only prevent the whole app crash. You need to implement this event and 
-try to release resource and/or perform a reload to recover.
+try to release resources and/or perform a reload to recover.
 
 #### Fix
 
