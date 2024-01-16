@@ -80,7 +80,7 @@ UniWebView can work well on all supported platforms with both Unity Personal and
 
 ## Is there a trial version?
 
-No, we don't provide a trial currently. That is mainly because there is no good way to protect a Unity package without harming the experience of our customers. Instead of a trial version, we promise a no-reason refund if you decide not to use it in your project. Just send us your invoice number and mail address and we will issue a refund for you.
+No, we don't provide a trial currently. That is mainly because there is no good way to protect a Unity package without harming the experience of our customers. Instead of a trial version, we promise a no-reason refund if you decide not to use it in your project. If you purchased in Unity Asset Store, you can request a refund in your Order History. If you purchased from our Gumroad Store, just send us your invoice number and mail address and we will issue a refund for you.
 
 ## What's the license type?
 
