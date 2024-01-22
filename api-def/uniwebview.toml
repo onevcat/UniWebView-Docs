@@ -1141,6 +1141,30 @@ type = "bool"
 summary = "Whether the drag interaction should be enabled."
 
 [[Methods]]
+name = "SetCacheMode"
+syntax = "SetCacheMode(UniWebViewCacheMode mode)"
+returnType = "void"
+summary = """
+Sets the way of how the cache is used when loading a request.
+
+This controls the loading behavior of whether the cache should be used or how to use it for the first request of the 
+`Load` method. The default value is `UniWebViewCacheMode.Default`. See the [`UniWebViewCacheMode`](/api/UniWebViewCacheMode.html) enum for more.
+"""
+example = """
+```csharp
+// Set the cache mode to only load from cache but not from network.
+// If no cache is available, the loading will fail.
+webView.SetCacheMode(UniWebViewCacheMode.CacheOnly);
+webView.Load("https://example.com");
+```
+"""
+[[Methods.parameters]]
+name = "mode"
+type = "UniWebViewCacheMode"
+summary = "The desired cache mode that the request loading should be used in this web view."
+
+
+[[Methods]]
 name = "CleanCache"
 syntax = "CleanCache()"
 returnType = "void"
@@ -2361,7 +2385,7 @@ webView.RegisterShouldHandleRequest(request => {
     return false;
   }
 
-  // For other URLs, return `true` and UniWebView can continue to load.
+  // For other URLs, return `true` and UniWebView can continue to load as usual.
   return true;
 });
 ```

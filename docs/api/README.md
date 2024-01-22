@@ -204,6 +204,9 @@ are added to the adjusted content inset.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setdraginteractionenabled'><span class='return-type'>void</span> SetDragInteractionEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the drag interaction should be enabled on iOS.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setcachemode'><span class='return-type'>void</span> SetCacheMode(UniWebViewCacheMode mode)</a></div></td><td><div class='simple-summary'>
+<p>Sets the way of how the cache is used when loading a request.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#cleancache'><span class='return-type'>void</span> CleanCache()</a></div></td><td><div class='simple-summary'>
 <p>Cleans web view cache.</p>
 </div>
@@ -2559,6 +2562,37 @@ webView<span class="token punctuation">.</span><span class="token function">SetD
   </div>
 </div>
 <div class='api-box method'>
+  <div class="api-anchor" id='setcachemode'></div><div class='api-heading' data-id='setcachemode'><a href='#setcachemode'><span class='return-type'>void</span> SetCacheMode(UniWebViewCacheMode mode)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the way of how the cache is used when loading a request.</p>
+<p>This controls the loading behavior of whether the cache should be used or how to use it for the first request of the 
+<code>Load</code> method. The default value is <code>UniWebViewCacheMode.Default</code>. See the <a href="/api/UniWebViewCacheMode.html"><code>UniWebViewCacheMode</code></a> enum for more.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewCacheMode</span> <span class='parameter-item-name'>mode</span></div>
+    <div class='parameter-item-desc'><p>The desired cache mode that the request loading should be used in this web view.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Set the cache mode to only load from cache but not from network. If no cache is available, the loading will fail.</span>
+webView<span class="token punctuation">.</span><span class="token function">SetCacheMode</span><span class="token punctuation">(</span>UniWebViewCacheMode<span class="token punctuation">.</span>CacheOnly<span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class="api-anchor" id='cleancache'></div><div class='api-heading' data-id='cleancache'><a href='#cleancache'><span class='return-type'>void</span> CleanCache()</a></div>
   <div class='api-body'>
     <div class='desc'>
@@ -4111,7 +4145,7 @@ to indicate whether UniWebView should continue to load the request or not as soo
     <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span />
-  <span class="token comment">// For other URLs, return `true` and UniWebView can continue to load.</span>
+  <span class="token comment">// For other URLs, return `true` and UniWebView can continue to load as usual.</span>
   <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>

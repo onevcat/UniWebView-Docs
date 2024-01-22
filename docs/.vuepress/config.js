@@ -245,6 +245,10 @@ module.exports = {
                 text: "UniWebViewDownloadMatchingType",
                 link: "uniwebviewdownloadmatchingtype"
               },
+              {
+                text: "UniWebViewCacheMode",
+                link: "UniWebViewCacheMode"
+              }
             ]
           },
           {
