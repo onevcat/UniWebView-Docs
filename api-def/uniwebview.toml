@@ -2335,6 +2335,32 @@ name = "macOS"
 color = "purple"
 
 [[Methods]]
+name = "SetAllowUserChooseActionAfterDownloading"
+syntax = "SetAllowUserChooseActionAfterDownloading(bool allowed)"
+returnType = "void"
+summary = """
+Sets whether allowing users to choose the way to handle the downloaded file. Default is `true`.
+
+On iOS, the downloaded file will be stored in a temporary folder. Setting this to `true` will show a system 
+default share sheet and give the user a chance to send and store the file to another location (such as the 
+File app or iCloud).
+
+On macOS Editor, setting this to `true` will allow UniWebView to open the file in Finder.
+
+This method does not have any effect on Android. On Android, the file is downloaded to the app's Download folder.
+"""
+[[Methods.parameters]]
+name = "allowed"
+type = "bool"
+summary = "Whether the user can choose the way to handle the downloaded file."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
+[[Methods]]
 name = "SetDownloadEventForContextMenuEnabled"
 syntax = "SetDownloadEventForContextMenuEnabled(bool enabled)"
 returnType = "void"
