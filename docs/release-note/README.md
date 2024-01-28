@@ -1,6 +1,15 @@
 # Release Note
 
-### 5.7.3
+### 5.8.0 (28 Jan, 2024)
+
+#### Add
+
+* Supporting of specifying the cache mode used when loading a request. You can now use `SetCacheMode` and pick a `UniWebViewCacheMode` policy to determine whether and how to use the cache data when loading a request.
+* Adopt to use `AndroidProjectFilesModifier` to modify the exported Android project from Unity 2023.2. This prevents some potential edge issues when exporting the project if another custom Gradle template is used.
+* Supporting of the data URI on the page. Now the links starting with `data:` is treated as a valid URL and it trigger a standard downloading process.
+* Add a method `SetAllowUserEditFileNameBeforeDownloading` to provide a more customizable way of downloading. By setting it with `false`, UniWebView will skip the file name editing step and use the default file name instead, and start the downloading immediately.
+
+### 5.7.3 (25 Dec, 2023)
 
 #### Fix
 
