@@ -26,8 +26,8 @@ sidebarDepth: 0
       <div class='summary'>
 <p>The web view holder of this listener.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         It will be linked to original web view so you should never set it yourself.
   </p>

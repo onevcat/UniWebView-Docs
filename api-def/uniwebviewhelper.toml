@@ -28,8 +28,6 @@ For example, if you placed an HTML file under `Assets/StreamingAssets/www/index.
 name = "static"
 color = "blue"
 
-
-
 [[Methods]]
 name = "PersistentDataURLForPath"
 syntax = "PersistentDataURLForPath(string path)"

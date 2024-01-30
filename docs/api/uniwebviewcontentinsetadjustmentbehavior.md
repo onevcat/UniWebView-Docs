@@ -13,7 +13,7 @@ sidebarDepth: 0
 <p>Automatically adjust the scroll view insets.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#scrollableaxes'><span class='return-type'>UniWebViewContentInsetAdjustmentBehavior</span> ScrollableAxes { get; }</a></div></td><td><div class='simple-summary'>
-<p>Adjust the insets only in the scrollable directions.</p>
+<p>Adjust the insets only in the scroll-able directions.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#never'><span class='return-type'>UniWebViewContentInsetAdjustmentBehavior</span> Never { get; }</a></div></td><td><div class='simple-summary'>
 <p>Do not adjust the scroll view insets.</p>
@@ -40,7 +40,7 @@ sidebarDepth: 0
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Adjust the insets only in the scrollable directions.</p>
+<p>Adjust the insets only in the scroll-able directions.</p>
 </div>
                 </div>
   </div>

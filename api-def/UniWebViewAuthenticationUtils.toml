@@ -1,0 +1,89 @@
+title = "UniWebViewAuthenticationUtils"
+file = "UniWebViewAuthenticationUtils"
+
+summary = """
+This class provides some helper utils for performing the authentication flow.
+
+They are used inside the built-in flows, but you can also use them to implement your own flow.
+"""
+
+[[Methods]]
+name = "GenerateRandomBase64String"
+syntax = "GenerateRandomBase64String()"
+returnType = "string"
+returnValue = "A random Base64 encoded string."
+summary = "Generates a random Base64 encoded string."
+[[Methods.badges]]
+name = "static"
+color = "blue"
+
+[[Methods]]
+name = "GenerateRandomBase64URLString"
+syntax = "GenerateRandomBase64URLString()"
+returnType = "string"
+returnValue = "A random Base64URL encoded string."
+summary = "Generates a random Base64URL encoded string."
+[[Methods.badges]]
+name = "static"
+color = "blue"
+
+[[Methods]]
+name = "ConvertToBase64URLString"
+syntax = "ConvertToBase64URLString(string input)"
+returnType = "string"
+returnValue = "A string with Base64URL encoded for the input."
+summary = "Converts a Base64 encoded string to a Base64URL encoded string."
+[[Methods.parameters]]
+name = "input"
+type = "string"
+summary = "The Base64 encoded string."
+[[Methods.badges]]
+name = "static"
+color = "blue"
+
+
+[[Methods]]
+name = "ConvertToBase64String"
+syntax = "ConvertToBase64String(string input)"
+returnType = "string"
+returnValue = "A string with Base64 encoded for the input."
+summary = "Converts a Base64URL encoded string to a Base64 encoded string."
+[[Methods.parameters]]
+name = "input"
+type = "string"
+summary = "The Base64URL encoded string."
+[[Methods.badges]]
+name = "static"
+color = "blue"
+
+[[Methods]]
+name = "GenerateCodeVerifier"
+syntax = "GenerateCodeVerifier(int length)"
+returnType = "string"
+returnValue = "A generated code verifier for PKCE usage."
+summary = "Generates a code verifier for PKCE usage."
+[[Methods.parameters]]
+name = "length"
+type = "int"
+summary = "The length of the target code verifier. Default is 64."
+[[Methods.badges]]
+name = "static"
+color = "blue"
+
+[[Methods]]
+name = "CalculateCodeChallenge"
+syntax = "CalculateCodeChallenge(string codeVerifier, UniWebViewAuthenticationPKCE method)"
+returnType = "string"
+returnValue = "The result of the code challenge."
+summary = "Calculates the code challenge for PKCE usage, with a given code verifier and hash method."
+[[Methods.parameters]]
+name = "codeVerifier"
+type = "string"
+summary = "The code verifier you generated."
+[[Methods.parameters]]
+name = "method"
+type = "UniWebViewAuthenticationPKCE"
+summary = "The hash method you want to use."
+[[Methods.badges]]
+name = "static"
+color = "blue"

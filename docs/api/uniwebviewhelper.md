@@ -25,7 +25,7 @@ sidebarDepth: 0
     <div class='desc'>
       <div class='summary'>
 <p>Get the local streaming asset path for a given file path related to the StreamingAssets folder.</p>
-<p>This method will help you to concat a URL string for a file under your StreamingAssets folder for different platforms.</p>
+<p>This method will help you to create a URL string for a file under your StreamingAssets folder for different platforms.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -40,9 +40,11 @@ sidebarDepth: 0
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token keyword">var</span> url <span class="token operator">=</span> UniWebViewHelper<span class="token punctuation">.</span><span class="token function">StreamingAssetURLForPath</span><span class="token punctuation">(</span><span class="token string">"www/localHTML.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> url <span class="token operator">=</span> UniWebViewHelper<span class="token punctuation">.</span><span class="token function">StreamingAssetURLForPath</span><span class="token punctuation">(</span><span class="token string">"www/localHTML.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -53,7 +55,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
     <div class='desc'>
       <div class='summary'>
 <p>Get the local persistent data path for a given file path related to the data folder of your host app.</p>
-<p>This method will help you to concat a URL string for a file under you stored in the <code>persistentDataPath</code>.</p>
+<p>This method will help you to create a URL string for a file under you stored in the <code>persistentDataPath</code>.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -67,9 +69,11 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token keyword">var</span> url <span class="token operator">=</span> UniWebViewHelper<span class="token punctuation">.</span><span class="token function">PersistentDataURLForPath</span><span class="token punctuation">(</span><span class="token string">"www/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> url <span class="token operator">=</span> UniWebViewHelper<span class="token punctuation">.</span><span class="token function">PersistentDataURLForPath</span><span class="token punctuation">(</span><span class="token string">"www/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>

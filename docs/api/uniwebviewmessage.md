@@ -44,13 +44,15 @@ Represents a message sent from web content back to Unity. Whenever you want to s
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>RawMessage<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"uniwebview://action?key=value&amp;anotherKey=value"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
-<span class="token comment" spellcheck="true">// => "uniwebview://action?key=value&amp;anotherKey=value"</span>
+<span class="token comment">// => "uniwebview://action?key=value&amp;anotherKey=value"</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -65,22 +67,24 @@ by default. You can add your own scheme by using <code>UniWebView.AddUrlScheme</
 </div>
             <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Scheme<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"uniwebview://action?key=value&amp;anotherKey=value"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
-<span class="token comment" spellcheck="true">// => "uniwebview"</span>
+<span class="token comment">// => "uniwebview"</span>
 <span />
-<span class="token comment" spellcheck="true">// Use a customized scheme.</span>
+<span class="token comment">// Use a customized scheme.</span>
 anotherWebView<span class="token punctuation">.</span><span class="token function">AddUrlScheme</span><span class="token punctuation">(</span><span class="token string">"myscheme"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-anotherWebView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+anotherWebView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Scheme<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 anotherWebView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"myscheme://action"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
-<span class="token comment" spellcheck="true">// => "myscheme"</span>
+<span class="token comment">// => "myscheme"</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -92,27 +96,29 @@ anotherWebView<span class="token punctuation">.</span><span class="token functio
       <div class='summary'>
 <p>The path of this UniWebViewMessage.</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
         This will be the decoded value for the path of original url.
   </p>
 </div>
       <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp">webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Scheme<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Path<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"uniwebview://action?key=value&amp;anotherKey=value"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// => "action"</span>
+<span class="token comment">// => "action"</span>
 <span />
-<span class="token comment" spellcheck="true">// Encoded path</span>
-webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Scheme<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Encoded path</span>
+webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Path<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"uniwebview://%e8%b7%af%e5%be%84?key=value&amp;anotherKey=value"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// => "路径"</span>
+<span class="token comment">// => "路径"</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>
@@ -127,37 +133,39 @@ a dictionary. </p>
 <p>When received url &quot;uniwebview://yourPath?param1=value1&amp;param2=value2&quot;, 
 the args is a <code>Dictionary</code> with: Args[&quot;param1&quot;] = value1, Args[&quot;param2&quot;] = value2</p>
 </div>
-      <div class='warning custom-block'>
-  <p class="custom-block-title">NOTICE</p>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
   <p>
-        Both the key and valud will be url decoded from the original url.
+        Both the key and value will be url decoded from the original url.
   </p>
 </div>
       <div class='example'>
     <p class='example-title'>Example</p>
-<pre v-pre="" data-lang="csharp"><code class="lang-csharp"><span class="token comment" spellcheck="true">// Basic key-value args</span>
-webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Basic key-value args</span>
+webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Args<span class="token punctuation">[</span><span class="token string">"key"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Args<span class="token punctuation">[</span><span class="token string">"anotherKey"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"uniwebview://action?key=value&amp;anotherKey=anotherValue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// => "value"</span>
-<span class="token comment" spellcheck="true">// => "anotherValue"</span>
+<span class="token comment">// => "value"</span>
+<span class="token comment">// => "anotherValue"</span>
 <span />
-<span class="token comment" spellcheck="true">// With the same key</span>
-webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+<span class="token comment">// With the same key</span>
+webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Args<span class="token punctuation">[</span><span class="token string">"key"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> message <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UniWebViewMessage</span><span class="token punctuation">(</span><span class="token string">"uniwebview://sample_message?key=1&amp;key=2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// => "1,2"</span>
+<span class="token class-name"><span class="token keyword">var</span></span> message <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">UniWebViewMessage</span><span class="token punctuation">(</span><span class="token string">"uniwebview://sample_message?key=1&amp;key=2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// => "1,2"</span>
 <span />
-<span class="token comment" spellcheck="true">// With encoded key and value</span>
-webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+<span class="token comment">// With encoded key and value</span>
+webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>Args<span class="token punctuation">[</span><span class="token string">"键"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> message <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UniWebViewMessage</span><span class="token punctuation">(</span>"uniwebview<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>sample_message<span class="token operator">?</span><span class="token operator">%</span>E9<span class="token operator">%</span><span class="token number">94</span><span class="token operator">%</span>AE<span class="token operator">=</span><span class="token operator">%</span>E5<span class="token operator">%</span><span class="token number">80</span><span class="token operator">%</span>BC<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// => "值"</span>
+<span class="token class-name"><span class="token keyword">var</span></span> message <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">UniWebViewMessage</span><span class="token punctuation">(</span>"uniwebview<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>sample_message<span class="token punctuation">?</span><span class="token operator">%</span>E9<span class="token operator">%</span><span class="token number">94</span><span class="token operator">%</span>AE<span class="token operator">=</span><span class="token operator">%</span>E5<span class="token operator">%</span><span class="token number">80</span><span class="token operator">%</span>BC<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// => "值"</span>
 </code></pre>
+</div>
 </div>
     </div>
   </div>

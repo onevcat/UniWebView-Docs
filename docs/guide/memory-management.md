@@ -1,14 +1,14 @@
 # Memory Management
 
-Memory is a key limitation on mobile platforms. We designed and checked the memory management carefully to make sure there is no unintended memory usage or leaking. To keep your game fast and with small memory footprint, you may need to follow some rules below.
+Memory is a key limitation on mobile platforms. We designed and checked the memory management carefully to make sure there is no unintended memory usage or leaking. To keep your game fast and with a small memory footprint, please follow the rules below.
 
 ### Destroy the web view once you do not need it
 
 A common mistake when using UniWebView is keeping creating new web views without destroying the unused ones.
 
-Once you do not use a web view component, we strongly suggest to destroy it as soon as possible. To destroy a web view, just pass it to `Destroy` method of Unity. After it gets destroyed, you may also need to reset any reference to it for code safe:
+Once you do not use a web view component, we strongly suggest to destroy it as soon as possible. To close and destroy a web view, pass it to the Unity's `Destroy` method. Also reset any reference to it for code safe:
 
-```csharp
+```csharp{5-6}
 public class MyMonoBehaviour : MonoBehaviour {
     UniWebView webView = //... You set the web view as a member somewhere
 
@@ -19,9 +19,9 @@ public class MyMonoBehaviour : MonoBehaviour {
 }
 ```
 
-If there is a chance that the holder component of the web view (here, a `MyMonoBehaviour` component in this example) get destroyed, you may also want to add `OnDestroy` to `MyMonoBehaviour` and close the web view to preventing leaking:
+If there is a chance that the holder component of the web view (here, the `MyMonoBehaviour`) get destroyed, also add `OnDestroy` to `MyMonoBehaviour` and close the web view:
 
-```csharp
+```csharp{9-11}
 public class MyMonoBehaviour : MonoBehaviour {
     UniWebView webView = //... You set the web view as a member somewhere
 
@@ -36,15 +36,19 @@ public class MyMonoBehaviour : MonoBehaviour {
 }
 ```
 
-Besides of destroying the web view, there is also a `Hide` method which could make the web view invisible. However, take notice that the `Hide` method is only a visual effect and the hidden web view is still there, of course taking memory. You still need to call `Destroy` on the hidden web view to release the memory. In fact, we suggest you always destroy the web view as soon as possible after a browsing session completes. You could always create a new web view when you need and use it for a new browsing action.
+#### Hide Or Destroy
+
+There is a `Hide` method which makes the web view invisible. However, the `Hide` method is only for visual effect: the hidden web view is still there, and of course, taking memory. If you are not going to show the page again, `Destroy` it instead of calling `Hide`.
+
+We suggest you always destroy the web view as soon as possible after a browsing session completes. You could always create a new web view when you need it a new browsing action.
 
 ### Reset web view reference to avoid error
 
-On Android, the user could close web view by device back button, and on iOS, there is a Done button in the toolbar to do so. For either case, if you are holding a reference of the web view in your script, you need to reset it to `null`, otherwise, you may encounter an issue saying that you are trying to access a destroyed component later.
+On Android, the user can close the web view with the back button on the device. On iOS, there is also a "Done" button in the toolbar. For either case, if you are holding a reference of the web view in your script, you need to reset it to `null` when the web view is closed.
 
-To do so, add a listener to `OnShouldClose` event, which either Android and iOS would call when closing a web view from user action. There you could set the reference to web view back to `null`:
+Add a listener to `OnShouldClose` event, which either Android and iOS would call when the web view is going to be closed by a user action. There you can set the reference to web view back to `null`:
 
-```csharp
+```csharp{6-9}
 public class MyMonoBehaviour : MonoBehaviour {
     UniWebView webView;
 
@@ -58,11 +62,11 @@ public class MyMonoBehaviour : MonoBehaviour {
 }
 ```
 
-This also gives you a chance to override the closing operation. If you return `false` in the event callback, the web view will not be closed.
+> This event also gives you a chance to override the closing operation. If you return `false` in the event action, the web view will not be closed.
 
-And in other parts in `MyMonoBehaviour` which is using the `webView`, you might want to check whether the `webView` is `null` before using it:
+In other parts in `MyMonoBehaviour` which is using the `webView`, keep in mind that the web view might be already gone. Perform `null` check before using it:
 
-```csharp
+```csharp{5}
 public class MyMonoBehaviour : MonoBehaviour {
     UniWebView webView;
 
@@ -76,7 +80,7 @@ public class MyMonoBehaviour : MonoBehaviour {
 
 ### Clean cache when you are not using it
 
-While your user browsing the Internet, it will create some cache, including cached images and response, or the web page stores something in local storage. Although it will not take memory in most cases, if you are not using the cache in your case, you could just call `CleanCache` to purge them.
+While your user browsing the Internet, it will create some cache, including cached images and responses. The web page might also store things in the local storage. Although it will not take memory in most cases, if you are not using the cache in your case, call `CleanCache` to purge them at a proper time:
 
 ```csharp
 webView.CleanCache();
