@@ -2494,6 +2494,8 @@ and the web view will always prompt the user for the permission.
 """
 example = """
 ```csharp
+using System.Linq;
+
 webView.RegisterOnRequestMediaCapturePermission((permission) => {
     // Allow the access without asking, if it is from "https://my-domain.com", and only trying to access the camera.
     string[] expected = {"VIDEO"};
