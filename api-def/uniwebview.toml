@@ -1499,17 +1499,29 @@ returnType = "void"
 summary = """
 Adds a trusted domain to white list and allow permission requests from the domain.
 
-You only need this on Android devices with the system before 6.0 when a site needs the location or camera permission. It will allow the permission gets approved so you could access the corresponding devices.
-From Android 6.0, the permission requests method is changed and this is not needed anymore.
+You need this on Android devices when a site needs the location or camera  permission. It will allow the
+permission gets approved so you could access the corresponding devices.
+"""
+notice = """
+Deprecated. Use `RegisterOnRequestMediaCapturePermission` instead, which works for both Android and iOS. It also 
+provides a more flexible way to handle the permission requests. By default, if neither this method and
+`RegisterOnRequestMediaCapturePermission` is called, the permission request will trigger a grant alert to ask
+the user to decide whether to allow or deny the permission.
 """
 example = """
 ```csharp
+// Deprecated. Do not do it anymore.
 webView.AddPermissionTrustDomain("my-own-site.com");
+
+// Instead, use this:
+webView.RegisterOnRequestMediaCapturePermission((request) => {
+    if (request.Host == "my-own-site.com") {
+        return UniWebViewMediaCapturePermissionDecision.Grant;
+    } else {
+        return UniWebViewMediaCapturePermissionDecision.Prompt;
+    }
+});
 ```
-"""
-notice = """This method is not the same to `AddSslExceptionDomain`, 
-which is for bypassing SSL checking. You only need this method when 
-you have trouble in granting users' permission. It is not needed on iOS.
 """
 [[Methods.badges]]
 name = "Android"
@@ -2451,6 +2463,63 @@ Unregisters the method handler for handling request received by the web view.
 
 This clears the handler registered by `RegisterHandlingRequest` method.
 """
+
+[[Methods]]
+name = "RegisterOnRequestMediaCapturePermission"
+syntax = "RegisterOnRequestMediaCapturePermission(Func<UniWebViewChannelMethodMediaCapturePermission, UniWebViewMediaCapturePermissionDecision> handler)"
+returnType = "void"
+summary = """
+Registers a method handler for deciding whether UniWebView should allow a media request from the web page or
+not.
+
+The handler is called when the web view receives a request to capture media, such as camera or microphone. It
+usually happens when the web view is trying to access the camera or microphone by using the "getUserMedia" APIs
+in WebRTC. You can check the request properties in the input `UniWebViewChannelMethodMediaCapturePermission`
+instance, which contains information like the media type, the request origin (protocol and host), then decide
+whether this media request should be allowed or not.
+
+According to the `UniWebViewMediaCapturePermissionDecision` value you return from the handler function,
+UniWebView behaves differently:
+ 
+- `Grant`: UniWebView allows the access without asking the user.
+- `Deny`: UniWebView forbids the access and the web page will receive an error.
+- `Prompt`: UniWebView asks the user for permission. The web page will receive a prompt to ask the user if they
+allow the access to the requested media resources (camera or/and microphone).
+
+If this method is never called or the handler is unregistered, UniWebView will prompt the user for the
+permission.
+
+On iOS, this method is available from iOS 15.0 or later. On earlier version of iOS, the handler will be ignored
+and the web view will always prompt the user for the permission.
+"""
+example = """
+```csharp
+webView.RegisterOnRequestMediaCapturePermission((permission) => {
+    // Allow the access without asking, if it is from "https://my-domain.com", and only trying to access the camera.
+    string[] expected = {"VIDEO"};
+    if (permission.Protocol == "https" && 
+        permission.Host == "my-domain.com" && 
+        permission.Resources.SequenceEqual(expected)
+    ) {
+        return UniWebViewMediaCapturePermissionDecision.Grant;
+    } else {
+        // Otherwise, prompt the user for the permission. (This is also the default behavior.)
+        return UniWebViewMediaCapturePermissionDecision.Prompt;
+    }
+});
+```
+"""
+[[Methods.parameters]]
+name = "handler"
+type = "Func<UniWebViewChannelMethodMediaCapturePermission, UniWebViewMediaCapturePermissionDecision>"
+summary = """
+A handler you can implement your own logic to decide whether UniWebView should allow, deny or prompt the media
+resource access request.
+
+You need to return a `UniWebViewMediaCapturePermissionDecision` value to indicate the decision as soon as
+possible.
+"""
+
 
 [[Events]]
 name = "OnPageStarted"
