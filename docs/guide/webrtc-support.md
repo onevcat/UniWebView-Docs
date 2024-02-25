@@ -99,4 +99,13 @@ webView.Load("https://webrtc.github.io/samples/");
 If you have a certain host that you trust and want to allow the hardware access by default without showing the prompt alert, you can use the `RegisterOnRequestMediaCapturePermission` to handle the request by yourself.
 
 Check the related [API documentation](/api/#registeronrequestmediacapturepermission) for more details.
+
+```csharp
+webView.RegisterOnRequestMediaCapturePermission((permission) => {
+    if (permission.Host == "webrtc.github.io") {
+        return UniWebViewMediaCapturePermissionDecision.Grant;
+    }
+    return UniWebViewMediaCapturePermissionDecision.Prompt;
+});
+```
 :::
