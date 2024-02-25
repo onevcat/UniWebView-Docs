@@ -2522,6 +2522,15 @@ You need to return a `UniWebViewMediaCapturePermissionDecision` value to indicat
 possible.
 """
 
+[[Methods]]
+name = "UnregisterOnRequestMediaCapturePermission"
+syntax = "UnregisterOnRequestMediaCapturePermission()"
+returnType = "void"
+summary = """
+Unregisters the method handler for handling media capture permission request.
+
+This clears the handler registered by `RegisterOnRequestMediaCapturePermission` method.
+"""
 
 [[Events]]
 name = "OnPageStarted"

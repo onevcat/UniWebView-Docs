@@ -369,6 +369,13 @@ saving action triggered by the callout (context) menu on Android.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#unregistershouldhandlerequest'><span class='return-type'>void</span> UnregisterShouldHandleRequest()</a></div></td><td><div class='simple-summary'>
 <p>Unregisters the method handler for handling request received by the web view.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#registeronrequestmediacapturepermission'><span class='return-type'>void</span> RegisterOnRequestMediaCapturePermission(Func&lt;UniWebViewChannelMethodMediaCapturePermission, UniWebViewMediaCapturePermissionDecision&gt; handler)</a></div></td><td><div class='simple-summary'>
+<p>Registers a method handler for deciding whether UniWebView should allow a media request from the web page or
+not.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#unregisteronrequestmediacapturepermission'><span class='return-type'>void</span> UnregisterOnRequestMediaCapturePermission()</a></div></td><td><div class='simple-summary'>
+<p>Unregisters the method handler for handling media capture permission request.</p>
+</div>
 </td></tr></table>
 
 ### Properties
@@ -3060,15 +3067,16 @@ the spinner when the loading starts.</p>
     <div class='desc'>
       <div class='summary'>
 <p>Adds a trusted domain to white list and allow permission requests from the domain.</p>
-<p>You only need this on Android devices with the system before 6.0 when a site needs the location or camera permission. It will allow the permission gets approved so you could access the corresponding devices.
-From Android 6.0, the permission requests method is changed and this is not needed anymore.</p>
+<p>You need this on Android devices when a site needs the location or camera  permission. It will allow the
+permission gets approved so you could access the corresponding devices.</p>
 </div>
       <div class='custom-container warning'>
   <p class="custom-container-title">NOTICE</p>
   <p>
-        This method is not the same to <code>AddSslExceptionDomain</code>, 
-which is for bypassing SSL checking. You only need this method when 
-you have trouble in granting users&#39; permission. It is not needed on iOS.
+        Deprecated. Use <code>RegisterOnRequestMediaCapturePermission</code> instead, which works for both Android and iOS. It also 
+provides a more flexible way to handle the permission requests. By default, if neither this method and
+<code>RegisterOnRequestMediaCapturePermission</code> is called, the permission request will trigger a grant alert to ask
+the user to decide whether to allow or deny the permission.
 
   </p>
 </div>
@@ -3085,7 +3093,17 @@ you have trouble in granting users&#39; permission. It is not needed on iOS.
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">AddPermissionTrustDomain</span><span class="token punctuation">(</span><span class="token string">"my-own-site.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code><span class="token comment">// Deprecated. Do not do it anymore.</span>
+webView<span class="token punctuation">.</span><span class="token function">AddPermissionTrustDomain</span><span class="token punctuation">(</span><span class="token string">"my-own-site.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Instead, use this:</span>
+webView<span class="token punctuation">.</span><span class="token function">RegisterOnRequestMediaCapturePermission</span><span class="token punctuation">(</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span>Host <span class="token operator">==</span> <span class="token string">"my-own-site.com"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> UniWebViewMediaCapturePermissionDecision<span class="token punctuation">.</span>Grant<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> UniWebViewMediaCapturePermissionDecision<span class="token punctuation">.</span>Prompt<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -4218,6 +4236,79 @@ to indicate whether UniWebView should continue to load the request or not as soo
       <div class='summary'>
 <p>Unregisters the method handler for handling request received by the web view.</p>
 <p>This clears the handler registered by <code>RegisterHandlingRequest</code> method.</p>
+</div>
+                            </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='registeronrequestmediacapturepermission'></div><div class='api-heading' data-id='registeronrequestmediacapturepermission'><a href='#registeronrequestmediacapturepermission'><span class='return-type'>void</span> RegisterOnRequestMediaCapturePermission(Func&lt;UniWebViewChannelMethodMediaCapturePermission, UniWebViewMediaCapturePermissionDecision&gt; handler)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Registers a method handler for deciding whether UniWebView should allow a media request from the web page or
+not.</p>
+<p>The handler is called when the web view receives a request to capture media, such as camera or microphone. It
+usually happens when the web view is trying to access the camera or microphone by using the &quot;getUserMedia&quot; APIs
+in WebRTC. You can check the request properties in the input <code>UniWebViewChannelMethodMediaCapturePermission</code>
+instance, which contains information like the media type, the request origin (protocol and host), then decide
+whether this media request should be allowed or not.</p>
+<p>According to the <code>UniWebViewMediaCapturePermissionDecision</code> value you return from the handler function,
+UniWebView behaves differently:</p>
+<ul>
+<li><code>Grant</code>: UniWebView allows the access without asking the user.</li>
+<li><code>Deny</code>: UniWebView forbids the access and the web page will receive an error.</li>
+<li><code>Prompt</code>: UniWebView asks the user for permission. The web page will receive a prompt to ask the user if they
+allow the access to the requested media resources (camera or/and microphone).</li>
+</ul>
+<p>If this method is never called or the handler is unregistered, UniWebView will prompt the user for the
+permission.</p>
+<p>On iOS, this method is available from iOS 15.0 or later. On earlier version of iOS, the handler will be ignored
+and the web view will always prompt the user for the permission.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>Func&lt;UniWebViewChannelMethodMediaCapturePermission, UniWebViewMediaCapturePermissionDecision&gt;</span> <span class='parameter-item-name'>handler</span></div>
+    <div class='parameter-item-desc'><p>A handler you can implement your own logic to decide whether UniWebView should allow, deny or prompt the media
+resource access request.</p>
+<p>You need to return a <code>UniWebViewMediaCapturePermissionDecision</code> value to indicate the decision as soon as
+possible.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Linq</span><span class="token punctuation">;</span>
+<span />
+webView<span class="token punctuation">.</span><span class="token function">RegisterOnRequestMediaCapturePermission</span><span class="token punctuation">(</span><span class="token punctuation">(</span>permission<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// Allow the access without asking, if it is from "https://my-domain.com", and only trying to access the camera.</span>
+    <span class="token class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> expected <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"VIDEO"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>permission<span class="token punctuation">.</span>Protocol <span class="token operator">==</span> <span class="token string">"https"</span> <span class="token operator">&amp;&amp;</span> 
+        permission<span class="token punctuation">.</span>Host <span class="token operator">==</span> <span class="token string">"my-domain.com"</span> <span class="token operator">&amp;&amp;</span> 
+        permission<span class="token punctuation">.</span>Resources<span class="token punctuation">.</span><span class="token function">SequenceEqual</span><span class="token punctuation">(</span>expected<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> UniWebViewMediaCapturePermissionDecision<span class="token punctuation">.</span>Grant<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Otherwise, prompt the user for the permission. (This is also the default behavior.)</span>
+        <span class="token keyword">return</span> UniWebViewMediaCapturePermissionDecision<span class="token punctuation">.</span>Prompt<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='unregisteronrequestmediacapturepermission'></div><div class='api-heading' data-id='unregisteronrequestmediacapturepermission'><a href='#unregisteronrequestmediacapturepermission'><span class='return-type'>void</span> UnregisterOnRequestMediaCapturePermission()</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Unregisters the method handler for handling media capture permission request.</p>
+<p>This clears the handler registered by <code>RegisterOnRequestMediaCapturePermission</code> method.</p>
 </div>
                             </div>
   </div>
