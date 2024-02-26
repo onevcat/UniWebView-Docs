@@ -1536,6 +1536,10 @@ name = "RemovePermissionTrustDomain"
 syntax = "RemovePermissionTrustDomain(string domain)"
 returnType = "void"
 summary = "Removes a trusted domain from white list."
+notice = """
+Deprecated. If you previously registered a media capture permission request handler through 
+`RegisterOnRequestMediaCapturePermission`, use `UnregisterOnRequestMediaCapturePermission` to cancel it.
+"""
 [[Methods.badges]]
 name = "Android"
 color = "green"

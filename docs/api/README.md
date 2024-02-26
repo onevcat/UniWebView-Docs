@@ -3117,7 +3117,15 @@ webView<span class="token punctuation">.</span><span class="token function">Regi
       <div class='summary'>
 <p>Removes a trusted domain from white list.</p>
 </div>
-            <div class='parameters'>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        Deprecated. If you previously registered a media capture permission request handler through 
+<code>RegisterOnRequestMediaCapturePermission</code>, use <code>UnregisterOnRequestMediaCapturePermission</code> to cancel it.
+
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
