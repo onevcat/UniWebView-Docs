@@ -223,6 +223,10 @@ module.exports = {
               {
                 text: "UniWebViewChannelMethodHandleRequest",
                 link: "UniWebViewChannelMethodHandleRequest"
+              },
+              {
+                text: "UniWebViewChannelMethodMediaCapturePermission",
+                link: "UniWebViewChannelMethodMediaCapturePermission"
               }
             ]
           },
@@ -248,6 +252,10 @@ module.exports = {
               {
                 text: "UniWebViewCacheMode",
                 link: "UniWebViewCacheMode"
+              },
+              {
+                text: "UniWebViewMediaCapturePermissionDecision",
+                link: "UniWebViewMediaCapturePermissionDecision"
               }
             ]
           },

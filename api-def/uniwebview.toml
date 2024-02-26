@@ -2522,7 +2522,10 @@ summary = """
 A handler you can implement your own logic to decide whether UniWebView should allow, deny or prompt the media
 resource access request.
 
-You need to return a `UniWebViewMediaCapturePermissionDecision` value to indicate the decision as soon as
+The parameter of the handler is a value of [`UniWebViewChannelMethodMediaCapturePermission`](/api/UniWebViewChannelMethodMediaCapturePermission.html),
+which contains information like the media type, the request origin (protocol and host).
+
+You need to return a [`UniWebViewMediaCapturePermissionDecision`](/api/UniWebViewMediaCapturePermissionDecision.html) value to indicate the decision as soon as
 possible.
 """
 

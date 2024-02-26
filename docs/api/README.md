@@ -4280,7 +4280,9 @@ and the web view will always prompt the user for the permission.</p>
     <div class='parameter-item'><span class='parameter-item-type'>Func&lt;UniWebViewChannelMethodMediaCapturePermission, UniWebViewMediaCapturePermissionDecision&gt;</span> <span class='parameter-item-name'>handler</span></div>
     <div class='parameter-item-desc'><p>A handler you can implement your own logic to decide whether UniWebView should allow, deny or prompt the media
 resource access request.</p>
-<p>You need to return a <code>UniWebViewMediaCapturePermissionDecision</code> value to indicate the decision as soon as
+<p>The parameter of the handler is a value of <a href="/api/UniWebViewChannelMethodMediaCapturePermission.html"><code>UniWebViewChannelMethodMediaCapturePermission</code></a>,
+which contains information like the media type, the request origin (protocol and host).</p>
+<p>You need to return a <a href="/api/UniWebViewMediaCapturePermissionDecision.html"><code>UniWebViewMediaCapturePermissionDecision</code></a> value to indicate the decision as soon as
 possible.</p>
 </div>
   </li>

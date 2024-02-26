@@ -6,7 +6,10 @@ sidebarDepth: 0
 
 ### Summary
 
-Represents a message sent from web content back to Unity. Whenever you want to send some information from web view and handle it in Unity script, you can navigate the user with a link started with "uniwebview://". `OnMessageReceived` event will be fired for the web view with a `UniWebViewMessage` object. You can get the URL path and arguments from this message object.
+Represents a message sent from web content back to Unity. Whenever you want to send some information from web view and 
+handle it in Unity script, you can navigate the user with a link started with "uniwebview://". `OnMessageReceived` event
+will be fired for the web view with a `UniWebViewMessage` object. You can get the URL path and arguments from this
+message object.
 
 #### Properties Summary
 
