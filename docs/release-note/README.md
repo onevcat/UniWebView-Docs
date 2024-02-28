@@ -1,5 +1,16 @@
 # Release Note
 
+### 5.9.0 (28 Feb, 2024)
+
+#### Add
+
+* Now the WebRTC support on Android does not require adding trust domain by code. A prompt window will be shown to the user if the web page tries to access the camera or microphone.
+* Now it is possible to customize the permission request handler for WebRTC, such as grant the access request without prompt to the user. Check `RegisterOnRequestMediaCapturePermission` for more information.
+
+#### Deprecate
+
+* As `RegisterOnRequestMediaCapturePermission` is introduced, the current `AddPermissionTrustDomain` method is deprecated. Use the new method if you need to grant the permission by code.
+
 ### 5.8.0 (28 Jan, 2024)
 
 #### Add
