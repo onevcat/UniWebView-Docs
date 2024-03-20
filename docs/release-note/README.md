@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.9.1 (20 Mar, 2024)
+
+#### Fix
+
+* A compiling error of Android build system under Unity 2023.2.13 or later. This was due to Unity removed the related APIs in the new version. Now UniWebView reverts to use the old way (the same before UniWebView 5.8.0) to patch the Android project files.
+
 ### 5.9.0 (28 Feb, 2024)
 
 #### Add
