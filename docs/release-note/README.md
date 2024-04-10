@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.9.2 (10 Apr, 2024)
+
+#### Fix
+
+* An issue that missing the x86_64 slice for UniWebView on macOS. Now the macOS version can run on Unity editor under x86_64 mode again.
+
 ### 5.9.1 (20 Mar, 2024)
 
 #### Fix
