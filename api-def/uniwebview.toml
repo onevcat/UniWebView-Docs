@@ -163,6 +163,26 @@ webView.EmbeddedToolbar.Show();
 ```
 """
 
+[[Properties]]
+name = "RestoreViewHierarchyOnResume"
+returnType = "bool"
+hasSetter = true
+summary = """
+Sets whether this web view instance should try to restore its view hierarchy when resumed.
+
+In some versions of Unity when running on Android, the player view is brought to front when switching back
+from a pause state, which causes the web view is invisible when the app is resumed. It requires an additional
+step to bring the web view to front to make the web view visible. Set this to true to apply this workaround.
+
+Issue caused by this [Unity issue](https://issuetracker.unity3d.com/issues/android-a-black-screen-appears-for-a-few-seconds-when-returning-to-the-game-from-the-lock-screen-after-idle-time).
+
+This issue is known in these released versions:
+- Unity 2021.3.31, 2021.3.32, 2021.3.31, 2021.3.34
+- Unity 2022.3.10, 2022.3.11, 2022.3.12, 2022.3.13, 2022.3.14, 2022.3.15
+
+If you are using UniWebView in these versions, you may want to set this value to `true`.
+"""
+
 [[Methods]]
 name = "Load"
 syntax = "Load(string url, bool skipEncoding, string readAccessURL)"
