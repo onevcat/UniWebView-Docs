@@ -1,5 +1,15 @@
 # Release Note
 
+### 5.10.0 (9 Jun, 2024)
+
+#### Add
+
+* A `RestoreViewHierarchyOnResume` property to make the web view restore its view hierarchy when the app resumes from background on Android. This is an issue in these Unity versions: from Unity 2021.3.31 to 2021.3.34, from Unity 2022.3.10 to 2022.3.15. If you are using UniWebView in these versions, you need to set this value to `true` after upgrading.
+
+#### Fix
+
+* Some internal improvements.
+
 ### 5.9.2 (10 Apr, 2024)
 
 #### Fix

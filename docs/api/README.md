@@ -40,6 +40,9 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#embeddedtoolbar'><span class='return-type'>UniWebViewEmbeddedToolbar</span> EmbeddedToolbar { get; }</a></div></td><td><div class='simple-summary'>
 <p>Represents the embedded toolbar in the current web view.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#restoreviewhierarchyonresume'><span class='return-type'>bool</span> RestoreViewHierarchyOnResume { get; set; }</a></div></td><td><div class='simple-summary'>
+<p>Sets whether this web view instance should try to restore its view hierarchy when resumed.</p>
+</div>
 </td></tr></table>
 
 #### Events Summary
@@ -565,6 +568,26 @@ webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token
 </div>
 </div>
     </div>
+  </div>
+</div>
+<div class='api-box property'>
+  <div class="api-anchor" id='restoreviewhierarchyonresume'></div><div class='api-heading' data-id='restoreviewhierarchyonresume'><a href='#restoreviewhierarchyonresume'><span class='return-type'>bool</span> RestoreViewHierarchyOnResume { get; set; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether this web view instance should try to restore its view hierarchy when resumed.</p>
+<p>In some versions of Unity when running on Android, the player view is brought to front when switching back
+from a pause state, which causes the web view is invisible when the app is resumed. It requires an additional
+step to bring the web view to front to make the web view visible. Set this to true to apply this workaround.</p>
+<p>Issue caused by this <a href="https://issuetracker.unity3d.com/issues/android-a-black-screen-appears-for-a-few-seconds-when-returning-to-the-game-from-the-lock-screen-after-idle-time">Unity issue</a>.</p>
+<p>This issue is known in these released versions:</p>
+<ul>
+<li>Unity 2021.3.31, 2021.3.32, 2021.3.31, 2021.3.34</li>
+<li>Unity 2022.3.10, 2022.3.11, 2022.3.12, 2022.3.13, 2022.3.14, 2022.3.15</li>
+</ul>
+<p>If you are using UniWebView in these versions, you may want to set this value to <code>true</code>.</p>
+</div>
+                </div>
   </div>
 </div>
 
