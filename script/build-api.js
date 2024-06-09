@@ -292,6 +292,9 @@ function output(api) {
 const apiFolder = "./api-def";
 fs.readdir(apiFolder, function (err, files) {
   files.forEach(file => {
+    if (!file.endsWith(".toml")) {
+      return;
+    }
     var result = `---
 sidebarDepth: 0
 ---\n\n`;
