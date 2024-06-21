@@ -1,5 +1,12 @@
 # Release Note
 
+### 5.10.1 (21 Jun, 2024)
+
+#### Fix
+
+* Fixed a bug where certain comment lines were unexpectedly removed while patching Gradle files.
+* Resolved an issue where the `OnLoadingErrorReceived` event (along with the deprecated `OnPageErrorReceived` event) was triggered twice during a loading error on certain Android versions.
+
 ### 5.10.0 (9 Jun, 2024)
 
 #### Add
