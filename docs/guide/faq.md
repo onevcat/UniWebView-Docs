@@ -74,6 +74,10 @@ Due to these facts, it is not surprising that your web page might be slower than
 
 Usually, the performance of the web view component shipped on the system is also improving with the new system version. For example, we can observe about 50% boost from a web view on Android 9.0, compared to Android 5.0. Changing the deploy target of your app is also an important way to improve the performance.
 
+## Does UniWebView collect any privacy data? How to fill out the Apple Privacy Declaration?
+
+UniWebView does not collect any user privacy information, nor does it use any of the privacy-related APIs listed in the Apple Privacy Manifest document. Therefore, you can completely ignore the UniWebView part when filling out Apple's privacy declaration.
+
 ## Does this package support Unity Personal or does it only work in Unity Professional?
 
 UniWebView can work well on all supported platforms with both Unity Personal and Profession.
