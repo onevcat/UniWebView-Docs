@@ -48,7 +48,7 @@ then in the "Build Settings" tab, search for "Enable Bitcode" item and change it
 
 ## Which platforms could UniWebView work on?
 
-UniWebView v4 supports running on:
+UniWebView supports running on:
 
 - **Unity 2020.1** or above
 - **iOS 9.0** or above
