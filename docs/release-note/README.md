@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.10.2 (3 Aug, 2024)
+
+#### Fix
+
+* Fix a potential freeze of the game when calling cookie related methods on iOS in some Unity versions.
+
 ### 5.10.1 (21 Jun, 2024)
 
 #### Fix
