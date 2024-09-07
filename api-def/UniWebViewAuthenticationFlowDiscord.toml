@@ -73,6 +73,19 @@ Whether to enable the state verification. If enabled, the state will be generate
 authentication callback. Default is `true`.
 """
 
+[[Properties]]
+name = "optional.additionalAuthenticationUriQuery"
+returnType = "string"
+hasSetter = true
+summary = """
+The additional query arguments that are used to construct the query string of the authentication request.
+
+This is useful when you want to add some custom parameters to the authentication request. This string will be 
+appended to the query string that constructed from `GetAuthenticationUriArguments`. 
+
+For example, if you set the value to `prompt=consent&ui_locales=en`, it will be contained in the final authentication 
+query.
+"""
 
 [[Events]]
 name = "OnAuthenticationFinished"

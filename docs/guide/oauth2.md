@@ -107,6 +107,14 @@ Open the preference panel (Unity → Preferences) and find "UniWebView" in the s
 
 ![](/images/adding-github-callback.png)
 
+> You can also use an [iOS Universal Link](https://developer.apple.com/ios/universal-links/) or [Android App Link](https://developer.android.com/training/app-links) that starts with `https` as the callback URL. Ensure that the Universal Link or App Link is correctly configured both in your app and on your website.
+>
+> ---
+>
+> Keep in mind that the Universal Link or App Link must be triggered by user action. Some OAuth providers automatically redirect to the callback URL if the user is already logged in, which may prevent the app from opening. To handle this, you should set the `prompt` value in the "Optional" section to something like `"consent"`. This will prompt the user to click the authentication button, allowing the app to open via the `https` callback URL.
+>
+> ![](/images/oauth-universal-link.png)
+
 ### Handling Result
 
 Almost done! Now, you can add a handler to get the result of the authentication flow. It is similar to Unity.UI's button action. You can prepare a method and assign it to the handlers list.

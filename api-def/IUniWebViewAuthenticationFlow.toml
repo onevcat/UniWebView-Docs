@@ -73,6 +73,19 @@ This usually contains fields like `client_id`, `redirect_uri`, `response_type`, 
 """
 
 [[Methods]]
+name = "GetAdditionalAuthenticationUriQuery"
+syntax = "GetAdditionalAuthenticationUriQuery()"
+returnType = "string"
+returnValue = "The additional query arguments that are used to construct the query string of the authentication request."
+summary = """
+Returns a string contains the additional query arguments that are used to construct the query string of the authentication request.
+
+If you want to add some extra query arguments to the authentication request, you can override this method and 
+return a string that contains the additional query arguments. The returned string will be appended to the query 
+string that constructed from `GetAuthenticationUriArguments`.
+"""
+
+[[Methods]]
 name = "GetAccessTokenRequestParameters"
 syntax = "GetAccessTokenRequestParameters(string authResponse)"
 returnType = "Dictionary<string, string>"

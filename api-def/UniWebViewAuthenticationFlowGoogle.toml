@@ -97,6 +97,31 @@ If your application knows which user is trying to authenticate, it can use this 
 the Google Authentication Server. 
 """
 
+[[Properties]]
+name = "optional.prompt"
+returnType = "string"
+hasSetter = true
+summary = """
+The prompt that will be set to the authentication request query. For example, the possible values can be `login`, 
+`consent`, `select_account` and so on.
+
+See https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
+"""
+
+[[Properties]]
+name = "optional.additionalAuthenticationUriQuery"
+returnType = "string"
+hasSetter = true
+summary = """
+The additional query arguments that are used to construct the query string of the authentication request.
+
+This is useful when you want to add some custom parameters to the authentication request. This string will be 
+appended to the query string that constructed from `GetAuthenticationUriArguments`. 
+
+For example, if you set the value to `prompt=consent&ui_locales=en`, it will be contained in the final authentication 
+query.
+"""
+
 [[Events]]
 name = "OnAuthenticationFinished"
 syntax = "OnAuthenticationFinished"

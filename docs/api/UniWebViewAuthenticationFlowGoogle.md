@@ -48,6 +48,12 @@ Make sure to get the correct client Id and callback URL values from the Google A
 <p>If your application knows which user is trying to authenticate, it can use this parameter to provide a hint to
 the Google Authentication Server.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.prompt'><span class='return-type'>string</span> optional.prompt { get; set; }</a></div></td><td><div class='simple-summary'>
+<p>The prompt that will be set to the authentication request query.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.additionalauthenticationuriquery'><span class='return-type'>string</span> optional.additionalAuthenticationUriQuery { get; set; }</a></div></td><td><div class='simple-summary'>
+<p>The additional query arguments that are used to construct the query string of the authentication request.</p>
+</div>
 </td></tr></table>
 
 #### Events Summary
@@ -167,6 +173,32 @@ authentication callback. </p>
       <div class='summary'>
 <p>If your application knows which user is trying to authenticate, it can use this parameter to provide a hint to
 the Google Authentication Server. </p>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box property'>
+  <div class="api-anchor" id='optional.prompt'></div><div class='api-heading' data-id='optional.prompt'><a href='#optional.prompt'><span class='return-type'>string</span> optional.prompt { get; set; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>The prompt that will be set to the authentication request query. For example, the possible values can be <code>login</code>, 
+<code>consent</code>, <code>select_account</code> and so on.</p>
+<p>See <a href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest</a></p>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box property'>
+  <div class="api-anchor" id='optional.additionalauthenticationuriquery'></div><div class='api-heading' data-id='optional.additionalauthenticationuriquery'><a href='#optional.additionalauthenticationuriquery'><span class='return-type'>string</span> optional.additionalAuthenticationUriQuery { get; set; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>The additional query arguments that are used to construct the query string of the authentication request.</p>
+<p>This is useful when you want to add some custom parameters to the authentication request. This string will be 
+appended to the query string that constructed from <code>GetAuthenticationUriArguments</code>. </p>
+<p>For example, if you set the value to <code>prompt=consent&amp;ui_locales=en</code>, it will be contained in the final authentication 
+query.</p>
 </div>
                 </div>
   </div>

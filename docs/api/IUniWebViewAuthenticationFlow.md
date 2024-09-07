@@ -45,6 +45,9 @@ To use the common flow, any customize authentication flow must implement this in
 </td></tr><tr><td><div class='api-summary-heading'><a href='#getauthenticationuriarguments'><span class='return-type'>Dictionary&lt;string, string&gt;</span> GetAuthenticationUriArguments()</a></div></td><td><div class='simple-summary'>
 <p>Returns a dictionary contains the parameters that are used to perform the authentication request.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getadditionalauthenticationuriquery'><span class='return-type'>string</span> GetAdditionalAuthenticationUriQuery()</a></div></td><td><div class='simple-summary'>
+<p>Returns a string contains the additional query arguments that are used to construct the query string of the authentication request.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#getaccesstokenrequestparameters'><span class='return-type'>Dictionary&lt;string, string&gt;</span> GetAccessTokenRequestParameters(string authResponse)</a></div></td><td><div class='simple-summary'>
 <p>Returns a dictionary contains the parameters that are used to perform the access token exchange request.</p>
 </div>
@@ -142,6 +145,22 @@ The key value pairs in the dictionary are used to construct the query string of 
 </div>
                   <div class='section-title'>Return Value</div>
 <div class='method-return'><p>The dictionary indicates parameters that are used to perform the authentication request.</p>
+</div>
+          </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='getadditionalauthenticationuriquery'></div><div class='api-heading' data-id='getadditionalauthenticationuriquery'><a href='#getadditionalauthenticationuriquery'><span class='return-type'>string</span> GetAdditionalAuthenticationUriQuery()</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Returns a string contains the additional query arguments that are used to construct the query string of the authentication request.</p>
+<p>If you want to add some extra query arguments to the authentication request, you can override this method and 
+return a string that contains the additional query arguments. The returned string will be appended to the query 
+string that constructed from <code>GetAuthenticationUriArguments</code>.</p>
+</div>
+                  <div class='section-title'>Return Value</div>
+<div class='method-return'><p>The additional query arguments that are used to construct the query string of the authentication request.</p>
 </div>
           </div>
   </div>
