@@ -1,5 +1,12 @@
 # Release Note
 
+### 5.11.0 (10 Sep, 2024)
+
+#### Add
+
+* Support setting an HTTPS link (universal link for iOS or app link for Android) as the callback URL of an OAuth 2.0 flow. (Before, only the custom scheme was supported)
+* iOS 18 & Xcode 16 build support.
+
 ### 5.10.2 (3 Aug, 2024)
 
 #### Fix
