@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.11.1 (12 Sep, 2024)
+
+#### Fix
+
+* A build issue when running under Unity Editor on Windows when the target is not iOS. It was introduced by 5.11.0.
+
 ### 5.11.0 (10 Sep, 2024)
 
 #### Add
