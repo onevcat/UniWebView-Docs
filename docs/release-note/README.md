@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.11.2 (21 Sep, 2024)
+
+#### Fix
+
+* An issue that the URL with a custom scheme cannot be opened when the game is built against Xcode 16 and running on iOS 18.
+
 ### 5.11.1 (12 Sep, 2024)
 
 #### Fix
