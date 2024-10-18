@@ -85,7 +85,15 @@ module.exports = {
             "memory-management",
             "messaging-system",
             "using-javascript",
-            "oauth2",
+            {
+              text: "OAuth 2.0 Support",
+              collapsible: true,
+              children: [
+                "oauth2",
+                "oauth2-github",
+                "oauth2-google",
+              ]
+            },
             "loading-local-files",
             "uploading",
             "download-files",
