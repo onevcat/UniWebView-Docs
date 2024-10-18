@@ -99,14 +99,14 @@ You can read the [`RawValue` string of the token](/api/UniWebViewAuthenticationS
 
 > There are several ways to encrypt and store a string in Unity, for example, the [SecurePlayerPrefs](https://assetstore.unity.com/packages/tools/input-management/secureplayerprefs-35160) is a good one.
 
-When you need to use the token, you can read it from the storage and create a new `UniWebViewAuthenticationStandardToken` object with the raw value:
+When you need to use the token, you can read the raw string value from the storage and create a new `UniWebViewAuthenticationStandardToken` object:
 
 ```csharp
 var rawValue = // Read the raw value from the storage
 var token = new UniWebViewAuthenticationGitHubToken(rawValue);
 
 // Or, if you are using a subclass of UniWebViewAuthenticationStandardToken, use its `Parse` method:
-var token = UniWebViewAuthenticationTokenFactory<UniWebViewAuthenticationTwitterToken>.Parse(rawValue);
+var token = UniWebViewAuthenticationTokenFactory<UniWebViewAuthenticationGitHubToken>.Parse(rawValue);
 ```
 
 ## Refresh Token
