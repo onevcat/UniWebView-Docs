@@ -30,6 +30,10 @@ hasSetter = true
 summary = """
 The client secret of your Discord application.
 """
+notice = """
+Setting this value may leak the client secret and cause security issue. Prefer to setting the PKCESupport to `S256` in 
+the option instead. With the correct PKCE setup, you do not need to set the client secret here.
+"""
 
 [[Properties]]
 name = "redirectUri"

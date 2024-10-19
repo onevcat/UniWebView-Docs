@@ -94,7 +94,15 @@ To allow the Discord flow working, at least you need these steps:
       <div class='summary'>
 <p>The client secret of your Discord application.</p>
 </div>
-                </div>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        Setting this value may leak the client secret and cause security issue. Prefer to setting the PKCESupport to <code>S256</code> in 
+the option instead. With the correct PKCE setup, you do not need to set the client secret here.
+
+  </p>
+</div>
+          </div>
   </div>
 </div>
 <div class='api-box property'>

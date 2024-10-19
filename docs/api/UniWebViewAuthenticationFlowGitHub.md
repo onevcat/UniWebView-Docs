@@ -110,7 +110,21 @@ To allow the GitHub flow working, at least you need these steps:
       <div class='summary'>
 <p>The client secret of your GitHub application.</p>
 </div>
-                </div>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        Strictly speaking, the client secret <strong>should not be stored</strong> on the client side. In the OAuth flow of a native app, we 
+should use <a href="https://oauth.net/2/pkce/">PKCE</a> whenever possible to protect the authorization process (UniWebView 
+<a href="/api/UniWebViewAuthenticationFlowCustomize.html#optional">supports PKCE</a>). However, GitHub’s OAuth does not currently 
+support PKCE, so we still have to use the client secret when exchanging tokens if we do not have a backend.
+
+A more secure approach would be to set up your own backend server and use server-to-server communication to obtain the 
+access token. In UniWebView, you can use the <a href="/guide/oauth2.html#customize-flow">Customize Flow</a> to set the entry point 
+for access token exchange to your server, thereby avoiding exposing the client secret in the client-side code.
+
+  </p>
+</div>
+          </div>
   </div>
 </div>
 <div class='api-box property'>

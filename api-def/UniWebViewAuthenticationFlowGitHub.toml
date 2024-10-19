@@ -36,6 +36,16 @@ hasSetter = true
 summary = """
 The client secret of your GitHub application.
 """
+notice = """
+Strictly speaking, the client secret **should not be stored** on the client side. In the OAuth flow of a native app, we 
+should use [PKCE](https://oauth.net/2/pkce/) whenever possible to protect the authorization process (UniWebView 
+[supports PKCE](/api/UniWebViewAuthenticationFlowCustomize.html#optional)). However, GitHub’s OAuth does not currently 
+support PKCE, so we still have to use the client secret when exchanging tokens if we do not have a backend.
+
+A more secure approach would be to set up your own backend server and use server-to-server communication to obtain the 
+access token. In UniWebView, you can use the [Customize Flow](/guide/oauth2.html#customize-flow) to set the entry point 
+for access token exchange to your server, thereby avoiding exposing the client secret in the client-side code.
+"""
 
 [[Properties]]
 name = "callbackUrl"
