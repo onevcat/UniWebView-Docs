@@ -5,10 +5,11 @@ summary = """
 UniWebView Safe Browsing provides a way for browsing the web content in a more browser-like way, such as Safari on 
 iOS and Chrome on Android.
 
-This class wraps `SFSafariViewController` on iOS and "Custom Tabs" on Android. It shares cookies, auto-fill 
-completion and other more data with the browser on device. Most of permissions are also built-in supported. You can
-use this class for some tasks that are limited for a normal web view, such as using Apple Pay or Progressive Web 
-Apps (PWA).
+This class wraps `SFSafariViewController` on iOS and “Custom Tabs” on Android. Starting with iOS 11, this component no 
+longer shares cookies with Safari in the same way as it did in iOS 9 or 10, due to design restrictions by Apple that 
+cannot be bypassed. It still supports auto-fill completion and other data sharing with the browser on the device. Most 
+permissions are also built-in. You can use this class for tasks that are limited for a normal web view, such as using 
+Apple Pay or Progressive Web Apps (PWA).
 
 You create a `UniWebViewSafeBrowsing` instance by calling the static `UniWebViewSafeBrowsing.Create` method with a
 destination URL. You cannot change this URL once the instance is created. To show the safe browsing, call `Show` on
