@@ -9,15 +9,8 @@ This implementation follows the flow described [here](https://developers.google.
 Google authentication flow is a bit different from the other standard authentication flows. Please read the link
 above carefully to understand it.
 
-See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of authentication in UniWebView.
-
-To allow the Google flow working, at least you need these steps:
-
-1. Setting `Client Id`, `Redirect Uri` in the `UniWebViewAuthenticationFlowGoogle` inspector.
-2. Setting `Scope` and at least contains `https://www.googleapis.com/auth/userinfo.profile` in the `UniWebViewAuthenticationFlowGoogle` inspector.
-3. Setting the `Auth Callbacks Urls` containing `com.googleusercontent.apps.${first_part_of_client_id}:${redirect_uri_path}` in the `UniWebView` preference panel.
-
-Make sure to get the correct client Id and callback URL values from the Google API Console Credentials page.
+See the [OAuth 2.0 Support - General](/guide/oauth2.html) and [OAuth 2.0 with Google](/guide/oauth2-google.html) for a 
+more detailed guide of authentication in UniWebView.
 """
 
 [[Properties]]

@@ -10,7 +10,7 @@ A predefined authentication flow for GitHub.
 
 This implementation follows the flow described [here](https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps).
 
-See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of authentication in UniWebView.
+See the [OAuth 2.0 Support](/guide/oauth2.html) and [OAuth 2.0 with GitHub](/guide/oauth2-github.html) for a more detailed guide of authentication in UniWebView.
 
 To allow the GitHub flow working, at least you need these steps: 
 
