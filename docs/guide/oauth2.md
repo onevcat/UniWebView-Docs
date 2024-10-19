@@ -99,7 +99,7 @@ mode (and support for third-party use) in Chrome's settings. Check settings with
 `chrome://flags/#cct-incognito-available-to-third-party` in Chrome to see the current status.
 :::
 
-## Common Flow
+## Customize Flow
 
 Besides the built-in supported OAuth 2.0 providers, you can also use the common flow to let your user log in to any
 standard OAuth 2.0 provider. To adapt to a common flow, add the `UniWebViewAuthenticationFlowCustomize` component instead,

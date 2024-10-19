@@ -1,5 +1,7 @@
 # OAuth 2.0 with GitHub
 
+> The following guide was last updated in October 2024. Please note that it may become outdated if the provider updates their user interface or workflow.
+
 In this guide, we are using GitHub for demonstration purpose.
 
 We assumed that you have already created a GitHub App to follow this guide. If not yet, please refer to [this official guide](https://docs.github.com/en/developers/apps/building-github-apps/creating-a-github-app) to create one. We assume you have the following information for the app, and we will use them in this guide:
@@ -26,6 +28,12 @@ To get started, adding the `UniWebViewAuthenticationFlowGitHub` component to any
 Next, fill the necessary values of your app to the added `UniWebViewAuthenticationFlowGitHub` component. In this example, we need to set "Client Id", "Client Secret" and "Callback Url":
 
 ![](/images/property-github-auth.png)
+
+:::warning Client Secret
+Strictly speaking, the client secret **should not be stored** on the client side. In the OAuth flow of a native app, we should use [PKCE](https://oauth.net/2/pkce/) whenever possible to protect the authorization process (UniWebView [supports PKCE](/api/UniWebViewAuthenticationFlowCustomize.html#optional)). However, GitHub’s OAuth does not currently support PKCE, so we still have to use the client secret when exchanging tokens in this guide for the sake of simplicity.
+
+A more secure approach would be to set up your own backend server and use server-to-server communication to obtain the access token. In UniWebView, you can use the [Customize Flow](/guide/oauth2.html#customize-flow) to set the entry point for access token exchange to your server, thereby avoiding exposing the client secret in the client-side code.
+:::
 
 There are also some other options on the component. Usually it contains some other optional settings for the OAuth provider. For GitHub, you can specify other "Scope" or determine whether to use "State" to validate the callback. For difference service, there are usually different options. Please refer the service provider documentation to know more.
 
@@ -81,7 +89,7 @@ Alternative, you can turn on the "Authorize On Start" option in the `UniWebViewA
 provides an easy way if you want to start the authentication flow automatically when the component starts.
 :::
 
-The GitHub authentication should work now. By running the scene, a web view will be opened and navigate to the GitHub authorization page. You can now log in with your GitHub account to the GitHub app, and get a valid access token in `OnGitHubTokenReceived` callback:
+The GitHub authentication should work now. By running the scene, a web view will be opened and navigate to the GitHub authorization page. You can now log in with your GitHub account to the GitHub app, and receive a valid access token in `OnGitHubTokenReceived` callback:
 
 ![](/images/github-login.png)
 
@@ -93,7 +101,7 @@ Token received: ${YOUR_ACCESS_TOKEN}
 
 ## Store & Read the Token
 
-Sometimes, you may want to store the token locally. UniWebView, as a web view component and with its OAuth support, does not provide any storage for the token. You need to implement it yourself.
+Sometimes, you may want to store the token locally. UniWebView, as a web view component with OAuth support, does not provide any storage for the token. You will need to implement this yourself.
 
 You can read the [`RawValue` string of the token](/api/UniWebViewAuthenticationStandardToken.html#rawvalue), and store it on the device or on your server. Remember the token is sensitive data, you should not store it in plain text. Usually, it is a good idea to encrypt it before storing it.
 
