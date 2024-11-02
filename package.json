@@ -20,5 +20,9 @@
   "devDependencies": {
     "@vuepress/plugin-search": "^2.0.0-beta.49",
     "prismjs": "^1.27.0"
+  },
+  "volta": {
+    "node": "18.16.0",
+    "yarn": "1.16.0"
   }
 }

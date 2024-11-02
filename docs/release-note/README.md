@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.11.3 (2 Nov, 2024)
+
+#### Fix
+
+* Use the default browser on Android as the first priority for Safe Browsing Mode. Previously, it may use another browser based on the user's setting in some cases.
+
 ### 5.11.2 (21 Sep, 2024)
 
 #### Fix
