@@ -35,8 +35,21 @@ to check if the target app exists before opening it.
 
 It worked perfectly without any modification if you are using a Target API Level before Android 11 (Level 31) or on devices with lower system versions.
 But from API Level 31, you have to add the related query to the Android manifest file to allow this querying work. For more details, I suggest you check
-the [Package visibility filtering on Android](https://developer.android.com/training/basics/intents/package-visibility) documentation and try to add the
-target package names you need to open to the `<queries>` tag to your Android Manifest file, then try again to see if it goes fine.
+the [Package visibility filtering on Android](https://developer.android.com/training/basics/intents/package-visibility) and
+[Declare package visibility needs](https://developer.android.com/training/package-visibility/declaring) documentation and try to add the target package
+names you need to open to the `<queries>` tag to your Android Manifest file, then try again to see if it goes fine. For example, if you
+need to open a Facebook link like `fb://page?id=123456`, you should add the following to your Android Manifest file:
+
+```xml
+<manifest package="com.example.game">
+    <queries>
+        <package android:name="com.facebook.katana" />
+    </queries>
+    ...
+</manifest>
+```
+
+You can find the package name of an app in the URL of its Google Play page.
 
 ## I encountered "could not reparse object file in bitcode bundle: 'Invalid bitcode version" when archiving the iOS app in Xcode.
 
