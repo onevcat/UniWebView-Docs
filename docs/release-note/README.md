@@ -1,5 +1,12 @@
 # Release Note
 
+### 5.11.4 (15 Nov, 2024)
+
+#### Fix
+
+* An issue that some URL might be incorrectly handled when the universal link is used during the OAuth 2.0 flow.
+* Some internal improvements on project patcher when exporting the iOS and Android projects.
+
 ### 5.11.3 (2 Nov, 2024)
 
 #### Fix
