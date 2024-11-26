@@ -1240,23 +1240,31 @@ color = "blue"
 
 [[Methods]]
 name = "SetCookie"
-syntax = "SetCookie(string url, string cookie, bool skipEncoding)"
+syntax = "SetCookie(string url, string cookie, bool skipEncoding, Action handler)"
 returnType = "void"
 summary = """
-Sets a cookie for a certain url.
+Sets a cookie for a certain url. When it finishes, the `handler` will be called.
 
-The `cookie` string supports all available cookie properties as well as multiple cookies. See 
+The `cookie` string supports all available cookie properties as well as multiple cookies. See [RFC6265bis](https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-03) for detail.
 
 UniWebView respects the server cookie header by default. Generally, you do not need to set the cookie from client manually. However, if you have to pass your server a manually set cookie, 
 use this method.
+
+This performs an asynchronous operation. The `handler` will be called when the operation finishes and it is the safe time to find the cookie in the storage.
 """
 example = """
 ```csharp
-// Set a cookie "testCookie=1" to current url/domain.
-UniWebView.SetCookie(webView.Url, "testCookie=1");
+// Set a cookie "testCookie=1" to some url.
+UniWebView.SetCookie(someUrl, "testCookie=1", () => {
+    Debug.Log("Cookie is set.");
+    // Now the testCookie is contained in the request header.
+    webView.Load(someUrl);
+});
 
 // Set a full properties specified cookie.
-UniWebView.SetCookie("https://example.com", "sessionToken=abc123; Expires=Wed, 09 Jun 2021 10:18:14 GMT");
+UniWebView.SetCookie("https://example.com", "sessionToken=abc123; Expires=Wed, 09 Jun 2021 10:18:14 GMT", () => {
+    Debug.Log("Cookie is set.");
+});
 ```
 """
 [[Methods.badges]]
@@ -1277,14 +1285,14 @@ summary = "Whether UniWebView should skip encoding the url or not. If set to `fa
 
 [[Methods]]
 name = "GetCookie"
-syntax = "GetCookie(string url, string key, bool skipEncoding)"
-returnType = "string"
-returnValue = "Value of the target cookie under url."
-summary = "Gets the cookie value under a url and key."
+syntax = "GetCookie(string url, string key, bool skipEncoding, Action<string> handler)"
+returnType = "void"
+summary = "Gets the cookie value under a given url and key. When it finishes, the `handler` will be called with the cookie value if exists."
 example = """
 ```csharp
-UniWebView.GetCookie("https://example.com", "testCookie");
-// => The corresponding cookie value. Or "" if there is no such cookie.
+UniWebView.GetCookie("https://example.com", "testCookie", (value) => {
+    // => The corresponding cookie value. Or "" if there is no such cookie.
+});
 ```
 """
 [[Methods.badges]]
@@ -1305,12 +1313,14 @@ summary = "Whether UniWebView should skip encoding the url or not. If set to `fa
 
 [[Methods]]
 name = "RemoveCookies"
-syntax = "RemoveCookies(string url, bool skipEncoding)"
+syntax = "RemoveCookies(string url, bool skipEncoding, Action handler)"
 returnType = "void"
-summary = "Removes all the cookies under a url."
+summary = "Removes all the cookies under a url. When it finishes, the `handler` will be called."
 example = """
 ```csharp
-UniWebView.RemoveCookies("https://example.com");
+UniWebView.RemoveCookies("https://example.com", () => {
+    Debug.Log("Cookies under `example.com` are removed.");
+});
 ```
 """
 [[Methods.badges]]
@@ -1326,13 +1336,15 @@ type = "bool"
 summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to get the cookie if it is valid. Default is `false`."
 
 [[Methods]]
-name = "RemoveCooke"
-syntax = "RemoveCookie(string url, string key, bool skipEncoding)"
+name = "RemoveCookie"
+syntax = "RemoveCookie(string url, string key, bool skipEncoding, Action handler)"
 returnType = "void"
-summary = "Removes the certain cookie under a url for the specified key."
+summary = "Removes the certain cookie under a url for the specified key. When it finishes, the `handler` will be called."
 example = """
 ```csharp
-UniWebView.RemoveCookie("https://example.com", "SID");
+UniWebView.RemoveCookie("https://example.com", "SID", () => {
+    Debug.Log("Cookie `SID` under `example.com` is removed.");
+});
 ```
 """
 [[Methods.badges]]
@@ -1353,13 +1365,15 @@ summary = "Whether UniWebView should skip encoding the url or not. If set to `fa
 
 [[Methods]]
 name = "ClearCookies"
-syntax = "ClearCookies()"
+syntax = "ClearCookies(Action handler)"
 returnType = "void"
-summary = "Clear all cookies from web views."
+summary = "Clears all cookies from web view. When it finishes, the `handler` will be called."
 notice = "This will clear cookies from all domains in the web view and previous. If you only need to remove cookies from a certain domain, use `RemoveCookies` instead."
 example = """
 ```csharp
-UniWebView.ClearCookies();
+UniWebView.ClearCookies(() => {
+    Debug.Log("Cookies are cleared.");
+});
 ```
 """
 [[Methods.badges]]
