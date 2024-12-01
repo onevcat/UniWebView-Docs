@@ -216,20 +216,20 @@ are added to the adjusted content inset.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setforwardwebconsoletonativeoutput'><span class='return-type'>void</span> SetForwardWebConsoleToNativeOutput(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web page console output should be forwarded to native console.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding, Action handler)</a></div></td><td><div class='simple-summary'>
 <p>Sets a cookie for a certain url.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#getcookie'><span class='return-type'>string</span> GetCookie(string url, string key, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
-<p>Gets the cookie value under a url and key.</p>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getcookie'><span class='return-type'>void</span> GetCookie(string url, string key, bool skipEncoding, Action&lt;string&gt; handler)</a></div></td><td><div class='simple-summary'>
+<p>Gets the cookie value under a given url and key.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#removecookies'><span class='return-type'>void</span> RemoveCookies(string url, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removecookies'><span class='return-type'>void</span> RemoveCookies(string url, bool skipEncoding, Action handler)</a></div></td><td><div class='simple-summary'>
 <p>Removes all the cookies under a url.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#removecooke'><span class='return-type'>void</span> RemoveCookie(string url, string key, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removecookie'><span class='return-type'>void</span> RemoveCookie(string url, string key, bool skipEncoding, Action handler)</a></div></td><td><div class='simple-summary'>
 <p>Removes the certain cookie under a url for the specified key.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#clearcookies'><span class='return-type'>void</span> ClearCookies()</a></div></td><td><div class='simple-summary'>
-<p>Clear all cookies from web views.</p>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#clearcookies'><span class='return-type'>void</span> ClearCookies(Action handler)</a></div></td><td><div class='simple-summary'>
+<p>Clears all cookies from web view.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#clearhttpauthusernamepassword'><span class='return-type'>void</span> ClearHttpAuthUsernamePassword(string host, string realm)</a></div></td><td><div class='simple-summary'>
 <p>Clears any saved credentials for HTTP authentication for both Basic and Digest.</p>
@@ -2699,14 +2699,15 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setcookie'></div><div class='api-heading' data-id='setcookie'><a href='#setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='setcookie'></div><div class='api-heading' data-id='setcookie'><a href='#setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding, Action handler)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Sets a cookie for a certain url.</p>
-<p>The <code>cookie</code> string supports all available cookie properties as well as multiple cookies. See </p>
+<p>Sets a cookie for a certain url. When it finishes, the <code>handler</code> will be called.</p>
+<p>The <code>cookie</code> string supports all available cookie properties as well as multiple cookies. See <a href="https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-03">RFC6265bis</a> for detail.</p>
 <p>UniWebView respects the server cookie header by default. Generally, you do not need to set the cookie from client manually. However, if you have to pass your server a manually set cookie, 
 use this method.</p>
+<p>This performs an asynchronous operation. The <code>handler</code> will be called when the operation finishes and it is the safe time to find the cookie in the storage.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -2731,11 +2732,17 @@ use this method.</p>
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code><span class="token comment">// Set a cookie "testCookie=1" to current url/domain.</span>
-UniWebView<span class="token punctuation">.</span><span class="token function">SetCookie</span><span class="token punctuation">(</span>webView<span class="token punctuation">.</span>Url<span class="token punctuation">,</span> <span class="token string">"testCookie=1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code><span class="token comment">// Set a cookie "testCookie=1" to some url.</span>
+UniWebView<span class="token punctuation">.</span><span class="token function">SetCookie</span><span class="token punctuation">(</span>someUrl<span class="token punctuation">,</span> <span class="token string">"testCookie=1"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Cookie is set."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Now the testCookie is contained in the request header.</span>
+    webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>someUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
 <span class="token comment">// Set a full properties specified cookie.</span>
-UniWebView<span class="token punctuation">.</span><span class="token function">SetCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token string">"sessionToken=abc123; Expires=Wed, 09 Jun 2021 10:18:14 GMT"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+UniWebView<span class="token punctuation">.</span><span class="token function">SetCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token string">"sessionToken=abc123; Expires=Wed, 09 Jun 2021 10:18:14 GMT"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Cookie is set."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -2743,11 +2750,11 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='getcookie'></div><div class='api-heading' data-id='getcookie'><a href='#getcookie'><span class='return-type'>string</span> GetCookie(string url, string key, bool skipEncoding)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='getcookie'></div><div class='api-heading' data-id='getcookie'><a href='#getcookie'><span class='return-type'>void</span> GetCookie(string url, string key, bool skipEncoding, Action&lt;string&gt; handler)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Gets the cookie value under a url and key.</p>
+<p>Gets the cookie value under a given url and key. When it finishes, the <code>handler</code> will be called with the cookie value if exists.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -2769,14 +2776,12 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </li>
 </ul></div>
 </div>
-      <div class='section-title'>Return Value</div>
-<div class='method-return'><p>Value of the target cookie under url.</p>
-</div>
-      <div class='example'>
+            <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">GetCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token string">"testCookie"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// => The corresponding cookie value. Or "" if there is no such cookie.</span>
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">GetCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token string">"testCookie"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">value</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// => The corresponding cookie value. Or "" if there is no such cookie.</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -2784,11 +2789,11 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='removecookies'></div><div class='api-heading' data-id='removecookies'><a href='#removecookies'><span class='return-type'>void</span> RemoveCookies(string url, bool skipEncoding)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='removecookies'></div><div class='api-heading' data-id='removecookies'><a href='#removecookies'><span class='return-type'>void</span> RemoveCookies(string url, bool skipEncoding, Action handler)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Removes all the cookies under a url.</p>
+<p>Removes all the cookies under a url. When it finishes, the <code>handler</code> will be called.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -2808,7 +2813,9 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">RemoveCookies</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">RemoveCookies</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Cookies under `example.com` are removed."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -2816,11 +2823,11 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='removecooke'></div><div class='api-heading' data-id='removecooke'><a href='#removecooke'><span class='return-type'>void</span> RemoveCookie(string url, string key, bool skipEncoding)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='removecookie'></div><div class='api-heading' data-id='removecookie'><a href='#removecookie'><span class='return-type'>void</span> RemoveCookie(string url, string key, bool skipEncoding, Action handler)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Removes the certain cookie under a url for the specified key.</p>
+<p>Removes the certain cookie under a url for the specified key. When it finishes, the <code>handler</code> will be called.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -2845,7 +2852,9 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">RemoveCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token string">"SID"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">RemoveCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token string">"SID"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Cookie `SID` under `example.com` is removed."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -2853,11 +2862,11 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='clearcookies'></div><div class='api-heading' data-id='clearcookies'><a href='#clearcookies'><span class='return-type'>void</span> ClearCookies()</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='clearcookies'></div><div class='api-heading' data-id='clearcookies'><a href='#clearcookies'><span class='return-type'>void</span> ClearCookies(Action handler)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Clear all cookies from web views.</p>
+<p>Clears all cookies from web view. When it finishes, the <code>handler</code> will be called.</p>
 </div>
       <div class='custom-container warning'>
   <p class="custom-container-title">NOTICE</p>
@@ -2868,7 +2877,9 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
                   <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">ClearCookies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">ClearCookies</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Cookies are cleared."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>

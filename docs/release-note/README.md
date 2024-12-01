@@ -1,5 +1,16 @@
 # Release Note
 
+### 5.12.0 (1 Dec, 2024)
+
+#### Add
+
+* Add action based methods to cookie operations. Now you can use the async version of these methods to manipulate cookies: `GetCookie`, `SetCookie`, `RemoveCookie`, `RemoveCookies`, `CleanCookies`. The sync version of these methods are deprecated due to it is not safe in some cases and may cause crash on new iOS versions.
+* A query item for `CustomTabsService` in AndroidManifest in the package. Now it is not required to add the query in app level manifest file anymore. 
+
+#### Fix
+
+* Some internal improvements of removing deprecated methods and variables.
+
 ### 5.11.4 (15 Nov, 2024)
 
 #### Fix
