@@ -2293,6 +2293,8 @@ and just leave the content below under the soft keyboard.</p>
         This method is only for Android. On iOS, the keyboard avoidance is built into the system directly and there is 
 no way to change its behavior.
 
+You need to set it before creating a web view. Existing web views are not affected.
+
   </p>
 </div>
       <div class='parameters'>
