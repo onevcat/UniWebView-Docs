@@ -2604,6 +2604,35 @@ type = "string"
 summary = "The url which the web view is about to load."
 
 [[Events]]
+name = "OnPageCommitted"
+syntax = "OnPageCommitted(UniWebView webView, string url)"
+returnType = "void"
+summary = """
+Raised when the web view receives response from the server and starts receiving web content.
+
+This event will be invoked when the web view has confirmed the response is a web page and has started to receive and process the web content. This happens after `OnPageStarted` but before `OnPageFinished`.
+
+This is an ideal place to inject JavaScript code at the earliest possible moment when a page starts loading. Note that JavaScript execution is asynchronous - it may complete after the page finishes loading. For most cases, it is recommended to use `OnPageFinished` event instead, which ensures the page is fully loaded.
+"""
+example = """
+```csharp
+webView.OnPageCommitted += (view, url) => {
+    Debug.Log("Web View starts receiving content, URL: " + url);
+    // Inject JavaScript code at early stage
+    view.EvaluateJavaScript("console.log('Early stage injection');", null);
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "url"
+type = "string"
+summary = "The url which the web view has started receiving content for."
+
+[[Events]]
 name = "OnPageFinished"
 syntax = "OnPageFinished(UniWebView webView, int statusCode, string url)"
 returnType = "void"
@@ -2620,18 +2649,25 @@ The `statusCode` is not trustable and will be always 200 on Android devices runn
 """
 example = """
 ```csharp
+// A sample for checking status code
 webView.OnPageFinished += (view, statusCode, url) => {
     print(statusCode);
     print("Web view loading finished for: " + url);
 };
 
 webView.Load("https://example.com");
-// => "202"
+// => "200"
 // => "Web view loading finished for: https://example.com"
 
 webView.Load("https://some_domain.com/404");
 // => "404"
 // => "Web view loading finished for: https://example.com"
+
+// A sample for JavaScript injection
+webView.OnPageFinished += (view, statusCode, url) => {
+    // Inject JavaScript code with full DOM available
+    view.EvaluateJavaScript("console.log('JavaScript injection');", null);
+};
 ```
 """
 [[Events.parameters]]
