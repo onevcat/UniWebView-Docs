@@ -1,5 +1,15 @@
 # Release Note
 
+### 5.13.0 (30 Jan, 2025)
+
+#### Add
+
+* Add a new event `OnPageCommitted`. This event is raised when the web view receives response from the server and starts receiving web content. It is a earliest possible moment to start executing a JavaScript on the page.
+
+#### Fix
+
+* Now the hardware acceleration will be also enabled to other secondary activity when multiple activities are selected in Android build settings.
+
 ### 5.12.0 (1 Dec, 2024)
 
 #### Add

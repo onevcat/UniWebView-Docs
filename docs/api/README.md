@@ -51,6 +51,9 @@ as well as receive a message from the web view.
 <tr><td><div class='api-summary-heading'><a href='#onpagestarted'><span class='return-type'>void</span> OnPageStarted(UniWebView webView, string url)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view starts loading a url.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onpagecommitted'><span class='return-type'>void</span> OnPageCommitted(UniWebView webView, string url)</a></div></td><td><div class='simple-summary'>
+<p>Raised when the web view receives response from the server and starts receiving web content.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onpagefinished'><span class='return-type'>void</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view finished to load a url successfully.</p>
 </div>
@@ -632,6 +635,44 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
+  <div class="api-anchor" id='onpagecommitted'></div><div class='api-heading' data-id='onpagecommitted'><a href='#onpagecommitted'><span class='return-type'>void</span> OnPageCommitted(UniWebView webView, string url)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the web view receives response from the server and starts receiving web content.</p>
+<p>This event will be invoked when the web view has confirmed the response is a web page and has started to receive and process the web content. This happens after <code>OnPageStarted</code> but before <code>OnPageFinished</code>.</p>
+<p>This is an ideal place to inject JavaScript code at the earliest possible moment when a page starts loading. Note that JavaScript execution is asynchronous - it may complete after the page finishes loading. For most cases, it is recommended to use <code>OnPageFinished</code> event instead, which ensures the page is fully loaded.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
+    <div class='parameter-item-desc'><p>The url which the web view has started receiving content for.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnPageCommitted <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Web View starts receiving content, URL: "</span> <span class="token operator">+</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Inject JavaScript code at early stage</span>
+    view<span class="token punctuation">.</span><span class="token function">EvaluateJavaScript</span><span class="token punctuation">(</span><span class="token string">"console.log('Early stage injection');"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class="api-anchor" id='onpagefinished'></div><div class='api-heading' data-id='onpagefinished'><a href='#onpagefinished'><span class='return-type'>void</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div>
   <div class='api-body'>
     <div class='desc'>
@@ -672,18 +713,25 @@ The <code>statusCode</code> is not trustable and will be always 200 on Android d
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnPageFinished <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> statusCode<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<pre class="language-csharp"><code><span class="token comment">// A sample for checking status code</span>
+webView<span class="token punctuation">.</span>OnPageFinished <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> statusCode<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>statusCode<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Web view loading finished for: "</span> <span class="token operator">+</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// => "202"</span>
+<span class="token comment">// => "200"</span>
 <span class="token comment">// => "Web view loading finished for: https://example.com"</span>
 <span />
 webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://some_domain.com/404"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// => "404"</span>
 <span class="token comment">// => "Web view loading finished for: https://example.com"</span>
+<span />
+<span class="token comment">// A sample for JavaScript injection</span>
+webView<span class="token punctuation">.</span>OnPageFinished <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> statusCode<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// Inject JavaScript code with full DOM available</span>
+    view<span class="token punctuation">.</span><span class="token function">EvaluateJavaScript</span><span class="token punctuation">(</span><span class="token string">"console.log('JavaScript injection');"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
