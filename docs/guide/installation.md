@@ -12,6 +12,10 @@ If you purchased UniWebView from [Unity Asset Store](https://assetstore.unity.co
 
 Besides of Unity Asset Store, we also have [our own store](https://onevcat.gumroad.com/l/uniwebview-5). After purchasing from our store, you could download the `uniwebview_x_y_z.unitypackage` (`x_y_z` in the file name indicates the package version). Open your project in which you want to use UniWebView, then double-click the downloaded file to import it.
 
+### Source Repo Access
+
+For users who want to access the source code of UniWebView, we [provide a plan](https://uniwebview.com/#prices) to get access to the repo of UniWebView that is hosted on GitHub. If you purchased the Source Access License, you can choose either build your own package or directly download the pre-built `unitypackage` file from the GitHub release page from the repo.
+
 ## Importing Package
 
 Unity will prompt you with a window to confirm the importing files. Just click "Import" to add all files to your project.
