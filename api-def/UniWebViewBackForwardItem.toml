@@ -1,0 +1,32 @@
+title = "UniWebViewBackForwardItem"
+file = "UniWebViewBackForwardItem"
+
+summary = """
+Represents an item in the back-forward navigation list of a UniWebView browser.
+This class stores information about a single entry in the browsing history.
+
+You do not create an instance of this class directly. Instead, you get instances of this class from the
+`UniWebViewBackForwardList` class.
+"""
+
+[[Properties]]
+name = "Url"
+returnType = "string"
+hasSetter = false
+summary = "Gets the current URL of the history item."
+
+[[Properties]]
+name = "Title"
+returnType = "string"
+hasSetter = false
+summary = """
+Gets the title of the webpage represented by this history item.
+
+Empty if the title is not available or set.
+"""
+
+[[Properties]]
+name = "OriginalUrl"
+returnType = "string"
+hasSetter = false
+summary = "Gets the original URL before any redirects occurred, if any."

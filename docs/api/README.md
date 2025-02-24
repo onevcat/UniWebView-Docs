@@ -119,6 +119,9 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#goforward'><span class='return-type'>void</span> GoForward()</a></div></td><td><div class='simple-summary'>
 <p>Navigates to the forward item in the back-forward list.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#copybackforwardlist'><span class='return-type'>UniWebViewBackForwardList</span> CopyBackForwardList()</a></div></td><td><div class='simple-summary'>
+<p>Gets a copy of the back-forward list, which is the navigation history for the web view.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setopenlinksinexternalbrowser'><span class='return-type'>void</span> SetOpenLinksInExternalBrowser(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the link clicking in the web view should open the page in an external browser.</p>
 </div>
@@ -1480,6 +1483,50 @@ webView<span class="token punctuation">.</span><span class="token function">Load
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>webView<span class="token punctuation">.</span>CanGoForward<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     webView<span class="token punctuation">.</span><span class="token function">GoForward</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='copybackforwardlist'></div><div class='api-heading' data-id='copybackforwardlist'><a href='#copybackforwardlist'><span class='return-type'>UniWebViewBackForwardList</span> CopyBackForwardList()</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Gets a copy of the back-forward list, which is the navigation history for the web view.</p>
+<p>The back-forward list represents the browsing history in the current web view. It contains information
+about visited (both back and forward) pages and allows access to any entry in the history by index. This is a
+snapshot of the history at the time of calling - it won&#39;t update automatically with new navigation. Call
+<code>CopyBackForwardList</code> again to get the latest history if necessary.</p>
+</div>
+                  <div class='section-title'>Return Value</div>
+<div class='method-return'><p>A list object containing a snapshot of the navigation history. It provides a read-only record of all 
+web pages visited in this web view.</p>
+</div>
+      <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnPageFinished <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> statusCode<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">PrintList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span>OnLoadingErrorReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> code<span class="token punctuation">,</span> message<span class="token punctuation">,</span> payload<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">PrintList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span />
+<span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">PrintList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token class-name"><span class="token keyword">var</span></span> list <span class="token operator">=</span> webView<span class="token punctuation">.</span><span class="token function">CopyBackForwardList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+  <span class="token comment">// The current viewing page index in `list.AllItems`. </span>
+  <span class="token comment">// If `-1`, means no item in the list.</span>
+  <span class="token class-name"><span class="token keyword">var</span></span> currentIndex <span class="token operator">=</span> list<span class="token punctuation">.</span>CurrentIndex<span class="token punctuation">;</span>
+<span />
+  <span class="token comment">// List all items in the back-forward list.</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">var</span></span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> list<span class="token punctuation">.</span>Size<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name"><span class="token keyword">var</span></span> item <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">ItemAtIndex</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"#</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">i</span><span class="token punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">item<span class="token punctuation">.</span>Url</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
 </div>

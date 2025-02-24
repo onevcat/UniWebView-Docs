@@ -302,7 +302,7 @@ webView.OnLoadingErrorReceived += (view, code, message, payload) => {
 
 void PrintList() {
   var list = webView.CopyBackForwardList();
-  
+
   // The current viewing page index in `list.AllItems`. 
   // If `-1`, means no item in the list.
   var currentIndex = list.CurrentIndex;

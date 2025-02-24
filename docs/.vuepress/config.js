@@ -235,6 +235,14 @@ module.exports = {
               {
                 text: "UniWebViewChannelMethodMediaCapturePermission",
                 link: "UniWebViewChannelMethodMediaCapturePermission"
+              },
+              {
+                text: "UniWebViewBackForwardList",
+                link: "UniWebViewBackForwardList"
+              },
+              {
+                text: "UniWebViewBackForwardItem",
+                link: "UniWebViewBackForwardItem"
               }
             ]
           },
