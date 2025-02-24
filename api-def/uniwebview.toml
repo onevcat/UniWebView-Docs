@@ -277,6 +277,46 @@ if (webView.CanGoForward) {
 """
 
 [[Methods]]
+name = "CopyBackForwardList"
+syntax = "CopyBackForwardList()"
+returnType = "UniWebViewBackForwardList"
+summary = """
+Gets a copy of the back-forward list, which is the navigation history for the web view.
+
+The back-forward list represents the browsing history in the current web view. It contains information
+about visited (both back and forward) pages and allows access to any entry in the history by index. This is a
+snapshot of the history at the time of calling - it won't update automatically with new navigation. Call
+`CopyBackForwardList` again to get the latest history if necessary.
+"""
+returnValue = """A list object containing a snapshot of the navigation history. It provides a read-only record of all 
+web pages visited in this web view.
+"""
+example = """
+```csharp
+webView.OnPageFinished += (view, statusCode, url) => {
+  PrintList();
+};
+webView.OnLoadingErrorReceived += (view, code, message, payload) => {
+  PrintList();
+};
+
+void PrintList() {
+  var list = webView.CopyBackForwardList();
+  
+  // The current viewing page index in `list.AllItems`. 
+  // If `-1`, means no item in the list.
+  var currentIndex = list.CurrentIndex;
+
+  // List all items in the back-forward list.
+  for (var i = 0; i < list.Size; i++) {
+    var item = list.ItemAtIndex(i);
+    Debug.Log($"#{i}: {item.Url}");
+  }
+}
+```
+"""
+
+[[Methods]]
 name = "SetOpenLinksInExternalBrowser"
 syntax = "SetOpenLinksInExternalBrowser(bool flag)"
 returnType = "void"
