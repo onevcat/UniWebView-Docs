@@ -317,6 +317,27 @@ void PrintList() {
 """
 
 [[Methods]]
+name = "GoToIndexInBackForwardList"
+syntax = "GoToIndexInBackForwardList(int index)"
+returnType = "void"
+summary = """
+Navigates to the specified index in the back-forward list.
+
+The index is a zero-based index of the item in the back-forward list. If the index is out of range, this method does
+nothing.
+"""
+example = """
+```csharp
+// Go to the first item in the back-forward list.
+webView.GoToIndexInBackForwardList(0);
+```
+"""
+[[Methods.parameters]]
+name = "index"
+type = "int"
+summary = "The zero-based index of the item in the back-forward list."
+
+[[Methods]]
 name = "SetOpenLinksInExternalBrowser"
 syntax = "SetOpenLinksInExternalBrowser(bool flag)"
 returnType = "void"

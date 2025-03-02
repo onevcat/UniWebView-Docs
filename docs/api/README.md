@@ -122,6 +122,9 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#copybackforwardlist'><span class='return-type'>UniWebViewBackForwardList</span> CopyBackForwardList()</a></div></td><td><div class='simple-summary'>
 <p>Gets a copy of the back-forward list, which is the navigation history for the web view.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#gotoindexinbackforwardlist'><span class='return-type'>void</span> GoToIndexInBackForwardList(int index)</a></div></td><td><div class='simple-summary'>
+<p>Navigates to the specified index in the back-forward list.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setopenlinksinexternalbrowser'><span class='return-type'>void</span> SetOpenLinksInExternalBrowser(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the link clicking in the web view should open the page in an external browser.</p>
 </div>
@@ -1528,6 +1531,36 @@ webView<span class="token punctuation">.</span>OnLoadingErrorReceived <span clas
     Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"#</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">i</span><span class="token punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">item<span class="token punctuation">.</span>Url</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='gotoindexinbackforwardlist'></div><div class='api-heading' data-id='gotoindexinbackforwardlist'><a href='#gotoindexinbackforwardlist'><span class='return-type'>void</span> GoToIndexInBackForwardList(int index)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Navigates to the specified index in the back-forward list.</p>
+<p>The index is a zero-based index of the item in the back-forward list. If the index is out of range, this method does
+nothing.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>index</span></div>
+    <div class='parameter-item-desc'><p>The zero-based index of the item in the back-forward list.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Go to the first item in the back-forward list.</span>
+webView<span class="token punctuation">.</span><span class="token function">GoToIndexInBackForwardList</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
