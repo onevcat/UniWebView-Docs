@@ -1,5 +1,18 @@
 # Release Note
 
+### 5.14.0
+
+#### Add
+
+* Add `CopyBackForwardList` method to retrieve the complete browsing history of the web view, allowing for more advanced navigation control.
+* Add `GoToIndexInBackForwardList` method to directly navigate to any specific page in the browsing history without sequential back/forward operations.
+* Introduce `UniWebViewBackForwardList` and `UniWebViewBackForwardItem` classes to provide detailed access to navigation history items, including URLs and titles.
+
+#### Fix
+
+* Completely redesigned the loading spinner on Android with a modern, Material Design-inspired appearance, providing a more consistent visual experience with the latest Android system UI.
+* Resolved an edge case where opening a new window via JavaScript's `window.open()` without specifying a URL would fail on iOS devices.
+
 ### 5.13.0 (30 Jan, 2025)
 
 #### Add
