@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.14.1 (14 Mar, 2025)
+
+#### Fix
+
+* An issue that the `UniWebViewSafeBrowsing` and `UniWebViewAuthenticationSession`'s `Create` method returns `null` values. Under the hood, both instances work correctly, but the Unity representation of them is not correctly initialized. Now these two `Create` methods will return a valid instance of the object for null-checking.
+
 ### 5.14.0 (2 Mar, 2025)
 
 #### Add
