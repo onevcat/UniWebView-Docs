@@ -113,6 +113,25 @@ which starts with `ERROR_`. For example, [`1004` for `ERROR_HTTP_DATA_ERROR`](ht
 
 If you need to handle these errors, write code for different cases for different platforms.
 
+## Data Link and Blob Link
+
+UniWebView supports downloading from [data link](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data) and [blob link](https://developer.mozilla.org/en-US/docs/Web/API/Blob). A system alert dialog will be presented to the user to decide the download file name and post-download action.
+
+When dealing with blob link, UniWebView will try to fetch the content of the blob link. You need to make sure the blob link is available during the loading. That means, you should not call the `URL.revokeObjectURL(blobURL);` in your JavaScript too early. A possible and naive way to handle this is delaying the revoking call for a while:
+
+```javascript
+var url = URL.createObjectURL(blob);
+var a = document.createElement('a');
+a.href = url;
+a.download = 'sample.png';
+a.click();
+
+// Delay the revoke call for a while.
+setTimeout(() => {
+    URL.revokeObjectURL(url);
+}, 500);
+```
+
 ## Some Limitation
 
 On iOS, there is no system-level web view downloading support. So UniWebView starts a new standalone GET request to the URL to start a download.
