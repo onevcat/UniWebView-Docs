@@ -22,6 +22,9 @@ class to customize the toolbar to match your app's style.
 <tr><td><div class='api-summary-heading'><a href='#setposition'><span class='return-type'>void</span> SetPosition(UniWebViewToolbarPosition position)</a></div></td><td><div class='simple-summary'>
 <p>Sets the position of the embedded toolbar.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setmaxheight'><span class='return-type'>void</span> SetMaxHeight(float height)</a></div></td><td><div class='simple-summary'>
+<p>Sets the maximum height of the toolbar.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#show'><span class='return-type'>void</span> Show()</a></div></td><td><div class='simple-summary'>
 <p>Shows the toolbar.</p>
 </div>
@@ -87,6 +90,29 @@ webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token
 </div>
 </div>
     </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setmaxheight'></div><div class='api-heading' data-id='setmaxheight'><a href='#setmaxheight'><span class='return-type'>void</span> SetMaxHeight(float height)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the maximum height of the toolbar. If the specified height is smaller than the toolbar&#39;s standard height,
+the toolbar will be resized to this height. Otherwise, the standard height will be used.</p>
+<p>This method only works on iOS and Android. On macOS Unity Editor, the toolbar will always be displayed in the
+window&#39;s title bar and the height is fixed.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>height</span></div>
+    <div class='parameter-item-desc'><p>The maximum height value.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
   </div>
 </div>
 <div class='api-box method'>

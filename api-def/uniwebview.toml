@@ -203,11 +203,17 @@ greater than 1.0 enlarge the web view and values less than 1.0 shrink it.
 
 This method works on iOS and Android. It does nothing in Unity Editor on macOS.
 """
+notice = """
+This method does not affect the `ReferenceRectTransform` or Unity's `transform` component. 
+It only applies the transformation, or say, the rotation and scale to the web view itself in the native side.
+"""
 example = """
 ```csharp
 // Rotate the web view 45 degrees clockwise and scale it half of its original size.
 var transform = new UniWebViewTransform(45, 0.5f, 0.5f);
 webView.SetTransform(transform);
+
+// --------------
 
 // Show a landscape web page in the game with only portrait mode.
 // Calculate dimensions for a rotated full-screen web view

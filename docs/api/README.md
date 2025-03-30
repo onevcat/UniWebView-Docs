@@ -101,7 +101,10 @@ as well as receive a message from the web view.
 #### Methods Summary
 
 <table>
-<tr><td><div class='api-summary-heading'><a href='#load'><span class='return-type'>void</span> Load(string url, bool skipEncoding, string readAccessURL)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#settransform'><span class='return-type'>void</span> SetTransform(UniWebViewTransform transform)</a></div></td><td><div class='simple-summary'>
+<p>Applies a transformation to the web view, including rotation and scaling.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#load'><span class='return-type'>void</span> Load(string url, bool skipEncoding, string readAccessURL)</a></div></td><td><div class='simple-summary'>
 <p>Loads a url in current web view.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#loadhtmlstring'><span class='return-type'>void</span> LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
@@ -1352,6 +1355,72 @@ So this event will be never raise anymore. Check <code>Input.GetKeyUp</code> in 
 
 ### Methods
 
+<div class='api-box method'>
+  <div class="api-anchor" id='settransform'></div><div class='api-heading' data-id='settransform'><a href='#settransform'><span class='return-type'>void</span> SetTransform(UniWebViewTransform transform)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Applies a transformation to the web view, including rotation and scaling.</p>
+<p>This method allows you to rotate and scale the web view by specifying a <code>UniWebViewTransform</code>
+object. The transformation is applied relative to the web view&#39;s current position and size, with its center
+as the anchor.</p>
+<p>The transformation includes:</p>
+<ul>
+<li><strong>Rotation</strong>: The angle (in degrees) by which the web view should be rotated. Positive values rotate the web
+view clockwise, while negative values rotate it counterclockwise.</li>
+<li><strong>Scaling</strong>: The scale factors for the X and Y axes. A scale factor of 1.0 means no scaling, while values
+greater than 1.0 enlarge the web view and values less than 1.0 shrink it.</li>
+</ul>
+<p>This method works on iOS and Android. It does nothing in Unity Editor on macOS.</p>
+</div>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        This method does not affect the <code>ReferenceRectTransform</code> or Unity&#39;s <code>transform</code> component. 
+It only applies the transformation, or say, the rotation and scale to the web view itself in the native side.
+
+  </p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewTransform</span> <span class='parameter-item-name'>transform</span></div>
+    <div class='parameter-item-desc'><p>An object containing the rotation angle and scale factors to apply to the web view.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Rotate the web view 45 degrees clockwise and scale it half of its original size.</span>
+<span class="token class-name"><span class="token keyword">var</span></span> transform <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">UniWebViewTransform</span><span class="token punctuation">(</span><span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">0.5f</span><span class="token punctuation">,</span> <span class="token number">0.5f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">SetTransform</span><span class="token punctuation">(</span>transform<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// --------------</span>
+<span />
+<span class="token comment">// Show a landscape web page in the game with only portrait mode.</span>
+<span class="token comment">// Calculate dimensions for a rotated full-screen web view</span>
+<span class="token class-name"><span class="token keyword">float</span></span> x <span class="token operator">=</span> <span class="token punctuation">(</span>Screen<span class="token punctuation">.</span>width <span class="token operator">-</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0f</span><span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">float</span></span> y <span class="token operator">=</span> <span class="token punctuation">(</span>Screen<span class="token punctuation">.</span>height <span class="token operator">-</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0f</span><span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">float</span></span> width <span class="token operator">=</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">float</span></span> height <span class="token operator">=</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Set the frame to properly position the web view</span>
+webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Rect</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token class-name"><span class="token keyword">var</span></span> transform <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">UniWebViewTransform</span><span class="token punctuation">(</span><span class="token number">90</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">SetTransform</span><span class="token punctuation">(</span>transform<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
 <div class='api-box method'>
   <div class="api-anchor" id='load'></div><div class='api-heading' data-id='load'><a href='#load'><span class='return-type'>void</span> Load(string url, bool skipEncoding, string readAccessURL)</a></div>
   <div class='api-body'>
