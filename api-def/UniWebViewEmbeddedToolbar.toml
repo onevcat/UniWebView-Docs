@@ -35,6 +35,22 @@ type = "UniWebViewToolbarPosition"
 summary = "The desired position of the toolbar."
 
 [[Methods]]
+name = "SetMaxHeight"
+syntax = "SetMaxHeight(float height)"
+returnType = "void"
+summary = """
+Sets the maximum height of the toolbar. If the specified height is smaller than the toolbar's standard height,
+the toolbar will be resized to this height. Otherwise, the standard height will be used.
+
+This method only works on iOS and Android. On macOS Unity Editor, the toolbar will always be displayed in the
+window's title bar and the height is fixed.
+"""
+[[Methods.parameters]]
+name = "height"
+type = "float"
+summary = "The maximum height value."
+
+[[Methods]]
 name = "Show"
 syntax = "Show()"
 returnType = "void"
