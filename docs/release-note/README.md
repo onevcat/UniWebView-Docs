@@ -1,5 +1,17 @@
 # Release Note
 
+### 5.15.0 (1 Apr, 2025)
+
+#### Add
+
+* Add a `SetTransform` method to allow setting the rotation and scale of the web view. Setting the rotation and scale will keep the web view's page content but alter the view's appearance. Check the [SetTransform](https://docs.uniwebview.com/api/#settransform) method reference and the [related guide](https://docs.uniwebview.com/guide/rotation-and-scale.html) for more information.
+* Add support for `blob:` scheme URLs. They are now automatically converted to downloadable file URLs and handled by UniWebView automatically.
+* Add a method to allow setting the maximum height of the embedded toolbar. It restricts the height of the toolbar to a value if you need a compact toolbar.
+
+#### Fix
+
+* Improve the ProGuard rules used for packaging the UniWebView Android library. Now it should not cause any duplicated class issues with other plugins which also use ProGuard.
+
 ### 5.14.1 (14 Mar, 2025)
 
 #### Fix
