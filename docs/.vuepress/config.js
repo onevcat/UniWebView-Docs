@@ -82,6 +82,7 @@ module.exports = {
             "position-and-size",
             "embedded-toolbar",
             "transition",
+            "rotation-and-scale",
             "memory-management",
             "messaging-system",
             "using-javascript",
@@ -243,6 +244,10 @@ module.exports = {
               {
                 text: "UniWebViewBackForwardItem",
                 link: "UniWebViewBackForwardItem"
+              },
+              {
+                text: "UniWebViewTransform",
+                link: "UniWebViewTransform"
               }
             ]
           },
