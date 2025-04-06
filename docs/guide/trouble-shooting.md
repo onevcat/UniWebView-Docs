@@ -1,5 +1,7 @@
 # Trouble Shooting
 
+> UniWebView build errors and runtime crashes can be resolved by adjusting settings in Unity Preferences and performing a clean build.
+
 ## Android
 
 ### Building Error

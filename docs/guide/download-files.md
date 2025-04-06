@@ -1,5 +1,7 @@
 # Downloading Files
 
+> UniWebView manages file downloads with platform-specific behaviors, offering iOS customization for URLs and MIME types, and supports download events and data/blob links.
+
 Normally, UniWebView will render the content of the visited page (e.g. HTML). However, if the response provided by the server is a non-renderable content like a binary file, UniWebView will try to download the file corresponding to the URL instead.
 
 The file download should work correctly without any additional configuration. However, there are some differences in the file downloading behavior between iOS and Android due to the differences in how they handle file download requests. This document will explain this topic.
@@ -48,27 +50,27 @@ The default behavior tries to match the exact values for URL and MIME type. For 
 
 ```csharp
 webView.AddDownloadURL("^https://example\\.com/image\\.png.*$", UniWebViewDownloadMatchingType.RegularExpression);
-// Download from 
-//   "https://example.com/image.png", 
-//   "https://example.com/image.png?size=100x100" or 
+// Download from
+//   "https://example.com/image.png",
+//   "https://example.com/image.png?size=100x100" or
 //   "https://example.com/image.png/download", etc.
-// But not from 
+// But not from
 //   "https://example.com/image.jpg" since it does not match.
 
 webView.AddDownloadMIMEType("^image/.*$", UniWebViewDownloadMatchingType.RegularExpression);
-// Download resources with MIME type 
-//    "image/jpg", 
-//    "image/png" and more. 
-// But not 
+// Download resources with MIME type
+//    "image/jpg",
+//    "image/png" and more.
+// But not
 //    "application/pdf".
 ```
 
-When using `UniWebViewDownloadMatchingType.RegularExpression`, the first parameter accepts a regular expression pattern string. 
-Since these APIs are only for iOS, you need to pass a regular expression pattern following Objective-C regular express syntax. 
+When using `UniWebViewDownloadMatchingType.RegularExpression`, the first parameter accepts a regular expression pattern string.
+Since these APIs are only for iOS, you need to pass a regular expression pattern following Objective-C regular express syntax.
 Read the [related documentation](https://developer.apple.com/documentation/foundation/nsregularexpression#1661042) from Apple for more.
 
 ::: warning
-When using `UniWebViewDownloadMatchingType.RegularExpression`, please make sure you are passing a valid regular 
+When using `UniWebViewDownloadMatchingType.RegularExpression`, please make sure you are passing a valid regular
 expression pattern string to the first parameter. Please be careful it requires a **regular expression** pattern string,
 rather than a **wildcard** pattern string (such as `image/*`, which might not be working).
 :::
@@ -121,14 +123,14 @@ When dealing with blob link, UniWebView will try to fetch the content of the blo
 
 ```javascript
 var url = URL.createObjectURL(blob);
-var a = document.createElement('a');
+var a = document.createElement("a");
 a.href = url;
-a.download = 'sample.png';
+a.download = "sample.png";
 a.click();
 
 // Delay the revoke call for a while.
 setTimeout(() => {
-    URL.revokeObjectURL(url);
+  URL.revokeObjectURL(url);
 }, 500);
 ```
 

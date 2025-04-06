@@ -1,5 +1,7 @@
 # Transition
 
+> UniWebView offers customizable show/hide transitions and position/size animations for web views.
+
 The transition effect in UniWebView is easy. We provide several built-in show/hide visual transition effects. You can also animate the position and size of web view on the screen.
 
 ## Show / Hide Transition

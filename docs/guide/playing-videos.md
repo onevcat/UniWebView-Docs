@@ -1,5 +1,7 @@
 # Playing Videos
 
+> UniWebView supports HTML5 video playback with options for auto play and inline play, but does not support Flash-based videos.
+
 UniWebView supports playing HTML5 videos. You could embed your videos in the [`<video>` tag](https://www.w3schools.com/html/html5_video.asp) to play it in HTML.
 
 For most video host sites (such as YouTube or Vimeo), video playback should work out-of-the-box, including all controls and full-screen support. Some of the video providers also provide JavaScript SDK/Tools to give more control on the video playing. Since UniWebView supports JavaScript, you should also be able to make use of them to control your playback.

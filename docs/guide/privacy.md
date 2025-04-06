@@ -1,10 +1,12 @@
 # Privacy Policy
 
+> UniWebView prioritizes privacy, collecting minimal data, using it only for order processing, and ensuring secure transmission with encryption.
+
 ::: tip DATE
 Last updated: 2018-04-29
 :::
 
-Protection of your privacy is very important to us. Below you will find detailed information about how we deal with your data. 
+Protection of your privacy is very important to us. Below you will find detailed information about how we deal with your data.
 
 Our data protection policy conforms to the Federal Data Protection Act (Bundesdatenschutzgesetz, BDSG) as well as to the Telemedia Act (Telemediengesetz).
 

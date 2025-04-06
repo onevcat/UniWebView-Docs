@@ -1,4 +1,6 @@
-# Migration Guide
+# Migration Guide (v3 to v4)
+
+> To migrate from UniWebView 3 to 4, remove old files, install the new version, replace deprecated methods like SetImmersiveModeEnabled and OnKeyCodeReceived, and consider using new features like Safe Browsing Mode.
 
 ::: tip Upgrade Pricing
 If you have purchased UniWebView 3 before, we offer an upgrading discount.

@@ -1,4 +1,6 @@
-# General
+# OAuth 2.0 General
+
+> UniWebView supports OAuth 2.0 for multiple providers, offering customizable flows and secure authentication methods.
 
 ## Overview
 

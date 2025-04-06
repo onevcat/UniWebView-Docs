@@ -1,5 +1,7 @@
 # OAuth 2.0 with GitHub
 
+> Use UniWebView to implement GitHub OAuth 2.0 authentication by setting up the component, handling callbacks, and managing token storage and refresh.
+
 > The following guide was last updated in October 2024. Please note that it may become outdated if the provider updates their user interface or workflow.
 
 In this guide, we are using GitHub for demonstration purpose.
@@ -121,14 +123,12 @@ var token = UniWebViewAuthenticationTokenFactory<UniWebViewAuthenticationGitHubT
 
 If in the token, there is a non-null `RefreshToken` property, it usually suggests that you can use it to refresh the access token.
 
-In any compatible flow (in this example, the `UniWebViewAuthenticationFlowGitHub`), there is a `StartRefreshTokenFlow` method. You can pass the refresh token in, and the flow will try to communicate with 
-the service provider and refresh the token. Similar to the access token authentication flow, the refresh token result will be returned in the callback too. 
+In any compatible flow (in this example, the `UniWebViewAuthenticationFlowGitHub`), there is a `StartRefreshTokenFlow` method. You can pass the refresh token in, and the flow will try to communicate with
+the service provider and refresh the token. Similar to the access token authentication flow, the refresh token result will be returned in the callback too.
 
 But instead of setting the methods for "On Authentication Finished" and "On Authentication Errored", this time you need to set "On Refresh Token Finished" and "On Refresh Token Errored":
 
-
 ![](/images/refresh-action-list.png)
-
 
 ```csharp
 public void OnGitHubTokenRefreshed(UniWebViewAuthenticationGitHubToken token) {

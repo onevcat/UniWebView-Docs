@@ -4,6 +4,8 @@ sidebarDepth: 0
 
 # FAQ
 
+> UniWebView FAQ addresses common issues and queries about usage, platform support, performance, privacy, licensing, and source code access, providing solutions and explanations for developers.
+
 [[toc]]
 
 ## Can I put some Unity GUI/object above of UniWebView?

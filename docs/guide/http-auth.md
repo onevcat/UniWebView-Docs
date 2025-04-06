@@ -1,5 +1,7 @@
 # HTTP Authentication
 
+> UniWebView supports HTTP Basic and Digest authentication, prompting users for credentials and storing them permanently, with options to clear stored credentials on iOS and Android.
+
 UniWebView supports HTTP authentication by prompting the user to provide a username and password in a native way.
 You could use either HTTP Basic or HTTP Digest to set up the authentication flow. For more information about
 HTTP authentication on the server-side and to get a general idea, please refer to [this documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).

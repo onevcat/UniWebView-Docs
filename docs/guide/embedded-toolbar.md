@@ -1,5 +1,7 @@
 # Embedded Toolbar
 
+> UniWebView's embedded toolbar can be shown, customized in position, text, and colors, and managed through events like OnShouldClose for proper web view handling.
+
 UniWebView contains an embedded toolbar that can be displayed with the web view. In this guide, we will discuss how to use the embedded toolbar and the way it can be customized.
 
 ### Showing a toolbar

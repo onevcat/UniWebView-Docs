@@ -1,5 +1,7 @@
 # Messaging System
 
+> UniWebView's messaging system enables communication between web views and Unity using custom URL schemes, with a safe data transfer limit of about 16KB per message.
+
 ### Send and Receive
 
 You can send a message from the web view to UniWebView. It helps you implement a way to "control" your game from the web page.

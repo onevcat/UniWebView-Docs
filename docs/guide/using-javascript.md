@@ -1,5 +1,7 @@
 # Using JavaScript
 
+> UniWebView allows adding and executing JavaScript functions on web pages, with options to disable JavaScript for performance or security.
+
 You can run any JavaScript embedded in the web page. Or you can even add new JavaScript functions to the current page.
 
 ## Add a Function

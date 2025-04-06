@@ -1,5 +1,7 @@
 # Uploading
 
+> UniWebView supports file uploads from device or cloud, with specific iOS setup required for camera access.
+
 UniWebView supports uploading files from the disk of your device or from a cloud service to your website.
 
 To show an upload field, use the standard input tag with proper type:

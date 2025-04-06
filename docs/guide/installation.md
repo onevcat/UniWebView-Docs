@@ -1,5 +1,7 @@
 # Installation
 
+> UniWebView installation involves importing the package from Unity Asset Store or UniWebView Store, configuring necessary permissions in Unity Preferences, and optionally accessing the source code via a GitHub repository.
+
 ::: warning IMPORTANT
 We strongly recommend that you perform a backup before importing UniWebView to your project. If you are using any [version control system](https://en.wikipedia.org/wiki/Version_control) (like Git or SVN), it should be definitely safe to continue.
 :::
@@ -53,7 +55,7 @@ If you need to display plain HTTP content in the web view, turn it on.
 
 #### Write External Storage
 
-Add `WRITE_EXTERNAL_STORAGE` permission to the "AndroidManifest.xml". It enables storing an image from the web page to the Download folder on the device. 
+Add `WRITE_EXTERNAL_STORAGE` permission to the "AndroidManifest.xml". It enables storing an image from the web page to the Download folder on the device.
 
 If you need to download and save any files to disk, turn it on.
 

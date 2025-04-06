@@ -1,5 +1,7 @@
 # Overview
 
+> UniWebView offers two options for displaying web content: a customizable general-purpose web view and a simple, secure full-screen safe browsing mode.
+
 In this guide, we will introduce the two main options when using this package to show some web content. You can choose one that fits your project better.
 
 ## Two Options

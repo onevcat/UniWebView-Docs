@@ -1,5 +1,7 @@
 # Safe Browsing Mode
 
+> UniWebView's Safe Browsing Mode offers a full-screen, browser-like web experience with customizable UI and requires device support checks.
+
 In this guide, we cover both of the prefab and code use of the Safe Browsing Mode.
 
 In the Safe Browsing Mode, the web content will be displayed full-screen with a default UI on either iOS and Android:

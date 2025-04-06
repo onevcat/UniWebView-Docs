@@ -1,5 +1,7 @@
 # Submit a Ticket
 
+> Use the AI-driven chat bot for quick help or submit a private ticket for direct support if needed.
+
 ## Chat Bot
 
 Cannot find answers for your questions in our guide or [FAQ page](./faq.md)? Please try to ask the chat bot below and see if it helps.

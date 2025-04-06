@@ -1,5 +1,7 @@
 # Web View - Prefab
 
+> UniWebView prefab simplifies adding a web view to Unity scenes, with options for URL loading and toolbar customization.
+
 In this guide, we will add a `UniWebView.prefab` to the scene and show a sample page with it. This covers the basic usage of the general-purpose web view through prefab.
 
 ## Adding to Scene

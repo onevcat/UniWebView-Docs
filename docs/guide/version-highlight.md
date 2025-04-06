@@ -1,5 +1,7 @@
 # Version Highlight
 
+> UniWebView 5 enhances user experience with built-in OAuth 2.0 support, an embedded toolbar, improved image uploading, and better export stability.
+
 ::: tip Upgrade Pricing
 If you have purchased UniWebView 4 before, we offer an upgrading discount.
 

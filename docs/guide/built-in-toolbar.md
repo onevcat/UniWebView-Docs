@@ -1,5 +1,7 @@
 # Built-in Toolbar
 
+> The deprecated built-in toolbar in UniWebView has been replaced by the Embedded Toolbar; use the migration guide to switch.
+
 ::: danger DEPRECATED
 This guide and the built-in toolbar is deprecated.
 

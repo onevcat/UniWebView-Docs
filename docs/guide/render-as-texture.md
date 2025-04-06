@@ -1,8 +1,10 @@
 # Render as Texture
 
+> UniWebView allows rendering web content as a non-interactive texture in Unity, suitable for 3D integration but with performance and feature limitations.
+
 Usually, UniWebView is used as a native overlay layer on top of the whole Unity scene. That means you cannot put any
 other Unity element on top of the web view (see the [FAQ here](/guide/faq.html#can-i-put-some-unity-gui-object-above-of-uniwebview)).
-Instead, UniWebView provides a way to render the current web view content into a texture, you can use the texture in the 
+Instead, UniWebView provides a way to render the current web view content into a texture, you can use the texture in the
 3D world, such as Unity `RawImage` or any `Material` on any 3D object.
 
 ::: warning LIMITATION
@@ -128,7 +130,7 @@ event, and passing an `onStart` callback to it:
 
 ```csharp
 public class MyBehaviour : MonoBehaviour {
-  
+
   // ...
 
   void OpenWebView() {
@@ -162,6 +164,7 @@ cubeRenderer.material.mainTexture = webView.CreateRenderedTexture(rect);
 
 > The final pixel count of the snapshot matters. If you do not need the texture to be at the high resolution, you can
 > also create a smaller web view from the very beginning, for example:
+>
 > ```csharp
 > // webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
 > webView.Frame = new Rect(0, 0, Screen.width / 4, Screen.height / 4);
@@ -174,10 +177,10 @@ than the performance.
 
 ### Interaction
 
-The rendered texture is not interactive. You cannot click any link or button on the texture, or scroll the web view 
+The rendered texture is not interactive. You cannot click any link or button on the texture, or scroll the web view
 by gesture.
 
-Although the user interaction is not available, you can still call any `UniWebView` methods on the web view 
+Although the user interaction is not available, you can still call any `UniWebView` methods on the web view
 programmatically. It is also possible to use methods like `ScrollTo` to "simulate" the scrolling, or use JavaScript to
 "click" the button or link on the web page. For example, you can use the following code to get all links on the page,
 and click the first one:
@@ -201,5 +204,5 @@ webView.EvaluateJavaScript("document.links[0].click();");
 
 ### Video
 
-Any hardware-accelerated content, such as video or WebGL elements, cannot be rendered. You will only see a black 
+Any hardware-accelerated content, such as video or WebGL elements, cannot be rendered. You will only see a black
 rectangle in the place of the video.

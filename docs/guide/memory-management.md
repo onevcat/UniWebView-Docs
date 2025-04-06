@@ -1,5 +1,7 @@
 # Memory Management
 
+> To manage memory effectively with UniWebView, destroy unused web views promptly, reset references when closed, and clear caches when not needed.
+
 Memory is a key limitation on mobile platforms. We designed and checked the memory management carefully to make sure there is no unintended memory usage or leaking. To keep your game fast and with a small memory footprint, please follow the rules below.
 
 ### Destroy the web view once you do not need it

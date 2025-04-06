@@ -1,5 +1,7 @@
 # Loading Local Files
 
+> UniWebView supports loading local HTML files from the StreamingAssets folder or persistent data path, with specific considerations for Android builds using "Split Application Binary."
+
 ## From Game Bundle
 
 You can load local HTML files through the web view if you put them to the [StreamingAssets folder](https://docs.unity3d.com/Manual/StreamingAssets.html) (`Assets/StreamingAssets/` folder in the Unity project).

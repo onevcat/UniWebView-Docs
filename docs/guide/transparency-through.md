@@ -1,5 +1,7 @@
 # Clicking Through
 
+> UniWebView enables clicking through transparent web pages to interact with Unity scenes behind.
+
 If you have a web page with transparency background, it is possible to click through the web page and deliver the touch events to the Unity scene behind. This is called "Transparency Clicking Through" in UniWebView.
 
 ## Steps
@@ -8,7 +10,7 @@ There are three steps before you can actually click through the transparent part
 
 ### Enabling click through check
 
-Calling [`SetTransparencyClickingThroughEnabled`](/api/#settransparencyclickingthroughenabled) with `true`. This allows UniWebView to check every touch and the pixel color at the touch point. 
+Calling [`SetTransparencyClickingThroughEnabled`](/api/#settransparencyclickingthroughenabled) with `true`. This allows UniWebView to check every touch and the pixel color at the touch point.
 
 You can simply do this after creating the web view:
 
@@ -22,9 +24,7 @@ webView.SetTransparencyClickingThroughEnabled(true);
 To allow clicking through, it is required that the Unity scene is visible even under the web view. So you need to have a transparent web page content in HTML. Normally, it is controlled by the style used by `body` tag in the page:
 
 ```html
-<body style="background-color: transparent">
-
-</body>
+<body style="background-color: transparent"></body>
 ```
 
 Or in the CSS:

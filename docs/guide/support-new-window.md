@@ -1,5 +1,7 @@
 # Supporting New Window
 
+> UniWebView supports new windows in web views through configuration, allowing links and JavaScript to open new tabs or windows.
+
 ::: tip Choose Safe Browser Mode
 This guide is for the general-purpose web view.
 

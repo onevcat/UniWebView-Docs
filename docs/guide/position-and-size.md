@@ -1,5 +1,7 @@
 # Position and Size
 
+> UniWebView allows setting web view position and size either directly with a frame or by referencing a UI element's RectTransform for adaptive layouts.
+
 UniWebView has two ways to determine where the web view should be displayed on the screen:
 
 - **Setting a frame directly**, or
