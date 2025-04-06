@@ -1,0 +1,92 @@
+title = "UniWebViewAuthenticationFlowFacebook"
+file = "UniWebViewAuthenticationFlowFacebook"
+
+summary = """
+A predefined authentication flow for Facebook Login.
+
+It is not a standard OAuth2 flow, and using a plain web view. There once was a policy that Facebook did not allow
+any third-party customize authentication flow other than using their official SDK. Recently Facebook started to provide
+a so-called manual flow way to perform authentication. But it is originally only for Desktop apps, it is not stable
+and not standard.
+
+Facebook suggests "For mobile apps, use the Facebook SDKs for iOS and Android, and follow the separate guides for
+these platforms." So on mobile, use this class with your own risk since it might be invalidated or forbidden by
+Facebook in the future.
+
+This implementation is based on the manual flow described in [this documentation](https://developers.facebook.com/docs/facebook-login/guides/advanced/manual-flow).
+
+See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of authentication in UniWebView.
+
+To allow the Facebook flow working, at least you need to set the `App Id` in the `UniWebViewAuthenticationFlowFacebook` inspector.
+"""
+
+[[Properties]]
+name = "appId"
+returnType = "string"
+hasSetter = true
+summary = "The App ID of your Facebook application."
+
+[[Properties]]
+name = "optional"
+returnType = "UniWebViewAuthenticationFlowFacebookOptional"
+hasSetter = true
+summary = "Optional to control this flow's behaviour."
+
+[[Properties]]
+name = "optional.scope"
+returnType = "string"
+hasSetter = true
+summary = "The scope string of all your required scopes."
+
+[[Properties]]
+name = "optional.additionalAuthenticationUriQuery"
+returnType = "string"
+hasSetter = true
+summary = """
+The additional query arguments that are used to construct the query string of the authentication request.
+
+This is useful when you want to add some custom parameters to the authentication request. This string will be 
+appended to the query string that constructed from `GetAuthenticationUriArguments`. 
+
+For example, if you set the value to `prompt=consent&ui_locales=en`, it will be contained in the final authentication 
+query.
+"""
+
+[[Events]]
+name = "OnAuthenticationFinished"
+syntax = "OnAuthenticationFinished"
+returnType = "UnityEvent<UniWebViewAuthenticationFacebookToken>"
+summary = "Called when the authentication flow succeeds and a valid token is generated."
+example = """
+```csharp
+facebookFlow.OnAuthenticationFinished.AddListener(OnFacebookTokenReceived)
+
+void OnFacebookTokenReceived(UniWebViewAuthenticationFacebookToken token) {
+  Debug.Log("Facebook Access Token: " + token.AccessToken);
+}
+```
+"""
+
+[[Events]]
+name = "OnAuthenticationErrored"
+syntax = "OnAuthenticationErrored"
+returnType = "UnityEvent<long, string>"
+summary = "Called when any error (including user cancellation) happens during the authentication flow."
+example = """
+```csharp
+facebookFlow.OnAuthenticationErrored.AddListener(OnFacebookAuthError);
+
+void OnFacebookAuthError(long error, string message) {
+  Debug.Log("Error code: " + error + " Message: " + message);
+}
+```
+"""
+
+[[Methods]]
+name = "StartAuthenticationFlow"
+syntax = "StartAuthenticationFlow()"
+returnType = "void"
+summary = """
+Starts the authentication flow with the standard OAuth 2.0.
+This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
+"""

@@ -1,0 +1,190 @@
+title = "UniWebViewSafeBrowsing"
+file = "uniwebviewsafebrowsing"
+
+summary = """
+UniWebView Safe Browsing provides a way for browsing the web content in a more browser-like way, such as Safari on 
+iOS and Chrome on Android.
+
+This class wraps `SFSafariViewController` on iOS and “Custom Tabs” on Android. Starting with iOS 11, this component no 
+longer shares cookies with Safari in the same way as it did in iOS 9 or 10, due to design restrictions by Apple that 
+cannot be bypassed. It still supports auto-fill completion and other data sharing with the browser on the device. Most 
+permissions are also built-in. You can use this class for tasks that are limited for a normal web view, such as using 
+Apple Pay or Progressive Web Apps (PWA).
+
+You create a `UniWebViewSafeBrowsing` instance by calling the static `UniWebViewSafeBrowsing.Create` method with a
+destination URL. You cannot change this URL once the instance is created. To show the safe browsing, call `Show` on
+the instance. The web content will be displayed in full screen with a toolbar containing the loaded URL, as well
+as some basic controls like Go Back, Go Forward and Done. 
+
+Browsing web content in `UniWebViewSafeBrowsing` is only supported on iOS and Android. There is no such component in
+Unity Editor. Creating and showing a `UniWebViewSafeBrowsing` on Unity Editor will fall back to open the URL in 
+external browser by using Unity's `Application.OpenURL`.
+"""
+
+[[Properties]]
+name = "IsSafeBrowsingSupported"
+returnType = "bool"
+hasSetter = false
+summary = """
+Whether the safe browsing mode is supported in current runtime or not.
+
+If supported, the safe browsing mode will be used when `Show` is called on a `UniWebViewSafeBrowsing` instance.
+Otherwise, the system default browser will be used to open the page when `Show` is called.
+
+This property always returns `true` on iOS runtime platform. On Android, it depends on whether there is an Intent 
+can handle the safe browsing request. Usually this ability is provided by Chrome, but there are also other browser app
+might implement that. If there is no Intent can open the URL in safe browsing mode, or the handling app is set to 
+disabled in Android system, this property returns `false`.
+
+To use this API on Android when you set your Target SDK to Android 11 or later, you need to add the correct 
+intent query explicitly in your AndroidManifest.xml, to follow the Package Visibility 
+(https://developer.android.com/about/versions/11/privacy/package-visibility). Add `queries` as a subnode of the 
+`manifest` tag:
+
+"""
+example = """
+```csharp
+<manifest>
+  // ...
+
+  </application>
+
+  <queries>
+    <intent>
+      <action android:name="android.support.customtabs.action.CustomTabsService" />
+    </intent>
+  </queries>
+</manifest>
+
+// To use it:
+if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
+    // Safe Browsing Mode is available on current device.
+}
+```
+"""
+[[Properties.badges]]
+name = "static"
+color = "blue"
+
+[[Methods]]
+name = "Create"
+syntax = "Create(string url)"
+returnType = "UniWebViewSafeBrowsing"
+summary = """
+Creates a new `UniWebViewSafeBrowsing` instance with a given URL.
+"""
+example = """
+```csharp
+var safeBrowsing = UniWebViewSafeBrowsing.Create("https://uniwebview.com");
+```
+"""
+[[Methods.parameters]]
+name = "url"
+type = "string"
+summary = """
+The URL to navigate to. The URL must use the `http` or `https` scheme.
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+
+[[Methods]]
+name = "Show"
+syntax = "Show()"
+returnType = "void"
+summary = """
+Shows the safe browsing content above current screen.
+"""
+example = """
+```csharp
+var safeBrowsing = UniWebViewSafeBrowsing.Create("https://uniwebview.com");
+safeBrowsing.Show();
+```
+"""
+
+[[Methods]]
+name = "Dismiss"
+syntax = "Dismiss()"
+returnType = "void"
+summary = """
+Dismisses the safe browsing component.
+
+This method only works on iOS. On Android, there is no way to dismiss the safe browsing component 
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+
+[[Methods]]
+name = "SetToolbarColor"
+syntax = "SetToolbarColor(Color color)"
+returnType = "void"
+summary = """
+Sets the color for toolbar background in the safe browsing component. 
+
+The changes are ignored after `Show` method is called.
+"""
+example = """
+```csharp
+safeBrowsing.SetToolbarColor(Color.blue);
+```
+"""
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = """
+The color to tint the toolbar.
+"""
+
+[[Methods]]
+name = "SetToolbarItemColor"
+syntax = "SetToolbarItemColor(Color color)"
+returnType = "void"
+summary = """
+Sets the color for toolbar controls in the safe browsing component. 
+
+The changes are ignored after `Show` method is called.
+
+This method only works on iOS. On Android, the controls color is determined by system to keep a reasonable 
+contrast, based on the toolbar background color you provided in `SetToolbarColor`.
+"""
+example = """
+```csharp
+safeBrowsing.SetToolbarItemColor(Color.yellow);
+```
+"""
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = """
+The color to tint the controls on toolbar.
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+
+[[Events]]
+name = "OnSafeBrowsingFinished"
+syntax = "OnSafeBrowsingFinished(UniWebViewSafeBrowsing browsing)"
+returnType = "event"
+summary = """
+Raised when user dismisses safe browsing by tapping the Done button or Back button.
+
+The dismissed safe browsing instance will be invalid after this event being raised, and you should not use 
+it for another browsing purpose. Instead, create a new one for a new browsing session.
+"""
+notice = """
+This event will not happen in Unity Editor, because the whole `UniWebViewSafeBrowsing` will fall back to an 
+external browser.
+"""
+example = """
+```csharp
+safeBrowsing.OnSafeBrowsingFinished += (browsing) => { 
+    Debug.Log("UniWebViewSafeBrowsing closed.");
+};
+```
+"""
+[[Events.parameters]]
+name = "browsing"
+type = "UniWebViewSafeBrowsing"
+summary = "The `UniWebViewSafeBrowsing` object raised this event."

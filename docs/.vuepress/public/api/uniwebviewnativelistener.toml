@@ -1,0 +1,15 @@
+title = "UniWebViewNativeListener"
+file = "uniwebviewnativelistener"
+
+[[Properties]]
+name = "webView"
+returnType = "UniWebView"
+hasSetter = true
+summary = "The web view holder of this listener."
+notice = "It will be linked to original web view so you should never set it yourself."
+
+[[Properties]]
+name = "Name"
+returnType = "string"
+hasSetter = false
+summary = "Name of the current listener. This is a UUID string by which native side could use to find the message destination."

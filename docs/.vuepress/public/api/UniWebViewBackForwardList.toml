@@ -1,0 +1,81 @@
+title = "UniWebViewBackForwardList"
+file = "UniWebViewBackForwardList"
+
+summary = """
+Represents the back-forward navigation history list of a UniWebView instance.
+This class manages the browsing history and provides access to previous and next pages.
+
+You do not create an instance of this class directly. Instead, you get an instance of this class to represent the
+back-forward list of a UniWebView instance by calling the `CopyBackForwardList` method of the `UniWebView` class.
+
+The content of this class is read-only and fixed when the instance is created. It does not get updated with the
+web view's navigation history automatically. If you need the latest navigation history, you should call the method
+`CopyBackForwardList` again to get a new instance of this class.
+"""
+
+[[Properties]]
+name = "AllItems"
+returnType = "List<UniWebViewBackForwardItem>"
+hasSetter = false
+summary = "Gets all items in the back-forward navigation history list."
+
+[[Properties]]
+name = "CurrentItem"
+returnType = "UniWebViewBackForwardItem"
+hasSetter = false
+summary = """
+Gets the current page item in the navigation history.
+
+It is the page that is currently displayed in the list. If there is no item in the list, it will return null.
+"""
+
+[[Properties]]
+name = "BackItem"
+returnType = "UniWebViewBackForwardItem"
+hasSetter = false
+summary = """
+Gets the previous (back) page item in the navigation history.
+
+Returns null if there is no previous page.
+"""
+
+[[Properties]]
+name = "ForwardItem"
+returnType = "UniWebViewBackForwardItem"
+hasSetter = false
+summary = """
+Gets the next (forward) page item in the navigation history.
+
+Returns null if there is no next page.
+"""
+
+[[Properties]]
+name = "CurrentIndex"
+returnType = "int"
+hasSetter = false
+summary = """
+Gets the index of current page in the navigation history.
+
+The index is zero-based in the list. If there is no item in the list, it will return -1.
+"""
+
+[[Properties]]
+name = "Size"
+returnType = "int"
+hasSetter = false
+summary = "Gets the total number of items in the navigation history."
+
+[[Methods]]
+name = "ItemAtIndex"
+syntax = "ItemAtIndex(int index)"
+returnType = "UniWebViewBackForwardItem"
+returnValue = "The navigation item at the specified index, or null if the index is out of range."
+summary = """
+Gets the item at the specified index in the navigation history.
+"""
+[[Methods.Parameters]]
+name = "index"
+type = "int"
+summary = "The zero-based index of the item to retrieve."
+
+

@@ -1,0 +1,217 @@
+title = "UniWebViewAuthenticationFlowGitHub"
+file = "UniWebViewAuthenticationFlowGitHub"
+
+summary = """
+A predefined authentication flow for GitHub.
+
+This implementation follows the flow described [here](https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps).
+
+See the [OAuth 2.0 Support](/guide/oauth2.html) and [OAuth 2.0 with GitHub](/guide/oauth2-github.html) for a more detailed guide of authentication in UniWebView.
+
+To allow the GitHub flow working, at least you need these steps: 
+
+1. Setting `Client Id`, `Client Secret`, `Callback Url` in the `UniWebViewAuthenticationFlowGitHub` inspector.
+2. Setting the `Auth Callbacks Urls` containing the `Callback Url` in the `UniWebView` preference panel.
+"""
+
+[[Properties]]
+name = "clientId"
+returnType = "string"
+hasSetter = true
+summary = """
+The client ID of your GitHub application.
+"""
+example = """
+At the day of writing, the client Id from GitHub is something like:
+
+```csharp
+githubFlow.clientId = "lv1.1234567890abcdef1234";
+```
+"""
+
+[[Properties]]
+name = "clientSecret"
+returnType = "string"
+hasSetter = true
+summary = """
+The client secret of your GitHub application.
+"""
+notice = """
+Strictly speaking, the client secret **should not be stored** on the client side. In the OAuth flow of a native app, we 
+should use [PKCE](https://oauth.net/2/pkce/) whenever possible to protect the authorization process (UniWebView 
+[supports PKCE](/api/UniWebViewAuthenticationFlowCustomize.html#optional)). However, GitHub’s OAuth does not currently 
+support PKCE, so we still have to use the client secret when exchanging tokens if we do not have a backend.
+
+A more secure approach would be to set up your own backend server and use server-to-server communication to obtain the 
+access token. In UniWebView, you can use the [Customize Flow](/guide/oauth2.html#customize-flow) to set the entry point 
+for access token exchange to your server, thereby avoiding exposing the client secret in the client-side code.
+"""
+
+[[Properties]]
+name = "callbackUrl"
+returnType = "string"
+hasSetter = true
+summary = """
+The callback URL of your GitHub application.
+"""
+example = """
+```csharp
+githubFlow.callbackUrl = "authhub://auth";
+```
+"""
+
+[[Properties]]
+name = "optional"
+returnType = "UniWebViewAuthenticationFlowGitHubOptional"
+hasSetter = true
+summary = """
+Optional to control this flow's behaviour.
+"""
+
+[[Properties]]
+name = "optional.redirectUri"
+returnType = "string"
+hasSetter = true
+summary = """
+The redirect URI should be used in exchange token request.
+"""
+
+[[Properties]]
+name = "optional.login"
+returnType = "string"
+hasSetter = true
+summary = """
+Suggests a specific account to use for signing in and authorizing the app.
+"""
+
+[[Properties]]
+name = "optional.scope"
+returnType = "string"
+hasSetter = true
+summary = """
+The scope string of all your required scopes.
+"""
+
+[[Properties]]
+name = "optional.enableState"
+returnType = "bool"
+hasSetter = true
+summary = """
+Whether to enable the state verification. If enabled, the state will be generated and verified in the
+authentication callback.
+
+Default is `false`.
+"""
+
+[[Properties]]
+name = "optional.allowSignup"
+returnType = "bool"
+hasSetter = true
+summary = """
+Whether or not unauthenticated users will be offered an option to sign up for GitHub during the OAuth flow.
+
+Default is `true`.
+"""
+
+[[Properties]]
+name = "optional.prompt"
+returnType = "string"
+hasSetter = true
+summary = """
+The prompt that will be set to the authentication request query. For example, the possible values can be `login`, 
+`consent`, `select_account` and so on.
+
+See https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
+"""
+
+[[Properties]]
+name = "optional.additionalAuthenticationUriQuery"
+returnType = "string"
+hasSetter = true
+summary = """
+The additional query arguments that are used to construct the query string of the authentication request.
+
+This is useful when you want to add some custom parameters to the authentication request. This string will be 
+appended to the query string that constructed from `GetAuthenticationUriArguments`. 
+
+For example, if you set the value to `prompt=consent&ui_locales=en`, it will be contained in the final authentication 
+query.
+"""
+
+[[Events]]
+name = "OnAuthenticationFinished"
+syntax = "OnAuthenticationFinished"
+returnType = "UnityEvent<UniWebViewAuthenticationGitHubToken>"
+summary = "Called when the authentication flow succeeds and a valid token is generated."
+example = """
+```csharp
+githubFlow.OnAuthenticationFinished.AddListener(OnGitHubTokenReceived)
+
+void OnGitHubTokenReceived(UniWebViewAuthenticationGitHubToken token) {
+  Debug.Log("Github Access Token: " + token.AccessToken);
+}
+```
+"""
+
+[[Events]]
+name = "OnAuthenticationErrored"
+syntax = "OnAuthenticationErrored"
+returnType = "UnityEvent<long, string>"
+summary = "Called when any error (including user cancellation) happens during the authentication flow."
+example = """
+```csharp
+github.OnAuthenticationErrored.AddListener(OnGitHubAuthError);
+
+void OnGitHubAuthError(long error, string message) {
+  Debug.Log("Error code: " + error + " Message: " + message);
+}
+```
+"""
+
+[[Events]]
+name = "OnRefreshTokenFinished"
+syntax = "OnRefreshTokenFinished"
+returnType = "UnityEvent<UniWebViewAuthenticationGitHubToken>"
+summary = "Called when the access token refresh request finishes and a valid refreshed token is generated."
+example = """
+```csharp
+githubFlow.OnRefreshTokenFinished.AddListener(OnRefreshTokenReceived)
+
+void OnRefreshTokenReceived(UniWebViewAuthenticationGitHubToken token) {
+  Debug.Log("Access Token: " + token.AccessToken);
+}
+```
+"""
+
+[[Events]]
+name = "OnRefreshTokenErrored"
+syntax = "OnRefreshTokenErrored"
+returnType = "UnityEvent<long, string>"
+summary = "Called when any error (including user cancellation) happens during the authentication flow."
+example = """
+```csharp
+githubFlow.OnRefreshTokenErrored.AddListener(OnRefreshTokenError);
+
+void OnRefreshTokenError(long error, string message) {
+  Debug.Log("Error code: " + error + " Message: " + message);
+}
+```
+"""
+
+[[Methods]]
+name = "StartAuthenticationFlow"
+syntax = "StartAuthenticationFlow()"
+returnType = "void"
+summary = """
+Starts the authentication flow with the standard OAuth 2.0.
+This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
+"""
+
+[[Methods]]
+name = "StartRefreshTokenFlow"
+syntax = "StartRefreshTokenFlow(string refreshToken)"
+returnType = "void"
+summary = """
+Starts the refresh flow with the standard OAuth 2.0.
+This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
+"""

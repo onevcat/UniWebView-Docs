@@ -1,0 +1,3262 @@
+title = "UniWebView"
+file = "README"
+
+summary = """The main class of UniWebView. It represents a native web view and exposes a few APIs for you to use in 
+Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content, 
+as well as receive a message from the web view.
+"""
+
+[[Properties]]
+name = "IsWebViewSupported"
+returnType = "bool"
+hasSetter = false
+summary = """
+Whether the web view is supported in current runtime or not.
+
+On some certain Android customized builds, the manufacturer prefers not containing the web view package in the 
+system or blocks the web view package from being installed. If this happens, using of any web view related APIs will
+throw a `MissingWebViewPackageException` exception.
+
+Use this method to check whether the web view is available on the current running system. If this parameter returns `false`, 
+you should not use the web view.
+
+This property always returns `true` on other supported platforms, such as iOS or macOS editor. It only performs 
+runtime checking on Android. On other not supported platforms such as Windows or Linux, it always returns `false`.
+"""
+example = """
+```csharp
+if (UniWebView.IsWebViewSupported) {
+    // Do other things with UniWebView.
+}
+```
+"""
+[[Properties.badges]]
+name = "static"
+color = "blue"
+
+[[Properties]]
+name = "Frame"
+returnType = "Rect"
+hasSetter = true
+summary = """Gets or sets the frame of current web view. The value is based on current `Screen.width` and `Screen.height`.
+The first two values of `Rect` is `x` and `y` position and the followed two `width` and `height`. The original point is 
+top left corner:
+
+![](https://docs.unity3d.com/StaticFiles/ScriptRefImages/RectXY.svg)
+"""
+example = """
+```csharp
+// Make the web view full screen:
+webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
+
+// Make the web view center in the screen with size 500x500:
+var side = 500;
+var x = (Screen.width - side) / 2.0f;
+var y = (Screen.height - side) / 2.0f;
+webView.Frame = new Rect(x, y, side, side);
+```
+"""
+notice = "`Frame` will be ignored if `ReferenceRectTransform` is set."
+
+[[Properties]]
+name = "ReferenceRectTransform"
+returnType = "RectTransform"
+hasSetter = true
+summary = """
+A reference rect transform which the web view should change its position and size to.
+
+Set it to a Unity UI element (which contains a `RectTransform`) under a canvas to determine the web view frame by a certain UI element. 
+
+By using this, you could get benefit from [Multiple Resolutions UI](https://docs.unity3d.com/Manual/HOWTO-UIMultiResolution.html).
+"""
+example = """
+```csharp
+// Some panel
+RectTransform panel = ...
+
+// Set the web view position and size to match panel
+webView.ReferenceRectTransform = panel;
+```
+"""
+
+[[Properties]]
+name = "Url"
+returnType = "string"
+hasSetter = false
+summary = "The url of current loaded web page."
+example = """
+```csharp
+webView.Load("https://example.com/");
+
+// Some time later or in "OnPageFinished":
+print(webView.Url);
+// => "https://example.com/"
+```
+"""
+
+[[Properties]]
+name = "CanGoBack"
+returnType = "bool"
+hasSetter = false
+summary = "Gets whether there is a back page in the back-forward list that can be navigated to."
+
+[[Properties]]
+name = "CanGoForward"
+returnType = "bool"
+hasSetter = false
+summary = "Gets whether there is a forward page in the back-forward list that can be navigated to."
+
+[[Properties]]
+name = "BackgroundColor"
+returnType = "Color"
+hasSetter = true
+summary = """
+Gets or sets the background color of web view. The default value if `Color.white`.
+
+This only sets the background color of the content view of the web view. Normally, the background
+color will be hidden by the web page background. If you want to make the web view background visible,
+you need to make the web page it transparent by adding some necessary style to it.
+
+This property only changes the web view background. 
+If you want to make the whole web view transparent, use `Alpha` instead.
+"""
+example = """
+```csharp
+// Set the web view background (under the web page) to red.
+webView.BackgroundColor = Color.red;
+```
+"""
+
+[[Properties]]
+name = "Alpha"
+returnType = "float"
+hasSetter = true
+summary = """
+Gets or sets the alpha value of the whole web view.
+
+You can make the game scene behind web view visible to make the web view transparent.
+
+The default value is `1.0f`, which means totally opaque. Set it to `0.0f` will make the web view totally transparent.
+"""
+example = """
+```csharp
+// Set the web view half transparent.
+webView.Alpha = 0.5f;
+```
+"""
+
+[[Properties]]
+name = "EmbeddedToolbar"
+returnType = "UniWebViewEmbeddedToolbar"
+hasSetter = false
+summary = """
+Represents the embedded toolbar in the current web view.
+
+A toolbar is a built-in area inside the web view, shown at the top or bottom of the web view. It contains navigation buttons
+like "Back" and "Forward", as well as a "Done" button to close the web view. You can use APIs under `UniWebViewEmbeddedToolbar` 
+to customize the toolbar. See [its APIs](/api/UniWebViewEmbeddedToolbar.html) for more details.
+"""
+example = """
+```csharp
+// Show the embedded toolbar.
+webView.EmbeddedToolbar.Show();
+```
+"""
+
+[[Properties]]
+name = "RestoreViewHierarchyOnResume"
+returnType = "bool"
+hasSetter = true
+summary = """
+Sets whether this web view instance should try to restore its view hierarchy when resumed.
+
+In some versions of Unity when running on Android, the player view is brought to front when switching back
+from a pause state, which causes the web view is invisible when the app is resumed. It requires an additional
+step to bring the web view to front to make the web view visible. Set this to true to apply this workaround.
+
+Issue caused by this [Unity issue](https://issuetracker.unity3d.com/issues/android-a-black-screen-appears-for-a-few-seconds-when-returning-to-the-game-from-the-lock-screen-after-idle-time).
+
+This issue is known in these released versions:
+- Unity 2021.3.31, 2021.3.32, 2021.3.31, 2021.3.34
+- Unity 2022.3.10, 2022.3.11, 2022.3.12, 2022.3.13, 2022.3.14, 2022.3.15
+
+If you are using UniWebView in these versions, you may want to set this value to `true`.
+"""
+
+[[Methods]]
+name = "SetTransform"
+syntax = "SetTransform(UniWebViewTransform transform)"
+returnType = "void"
+summary = """
+Applies a transformation to the web view, including rotation and scaling.
+
+This method allows you to rotate and scale the web view by specifying a `UniWebViewTransform`
+object. The transformation is applied relative to the web view's current position and size, with its center
+as the anchor.
+
+The transformation includes:
+
+- **Rotation**: The angle (in degrees) by which the web view should be rotated. Positive values rotate the web
+view clockwise, while negative values rotate it counterclockwise.
+- **Scaling**: The scale factors for the X and Y axes. A scale factor of 1.0 means no scaling, while values
+greater than 1.0 enlarge the web view and values less than 1.0 shrink it.
+
+This method works on iOS and Android. It does nothing in Unity Editor on macOS.
+"""
+notice = """
+This method does not affect the `ReferenceRectTransform` or Unity's `transform` component. 
+It only applies the transformation, or say, the rotation and scale to the web view itself in the native side.
+"""
+example = """
+```csharp
+// Rotate the web view 45 degrees clockwise and scale it half of its original size.
+var transform = new UniWebViewTransform(45, 0.5f, 0.5f);
+webView.SetTransform(transform);
+
+// --------------
+
+// Show a landscape web page in the game with only portrait mode.
+// Calculate dimensions for a rotated full-screen web view
+float x = (Screen.width - Screen.height) / 2.0f;
+float y = (Screen.height - Screen.width) / 2.0f;
+float width = Screen.height;
+float height = Screen.width;
+
+// Set the frame to properly position the web view
+webView.Frame = new Rect(x, y, width, height);
+
+var transform = new UniWebViewTransform(90);
+webView.SetTransform(transform);
+
+webView.Load("https://example.com");
+webView.Show();
+```
+"""
+[[Methods.parameters]]
+name = "transform"
+type = "UniWebViewTransform"
+summary = "An object containing the rotation angle and scale factors to apply to the web view."
+
+[[Methods]]
+name = "Load"
+syntax = "Load(string url, bool skipEncoding, string readAccessURL)"
+returnType = "void"
+summary = "Loads a url in current web view."
+example = """
+```csharp
+// Load a URL.
+webView.Load("https://example.com");
+
+// Load a URL which is already escaped.
+webView.Load("https://example.com?email=support%40uniwebview.com", true);
+
+// Load a local file, with "local_app_folder/root/images/" as its read access path.
+var indexURL = UniWebViewHelper.StreamingAssetURLForPath("local_app_folder/root/page/index.html");
+var accessURL = UniWebViewHelper.StreamingAssetURLForPath("local_app_folder/root/images/");
+webView.Load(indexURL, false, accessURL);
+```
+"""
+[[Methods.parameters]]
+name = "url"
+type = "string"
+summary = "The url to be loaded. This url should start with `http://` or `https://` scheme, or retrieved from the path methods in `UniWebViewHelper`."
+[[Methods.parameters]]
+name = "skipEncoding"
+type = "bool"
+summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before loading it. Otherwise, your original url string will be used as the url if it is valid. Default is `false`."
+[[Methods.parameters]]
+name = "readAccessURL"
+type = "string"
+summary = "The URL to allow read access to. This parameter is only used when loading from the filesystem in iOS, and passed to `loadFileURL:allowingReadAccessToURL:` method of WebKit. By default, the parent folder of the `url` parameter will be read accessible."
+
+[[Methods]]
+name = "LoadHTMLString"
+syntax = "LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)"
+returnType = "void"
+summary = "Loads an HTML string in current web view."
+example = """
+```csharp
+webView.LoadHTMLString("<p>Hello World</p>", "https://domain.com");
+```
+"""
+[[Methods.parameters]]
+name = "htmlString"
+type = "string"
+summary = "The HTML string to use as the contents of the webpage."
+[[Methods.parameters]]
+name = "baseUrl"
+type = "string"
+summary = "The url to use as the page's base url."
+[[Methods.parameters]]
+name = "skipEncoding"
+type = "bool"
+summary = "Whether UniWebView should skip encoding the baseUrl or not. If set to `false`, UniWebView will try to encode the baseUrl parameter before using it. Otherwise, your original url string will be used as the baseUrl if it is valid. Default is `false`."
+
+[[Methods]]
+name = "Reload"
+syntax = "Reload()"
+returnType = "void"
+summary = "Reloads the current page."
+
+[[Methods]]
+name = "Stop"
+syntax = "Stop()"
+returnType = "void"
+summary = "Stops loading all resources on the current page."
+
+[[Methods]]
+name = "GoBack"
+syntax = "GoBack()"
+returnType = "void"
+summary = "Navigates to the back item in the back-forward list."
+example = """
+```csharp
+if (webView.CanGoBack) {
+    webView.GoBack();
+}
+```
+"""
+
+[[Methods]]
+name = "GoForward"
+syntax = "GoForward()"
+returnType = "void"
+summary = "Navigates to the forward item in the back-forward list."
+example = """
+```csharp
+if (webView.CanGoForward) {
+    webView.GoForward();
+}
+```
+"""
+
+[[Methods]]
+name = "CopyBackForwardList"
+syntax = "CopyBackForwardList()"
+returnType = "UniWebViewBackForwardList"
+summary = """
+Gets a copy of the back-forward list, which is the navigation history for the web view.
+
+The back-forward list represents the browsing history in the current web view. It contains information
+about visited (both back and forward) pages and allows access to any entry in the history by index. This is a
+snapshot of the history at the time of calling - it won't update automatically with new navigation. Call
+`CopyBackForwardList` again to get the latest history if necessary.
+"""
+returnValue = """A list object containing a snapshot of the navigation history. It provides a read-only record of all 
+web pages visited in this web view.
+"""
+example = """
+```csharp
+webView.OnPageFinished += (view, statusCode, url) => {
+  PrintList();
+};
+webView.OnLoadingErrorReceived += (view, code, message, payload) => {
+  PrintList();
+};
+
+void PrintList() {
+  var list = webView.CopyBackForwardList();
+
+  // The current viewing page index in `list.AllItems`. 
+  // If `-1`, means no item in the list.
+  var currentIndex = list.CurrentIndex;
+
+  // List all items in the back-forward list.
+  for (var i = 0; i < list.Size; i++) {
+    var item = list.ItemAtIndex(i);
+    Debug.Log($"#{i}: {item.Url}");
+  }
+}
+```
+"""
+
+[[Methods]]
+name = "GoToIndexInBackForwardList"
+syntax = "GoToIndexInBackForwardList(int index)"
+returnType = "void"
+summary = """
+Navigates to the specified index in the back-forward list.
+
+The index is a zero-based index of the item in the back-forward list. If the index is out of range, this method does
+nothing.
+"""
+example = """
+```csharp
+// Go to the first item in the back-forward list.
+webView.GoToIndexInBackForwardList(0);
+```
+"""
+[[Methods.parameters]]
+name = "index"
+type = "int"
+summary = "The zero-based index of the item in the back-forward list."
+
+[[Methods]]
+name = "SetOpenLinksInExternalBrowser"
+syntax = "SetOpenLinksInExternalBrowser(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the link clicking in the web view should open the page in an external browser.
+
+By default, when the user clicks a link, it will be opened in the same web view. After setting this with `true`, 
+the user will be navigated to an external native browser.
+
+On iOS, the mobile Safari; on Android, the default browser like Chrome; on macOS Editor, the default browser of your system will be used.
+"""
+example = """
+```csharp
+// You may want to set it in OnPageFinished event, 
+// otherwise the original page will be also opened externally
+webView.OnPageFinished += (view, statusCode, url) => {
+    webView.SetOpenLinksInExternalBrowser(true);
+};
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "The flag indicates whether a link should be opened externally."
+
+[[Methods]]
+name = "Show"
+syntax = "Show(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)"
+returnType = "bool"
+returnValue = "A `bool` value indicates whether the showing operation started."
+summary = """Sets the web view visible on screen.
+
+If you pass `false` and `UniWebViewTransitionEdge.None` to the first two parameters, it means no animation will be applied when showing. So the `duration` parameter will not be taken into account. Otherwise, when 
+either or both `fade` and `edge` set, the showing operation will be animated.
+
+Regardless of there is an animation or not, the `completionHandler` will be called if not `null` when the web view
+showing finishes.
+"""
+example = """
+```csharp
+// Show the web view without animation
+webView.Show();
+
+// Show the web view with a fade animation
+webView.Show(true);
+
+// Show the web view with a modal presenting animation from screen bottom
+webView.Show(false, UniWebViewTransitionEdge.Bottom);
+
+// Print a message after the web view shown with animation
+webView.Show(true, UniWebViewTransitionEdge.Top, 0.25f, ()=> {
+    print("Show transition finished!");
+});
+```
+"""
+[[Methods.parameters]]
+name = "fade"
+type = "bool"
+summary = "Whether show with a fade in animation. Default is `false`."
+[[Methods.parameters]]
+name = "edge"
+type = "UniWebViewTransitionEdge"
+summary = "The edge from which the web view showing. It simulates a modal effect when showing a web view. Default is `UniWebViewTransitionEdge.None`."
+[[Methods.parameters]]
+name = "duration"
+type = "float"
+summary = "Duration of the showing animation. Default is `0.4f`."
+[[Methods.parameters]]
+name = "completionHandler"
+type = "Action"
+summary = "Completion handler which will be called when showing finishes. Default is `null`."
+
+[[Methods]]
+name = "Hide"
+syntax = "Hide(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)"
+returnType = "bool"
+returnValue = "A `bool` value indicates whether the hiding operation started."
+summary = """Sets the web view invisible from screen.
+
+If you pass `false` and `UniWebViewTransitionEdge.None` to the first two parameters, it means no animation will be applied when hiding. So the `duration` parameter will not be taken into account. Otherwise, when either or both `fade` and `edge` set, the hiding operation will be animated.
+
+Regardless there is an animation or not, the `completionHandler` will be called if not `null` when the web view
+hiding finishes.
+"""
+notice = """Hiding the web view does not destroy or release it. You can always call `Show` on the web view again to make it visible.
+
+To release a web view and its resource, pass the web view component as the parameter of `Destroy`.
+"""
+example = """
+```csharp
+// Hide the web view without animation
+webView.Hide();
+
+// Hide the web view with a fade animation
+webView.Hide(true);
+
+// Hide the web view with a modal presenting animation from screen bottom
+webView.Hide(false, UniWebViewTransitionEdge.Bottom);
+
+// Print a message after the web view hidden with animation
+webView.Hide(true, UniWebViewTransitionEdge.Top, 0.25f, ()=> {
+    print("Hide transition finished!");
+});
+```
+"""
+[[Methods.parameters]]
+name = "fade"
+type = "bool"
+summary = "Whether hide with a fade in animation. Default is `false`."
+[[Methods.parameters]]
+name = "edge"
+type = "UniWebViewTransitionEdge"
+summary = "The edge from which the web view hiding. It simulates a modal effect when hiding a web view. Default is `UniWebViewTransitionEdge.None`."
+[[Methods.parameters]]
+name = "duration"
+type = "float"
+summary = "Duration of hiding animation. Default is `0.4f`."
+[[Methods.parameters]]
+name = "completionHandler"
+type = "Action"
+summary = "Completion handler which will be called when hiding finishes. Default is `null`."
+
+[[Methods]]
+name = "AnimateTo"
+syntax = "AnimateTo(Rect frame, float duration, float delay, Action completionHandler)"
+returnType = "bool"
+returnValue = "A `bool` value indicates whether the animation started."
+summary = "Animates the web view from current `Frame` (position and size) to another `Frame` (position and size) within `duration`."
+example = """
+```csharp
+// Animate current web view to cover half of the screen.
+var halfScreen = new Rect(0, 0, Screen.width, Screen.height / 2);
+webView.AnimateTo(halfScreen, 0.4f, 0.1f, () => {
+    print("Animation finished!");
+});
+```
+"""
+[[Methods.parameters]]
+name = "frame"
+type = "Rect"
+summary = "The new `Frame` which the web view should be."
+[[Methods.parameters]]
+name = "duration"
+type = "float"
+summary = "Duration of the animation."
+[[Methods.parameters]]
+name = "delay"
+type = "float"
+summary = "Delay before the animation begins. Default is `0.0f`, which means the animation will start immediately."
+[[Methods.parameters]]
+name = "completionHandler"
+type = "Action"
+summary = "Completion handler which will be called when animation finishes. Default is `null`."
+
+[[Methods]]
+name = "UpdateFrame"
+syntax = "UpdateFrame()"
+returnType = "void"
+summary = """
+Updates and sets current frame of web view to match the setting.
+
+This is useful if the `referenceRectTransform` is changed and you need to sync the frame change
+to the web view. This method follows the frame determining rules.
+"""
+example = """
+```csharp
+// In a UIBehavior script:
+// Called when associated `rectTransform` is changed.
+void OnRectTransformDimensionsChange() {
+    // This will update web view's frame to match the reference rect transform if set.
+    webView.UpdateFrame();
+}
+```
+"""
+
+[[Methods]]
+name = "AddJavaScript"
+syntax = "AddJavaScript(string jsString, Action<UniWebViewNativeResultPayload> completionHandler)"
+returnType = "void"
+summary = """
+Adds a JavaScript to current page. Normally, you add a JavaScript function or variable with this method.
+
+The input `jsString` will be executed by current web view. If succeeded, the input JavaScript code will "inject" 
+to the web view and a `UniWebViewNativeResultPayload` with `resultCode` being "0" will passed to the `completionHandler`.
+"""
+example = """
+```csharp
+webView.AddJavaScript("function add() { return 1 + 2; }", (payload)=>{
+    if (result.resultCode.Equal("0")) {
+        print("JavaScript adding finished without problem.");
+    }
+});
+```
+"""
+[[Methods.parameters]]
+name = "jsString"
+type = "string"
+summary = "The JavaScript code to add. It should be a valid JavaScript statement string."
+[[Methods.parameters]]
+name = "completionHandler"
+type = "Action<UniWebViewNativeResultPayload>"
+summary = "Called when adding JavaScript operation finishes. Default is `null`. If everything goes fine and the `jsString` added to current web view, `resultCode` would be \"0\""
+
+[[Methods]]
+name = "EvaluateJavaScript"
+syntax = "EvaluateJavaScript(string jsString, Action<UniWebViewNativeResultPayload> completionHandler)"
+returnType = "void"
+summary = """Evaluates a JavaScript string on current page. Normally you execute a certain JavaScript function or get a variable by this method.
+
+The input `jsString` will be executed by current web view. Executing result will be sent back to you in the `completionHandler`. You could access the `data` member of `UniWebViewNativeResultPayload` passed in to get the JavaScript function return value.
+"""
+example = """
+```csharp
+// Pop up an alert from web view.
+webView.EvaluateJavaScript("alert('Alert!');", (payload)=>{
+    print(payload.resultCode); // => "0"
+    print(payload.data); // => ""
+});
+
+// Adding two numbers by a JavaScript function.
+webView.AddJavaScript("function add(a, b) { return a + b; }", completionHandler: _ => {
+    webView.EvaluateJavaScript("add(4, 5);", completionHandler: (payload) => {
+        print(payload.resultCode); // => "0"
+        print(payload.data);  // => "9"
+    });
+});
+
+// Call a JavaScript function not existing.
+webView.EvaluateJavaScript("functionNotExisting()", completionHandler: (payload) => {
+    print(payload.resultCode);
+    // a non-zero value which indicates JavaScript error code.
+    // eg. "4" on iOS.
+});
+```
+"""
+[[Methods.parameters]]
+name = "jsString"
+type = "string"
+summary = "The JavaScript string to evaluate."
+[[Methods.parameters]]
+name = "completionHandler"
+type = "Action<UniWebViewNativeResultPayload>"
+summary = "Called when evaluating JavaScript operation finishes. Default is `null`. If everything goes find, the `resultCode` would be \"0\" and the return value of invoked JavaScript is contained in `data`."
+
+[[Methods]]
+name = "AddUrlScheme"
+syntax = "AddUrlScheme(string scheme)"
+returnType = "void"
+summary = "Adds a url scheme to UniWebView message system interpreter. All following url navigation to this scheme will be sent as a message to UniWebView instead."
+example = """
+```csharp
+// Add "myscheme" as a UniWebView message scheme.
+webView.AddUrlScheme("myscheme");
+
+// A link like "myscheme://action" will be treated as a message and raise the `OnMessageReceived` event from now.
+```
+"""
+[[Methods.parameters]]
+name = "scheme"
+type = "string"
+summary = "The URL scheme to add. It should not contain \"://\" part. You could even add \"http\" and/or \"https\" to prevent all resource loading on the page. \"uniwebview\" is added by default. Nothing will happen if you try to add a duplicated scheme."
+
+[[Methods]]
+name = "RemoveUrlScheme"
+syntax = "RemoveUrlScheme(string scheme)"
+returnType = "void"
+summary = "Removes a url scheme from UniWebView message system interpreter."
+example = """
+```csharp
+webView.RemoveUrlScheme("myscheme");
+```
+"""
+[[Methods.parameters]]
+name = "scheme"
+type = "string"
+summary = "The url scheme to remove. Nothing will happen if the scheme is not in the message system."
+
+[[Methods]]
+name = "AddSslExceptionDomain"
+syntax = "AddSslExceptionDomain(string domain)"
+returnType = "void"
+summary = """
+Adds a domain to the SSL checking white list.
+
+If you are trying to access a website with un-trusted or expired certification, 
+the web view will prevent its loading. If you could confirm that this site is trusted,
+you can add the domain as an SSL exception, so you could visit it.
+"""
+notice = "We strongly suggest you upgrade your site certification to a trusted one. It would be dangerous to add a site as SSL exception and your user might be exposed to the risk of Man-in-the-middle attack. You should know exactly what you will do before adding a domain to the whitelist."
+example = """
+```csharp
+// This loading will fail since the certification is a self-signed one and not trusted.
+webView.Load("https://self-signed.badssl.com/"); 
+
+// Add "self-signed.badssl.com" as trusted.
+webView.AddSslExceptionDomain("self-signed.badssl.com");
+// This page should load now.
+webView.Load("https://self-signed.badssl.com/"); 
+```
+"""
+[[Methods.parameters]]
+name = "domain"
+type = "string"
+summary = "The domain to add. It should not contain any scheme or path part in url."
+
+[[Methods]]
+name = "RemoveSslExceptionDomain"
+syntax = "RemoveSslExceptionDomain(string domain)"
+returnType = "void"
+summary = "Removes a domain from the SSL checking white list."
+example = """
+```csharp
+webView.RemoveSslExceptionDomain("self-signed.badssl.com");
+```
+"""
+[[Methods.parameters]]
+name = "domain"
+type = "string"
+summary = "The domain to remove. It should not contain any scheme or path part in url."
+
+[[Methods]]
+name = "SetHeaderField"
+syntax = "SetHeaderField(string key, string value)"
+returnType = "void"
+summary = """
+Sets a customized header field for web view requests.
+
+The header field will be used for all subsequence request. 
+Pass `null` as value to unset a header field.
+
+Some reserved headers like user agent are not able to override by setting here, 
+use the `SetUserAgent` method for them instead.
+"""
+notice = """Customized header fields will only be set for `GET` requests. The header fields set by this 
+method will not be added when a form is submitted as `POST` requests, due to some limitation of WebKit on iOS 
+and Android platforms.
+"""
+example = """
+```csharp
+// Set "MyToken" field to "123abc" in a web view. It will be used for all following requests.
+webView.SetHeaderField("MyToken", "123abc");
+
+// Unset it
+webView.SetHeaderField("MyToken", null);
+```
+"""
+[[Methods.parameters]]
+name = "key"
+type = "string"
+summary = "The key of customized header field."
+[[Methods.parameters]]
+name = "value"
+type = "string"
+summary = "The value of customized header field. `null` if you want to unset the field."
+
+[[Methods]]
+name = "SetUserAgent"
+syntax = "SetUserAgent(string agent)"
+returnType = "void"
+summary = "Sets the user agent used in the web view. If the string is null or empty, the system default value will be used."
+example = """
+```csharp
+// Set the user agent string sent in request header.
+webView.SetUserAgent("My-App/1.0.0 (iOS 10.3, iPhone 7)");
+
+// => In request header:
+// User-Agent = "My-App/1.0.0 (iOS 10.3, iPhone 7)"
+```
+"""
+[[Methods.parameters]]
+name = "agent"
+type = "string"
+summary = "The new user agent string to use."
+
+[[Methods]]
+name = "GetUserAgent"
+syntax = "GetUserAgent()"
+returnType = "string"
+returnValue = "The user agent string in use."
+summary = "Gets the user agent string currently used in web view. If a customized user agent is not set, the default user agent in current platform will be returned."
+example = """
+```csharp
+// Gets the default user agent.
+webView.GetUserAgent()
+// => "Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 ..."
+// This value varies in different platforms.
+
+// Sets a user agent and then get it.
+webView.SetUserAgent("My-App/1.0.0 (iOS 10.3, iPhone 7)");
+webView.GetUserAgent()
+// => "My-App/1.0.0 (iOS 10.3, iPhone 7)"
+```
+"""
+
+[[Methods]]
+name = "SetContentInsetAdjustmentBehavior"
+syntax = "SetContentInsetAdjustmentBehavior(UniWebViewContentInsetAdjustmentBehavior behavior)"
+returnType = "void"
+
+summary = """
+Sets the adjustment behavior which indicates how safe area insets 
+are added to the adjusted content inset. It is a wrapper of [`contentInsetAdjustmentBehavior`](https://developer.apple.com/documentation/uikit/uiscrollview/2902261-contentinsetadjustmentbehavior) on iOS.
+
+It only works on iOS 11 and above.
+"""
+notice = """
+You need to call this method as soon as you create a web view,
+before you call any other methods related to web view layout (like `Show` or `SetShowToolbar`).
+"""
+example = """
+```csharp
+var webView = gameObject.AddComponent<UniWebView>();
+// Do not adjust the scroll view insets in the web view.
+webView.SetContentInsetAdjustmentBehavior(UniWebViewContentInsetAdjustmentBehavior.Never);
+```
+"""
+[[Methods.parameters]]
+name = "behavior"
+type = "UniWebViewContentInsetAdjustmentBehavior"
+summary = "The behavior for determining the adjusted content offsets."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+
+[[Methods]]
+name = "SetAllowAutoPlay"
+syntax = "SetAllowAutoPlay(bool flag)"
+returnType = "void"
+
+summary = """
+Sets allow auto-play for current web view. By default, 
+users need to touch the play button to start playing a media resource.
+
+By setting this to `true`, you can start the playing automatically through
+corresponding media [tag attributes](https://www.w3schools.com/tags/att_video_autoplay.asp).
+"""
+notice = "You need to set it before creating a web view. Existing web views are not affected."
+example = """
+```csharp
+UniWebView.SetAllowAutoPlay(true);
+
+// Create a new web view.
+var webView = gameObject.AddComponent<UniWebView>();
+
+// Now load and open a page which contains auto-started video to try
+webView.Load("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_video_autoplay");
+webView.Show();
+```
+"""
+
+[[Methods.badges]]
+name = "static"
+color = "blue"
+
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "A flag indicates whether auto-playing of media is allowed or not."
+
+[[Methods]]
+name = "SetAllowInlinePlay"
+syntax = "SetAllowInlinePlay(bool flag)"
+returnType = "void"
+summary = """
+Sets allow inline play for current web view. By default, on iOS, the video 
+can only be played in a new full screen view.
+
+By setting this to `true`, you could play a video inline the page, instead of opening 
+a new full-screen window.
+
+This only works for iOS and macOS Editor. 
+On Android, you could play videos inline by default and calling this method does nothing.
+
+Remember you also need to add "playsinline" attribute to your video tag in the HTML page.
+"""
+notice = "You need to set it before creating a web view. Existing web views are not affected."
+example = """
+```csharp
+UniWebView.SetAllowInlinePlay(true);
+
+// Create a new web view.
+var webView = gameObject.AddComponent<UniWebView>();
+
+// Now load and open a page which contains inline video to try:
+// <video src="file.mp4" playsinline> or <video src="file.mp4" webkit-playsinline>
+webView.Load("https://example.com/inline-video");
+webView.Show();
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "A flag indicates whether inline playing of media is allowed or not."
+
+[[Methods]]
+name = "SetAllowFileAccess"
+syntax = "SetAllowFileAccess(bool flag)"
+returnType = "void"
+summary = """
+Sets whether loading a local file is allowed.
+
+If set to `false`, any load from a file URL `file://` for `Load` method will be rejected and trigger an 
+`OnLoadingErrorReceived` event. That means you cannot load a web page from any local file. If you are not going to 
+load any local files, setting it to `false` helps to reduce the interface of web view and improve the security.
+
+By default, it is `true` and the local file URL loading is allowed.
+"""
+example = """
+```csharp
+// Forbid file:// URL loading.
+webView.SetAllowFileAccess(false);
+
+// This won't load and trigger an error in OnLoadingErrorReceived.
+var url = UniWebViewHelper.StreamingAssetURLForPath("www/index.html");
+webView.Load(url);
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the local file access by web view loading is allowed or not."
+
+
+[[Methods]]
+name = "SetAllowFileAccessFromFileURLs"
+syntax = "SetAllowFileAccessFromFileURLs(bool flag)"
+returnType = "void"
+summary = """
+Sets whether file access from file URLs is allowed.
+
+By setting with `true`, access to file URLs inside the web view will be enabled and you could access 
+sub-resources or make cross origin requests from local HTML files.
+
+On iOS, it uses some "hidden" way by setting `allowFileAccessFromFileURLs` in config preferences for WebKit.
+So it is possible that it stops working in a future version.
+
+On Android, it sets the `WebSettings.setAllowFileAccessFromFileURLs` for the current web view.
+"""
+notice = """
+By setting this to `true`, you will bring some potential security issue to your app. Some malicious script 
+would be able to read your sandbox. So we DO NOT recommend to enable it before you realize and understand the risk.
+"""
+example = """
+```csharp
+webView.SetAllowFileAccessFromFileURLs(true);
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the file access inside web view from file URLs is allowed or not."
+
+[[Methods]]
+name = "SetAcceptThirdPartyCookies"
+syntax = "SetAcceptThirdPartyCookies(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the UniWebView should allow third party cookies to be set. 
+
+By default, on Android, the third party
+cookies are disallowed due to security reason. Setting this to `true` will allow the cookie manager to accept
+third party cookies you set. 
+
+This method only works for Android. On iOS, this method does nothing and the third party cookies are always 
+allowed.
+"""
+[[Methods.badges]]
+name = "Android"
+color = "green"
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the third party cookies should be allowed."
+
+[[Methods]]
+name = "SetAllowUniversalAccessFromFileURLs"
+syntax = "SetAllowUniversalAccessFromFileURLs(bool flag)"
+returnType = "void"
+summary = """
+Sets allow universal access from file URLs. By default, on iOS, the `WKWebView` forbids any load of local files
+through AJAX even when opening a local HTML file. It checks the CORS rules and fails at web view level. 
+This is useful when you want access these files by setting the `allowUniversalAccessFromFileURLs` key of web view
+configuration.
+
+On iOS and macOS Editor. It uses some "hidden" way by setting `allowUniversalAccessFromFileURLs` in config 
+for WebKit. So it is possible that it stops working in a future version.
+
+On Android, it sets the `WebSettings.setAllowUniversalAccessFromFileURLs` and any later-created web views uses
+that value.
+"""
+notice = """
+You need to set it before creating a web view. Existing web views are not affected.
+
+By setting this to `true`, you will bring some potential security issue to your app. Some malicious script 
+would be able to read your sandbox. So we DO NOT recommend to enable it before you realize and understand the risk.
+"""
+example = """
+```csharp
+UniWebView.SetAllowUniversalAccessFromFileURLs(true);
+
+// Create a new web view.
+var webView = gameObject.AddComponent<UniWebView>();
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "A flag indicates whether the universal access for files are allowed or not."
+
+[[Methods]]
+name = "SetEnableKeyboardAvoidance"
+syntax = "SetEnableKeyboardAvoidance(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the web view area should avoid soft keyboard. If `true`, when the keyboard shows up, the web views
+content view will resize itself to avoid keyboard overlap the web content. Otherwise, the web view will not resize
+and just leave the content below under the soft keyboard.
+
+Default is `true`.
+"""
+notice = """
+This method is only for Android. On iOS, the keyboard avoidance is built into the system directly and there is 
+no way to change its behavior.
+
+You need to set it before creating a web view. Existing web views are not affected.
+"""
+example = """
+```csharp
+UniWebView.SetEnableKeyboardAvoidance(false);
+
+// Create a new web view.
+var webView = gameObject.AddComponent<UniWebView>();
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the keyboard should avoid web view content."
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetJavaScriptEnabled"
+syntax = "SetJavaScriptEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether JavaScript should be enabled in current web view. Default is enabled.
+
+For a modern page, you may always want JavaScript enabled. However, if you could confirm that you are
+not using any JavaScript in your page, you could turn it off to get better performance and safety.
+"""
+notice = "You need to set it before creating a web view. Existing web views are not affected."
+example = """
+```csharp
+// Disable JavaScript in web views created later.
+UniWebView.SetJavaScriptEnabled(false);
+
+// JavaScript is disabled in this web view.
+var webView = gameObject.AddComponent<UniWebView>();
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether JavaScript should be enabled."
+
+[[Methods]]
+name = "SetLimitsNavigationsToAppBoundDomains"
+syntax = "SetLimitsNavigationsToAppBoundDomains(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the web view limits navigation to pages within the app’s domain.
+
+This only works on iOS 14.0+. For more information, refer to the [Apple's documentation](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai)
+and the [App-Bound Domains](https://webkit.org/blog/10882/app-bound-domains/) page. This requires additional setup in `WKAppBoundDomains` key in the Info.plist file.
+
+On Android, this method does nothing.
+"""
+notice = "You need to set it before creating a web view. Existing web views are not affected."
+example = """
+```csharp
+// Enable navigation limitation in web views created later.
+UniWebView.SetLimitsNavigationsToAppBoundDomains(true);
+
+// This config is applied in this web view.
+var webView = gameObject.AddComponent<UniWebView>();
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether limiting navigation should be enabled."
+
+[[Methods]]
+name = "SetAllowJavaScriptOpenWindow"
+syntax = "SetAllowJavaScriptOpenWindow(bool flag)"
+returnType = "void"
+summary = "Sets whether JavaScript can open windows without user interaction.\n\nBy setting this to `true`, an automatically JavaScript navigation will be allowed in the web view."
+notice = "You need to set it before creating a web view. Existing web views are not affected."
+example = """
+```csharp
+// Allow JavaScript open window automatically.
+UniWebView.SetAllowJavaScriptOpenWindow(true);
+
+var webView = gameObject.AddComponent<UniWebView>();
+
+// Now, the following JavaScript code could navigate to 
+// "example.com" without user interaction in `webView`.
+setTimeout(function() {
+    window.location.href = 'https://example.com';
+}, 300);
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether JavaScript could open window automatically."
+
+[[Methods]]
+name = "SetCalloutEnabled"
+syntax = "SetCalloutEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether a callout (context) menu should be displayed when user long tapping on certain web view content.
+
+When enabled, when user long presses an image or link in the web page, a context menu would be show up to ask 
+user's action. On iOS, it is a action sheet to ask whether opening the target link or saving the image. On 
+Android it is a pop up dialog to ask whether saving the image to local disk. On iOS, the preview page triggered 
+by force touch on iOS is also considered as a callout menu.
+
+Default is `true`, means that the callout menu will be displayed. Call this method with `false` to disable it 
+on the web view.
+"""
+example = """
+```csharp
+// Disable callout menu in the web view.
+webView.SetCalloutEnabled(false);
+```
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether a callout menu should be displayed when user long pressing or force touching a certain web page element."
+
+[[Methods]]
+name = "SetSupportMultipleWindows"
+syntax = "SetSupportMultipleWindows(bool enabled, bool allowJavaScriptOpening)"
+returnType = "void"
+summary = """
+Sets whether the web view should support a pop up web view triggered by user in a new tab.
+
+In a general web browser (such as Google Chrome or Safari), a URL with `target="_blank"` attribute is intended 
+to be opened in a new tab. However, in the context of web view, there is no way to handle new tabs without 
+proper configurations. Due to that, by default UniWebView will ignore the `target="_blank"` and try to open 
+the page in the same web view if that kind of link is pressed.
+
+It works for most cases, but if this is a problem to your app logic, you can change this behavior by calling 
+this method with `true`. It enables the "opening in new tab" behavior in a limited way, by adding the new tab 
+web view above to the current web view, with the same size and position. When the opened new tab is closed, 
+it will be removed from the view hierarchy automatically.
+
+By default, only user triggered action is allowed to open a new window for security reason. That means, if you 
+are using some JavaScript like `window.open`, unless you set `allowJavaScriptOpening` to `true`, it won't work. 
+This default behavior prevents any other third party JavaScript code from opening a window arbitrarily.
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = """
+Whether to support multiple windows. If `true`, the `target="_blank"` link will be opened in a new web view. 
+Default is `false`.
+"""
+[[Methods.parameters]]
+name = "allowJavaScriptOpening"
+type = "bool"
+summary = """
+Whether to support open the new window with JavaScript by `window.open`. Setting this to `true` means any JavaScript
+code, even from third party (in an iframe or a library on the page), can open a new window. Use it as your risk.
+
+Usually, when passing `true` to this parameter, you may also want to call `SetAllowJavaScriptOpenWindow` with `true`
+before creating the web view.
+"""
+
+[[Methods]]
+name = "SetDefaultFontSize"
+syntax = "SetDefaultFontSize(int size)"
+returnType = "void"
+summary = """
+Sets the default font size used in the web view.
+
+On Android, the web view font size can be affected by the system font scale setting. Use this method to set the 
+font size in a more reasonable way, by giving the web view another default font size with the system font scale 
+considered. It can removes or reduces the effect of system font scale when displaying the web content.
+
+This method only works on Android. On iOS, this method does nothing since the web view will respect the font 
+size setting in your CSS styles.
+"""
+[[Methods.parameters]]
+name = "size"
+type = "int"
+summary = """
+The target default font size set to the web view.
+"""
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetTextZoom"
+syntax = "SetTextZoom(int textZoom)"
+returnType = "void"
+summary = """
+Sets the text zoom used in the web view.
+
+On Android, this method call [`WebSettings.setTextZoom`](https://developer.android.com/reference/android/webkit/WebSettings#setTextZoom(int)) 
+to the the text zoom used in the web view.
+
+This method only works on Android.
+"""
+[[Methods.parameters]]
+name = "textZoom"
+type = "int"
+summary = """
+The text zoom in percent.
+"""
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetDragInteractionEnabled"
+syntax = "SetDragInteractionEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the drag interaction should be enabled on iOS.
+
+From iOS 11, the web view on iOS supports the drag interaction when user long presses an image, link or text.
+Setting this to `false` would disable the drag feather on the web view.
+
+On Android, there is no direct native way to disable drag only. This method instead disables the long touch
+event, which is used as a trigger for drag interaction. So, setting this to `false` would disable the long
+touch gesture as a side effect. 
+
+It does nothing on macOS editor. Default is `true`, which means drag interaction is enabled if the device and
+system version supports it.
+"""
+example = """
+```csharp
+// Disable the drag interaction in the web view.
+webView.SetDragInteractionEnabled(false);
+```
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether the drag interaction should be enabled."
+
+[[Methods]]
+name = "SetCacheMode"
+syntax = "SetCacheMode(UniWebViewCacheMode mode)"
+returnType = "void"
+summary = """
+Sets the way of how the cache is used when loading a request.
+
+This controls the loading behavior of whether the cache should be used or how to use it for the first request of the 
+`Load` method. The default value is `UniWebViewCacheMode.Default`. See the [`UniWebViewCacheMode`](/api/UniWebViewCacheMode.html) enum for more.
+"""
+example = """
+```csharp
+// Set the cache mode to only load from cache but not from network.
+// If no cache is available, the loading will fail.
+webView.SetCacheMode(UniWebViewCacheMode.CacheOnly);
+webView.Load("https://example.com");
+```
+"""
+[[Methods.parameters]]
+name = "mode"
+type = "UniWebViewCacheMode"
+summary = "The desired cache mode that the request loading should be used in this web view."
+
+
+[[Methods]]
+name = "CleanCache"
+syntax = "CleanCache()"
+returnType = "void"
+summary = "Cleans web view cache. This removes cached local data of web view.\n\nIf you need to clear all cookies, use `ClearCookies` instead."
+
+[[Methods]]
+name = "SetForwardWebConsoleToNativeOutput"
+syntax = "SetForwardWebConsoleToNativeOutput(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the web page console output should be forwarded to native console.
+
+By setting this to `true`, UniWebView will try to intercept the web page console output methods and forward
+them to the native console, for example, Xcode console on iOS, Android logcat on Android and Unity Console when
+using Unity Editor on macOS. It provides a way to debug the web page by using the native console without opening
+the web inspector. The forwarded logs in native side contains a "&lt;UniWebView-Web&gt;" tag. 
+
+Logs from the methods below will be forwarded:
+
+- console.log
+- console.warn
+- console.error
+- console.debug
+"""
+notice = """
+Default is `false`. You need to set it before you create a web view instance to apply this setting. Any existing
+web views are not affected.
+"""
+example = """
+```csharp
+// Do it before you create the web view.
+UniWebView.SetForwardWebConsoleToNativeOutput(true);
+
+// Create a new web view.
+var webView = gameObject.AddComponent<UniWebView>();
+// ...
+
+// Later, in the web page JavaScript.
+function sayHello() {
+  console.log("Hello from web page!");
+}
+
+// "Hello from web page!" will be printed in the native console.
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the web page console output should be forwarded to native output."
+[[Methods.badges]]
+name = "static"
+color = "blue"
+
+[[Methods]]
+name = "SetCookie"
+syntax = "SetCookie(string url, string cookie, bool skipEncoding, Action handler)"
+returnType = "void"
+summary = """
+Sets a cookie for a certain url. When it finishes, the `handler` will be called.
+
+The `cookie` string supports all available cookie properties as well as multiple cookies. See [RFC6265bis](https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-03) for detail.
+
+UniWebView respects the server cookie header by default. Generally, you do not need to set the cookie from client manually. However, if you have to pass your server a manually set cookie, 
+use this method.
+
+This performs an asynchronous operation. The `handler` will be called when the operation finishes and it is the safe time to find the cookie in the storage.
+"""
+example = """
+```csharp
+// Set a cookie "testCookie=1" to some url.
+UniWebView.SetCookie(someUrl, "testCookie=1", () => {
+    Debug.Log("Cookie is set.");
+    // Now the testCookie is contained in the request header.
+    webView.Load(someUrl);
+});
+
+// Set a full properties specified cookie.
+UniWebView.SetCookie("https://example.com", "sessionToken=abc123; Expires=Wed, 09 Jun 2021 10:18:14 GMT", () => {
+    Debug.Log("Cookie is set.");
+});
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "url"
+type = "string"
+summary = "The url to which cookie will be set."
+[[Methods.parameters]]
+name = "cookie"
+type = "string"
+summary = "The cookie string to set. Need more information on cookie? See the [HTTP cookie](https://en.wikipedia.org/wiki/HTTP_cookie) page."
+[[Methods.parameters]]
+name = "skipEncoding"
+type = "bool"
+summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to set the cookie if it is valid. Default is `false`."
+
+[[Methods]]
+name = "GetCookie"
+syntax = "GetCookie(string url, string key, bool skipEncoding, Action<string> handler)"
+returnType = "void"
+summary = "Gets the cookie value under a given url and key. When it finishes, the `handler` will be called with the cookie value if exists."
+example = """
+```csharp
+UniWebView.GetCookie("https://example.com", "testCookie", (value) => {
+    // => The corresponding cookie value. Or "" if there is no such cookie.
+});
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "url"
+type = "string"
+summary = "The url (domain) where the target cookie is."
+[[Methods.parameters]]
+name = "key"
+type = "string"
+summary = "The key for target cookie value."
+[[Methods.parameters]]
+name = "skipEncoding"
+type = "bool"
+summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to get the cookie if it is valid. Default is `false`."
+
+[[Methods]]
+name = "RemoveCookies"
+syntax = "RemoveCookies(string url, bool skipEncoding, Action handler)"
+returnType = "void"
+summary = "Removes all the cookies under a url. When it finishes, the `handler` will be called."
+example = """
+```csharp
+UniWebView.RemoveCookies("https://example.com", () => {
+    Debug.Log("Cookies under `example.com` are removed.");
+});
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "url"
+type = "string"
+summary = "The url (domain) where the target cookie is."
+[[Methods.parameters]]
+name = "skipEncoding"
+type = "bool"
+summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to get the cookie if it is valid. Default is `false`."
+
+[[Methods]]
+name = "RemoveCookie"
+syntax = "RemoveCookie(string url, string key, bool skipEncoding, Action handler)"
+returnType = "void"
+summary = "Removes the certain cookie under a url for the specified key. When it finishes, the `handler` will be called."
+example = """
+```csharp
+UniWebView.RemoveCookie("https://example.com", "SID", () => {
+    Debug.Log("Cookie `SID` under `example.com` is removed.");
+});
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "url"
+type = "string"
+summary = "The url (domain) where the target cookie is."
+[[Methods.parameters]]
+name = "key"
+type = "string"
+summary = "The key for target cookie."
+[[Methods.parameters]]
+name = "skipEncoding"
+type = "bool"
+summary = "Whether UniWebView should skip encoding the url or not. If set to `false`, UniWebView will try to encode the url parameter before using it. Otherwise, your original url string will be used to get the cookie if it is valid. Default is `false`."
+
+[[Methods]]
+name = "ClearCookies"
+syntax = "ClearCookies(Action handler)"
+returnType = "void"
+summary = "Clears all cookies from web view. When it finishes, the `handler` will be called."
+notice = "This will clear cookies from all domains in the web view and previous. If you only need to remove cookies from a certain domain, use `RemoveCookies` instead."
+example = """
+```csharp
+UniWebView.ClearCookies(() => {
+    Debug.Log("Cookies are cleared.");
+});
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+
+[[Methods]]
+name = "ClearHttpAuthUsernamePassword"
+syntax = "ClearHttpAuthUsernamePassword(string host, string realm)"
+returnType = "void"
+summary = """Clears any saved credentials for HTTP authentication for both Basic and Digest.
+
+On both iOS and Android, the user input credentials will be stored permanently across the session.
+It could prevent your users to input username and password again until they changed. If you need the 
+credentials only living in a shorter lifetime, call this method at proper timing.
+
+On iOS, it will clear the credentials immediately and completely from both disk and network cache. 
+On Android, it only clears from disk database, the authentication might be still cached in the network stack and will not be removed until next session (app restarting). 
+
+The client logout mechanism should be implemented by the Web site designer (such as server sending an HTTP 401 for invalidating credentials).
+"""
+example = """
+```csharp
+UniWebView.ClearHttpAuthUsernamePassword("uniwebview.com", "UniWebViewUserRealm");
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "host"
+type = "string"
+summary = "The host to which the credentials apply. It should not contain any thing like scheme or path part."
+[[Methods.parameters]]
+name = "realm"
+type = "string"
+summary = "The realm to which the credentials apply."
+
+
+[[Methods]]
+name = "SetShowSpinnerWhileLoading"
+syntax = "SetShowSpinnerWhileLoading(bool flag)"
+returnType = "void"
+summary = """
+Sets whether to show a loading indicator while the loading is in progress.
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether an indicator should show."
+
+[[Methods]]
+name = "SetSpinnerText"
+syntax = "SetSpinnerText(string text)"
+returnType = "void"
+summary = "Sets the text displayed in the loading indicator, if `SetShowSpinnerWhileLoading` is set to `true`."
+[[Methods.parameters]]
+name = "text"
+type = "string"
+summary = "The text to display while loading indicator visible. Default is \"Loading...\""
+
+[[Methods]]
+name = "SetAllowUserDismissSpinner"
+syntax = "SetAllowUserDismissSpinner(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the user can dismiss the loading indicator by tapping on it or the greyed-out background around.
+
+By default, when the loading spinner is shown, the user can dismiss it by a single tapping. Call this method
+with `false` to disable this behavior.
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether the user can dismiss the loading indicator."
+
+[[Methods]]
+name = "ShowSpinner"
+syntax = "ShowSpinner()"
+returnType = "void"
+summary = """
+Shows the loading spinner.
+
+Calling this method will show the loading spinner, regardless if the `SetShowSpinnerWhileLoading` is set to
+`true` or `false`. However, if `SetShowSpinnerWhileLoading` was called with `true`, UniWebView will still hide
+the spinner when the loading finishes.
+"""
+
+[[Methods]]
+name = "HideSpinner"
+syntax = "HideSpinner()"
+returnType = "void"
+summary = """
+Hides the loading spinner.
+
+Calling this method will hide the loading spinner, regardless if the `SetShowSpinnerWhileLoading` is set to
+`true` or `false`. However, if `SetShowSpinnerWhileLoading` was called with `false`, UniWebView will still show
+the spinner when the loading starts.
+"""
+
+[[Methods]]
+name = "SetHorizontalScrollBarEnabled"
+syntax = "SetHorizontalScrollBarEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the horizontal scroll bar should show when the web content beyonds web view bounds.
+
+This only works on mobile platforms. It will do nothing on macOS Editor.
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether enable the scroll bar or not."
+
+[[Methods]]
+name = "SetVerticalScrollBarEnabled"
+syntax = "SetVerticalScrollBarEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the vertical scroll bar should show when the web content beyonds web view bounds.
+
+This only works on mobile platforms. It will do nothing on macOS Editor.
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether enable the scroll bar or not."
+
+[[Methods]]
+name = "SetBouncesEnabled"
+syntax = "SetBouncesEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the web view should show with a bounces effect when scrolling to page edge.
+
+This only works on mobile platforms. It will do nothing on macOS Editor.
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether enable the bounces effect should be applied or not."
+
+[[Methods]]
+name = "SetZoomEnabled"
+syntax = "SetZoomEnabled(bool enabled)"
+returnType = "void"
+summary = "Sets whether the web view supports zoom gesture to change content size. Default is `false`, which means the zoom gesture is not supported."
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether the zoom gesture is allowed or not."
+
+[[Methods]]
+name = "AddPermissionTrustDomain"
+syntax = "AddPermissionTrustDomain(string domain)"
+returnType = "void"
+summary = """
+Adds a trusted domain to white list and allow permission requests from the domain.
+
+You need this on Android devices when a site needs the location or camera  permission. It will allow the
+permission gets approved so you could access the corresponding devices.
+"""
+notice = """
+Deprecated. Use `RegisterOnRequestMediaCapturePermission` instead, which works for both Android and iOS. It also 
+provides a more flexible way to handle the permission requests. By default, if neither this method and
+`RegisterOnRequestMediaCapturePermission` is called, the permission request will trigger a grant alert to ask
+the user to decide whether to allow or deny the permission.
+"""
+example = """
+```csharp
+// Deprecated. Do not do it anymore.
+webView.AddPermissionTrustDomain("my-own-site.com");
+
+// Instead, use this:
+webView.RegisterOnRequestMediaCapturePermission((request) => {
+    if (request.Host == "my-own-site.com") {
+        return UniWebViewMediaCapturePermissionDecision.Grant;
+    } else {
+        return UniWebViewMediaCapturePermissionDecision.Prompt;
+    }
+});
+```
+"""
+[[Methods.badges]]
+name = "Android"
+color = "green"
+[[Methods.parameters]]
+name = "domain"
+type = "string"
+summary = "The domain to add to the white list."
+
+[[Methods]]
+name = "RemovePermissionTrustDomain"
+syntax = "RemovePermissionTrustDomain(string domain)"
+returnType = "void"
+summary = "Removes a trusted domain from white list."
+notice = """
+Deprecated. If you previously registered a media capture permission request handler through 
+`RegisterOnRequestMediaCapturePermission`, use `UnregisterOnRequestMediaCapturePermission` to cancel it.
+"""
+[[Methods.badges]]
+name = "Android"
+color = "green"
+[[Methods.parameters]]
+name = "domain"
+type = "string"
+summary = "The domain to remove from white list."
+
+[[Methods]]
+name = "SetBackButtonEnabled"
+syntax = "SetBackButtonEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the device back button should be enabled to execute \"go back\" or \"closing\" operation.
+
+On Android, the device back button in navigation bar will navigate users to a back page. If there is no any back page available, the back button clicking will try to raise an `OnShouldClose` event and try to close the web view if `true` is return from the event. If the `OnShouldClose` event is not listened to,  the web view will be closed and the UniWebView component will be destroyed to release any resource in use.
+
+Listen to `OnKeyCodeReceived` if you need to disable the back button, but still, want to get the back button key pressing event.
+
+This method is only for Android. On iOS, you could show a toolbar with navigation and Done buttons for 
+similar purpose or call `SetAllowBackForwardNavigationGestures` to enable gesture based navigation on iOS.
+
+The default is enabled.
+"""
+[[Methods.badges]]
+name = "Android"
+color = "green"
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether the back button should perform go back or closing operation to web view."
+
+[[Methods]]
+name = "SetUseWideViewPort"
+syntax = "SetUseWideViewPort(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the web view should enable support for the \"viewport\" HTML meta tag or should use a wide viewport.
+
+This method is only for Android. The default is disabled.
+"""
+[[Methods.badges]]
+name = "Android"
+color = "green"
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether to enable support for the viewport meta tag."
+
+[[Methods]]
+name = "SetLoadWithOverviewMode"
+syntax = "SetLoadWithOverviewMode(bool flag)"
+returnType = "void"
+summary = """
+Sets whether the web view loads pages in overview mode, that is, zooms out the content to fit on screen by width.
+
+This method is only for Android. The default is disabled.
+"""
+[[Methods.badges]]
+name = "Android"
+color = "green"
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether to enable support for the overview mode."
+
+[[Methods]]
+name = "SetImmersiveModeEnabled"
+syntax = "SetImmersiveModeEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the web view should behave in immersive mode, that is, 
+hides the status bar and navigation bar with a sticky style.
+
+If disabled, the navigation bar will always show up while the web view is visible.
+
+This method is only for Android. The default is enabled.
+"""
+[[Methods.badges]]
+name = "Android"
+color = "green"
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether to enable immersive mode when web view is showing up."
+
+[[Methods]]
+name = "SetShowToolbar"
+syntax = "SetShowToolbar(bool show, bool animated, bool onTop, bool adjustInset)"
+returnType = "void"
+summary = """
+Sets whether to show a toolbar which contains navigation buttons and Done button.
+
+You could choose to show or hide the toolbar. By configuring the `animated` and `onTop` 
+parameters, you can control the animating and position of the toolbar. If the toolbar is overlapping with some part of your web view, pass `adjustInset` with `true` to have the web view relocating itself to avoid the overlap.
+
+This method is only for iOS. The toolbar is hidden by default.
+"""
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.Show()` or `EmbeddedToolbar.Hide()` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
+"""
+example = """
+```csharp
+// Show a toolbar at top of screen with animation.
+webView.SetShowToolbar(true, true, true);
+
+// Hide the tool bar without animation. At the same time, make 
+// the web view snap to screen top if there was overlapping between 
+// the web view and toolbar.
+webView.SetShowToolbar(false, false, true, true);
+```
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.parameters]]
+name = "show"
+type = "bool"
+summary = "Whether the toolbar should show or hide."
+[[Methods.parameters]]
+name = "animated"
+type = "bool"
+summary = "Whether the toolbar state changing should be with animation. Default is `false`."
+[[Methods.parameters]]
+name = "onTop"
+type = "bool"
+summary = "Whether the toolbar should snap to top of screen or to bottom of screen. Default is `true`"
+[[Methods.parameters]]
+name = "adjustInset"
+type = "bool"
+summary = "Whether the toolbar transition should also adjust web view position and size if overlapped. Default is `false`"
+
+[[Methods]]
+name = "SetToolbarDoneButtonText"
+syntax = "SetToolbarDoneButtonText(string text)"
+returnType = "void"
+summary = """
+Sets the done button text in toolbar.
+
+By default, UniWebView will show a "Done" button at bottom-right corner in the toolbar. You could change its title by passing a text.
+
+This method is only for iOS since there is no toolbar on Android.
+"""
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.SetDoneButtonText` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
+"""
+example = """
+```csharp
+webView.SetToolbarDoneButtonText("关闭");
+```
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.parameters]]
+name = "text"
+type = "string"
+summary = "The text needed to be set as done button title."
+
+[[Methods]]
+name = "SetToolbarGoBackButtonText"
+syntax = "SetToolbarGoBackButtonText(string text)"
+returnType = "void"
+summary = """
+Sets the go back button text in toolbar.
+
+By default, UniWebView will show a back arrow at the left side in the toolbar. You could change its text.
+
+This method is only for iOS and macOS Editor, since there is no toolbar on Android.
+"""
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.SetGoBackButtonText` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
+"""
+example = """
+```csharp
+webView.SetToolbarGoBackButtonText("返回");
+```
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+[[Methods.parameters]]
+name = "text"
+type = "string"
+summary = "The text needed to be set as go back button."
+
+[[Methods]]
+name = "SetToolbarGoForwardButtonText"
+syntax = "SetToolbarGoForwardButtonText(string text)"
+returnType = "void"
+summary = """
+Sets the go forward button text in toolbar.
+
+By default, UniWebView will show a forward arrow at the left side in the toolbar. You could change its text.
+
+This method is only for iOS and macOS Editor, since there is no toolbar on Android.
+"""
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.SetGoForwardButtonText` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
+"""
+example = """
+```csharp
+webView.SetToolbarGoForwardButtonText("前进");
+```
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+[[Methods.parameters]]
+name = "text"
+type = "string"
+summary = "The text needed to be set as go forward button."
+
+[[Methods]]
+name = "SetShowToolbarNavigationButtons"
+syntax = "SetShowToolbarNavigationButtons(bool show)"
+returnType = "void"
+summary = """
+Sets the visibility of navigation buttons, such as "Go Back" and "Go Forward", on toolbar.
+
+By default, UniWebView will show the "Go Back" and "Go Forward" navigation buttons on the toolbar.
+Users can use these buttons to perform go back or go forward action just like in a browser. If the navigation
+model is not for your case, call this method with `false` as `show` parameter to hide them.
+
+This method is only for iOS, since there is no toolbar on Android.
+"""
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.ShowNavigationButtons` or `EmbeddedToolbar.HideNavigationButtons` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+[[Methods.parameters]]
+name = "show"
+type = "bool"
+summary = "Whether the navigation buttons on the toolbar should show or hide."
+
+[[Methods]]
+name = "SetToolbarTintColor"
+syntax = "SetToolbarTintColor(Color color)"
+returnType = "void"
+summary = """
+Sets the background tint color for the toolbar.
+
+By default, UniWebView uses a default half-transparent iOS standard background for toolbar.
+You can change it by setting a new opaque color.
+
+This method is only for iOS, since there is no toolbar on Android.
+"""
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.SetBackgroundColor` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = "The color should be used for the background tint of the toolbar."
+
+[[Methods]]
+name = "SetToolbarTextColor"
+syntax = "SetToolbarTextColor(Color color)"
+returnType = "void"
+summary = """
+Sets the button text color for the toolbar.
+
+By default, UniWebView uses the default text color on iOS, which is blue for most cases.
+You can change it by setting a new opaque color.
+
+This method is only for iOS, since there is no toolbar on Android.
+"""
+notice = """
+This method is deprecated. Use `EmbeddedToolbar.SetButtonTextColor` or `EmbeddedToolbar.SetTitleTextColor` instead. See [EmbeddedToolbar](/guide/embedded-toolbar.html) for more information.
+"""
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = "The color should be used for the button text of the toolbar."
+
+[[Methods]]
+name = "SetUserInteractionEnabled"
+syntax = "SetUserInteractionEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the web view can receive user interaction or not.
+
+By setting this to `false`, the web view will not accept any user touch event so your users cannot tap links or
+scroll the page.
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether the user interaction should be enabled or not."
+
+[[Methods]]
+name = "SetTransparencyClickingThroughEnabled"
+syntax = "SetTransparencyClickingThroughEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the web view should pass through clicks at its clear pixels to Unity scene.
+
+Setting this method is a pre-condition for the whole passing-through feature to work. To allow your touch passing through
+to Unity scene, the following conditions should be met at the same time:
+
+1. This method is called with `true`. It enables the web view to check every touch on the web view.
+2. The web view has a transparent background in body style for its content by CSS.
+3. The web view itself has a transparent background color by setting `BackgroundColor` with a clear color.
+
+Then, when user clicks on the clear pixel on the web view, the touch events will not be handled by the web view.
+Instead, these events are passed to Unity scene. By using this feature, it is possible to create a UI for your game 
+with the web view.
+
+Only clicks on transparent part on the web view will be delivered to Unity scene. The web view still intercepts
+and handles other touches on visible pixels on the web view.
+"""
+example = """
+```csharp
+// Allow transparency clicking through.
+webView.SetTransparencyClickingThroughEnabled(true);
+
+// Make Unity scene visible.
+webView.BackgroundColor = Color.clear;
+
+// Disable the scrolling bounces effect to fix the web UI.
+webView.SetBouncesEnabled(false);
+
+// Other configuration, usually handle some messages from web view.
+webView.OnMessageReceived += (view, message) => {
+    // ...
+};
+```
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether the transparency clicking through feature should be enabled in this web view."
+
+[[Methods]]
+name = "SetWebContentsDebuggingEnabled"
+syntax = "SetWebContentsDebuggingEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Enables debugging of web contents. You could inspect of the content of a 
+web view by using a browser development tool of Chrome for Android or Safari for macOS.
+
+This method is only for Android and macOS Editor. On iOS, you do not need an additional step. 
+You could open Safari's developer tools to debug a web view on iOS.
+"""
+notice = """Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embedded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in the editor and never affect real devices. 
+
+Please remember to disable this in your product build. This should be only used while development.
+"""
+[[Methods.badges]]
+name = "Android"
+color = "green"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether the content debugging should be enabled."
+
+[[Methods]]
+name = "SetWindowUserResizeEnabled"
+syntax = "SetWindowUserResizeEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Enables user resizing for web view window. By default, you can only set the window size by setting its frame on mac Editor. 
+By enabling user resizing, you would be able to resize the window by dragging its border as a normal macOS window.
+"""
+notice = "This method only works for macOS for debugging purpose. It does nothing on iOS and Android."
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether the window could be able to be resized by the cursor."
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
+[[Methods]]
+name = "SetAllowBackForwardNavigationGestures"
+syntax = "SetAllowBackForwardNavigationGestures(bool flag)"
+returnType = "void"
+summary = """
+Sets whether horizontal swipe gestures should trigger back-forward list navigation.
+
+By setting with `true`, users can swipe from screen edge to perform a back or forward navigation.
+This method only works on iOS and macOS Editor. Default is `false`. 
+ 
+On Android, the screen navigation gestures are simulating the traditional back button and it is enabled by 
+default. To disable gesture navigation on Android, you have to also disable the device back button. See 
+`SetBackButtonEnabled` for that purpose.
+"""
+example = """
+```csharp
+webView.SetAllowBackForwardNavigationGestures(true);
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "The value indicates whether a swipe gestures driven navigation should be allowed. Default is `false`."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
+[[Methods]]
+name = "SetAllowHTTPAuthPopUpWindow"
+syntax = "SetAllowHTTPAuthPopUpWindow(bool flag)"
+returnType = "void"
+summary = """
+Sets whether a prompt alert should be displayed for collection username and password when the web view receives an
+HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.
+    
+By setting with `false`, no prompt will be shown and the user cannot login with input credentials. In this case,
+you can only access this page by providing username and password through the URL like: "http://username:password@example.com".
+If the username and password does not match, normally an error with 401 as status code would be returned (this behavior depends
+on the server implementation). If set with `true`, a prompt will be shown when there is no credentials provided or it is not
+correct in the URL.
+    
+Default is `true`.
+"""
+example = """
+```csharp
+// This URL requires HTTP Basic authentication.
+var url = "https://example.com/auth/http-basic";
+
+// A prompt alert will be shown and user has a chance to input their username/password.
+webView.Load(url);
+
+// Setting to false, this will use "username" and "password" to response server challenge.
+webView.SetAllowHTTPAuthPopUpWindow(false);
+webView.Load("https://username:password@example.com/auth/http-basic");
+
+// Loading a URL but not providing credentials and no chance for user to input.
+// An error might be raised according to your server implementation.
+webView.SetAllowHTTPAuthPopUpWindow(false);
+webView.Load(url);
+```
+"""
+[[Methods.parameters]]
+name = "flag"
+type = "bool"
+summary = "Whether a prompt alert should be shown for HTTP authentication challenge or not."
+
+[[Methods]]
+name = "GetHTMLContent"
+syntax = "GetHTMLContent(Action<string> handler)"
+returnType = "void"
+summary = "Gets the HTML content from current page by accessing its `outerHTML` with JavaScript."
+example = """
+```csharp
+webView.GetHTMLContent((content)=>{
+    print(content);
+    // => "<html><head> ... </html>"
+});
+```
+"""
+[[Methods.parameters]]
+name = "handler"
+type = "Action<string>"
+summary = "Called after the JavaScript executed. The parameter `string` is the content read from page."
+
+[[Methods]]
+name = "Print"
+syntax = "Print()"
+returnType = "void"
+summary = """Prints current page.
+
+By calling this method, a native print preview panel will be brought up on iOS and Android. 
+This method does nothing on macOS editor.
+"""
+notice = "On iOS and Android, the web view does not support JavaScript (window.print()), you can only initialize a print job from Unity by this method."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "CaptureSnapshot"
+syntax = "CaptureSnapshot(string fileName)"
+returnType = "void"
+summary = """
+Capture the content of web view and store it to the cache path on disk with the given file name.
+
+When the capturing finishes, `OnCaptureSnapshotFinished` event will be raised, with an error code to indicate
+whether the operation succeeded and an accessible disk path of the image. 
+
+The captured image will be stored as a PNG file under the `fileName` in app's cache folder. If a file with the 
+same file name already exists, it will be overridden by the new captured image.
+"""
+example = """
+```csharp
+webView.OnCaptureSnapshotFinished += (view, errorCode, filePath) => {
+    if (errorCode != 0) { return; } 
+    byte[] bytes = File.ReadAllBytes(filePath);
+    Texture2D texture = new Texture2D(2, 2, TextureFormat.RGB24, false);
+    texture.LoadImage(bytes);
+    
+    // Use the texture.
+};
+webView.CaptureSnapshot("sample.png");
+```
+"""
+[[Methods.parameters]]
+name = "fileName"
+type = "string"
+summary = """
+The file name to which the captured image is stored to, for example "screenshot.png". If empty, UniWebView will pick a 
+random UUID with "png" file extension as the file name.
+"""
+
+[[Methods]]
+name = "StartSnapshotForRendering"
+syntax = "StartSnapshotForRendering(Rect? rect = null, Action<Texture> onStarted = null)"
+returnType = "void"
+summary = """
+Starts the process of continually rendering the snapshot.
+
+You take the responsibility of calling this method before you use either `GetRenderedData` or
+`CreateRenderedTexture(Rect?)` to get the rendered data or texture. It prepares a render buffer for the image
+data and performs the initial rendering for later use.
+"""
+notice = """
+If this method is not called, the related data or texture methods will not work and will only return `null`. Once you
+no longer need the web view to be rendered as a texture, you should call `StopSnapshotForRendering` to clean up
+the associated resources.
+"""
+[[Methods.parameters]]
+name = "rect"
+type = "Rect?"
+summary = """
+The optional rectangle to specify the area for rendering. If `null` (by default), the entire view is rendered.
+"""
+[[Methods.parameters]]
+name = "onStarted"
+type = "Action<Texture>"
+summary = """
+An optional callback to execute when rendering has started. The callback receives a `Texture2D` parameter
+representing the rendered texture. This is useful if you want to perform a one-time rendering of the web view.
+"""
+
+[[Methods]]
+name = "StopSnapshotForRendering"
+syntax = "StopSnapshotForRendering()"
+returnType = "void"
+summary = """
+Stops the process of continually rendering the snapshot.
+
+You should call this method when you no longer need any further data or texture from the
+`GetRenderedData` or `CreateRenderedTexture` methods. This helps in releasing
+resources and terminating the rendering process.
+"""
+
+[[Methods]]
+name = "GetRenderedData"
+syntax = "GetRenderedData(Rect? rect = null)"
+returnType = "byte[]"
+summary = """
+Gets the data of the rendered image for the current web view.
+
+This method provides you with the raw bytes of the rendered image data in PNG format. To successfully retrieve the
+current rendered data, you should first call `StartSnapshotForRendering` to initiate the rendering process.
+If `StartSnapshotForRendering` has not been called, this method will return `null`.
+
+The rendering area specified by the `rect` parameter is based on the local coordinates of the web view.
+For example, `new Rect(webView.frame.width / 2, webView.frame.height / 2, 100, 100)` means setting the origin to the
+center of the web view and taking a 100x100 square as the snapshot area.
+"""
+returnValue = """
+An array of raw bytes representing the rendered image data in PNG format, or `null` if the rendering process fails
+or if the data is not prepared.
+"""
+notice = """
+Please note that this method supports only software-rendered content. Content rendered by hardware, such as videos
+and WebGL content, will appear as a black rectangle in the rendered image.
+"""
+[[Methods.parameters]]
+name = "rect"
+type = "Rect?"
+summary = """
+The desired rectangle within which the snapshot rendering should occur in the web view. If default value `null` is used,
+the whole web view frame will be used as the snapshot area.
+"""
+
+[[Methods]]
+name = "CreateRenderedTexture"
+syntax = "CreateRenderedTexture(Rect? rect = null)"
+returnType = "Texture2D"
+summary = """
+Creates a rendered texture for the current web view.
+
+You should destroy the returned texture using the `Destroy` method when you no longer need it to free up resources.
+
+This method provides you with a texture of the rendered image for the web view, which you can use in your 3D game world.
+To obtain the current rendered data, you should call `StartSnapshotForRendering` before using this method.
+If `StartSnapshotForRendering` has not been called, this method will return `null`.
+
+This method returns a plain `Texture2D` object. The texture is not user interactive and can only be used for
+display purposes. It is your responsibility to call the `Destroy` method on this texture when you no longer need it.
+
+Check the [Render as Texture](/guide/render-as-texture.html) guide for more.
+"""
+notice = """
+You need to destroy the returned texture when you do not need it anymore.
+
+Please note that this method supports only software-rendered content. Content rendered by hardware, such as videos
+and WebGL content, will appear as a black rectangle in the rendered image.
+"""
+returnValue = """
+A rendered texture of the current web view, or `null` if the rendering process fails or the data is not prepared.
+"""
+[[Methods.parameters]]
+name = "rect"
+type = "Rect?"
+summary = """
+The desired rectangle within which the snapshot rendering should occur in the web view. If default value `null` is used,
+the whole web view frame will be used as the snapshot area.
+"""
+
+[[Methods]]
+name = "ScrollTo"
+syntax = "ScrollTo(int x, int y, bool animated)"
+returnType = "void"
+summary = """Scrolls the web view to a certain point.
+
+Use 0 for both `x` and `y` value to scroll the web view to its origin. In a normal vertical web page, it is equivalent as scrolling to top.
+
+You can use the `animated` parameter to control whether scrolling the page with or without animation.
+This parameter only works on iOS and Android. On macOS editor, the scrolling always happens without animation.
+"""
+example = """
+```csharp
+// Scroll the web page to top with animation.
+webView.ScrollTo(0, 0, true);
+```
+"""
+[[Methods.parameters]]
+name = "x"
+type = "int"
+summary = "X value of the target scrolling point."
+[[Methods.parameters]]
+name = "y"
+type = "int"
+summary = "Y value of the target scrolling point."
+[[Methods.parameters]]
+name = "animated"
+type = "bool"
+summary = "If `true`, the scrolling happens with animation. Otherwise, it happens without animation and the content is set directly."
+
+[[Methods]]
+name = "AddDownloadURL"
+syntax = "AddDownloadURL(string urlString, UniWebViewDownloadMatchingType type)"
+returnType = "void"
+summary = """
+Adds the URL to download inspecting list.
+
+If a response is received in main frame and its URL is already in the inspecting list, a download task will be 
+triggered. Check "Download Files" guide for more.
+
+This method only works on iOS and macOS Editor.
+"""
+example = """
+```csharp
+// On iOS, access to "https://example.com/file.pdf" will trigger a download task instead of being rendered in place.
+webView.AddDownloadURL("https://example.com/file.pdf");
+
+// You can also use a regular expression.
+webView.AddDownloadURL("^https://example\\.com/file\\.pdf.*$", UniWebViewDownloadMatchingType.RegularExpression);
+```
+"""
+[[Methods.parameters]]
+name = "urlString"
+type = "string"
+summary = "The inspected URL string or a regular expression."
+[[Methods.parameters]]
+name = "type"
+type = "UniWebViewDownloadMatchingType"
+summary = "The download matching type used to match the URL. Default is `ExactValue`."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
+[[Methods]]
+name = "RemoveDownloadURL"
+syntax = "RemoveDownloadURL(string urlString, UniWebViewDownloadMatchingType type)"
+returnType = "void"
+summary = """
+Removes the URL from download inspecting list.
+
+If a response is received in main frame and its URL is already in the inspecting list, a download task will be 
+triggered. Check "Download Files" guide for more.
+
+This method only works on iOS and macOS Editor.
+"""
+example = """
+```csharp
+// On iOS, access to "https://example.com/file.pdf" will be rendered in place.
+webView.RemoveDownloadURL("https://example.com/file.pdf");
+```
+"""
+[[Methods.parameters]]
+name = "urlString"
+type = "string"
+summary = "The inspected URL string or a regular expression."
+[[Methods.parameters]]
+name = "type"
+type = "UniWebViewDownloadMatchingType"
+summary = "The download matching type used to match the URL. Default is `ExactValue`."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
+[[Methods]]
+name = "AddDownloadMIMEType"
+syntax = "AddDownloadMIMEType(string MIMEType, UniWebViewDownloadMatchingType type)"
+returnType = "void"
+summary = """
+Adds the MIME type to download inspecting list.
+
+If a response is received in main frame and its MIME type is already in the inspecting list, a 
+download task will be triggered. Check "Download Files" guide for more.
+
+This method only works on iOS and macOS Editor.
+"""
+example = """
+```csharp
+// On iOS, access to any PDF files will trigger a download task instead of being rendered in place.
+webView.AddDownloadMIMEType("application/pdf");
+
+// You can also use a regular expression.
+webView.AddDownloadMIMEType("^image/.*$", UniWebViewDownloadMatchingType.RegularExpression);
+```
+"""
+[[Methods.parameters]]
+name = "MIMEType"
+type = "string"
+summary = "The inspected MIME type of the response."
+[[Methods.parameters]]
+name = "type"
+type = "UniWebViewDownloadMatchingType"
+summary = "The download matching type used to match the MIME type. Default is `ExactValue`"
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
+[[Methods]]
+name = "RemoveDownloadMIMETypes"
+syntax = "RemoveDownloadMIMETypes(string MIMEType, UniWebViewDownloadMatchingType type)"
+returnType = "void"
+summary = """
+Removes the MIME type from download inspecting list.
+
+If a response is received in main frame and its MIME type is already in the inspecting list, a 
+download task will be triggered. Check "Download Files" guide for more.
+
+This method only works on iOS and macOS Editor.
+"""
+example = """
+```csharp
+// On iOS, access to any PDF files will be rendered in place.
+webView.RemoveDownloadMIMETypes("application/pdf");
+```
+"""
+[[Methods.parameters]]
+name = "MIMEType"
+type = "string"
+summary = "The inspected MIME type of the response."
+[[Methods.parameters]]
+name = "type"
+type = "UniWebViewDownloadMatchingType"
+summary = "The download matching type used to match the MIME type. Default is `ExactValue`"
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
+[[Methods]]
+name = "SetAllowUserEditFileNameBeforeDownloading"
+syntax = "SetAllowUserEditFileNameBeforeDownloading(bool allowed)"
+returnType = "void"
+summary = """
+Sets whether allowing users to edit the file name before downloading. Default is `true`.
+
+If `true`, when a download task is triggered, a dialog will be shown to ask user to edit the file name and the
+user has a chance to choose if the they actually want to download the file. If `false`, the file download will
+start immediately without asking user to edit the file name. The file name is generated by guessing from the
+content disposition header and the MIME type. If the guessing of the file name fails, a random string will be
+used.
+"""
+[[Methods.parameters]]
+name = "allowed"
+type = "bool"
+summary = "Whether the user can edit the file name and determine whether actually starting the downloading."
+
+[[Methods]]
+name = "SetAllowUserChooseActionAfterDownloading"
+syntax = "SetAllowUserChooseActionAfterDownloading(bool allowed)"
+returnType = "void"
+summary = """
+Sets whether allowing users to choose the way to handle the downloaded file. Default is `true`.
+
+On iOS, the downloaded file will be stored in a temporary folder. Setting this to `true` will show a system 
+default share sheet and give the user a chance to send and store the file to another location (such as the 
+File app or iCloud).
+
+On macOS Editor, setting this to `true` will allow UniWebView to open the file in Finder.
+
+This method does not have any effect on Android. On Android, the file is downloaded to the app's Download folder.
+"""
+[[Methods.parameters]]
+name = "allowed"
+type = "bool"
+summary = "Whether the user can choose the way to handle the downloaded file."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+
+[[Methods]]
+name = "SetDownloadEventForContextMenuEnabled"
+syntax = "SetDownloadEventForContextMenuEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the `OnFileDownloadStarted` and `OnFileDownloadFinished` events should be raised even for an image
+saving action triggered by the callout (context) menu on Android.
+
+By default, the image saving goes through a different route and it does not trigger the `OnFileDownloadStarted` 
+and `OnFileDownloadFinished` events like other normal download tasks. Setting this with enabled with `true` if
+you also need to get notified when user long-presses on the image and taps "Save Image" button. By default, the
+image will be saved to the Downloads directory and you can get the path from the parameter 
+of `OnFileDownloadFinished` event.
+"""
+notice = """
+This only works on Android. On iOS, there is no way to get a callback or any event from the "Add to Photos"
+button in the callout menu.
+"""
+example = """
+```csharp
+webView.SetDownloadEventForContextMenuEnabled(true);
+```
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether the context menu image saving action triggers the download related events."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "RegisterShouldHandleRequest"
+syntax = "RegisterShouldHandleRequest(Func<UniWebViewChannelMethodHandleRequest, bool> handler)"
+returnType = "void"
+summary = """
+Registers a method handler for deciding whether UniWebView should handle the request received by the web view.
+
+The handler is called before the web view actually starts to load the new request. You can check the request
+properties, such as the URL, to decide whether UniWebView should continue to handle the request or not. If you
+return `true` from the handler function, UniWebView will continue to load the request. Otherwise, UniWebView
+will stop the loading.
+"""
+example = """
+```csharp
+webView.RegisterShouldHandleRequest(request => {
+  // Stop loading if the URL contains `example.com`.
+  if (request.Url.Contains("example.com")) {
+    return false;
+  }
+
+  // For other URLs, return `true` and UniWebView can continue to load as usual.
+  return true;
+});
+```
+"""
+[[Methods.parameters]]
+name = "handler"
+type = "Func<UniWebViewChannelMethodHandleRequest, bool>"
+summary = """
+A handler you can implement your own logic against the input request value. You need to return a boolean value
+to indicate whether UniWebView should continue to load the request or not as soon as possible.
+"""
+
+[[Methods]]
+name = "UnregisterShouldHandleRequest"
+syntax = "UnregisterShouldHandleRequest()"
+returnType = "void"
+summary = """
+Unregisters the method handler for handling request received by the web view.
+
+This clears the handler registered by `RegisterHandlingRequest` method.
+"""
+
+[[Methods]]
+name = "RegisterOnRequestMediaCapturePermission"
+syntax = "RegisterOnRequestMediaCapturePermission(Func<UniWebViewChannelMethodMediaCapturePermission, UniWebViewMediaCapturePermissionDecision> handler)"
+returnType = "void"
+summary = """
+Registers a method handler for deciding whether UniWebView should allow a media request from the web page or
+not.
+
+The handler is called when the web view receives a request to capture media, such as camera or microphone. It
+usually happens when the web view is trying to access the camera or microphone by using the "getUserMedia" APIs
+in WebRTC. You can check the request properties in the input `UniWebViewChannelMethodMediaCapturePermission`
+instance, which contains information like the media type, the request origin (protocol and host), then decide
+whether this media request should be allowed or not.
+
+According to the `UniWebViewMediaCapturePermissionDecision` value you return from the handler function,
+UniWebView behaves differently:
+ 
+- `Grant`: UniWebView allows the access without asking the user.
+- `Deny`: UniWebView forbids the access and the web page will receive an error.
+- `Prompt`: UniWebView asks the user for permission. The web page will receive a prompt to ask the user if they
+allow the access to the requested media resources (camera or/and microphone).
+
+If this method is never called or the handler is unregistered, UniWebView will prompt the user for the
+permission.
+
+On iOS, this method is available from iOS 15.0 or later. On earlier version of iOS, the handler will be ignored
+and the web view will always prompt the user for the permission.
+"""
+example = """
+```csharp
+using System.Linq;
+
+webView.RegisterOnRequestMediaCapturePermission((permission) => {
+    // Allow the access without asking, if it is from "https://my-domain.com", and only trying to access the camera.
+    string[] expected = {"VIDEO"};
+    if (permission.Protocol == "https" && 
+        permission.Host == "my-domain.com" && 
+        permission.Resources.SequenceEqual(expected)
+    ) {
+        return UniWebViewMediaCapturePermissionDecision.Grant;
+    } else {
+        // Otherwise, prompt the user for the permission. (This is also the default behavior.)
+        return UniWebViewMediaCapturePermissionDecision.Prompt;
+    }
+});
+```
+"""
+[[Methods.parameters]]
+name = "handler"
+type = "Func<UniWebViewChannelMethodMediaCapturePermission, UniWebViewMediaCapturePermissionDecision>"
+summary = """
+A handler you can implement your own logic to decide whether UniWebView should allow, deny or prompt the media
+resource access request.
+
+The parameter of the handler is a value of [`UniWebViewChannelMethodMediaCapturePermission`](/api/UniWebViewChannelMethodMediaCapturePermission.html),
+which contains information like the media type, the request origin (protocol and host).
+
+You need to return a [`UniWebViewMediaCapturePermissionDecision`](/api/UniWebViewMediaCapturePermissionDecision.html) value to indicate the decision as soon as
+possible.
+"""
+
+[[Methods]]
+name = "UnregisterOnRequestMediaCapturePermission"
+syntax = "UnregisterOnRequestMediaCapturePermission()"
+returnType = "void"
+summary = """
+Unregisters the method handler for handling media capture permission request.
+
+This clears the handler registered by `RegisterOnRequestMediaCapturePermission` method.
+"""
+
+[[Events]]
+name = "OnPageStarted"
+syntax = "OnPageStarted(UniWebView webView, string url)"
+returnType = "void"
+summary = """
+Raised when the web view starts loading a url.
+
+This event will be invoked for both URL loading with `Load` method or by a link navigating from a page.
+"""
+example = """
+```csharp
+webView.OnPageStarted += (view, url) => {
+    print("Loading started for url: " + url);
+};
+webView.Load("https://example.com");
+
+// => "Loading started for url: https://example.com/"
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "url"
+type = "string"
+summary = "The url which the web view is about to load."
+
+[[Events]]
+name = "OnPageCommitted"
+syntax = "OnPageCommitted(UniWebView webView, string url)"
+returnType = "void"
+summary = """
+Raised when the web view receives response from the server and starts receiving web content.
+
+This event will be invoked when the web view has confirmed the response is a web page and has started to receive and process the web content. This happens after `OnPageStarted` but before `OnPageFinished`.
+
+This is an ideal place to inject JavaScript code at the earliest possible moment when a page starts loading. Note that JavaScript execution is asynchronous - it may complete after the page finishes loading. For most cases, it is recommended to use `OnPageFinished` event instead, which ensures the page is fully loaded.
+"""
+example = """
+```csharp
+webView.OnPageCommitted += (view, url) => {
+    Debug.Log("Web View starts receiving content, URL: " + url);
+    // Inject JavaScript code at early stage
+    view.EvaluateJavaScript("console.log('Early stage injection');", null);
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "url"
+type = "string"
+summary = "The url which the web view has started receiving content for."
+
+[[Events]]
+name = "OnPageFinished"
+syntax = "OnPageFinished(UniWebView webView, int statusCode, string url)"
+returnType = "void"
+summary = """
+Raised when the web view finished to load a url successfully.
+
+This method will be invoked when a valid response received from the URL, regardless of the response status.
+If a URL loading fails before reaching to the server and getting a response, `OnLoadingErrorReceived` will be 
+raised instead.
+"""
+notice = """
+Android did not provide a way to get the HTTP status code until API Level 23 (Android 6). 
+The `statusCode` is not trustable and will be always 200 on Android devices running a system before Android 6.
+"""
+example = """
+```csharp
+// A sample for checking status code
+webView.OnPageFinished += (view, statusCode, url) => {
+    print(statusCode);
+    print("Web view loading finished for: " + url);
+};
+
+webView.Load("https://example.com");
+// => "200"
+// => "Web view loading finished for: https://example.com"
+
+webView.Load("https://some_domain.com/404");
+// => "404"
+// => "Web view loading finished for: https://example.com"
+
+// A sample for JavaScript injection
+webView.OnPageFinished += (view, statusCode, url) => {
+    // Inject JavaScript code with full DOM available
+    view.EvaluateJavaScript("console.log('JavaScript injection');", null);
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "statusCode"
+type = "int"
+summary = "HTTP status code received from response."
+[[Events.parameters]]
+name = "url"
+type = "string"
+summary = "The url which the web view begins to load."
+
+[[Events]]
+name = "OnPageProgressChanged"
+syntax = "OnPageProgressChanged(UniWebView webView, float progress)"
+returnType = "void"
+summary = """
+Raised when the loading progress value changes in current web view.
+"""
+example = """
+```csharp
+webView.OnPageProgressChanged += (view, progress) => {
+    Debug.Log("Progress: " + progress);
+};
+
+webView.Load("https://uniwebview.com/");
+
+// => "Progress: 0.1"
+// => "Progress: 0.3"
+// => "Progress: 0.52"
+// => "Progress: 0.87"
+// => "Progress: 1.0"
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "progress"
+type = "float"
+summary = "A value indicates the loading progress of current page. It is a value between 0.0f and 1.0f."
+
+[[Events]]
+name = "OnPageErrorReceived"
+syntax = "OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)"
+returnType = "void"
+notice = """
+This event is deprecated. Use `OnLoadingErrorReceived` instead.
+If both `OnPageErrorReceived` and `OnLoadingErrorReceived` are listened, only the new `OnLoadingErrorReceived` will be 
+raised, `OnPageErrorReceived` will not be called.
+"""
+summary = """
+Raised when an error encountered during the loading process. 
+Such as the "host not found" error or "no Internet connection" error will raise this event.
+"""
+example = """
+```csharp
+webView.OnPageErrorReceived += (view, error, message) => {
+    print("Error.");
+};
+
+webView.Load("https://site-not-existing.com/");
+// => "Error."
+
+webView.Load("unknown://host?param1=value1&param2=value2");
+// => "Error."
+
+webView.Load("https://self-signed.badssl.com");
+// => "Error."
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "errorCode"
+type = "int"
+summary = "The error code which indicates the error type. It can be different from systems and platforms."
+[[Events.parameters]]
+name = "errorMessage"
+type = "string"
+summary = "The error message which describes the detail of error."
+
+[[Events]]
+name = "OnLoadingErrorReceived"
+syntax = "OnLoadingErrorReceived(UniWebView webView, int errorCode, string errorMessage, UniWebViewNativeResultPayload payload)"
+returnType = "void"
+summary = """
+Raised when an error encountered during the loading process.
+Such as the "host not found" error or "no Internet connection" error will raise this event.
+"""
+example = """
+```csharp
+webView.OnLoadingErrorReceived += (view, error, message, payload) => {
+    print("Error.");
+    if (payload.Extra != null && 
+        payload.Extra.TryGetValue(UniWebViewNativeResultPayload.ExtraFailingURLKey, out var value)) 
+    {
+        var url = value as string
+        // The `url` contains the failing URL causes the error, if available.
+    }
+};
+
+webView.Load("https://site-not-existing.com/");
+// => "Error."
+
+webView.Load("unknown://host?param1=value1&param2=value2");
+// => "Error."
+
+webView.Load("https://self-signed.badssl.com");
+// => "Error."
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "errorCode"
+type = "int"
+summary = "The error code which indicates the error type. It can be different from systems and platforms."
+[[Events.parameters]]
+name = "errorMessage"
+type = "string"
+summary = "The error message which describes the detail of error."
+[[Events.parameters]]
+name = "payload"
+type = "UniWebViewNativeResultPayload"
+summary = "The payload received from native side, which contains the error information, such as the failing URL, in its `Extra`."
+
+[[Events]]
+name = "OnCaptureSnapshotFinished"
+syntax = "OnCaptureSnapshotFinished(UniWebView webView, int errorCode, string diskPath)"
+returnType = "void"
+summary = """
+Raised when an image captured and stored in a cache path on disk.
+"""
+example = """
+```csharp
+webView.OnCaptureSnapshotFinished += (view, errorCode, filePath) => {
+    if (errorCode != 0) { return; }
+    byte[] bytes = File.ReadAllBytes(filePath);
+    Texture2D texture = new Texture2D(2, 2, TextureFormat.RGB24, false);
+    texture.LoadImage(bytes);
+    
+    // Use the texture.
+};
+webView.CaptureSnapshot("sample.png");
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "errorCode"
+type = "int"
+summary = """
+The error code of the event. If the snapshot is captured and stored without a problem, the error code is 0. 
+Any other number indicates an error happened. In most cases, the screenshot capturing only fails due to lack
+of disk storage.
+"""
+[[Events.parameters]]
+name = "diskPath"
+type = "string"
+summary = "An accessible disk path to the captured snapshot image. If an error happens, it is an empty string."
+
+[[Events]]
+name = "OnFileDownloadStarted"
+syntax = "OnFileDownloadStarted(UniWebView webView, string remoteUrl, string fileName)"
+returnType = "void"
+summary = """
+Raised when a file download task starts.
+"""
+example = """
+```csharp
+webView.OnFileDownloadStarted += (view, remoteUrl, fileName) => {
+    print(string.Format("Download Started. From '{0}', file name '{1}'", remoteUrl, fileName));
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "remoteUrl"
+type = "string"
+summary = "The remote URL of this download task. This is also the download URL for the task."
+[[Events.parameters]]
+name = "fileName"
+type = "string"
+summary = "The file name which user chooses to use."
+
+[[Events]]
+name = "OnFileDownloadFinished"
+syntax = "OnFileDownloadFinished(UniWebView webView, int errorCode, string remoteUrl, string diskPath)"
+returnType = "void"
+summary = """
+Raised when a file download task finishes with either an error or success.
+"""
+example = """
+```csharp
+webView.OnFileDownloadFinished += (view, errorCode, remoteUrl, diskPath) => {
+    if (errorCode == 0) { // Success
+        print(string.Format("Download Finished. From '{0}', to '{1}'", remoteUrl, diskPath));
+    } else {
+        print("Download error: " + errorCode);
+    }
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "errorCode"
+type = "int"
+summary = """
+The error code of the download task result. Value `0` means the download finishes without a problem. 
+Any other non-`0` value indicates an issue. The detail meaning of the error code depends on system. 
+On iOS, it is usually the `errorCode` of the received `NSURLError`. On Android, the value usually represents
+an `ERROR_*` value in `DownloadManager`.
+"""
+[[Events.parameters]]
+name = "remoteUrl"
+type = "string"
+summary = "The remote URL of this download task."
+[[Events.parameters]]
+name = "diskPath"
+type = "string"
+summary = """
+The file path of the downloaded file. On iOS, the downloader file is in a temporary folder of your app sandbox.
+On Android, it is in the "Download" folder of your app.
+"""
+
+[[Events]]
+name = "OnMessageReceived"
+syntax = "OnMessageReceived(UniWebView webView, UniWebViewMessage message)"
+returnType = "void"
+summary = """
+Raised when a message from web view is received. 
+
+Generally, the message comes from a navigation to a scheme which is observed by current web view. You could use `AddUrlScheme` and 
+`RemoveUrlScheme` to manipulate the scheme list.
+
+"uniwebview://" scheme is default in the list, so a clicking on link starting with "uniwebview://"
+will raise this event, if it is not removed.
+"""
+example = """
+```csharp
+webView.OnMessageReceived += (view, message) => {
+    print(message.Scheme);
+    print(message.Path);
+    print(message.Args["param1"]);
+    print(message.Args["param2"]);
+}
+// Run the JavaScript below in the web page:
+// location.href = "uniwebview://host?param1=value1&param2=value2"
+
+// => "uniwebview", "host", "value1", "value2"
+
+anotherWebView.OnMessageReceived += (view, message) => {
+    print(message.RawMessage);
+}
+anotherWebView.AddUrlScheme("myscheme");
+
+// Click the link "myscheme://action" in a web page.
+// <a href="myscheme://action">Click Me</a>
+
+// => "myscheme://action"
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "message"
+type = "UniWebViewMessage"
+summary = "The message object which contains information like message path and arguments."
+
+[[Events]]
+name = "OnShouldClose"
+syntax = "OnShouldClose(UniWebView webView)"
+returnType = "bool"
+summary = """
+Raised when the web view is about to close itself.
+
+This event is raised when the users close the web view by the Back button on Android, 
+the Done button on iOS, or the Close button on Unity Editor. It gives a chance to make 
+a final decision whether the web view should be closed and destroyed. You can also clean 
+all related resources you created (such as a reference to the web view) in this event.
+
+If this event is not listened and implemented, the web view will be closed and destroyed by default when
+it needed.
+"""
+returnValue = "Whether the web view should be closed and destroyed."
+example = """
+```csharp
+// Clean webView field when 
+public class MyBehaviour : MonoBehaviour {
+    var webView;
+
+    void Start() {
+        webView = gameObject.AddComponent<UniWebView>();
+        webView.OnShouldClose += (view) => {
+            webView = null;
+            return true;
+        };
+    }
+}
+
+// Make the web view there without being closed
+webView.OnShouldClose += (view) => {
+    return false;
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+
+[[Events]]
+name = "OnOrientationChanged"
+syntax = "OnOrientationChanged(UniWebView webView, ScreenOrientation orientation)"
+returnType = "void"
+summary = """
+Raised when the screen orientation is changed. It is a good time to set the web view frame if you 
+need to support multiple orientations in your game.
+"""
+example = """
+```csharp
+// Keep the web view full screen on both portrait and landscape mode.
+webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
+webView.OnOrientationChanged += (view, orientation) => {
+    webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "orientation"
+type = "ScreenOrientation"
+summary = "The screen orientation for current state."
+
+[[Events]]
+name = "OnWebContentProcessTerminated"
+syntax = "OnWebContentProcessTerminated(UniWebView webView)"
+returnType = "void"
+summary = """
+On iOS, raise when the system calls `webViewWebContentProcessDidTerminate` method. On Android, raise when the
+system calls `onRenderProcessGone` method.
+
+It is usually due to a low memory or the render process crashes when loading the web content. When this happens,
+the web view will leave you a blank white screen.
+
+Usually you should close the web view and clean all the resource since there is no good way to restore. In some
+cases, you can also try to free as much as memory and do a page `Reload`.
+"""
+example = """
+```csharp
+// Clean memory and reload current page
+webView.OnWebContentProcessTerminated += (view) => {
+    // Free memory
+    // unusedAssets.Clean();
+
+    webView.Reload();
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+
+[[Events]]
+name = "OnMultipleWindowOpened"
+syntax = "OnMultipleWindowOpened(UniWebView webView, string multipleWindowId)"
+returnType = "void"
+summary = """
+Raised when a new window is opened. This happens when you enable the `SetSupportMultipleWindows` and open a
+new pop-up window.
+"""
+example = """
+```csharp
+string newWindow = "";
+webView.OnMultipleWindowOpened += (view, windowId) => {
+    // A new window with identifier "windowId" is opened.
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which opens the new multiple (pop-up) window."
+[[Events.parameters]]
+name = "multipleWindowId"
+type = "string"
+summary = "The identifier of the opened new window."
+
+[[Events]]
+name = "OnMultipleWindowClosed"
+syntax = "OnMultipleWindowClosed(UniWebView webView, string multipleWindowId)"
+returnType = "void"
+summary = """
+Raised when the multiple window is closed. This happens when the pop-up window is closed by navigation operation
+or by a invocation of `close()` on the page.
+"""
+example = """
+```csharp
+webView.OnMultipleWindowClosed += (view, windowId) => {
+    // The opened window with identifier "windowId" is closed.
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which closes the multiple window."
+[[Events.parameters]]
+name = "multipleWindowId"
+type = "string"
+summary = "The identifier of the closed new window."
+
+[[Events]]
+name = "OnKeyCodeReceived"
+syntax = "OnKeyCodeReceived(UniWebView webView, int keyCode)"
+returnType = "void"
+summary = """
+Raised when a key (like back button or volume up) on the device is pressed.
+
+This event only raised on Android. It is useful when you disabled the back button but still need to get the back button event. On iOS, user's key action is not available and this event will never be 
+raised.
+"""
+notice = """
+This event is deprecated from version 4.0. Now UniWebView never intercepts device key code events. 
+So this event will be never raise anymore. Check `Input.GetKeyUp` in `Update()` instead.
+"""
+example = """
+```csharp
+// DON'T DO IT.
+// webView.OnKeyCodeReceived += (view, keyCode) => {
+//     if (keyCode == 4) {
+//         Debug.Log("Back Button was clicked.");
+//     }
+// };
+
+// Check Input in Update():
+void Update() {
+    if (Input.GetKeyUp(KeyCode.Escape)) {
+        Debug.Log("Back Button was clicked.");
+    }
+}
+```
+"""
+[[Events.badges]]
+name = "Android"
+color = "green"
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "keyCode"
+type = "int"
+summary = "The key code of pressed key. See [Android API for keycode](https://developer.android.com/reference/android/view/KeyEvent.html#KEYCODE_0) to know the possible values."

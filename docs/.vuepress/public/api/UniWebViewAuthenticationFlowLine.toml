@@ -1,0 +1,160 @@
+title = "UniWebViewAuthenticationFlowLine"
+file = "UniWebViewAuthenticationFlowLine"
+
+summary = """
+A predefined authentication flow for LINE.
+
+This implementation follows the flow described [here](https://developers.line.biz/en/reference/line-login/).
+
+LINE authentication flow is a bit different from the other standard authentication flows. Please read the link
+above carefully to understand it.
+
+See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of authentication in UniWebView.
+
+To allow the Google flow working, at least you need these steps:
+
+1. Setting `Client Id` (Channel Id), `iOS Bundle Id` and `Android Package Name` in the `UniWebViewAuthenticationFlowLine` inspector.
+2. Setting `Scope` and at least contains `profile` in the `UniWebViewAuthenticationFlowLine` inspector.
+3. Check the "Support LINE Login" option in the `UniWebView` preference panel.
+"""
+
+[[Properties]]
+name = "clientId"
+returnType = "string"
+hasSetter = true
+summary = """
+The client ID (Channel ID) of your LINE Login application.
+"""
+
+[[Properties]]
+name = "iOSBundleId"
+returnType = "string"
+hasSetter = true
+summary = """
+The iOS bundle Id you set in LINE developer console.
+"""
+
+[[Properties]]
+name = "androidPackageName"
+returnType = "string"
+hasSetter = true
+summary = """
+The Android package name you set in LINE developer console.
+"""
+
+[[Properties]]
+name = "scope"
+returnType = "string"
+hasSetter = true
+summary = """
+The scope of your LINE application.
+"""
+
+[[Properties]]
+name = "optional"
+returnType = "UniWebViewAuthenticationFlowLineOptional"
+hasSetter = true
+summary = """
+Optional to control this flow's behaviour.
+"""
+
+[[Properties]]
+name = "optional.PKCESupport"
+returnType = "UniWebViewAuthenticationPKCE"
+hasSetter = true
+summary = """
+Whether to enable PKCE when performing authentication. Default is `S256`.
+"""
+
+[[Properties]]
+name = "optional.additionalAuthenticationUriQuery"
+returnType = "string"
+hasSetter = true
+summary = """
+The additional query arguments that are used to construct the query string of the authentication request.
+
+This is useful when you want to add some custom parameters to the authentication request. This string will be 
+appended to the query string that constructed from `GetAuthenticationUriArguments`. 
+
+For example, if you set the value to `prompt=consent&ui_locales=en`, it will be contained in the final authentication 
+query.
+"""
+
+
+[[Events]]
+name = "OnAuthenticationFinished"
+syntax = "OnAuthenticationFinished"
+returnType = "UnityEvent<UniWebViewAuthenticationLineToken>"
+summary = "Called when the authentication flow succeeds and a valid token is generated."
+example = """
+```csharp
+lineFlow.OnAuthenticationFinished.AddListener(OnLineTokenReceived)
+
+void OnLineTokenReceived(UniWebViewAuthenticationLineToken token) {
+  Debug.Log("Line Access Token: " + token.AccessToken);
+}
+```
+"""
+
+[[Events]]
+name = "OnAuthenticationErrored"
+syntax = "OnAuthenticationErrored"
+returnType = "UnityEvent<long, string>"
+summary = "Called when any error (including user cancellation) happens during the authentication flow."
+example = """
+```csharp
+lineFlow.OnAuthenticationErrored.AddListener(OnLineAuthError);
+
+void OnLineAuthError(long error, string message) {
+  Debug.Log("Error code: " + error + " Message: " + message);
+}
+```
+"""
+
+[[Events]]
+name = "OnRefreshTokenFinished"
+syntax = "OnRefreshTokenFinished"
+returnType = "UnityEvent<UniWebViewAuthenticationLineToken>"
+summary = "Called when the access token refresh request finishes and a valid refreshed token is generated."
+example = """
+```csharp
+lineFlow.OnRefreshTokenFinished.AddListener(OnRefreshTokenReceived)
+
+void OnRefreshTokenReceived(UniWebViewAuthenticationLineToken token) {
+  Debug.Log("Access Token: " + token.AccessToken);
+}
+```
+"""
+
+[[Events]]
+name = "OnRefreshTokenErrored"
+syntax = "OnRefreshTokenErrored"
+returnType = "UnityEvent<long, string>"
+summary = "Called when any error (including user cancellation) happens during the authentication flow."
+example = """
+```csharp
+lineFlow.OnRefreshTokenErrored.AddListener(OnRefreshTokenError);
+
+void OnRefreshTokenError(long error, string message) {
+  Debug.Log("Error code: " + error + " Message: " + message);
+}
+```
+"""
+
+[[Methods]]
+name = "StartAuthenticationFlow"
+syntax = "StartAuthenticationFlow()"
+returnType = "void"
+summary = """
+Starts the authentication flow with the standard OAuth 2.0.
+This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
+"""
+
+[[Methods]]
+name = "StartRefreshTokenFlow"
+syntax = "StartRefreshTokenFlow(string refreshToken)"
+returnType = "void"
+summary = """
+Starts the refresh flow with the standard OAuth 2.0.
+This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
+"""

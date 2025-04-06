@@ -15,7 +15,8 @@
   "scripts": {
     "dev": "./node_modules/.bin/vuepress dev docs",
     "build": "yarn api && ./node_modules/.bin/vuepress build docs",
-    "api": "node ./script/build-api.js"
+    "api": "node ./script/build-api.js",
+    "llms": "node ./script/build-llms.js"
   },
   "devDependencies": {
     "@vuepress/plugin-search": "^2.0.0-beta.49",

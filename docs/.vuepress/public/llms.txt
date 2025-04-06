@@ -1,0 +1,76 @@
+# UniWebView
+
+> UniWebView is a Unity plugin for iOS and Android, enabling web view integration with features like OAuth 2.0, JavaScript support, and cross-platform compatibility.
+
+## Guide
+
+- [Introduction](https://docs.uniwebview.com/guide/README.md): UniWebView is a Unity plugin for iOS and Android, enabling web view integration with features like OAuth 2.0, JavaScript support, and cross-platform compatibility.
+- [Adapting to AAR File](https://docs.uniwebview.com/guide/adapting-to-aar-file.md): Upgrade to UniWebView 3.7.0+ by replacing UniWebView.jar with UniWebView.aar and updating the manifest.
+- [Built-in Toolbar](https://docs.uniwebview.com/guide/built-in-toolbar.md): The deprecated built-in toolbar in UniWebView has been replaced by the Embedded Toolbar; use the migration guide to switch.
+- [Debugging](https://docs.uniwebview.com/guide/debugging.md): Use UniWebView's debugging tools, including the logger, web log forwarding, and web page inspection on iOS, Android, and macOS.
+- [Downloading Files](https://docs.uniwebview.com/guide/download-files.md): UniWebView manages file downloads with platform-specific behaviors, offering iOS customization for URLs and MIME types, and supports download events and data/blob links.
+- [Embedded Toolbar](https://docs.uniwebview.com/guide/embedded-toolbar.md): UniWebView's embedded toolbar can be shown, customized in position, text, and colors, and managed through events like OnShouldClose for proper web view handling.
+- [FAQ](https://docs.uniwebview.com/guide/faq.md): UniWebView FAQ addresses common issues and queries about usage, platform support, performance, privacy, licensing, and source code access, providing solutions and explanations for developers.
+- [HTTP Authentication](https://docs.uniwebview.com/guide/http-auth.md): UniWebView supports HTTP Basic and Digest authentication, prompting users for credentials and storing them permanently, with options to clear stored credentials on iOS and Android.
+- [Installation](https://docs.uniwebview.com/guide/installation.md): UniWebView installation involves importing the package from Unity Asset Store or UniWebView Store, configuring necessary permissions in Unity Preferences, and optionally accessing the source code via a GitHub repository.
+- [Loading Local Files](https://docs.uniwebview.com/guide/loading-local-files.md): UniWebView supports loading local HTML files from the StreamingAssets folder or persistent data path, with specific considerations for Android builds using "Split Application Binary."
+- [Memory Management](https://docs.uniwebview.com/guide/memory-management.md): To manage memory effectively with UniWebView, destroy unused web views promptly, reset references when closed, and clear caches when not needed.
+- [Messaging System](https://docs.uniwebview.com/guide/messaging-system.md): UniWebView's messaging system enables communication between web views and Unity using custom URL schemes, with a safe data transfer limit of about 16KB per message.
+- [Migration Guide (v4 to v5)](https://docs.uniwebview.com/guide/migration-guide-v4-to-v5.md): To migrate from UniWebView 4 to 5, remove old files, install the new version, replace deprecated methods, and explore new features like the embedded toolbar and OAuth 2.0 support.
+- [Migration Guide (v3 to v4)](https://docs.uniwebview.com/guide/migration-guide.md): To migrate from UniWebView 3 to 4, remove old files, install the new version, replace deprecated methods like SetImmersiveModeEnabled and OnKeyCodeReceived, and consider using new features like Safe Browsing Mode.
+- [OAuth 2.0 with GitHub](https://docs.uniwebview.com/guide/oauth2-github.md): Use UniWebView to implement GitHub OAuth 2.0 authentication by setting up the component, handling callbacks, and managing token storage and refresh.
+- [OAuth 2.0 with Google](https://docs.uniwebview.com/guide/oauth2-google.md): Use UniWebView to implement Google OAuth 2.0 authentication by setting up the component, handling callbacks, and managing token storage.
+- [OAuth 2.0 General](https://docs.uniwebview.com/guide/oauth2.md): UniWebView supports OAuth 2.0 for multiple providers, offering customizable flows and secure authentication methods.
+- [Overview](https://docs.uniwebview.com/guide/overview.md): UniWebView offers two options for displaying web content: a customizable general-purpose web view and a simple, secure full-screen safe browsing mode.
+- [Playing Videos](https://docs.uniwebview.com/guide/playing-videos.md): UniWebView supports HTML5 video playback with options for auto play and inline play, but does not support Flash-based videos.
+- [Position and Size](https://docs.uniwebview.com/guide/position-and-size.md): UniWebView allows setting web view position and size either directly with a frame or by referencing a UI element's RectTransform for adaptive layouts.
+- [Privacy Policy](https://docs.uniwebview.com/guide/privacy.md): UniWebView prioritizes privacy, collecting minimal data, using it only for order processing, and ensuring secure transmission with encryption.
+- [Render as Texture](https://docs.uniwebview.com/guide/render-as-texture.md): UniWebView allows rendering web content as a non-interactive texture in Unity, suitable for 3D integration but with performance and feature limitations.
+- [Rotation and Scale](https://docs.uniwebview.com/guide/rotation-and-scale.md): UniWebView supports transforming web views with rotation and scaling, enhancing display flexibility in Unity games.
+- [Safe Browsing Mode](https://docs.uniwebview.com/guide/safe-browsing.md): UniWebView's Safe Browsing Mode offers a full-screen, browser-like web experience with customizable UI and requires device support checks.
+- [Supporting New Window](https://docs.uniwebview.com/guide/support-new-window.md): UniWebView supports new windows in web views through configuration, allowing links and JavaScript to open new tabs or windows.
+- [Submit a Ticket](https://docs.uniwebview.com/guide/ticket.md): Use the AI-driven chat bot for quick help or submit a private ticket for direct support if needed.
+- [Term of Service (Terms)](https://docs.uniwebview.com/guide/tos.md): UniWebView's Terms of Service, aligned with Unity Asset Store'sToS, govern use, content ownership, and allow for service modifications and termination.
+- [Transition](https://docs.uniwebview.com/guide/transition.md): UniWebView offers customizable show/hide transitions and position/size animations for web views.
+- [Clicking Through](https://docs.uniwebview.com/guide/transparency-through.md): UniWebView enables clicking through transparent web pages to interact with Unity scenes behind.
+- [Trouble Shooting](https://docs.uniwebview.com/guide/trouble-shooting.md): UniWebView build errors and runtime crashes can be resolved by adjusting settings in Unity Preferences and performing a clean build.
+- [Uploading](https://docs.uniwebview.com/guide/uploading.md): UniWebView supports file uploads from device or cloud, with specific iOS setup required for camera access.
+- [Using JavaScript](https://docs.uniwebview.com/guide/using-javascript.md): UniWebView allows adding and executing JavaScript functions on web pages, with options to disable JavaScript for performance or security.
+- [Web View - Prefab](https://docs.uniwebview.com/guide/using-prefab.md): UniWebView prefab simplifies adding a web view to Unity scenes, with options for URL loading and toolbar customization.
+- [Version Highlight](https://docs.uniwebview.com/guide/version-highlight.md): UniWebView 5 enhances user experience with built-in OAuth 2.0 support, an embedded toolbar, improved image uploading, and better export stability.
+- [WebRTC Support](https://docs.uniwebview.com/guide/webrtc-support.md): UniWebView supports WebRTC on iOS 14.3+ and Android, requiring specific configurations for safe browsing or regular web view use.
+- [Web View - Code](https://docs.uniwebview.com/guide/working-with-code.md): Learn to create and interact with UniWebView in Unity, including loading pages, handling events, and using JavaScript for web view communication.
+
+## API Reference
+
+- [IUniWebViewAuthenticationFlow](https://docs.uniwebview.com/api/IUniWebViewAuthenticationFlow.toml)
+- [UniWebViewAuthenticationCommonFlow](https://docs.uniwebview.com/api/UniWebViewAuthenticationCommonFlow.toml)
+- [UniWebViewAuthenticationFlowCustomize](https://docs.uniwebview.com/api/UniWebViewAuthenticationFlowCustomize.toml)
+- [UniWebViewAuthenticationFlowDiscord](https://docs.uniwebview.com/api/UniWebViewAuthenticationFlowDiscord.toml)
+- [UniWebViewAuthenticationFlowFacebook](https://docs.uniwebview.com/api/UniWebViewAuthenticationFlowFacebook.toml)
+- [UniWebViewAuthenticationFlowGitHub](https://docs.uniwebview.com/api/UniWebViewAuthenticationFlowGitHub.toml)
+- [UniWebViewAuthenticationFlowGoogle](https://docs.uniwebview.com/api/UniWebViewAuthenticationFlowGoogle.toml)
+- [UniWebViewAuthenticationFlowLine](https://docs.uniwebview.com/api/UniWebViewAuthenticationFlowLine.toml)
+- [UniWebViewAuthenticationFlowTwitter](https://docs.uniwebview.com/api/UniWebViewAuthenticationFlowTwitter.toml)
+- [UniWebViewAuthenticationSession](https://docs.uniwebview.com/api/UniWebViewAuthenticationSession.toml)
+- [UniWebViewAuthenticationStandardToken](https://docs.uniwebview.com/api/UniWebViewAuthenticationStandardToken.toml)
+- [UniWebViewAuthenticationUtils](https://docs.uniwebview.com/api/UniWebViewAuthenticationUtils.toml)
+- [UniWebViewBackForwardItem](https://docs.uniwebview.com/api/UniWebViewBackForwardItem.toml)
+- [UniWebViewBackForwardList](https://docs.uniwebview.com/api/UniWebViewBackForwardList.toml)
+- [UniWebViewCacheMode](https://docs.uniwebview.com/api/UniWebViewCacheMode.toml)
+- [UniWebViewChannelMethodHandleRequest](https://docs.uniwebview.com/api/UniWebViewChannelMethodHandleRequest.toml)
+- [UniWebViewChannelMethodMediaCapturePermission](https://docs.uniwebview.com/api/UniWebViewChannelMethodMediaCapturePermission.toml)
+- [UniWebViewEmbeddedToolbar](https://docs.uniwebview.com/api/UniWebViewEmbeddedToolbar.toml)
+- [UniWebViewMediaCapturePermissionDecision](https://docs.uniwebview.com/api/UniWebViewMediaCapturePermissionDecision.toml)
+- [UniWebViewTransform](https://docs.uniwebview.com/api/UniWebViewTransform.toml)
+- [UniWebView](https://docs.uniwebview.com/api/uniwebview.toml)
+- [UniWebViewContentInsetAdjustmentBehavior](https://docs.uniwebview.com/api/uniwebviewcontentinsetadjustmentbehavior.toml)
+- [UniWebViewDownloadMatchingType](https://docs.uniwebview.com/api/uniwebviewdownloadmatchingtype.toml)
+- [UniWebViewHelper](https://docs.uniwebview.com/api/uniwebviewhelper.toml)
+- [UniWebViewLogger](https://docs.uniwebview.com/api/uniwebviewlogger.toml)
+- [UniWebViewMessage](https://docs.uniwebview.com/api/uniwebviewmessage.toml)
+- [UniWebViewNativeListener](https://docs.uniwebview.com/api/uniwebviewnativelistener.toml)
+- [UniWebViewNativeResultPayload](https://docs.uniwebview.com/api/uniwebviewnativeresultpayload.toml)
+- [UniWebViewSafeBrowsing](https://docs.uniwebview.com/api/uniwebviewsafebrowsing.toml)
+- [UniWebViewToolbarPosition](https://docs.uniwebview.com/api/uniwebviewtoolbarposition.toml)
+- [UniWebViewTransitionEdge](https://docs.uniwebview.com/api/uniwebviewtransitionedge.toml)

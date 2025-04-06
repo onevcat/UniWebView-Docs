@@ -1,0 +1,194 @@
+title = "UniWebViewAuthenticationFlowGoogle"
+file = "UniWebViewAuthenticationFlowGoogle"
+
+summary = """
+A predefined authentication flow for Google Identity.
+
+This implementation follows the flow described [here](https://developers.google.com/identity/protocols/oauth2/native-app).
+
+Google authentication flow is a bit different from the other standard authentication flows. Please read the link
+above carefully to understand it.
+
+See the [OAuth 2.0 Support - General](/guide/oauth2.html) and [OAuth 2.0 with Google](/guide/oauth2-google.html) for a 
+more detailed guide of authentication in UniWebView.
+"""
+
+[[Properties]]
+name = "clientId"
+returnType = "string"
+hasSetter = true
+summary = """
+The client ID of your Google application.
+"""
+example = """
+At the day of writing, the client Id from Google is something like:
+
+```csharp
+googleFlow.clientId = "1234567890-abcdefgh.apps.googleusercontent.com";
+```
+"""
+
+[[Properties]]
+name = "redirectUri"
+returnType = "string"
+hasSetter = true
+summary = """
+The redirect URI of your Google application.
+
+It might be something like "com.googleusercontent.apps.${clientId}:/${redirect_uri_path}". Be caution that the URI does not
+contain regular double slashes `//`, but should be only one.
+"""
+example = """
+```csharp
+googleFlow.redirectUri = "com.googleusercontent.apps.1234567890-abcdefgh:/auth";
+```
+"""
+
+[[Properties]]
+name = "scope"
+returnType = "string"
+hasSetter = true
+summary = """
+The scope of your Google application.
+
+It might be some full URL in recent Google services, such as `"https://www.googleapis.com/auth/userinfo.profile"`
+"""
+
+[[Properties]]
+name = "optional"
+returnType = "UniWebViewAuthenticationFlowGoogleOptional"
+hasSetter = true
+summary = """
+Optional to control this flow's behaviour.
+"""
+
+[[Properties]]
+name = "optional.PKCESupport"
+returnType = "UniWebViewAuthenticationPKCE"
+hasSetter = true
+summary = """
+Whether to enable PKCE when performing authentication. Default is `S256`.
+"""
+
+[[Properties]]
+name = "optional.enableState"
+returnType = "bool"
+hasSetter = true
+summary = """
+Whether to enable the state verification. If enabled, the state will be generated and verified in the
+authentication callback. 
+
+Default is `true`.
+"""
+
+[[Properties]]
+name = "optional.loginHint"
+returnType = "string"
+hasSetter = true
+summary = """
+If your application knows which user is trying to authenticate, it can use this parameter to provide a hint to
+the Google Authentication Server. 
+"""
+
+[[Properties]]
+name = "optional.prompt"
+returnType = "string"
+hasSetter = true
+summary = """
+The prompt that will be set to the authentication request query. For example, the possible values can be `login`, 
+`consent`, `select_account` and so on.
+
+See https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
+"""
+
+[[Properties]]
+name = "optional.additionalAuthenticationUriQuery"
+returnType = "string"
+hasSetter = true
+summary = """
+The additional query arguments that are used to construct the query string of the authentication request.
+
+This is useful when you want to add some custom parameters to the authentication request. This string will be 
+appended to the query string that constructed from `GetAuthenticationUriArguments`. 
+
+For example, if you set the value to `prompt=consent&ui_locales=en`, it will be contained in the final authentication 
+query.
+"""
+
+[[Events]]
+name = "OnAuthenticationFinished"
+syntax = "OnAuthenticationFinished"
+returnType = "UnityEvent<UniWebViewAuthenticationGoogleToken>"
+summary = "Called when the authentication flow succeeds and a valid token is generated."
+example = """
+```csharp
+googleFlow.OnAuthenticationFinished.AddListener(OnGoogleTokenReceived)
+
+void OnGoogleTokenReceived(UniWebViewAuthenticationGoogleToken token) {
+  Debug.Log("Google Access Token: " + token.AccessToken);
+}
+```
+"""
+
+[[Events]]
+name = "OnAuthenticationErrored"
+syntax = "OnAuthenticationErrored"
+returnType = "UnityEvent<long, string>"
+summary = "Called when any error (including user cancellation) happens during the authentication flow."
+example = """
+```csharp
+googleFlow.OnAuthenticationErrored.AddListener(OnGoogleAuthError);
+
+void OnGoogleAuthError(long error, string message) {
+  Debug.Log("Error code: " + error + " Message: " + message);
+}
+```
+"""
+
+[[Events]]
+name = "OnRefreshTokenFinished"
+syntax = "OnRefreshTokenFinished"
+returnType = "UnityEvent<UniWebViewAuthenticationGoogleToken>"
+summary = "Called when the access token refresh request finishes and a valid refreshed token is generated."
+example = """
+```csharp
+googleFlow.OnRefreshTokenFinished.AddListener(OnRefreshTokenReceived)
+
+void OnRefreshTokenReceived(UniWebViewAuthenticationGoogleToken token) {
+  Debug.Log("Access Token: " + token.AccessToken);
+}
+```
+"""
+
+[[Events]]
+name = "OnRefreshTokenErrored"
+syntax = "OnRefreshTokenErrored"
+returnType = "UnityEvent<long, string>"
+summary = "Called when any error (including user cancellation) happens during the authentication flow."
+example = """
+```csharp
+googleFlow.OnRefreshTokenErrored.AddListener(OnRefreshTokenError);
+
+void OnRefreshTokenError(long error, string message) {
+  Debug.Log("Error code: " + error + " Message: " + message);
+}
+```
+"""
+
+[[Methods]]
+name = "StartAuthenticationFlow"
+syntax = "StartAuthenticationFlow()"
+returnType = "void"
+summary = """
+Starts the authentication flow with the standard OAuth 2.0.
+This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
+"""
+
+[[Methods]]
+name = "StartRefreshTokenFlow"
+syntax = "StartRefreshTokenFlow(string refreshToken)"
+returnType = "void"
+summary = """
+Starts the refresh flow with the standard OAuth 2.0.
+This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
+"""

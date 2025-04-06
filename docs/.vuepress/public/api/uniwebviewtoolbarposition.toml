@@ -1,0 +1,14 @@
+title = "UniWebViewToolbarPosition"
+file = "uniwebviewtoolbarposition"
+
+[[Properties]]
+name = "Top"
+returnType = "UniWebViewToolbarPosition"
+hasSetter = false
+summary = "Top screen edge."
+
+[[Properties]]
+name = "Bottom"
+returnType = "UniWebViewToolbarPosition"
+hasSetter = false
+summary = "Bottom screen edge."

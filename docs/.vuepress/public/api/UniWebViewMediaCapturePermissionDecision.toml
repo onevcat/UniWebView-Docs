@@ -1,0 +1,30 @@
+title = "UniWebViewMediaCapturePermissionDecision"
+file = "UniWebViewMediaCapturePermissionDecision"
+
+[[Properties]]
+name = "Prompt"
+returnType = "UniWebViewMediaCapturePermissionDecision"
+hasSetter = false
+summary = """
+Display a prompt to ask user for the permission.
+
+The prompt alert shows the origin of the request and the resources requested. It asks user to grant or deny the
+permission.
+"""
+
+[[Properties]]
+name = "Grant"
+returnType = "UniWebViewMediaCapturePermissionDecision"
+hasSetter = false
+summary = """
+Grant the permission request without asking user.
+"""
+
+[[Properties]]
+name = "Deny"
+returnType = "UniWebViewMediaCapturePermissionDecision"
+hasSetter = false
+summary = """
+Deny the permission request. The web page will receive an error and it knows the request resources are not allowed to 
+use.
+"""

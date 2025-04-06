@@ -1,0 +1,38 @@
+title = "UniWebViewCacheMode"
+file = "UniWebViewCacheMode"
+
+[[Properties]]
+name = "Default"
+returnType = "UniWebViewCacheMode"
+hasSetter = false
+summary = """
+Default mode. The web view will check the validity of the cache copy when there is one. If the copy is invalid, the web 
+view will load from the network. This is the default setting.
+"""
+
+[[Properties]]
+name = "NoCache"
+returnType = "UniWebViewCacheMode"
+hasSetter = false
+summary = """
+No cache is used. All pages are loaded directly from the network. This is useful for applications that do not want to 
+have a cache.
+"""
+
+[[Properties]]
+name = "CacheElseLoad"
+returnType = "UniWebViewCacheMode"
+hasSetter = false
+summary = """
+Prioritize the cache. If there is a copy of the page in the cache, the web view will use it even if the copy has 
+expired. The web view will only load from the network when the page does not exist in the cache.
+"""
+
+[[Properties]]
+name = "CacheOnly"
+returnType = "UniWebViewCacheMode"
+hasSetter = false
+summary = """
+Only use the cache. In this mode, the web view will not load pages from the network, only use the content in the cache. 
+If the requested URL is not in the cache, an error is returned.
+"""

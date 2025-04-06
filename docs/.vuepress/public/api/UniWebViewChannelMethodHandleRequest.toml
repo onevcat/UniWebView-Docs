@@ -1,0 +1,12 @@
+title = "UniWebViewChannelMethodHandleRequest"
+file = "UniWebViewChannelMethodHandleRequest"
+
+summary = """
+Represents the request of a loading used in request handler.
+"""
+
+[[Properties]]
+name = "Url"
+returnType = "string"
+hasSetter = false
+summary = "The URL of the request."

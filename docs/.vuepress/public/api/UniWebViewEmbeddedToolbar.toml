@@ -1,0 +1,235 @@
+title = "UniWebViewEmbeddedToolbar"
+file = "UniWebViewEmbeddedToolbar"
+
+summary = """
+Represents the embedded toolbar in a web view.
+
+You do not create an instance of this class directly. Instead, use the `EmbeddedWebView` property in `UniWebView` to
+get the current embedded toolbar in the web view and interact with it.
+
+The embedded toolbar of a web view expands its width to match the web view's frame width. It is displayed at either
+top or bottom of the web view, based on the setting received through `SetPosition`. By default, the toolbar contains
+a main title, a back button, a forward button and a done button to close the web view. You can use methods in this
+class to customize the toolbar to match your app's style. 
+"""
+
+[[Methods]]
+name = "SetPosition"
+syntax = "SetPosition(UniWebViewToolbarPosition position)"
+returnType = "void"
+summary = """
+Sets the position of the embedded toolbar. You can put the toolbar at either top or bottom of your web view.
+
+The default position is `Top`.
+"""
+example = """
+```csharp
+// Sets the web view shows the toolbar at the bottom.
+webView.EmbeddedToolbar.SetPosition(UniWebViewToolbarPosition.Bottom);
+webView.EmbeddedToolbar.Show();
+```
+"""
+[[Methods.parameters]]
+name = "position"
+type = "UniWebViewToolbarPosition"
+summary = "The desired position of the toolbar."
+
+[[Methods]]
+name = "SetMaxHeight"
+syntax = "SetMaxHeight(float height)"
+returnType = "void"
+summary = """
+Sets the maximum height of the toolbar. If the specified height is smaller than the toolbar's standard height,
+the toolbar will be resized to this height. Otherwise, the standard height will be used.
+
+This method only works on iOS and Android. On macOS Unity Editor, the toolbar will always be displayed in the
+window's title bar and the height is fixed.
+"""
+[[Methods.parameters]]
+name = "height"
+type = "float"
+summary = "The maximum height value."
+
+[[Methods]]
+name = "Show"
+syntax = "Show()"
+returnType = "void"
+summary = """
+Shows the toolbar.
+"""
+example = """
+```csharp
+webView.EmbeddedToolbar.Show();
+```
+"""
+
+[[Methods]]
+name = "Hide"
+syntax = "Hide()"
+returnType = "void"
+summary = """
+Hides the toolbar.
+"""
+example = """
+```csharp
+webView.EmbeddedToolbar.Hide();
+```
+"""
+
+[[Methods]]
+name = "SetDoneButtonText"
+syntax = "SetDoneButtonText(string text)"
+returnType = "void"
+summary = """
+Sets the text of the done button. 
+
+The default text is "Done".
+"""
+example = """
+```csharp
+webView.EmbeddedToolbar.SetDoneButtonText("关闭");
+```
+"""
+[[Methods.parameters]]
+name = "text"
+type = "string"
+summary = "The desired text to display as the done button."
+
+[[Methods]]
+name = "SetGoBackButtonText"
+syntax = "SetGoBackButtonText(string text)"
+returnType = "void"
+summary = """
+Sets the text of the back button. 
+
+The default text is "❮" ("\u276E").
+"""
+example = """
+```csharp
+webView.EmbeddedToolbar.SetDoneButtonText("返回");
+```
+"""
+[[Methods.parameters]]
+name = "text"
+type = "string"
+summary = "The desired text to display as the back button."
+
+[[Methods]]
+name = "SetGoForwardButtonText"
+syntax = "SetGoForwardButtonText(string text)"
+returnType = "void"
+summary = """
+Sets the text of the forward button.
+
+The default text is "❯" ("\u276F").
+"""
+example = """
+```csharp
+webView.EmbeddedToolbar.SetDoneButtonText("前进");
+```
+"""
+[[Methods.parameters]]
+name = "text"
+type = "string"
+summary = "The desired text to display as the forward button."
+
+[[Methods]]
+name = "SetTitleText"
+syntax = "SetTitleText(string text)"
+returnType = "void"
+summary = """
+Sets the text of toolbar title. 
+
+The default is empty. The space is limited, setting a long text as title might
+not fit in the space.
+"""
+example = """
+```csharp
+webView.EmbeddedToolbar.SetDoneButtonText("My Game");
+```
+"""
+[[Methods.parameters]]
+name = "text"
+type = "string"
+summary = "The desired text to display as the title in the toolbar."
+
+[[Methods]]
+name = "SetBackgroundColor"
+syntax = "SetBackgroundColor(Color color)"
+returnType = "void"
+summary = """
+Sets the background color of the toolbar.
+"""
+example = """
+```csharp
+webView.EmbeddedToolbar.SetBackgroundColor(Color.yellow);
+```
+"""
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = "The desired color of toolbar's background."
+
+[[Methods]]
+name = "SetButtonTextColor"
+syntax = "SetButtonTextColor(Color color)"
+returnType = "void"
+summary = """
+Sets the buttons color of the toolbar. 
+
+This color affects the back, forward and done button.
+"""
+example = """
+```csharp
+webView.EmbeddedToolbar.SetButtonTextColor(Color.red);
+```
+"""
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = "The desired color of toolbar's buttons."
+
+[[Methods]]
+name = "SetTitleTextColor"
+syntax = "SetTitleTextColor(Color color)"
+returnType = "void"
+summary = """
+Sets the text color of the toolbar title. 
+"""
+example = """
+```csharp
+webView.EmbeddedToolbar.SetTitleTextColor(Color.blue);
+```
+"""
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = "The desired color of the toolbar's title."
+
+[[Methods]]
+name = "HideNavigationButtons"
+syntax = "HideNavigationButtons()"
+returnType = "void"
+summary = """
+Hides the navigation buttons on the toolbar. 
+
+When called, the back button and forward button will not be shown. 
+By default, the navigation buttons are shown.
+"""
+example = """
+```csharp
+// Do not show the navigation buttons (go back and go forward).
+webView.EmbeddedToolbar.HideNavigationButtons();
+```
+"""
+
+[[Methods]]
+name = "ShowNavigationButtons"
+syntax = "ShowNavigationButtons()"
+returnType = "void"
+summary = """
+Shows the navigation buttons on the toolbar. 
+
+When called, the back button and forward button will be shown.
+By default, the navigation buttons are shown.
+"""

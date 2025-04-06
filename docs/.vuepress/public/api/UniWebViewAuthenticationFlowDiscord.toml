@@ -1,0 +1,170 @@
+title = "UniWebViewAuthenticationFlowDiscord"
+file = "UniWebViewAuthenticationFlowDiscord"
+
+summary = """
+A predefined authentication flow for Discord.
+
+This implementation follows the flow described [here](https://discord.com/developers/docs/topics/oauth2).
+
+See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of authentication in UniWebView.
+
+To allow the Discord flow working, at least you need these steps:
+
+1. Setting `Client Id`, `Client Secret` and `Redirect Uri` in the `UniWebViewAuthenticationFlowDiscord` inspector.
+2. Setting `scope` and at least contains `identify` in the `UniWebViewAuthenticationFlowDiscord` inspector.
+3. Setting the `Auth Callbacks Urls` containing `Redirect Uri` in `UniWebView` preference panel.
+"""
+
+[[Properties]]
+name = "clientId"
+returnType = "string"
+hasSetter = true
+summary = """
+The client ID of your Discord application.
+"""
+
+[[Properties]]
+name = "clientSecret"
+returnType = "string"
+hasSetter = true
+summary = """
+The client secret of your Discord application.
+"""
+notice = """
+Setting this value may leak the client secret and cause security issue. Prefer to setting the PKCESupport to `S256` in 
+the option instead. With the correct PKCE setup, you do not need to set the client secret here.
+"""
+
+[[Properties]]
+name = "redirectUri"
+returnType = "string"
+hasSetter = true
+summary = """
+The redirect URI of this Discord application.
+"""
+
+[[Properties]]
+name = "scope"
+returnType = "string"
+hasSetter = true
+summary = """
+The scope string of all your required scopes.
+"""
+
+[[Properties]]
+name = "optional"
+returnType = "UniWebViewAuthenticationFlowDiscordOptional"
+hasSetter = true
+summary = """
+Optional to control this flow's behaviour.
+"""
+
+[[Properties]]
+name = "optional.PKCESupport"
+returnType = "UniWebViewAuthenticationPKCE"
+hasSetter = true
+summary = """
+Whether to enable PKCE when performing authentication. On mobile platforms, this has to be enabled as `S256`,
+otherwise, Discord will reject the authentication request.
+"""
+
+[[Properties]]
+name = "optional.enableState"
+returnType = "bool"
+hasSetter = true
+summary = """
+Whether to enable the state verification. If enabled, the state will be generated and verified in the
+authentication callback. Default is `true`.
+"""
+
+[[Properties]]
+name = "optional.additionalAuthenticationUriQuery"
+returnType = "string"
+hasSetter = true
+summary = """
+The additional query arguments that are used to construct the query string of the authentication request.
+
+This is useful when you want to add some custom parameters to the authentication request. This string will be 
+appended to the query string that constructed from `GetAuthenticationUriArguments`. 
+
+For example, if you set the value to `prompt=consent&ui_locales=en`, it will be contained in the final authentication 
+query.
+"""
+
+[[Events]]
+name = "OnAuthenticationFinished"
+syntax = "OnAuthenticationFinished"
+returnType = "UnityEvent<UniWebViewAuthenticationDiscordToken>"
+summary = "Called when the authentication flow succeeds and a valid token is generated."
+example = """
+```csharp
+discordFlow.OnAuthenticationFinished.AddListener(OnDiscordTokenReceived)
+
+void OnDiscordTokenReceived(UniWebViewAuthenticationDiscordToken token) {
+  Debug.Log("Discord Access Token: " + token.AccessToken);
+}
+```
+"""
+
+[[Events]]
+name = "OnAuthenticationErrored"
+syntax = "OnAuthenticationErrored"
+returnType = "UnityEvent<long, string>"
+summary = "Called when any error (including user cancellation) happens during the authentication flow."
+example = """
+```csharp
+discordFlow.OnAuthenticationErrored.AddListener(OnDiscordAuthError);
+
+void OnDiscordAuthError(long error, string message) {
+  Debug.Log("Error code: " + error + " Message: " + message);
+}
+```
+"""
+
+[[Events]]
+name = "OnRefreshTokenFinished"
+syntax = "OnRefreshTokenFinished"
+returnType = "UnityEvent<UniWebViewAuthenticationDiscordToken>"
+summary = "Called when the access token refresh request finishes and a valid refreshed token is generated."
+example = """
+```csharp
+discordFlow.OnRefreshTokenFinished.AddListener(OnRefreshTokenReceived)
+
+void OnRefreshTokenReceived(UniWebViewAuthenticationDiscordToken token) {
+  Debug.Log("Access Token: " + token.AccessToken);
+}
+```
+"""
+
+[[Events]]
+name = "OnRefreshTokenErrored"
+syntax = "OnRefreshTokenErrored"
+returnType = "UnityEvent<long, string>"
+summary = "Called when any error (including user cancellation) happens during the authentication flow."
+example = """
+```csharp
+discordFlow.OnRefreshTokenErrored.AddListener(OnRefreshTokenError);
+
+void OnRefreshTokenError(long error, string message) {
+  Debug.Log("Error code: " + error + " Message: " + message);
+}
+```
+"""
+
+[[Methods]]
+name = "StartAuthenticationFlow"
+syntax = "StartAuthenticationFlow()"
+returnType = "void"
+summary = """
+Starts the authentication flow with the standard OAuth 2.0.
+This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
+"""
+
+[[Methods]]
+name = "StartRefreshTokenFlow"
+syntax = "StartRefreshTokenFlow(string refreshToken)"
+returnType = "void"
+summary = """
+Starts the refresh flow with the standard OAuth 2.0.
+This implements the abstract method in `UniWebViewAuthenticationCommonFlow`.
+"""

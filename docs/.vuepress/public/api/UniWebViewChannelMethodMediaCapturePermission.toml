@@ -1,0 +1,81 @@
+title = "UniWebViewChannelMethodMediaCapturePermission"
+file = "UniWebViewChannelMethodMediaCapturePermission"
+
+summary = """
+Represents the request of media capture permission.
+
+This class represents the request of media capture permission. When the web page requests the permission to access
+the device's hardware, such as the camera or microphone, UniWebView will ask you to handle the request with a value
+of this class. You can use the values in this class to determine the decision for the permission request.
+"""
+
+[[Properties]]
+name = "Protocol"
+returnType = "string"
+hasSetter = false
+summary = """
+The protocol used by the permission request. Such as "https" or "http".
+"""
+example = """
+```csharp
+// A permission request from 
+// "https://webrtc.github.io/samples/src/content/getusermedia/gum/"
+
+permission.Protocol // "https"
+```
+"""
+
+[[Properties]]
+name = "Host"
+returnType = "string"
+hasSetter = false
+summary = """
+The host of the origin of the permission request.
+
+It is usually the domain of the web page.
+"""
+example = """
+```csharp
+// A permission request from 
+// "https://webrtc.github.io/samples/src/content/getusermedia/gum/"
+
+permission.Host // "webrtc.github.io"
+```
+"""
+
+[[Properties]]
+name = "Port"
+returnType = "int"
+hasSetter = false
+summary = """
+The port of the origin of the permission request.
+
+If not existing in the request URL, it is -1.
+"""
+example = """
+```csharp
+// A permission request from 
+// "https://webrtc.github.io/samples/src/content/getusermedia/gum/"
+
+permission.Port // -1
+```
+"""
+
+[[Properties]]
+name = "Resources"
+returnType = "string[]"
+hasSetter = false
+summary = """
+The string representation of the resources of the origin of the permission request.
+
+An array contains requested resources, the most common values are "VIDEO", "AUDIO". On Android, some pages can
+also requests for "PROTECTED_MEDIA_ID", "MIDI_SYSEX", etc. 
+"""
+example = """
+```csharp
+// A permission request from 
+// "https://webrtc.github.io/samples/src/content/getusermedia/gum/"
+
+permission.Resources // ["VIDEO"]
+```
+"""
