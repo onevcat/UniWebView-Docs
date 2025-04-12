@@ -1,64 +1,43 @@
 const fs = require('fs');
 const path = require('path');
 
-// 定义文件路径
+// Define file paths
 const docsDir = path.join(__dirname, '../docs');
 const guideDir = path.join(docsDir, 'guide');
 const apiDefDir = path.join(__dirname, '../api-def');
-const outputFile = path.join(docsDir, '.vuepress/public/llms.txt');
+const outputFile = path.join(docsDir, '.vuepress/public/llms.txt');        // Summary version output file
+const fullOutputFile = path.join(docsDir, '.vuepress/public/llms-full.txt'); // Full content output file
 
+// Public directories for file copying
 const publicGuideDir = path.join(docsDir, '.vuepress/public/guide');
 const publicApiDir = path.join(docsDir, '.vuepress/public/api');
 
-// 遍历目录获取所有 md 文件
+/**
+ * File operation utility functions
+ */
+
+// Get all markdown files from a directory
 function getMarkdownFiles(directory) {
   try {
     const files = fs.readdirSync(directory);
     return files.filter(file => file.endsWith('.md'));
   } catch (error) {
-    console.error(`读取目录出错: ${error}`);
+    console.error(`Error reading directory: ${error}`);
     return [];
   }
 }
 
-// 从 md 文件中提取第一个一级标题
-function extractFirstH1(filePath) {
+// Read file content
+function readFileContent(filePath) {
   try {
-    const content = fs.readFileSync(filePath, 'utf8');
-    // 匹配以 # 开头的一级标题
-    const match = content.match(/^# (.*)$/m);
-    return match ? match[1].trim() : path.basename(filePath, '.md');
+    return fs.readFileSync(filePath, 'utf8');
   } catch (error) {
-    console.error(`读取文件 ${filePath} 出错: ${error}`);
-    return path.basename(filePath, '.md');
-  }
-}
-
-// 从 md 文件中提取第一个引用块
-function extractFirstQuote(filePath) {
-  try {
-    const content = fs.readFileSync(filePath, 'utf8');
-    const match = content.match(/^>\s*(.*)$/m);
-    return match ? match[1].trim() : '';
-  } catch (error) {
-    console.error(`读取文件 ${filePath} 出错: ${error}`);
+    console.error(`Error reading file ${filePath}: ${error}`);
     return '';
   }
 }
 
-// 从 toml 文件中提取标题
-function extractTitleFromToml(filePath) {
-  try {
-    const content = fs.readFileSync(filePath, 'utf8');
-    const match = content.match(/^title\s*=\s*"([^"]*)"$/m);
-    return match ? match[1].trim() : path.basename(filePath, '.toml');
-  } catch (error) {
-    console.error(`读取 TOML 文件 ${filePath} 出错: ${error}`);
-    return path.basename(filePath, '.toml');
-  }
-}
-
-// 复制文件夹内容
+// Copy directory contents to target directory
 function copyDirectory(src, dest) {
   if (!fs.existsSync(dest)) {
     fs.mkdirSync(dest, { recursive: true });
@@ -72,12 +51,75 @@ function copyDirectory(src, dest) {
   });
 }
 
-// 主函数
-function main() {
-  console.log('开始处理文件...');
+/**
+ * Content extraction functions
+ */
+
+// Extract first H1 heading from markdown file
+function extractFirstH1(filePath) {
+  try {
+    const content = fs.readFileSync(filePath, 'utf8');
+    const match = content.match(/^# (.*)$/m);
+    return match ? match[1].trim() : path.basename(filePath, '.md');
+  } catch (error) {
+    console.error(`Error reading file ${filePath}: ${error}`);
+    return path.basename(filePath, '.md');
+  }
+}
+
+// Extract first quote block from markdown file as overview
+function extractFirstQuote(filePath) {
+  try {
+    const content = fs.readFileSync(filePath, 'utf8');
+    const match = content.match(/^>\s*(.*)$/m);
+    return match ? match[1].trim() : '';
+  } catch (error) {
+    console.error(`Error reading file ${filePath}: ${error}`);
+    return '';
+  }
+}
+
+// Extract title from TOML file
+function extractTitleFromToml(filePath) {
+  try {
+    const content = fs.readFileSync(filePath, 'utf8');
+    const match = content.match(/^title\s*=\s*"([^"]*)"$/m);
+    return match ? match[1].trim() : path.basename(filePath, '.toml');
+  } catch (error) {
+    console.error(`Error reading TOML file ${filePath}: ${error}`);
+    return path.basename(filePath, '.toml');
+  }
+}
+
+/**
+ * Content processing functions
+ */
+
+// Process TOML file content into formatted plain text
+function processTomlContent(content) {
+  let processedContent = content
+    .replace(/^(\w+)\s*=\s*"""/gm, '$1:\n')
+    .replace(/^"""/gm, '')
+    .replace(/^title\s*=\s*"([^"]*)"/m, '# $1')
+    .replace(/^description\s*=\s*"([^"]*)"/m, '$1\n')
+    .replace(/^(\w+)\s*=\s*"([^"]*)"/gm, '$1: $2')
+    .replace(/^(\w+)\s*=\s*(true|false)/gm, '$1: $2')
+    .replace(/^(\w+)\s*=\s*(\d+)/gm, '$1: $2')
+    .replace(/^\[([^\]]+)\]$/gm, '\n### $1\n')
+    .replace(/\n{3,}/g, '\n\n');
+
+  return processedContent.trim();
+}
+
+/**
+ * File generation functions
+ */
+
+// Generate summary version llms.txt
+function generateSummaryContent(mdFiles, apiFiles) {
+  console.log('Generating summary version llms.txt...');
   
-  // 处理 Guide 部分
-  const mdFiles = getMarkdownFiles(guideDir);
+  // Process Guide section
   let guideContent = '';
   mdFiles.forEach(file => {
     const filePath = path.join(guideDir, file);
@@ -87,8 +129,7 @@ function main() {
     guideContent += `- [${title}](https://docs.uniwebview.com/guide/${fileName}.md)${overview ? ': ' + overview : ''}\n`;
   });
   
-  // 处理 API Reference 部分
-  const apiFiles = fs.readdirSync(apiDefDir).filter(file => file.endsWith('.toml'));
+  // Process API Reference section
   let apiContent = '';
   apiFiles.forEach(file => {
     const filePath = path.join(apiDefDir, file);
@@ -97,8 +138,8 @@ function main() {
     apiContent += `- [${title}](https://docs.uniwebview.com/api/${fileName}.toml)\n`;
   });
   
-  // 生成完整输出内容
-  const output = `# UniWebView
+  // Generate complete output content
+  return `# UniWebView
 
 > UniWebView is a Unity plugin for iOS and Android, enabling web view integration with features like OAuth 2.0, JavaScript support, and cross-platform compatibility.
 
@@ -108,20 +149,94 @@ ${guideContent}
 ## API Reference
 
 ${apiContent}`;
-
-  // 复制文件到 public 目录
-  copyDirectory(guideDir, publicGuideDir);
-  copyDirectory(apiDefDir, publicApiDir);
-  
-  // 写入输出文件
-  try {
-    fs.writeFileSync(outputFile, output);
-    console.log(`成功写入到 ${outputFile}`);
-    console.log('文件复制完成');
-  } catch (error) {
-    console.error(`写入文件出错: ${error}`);
-  }
 }
 
-// 执行主函数
+// Generate full content version llms-full.txt
+function generateFullContent(mdFiles, apiFiles) {
+  console.log('Generating full content version llms-full.txt...');
+  
+  let fullContent = `# UniWebView Complete Content\n\n`;
+  
+  // Merge all Guide md files
+  fullContent += `## Guide Documentation\n\n`;
+  mdFiles.forEach(file => {
+    const filePath = path.join(guideDir, file);
+    const title = extractFirstH1(filePath);
+    fullContent += `### ${title}\n\n`;
+    fullContent += readFileContent(filePath);
+    fullContent += '\n\n---\n\n';
+  });
+  
+  // Merge all API toml files
+  fullContent += `## API Reference\n\n`;
+  apiFiles.forEach(file => {
+    const filePath = path.join(apiDefDir, file);
+    const title = extractTitleFromToml(filePath);
+    fullContent += `### ${title}\n\n`;
+    const tomlContent = readFileContent(filePath);
+    fullContent += processTomlContent(tomlContent);
+    fullContent += '\n\n---\n\n';
+  });
+  
+  return fullContent;
+}
+
+// Copy original files to public directory
+function copyFilesToPublic() {
+  console.log('Copying files to public directory...');
+  copyDirectory(guideDir, publicGuideDir);
+  copyDirectory(apiDefDir, publicApiDir);
+  console.log('File copying completed');
+}
+
+// Main function
+function main() {
+  console.log('Starting file processing...');
+  
+  // Get all files to process
+  console.log(`Reading ${guideDir} directory...`);
+  const mdFiles = getMarkdownFiles(guideDir);
+  if (mdFiles.length === 0) {
+    console.error('No Markdown files found in guide directory');
+    return;
+  }
+  
+  console.log(`Reading ${apiDefDir} directory...`);
+  const apiFiles = fs.readdirSync(apiDefDir).filter(file => file.endsWith('.toml'));
+  if (apiFiles.length === 0) {
+    console.error('No TOML files found in api-def directory');
+    return;
+  }
+  
+  // Generate summary version content
+  const summaryContent = generateSummaryContent(mdFiles, apiFiles);
+  
+  // Generate full version content
+  const fullContent = generateFullContent(mdFiles, apiFiles);
+  
+  // Ensure output directory exists
+  const outputDir = path.dirname(outputFile);
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+  
+  // Write output files
+  try {
+    fs.writeFileSync(outputFile, summaryContent);
+    console.log(`Successfully wrote summary content to ${outputFile}`);
+    
+    fs.writeFileSync(fullOutputFile, fullContent);
+    console.log(`Successfully wrote full content to ${fullOutputFile}`);
+  } catch (error) {
+    console.error(`Error writing files: ${error}`);
+    return;
+  }
+  
+  // Copy original files to public directory
+  copyFilesToPublic();
+  
+  console.log('All processing completed!');
+}
+
+// Execute main function
 main();
