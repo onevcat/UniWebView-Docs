@@ -1303,9 +1303,27 @@ summary = "The desired cache mode that the request loading should be used in thi
 
 [[Methods]]
 name = "CleanCache"
-syntax = "CleanCache()"
+syntax = "CleanCache(bool includeStorage, Action completionHandler)"
 returnType = "void"
-summary = "Cleans web view cache. This removes cached local data of web view.\n\nIf you need to clear all cookies, use `ClearCookies` instead."
+summary = """
+Cleans web view cache. This removes cached local data of web view.
+By default, the `includeStorage` is `false`, which means the local database on the page will not be removed.
+If you want to remove the local database as well, set `includeStorage` to `true`.
+
+If you need to clear all cookies, use `ClearCookies` instead.
+"""
+[[Methods.parameters]]
+name = "includeStorage"
+type = "bool"
+summary = "Whether the local database storage should be removed or not. Default is `false`."
+[[Methods.parameters]]
+name = "completionHandler"
+type = "Action"
+summary = """
+The cache cleaning can be an async operation according to the platform. This action is called when the cache cleaning 
+operation finishes.
+"""
+
 
 [[Methods]]
 name = "SetForwardWebConsoleToNativeOutput"

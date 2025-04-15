@@ -222,7 +222,7 @@ are added to the adjusted content inset.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setcachemode'><span class='return-type'>void</span> SetCacheMode(UniWebViewCacheMode mode)</a></div></td><td><div class='simple-summary'>
 <p>Sets the way of how the cache is used when loading a request.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#cleancache'><span class='return-type'>void</span> CleanCache()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#cleancache'><span class='return-type'>void</span> CleanCache(bool includeStorage, Action completionHandler)</a></div></td><td><div class='simple-summary'>
 <p>Cleans web view cache.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setforwardwebconsoletonativeoutput'><span class='return-type'>void</span> SetForwardWebConsoleToNativeOutput(bool flag)</a></div></td><td><div class='simple-summary'>
@@ -2829,14 +2829,32 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='cleancache'></div><div class='api-heading' data-id='cleancache'><a href='#cleancache'><span class='return-type'>void</span> CleanCache()</a></div>
+  <div class="api-anchor" id='cleancache'></div><div class='api-heading' data-id='cleancache'><a href='#cleancache'><span class='return-type'>void</span> CleanCache(bool includeStorage, Action completionHandler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Cleans web view cache. This removes cached local data of web view.</p>
+<p>Cleans web view cache. This removes cached local data of web view.
+By default, the <code>includeStorage</code> is <code>false</code>, which means the local database on the page will not be removed.
+If you want to remove the local database as well, set <code>includeStorage</code> to <code>true</code>.</p>
 <p>If you need to clear all cookies, use <code>ClearCookies</code> instead.</p>
 </div>
-                            </div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>includeStorage</span></div>
+    <div class='parameter-item-desc'><p>Whether the local database storage should be removed or not. Default is <code>false</code>.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>Action</span> <span class='parameter-item-name'>completionHandler</span></div>
+    <div class='parameter-item-desc'><p>The cache cleaning can be an async operation according to the platform. This action is called when the cache cleaning 
+operation finishes.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
   </div>
 </div>
 <div class='api-box method'>

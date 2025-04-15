@@ -1,5 +1,12 @@
 # Release Note
 
+### 5.16.0 (16 Apr, 2025)
+
+#### Add
+
+* Add a parameter `includeStorage` to `CleanCache` method. It allows you to clean the web view's local database when cleaning the cache. This is useful when you want to remove all the data related to the web view.
+* Now the `CleanCache` method also accepts a `completionHandler`, which is called when the cache cleaning is completed.
+
 ### 5.15.0 (1 Apr, 2025)
 
 #### Add
