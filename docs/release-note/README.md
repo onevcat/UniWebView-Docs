@@ -1,5 +1,12 @@
 # Release Note
 
+### 5.16.1 (28 Apr, 2025)
+
+#### Fix
+
+* Fix a crash that occurred when opening a new window with `SetSupportMultipleWindows` set to true on iOS and macOS Editor.
+* Improve code structure in Unity side. Now the UniWebView script is more clear and readable.
+
 ### 5.16.0 (16 Apr, 2025)
 
 #### Add
