@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.16.2 (4 May, 2025)
+
+#### Fix
+
+* Fixed a regression issue where the `OnFileDownloadFinished` event was not triggered after a file download completed on Android.
+
 ### 5.16.1 (28 Apr, 2025)
 
 #### Fix
