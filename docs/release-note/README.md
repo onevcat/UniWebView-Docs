@@ -1,5 +1,11 @@
 # Release Note
 
+### 5.16.3 (10 May, 2025)
+
+#### Fix
+
+* Fixed an error in calculating the web view's size during keyboard avoidance on Android. Now, the web view will adjust its size properly when the keyboard appears or disappears.
+
 ### 5.16.2 (4 May, 2025)
 
 #### Fix
