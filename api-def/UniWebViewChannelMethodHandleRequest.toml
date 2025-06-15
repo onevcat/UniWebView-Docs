@@ -10,3 +10,16 @@ name = "Url"
 returnType = "string"
 hasSetter = false
 summary = "The URL of the request."
+
+[[Properties]]
+name = "IsMainFrame"
+returnType = "bool"
+hasSetter = false
+summary = """
+Whether the request is for the main frame (top-level document) or a sub-frame.
+
+Returns true for main frame requests, false for non-main frame requests (including iframes and other sub-resources).
+
+Note: On older Android versions (API level < 24), this may always return true due to 
+platform limitations in distinguishing between main frame and sub-frame requests.
+"""
