@@ -46,6 +46,9 @@ external browser by using Unity's `Application.OpenURL`.
 <tr><td><div class='api-summary-heading'><a href='#create'><span class='return-type'>UniWebViewSafeBrowsing</span> Create(string url)</a></div></td><td><div class='simple-summary'>
 <p>Creates a new <code>UniWebViewSafeBrowsing</code> instance with a given URL.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setpreferredcustomtabsbrowsers'><span class='return-type'>void</span> SetPreferredCustomTabsBrowsers(string[] packages)</a></div></td><td><div class='simple-summary'>
+<p>Sets the preferred browsers for Custom Tabs in order of preference.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#show'><span class='return-type'>void</span> Show()</a></div></td><td><div class='simple-summary'>
 <p>Shows the safe browsing content above current screen.</p>
 </div>
@@ -170,6 +173,58 @@ external browser.
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> safeBrowsing <span class="token operator">=</span> UniWebViewSafeBrowsing<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span><span class="token string">"https://uniwebview.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setpreferredcustomtabsbrowsers'></div><div class='api-heading' data-id='setpreferredcustomtabsbrowsers'><a href='#setpreferredcustomtabsbrowsers'><span class='return-type'>void</span> SetPreferredCustomTabsBrowsers(string[] packages)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the preferred browsers for Custom Tabs in order of preference.</p>
+<p>This allows developers to specify which browsers should be preferred when multiple Custom Tabs providers are available on the device. This setting affects both SafeBrowsing and AuthenticationSession functionality.</p>
+<p><strong>Browser Selection Priority (Android):</strong></p>
+<ol>
+<li><strong>User-defined preferred packages</strong> (highest priority) - checked in order</li>
+<li><strong>Default browser if it&#39;s Chromium-based</strong> (Chrome, Edge, etc.)</li>
+<li><strong>Default browser if it supports Custom Tabs</strong> (even non-Chromium)</li>
+<li><strong>Any Chromium-based browser</strong> (only when no user preference is set)</li>
+<li><strong>Any available Custom Tabs provider</strong> (last resort)</li>
+</ol>
+<p>This prioritization helps avoid browsers with incomplete Custom Tabs implementations (such as Firefox, which may not trigger <code>onNavigationEvent</code> callbacks properly).</p>
+<p>On iOS, this method has no effect as Safari is always used for safe browsing.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string[]</span> <span class='parameter-item-name'>packages</span></div>
+    <div class='parameter-item-desc'><p>Array of browser package names in order of preference. Common package names include:</p>
+<ul>
+<li>&quot;com.android.chrome&quot; (Chrome)</li>
+<li>&quot;com.brave.browser&quot; (Brave Browser) </li>
+<li>&quot;com.opera.browser&quot; (Opera Browser)</li>
+<li>&quot;com.microsoft.emmx&quot; (Microsoft Edge)</li>
+<li>&quot;com.sec.android.app.sbrowser&quot; (Samsung Internet)</li>
+</ul>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Set Chrome and Brave as preferred browsers</span>
+UniWebViewSafeBrowsing<span class="token punctuation">.</span><span class="token function">SetPreferredCustomTabsBrowsers</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token constructor-invocation class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> <span class="token punctuation">{</span>
+    <span class="token string">"com.android.chrome"</span><span class="token punctuation">,</span>
+    <span class="token string">"com.brave.browser"</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token class-name"><span class="token keyword">var</span></span> safeBrowsing <span class="token operator">=</span> UniWebViewSafeBrowsing<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span><span class="token string">"https://uniwebview.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+safeBrowsing<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>

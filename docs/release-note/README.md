@@ -1,5 +1,12 @@
 # Release Note
 
+### 5.17.0 (19 Jun, 2025)
+
+#### Add
+
+* Add `SetPreferredCustomTabsBrowsers` API for Android to allow specifying preferred browser list for SafeBrowsing and AuthenticationSession. This helps avoid browsers with incomplete Custom Tabs implementations.
+* Add `IsMainFrame` property to `UniWebViewChannelMethodHandleRequest` to indicate whether the message is from the main frame or an iframe. This property is available on iOS and Android (API 24+).
+
 ### 5.16.3 (10 May, 2025)
 
 #### Fix
