@@ -2411,20 +2411,46 @@ would be able to read your sandbox. So we DO NOT recommend to enable it before y
 <p>By default, on Android, the third party
 cookies are disallowed due to security reason. Setting this to <code>true</code> will allow the cookie manager to accept
 third party cookies you set. </p>
-<p>This method only works for Android. On iOS, this method does nothing and the third party cookies are always 
-allowed.</p>
+<p>This method only works for Android. On iOS, this method does nothing because WKWebView fundamentally does not 
+support third party cookies. This is a deliberate architectural limitation of WKWebView for privacy and security 
+reasons. Third party cookies are always blocked on iOS and cannot be enabled through any API.</p>
+<p>If your application requires third party cookie support, consider using alternative authentication methods 
+such as OAuth or JWT tokens.</p>
 </div>
-            <div class='parameters'>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        <strong>iOS 18 Changes</strong>: Starting from iOS 18, the default SameSite cookie attribute changed from &quot;None&quot; to &quot;Lax&quot;, 
+which may affect cross-site cookie behavior even for first party cookies. If you need to set cookies with 
+SameSite=None on iOS 18+, you must explicitly specify this along with the Secure attribute.
+
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>flag</span></div>
-    <div class='parameter-item-desc'><p>Whether the third party cookies should be allowed.</p>
+    <div class='parameter-item-desc'><p>Whether the third party cookies should be allowed (Android only).</p>
 </div>
   </li>
 </ul></div>
 </div>
-                </div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// This only works on Android</span>
+webView<span class="token punctuation">.</span><span class="token function">SetAcceptThirdPartyCookies</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// For iOS applications that need cross-site authentication,</span>
+<span class="token comment">// consider using alternative approaches:</span>
+<span class="token comment">// 1. OAuth flow with redirect URIs</span>
+<span class="token comment">// 2. JWT tokens passed via URL parameters or postMessage</span>
+<span class="token comment">// 3. Server-side session management with first-party cookies</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>

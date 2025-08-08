@@ -7058,8 +7058,31 @@ By default, on Android, the third party
 cookies are disallowed due to security reason. Setting this to `true` will allow the cookie manager to accept
 third party cookies you set. 
 
-This method only works for Android. On iOS, this method does nothing and the third party cookies are always 
-allowed.
+This method only works for Android. On iOS, this method does nothing because WKWebView fundamentally does not 
+support third party cookies. This is a deliberate architectural limitation of WKWebView for privacy and security 
+reasons. Third party cookies are always blocked on iOS and cannot be enabled through any API.
+
+If your application requires third party cookie support, consider using alternative authentication methods 
+such as OAuth or JWT tokens.
+
+notice:
+
+**iOS 18 Changes**: Starting from iOS 18, the default SameSite cookie attribute changed from "None" to "Lax", 
+which may affect cross-site cookie behavior even for first party cookies. If you need to set cookies with 
+SameSite=None on iOS 18+, you must explicitly specify this along with the Secure attribute.
+
+example:
+
+```csharp
+// This only works on Android
+webView.SetAcceptThirdPartyCookies(true);
+
+// For iOS applications that need cross-site authentication,
+// consider using alternative approaches:
+// 1. OAuth flow with redirect URIs
+// 2. JWT tokens passed via URL parameters or postMessage
+// 3. Server-side session management with first-party cookies
+```
 
 [[Methods.badges]]
 name: Android
@@ -7067,7 +7090,7 @@ color: green
 [[Methods.parameters]]
 name: flag
 type: bool
-summary: Whether the third party cookies should be allowed.
+summary: Whether the third party cookies should be allowed (Android only).
 
 [[Methods]]
 name: SetAllowUniversalAccessFromFileURLs

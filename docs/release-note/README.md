@@ -1,5 +1,12 @@
 # Release Note
 
+### 5.17.1 (8 Aug, 2025)
+
+#### Fix
+
+* Fix a critical crash issue on iOS caused by race condition where native WebKit error callbacks arrive after Unity webView objects are destroyed. This resulted in null reference exceptions when you are trying to destroy the web view while an event is still on air.
+* Fix a similar race condition exception on Android platform. On Android it behaves a little difference with iOS: it does not crash the app directly, but cause a caught exception, which is still incorrect.
+
 ### 5.17.0 (19 Jun, 2025)
 
 #### Add
