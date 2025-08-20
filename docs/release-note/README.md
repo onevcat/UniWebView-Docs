@@ -1,5 +1,13 @@
 # Release Note
 
+### 5.17.2 (20 Aug, 2025)
+
+#### Fix
+
+* Fix an issue introduced in 5.17.1 that prevents Safe Browsing and OAuth session to receive callbacks.
+* Fix incorrect pass-through touch position calculation in some Android scenarios. Now the web view hit test works correctly when the web views are located in any places.
+* Add empty post script file to ensure back compatibility for upgrading from an earlier UniWebView version.
+
 ### 5.17.1 (8 Aug, 2025)
 
 #### Fix
