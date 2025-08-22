@@ -1,5 +1,13 @@
 # Release Note
 
+### 5.17.3 (22 Aug, 2025)
+
+#### Fix
+
+* Fixed Android coordinate system transformation for accurate touch position calculation across different device configurations.
+* Added fallback support for some Android devices (like Moto series) with View size limitations. This fixes an issue that web view does not display on those devices.
+* Improved compatibility with various Android screen sizes and orientations for web view positioning.
+
 ### 5.17.2 (20 Aug, 2025)
 
 #### Fix
