@@ -1,5 +1,13 @@
 # Release Note
 
+### 5.17.4 (15 Sep, 2025)
+
+#### Fix
+
+* Fixed Gradle parser for Unity 6000.2.0 export format. This resolves an issue where Unity's new export format was not being parsed correctly.
+* Fixed Android manifest activity-alias support. This resolves build failures when users configured activity-alias elements with launcher intents for dynamic app icon switching.
+* Fixed WebView positioning issues on Android when using Reference RectTransform with Unity's "Render Outside Safe Area" setting disabled. Added proper status bar height detection to ensure correct coordinate calculations.
+
 ### 5.17.3 (22 Aug, 2025)
 
 #### Fix
