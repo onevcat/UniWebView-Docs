@@ -43,7 +43,7 @@ For success responses, this property is null. Supports any JSON-compatible type.
 
 [[Methods]]
 name = "Success"
-signature = "Success(object data)"
+syntax = "Success(object data)"
 returnType = "UniWebViewChannelMessageResponse"
 summary = """
 Static factory method for success responses.
@@ -90,7 +90,7 @@ summary = "The data to include in the response. Can be any JSON-serializable typ
 
 [[Methods]]
 name = "Error"
-signature = "Error(object errorData)"
+syntax = "Error(object errorData)"
 returnType = "UniWebViewChannelMessageResponse"
 summary = """
 Static factory method for error responses.

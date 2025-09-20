@@ -10714,7 +10714,7 @@ The message handler should return null and call `message.Respond()` when the ope
 
 [[Methods]]
 name: GetData
-signature: GetData<T>()
+syntax: GetData<T>()
 returnType: T
 summary:
 
@@ -10749,7 +10749,7 @@ public class ScoreData {
 
 [[Methods]]
 name: TryGetData
-signature: TryGetData<T>(out T result)
+syntax: TryGetData<T>(out T result)
 returnType: bool
 summary:
 
@@ -10783,7 +10783,7 @@ summary: The parsed data object if successful, default(T) if parsing fails.
 
 [[Methods]]
 name: Respond
-signature: Respond(UniWebViewChannelMessageResponse response)
+syntax: Respond(UniWebViewChannelMessageResponse response)
 returnType: void
 summary:
 
@@ -10827,7 +10827,7 @@ summary: The response to send back to JavaScript.
 
 [[Methods]]
 name: Respond
-signature: Respond(object data)
+syntax: Respond(object data)
 returnType: void
 summary:
 
@@ -10859,7 +10859,7 @@ summary: The data to send back as a successful response.
 
 [[Methods]]
 name: RespondError
-signature: RespondError(object errorData)
+syntax: RespondError(object errorData)
 returnType: void
 summary:
 
@@ -10941,7 +10941,7 @@ For success responses, this property is null. Supports any JSON-compatible type.
 
 [[Methods]]
 name: Success
-signature: Success(object data)
+syntax: Success(object data)
 returnType: UniWebViewChannelMessageResponse
 summary:
 
@@ -10990,7 +10990,7 @@ summary: The data to include in the response. Can be any JSON-serializable type.
 
 [[Methods]]
 name: Error
-signature: Error(object errorData)
+syntax: Error(object errorData)
 returnType: UniWebViewChannelMessageResponse
 summary:
 

@@ -29,10 +29,10 @@ Response objects are typically created using the static factory methods `Success
 #### Methods Summary
 
 <table>
-<tr><td><div class='api-summary-heading'><a href='#success'><span class='return-type'>UniWebViewChannelMessageResponse</span> undefined</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#success'><span class='return-type'>UniWebViewChannelMessageResponse</span> Success(object data)</a></div></td><td><div class='simple-summary'>
 <p>Static factory method for success responses.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#error'><span class='return-type'>UniWebViewChannelMessageResponse</span> undefined</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#error'><span class='return-type'>UniWebViewChannelMessageResponse</span> Error(object errorData)</a></div></td><td><div class='simple-summary'>
 <p>Static factory method for error responses.</p>
 </div>
 </td></tr></table>
@@ -79,7 +79,7 @@ For success responses, this property is null. Supports any JSON-compatible type.
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='success'></div><div class='api-heading' data-id='success'><a href='#success'><span class='return-type'>UniWebViewChannelMessageResponse</span> undefined</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='success'></div><div class='api-heading' data-id='success'><a href='#success'><span class='return-type'>UniWebViewChannelMessageResponse</span> Success(object data)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -132,7 +132,7 @@ The provided data will be serialized to JSON and sent back to JavaScript.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='error'></div><div class='api-heading' data-id='error'><a href='#error'><span class='return-type'>UniWebViewChannelMessageResponse</span> undefined</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='error'></div><div class='api-heading' data-id='error'><a href='#error'><span class='return-type'>UniWebViewChannelMessageResponse</span> Error(object errorData)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

@@ -47,19 +47,19 @@ Each message contains an action identifier, optional JSON data, and metadata for
 #### Methods Summary
 
 <table>
-<tr><td><div class='api-summary-heading'><a href='#getdata'><span class='return-type'>T</span> undefined</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#getdata'><span class='return-type'>T</span> GetData&lt;T&gt;()</a></div></td><td><div class='simple-summary'>
 <p>Parses the message data as the specified type.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#trygetdata'><span class='return-type'>bool</span> undefined</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#trygetdata'><span class='return-type'>bool</span> TryGetData&lt;T&gt;(out T result)</a></div></td><td><div class='simple-summary'>
 <p>Safely parses the message data as the specified type.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#respond'><span class='return-type'>void</span> undefined</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#respond'><span class='return-type'>void</span> Respond(UniWebViewChannelMessageResponse response)</a></div></td><td><div class='simple-summary'>
 <p>Sends an async response for this message.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#respond'><span class='return-type'>void</span> undefined</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#respond'><span class='return-type'>void</span> Respond(object data)</a></div></td><td><div class='simple-summary'>
 <p>Convenience method for success responses.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#responderror'><span class='return-type'>void</span> undefined</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#responderror'><span class='return-type'>void</span> RespondError(object errorData)</a></div></td><td><div class='simple-summary'>
 <p>Convenience method for error responses.</p>
 </div>
 </td></tr></table>
@@ -226,7 +226,7 @@ The message handler should return null and call <code>message.Respond()</code> w
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='getdata'></div><div class='api-heading' data-id='getdata'><a href='#getdata'><span class='return-type'>T</span> undefined</a></div>
+  <div class="api-anchor" id='getdata'></div><div class='api-heading' data-id='getdata'><a href='#getdata'><span class='return-type'>T</span> GetData&lt;T&gt;()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -262,7 +262,7 @@ For safer parsing with error handling, use <code>TryGetData&lt;T&gt;()</code> in
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='trygetdata'></div><div class='api-heading' data-id='trygetdata'><a href='#trygetdata'><span class='return-type'>bool</span> undefined</a></div>
+  <div class="api-anchor" id='trygetdata'></div><div class='api-heading' data-id='trygetdata'><a href='#trygetdata'><span class='return-type'>bool</span> TryGetData&lt;T&gt;(out T result)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -303,7 +303,7 @@ explicit error handling for data parsing.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='respond'></div><div class='api-heading' data-id='respond'><a href='#respond'><span class='return-type'>void</span> undefined</a></div>
+  <div class="api-anchor" id='respond'></div><div class='api-heading' data-id='respond'><a href='#respond'><span class='return-type'>void</span> Respond(UniWebViewChannelMessageResponse response)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -354,7 +354,7 @@ Calling this method on Send or Call messages will log an error and have no effec
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='respond'></div><div class='api-heading' data-id='respond'><a href='#respond'><span class='return-type'>void</span> undefined</a></div>
+  <div class="api-anchor" id='respond'></div><div class='api-heading' data-id='respond'><a href='#respond'><span class='return-type'>void</span> Respond(object data)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -393,7 +393,7 @@ Use this when you want to send a successful response without explicitly creating
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='responderror'></div><div class='api-heading' data-id='responderror'><a href='#responderror'><span class='return-type'>void</span> undefined</a></div>
+  <div class="api-anchor" id='responderror'></div><div class='api-heading' data-id='responderror'><a href='#responderror'><span class='return-type'>void</span> RespondError(object errorData)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
