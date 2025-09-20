@@ -42,6 +42,10 @@ module.exports = {
             link: '../release-note/',
           },
           {
+            text: 'v5.x',
+            link: 'https://docs-v5.uniwebview.com',
+          },
+          {
             text: 'v4.x',
             link: 'https://docs-v4.uniwebview.com',
           },
@@ -123,6 +127,10 @@ module.exports = {
               link: "../api/"
             },
             "version-highlight",
+            {
+              text: "Migrating From 5.x",
+              link: "migration-guide-v5-to-v6"
+            },
             {
               text: "Migrating From 4.x",
               link: "migration-guide-v4-to-v5"

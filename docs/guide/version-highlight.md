@@ -1,9 +1,9 @@
 # Version Highlight
 
-> UniWebView 5 enhances user experience with built-in OAuth 2.0 support, an embedded toolbar, improved image uploading, and better export stability.
+> UniWebView 6 introduces the Channel Message system for high-performance bidirectional communication, enhanced error handling, and improved messaging reliability between web pages and Unity.
 
 ::: tip Upgrade Pricing
-If you have purchased UniWebView 4 before, we offer an upgrading discount.
+If you have purchased UniWebView 5 before, we offer an upgrading discount.
 
 For users:
 
@@ -12,42 +12,37 @@ For users:
   to find the Upgrade Price.
   :::
 
-UniWebView contains some significant improvements over its predecessor UniWebView 4. Here we will list a few of them to
+UniWebView contains some significant improvements over its predecessor UniWebView 5. Here we will list a few of them to
 give you an overview about what are added and changed.
 
-### Built-in OAuth 2.0 Support
+### Channel Message System
 
-UniWebView 5 supports OAuth 2.0 authentication. It provides an easy way to integrate OAuth 2.0 authentication into your
-app for most popular service providers. If you are planning to let your users log in with one of these built-in supported
-platform, UniWebView 5 gives you an out-of-the-box solution:
+UniWebView 6 introduces a revolutionary **Channel Message system** that provides high-performance, bidirectional communication between web pages and Unity. This new system addresses the limitations of traditional URL scheme messaging:
 
-| Service Provider | UniWebView Auth Class                | Provider Documentation                                                                                          |
-| ---------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
-| Google           | UniWebViewAuthenticationFlowGoogle   | [OAuth 2.0 for Mobile & Desktop Apps](https://developers.google.com/identity/protocols/oauth2/native-app?hl=en) |
-| Facebook         | UniWebViewAuthenticationFlowFacebook | [Manually Build a Login Flow](https://developers.facebook.com/docs/facebook-login/guides/advanced/manual-flow)  |
-| Twitter          | UniWebViewAuthenticationFlowTwitter  | [Authentication](https://developer.twitter.com/en/docs/authentication/oauth-2-0/authorization-code)             |
-| GitHub           | UniWebViewAuthenticationFlowGitHub   | [Authorizing OAuth Apps](https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps) |
-| Discord          | UniWebViewAuthenticationFlowDiscord  | [OAuth2 in Discord](https://discord.com/developers/docs/topics/oauth2)                                          |
-| LINE             | UniWebViewAuthenticationFlowLine     | [LINE Login v2.1 API reference](https://developers.line.biz/en/reference/line-login/)                           |
+- **No size limits** for data transfer
+- **No message loss** in high-frequency scenarios
+- **Bidirectional communication** with sync/async patterns
+- **Direct JSON object** passing without encoding
+- **Enhanced error handling** with structured responses
+- **Cross-platform consistency** (iOS, Android, Unity)
 
-Besides of them, UniWebView also a customizable common setup for **any other services which provides a standard OAuth 2.0 code flow**.
+The Channel Message system offers three communication patterns:
 
-For more information of the built-in OAuth 2.0 authentication, please check the related [OAuth 2.0 Support Guide](./oauth2.md).
+| Pattern | Method | Description |
+| ------- | ------ | ----------- |
+| Fire-and-Forget | `send(action, data)` | Async messages without response |
+| Synchronous Call | `call(action, data)` | Immediate return values |
+| Async Request | `request(action, data)` | Promise-based responses with timeout |
 
-### Embedded Toolbar
+For more information about the Channel Message system, please check the [Channel Message Guide](./channel-message.md).
 
-Instead of the toolbar in previous versions, now UniWebView 5 has an embedded toolbar for both iOS and Android.
-It adopts to better layout methods and gives a more stable toolbar style. This new embedded toolbar contains the
-navigation buttons and a title to provide a context to your users. The size and position of toolbar now also follows the
-web view's size and position. It provides a much better immersive experience for your users.
+### Enhanced Error Handling
 
-For more information of the embedded toolbar, please check the related [Embedded Toolbar Guide](./embedded-toolbar.md).
+UniWebView 6 provides structured error responses that include error codes, detailed messages, and additional metadata. This makes debugging and error handling much more robust in production applications.
 
-### Rewriting Image Uploading
+### Improved Performance and Reliability
 
-The image uploading support is rewritten from scratch. If you need to upload multiple files, especially photos and images
-to a server through the HTTP `<input>` form, you will find now it is much more stable on almost all types of Android
-devices and system versions.
+The new messaging system eliminates URL encoding overhead and navigation cancellation issues, providing better performance and reliability for communication-heavy applications.
 
 The pure JavaScript uploading controls are now also supported. For more, please read the [Uploading](./uploading.md) guide.
 

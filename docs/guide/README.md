@@ -40,7 +40,7 @@ And much more. Please check the [full API Reference](/api).
 
 ## Supported Platforms
 
-UniWebView v5 supports running on:
+UniWebView v6 supports running on:
 
 - **Unity 2020.1** or above
 - **iOS 9.0** or above

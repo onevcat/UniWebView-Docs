@@ -12,9 +12,9 @@ heroText: " "
 tagline: UniWebView is a modern web view component for mobile Unity3D games. Integrating web content into your games was never easier.
 features:
   - title: Functionality
-    details: Supporting a full set of general web tasks. Including browsing pages, playing videos, interacting, OAuth 2.0 and more.
+    details: Supporting a full set of general web tasks. Including browsing pages, playing videos, interacting, OAuth 2.0, Channel Messages and more.
   - title: Modern & Fast
-    details: Built on modern Unity, native and web technology. Much smaller memory footprint and better performance.
+    details: Built on modern Unity, native and web technology. High-performance bidirectional communication with enhanced Channel Message system.
   - title: Brilliant API
     details: Well-designed APIs and documentation. Made by developers, for developers. Easy for both using and extending.
 footer: Copyright © 2016-present OneV's Den (@onevcat)

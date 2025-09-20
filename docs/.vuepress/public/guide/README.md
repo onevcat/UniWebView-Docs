@@ -23,7 +23,8 @@ It boosts your development process dramatically when you need to show an announc
 
 - [Embedded Toolbar](embedded-toolbar.md)
 - [Full JavaScript Support](using-javascript.md)
-- [Messaging System](messaging-system.md)
+- [URL Messaging System](messaging-system.md)
+- [Channel Between Unity and JavaScript](channel-message.md)
 
 #### Other Tasks
 
@@ -39,7 +40,7 @@ And much more. Please check the [full API Reference](/api).
 
 ## Supported Platforms
 
-UniWebView v5 supports running on:
+UniWebView v6 supports running on:
 
 - **Unity 2020.1** or above
 - **iOS 9.0** or above
