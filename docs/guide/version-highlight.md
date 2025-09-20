@@ -46,6 +46,18 @@ The new messaging system eliminates URL encoding overhead and navigation cancell
 
 The pure JavaScript uploading controls are now also supported. For more, please read the [Uploading](./uploading.md) guide.
 
+### Native Apple Silicon Support
+
+UniWebView 6 introduces **XCFramework** distribution for iOS, providing native support for Apple Silicon Macs and enhanced development experience:
+
+- **Native ARM64 Simulator Support**: Test on Apple Silicon Mac simulators without conversion tools or Rosetta emulation
+- **Universal Compatibility**: Single binary supports both device and simulator architectures
+- **Future-Proof Distribution**: Modern Apple distribution format aligned with latest Xcode capabilities
+- **Seamless Unity Integration**: Full compatibility with Unity 2021.3.37 LTS and later versions
+- **Simplified Development Workflow**: No need for platform-specific library management or manual architecture conversion
+
+This modernization eliminates the previous need for library conversion tools and provides a more robust, developer-friendly experience for iOS development workflows.
+
 ### Improved Export Phase
 
 In previous versions, when exporting with Release configuration and project minifying on, it is possible that the required
