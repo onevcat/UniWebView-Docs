@@ -48,19 +48,84 @@ If your resources are located in another folder, you could pass a `readAccessURL
 
 ### Using "Split Application Binary"
 
-If you are using "Split Application Binary" for Android build (OBB files), you should not put your local HTML files under **StreamingAssets** folder, which will be put to the OBB bundle and cannot be read directly.
+If you are using "Split Application Binary" for Android build (OBB files), your local HTML files in the OBB bundle cannot be accessed directly by WebView. UniWebView provides an automated solution to handle this.
 
 #### Before Unity 2021.2
 
-Instead, if you are still using Unity 2021.1 or any earlier version, you can put them to `Assets/Plugins/Android/assets/`
-and then you use the same way as you did for normal streaming assets resource to load it from the new location.
+If you are still using Unity 2021.1 or any earlier version, you can put your files to `Assets/Plugins/Android/assets/`
+and then use the same way as you did for normal streaming assets resource to load it from the new location.
 
-#### Unity 2021.2 and later
+#### Unity 2021.2 and later (Automated Solution)
 
-From Unity 2021.2, the Unity Editor prevents the existing of `Assets/Plugins/Android/assets/`. Any file under that
-folder would trigger a build error. There is very little UniWebView can do. As a workaround, you can export your game as an
-Android Gradle Project first and then put your local files under the "unityLibrary/src/main/assets" folder in the exported project.
-After building to APK from the exported project, the local files will be located in the "assets" folder in the APK bundle, where you can load them with the same method above.
+From Unity 2021.2, the Unity Editor prevents the existence of `Assets/Plugins/Android/assets/`. UniWebView now provides an automated solution:
+
+1. **Configure Asset Folders**: Open **Preferences > UniWebView** (or **Edit > Project Settings > UniWebView** in Unity 2019.1+)
+2. **Add Folders to Copy**: In the "Android Assets" section, add the folders you want to be accessible in OBB builds
+3. **Build Normally**: When you export as Android Gradle Project, UniWebView will automatically copy the configured folders to the correct location
+
+##### Example: Web Content Outside StreamingAssets
+
+If you have web content in `Assets/WebContents/` (not in StreamingAssets):
+
+```
+Assets/
+├── WebContents/
+│   ├── index.html
+│   ├── style.css
+│   └── images/
+│       └── logo.png
+```
+
+**Step 1: Configure UniWebView Settings**
+- Open Preferences > UniWebView
+- In "Android Assets" section, add: `WebContents`
+- This tells UniWebView to copy this folder to Android assets during build
+
+**Step 2: Load the Content**
+```csharp
+// After configuration, the files will be accessible at the configured path
+var url = UniWebViewHelper.StreamingAssetURLForPath("WebContents/index.html");
+webView.Load(url);
+
+// This will resolve to "file:///android_asset/WebContents/index.html" on Android
+// The folder will be automatically copied there during Gradle export
+```
+
+##### Example: Traditional StreamingAssets Approach
+
+If your content is already in StreamingAssets:
+
+```
+Assets/
+├── StreamingAssets/
+│   └── WebContents/
+│       ├── index.html
+│       └── style.css
+```
+
+**Configuration**: Add `StreamingAssets/WebContents` to Android Assets
+**Loading**:
+```csharp
+var url = UniWebViewHelper.StreamingAssetURLForPath("WebContents/index.html");
+webView.Load(url);
+```
+
+##### Configuration for Multiple Folders
+
+You can configure multiple folders from different locations:
+
+```json
+Android Assets: ["WebContents", "StreamingAssets/HTML", "MyPlugin/WebAssets"]
+```
+
+This will copy all specified folders to the Android assets directory, maintaining their relative paths.
+
+##### Benefits
+
+- ✅ **No Manual Copying**: Files are automatically copied during Gradle export
+- ✅ **Flexible Organization**: Place web content anywhere in Assets folder
+- ✅ **Error Prevention**: No risk of forgetting to copy files manually
+- ✅ **Consistent Workflow**: Same build process for all developers
 
 ## From Persistent Data Path
 

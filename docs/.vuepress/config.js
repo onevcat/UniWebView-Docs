@@ -85,6 +85,8 @@ module.exports = {
             "rotation-and-scale",
             "memory-management",
             "messaging-system",
+            "channel-message",
+            "channel-message-security",
             "using-javascript",
             {
               text: "OAuth 2.0 Support",
@@ -219,11 +221,19 @@ module.exports = {
             ]
           },
           {
-            text: "Models", 
+            text: "Models",
             children: [
               {
                 text: "UniWebViewMessage",
                 link: "uniwebviewmessage"
+              },
+              {
+                text: "UniWebViewChannelMessage",
+                link: "uniwebviewchannelmessage"
+              },
+              {
+                text: "UniWebViewChannelMessageResponse",
+                link: "uniwebviewchannelmessageresponse"
               },
               {
                 text: "UniWebViewNativeResultPayload",
@@ -252,8 +262,12 @@ module.exports = {
             ]
           },
           {
-            text: "Enums", 
+            text: "Enums",
             children: [
+              {
+                text: "UniWebViewChannelMessageType",
+                link: "uniwebviewchannelmessagetype"
+              },
               {
                 text: "UniWebViewTransitionEdge",
                 link: "uniwebviewtransitionedge"

@@ -96,6 +96,9 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onkeycodereceived'><span class='return-type'>void</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a key (like back button or volume up) on the device is pressed.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onchannelmessagereceived'><span class='return-type'>UniWebViewChannelMessageResponse</span> OnChannelMessageReceived(UniWebView webView, UniWebViewChannelMessage message)</a></div></td><td><div class='simple-summary'>
+<p>Raised when a channel message from JavaScript Bridge is received.</p>
+</div>
 </td></tr></table>
 
 #### Methods Summary
@@ -1345,6 +1348,95 @@ So this event will be never raise anymore. Check <code>Input.GetKeyUp</code> in 
     <span class="token keyword">if</span> <span class="token punctuation">(</span>Input<span class="token punctuation">.</span><span class="token function">GetKeyUp</span><span class="token punctuation">(</span>KeyCode<span class="token punctuation">.</span>Escape<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Back Button was clicked."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onchannelmessagereceived'></div><div class='api-heading' data-id='onchannelmessagereceived'><a href='#onchannelmessagereceived'><span class='return-type'>UniWebViewChannelMessageResponse</span> OnChannelMessageReceived(UniWebView webView, UniWebViewChannelMessage message)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when a channel message from JavaScript Bridge is received.</p>
+<p>This event is triggered when JavaScript code calls <code>window.uniwebview.send()</code>,
+<code>window.uniwebview.call()</code>, or <code>window.uniwebview.request()</code>. The handler should
+return a <code>UniWebViewChannelMessageResponse</code> for sync calls or when immediate response
+is needed. For async messages that need delayed response, use <code>message.Respond()</code> method.</p>
+<p>The Channel Message system provides structured data communication between web content and Unity,
+supporting three communication patterns: Send (fire-and-forget), Call (synchronous), and Request (asynchronous).</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewChannelMessage</span> <span class='parameter-item-name'>message</span></div>
+    <div class='parameter-item-desc'><p>The channel message received from JavaScript Bridge containing action, data, and metadata.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnChannelMessageReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// Handle different message types</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token string">"updateScore"</span><span class="token punctuation">:</span>
+            <span class="token class-name"><span class="token keyword">var</span></span> scoreData <span class="token operator">=</span> message<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">GetData</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>ScoreData<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">UpdateGameScore</span><span class="token punctuation">(</span>scoreData<span class="token punctuation">.</span>score<span class="token punctuation">,</span> scoreData<span class="token punctuation">.</span>level<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+            <span class="token comment">// For Send messages, return null (fire-and-forget)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>isFireAndForget<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+<span />
+            <span class="token comment">// For Call messages, return immediate response</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>isSyncCall<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> UniWebViewChannelMessageResponse<span class="token punctuation">.</span><span class="token function">Success</span><span class="token punctuation">(</span><span class="token string">"Score updated"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+<span />
+            <span class="token comment">// For Request messages, respond asynchronously</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>isAsyncRequest<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">StartCoroutine</span><span class="token punctuation">(</span><span class="token function">UpdateScoreAsync</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> scoreData<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// Return null, use message.Respond() later</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+<span />
+        <span class="token keyword">case</span> <span class="token string">"getUserInfo"</span><span class="token punctuation">:</span>
+            <span class="token class-name"><span class="token keyword">var</span></span> userInfo <span class="token operator">=</span> <span class="token function">GetCurrentUserInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> UniWebViewChannelMessageResponse<span class="token punctuation">.</span><span class="token function">Success</span><span class="token punctuation">(</span>userInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+        <span class="token keyword">default</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> UniWebViewChannelMessageResponse<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"Unknown action"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span />
+    <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span />
+<span class="token keyword">private</span> <span class="token return-type class-name">IEnumerator</span> <span class="token function">UpdateScoreAsync</span><span class="token punctuation">(</span><span class="token class-name">UniWebViewChannelMessage</span> message<span class="token punctuation">,</span> <span class="token class-name">ScoreData</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Simulate async operation</span>
+    <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">WaitForSeconds</span><span class="token punctuation">(</span><span class="token number">1f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+    <span class="token class-name"><span class="token keyword">bool</span></span> success <span class="token operator">=</span> <span class="token function">SaveScoreToCloud</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        message<span class="token punctuation">.</span><span class="token function">Respond</span><span class="token punctuation">(</span><span class="token string">"Score saved to cloud"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        message<span class="token punctuation">.</span><span class="token function">RespondError</span><span class="token punctuation">(</span><span class="token string">"Failed to save score"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span />
+<span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">System<span class="token punctuation">.</span>Serializable</span></span><span class="token punctuation">]</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ScoreData</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token class-name"><span class="token keyword">int</span></span> score<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name"><span class="token keyword">int</span></span> level<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 </div>

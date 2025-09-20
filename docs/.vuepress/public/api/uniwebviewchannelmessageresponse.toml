@@ -1,0 +1,141 @@
+title = "UniWebViewChannelMessageResponse"
+file = "UniWebViewChannelMessageResponse"
+
+summary = """Represents a response for a channel message.
+
+This class is used to send structured responses back to JavaScript from Unity.
+It supports both success and error responses, with flexible data formats.
+Response objects are typically created using the static factory methods `Success()` and `Error()`.
+"""
+
+[[Properties]]
+name = "data"
+returnType = "object"
+hasSetter = false
+summary = """
+Response data for successful responses.
+
+This property contains the data that will be sent back to JavaScript when the response represents success.
+For error responses, this property is null.
+"""
+
+[[Properties]]
+name = "hasError"
+returnType = "bool"
+hasSetter = false
+summary = """
+Whether this response represents an error.
+
+When true, the response will be delivered to JavaScript as a Promise rejection or error.
+When false, the response will be delivered as a successful result.
+"""
+
+[[Properties]]
+name = "errorData"
+returnType = "object"
+hasSetter = false
+summary = """
+Error data if hasError is true.
+
+This property contains the error information that will be sent back to JavaScript when the response represents an error.
+For success responses, this property is null. Supports any JSON-compatible type.
+"""
+
+[[Methods]]
+name = "Success"
+signature = "Success(object data)"
+returnType = "UniWebViewChannelMessageResponse"
+summary = """
+Static factory method for success responses.
+
+Creates a response object that represents a successful operation.
+The provided data will be serialized to JSON and sent back to JavaScript.
+"""
+example = """
+```csharp
+webView.OnChannelMessageReceived += (view, message) => {
+    if (message.action == "getUserInfo") {
+        var userInfo = new {
+            userId = 12345,
+            userName = "Player1",
+            level = 25,
+            score = 150000
+        };
+
+        // Create success response
+        return UniWebViewChannelMessageResponse.Success(userInfo);
+    }
+
+    if (message.action == "getSimpleValue") {
+        // Success with simple value
+        return UniWebViewChannelMessageResponse.Success("Hello from Unity!");
+    }
+
+    if (message.action == "getNumberValue") {
+        // Success with numeric value
+        return UniWebViewChannelMessageResponse.Success(42);
+    }
+
+    return null;
+};
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "data"
+type = "object"
+summary = "The data to include in the response. Can be any JSON-serializable type."
+
+[[Methods]]
+name = "Error"
+signature = "Error(object errorData)"
+returnType = "UniWebViewChannelMessageResponse"
+summary = """
+Static factory method for error responses.
+
+Creates a response object that represents an error condition.
+The provided error data will be serialized to JSON and sent back to JavaScript as a rejection.
+"""
+example = """
+```csharp
+webView.OnChannelMessageReceived += (view, message) => {
+    if (message.action == "processPayment") {
+        if (!message.TryGetData<PaymentData>(out var paymentData)) {
+            // Return error for invalid data
+            return UniWebViewChannelMessageResponse.Error(new {
+                code = "INVALID_DATA",
+                message = "Payment data is malformed"
+            });
+        }
+
+        if (paymentData.amount <= 0) {
+            // Return error for invalid amount
+            return UniWebViewChannelMessageResponse.Error(new {
+                code = "INVALID_AMOUNT",
+                message = "Payment amount must be greater than zero",
+                providedAmount = paymentData.amount
+            });
+        }
+
+        // Return error with simple string
+        if (!IsPaymentMethodValid(paymentData.method)) {
+            return UniWebViewChannelMessageResponse.Error("Invalid payment method");
+        }
+
+        // Process payment...
+        return UniWebViewChannelMessageResponse.Success("Payment processed");
+    }
+
+    return null;
+};
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "errorData"
+type = "object"
+summary = "The error data (supports any JSON-compatible type). Can be a string, object, or any serializable data."

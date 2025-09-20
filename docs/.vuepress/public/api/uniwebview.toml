@@ -3299,3 +3299,83 @@ summary = "The web view component which raises this event."
 name = "keyCode"
 type = "int"
 summary = "The key code of pressed key. See [Android API for keycode](https://developer.android.com/reference/android/view/KeyEvent.html#KEYCODE_0) to know the possible values."
+
+[[Events]]
+name = "OnChannelMessageReceived"
+syntax = "OnChannelMessageReceived(UniWebView webView, UniWebViewChannelMessage message)"
+returnType = "UniWebViewChannelMessageResponse"
+summary = """
+Raised when a channel message from JavaScript Bridge is received.
+
+This event is triggered when JavaScript code calls `window.uniwebview.send()`,
+`window.uniwebview.call()`, or `window.uniwebview.request()`. The handler should
+return a `UniWebViewChannelMessageResponse` for sync calls or when immediate response
+is needed. For async messages that need delayed response, use `message.Respond()` method.
+
+The Channel Message system provides structured data communication between web content and Unity,
+supporting three communication patterns: Send (fire-and-forget), Call (synchronous), and Request (asynchronous).
+"""
+example = """
+```csharp
+webView.OnChannelMessageReceived += (view, message) => {
+    // Handle different message types
+    switch (message.action) {
+        case "updateScore":
+            var scoreData = message.GetData<ScoreData>();
+            UpdateGameScore(scoreData.score, scoreData.level);
+
+            // For Send messages, return null (fire-and-forget)
+            if (message.isFireAndForget) {
+                return null;
+            }
+
+            // For Call messages, return immediate response
+            if (message.isSyncCall) {
+                return UniWebViewChannelMessageResponse.Success("Score updated");
+            }
+
+            // For Request messages, respond asynchronously
+            if (message.isAsyncRequest) {
+                StartCoroutine(UpdateScoreAsync(message, scoreData));
+                return null; // Return null, use message.Respond() later
+            }
+            break;
+
+        case "getUserInfo":
+            var userInfo = GetCurrentUserInfo();
+            return UniWebViewChannelMessageResponse.Success(userInfo);
+
+        default:
+            return UniWebViewChannelMessageResponse.Error("Unknown action");
+    }
+
+    return null;
+};
+
+private IEnumerator UpdateScoreAsync(UniWebViewChannelMessage message, ScoreData data) {
+    // Simulate async operation
+    yield return new WaitForSeconds(1f);
+
+    bool success = SaveScoreToCloud(data);
+    if (success) {
+        message.Respond("Score saved to cloud");
+    } else {
+        message.RespondError("Failed to save score");
+    }
+}
+
+[System.Serializable]
+public class ScoreData {
+    public int score;
+    public int level;
+}
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "message"
+type = "UniWebViewChannelMessage"
+summary = "The channel message received from JavaScript Bridge containing action, data, and metadata."
