@@ -1,0 +1,321 @@
+title = "UniWebViewChannelMessage"
+file = "UniWebViewChannelMessage"
+
+summary = """A channel message received from the web view's JavaScript Bridge.
+
+Channel messages provide structured, bidirectional communication between web content and Unity.
+They support three communication patterns: Send (fire-and-forget), Call (synchronous), and Request (asynchronous).
+Each message contains an action identifier, optional JSON data, and metadata for proper routing and response handling.
+"""
+
+[[Properties]]
+name = "id"
+returnType = "string"
+hasSetter = false
+summary = """
+Unique identifier for this message.
+
+This ID is automatically generated when the message is created and is used internally for response routing.
+For asynchronous Request messages, this ID links the original message to its response.
+"""
+
+[[Properties]]
+name = "timestamp"
+returnType = "long"
+hasSetter = false
+summary = """
+Timestamp when the message was created (Unix milliseconds).
+
+This value represents the time when the message was created on the JavaScript side,
+measured in milliseconds since the Unix epoch (January 1, 1970, 00:00:00 UTC).
+"""
+
+[[Properties]]
+name = "action"
+returnType = "string"
+hasSetter = false
+summary = """
+The action type for this message (required).
+
+This is the primary identifier for determining how to handle the message.
+Action names should follow a consistent naming convention in your application.
+"""
+example = """
+```csharp
+webView.OnChannelMessageReceived += (view, message) => {
+    switch (message.action) {
+        case "getUserInfo":
+            // Handle user info request
+            break;
+        case "saveScore":
+            // Handle score saving
+            break;
+        default:
+            Debug.LogWarning($"Unknown action: {message.action}");
+            break;
+    }
+    return null;
+};
+```
+"""
+
+[[Properties]]
+name = "data"
+returnType = "string"
+hasSetter = false
+summary = """
+The message data as a JSON string (optional).
+
+This property contains the raw JSON string sent from JavaScript.
+Use `GetData<T>()` or `TryGetData<T>()` methods to parse this data into strongly-typed objects.
+"""
+
+[[Properties]]
+name = "messageType"
+returnType = "int"
+hasSetter = false
+summary = """
+The type of this channel message as an integer.
+
+- 0: Send (fire-and-forget)
+- 1: Call (synchronous)
+- 2: Request (asynchronous)
+
+Use the `MessageType` property for a strongly-typed enum value instead of this raw integer.
+"""
+
+[[Properties]]
+name = "MessageType"
+returnType = "UniWebViewChannelMessageType"
+hasSetter = false
+summary = """
+Gets the strongly-typed message type.
+
+This property converts the internal `messageType` integer to the corresponding enum value
+for easier type checking and handling.
+"""
+example = """
+```csharp
+webView.OnChannelMessageReceived += (view, message) => {
+    switch (message.MessageType) {
+        case UniWebViewChannelMessageType.Send:
+            // Handle fire-and-forget message
+            ProcessSendMessage(message);
+            return null;
+
+        case UniWebViewChannelMessageType.Call:
+            // Handle synchronous call
+            return ProcessCallMessage(message);
+
+        case UniWebViewChannelMessageType.Request:
+            // Handle asynchronous request
+            ProcessRequestMessage(message);
+            return null;
+    }
+    return null;
+};
+```
+"""
+
+[[Properties]]
+name = "isFireAndForget"
+returnType = "bool"
+hasSetter = false
+summary = """
+True if this is a fire-and-forget message (Send).
+
+Send messages don't expect any response and should return null from the message handler.
+They are used for notifications and one-way data transfer.
+"""
+
+[[Properties]]
+name = "isSyncCall"
+returnType = "bool"
+hasSetter = false
+summary = """
+True if this is a synchronous call (Call).
+
+Call messages expect an immediate response that will be returned directly to the JavaScript caller.
+The message handler should return a `UniWebViewChannelMessageResponse` object.
+"""
+
+[[Properties]]
+name = "isAsyncRequest"
+returnType = "bool"
+hasSetter = false
+summary = """
+True if this is an asynchronous request (Request).
+
+Request messages support delayed responses using the `Respond()` method.
+The message handler should return null and call `message.Respond()` when the operation completes.
+"""
+
+[[Methods]]
+name = "GetData"
+signature = "GetData<T>()"
+returnType = "T"
+summary = """
+Parses the message data as the specified type.
+
+This method deserializes the JSON data into the specified type using an internal UniWebView JSON utility.
+If parsing fails, it returns the default value for the type and logs an error.
+For safer parsing with error handling, use `TryGetData<T>()` instead.
+"""
+example = """
+```csharp
+webView.OnChannelMessageReceived += (view, message) => {
+    if (message.action == "updateScore") {
+        // Direct parsing - may return default(T) if parsing fails
+        var scoreData = message.GetData<ScoreData>();
+
+        if (scoreData != null) {
+            UpdateScore(scoreData.score, scoreData.level);
+        }
+    }
+    return null;
+};
+
+[System.Serializable]
+public class ScoreData {
+    public int score;
+    public int level;
+}
+```
+"""
+
+[[Methods]]
+name = "TryGetData"
+signature = "TryGetData<T>(out T result)"
+returnType = "bool"
+summary = """
+Safely parses the message data as the specified type.
+
+This method attempts to deserialize the JSON data into the specified type.
+Returns true if parsing succeeds, false otherwise. Use this method when you need
+explicit error handling for data parsing.
+"""
+example = """
+```csharp
+webView.OnChannelMessageReceived += (view, message) => {
+    if (message.action == "processOrder") {
+        // Safe parsing with error handling
+        if (message.TryGetData<OrderData>(out var orderData)) {
+            ProcessOrder(orderData);
+            return UniWebViewChannelMessageResponse.Success("Order processed");
+        } else {
+            return UniWebViewChannelMessageResponse.Error("Invalid order data");
+        }
+    }
+    return null;
+};
+```
+"""
+[[Methods.parameters]]
+name = "result"
+type = "T"
+summary = "The parsed data object if successful, default(T) if parsing fails."
+
+[[Methods]]
+name = "Respond"
+signature = "Respond(UniWebViewChannelMessageResponse response)"
+returnType = "void"
+summary = """
+Sends an async response for this message.
+
+This method can only be used with Request messages (asynchronous).
+It sends the response back to the JavaScript Promise that's waiting for the result.
+Calling this method on Send or Call messages will log an error and have no effect.
+"""
+example = """
+```csharp
+webView.OnChannelMessageReceived += (view, message) => {
+    if (message.action == "loadGameData" && message.isAsyncRequest) {
+        // Start async operation
+        StartCoroutine(LoadGameDataAsync(message));
+        return null; // Return null for async
+    }
+    return null;
+};
+
+private IEnumerator LoadGameDataAsync(UniWebViewChannelMessage message) {
+    // Simulate loading delay
+    yield return new WaitForSeconds(2f);
+
+    var gameData = LoadGameFromFile();
+    if (gameData != null) {
+        // Send success response
+        message.Respond(UniWebViewChannelMessageResponse.Success(gameData));
+    } else {
+        // Send error response
+        message.Respond(UniWebViewChannelMessageResponse.Error("Failed to load game data"));
+    }
+}
+```
+"""
+[[Methods.parameters]]
+name = "response"
+type = "UniWebViewChannelMessageResponse"
+summary = "The response to send back to JavaScript."
+
+[[Methods]]
+name = "Respond"
+signature = "Respond(object data)"
+returnType = "void"
+summary = """
+Convenience method for success responses.
+
+This is a shorthand for `Respond(UniWebViewChannelMessageResponse.Success(data))`.
+Use this when you want to send a successful response without explicitly creating a response object.
+"""
+example = """
+```csharp
+private IEnumerator ProcessDataAsync(UniWebViewChannelMessage message, UserData userData) {
+    // Process the data
+    yield return ProcessUserData(userData);
+
+    // Send simple success response
+    message.Respond(new {
+        success = true,
+        message = "Data processed successfully",
+        userId = userData.id
+    });
+}
+```
+"""
+[[Methods.parameters]]
+name = "data"
+type = "object"
+summary = "The data to send back as a successful response."
+
+[[Methods]]
+name = "RespondError"
+signature = "RespondError(object errorData)"
+returnType = "void"
+summary = """
+Convenience method for error responses.
+
+This is a shorthand for `Respond(UniWebViewChannelMessageResponse.Error(errorData))`.
+Use this when you want to send an error response without explicitly creating a response object.
+"""
+example = """
+```csharp
+private IEnumerator ValidateUserAsync(UniWebViewChannelMessage message, string userId) {
+    bool isValid = yield return CheckUserValidity(userId);
+
+    if (isValid) {
+        message.Respond("User is valid");
+    } else {
+        // Send error response
+        message.RespondError(new {
+            code = 404,
+            message = "User not found",
+            userId = userId
+        });
+    }
+}
+```
+"""
+[[Methods.parameters]]
+name = "errorData"
+type = "object"
+summary = "The error data to send back (supports any JSON-compatible type)."

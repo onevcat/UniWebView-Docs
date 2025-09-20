@@ -1,0 +1,128 @@
+title = "UniWebViewChannelMessageType"
+file = "UniWebViewChannelMessageType"
+
+summary = """Channel message types corresponding to different JavaScript call methods.
+
+This enumeration defines the three communication patterns supported by the Channel Message system.
+Each type has different characteristics regarding response handling and timing.
+"""
+
+[[EnumValues]]
+name = "Send"
+value = "0"
+summary = """
+Fire-and-forget message (window.uniwebview.send).
+
+Send messages are one-way communications that don't expect or wait for a response.
+They are ideal for notifications, analytics events, and simple data transfer to Unity.
+The message handler should return null for Send messages.
+"""
+example = """
+```javascript
+// JavaScript - Fire and forget
+window.uniwebview.send('trackEvent', {
+    eventName: 'level_completed',
+    level: 5,
+    score: 1500
+});
+```
+
+```csharp
+// Unity - Handle send message
+webView.OnChannelMessageReceived += (view, message) => {
+    if (message.MessageType == UniWebViewChannelMessageType.Send) {
+        // Process the message but don't return a response
+        ProcessFireAndForgetMessage(message);
+        return null; // Always return null for Send messages
+    }
+    return null;
+};
+```
+"""
+
+[[EnumValues]]
+name = "Call"
+value = "1"
+summary = """
+Synchronous call with immediate response (window.uniwebview.call).
+
+Call messages expect an immediate response that is returned directly to the JavaScript caller.
+The JavaScript execution blocks until Unity provides the response.
+Use this for getting current state or performing quick operations.
+"""
+example = """
+```javascript
+// JavaScript - Synchronous call
+const userInfo = window.uniwebview.call('getUserInfo', {
+    userId: '12345'
+});
+
+console.log('User name:', userInfo.userName);
+// JavaScript execution continues immediately with the result
+```
+
+```csharp
+// Unity - Handle call message
+webView.OnChannelMessageReceived += (view, message) => {
+    if (message.MessageType == UniWebViewChannelMessageType.Call) {
+        var userData = GetUserData(message.GetData<UserRequest>());
+        // Return immediate response
+        return UniWebViewChannelMessageResponse.Success(userData);
+    }
+    return null;
+};
+```
+"""
+
+[[EnumValues]]
+name = "Request"
+value = "2"
+summary = """
+Asynchronous request with promise-based response (window.uniwebview.request).
+
+Request messages support delayed responses and return a Promise to JavaScript.
+Use this for operations that take time, such as file I/O, network requests, or database queries.
+The message handler should return null and use `message.Respond()` when the operation completes.
+"""
+example = """
+```javascript
+// JavaScript - Asynchronous request
+window.uniwebview.request('loadGameData', {
+    saveSlot: 1
+}).then(gameData => {
+    console.log('Game loaded:', gameData);
+    initializeGame(gameData);
+}).catch(error => {
+    console.error('Failed to load game:', error);
+});
+
+// With timeout (5 seconds)
+window.uniwebview.request('syncToCloud', playerData, 5000)
+    .then(() => console.log('Sync successful'))
+    .catch(error => console.log('Sync failed or timed out'));
+```
+
+```csharp
+// Unity - Handle request message
+webView.OnChannelMessageReceived += (view, message) => {
+    if (message.MessageType == UniWebViewChannelMessageType.Request) {
+        // Start async operation
+        StartCoroutine(ProcessRequestAsync(message));
+        return null; // Return null immediately
+    }
+    return null;
+};
+
+private IEnumerator ProcessRequestAsync(UniWebViewChannelMessage message) {
+    // Perform time-consuming operation
+    yield return new WaitForSeconds(2f);
+
+    var result = PerformLongOperation();
+    if (result.success) {
+        message.Respond(result.data);
+    } else {
+        message.RespondError(result.error);
+    }
+}
+```
+"""
