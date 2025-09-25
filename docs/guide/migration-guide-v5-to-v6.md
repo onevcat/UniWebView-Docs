@@ -12,14 +12,15 @@ For users:
   to find the Upgrade Price.
   :::
 
-### Overview
+## Overview
 
-UniWebView 6 is fully compatible with UniWebView 5. The migration to the new version is seamless and requires minimal effort. You need to:
+UniWebView 6 is mostly compatible with UniWebView 5. The migration to the new version is seamless and requires minimal effort. You need to:
 
 1. Remove UniWebView 5 from your project.
 2. Install UniWebView 6.
-3. Explore new Channel Message features.
-4. Consider upgrading existing URL scheme messaging to Channel Messages for better performance.
+3. Checking the usage of `SetTransparencyClickingThroughEnabled`.
+4. Explore new Channel Message features.
+5. Consider upgrading existing URL scheme messaging to Channel Messages for better performance.
 
 Let's start!
 
@@ -46,13 +47,79 @@ any) from your project:
 Now, you have completely removed UniWebView 5 from you project. Please make sure that you no longer have a "UniWebView"
 folder in "Assets". Then follow the [Installation Guide](./installation.md) to integrate UniWebView 6 into your project.
 
+It's worth noting that UniWebView 6 uses XCFramework for iOS integration. This lets you run your project and UniWebView content smoothly on the iOS simulator without any issues.
+
 ### Backward Compatibility
 
-UniWebView 6 maintains full backward compatibility with UniWebView 5. All existing APIs and functionality continue to work exactly as before. Your existing code will work without any modifications.
+UniWebView 6 maintains full backward compatibility with UniWebView 5 in Unity code level. All existing APIs and functionality continue to work exactly as before. Your existing code will build without any modifications.
 
-### New Features
+However, if you are using the "Transparency Clicking Through" feature, you need to update the web page content and add new data attributes in the appropriate places.
 
-The most significant addition in UniWebView 6 is the **Channel Message system**. This new system provides enhanced communication capabilities between web pages and Unity:
+## Transparency Clicking-Through Migration
+
+If you're currently using "Transparency Clicking Through" (`SetTransparencyClickingThroughEnabled(true)`), check the content below. Otherwise, you can jump to the next section.
+
+The underlying principle of the `SetTransparencyClickingThroughEnabled` API conflicts with the rendering engine of iOS 26, which causes this API does not work on iOS 26 devices. So we have completely redesigned a new solution.
+
+### Migration Steps
+
+The traditional pixel-sampling approach has been replaced with a collaborative system where your web page explicitly marks interactive elements.
+
+**1. Update Your HTML Content**
+
+Add `data-uv-transparency="opaque"` to interactive elements that should block touches:
+
+```html
+<!-- Before: All elements were handled by pixel detection -->
+<button onclick="handleClick()">Button</button>
+<div class="toolbar">
+  <button onclick="action1()">Action 1</button>
+  <button onclick="action2()">Action 2</button>
+</div>
+
+<!-- After: Mark interactive elements explicitly -->
+<button data-uv-transparency="opaque" onclick="handleClick()">Button</button>
+<div class="toolbar" data-uv-transparency="opaque">
+  <button onclick="action1()">Action 1</button>
+  <button onclick="action2()">Action 2</button>
+</div>
+```
+
+**2. No Unity Code Changes Required**
+
+Your existing Unity code continues to work without changes:
+
+```csharp
+// This remains the same
+webView.SetTransparencyClickingThroughEnabled(true);
+webView.BackgroundColor = Color.clear;
+```
+
+**3. Handle Dynamic Content (Optional)**
+
+For dynamically added content to the page, use the new refresh API when it is added:
+
+```csharp
+// After adding elements dynamically
+webView.EvaluateJavaScript("addNewButton()", (result) => {
+    webView.RefreshTransparencyClickingThroughLayout();
+});
+```
+
+### Important Notes
+
+- **Elements without the attribute** will allow clicks to pass through to Unity
+- **Container elements** marked as opaque will block touches for all child elements
+
+### Backward Compatibility
+
+Adding the `data-uv-transparency="opaque"` attribute won't affect any existing clients with older UniWebView versions. So you can still use the same updated HTML for all your app versions.
+
+We strongly recommend updating your HTML content to use the new element marking approach, if you need to run your app on iOS 26 or later.
+
+## Channel Message System
+
+The most significant addition in UniWebView 6 is the **Channel Message system**. If you are using a traditional URL-based message system (`uniwebview://`), you may want to consider migrating. This new system provides enhanced communication capabilities between web pages and Unity:
 
 #### Enhanced Communication
 - **Better Performance**: Direct bridge communication without URL scheme overhead
@@ -60,7 +127,7 @@ The most significant addition in UniWebView 6 is the **Channel Message system**.
 - **Structured Data**: Native JSON support for complex data types
 - **Multiple Patterns**: Choose between fire-and-forget, synchronous, and asynchronous communication
 
-#### When to Use Channel Messages
+### When to Use Channel Messages
 
 Consider upgrading from URL scheme messaging (`uniwebview://`) to Channel Messages when:
 
@@ -106,7 +173,7 @@ webView.OnChannelMessageReceived += (view, message) => {
 };
 ```
 
-### Getting Started with Channel Messages
+#### Getting Started with Channel Messages
 
 To start using the new Channel Message system, check out the comprehensive [Channel Message Guide](./channel-message.md). The guide covers:
 
@@ -116,7 +183,7 @@ To start using the new Channel Message system, check out the comprehensive [Chan
 - Error handling best practices
 - Security considerations
 
-### Checking New Features
+## Checking New Features
 
 For a complete overview of all new features and improvements in UniWebView 6, please check the [Version Highlight](./version-highlight.md) guide.
 

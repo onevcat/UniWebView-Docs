@@ -2042,43 +2042,109 @@ name = "SetTransparencyClickingThroughEnabled"
 syntax = "SetTransparencyClickingThroughEnabled(bool enabled)"
 returnType = "void"
 summary = """
-Sets whether the web view should pass through clicks at its clear pixels to Unity scene.
+Sets whether the web view should pass through clicks on transparent areas to Unity scene.
 
-Setting this method is a pre-condition for the whole passing-through feature to work. To allow your touch passing through
-to Unity scene, the following conditions should be met at the same time:
+This method enables a modern transparency click-through system that collaborates with your web page to determine
+which areas should block touches and which should allow them to pass through to Unity.
 
-1. This method is called with `true`. It enables the web view to check every touch on the web view.
-2. The web view has a transparent background in body style for its content by CSS.
-3. The web view itself has a transparent background color by setting `BackgroundColor` with a clear color.
+To set up transparency clicking through:
 
-Then, when user clicks on the clear pixel on the web view, the touch events will not be handled by the web view.
-Instead, these events are passed to Unity scene. By using this feature, it is possible to create a UI for your game 
-with the web view.
+1. Call this method with `true` to enable the transparency detection system
+2. Set your web page background to transparent with CSS: `body { background-color: transparent; }`
+3. Set the web view background to clear: `webView.BackgroundColor = Color.clear;`
+4. In your HTML, mark interactive elements with `data-uv-transparency="opaque"` to block touches:
+   ```html
+   <button data-uv-transparency="opaque">Interactive Button</button>
+   ```
 
-Only clicks on transparent part on the web view will be delivered to Unity scene. The web view still intercepts
-and handles other touches on visible pixels on the web view.
+Elements marked as "opaque" will intercept touches normally, while unmarked areas will allow clicks to pass
+through to Unity. This approach works reliably across all platforms and provides better performance than
+traditional pixel sampling methods.
+
+The system automatically handles scrollable content, visibility changes, and DOM updates. For dynamic content
+changes, you can use `RefreshTransparencyClickingThroughLayout()` to manually refresh the detection.
 """
 example = """
 ```csharp
-// Allow transparency clicking through.
+// Enable transparency clicking through
 webView.SetTransparencyClickingThroughEnabled(true);
 
-// Make Unity scene visible.
+// Make Unity scene visible behind web view
 webView.BackgroundColor = Color.clear;
 
-// Disable the scrolling bounces effect to fix the web UI.
-webView.SetBouncesEnabled(false);
+// Load your web page with marked interactive elements
+webView.Load("file:///path/to/transparent-page.html");
+```
 
-// Other configuration, usually handle some messages from web view.
-webView.OnMessageReceived += (view, message) => {
-    // ...
-};
+Your HTML page should mark interactive elements:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: transparent;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .toolbar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- This toolbar will block touches -->
+    <div class="toolbar" data-uv-transparency="opaque">
+        <button onclick="handleClick()">Interactive Button</button>
+    </div>
+
+    <!-- This area allows clicking through to Unity -->
+    <div style="height: 400px;">
+        Transparent area - clicks pass through to Unity
+    </div>
+</body>
+</html>
 ```
 """
 [[Methods.parameters]]
 name = "enabled"
 type = "bool"
 summary = "Whether the transparency clicking through feature should be enabled in this web view."
+
+[[Methods]]
+name = "RefreshTransparencyClickingThroughLayout"
+syntax = "RefreshTransparencyClickingThroughLayout()"
+returnType = "void"
+summary = """
+Manually refreshes the transparency clicking through layout detection.
+
+This method forces the web view to re-scan the DOM and update the cache of opaque regions used for hit testing.
+It should be called after dynamic changes to your web page content that are not automatically detected:
+
+- Adding or removing DOM elements with JavaScript
+- Changing element visibility or display properties
+- Moving elements that affect the layout
+- After animations or transitions complete
+- When toggling visibility of elements programmatically
+
+The system automatically updates the transparency layout in most cases (page load, scroll, resize, DOM mutations),
+so manual refresh is only needed for specific scenarios where automatic detection may not capture all changes.
+
+Note: This method only works when transparency clicking through is enabled via `SetTransparencyClickingThroughEnabled(true)`.
+"""
+example = """
+```csharp
+// Enable transparency feature first
+webView.SetTransparencyClickingThroughEnabled(true);
+
+// After dynamic content changes, refresh the layout
+webView.EvaluateJavaScript("addNewButton()", (result) => {
+    // Refresh transparency layout after adding new interactive elements
+    webView.RefreshTransparencyClickingThroughLayout();
+});
+```
+"""
 
 [[Methods]]
 name = "SetWebContentsDebuggingEnabled"
