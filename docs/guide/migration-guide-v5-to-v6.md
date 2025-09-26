@@ -7,9 +7,9 @@ If you have purchased UniWebView 5 before, we offer an upgrading discount.
 
 For users:
 
-- Purchased from our Gumroad Store - [Submit a ticket](https://onevcat.atlassian.net/servicedesk/customer/portal/2/group/2/create/10011) with your purchasing Email and we will send a coupon back.
-- Purchased from Unity Asset Store - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229334)
-  to find the Upgrade Price.
+- **Purchased from our Gumroad Store** - [Submit a ticket](https://onevcat.atlassian.net/servicedesk/customer/portal/2/group/2/create/10011) with your purchasing email and we will send a 50% off coupon back.
+- **Purchased from Unity Asset Store** - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229334) to find the 50% off Upgrade Price.
+- **Recent v5 Purchasers** (after July 26, 2025) - Contact us for a **free upgrade** to UniWebView 6.
   :::
 
 ## Overview
@@ -18,9 +18,9 @@ UniWebView 6 is mostly compatible with UniWebView 5. The migration to the new ve
 
 1. Remove UniWebView 5 from your project.
 2. Install UniWebView 6.
-3. Checking the usage of `SetTransparencyClickingThroughEnabled`.
+3. Check if you are using `SetTransparencyClickingThroughEnabled` and update web content (see below).
 4. Explore new Channel Message features.
-5. Consider upgrading existing URL scheme messaging to Channel Messages for better performance.
+5. Consider upgrading existing URL scheme messaging to Channel Messages for better performance and reliability.
 
 Let's start!
 
@@ -47,7 +47,7 @@ any) from your project:
 Now, you have completely removed UniWebView 5 from you project. Please make sure that you no longer have a "UniWebView"
 folder in "Assets". Then follow the [Installation Guide](./installation.md) to integrate UniWebView 6 into your project.
 
-It's worth noting that UniWebView 6 uses XCFramework for iOS integration. This lets you run your project and UniWebView content smoothly on the iOS simulator without any issues.
+It's worth noting that UniWebView 6 uses XCFramework for iOS integration. This lets you run your project and UniWebView content smoothly on the iOS simulator (including Apple Silicon) without any architecture conversion steps.
 
 ### Backward Compatibility
 

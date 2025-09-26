@@ -77,11 +77,15 @@ Assets/
 ```
 
 **Step 1: Configure UniWebView Settings**
+
 - Open Preferences > UniWebView
 - In "Android Assets" section, add: `WebContents`
 - This tells UniWebView to copy this folder to Android assets during build
 
+![](/images/android-assets-folder.png)
+
 **Step 2: Load the Content**
+
 ```csharp
 // After configuration, the files will be accessible at the configured path
 var url = UniWebViewHelper.StreamingAssetURLForPath("WebContents/index.html");
@@ -105,6 +109,7 @@ Assets/
 
 **Configuration**: Add `StreamingAssets/WebContents` to Android Assets
 **Loading**:
+
 ```csharp
 var url = UniWebViewHelper.StreamingAssetURLForPath("WebContents/index.html");
 webView.Load(url);

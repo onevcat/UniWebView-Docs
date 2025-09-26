@@ -2,7 +2,7 @@
 
 > UniWebView enables clicking through transparent web pages to interact with Unity scenes behind.
 
-It is possible to click through the web page and deliver the touch events to the Unity scene behind. This is called "Transparency Clicking Through" in UniWebView.
+It is possible to click through the web page and deliver the touch events to the Unity scene behind. This is called "Transparency Clicking Through" in UniWebView. Starting from v6, the implementation is redesigned for reliability on iOS 26 and modern Android systems.
 
 ## How It Works
 

@@ -65,8 +65,8 @@ then in the "Build Settings" tab, search for "Enable Bitcode" item and change it
 
 UniWebView supports running on:
 
-- **Unity 2020.1** or above
-- **iOS 9.0** or above
+- **Unity 2021.3.37 LTS**, **2022.3.23 LTS**, or **Unity 6 (6000.x)** or above recommended (earlier versions like 2020.x may still work but are not actively tested)
+- **iOS 12.0** or above
 - **Android 5.0** (API Level 21) or above
 
 UniWebView also contains Unity Editor support on macOS for debug purposes. If you are working on a Windows PC, you can still build and use UniWebView on mobile devices, but you cannot see the result directly in the Windows Unity Editor.
