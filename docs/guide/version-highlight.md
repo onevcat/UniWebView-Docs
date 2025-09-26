@@ -23,32 +23,28 @@ UniWebView 6 focuses on: high-performance bidirectional messaging (Channel Messa
 
 UniWebView 6 introduces a revolutionary **Channel Messaging System** that provides high-performance, bidirectional communication between web pages and Unity. This new system addresses the limitations of traditional URL scheme messaging:
 
-- **No size limits** for data transfer
+- **Large data transfer support** (tested up to tens of MB; performance may degrade beyond ~100MB)
 - **No message loss** in high-frequency scenarios
 - **Bidirectional communication** with sync/async patterns
 - **Direct JSON object** passing without encoding
 - **Enhanced error handling** with structured responses
 - **Cross-platform consistency** (iOS, Android, Unity)
 
-The Channel Messaging System offers three communication patterns:
+The Channel Messaging System offers three communication patterns when communicating between the web page and Unity:
 
-| Pattern          | Method                  | Description                          |
+| Pattern          | JavaScript Method       | Unity Behavior                       |
 | ---------------- | ----------------------- | ------------------------------------ |
-| Fire-and-Forget  | `send(action, data)`    | Async messages without response      |
+| Fire-and-Forget  | `send(action, data)`    | Receiving messages without response  |
 | Synchronous Call | `call(action, data)`    | Immediate return values              |
 | Async Request    | `request(action, data)` | Promise-based responses with timeout |
 
+This new messaging system eliminates URL encoding overhead and navigation cancellation issues, providing better performance and reliability for communication-heavy applications.
+
 For more information about the Channel Messaging System, please check the [Channel Message Guide](./channel-message.md).
 
-### Enhanced Error Handling & Structured Responses
+#### Channel Message Security & Robustness
 
-UniWebView 6 provides structured error responses that include error codes, detailed messages, and additional metadata. This makes debugging and error handling much more robust in production applications.
-
-### Improved Performance and Reliability
-
-The new messaging system eliminates URL encoding overhead and navigation cancellation issues, providing better performance and reliability for communication-heavy applications.
-
-The pure JavaScript uploading controls are now also supported. For more, please read the [Uploading](./uploading.md) guide.
+Alongside the new Channel Messaging System, a comprehensive security guideline is provided. It covers origin validation, input sanitization, replay protection and optional signature verification patterns. See the [Channel Message Security](./channel-message-security.md) guide.
 
 ### Native Apple Silicon Support
 
@@ -61,10 +57,11 @@ UniWebView 6 introduces **XCFramework** distribution for iOS, providing native s
 - **Simplified Development Workflow**: No need for platform-specific library management or manual architecture conversion
 
 This modernization eliminates the previous need for library conversion tools and provides a more robust, developer-friendly experience for iOS development workflows.
+It is especially useful when you want to debug your game on an iOS simulator.
 
-### Transparency Clicking Through Redesign
+### Clicking Through Redesign
 
-The transparency clicking through feature has been fully redesigned to work reliably on iOS 26 and modern Android systems.
+The clicking through feature has been fully redesigned to work reliably on iOS 26 and modern Android systems.
 Instead of sampling pixels (which became unreliable with HDR rendering and remote layer trees), UniWebView now collaborates with your page.
 You explicitly mark interactive elements with `data-uv-transparency="opaque"`, and UniWebView builds a precise hit mask.
 
@@ -79,17 +76,13 @@ See the updated [Clicking Through](./transparency-through.md) guide for details 
 
 ### Android Local Assets Automation
 
-For Android Split Application Binary (APK + OBB) builds, UniWebView now automates copying configured folders to the correct `android_asset` location during Gradle export. This removes the previous error‑prone manual copying process.
+For Android Split Application Binary builds, UniWebView now automates copying configured folders to the correct `android_asset` location during Gradle export. This removes the previous error‑prone manual copying process.
 Configure folders under Preferences > UniWebView > Android Assets, then load them with `UniWebViewHelper.StreamingAssetURLForPath` as usual.
 See the [Loading Local Files](./loading-local-files.md) guide for examples.
 
 ### Logger Performance Improvements
 
-The logging system now uses lazy evaluation internally to avoid unnecessary string allocations when a log level is disabled. This reduces overhead in production builds where the log level is typically Critical.
-
-### Channel Message Security & Robustness
-
-Alongside the new Channel Messaging System, a comprehensive security guideline is provided. It covers origin validation, input sanitization, replay protection and optional signature verification patterns. See the [Channel Message Security](./channel-message-security.md) guide.
+The UniWebView logging system now uses lazy evaluation internally to avoid unnecessary string allocations when a log level is disabled. This reduces overhead in production builds where the log level is typically Critical.
 
 ### Recommended Platform Targets
 
