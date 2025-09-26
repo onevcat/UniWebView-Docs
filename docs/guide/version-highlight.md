@@ -1,6 +1,6 @@
 # Version Highlight
 
-> UniWebView 6 introduces the Channel Message system for high-performance bidirectional communication, enhanced error handling, and improved messaging reliability between web pages and Unity.
+> UniWebView 6 introduces the Channel Messaging System for high-performance bidirectional communication, enhanced error handling, and improved messaging reliability between web pages and Unity.
 
 ::: tip Upgrade Pricing
 If you have purchased UniWebView 5 before, we offer an upgrading discount.
@@ -15,14 +15,13 @@ For users:
 UniWebView contains some significant improvements over its predecessor UniWebView 5. Here we will list a few of them to
 give you an overview about what are added and changed.
 
-
 ### Summary
 
 UniWebView 6 focuses on: high-performance bidirectional messaging (Channel Messages), reliability on new iOS versions (transparency clicking through redesign), build automation for Android large app scenarios, and modernization of iOS distribution with XCFramework. Below are the highlights.
 
-### Channel Message System
+### Channel Messaging System
 
-UniWebView 6 introduces a revolutionary **Channel Message system** that provides high-performance, bidirectional communication between web pages and Unity. This new system addresses the limitations of traditional URL scheme messaging:
+UniWebView 6 introduces a revolutionary **Channel Messaging System** that provides high-performance, bidirectional communication between web pages and Unity. This new system addresses the limitations of traditional URL scheme messaging:
 
 - **No size limits** for data transfer
 - **No message loss** in high-frequency scenarios
@@ -31,15 +30,15 @@ UniWebView 6 introduces a revolutionary **Channel Message system** that provides
 - **Enhanced error handling** with structured responses
 - **Cross-platform consistency** (iOS, Android, Unity)
 
-The Channel Message system offers three communication patterns:
+The Channel Messaging System offers three communication patterns:
 
-| Pattern | Method | Description |
-| ------- | ------ | ----------- |
-| Fire-and-Forget | `send(action, data)` | Async messages without response |
-| Synchronous Call | `call(action, data)` | Immediate return values |
-| Async Request | `request(action, data)` | Promise-based responses with timeout |
+| Pattern          | Method                  | Description                          |
+| ---------------- | ----------------------- | ------------------------------------ |
+| Fire-and-Forget  | `send(action, data)`    | Async messages without response      |
+| Synchronous Call | `call(action, data)`    | Immediate return values              |
+| Async Request    | `request(action, data)` | Promise-based responses with timeout |
 
-For more information about the Channel Message system, please check the [Channel Message Guide](./channel-message.md).
+For more information about the Channel Messaging System, please check the [Channel Message Guide](./channel-message.md).
 
 ### Enhanced Error Handling & Structured Responses
 
@@ -70,6 +69,7 @@ Instead of sampling pixels (which became unreliable with HDR rendering and remot
 You explicitly mark interactive elements with `data-uv-transparency="opaque"`, and UniWebView builds a precise hit mask.
 
 Benefits:
+
 - Works on iOS 26 (previous implementation failed due to HDR / remote layer rendering)
 - Deterministic and performant (no per-touch pixel sampling)
 - Supports dynamic updates via `RefreshTransparencyClickingThroughLayout()`
@@ -89,7 +89,7 @@ The logging system now uses lazy evaluation internally to avoid unnecessary stri
 
 ### Channel Message Security & Robustness
 
-Alongside the new Channel Message system, a comprehensive security guideline is provided. It covers origin validation, input sanitization, replay protection and optional signature verification patterns. See the [Channel Message Security](./channel-message-security.md) guide.
+Alongside the new Channel Messaging System, a comprehensive security guideline is provided. It covers origin validation, input sanitization, replay protection and optional signature verification patterns. See the [Channel Message Security](./channel-message-security.md) guide.
 
 ### Recommended Platform Targets
 

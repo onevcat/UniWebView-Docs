@@ -4,7 +4,7 @@ Channel Messages provide a communication bridge between web content and Unity. M
 
 ## Security Overview
 
-While the Channel Message system provides a flexible communication bridge, implementing proper security measures is your responsibility and it depends on how secure you'd like the system becomes. 
+While the Channel Messaging System provides a flexible communication bridge, implementing proper security measures is your responsibility and it depends on how secure you'd like the system becomes.
 
 This guide recommends the following security practices:
 
@@ -14,7 +14,7 @@ This guide recommends the following security practices:
 - **Replay Protection**: Implement nonce-based systems when replay attacks are a concern
 - **Safe Data Handling**: Follow secure coding practices to prevent XSS and other vulnerabilities
 
-It is not a must at all to use the Channel Message system. However, if your implementation involves sensitive information such as user personal data or payment details, or if it must meet higher security compliance standards, the default configuration may not provide sufficient protection. 
+It is not a must at all to use the Channel Messaging System. However, if your implementation involves sensitive information such as user personal data or payment details, or if it must meet higher security compliance standards, the default configuration may not provide sufficient protection.
 
 In the following section, we have listed some common practices that can enhance security for your reference.
 
@@ -246,21 +246,23 @@ public class NonceMessage {
 ```javascript
 // Generate cryptographically secure nonces
 function generateNonce() {
-    const array = new Uint8Array(16);
-    crypto.getRandomValues(array);
-    return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
+  const array = new Uint8Array(16);
+  crypto.getRandomValues(array);
+  return Array.from(array, (byte) => byte.toString(16).padStart(2, "0")).join(
+    ""
+  );
 }
 
 // Use nonces in sensitive messages
 function sendSecureMessage(action, data) {
-    const message = {
-        nonce: generateNonce(),
-        timestamp: Date.now(),
-        action: action,
-        data: data
-    };
+  const message = {
+    nonce: generateNonce(),
+    timestamp: Date.now(),
+    action: action,
+    data: data,
+  };
 
-    return window.uniwebview.request('secureAction', message);
+  return window.uniwebview.request("secureAction", message);
 }
 ```
 
@@ -269,27 +271,27 @@ function sendSecureMessage(action, data) {
 ```javascript
 // Validate data before sending
 function sendUserData(userData) {
-    // Client-side validation (note: always validate server-side too)
-    if (!userData.username || userData.username.length < 3) {
-        throw new Error('Username must be at least 3 characters');
-    }
+  // Client-side validation (note: always validate server-side too)
+  if (!userData.username || userData.username.length < 3) {
+    throw new Error("Username must be at least 3 characters");
+  }
 
-    if (!isValidEmail(userData.email)) {
-        throw new Error('Invalid email format');
-    }
+  if (!isValidEmail(userData.email)) {
+    throw new Error("Invalid email format");
+  }
 
-    // Sanitize input
-    const sanitizedData = {
-        username: sanitizeString(userData.username),
-        email: sanitizeString(userData.email),
-        preferences: sanitizeObject(userData.preferences)
-    };
+  // Sanitize input
+  const sanitizedData = {
+    username: sanitizeString(userData.username),
+    email: sanitizeString(userData.email),
+    preferences: sanitizeObject(userData.preferences),
+  };
 
-    return window.uniwebview.send('updateUser', sanitizedData);
+  return window.uniwebview.send("updateUser", sanitizedData);
 }
 
 function sanitizeString(str) {
-    return str.replace(/[<>\"'&]/g, '');
+  return str.replace(/[<>\"'&]/g, "");
 }
 ```
 
@@ -297,17 +299,18 @@ function sanitizeString(str) {
 
 ```javascript
 // Don't expose sensitive information in error handling
-window.uniwebview.request('sensitiveOperation', data)
-    .then(result => {
-        processResult(result);
-    })
-    .catch(error => {
-        // Log detailed errors for debugging (remove in production)
-        console.error('Operation failed:', error);
+window.uniwebview
+  .request("sensitiveOperation", data)
+  .then((result) => {
+    processResult(result);
+  })
+  .catch((error) => {
+    // Log detailed errors for debugging (remove in production)
+    console.error("Operation failed:", error);
 
-        // Show user-friendly error messages
-        showUserError('Operation could not be completed. Please try again.');
-    });
+    // Show user-friendly error messages
+    showUserError("Operation could not be completed. Please try again.");
+  });
 ```
 
 ## Production Security Checklist
@@ -330,7 +333,6 @@ window.uniwebview.request('sensitiveOperation', data)
 - [ ] **Key Management**: Secure key storage and rotation procedures
 - [ ] **Audit Trail**: Comprehensive logging of all security-relevant events
 - [ ] **Penetration Testing**: Security testing by qualified professionals
-
 
 ## Common Security Pitfalls
 

@@ -1,6 +1,6 @@
 # Migration Guide (v5 to v6)
 
-> To migrate from UniWebView 5 to 6, remove old files, install the new version, and explore the new Channel Message system for enhanced bidirectional communication.
+> To migrate from UniWebView 5 to 6, remove old files, install the new version, and explore the new Channel Messaging System for enhanced bidirectional communication.
 
 ::: tip Upgrade Pricing
 If you have purchased UniWebView 5 before, we offer an upgrading discount.
@@ -117,11 +117,12 @@ Adding the `data-uv-transparency="opaque"` attribute won't affect any existing c
 
 We strongly recommend updating your HTML content to use the new element marking approach, if you need to run your app on iOS 26 or later.
 
-## Channel Message System
+## Channel Messaging System
 
-The most significant addition in UniWebView 6 is the **Channel Message system**. If you are using a traditional URL-based message system (`uniwebview://`), you may want to consider migrating. This new system provides enhanced communication capabilities between web pages and Unity:
+The most significant addition in UniWebView 6 is the **Channel Messaging System**. If you are using a traditional URL-based message system (`uniwebview://`), you may want to consider migrating. This new system provides enhanced communication capabilities between web pages and Unity:
 
 #### Enhanced Communication
+
 - **Better Performance**: Direct bridge communication without URL scheme overhead
 - **Bidirectional Communication**: Unity can respond with data back to JavaScript
 - **Structured Data**: Native JSON support for complex data types
@@ -140,9 +141,11 @@ Consider upgrading from URL scheme messaging (`uniwebview://`) to Channel Messag
 #### Migration Example
 
 **Old URL Scheme Approach:**
+
 ```javascript
 // JavaScript
-window.location = "uniwebview://action?data=" + encodeURIComponent(JSON.stringify(myData));
+window.location =
+  "uniwebview://action?data=" + encodeURIComponent(JSON.stringify(myData));
 ```
 
 ```csharp
@@ -156,9 +159,10 @@ webView.OnMessageReceived += (view, message) => {
 ```
 
 **New Channel Message Approach:**
+
 ```javascript
 // JavaScript
-window.uniwebview.send('action', myData);
+window.uniwebview.send("action", myData);
 ```
 
 ```csharp
@@ -175,7 +179,7 @@ webView.OnChannelMessageReceived += (view, message) => {
 
 #### Getting Started with Channel Messages
 
-To start using the new Channel Message system, check out the comprehensive [Channel Message Guide](./channel-message.md). The guide covers:
+To start using the new Channel Messaging System, check out the comprehensive [Channel Message Guide](./channel-message.md). The guide covers:
 
 - Three communication patterns (Send, Call, Request)
 - JavaScript API usage
@@ -187,7 +191,8 @@ To start using the new Channel Message system, check out the comprehensive [Chan
 
 For a complete overview of all new features and improvements in UniWebView 6, please check the [Version Highlight](./version-highlight.md) guide.
 
-For detailed API documentation of the Channel Message system, refer to the API references for:
+For detailed API documentation of the Channel Messaging System, refer to the API references for:
+
 - [UniWebViewChannelMessage](../api/UniWebViewChannelMessage.md)
 - [UniWebViewChannelMessageResponse](../api/UniWebViewChannelMessageResponse.md)
 - [UniWebViewChannelMessageType](../api/UniWebViewChannelMessageType.md)

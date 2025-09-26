@@ -14,7 +14,7 @@ features:
   - title: Functionality
     details: Supporting a full set of general web tasks. Including browsing pages, playing videos, interacting, OAuth 2.0, Channel Messages and more.
   - title: Modern & Fast
-    details: Built on modern Unity, native and web technology. High-performance bidirectional communication with enhanced Channel Message system.
+    details: Built on modern Unity, native and web technology. High-performance bidirectional communication with enhanced Channel Messaging System.
   - title: Brilliant API
     details: Well-designed APIs and documentation. Made by developers, for developers. Easy for both using and extending.
 footer: Copyright © 2016-present OneV's Den (@onevcat)

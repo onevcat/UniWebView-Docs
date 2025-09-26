@@ -3378,7 +3378,7 @@ This event is triggered when JavaScript code calls `window.uniwebview.send()`,
 return a `UniWebViewChannelMessageResponse` for sync calls or when immediate response
 is needed. For async messages that need delayed response, use `message.Respond()` method.
 
-The Channel Message system provides structured data communication between web content and Unity,
+The Channel Messaging System provides structured data communication between web content and Unity,
 supporting three communication patterns: Send (fire-and-forget), Call (synchronous), and Request (asynchronous).
 """
 example = """

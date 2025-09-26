@@ -24,7 +24,7 @@ It boosts your development process dramatically when you need to show an announc
 - [Embedded Toolbar](embedded-toolbar.md)
 - [Full JavaScript Support](using-javascript.md)
 - [URL Messaging System](messaging-system.md)
-- [Channel Between Unity and JavaScript](channel-message.md)
+- [Channel Messaging System](channel-message.md)
 
 #### Other Tasks
 

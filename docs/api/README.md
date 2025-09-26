@@ -6,8 +6,8 @@ sidebarDepth: 0
 
 ### Summary
 
-The main class of UniWebView. It represents a native web view and exposes a few APIs for you to use in 
-Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content, 
+The main class of UniWebView. It represents a native web view and exposes a few APIs for you to use in
+Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content,
 as well as receive a message from the web view.
 
 #### Properties Summary
@@ -1365,7 +1365,7 @@ So this event will be never raise anymore. Check <code>Input.GetKeyUp</code> in 
 <code>window.uniwebview.call()</code>, or <code>window.uniwebview.request()</code>. The handler should
 return a <code>UniWebViewChannelMessageResponse</code> for sync calls or when immediate response
 is needed. For async messages that need delayed response, use <code>message.Respond()</code> method.</p>
-<p>The Channel Message system provides structured data communication between web content and Unity,
+<p>The Channel Messaging System provides structured data communication between web content and Unity,
 supporting three communication patterns: Send (fire-and-forget), Call (synchronous), and Request (asynchronous).</p>
 </div>
             <div class='parameters'>
@@ -2564,7 +2564,7 @@ that value.</p>
   <p>
         You need to set it before creating a web view. Existing web views are not affected.
 
-By setting this to <code>true</code>, you will bring some potential security issue to your app. Some malicious script 
+By setting this to <code>true</code>, you will bring some potential security issue to your app. Some malicious script
 would be able to read your sandbox. So we DO NOT recommend to enable it before you realize and understand the risk.
 
   </p>
@@ -3940,7 +3940,7 @@ You could open Safari&#39;s developer tools to debug a web view on iOS.</p>
       <div class='custom-container warning'>
   <p class="custom-container-title">NOTICE</p>
   <p>
-        Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embedded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in the editor and never affect real devices. 
+        Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embedded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in the editor and never affect real devices.
 
 Please remember to disable this in your product build. This should be only used while development.
 
@@ -4692,4 +4692,3 @@ webView<span class="token punctuation">.</span><span class="token function">Regi
                             </div>
   </div>
 </div>
-

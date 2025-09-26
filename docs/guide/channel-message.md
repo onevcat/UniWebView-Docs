@@ -1,10 +1,10 @@
-# Channel Message System
+# Channel Messaging System
 
-The Channel Message system provides a modern, efficient way for web pages to communicate with Unity. It offers three distinct communication patterns designed for different use cases.
+The Channel Messaging System provides a modern, efficient way for web pages to communicate with Unity. It offers three distinct communication patterns designed for different use cases.
 
 ## Overview
 
-While UniWebView's traditional `uniwebview://` URL scheme messaging continues to work perfectly for simple scenarios, the Channel Message system introduces enhanced capabilities:
+While UniWebView's traditional `uniwebview://` URL scheme messaging continues to work perfectly for simple scenarios, the Channel Messaging System introduces enhanced capabilities:
 
 - **Better Performance**: Direct bridge communication without URL scheme overhead
 - **Bidirectional Communication**: Unity can respond with data back to JavaScript
@@ -18,19 +18,21 @@ While UniWebView's traditional `uniwebview://` URL scheme messaging continues to
 Use `send` when you want to notify Unity about something but don't need a response.
 
 **JavaScript**
+
 ```javascript
 // Send a simple string
-window.uniwebview.send('playerDied', 'Player fell into lava');
+window.uniwebview.send("playerDied", "Player fell into lava");
 
 // Send structured data
-window.uniwebview.send('updateScore', {
-    score: 1500,
-    level: 3,
-    bonus: true
+window.uniwebview.send("updateScore", {
+  score: 1500,
+  level: 3,
+  bonus: true,
 });
 ```
 
 **Unity**
+
 ```csharp
 webView.OnChannelMessageReceived += (view, message) => {
     if (message.action == "playerDied") {
@@ -67,22 +69,24 @@ public class ScoreData {
 Use `call` when you need immediate data from Unity. The JavaScript execution waits for Unity's response.
 
 **JavaScript**
+
 ```javascript
 // Get user information synchronously
-const userInfo = window.uniwebview.call('getUserInfo', {
-    userId: '12345'
+const userInfo = window.uniwebview.call("getUserInfo", {
+  userId: "12345",
 });
 
 console.log(`Welcome ${userInfo.userName}!`);
 
 // Get a simple value
-const isVipUser = window.uniwebview.call('checkVipStatus');
+const isVipUser = window.uniwebview.call("checkVipStatus");
 if (isVipUser) {
-    showVipFeatures();
+  showVipFeatures();
 }
 ```
 
 **Unity**
+
 ```csharp
 webView.OnChannelMessageReceived += (view, message) => {
     if (message.action == "getUserInfo") {
@@ -121,25 +125,31 @@ In a sync calling, you need to return either a `UniWebViewChannelMessageResponse
 Use `request` when the operation takes time (network calls, file operations, etc.). JavaScript receives a Promise that resolves when Unity responds.
 
 **JavaScript**
+
 ```javascript
 // Load game data asynchronously
-window.uniwebview.request('loadGameData', {
-    saveSlot: 1
-}).then(gameData => {
+window.uniwebview
+  .request("loadGameData", {
+    saveSlot: 1,
+  })
+  .then((gameData) => {
     console.log(`Loaded level ${gameData.level} with score ${gameData.score}`);
     initializeGame(gameData);
-}).catch(error => {
-    console.error('Failed to load game:', error);
+  })
+  .catch((error) => {
+    console.error("Failed to load game:", error);
     showErrorMessage(error);
-});
+  });
 
 // With timeout (5 seconds)
-window.uniwebview.request('syncToCloud', playerData, 5000)
-    .then(() => console.log('Sync successful'))
-    .catch(error => console.log('Sync failed:', error));
+window.uniwebview
+  .request("syncToCloud", playerData, 5000)
+  .then(() => console.log("Sync successful"))
+  .catch((error) => console.log("Sync failed:", error));
 ```
 
 **Unity**
+
 ```csharp
 webView.OnChannelMessageReceived += (view, message) => {
     if (message.action == "loadGameData") {
@@ -196,22 +206,23 @@ An error raised in Unity side will result in a catchable error in JavaScript:
 
 ```javascript
 // For Request messages (Promise-based)
-window.uniwebview.request('riskyOperation')
-    .then(result => {
-        console.log('Success:', result);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        // error contains the object passed to RespondError()
-    });
+window.uniwebview
+  .request("riskyOperation")
+  .then((result) => {
+    console.log("Success:", result);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+    // error contains the object passed to RespondError()
+  });
 
 // Call messages return data directly (no Promise)
 try {
-    const result = window.uniwebview.call('getData');
-    processData(result);
+  const result = window.uniwebview.call("getData");
+  processData(result);
 } catch (error) {
-    // Handle synchronous errors
-    console.error('Call failed:', error);
+  // Handle synchronous errors
+  console.error("Call failed:", error);
 }
 ```
 
@@ -323,7 +334,7 @@ Text label;
 webView.OnChannelMessageReceived += (view, message) => {
     // This causes thread issue on Android
     // label.text = message.action;
-    
+
     // Wrap it in a dispatcher.
     UniWebViewMainThreadDispatcher.Instance.ExecuteOnMainThread(
         () => label.text = message.action
@@ -340,7 +351,7 @@ Text label;
 webView.OnChannelMessageReceived += (view, message) => {
     // This causes thread issue on Android
     // label.text = message.action;
-    
+
     // Instead, just set `action` string and update it later.
     action = message.action;
 
@@ -364,6 +375,7 @@ void Start() {
 ```
 
 The logger will output information about:
+
 - Message types and actions received
 - Response validation
 - Error conditions
@@ -371,6 +383,6 @@ The logger will output information about:
 
 ### Consider Security
 
-If your implementation involves sensitive information such as user personal data or payment details, or if it must meet higher security compliance standards, the default configuration may not provide sufficient protection. 
+If your implementation involves sensitive information such as user personal data or payment details, or if it must meet higher security compliance standards, the default configuration may not provide sufficient protection.
 
 We strongly recommend reviewing the [Security Consideration](./channel-message-security.md) guide for best practices and advanced topics regarding validation, message signing and key management.
