@@ -8,7 +8,7 @@ If you have purchased UniWebView 5 before, we offer an upgrading discount.
 For users:
 
 - **Purchased from our Gumroad Store** - [Submit a ticket](https://onevcat.atlassian.net/servicedesk/customer/portal/2/group/2/create/10011) with your purchasing email and we will send a 50% off coupon back.
-- **Purchased from Unity Asset Store** - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229334) to find the 50% off Upgrade Price.
+- **Purchased from Unity Asset Store** - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229335) to find the 50% off Upgrade Price.
 - **Recent v5 Purchasers** (after July 26, 2025) - Contact us for a **free upgrade** to UniWebView 6.
   :::
 
