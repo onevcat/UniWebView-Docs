@@ -2058,6 +2058,12 @@ with the web view.
 Only clicks on transparent part on the web view will be delivered to Unity scene. The web view still intercepts
 and handles other touches on visible pixels on the web view.
 """
+notice = """
+**iOS 26 Compatibility Issue**: The transparency clicking through feature in UniWebView v5 has known compatibility 
+issues with iOS 26 due to changes in the WebKit rendering system. The pixel-alpha detection method used in v5 may 
+not work reliably on iOS 26. For full iOS 26 support and improved reliability, please upgrade to **UniWebView v6** 
+which implements a modern DOM-based detection method.
+"""
 example = """
 ```csharp
 // Allow transparency clicking through.
