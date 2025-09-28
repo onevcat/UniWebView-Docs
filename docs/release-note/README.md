@@ -1,5 +1,17 @@
 # Release Note
 
+::: tip UniWebView 6
+UniWebView 6 has been released; UniWebView 5 is now transitioning into maintenance mode. Please visit the new [major-version page](https://assetstore.unity.com/packages/slug/229335) for the latest information.
+
+For the new version highlights and upgrade policy, see [this page](https://docs.uniwebview.com/guide/version-highlight.html).
+:::
+
+### 5.17.5 (28 Sep, 2025)
+
+#### Fix
+
+* Fixed web view frame update issues on foldable devices. The web view now properly adjusts its frame when screen size changes without orientation change, such as when expanding or contracting a fold screen device.
+
 ### 5.17.4 (15 Sep, 2025)
 
 #### Fix

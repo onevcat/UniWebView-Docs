@@ -2620,6 +2620,10 @@ For more about transition and animation, read the [API Reference](/api/).
 
 > UniWebView enables clicking through transparent web pages to interact with Unity scenes behind.
 
+::: warning iOS 26 Compatibility Issue
+The transparency clicking through feature in UniWebView v5 has compatibility issues with iOS 26. For full iOS 26 support and improved reliability, please upgrade to **UniWebView v6** which uses a modern, DOM-based detection method instead of the deprecated pixel-alpha detection.
+:::
+
 If you have a web page with transparency background, it is possible to click through the web page and deliver the touch events to the Unity scene behind. This is called "Transparency Clicking Through" in UniWebView.
 
 ## Steps
@@ -8221,6 +8225,13 @@ with the web view.
 
 Only clicks on transparent part on the web view will be delivered to Unity scene. The web view still intercepts
 and handles other touches on visible pixels on the web view.
+
+notice:
+
+**iOS 26 Compatibility Issue**: The transparency clicking through feature in UniWebView v5 has known compatibility 
+issues with iOS 26 due to changes in the WebKit rendering system. The pixel-alpha detection method used in v5 may 
+not work reliably on iOS 26. For full iOS 26 support and improved reliability, please upgrade to **UniWebView v6** 
+which implements a modern DOM-based detection method.
 
 example:
 

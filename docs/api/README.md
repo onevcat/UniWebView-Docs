@@ -3803,7 +3803,17 @@ with the web view.</p>
 <p>Only clicks on transparent part on the web view will be delivered to Unity scene. The web view still intercepts
 and handles other touches on visible pixels on the web view.</p>
 </div>
-            <div class='parameters'>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        <strong>iOS 26 Compatibility Issue</strong>: The transparency clicking through feature in UniWebView v5 has known compatibility 
+issues with iOS 26 due to changes in the WebKit rendering system. The pixel-alpha detection method used in v5 may 
+not work reliably on iOS 26. For full iOS 26 support and improved reliability, please upgrade to <strong>UniWebView v6</strong> 
+which implements a modern DOM-based detection method.
+
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
