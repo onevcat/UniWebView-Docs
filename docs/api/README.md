@@ -6,8 +6,8 @@ sidebarDepth: 0
 
 ### Summary
 
-The main class of UniWebView. It represents a native web view and exposes a few APIs for you to use in
-Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content,
+The main class of UniWebView. It represents a native web view and exposes a few APIs for you to use in 
+Unity. You could create and use an instance of `UniWebView` to show a page from URL, interact with the web content, 
 as well as receive a message from the web view.
 
 #### Properties Summary
@@ -320,7 +320,10 @@ hides the status bar and navigation bar with a sticky style.</p>
 <p>Sets whether the web view can receive user interaction or not.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#settransparencyclickingthroughenabled'><span class='return-type'>void</span> SetTransparencyClickingThroughEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
-<p>Sets whether the web view should pass through clicks at its clear pixels to Unity scene.</p>
+<p>Sets whether the web view should pass through clicks on transparent areas to Unity scene.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#refreshtransparencyclickingthroughlayout'><span class='return-type'>void</span> RefreshTransparencyClickingThroughLayout()</a></div></td><td><div class='simple-summary'>
+<p>Manually refreshes the transparency clicking through layout detection.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setwebcontentsdebuggingenabled'><span class='return-type'>void</span> SetWebContentsDebuggingEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Enables debugging of web contents.</p>
@@ -2564,7 +2567,7 @@ that value.</p>
   <p>
         You need to set it before creating a web view. Existing web views are not affected.
 
-By setting this to <code>true</code>, you will bring some potential security issue to your app. Some malicious script
+By setting this to <code>true</code>, you will bring some potential security issue to your app. Some malicious script 
 would be able to read your sandbox. So we DO NOT recommend to enable it before you realize and understand the risk.
 
   </p>
@@ -3881,19 +3884,23 @@ scroll the page.</p>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Sets whether the web view should pass through clicks at its clear pixels to Unity scene.</p>
-<p>Setting this method is a pre-condition for the whole passing-through feature to work. To allow your touch passing through
-to Unity scene, the following conditions should be met at the same time:</p>
+<p>Sets whether the web view should pass through clicks on transparent areas to Unity scene.</p>
+<p>This method enables a modern transparency click-through system that collaborates with your web page to determine
+which areas should block touches and which should allow them to pass through to Unity.</p>
+<p>To set up transparency clicking through:</p>
 <ol>
-<li>This method is called with <code>true</code>. It enables the web view to check every touch on the web view.</li>
-<li>The web view has a transparent background in body style for its content by CSS.</li>
-<li>The web view itself has a transparent background color by setting <code>BackgroundColor</code> with a clear color.</li>
+<li>Call this method with <code>true</code> to enable the transparency detection system</li>
+<li>Set your web page background to transparent with CSS: <code>body { background-color: transparent; }</code></li>
+<li>Set the web view background to clear: <code>webView.BackgroundColor = Color.clear;</code></li>
+<li>In your HTML, mark interactive elements with <code>data-uv-transparency=&quot;opaque&quot;</code> to block touches:<pre><code class="language-html"><span class="token operator">&lt;</span>button data<span class="token operator">-</span>uv<span class="token operator">-</span>transparency<span class="token operator">=</span><span class="token string">"opaque"</span><span class="token operator">></span>Interactive Button<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+</code></pre>
+</li>
 </ol>
-<p>Then, when user clicks on the clear pixel on the web view, the touch events will not be handled by the web view.
-Instead, these events are passed to Unity scene. By using this feature, it is possible to create a UI for your game 
-with the web view.</p>
-<p>Only clicks on transparent part on the web view will be delivered to Unity scene. The web view still intercepts
-and handles other touches on visible pixels on the web view.</p>
+<p>Elements marked as &quot;opaque&quot; will intercept touches normally, while unmarked areas will allow clicks to pass
+through to Unity. This approach works reliably across all platforms and provides better performance than
+traditional pixel sampling methods.</p>
+<p>The system automatically handles scrollable content, visibility changes, and DOM updates. For dynamic content
+changes, you can use <code>RefreshTransparencyClickingThroughLayout()</code> to manually refresh the detection.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -3908,19 +3915,79 @@ and handles other touches on visible pixels on the web view.</p>
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code><span class="token comment">// Allow transparency clicking through.</span>
+<pre class="language-csharp"><code><span class="token comment">// Enable transparency clicking through</span>
 webView<span class="token punctuation">.</span><span class="token function">SetTransparencyClickingThroughEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span />
-<span class="token comment">// Make Unity scene visible.</span>
+<span class="token comment">// Make Unity scene visible behind web view</span>
 webView<span class="token punctuation">.</span>BackgroundColor <span class="token operator">=</span> Color<span class="token punctuation">.</span>clear<span class="token punctuation">;</span>
 <span />
-<span class="token comment">// Disable the scrolling bounces effect to fix the web UI.</span>
-webView<span class="token punctuation">.</span><span class="token function">SetBouncesEnabled</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Load your web page with marked interactive elements</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"file:///path/to/transparent-page.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Your HTML page should mark interactive elements:</p>
+<pre><code class="language-html"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<span class="token operator">&lt;</span>html<span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>style<span class="token operator">></span>
+        body <span class="token punctuation">{</span>
+            background<span class="token operator">-</span>color<span class="token punctuation">:</span> transparent<span class="token punctuation">;</span>
+            margin<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            font<span class="token operator">-</span>family<span class="token punctuation">:</span> Arial<span class="token punctuation">,</span> sans<span class="token operator">-</span>serif<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token punctuation">.</span>toolbar <span class="token punctuation">{</span>
+            background<span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            padding<span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> This toolbar will block touches <span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"toolbar"</span> data<span class="token operator">-</span>uv<span class="token operator">-</span>transparency<span class="token operator">=</span><span class="token string">"opaque"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token class-name">button</span> onclick<span class="token operator">=</span><span class="token string">"handleClick()"</span><span class="token operator">></span>Interactive Button<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
 <span />
-<span class="token comment">// Other configuration, usually handle some messages from web view.</span>
-webView<span class="token punctuation">.</span>OnMessageReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token comment">// ...</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> This area allows clicking through to Unity <span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token class-name">div</span> style<span class="token operator">=</span><span class="token string">"height: 400px;"</span><span class="token operator">></span>
+        Transparent area <span class="token operator">-</span> clicks pass through to Unity
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='refreshtransparencyclickingthroughlayout'></div><div class='api-heading' data-id='refreshtransparencyclickingthroughlayout'><a href='#refreshtransparencyclickingthroughlayout'><span class='return-type'>void</span> RefreshTransparencyClickingThroughLayout()</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Manually refreshes the transparency clicking through layout detection.</p>
+<p>This method forces the web view to re-scan the DOM and update the cache of opaque regions used for hit testing.
+It should be called after dynamic changes to your web page content that are not automatically detected:</p>
+<ul>
+<li>Adding or removing DOM elements with JavaScript</li>
+<li>Changing element visibility or display properties</li>
+<li>Moving elements that affect the layout</li>
+<li>After animations or transitions complete</li>
+<li>When toggling visibility of elements programmatically</li>
+</ul>
+<p>The system automatically updates the transparency layout in most cases (page load, scroll, resize, DOM mutations),
+so manual refresh is only needed for specific scenarios where automatic detection may not capture all changes.</p>
+<p>Note: This method only works when transparency clicking through is enabled via <code>SetTransparencyClickingThroughEnabled(true)</code>.</p>
+</div>
+                        <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Enable transparency feature first</span>
+webView<span class="token punctuation">.</span><span class="token function">SetTransparencyClickingThroughEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// After dynamic content changes, refresh the layout</span>
+webView<span class="token punctuation">.</span><span class="token function">EvaluateJavaScript</span><span class="token punctuation">(</span><span class="token string">"addNewButton()"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// Refresh transparency layout after adding new interactive elements</span>
+    webView<span class="token punctuation">.</span><span class="token function">RefreshTransparencyClickingThroughLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -3940,7 +4007,7 @@ You could open Safari&#39;s developer tools to debug a web view on iOS.</p>
       <div class='custom-container warning'>
   <p class="custom-container-title">NOTICE</p>
   <p>
-        Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embedded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in the editor and never affect real devices.
+        Due to a memory bug under WebKit and Unity, it might crash your macOS Editor when you stop playing with an inspector showing embedded in a web view. You could close the inspector first or use it as a standalone window to avoid this. It will only happen in the editor and never affect real devices. 
 
 Please remember to disable this in your product build. This should be only used while development.
 
@@ -4692,3 +4759,4 @@ webView<span class="token punctuation">.</span><span class="token function">Regi
                             </div>
   </div>
 </div>
+

@@ -24,7 +24,7 @@ It boosts your development process dramatically when you need to show an announc
 - [Embedded Toolbar](embedded-toolbar.md)
 - [Full JavaScript Support](using-javascript.md)
 - [URL Messaging System](messaging-system.md)
-- [Channel Between Unity and JavaScript](channel-message.md)
+- [Channel Messaging System](channel-message.md)
 
 #### Other Tasks
 
@@ -42,8 +42,8 @@ And much more. Please check the [full API Reference](/api).
 
 UniWebView v6 supports running on:
 
-- **Unity 2020.1** or above
-- **iOS 9.0** or above
+- **Unity 2021.3.37 LTS**, **2022.3.23 LTS**, or **Unity 6 (6000.x)** or above recommended (earlier versions may still work but are not validated regularly)
+- **iOS 12.0** or above
 - **Android 5.0** (API Level 21) or above
 
 ## How It Works
@@ -73,15 +73,13 @@ If you are working on a Windows PC, you can still build and use UniWebView on mo
 UniWebView on macOS Editor is a full-featured variety of its iOS version. Although UniWebView is designed for mobile platforms, it does not prevent you from putting it into a standalone macOS game.
 :::
 
-## About Version 5
+## About Version 6
 
-The start of the UniWebView project can be traced back to 2013. Until now, we shipped more than 120 versions to make sure the package works well with the latest technology. UniWebView version 5 is a huge step further. We worked even harder to bring more important features (like OAuth 2.0 support), rewrote the toolbar to extend it to Android, improved the performance on both platforms, and added a bunch of new features.
+The project started in 2013 and continues to evolve with platform changes. Version 6 focuses on a modern messaging layer (Channel Messages), reliability with new iOS rendering changes (transparency clicking through redesign), build automation for large Android distributions, and XCFramework adoption for Apple Silicon.
 
-At the same time, we managed to keep the code compatibility for most of the APIs as they were in v4. That means upgrading from version 4 to version 5 is painless. For most of the projects, just reimport the new version and you can get all the new things immediately.
+If you are upgrading from v5, review the [Version Highlight](./version-highlight.md) and the [Migration Guide (v5 to v6)](./migration-guide-v5-to-v6.md). Upgrading from v5 is usually seamless: remove the old package, import v6, and (if you use transparency clicking through) add the `data-uv-transparency="opaque"` attributes to interactive elements.
 
-Already using UniWebView 4? Please take a look at the [Version Highlight](./version-highlight.md) to see how it gets evolved from the previous versions. To upgrade to the latest version, take a brief look at the [Migration Guide](./migration-guide-v4-to-v5.md). We also recommend you read our documentation to bring the potential power of UniWebView to your project.
-
-> This documentation is for version 5. If you are still using v4, you can find its documentation on [this site](https://docs-v4.uniwebview.com) instead.
+> Need older docs? v5 docs are available at [docs-v5.uniwebview.com](https://docs-v5.uniwebview.com).
 
 ## Next Step
 

@@ -9,8 +9,10 @@ For users:
 
 - **Purchased from our Gumroad Store** - [Submit a ticket](https://onevcat.atlassian.net/servicedesk/customer/portal/2/group/2/create/10011) with your purchasing email and we will send a 50% off coupon back.
 - **Purchased from Unity Asset Store** - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229335) to find the 50% off Upgrade Price.
-- **Recent v5 Purchasers** (after July 26, 2025) - Contact us for a **free upgrade** to UniWebView 6.
+- **Recent v5 Purchasers** (after July 30, 2025) - We set a 60-days "grace days". Just log in to Asset Store and claim for a **free upgrade** to UniWebView 6.
   :::
+
+Please feel free to contact us if you need any help upgrading the package to the latest version. We are here to assist you!
 
 ## Overview
 

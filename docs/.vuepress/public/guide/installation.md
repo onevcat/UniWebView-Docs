@@ -8,11 +8,11 @@ We strongly recommend that you perform a backup before importing UniWebView to y
 
 ### Unity Asset Store
 
-If you purchased UniWebView from [Unity Asset Store](https://assetstore.unity.com/packages/slug/229335), open the Asset Store window from **Window → Asset Store** or **Window → Package Manager**. You could find UniWebView 5 there under **My Assets**, then click "Import".
+If you purchased UniWebView from [Unity Asset Store](https://assetstore.unity.com/packages/slug/229335), open the Asset Store window from **Window → Asset Store** or **Window → Package Manager**. You could find the latest UniWebView there under **My Assets**, then click "Import".
 
 ### UniWebView Store
 
-Besides of Unity Asset Store, we also have [our own store](https://onevcat.gumroad.com/l/uniwebview-5). After purchasing from our store, you could download the `uniwebview_x_y_z.unitypackage` (`x_y_z` in the file name indicates the package version). Open your project in which you want to use UniWebView, then double-click the downloaded file to import it.
+Besides of Unity Asset Store, we also have [our own store](https://onevcat.gumroad.com/) (UniWebView product page). After purchasing from our store, you could download the `uniwebview_x_y_z.unitypackage` (`x_y_z` in the file name indicates the package version). Open your project in which you want to use UniWebView, then double-click the downloaded file to import it.
 
 ### Source Repo Access
 
@@ -22,9 +22,9 @@ For users who want to access the source code of UniWebView, we [provide a plan](
 
 Unity will prompt you with a window to confirm the importing files. Just click "Import" to add all files to your project.
 
-> The minimum deploy target of UniWebView is from iOS 9.0 and Android 5.0 (API Level 21). If you are still using an older deploy target for you
-> Unity project, you may have some issues when exporting the project to the final product. Please make sure to update the
-> Target minimum iOS Version and Minimum API Level in the player settings.
+> The minimum deploy target of UniWebView 6 is iOS 12.0 and Android 5.0 (API Level 21). Earlier iOS versions are not tested and not officially supported.
+> For Unity, we recommend using Unity 2021.3.37 LTS, 2022.3.23 LTS, or any Unity 6 (6000.x) version. Earlier versions might still work but are no longer part of our regular test matrix.
+> Please make sure to update the Target minimum iOS Version and Minimum API Level in the Player Settings accordingly.
 
 ![](/images/importing-v5.png)
 

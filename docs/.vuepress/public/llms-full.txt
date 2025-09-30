@@ -30,7 +30,7 @@ It boosts your development process dramatically when you need to show an announc
 - [Embedded Toolbar](embedded-toolbar.md)
 - [Full JavaScript Support](using-javascript.md)
 - [URL Messaging System](messaging-system.md)
-- [Channel Between Unity and JavaScript](channel-message.md)
+- [Channel Messaging System](channel-message.md)
 
 #### Other Tasks
 
@@ -48,8 +48,8 @@ And much more. Please check the [full API Reference](/api).
 
 UniWebView v6 supports running on:
 
-- **Unity 2020.1** or above
-- **iOS 9.0** or above
+- **Unity 2021.3.37 LTS**, **2022.3.23 LTS**, or **Unity 6 (6000.x)** or above recommended (earlier versions may still work but are not validated regularly)
+- **iOS 12.0** or above
 - **Android 5.0** (API Level 21) or above
 
 ## How It Works
@@ -79,15 +79,13 @@ If you are working on a Windows PC, you can still build and use UniWebView on mo
 UniWebView on macOS Editor is a full-featured variety of its iOS version. Although UniWebView is designed for mobile platforms, it does not prevent you from putting it into a standalone macOS game.
 :::
 
-## About Version 5
+## About Version 6
 
-The start of the UniWebView project can be traced back to 2013. Until now, we shipped more than 120 versions to make sure the package works well with the latest technology. UniWebView version 5 is a huge step further. We worked even harder to bring more important features (like OAuth 2.0 support), rewrote the toolbar to extend it to Android, improved the performance on both platforms, and added a bunch of new features.
+The project started in 2013 and continues to evolve with platform changes. Version 6 focuses on a modern messaging layer (Channel Messages), reliability with new iOS rendering changes (transparency clicking through redesign), build automation for large Android distributions, and XCFramework adoption for Apple Silicon.
 
-At the same time, we managed to keep the code compatibility for most of the APIs as they were in v4. That means upgrading from version 4 to version 5 is painless. For most of the projects, just reimport the new version and you can get all the new things immediately.
+If you are upgrading from v5, review the [Version Highlight](./version-highlight.md) and the [Migration Guide (v5 to v6)](./migration-guide-v5-to-v6.md). Upgrading from v5 is usually seamless: remove the old package, import v6, and (if you use transparency clicking through) add the `data-uv-transparency="opaque"` attributes to interactive elements.
 
-Already using UniWebView 4? Please take a look at the [Version Highlight](./version-highlight.md) to see how it gets evolved from the previous versions. To upgrade to the latest version, take a brief look at the [Migration Guide](./migration-guide-v4-to-v5.md). We also recommend you read our documentation to bring the potential power of UniWebView to your project.
-
-> This documentation is for version 5. If you are still using v4, you can find its documentation on [this site](https://docs-v4.uniwebview.com) instead.
+> Need older docs? v5 docs are available at [docs-v5.uniwebview.com](https://docs-v5.uniwebview.com).
 
 ## Next Step
 
@@ -193,7 +191,7 @@ Channel Messages provide a communication bridge between web content and Unity. M
 
 ## Security Overview
 
-While the Channel Message system provides a flexible communication bridge, implementing proper security measures is your responsibility and it depends on how secure you'd like the system becomes. 
+While the Channel Messaging System provides a flexible communication bridge, implementing proper security measures is your responsibility and it depends on how secure you'd like the system becomes.
 
 This guide recommends the following security practices:
 
@@ -203,7 +201,7 @@ This guide recommends the following security practices:
 - **Replay Protection**: Implement nonce-based systems when replay attacks are a concern
 - **Safe Data Handling**: Follow secure coding practices to prevent XSS and other vulnerabilities
 
-It is not a must at all to use the Channel Message system. However, if your implementation involves sensitive information such as user personal data or payment details, or if it must meet higher security compliance standards, the default configuration may not provide sufficient protection. 
+It is not a must at all to use the Channel Messaging System. However, if your implementation involves sensitive information such as user personal data or payment details, or if it must meet higher security compliance standards, the default configuration may not provide sufficient protection.
 
 In the following section, we have listed some common practices that can enhance security for your reference.
 
@@ -435,21 +433,23 @@ public class NonceMessage {
 ```javascript
 // Generate cryptographically secure nonces
 function generateNonce() {
-    const array = new Uint8Array(16);
-    crypto.getRandomValues(array);
-    return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
+  const array = new Uint8Array(16);
+  crypto.getRandomValues(array);
+  return Array.from(array, (byte) => byte.toString(16).padStart(2, "0")).join(
+    ""
+  );
 }
 
 // Use nonces in sensitive messages
 function sendSecureMessage(action, data) {
-    const message = {
-        nonce: generateNonce(),
-        timestamp: Date.now(),
-        action: action,
-        data: data
-    };
+  const message = {
+    nonce: generateNonce(),
+    timestamp: Date.now(),
+    action: action,
+    data: data,
+  };
 
-    return window.uniwebview.request('secureAction', message);
+  return window.uniwebview.request("secureAction", message);
 }
 ```
 
@@ -458,27 +458,27 @@ function sendSecureMessage(action, data) {
 ```javascript
 // Validate data before sending
 function sendUserData(userData) {
-    // Client-side validation (note: always validate server-side too)
-    if (!userData.username || userData.username.length < 3) {
-        throw new Error('Username must be at least 3 characters');
-    }
+  // Client-side validation (note: always validate server-side too)
+  if (!userData.username || userData.username.length < 3) {
+    throw new Error("Username must be at least 3 characters");
+  }
 
-    if (!isValidEmail(userData.email)) {
-        throw new Error('Invalid email format');
-    }
+  if (!isValidEmail(userData.email)) {
+    throw new Error("Invalid email format");
+  }
 
-    // Sanitize input
-    const sanitizedData = {
-        username: sanitizeString(userData.username),
-        email: sanitizeString(userData.email),
-        preferences: sanitizeObject(userData.preferences)
-    };
+  // Sanitize input
+  const sanitizedData = {
+    username: sanitizeString(userData.username),
+    email: sanitizeString(userData.email),
+    preferences: sanitizeObject(userData.preferences),
+  };
 
-    return window.uniwebview.send('updateUser', sanitizedData);
+  return window.uniwebview.send("updateUser", sanitizedData);
 }
 
 function sanitizeString(str) {
-    return str.replace(/[<>\"'&]/g, '');
+  return str.replace(/[<>\"'&]/g, "");
 }
 ```
 
@@ -486,17 +486,18 @@ function sanitizeString(str) {
 
 ```javascript
 // Don't expose sensitive information in error handling
-window.uniwebview.request('sensitiveOperation', data)
-    .then(result => {
-        processResult(result);
-    })
-    .catch(error => {
-        // Log detailed errors for debugging (remove in production)
-        console.error('Operation failed:', error);
+window.uniwebview
+  .request("sensitiveOperation", data)
+  .then((result) => {
+    processResult(result);
+  })
+  .catch((error) => {
+    // Log detailed errors for debugging (remove in production)
+    console.error("Operation failed:", error);
 
-        // Show user-friendly error messages
-        showUserError('Operation could not be completed. Please try again.');
-    });
+    // Show user-friendly error messages
+    showUserError("Operation could not be completed. Please try again.");
+  });
 ```
 
 ## Production Security Checklist
@@ -519,7 +520,6 @@ window.uniwebview.request('sensitiveOperation', data)
 - [ ] **Key Management**: Secure key storage and rotation procedures
 - [ ] **Audit Trail**: Comprehensive logging of all security-relevant events
 - [ ] **Penetration Testing**: Security testing by qualified professionals
-
 
 ## Common Security Pitfalls
 
@@ -577,17 +577,18 @@ catch (System.Exception e) {
 
 Remember: Security is a multi-layered approach. Implement appropriate measures based on your application's security requirements and threat model.
 
+
 ---
 
-### Channel Message System
+### Channel Messaging System
 
-# Channel Message System
+# Channel Messaging System
 
-The Channel Message system provides a modern, efficient way for web pages to communicate with Unity. It offers three distinct communication patterns designed for different use cases.
+The Channel Messaging System provides a modern, efficient way for web pages to communicate with Unity. It offers three distinct communication patterns designed for different use cases.
 
 ## Overview
 
-While UniWebView's traditional `uniwebview://` URL scheme messaging continues to work perfectly for simple scenarios, the Channel Message system introduces enhanced capabilities:
+While UniWebView's traditional `uniwebview://` URL scheme messaging continues to work perfectly for simple scenarios, the Channel Messaging System introduces enhanced capabilities:
 
 - **Better Performance**: Direct bridge communication without URL scheme overhead
 - **Bidirectional Communication**: Unity can respond with data back to JavaScript
@@ -601,19 +602,21 @@ While UniWebView's traditional `uniwebview://` URL scheme messaging continues to
 Use `send` when you want to notify Unity about something but don't need a response.
 
 **JavaScript**
+
 ```javascript
 // Send a simple string
-window.uniwebview.send('playerDied', 'Player fell into lava');
+window.uniwebview.send("playerDied", "Player fell into lava");
 
 // Send structured data
-window.uniwebview.send('updateScore', {
-    score: 1500,
-    level: 3,
-    bonus: true
+window.uniwebview.send("updateScore", {
+  score: 1500,
+  level: 3,
+  bonus: true,
 });
 ```
 
 **Unity**
+
 ```csharp
 webView.OnChannelMessageReceived += (view, message) => {
     if (message.action == "playerDied") {
@@ -650,22 +653,24 @@ public class ScoreData {
 Use `call` when you need immediate data from Unity. The JavaScript execution waits for Unity's response.
 
 **JavaScript**
+
 ```javascript
 // Get user information synchronously
-const userInfo = window.uniwebview.call('getUserInfo', {
-    userId: '12345'
+const userInfo = window.uniwebview.call("getUserInfo", {
+  userId: "12345",
 });
 
 console.log(`Welcome ${userInfo.userName}!`);
 
 // Get a simple value
-const isVipUser = window.uniwebview.call('checkVipStatus');
+const isVipUser = window.uniwebview.call("checkVipStatus");
 if (isVipUser) {
-    showVipFeatures();
+  showVipFeatures();
 }
 ```
 
 **Unity**
+
 ```csharp
 webView.OnChannelMessageReceived += (view, message) => {
     if (message.action == "getUserInfo") {
@@ -704,25 +709,31 @@ In a sync calling, you need to return either a `UniWebViewChannelMessageResponse
 Use `request` when the operation takes time (network calls, file operations, etc.). JavaScript receives a Promise that resolves when Unity responds.
 
 **JavaScript**
+
 ```javascript
 // Load game data asynchronously
-window.uniwebview.request('loadGameData', {
-    saveSlot: 1
-}).then(gameData => {
+window.uniwebview
+  .request("loadGameData", {
+    saveSlot: 1,
+  })
+  .then((gameData) => {
     console.log(`Loaded level ${gameData.level} with score ${gameData.score}`);
     initializeGame(gameData);
-}).catch(error => {
-    console.error('Failed to load game:', error);
+  })
+  .catch((error) => {
+    console.error("Failed to load game:", error);
     showErrorMessage(error);
-});
+  });
 
 // With timeout (5 seconds)
-window.uniwebview.request('syncToCloud', playerData, 5000)
-    .then(() => console.log('Sync successful'))
-    .catch(error => console.log('Sync failed:', error));
+window.uniwebview
+  .request("syncToCloud", playerData, 5000)
+  .then(() => console.log("Sync successful"))
+  .catch((error) => console.log("Sync failed:", error));
 ```
 
 **Unity**
+
 ```csharp
 webView.OnChannelMessageReceived += (view, message) => {
     if (message.action == "loadGameData") {
@@ -779,22 +790,23 @@ An error raised in Unity side will result in a catchable error in JavaScript:
 
 ```javascript
 // For Request messages (Promise-based)
-window.uniwebview.request('riskyOperation')
-    .then(result => {
-        console.log('Success:', result);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        // error contains the object passed to RespondError()
-    });
+window.uniwebview
+  .request("riskyOperation")
+  .then((result) => {
+    console.log("Success:", result);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+    // error contains the object passed to RespondError()
+  });
 
 // Call messages return data directly (no Promise)
 try {
-    const result = window.uniwebview.call('getData');
-    processData(result);
+  const result = window.uniwebview.call("getData");
+  processData(result);
 } catch (error) {
-    // Handle synchronous errors
-    console.error('Call failed:', error);
+  // Handle synchronous errors
+  console.error("Call failed:", error);
 }
 ```
 
@@ -906,7 +918,7 @@ Text label;
 webView.OnChannelMessageReceived += (view, message) => {
     // This causes thread issue on Android
     // label.text = message.action;
-    
+
     // Wrap it in a dispatcher.
     UniWebViewMainThreadDispatcher.Instance.ExecuteOnMainThread(
         () => label.text = message.action
@@ -923,7 +935,7 @@ Text label;
 webView.OnChannelMessageReceived += (view, message) => {
     // This causes thread issue on Android
     // label.text = message.action;
-    
+
     // Instead, just set `action` string and update it later.
     action = message.action;
 
@@ -947,6 +959,7 @@ void Start() {
 ```
 
 The logger will output information about:
+
 - Message types and actions received
 - Response validation
 - Error conditions
@@ -954,7 +967,7 @@ The logger will output information about:
 
 ### Consider Security
 
-If your implementation involves sensitive information such as user personal data or payment details, or if it must meet higher security compliance standards, the default configuration may not provide sufficient protection. 
+If your implementation involves sensitive information such as user personal data or payment details, or if it must meet higher security compliance standards, the default configuration may not provide sufficient protection.
 
 We strongly recommend reviewing the [Security Consideration](./channel-message-security.md) guide for best practices and advanced topics regarding validation, message signing and key management.
 
@@ -1366,8 +1379,8 @@ then in the "Build Settings" tab, search for "Enable Bitcode" item and change it
 
 UniWebView supports running on:
 
-- **Unity 2020.1** or above
-- **iOS 9.0** or above
+- **Unity 2021.3.37 LTS**, **2022.3.23 LTS**, or **Unity 6 (6000.x)** or above recommended (earlier versions like 2020.x may still work but are not actively tested)
+- **iOS 12.0** or above
 - **Android 5.0** (API Level 21) or above
 
 UniWebView also contains Unity Editor support on macOS for debug purposes. If you are working on a Windows PC, you can still build and use UniWebView on mobile devices, but you cannot see the result directly in the Windows Unity Editor.
@@ -1498,11 +1511,11 @@ We strongly recommend that you perform a backup before importing UniWebView to y
 
 ### Unity Asset Store
 
-If you purchased UniWebView from [Unity Asset Store](https://assetstore.unity.com/packages/slug/229334), open the Asset Store window from **Window → Asset Store** or **Window → Package Manager**. You could find UniWebView 5 there under **My Assets**, then click "Import".
+If you purchased UniWebView from [Unity Asset Store](https://assetstore.unity.com/packages/slug/229335), open the Asset Store window from **Window → Asset Store** or **Window → Package Manager**. You could find the latest UniWebView there under **My Assets**, then click "Import".
 
 ### UniWebView Store
 
-Besides of Unity Asset Store, we also have [our own store](https://onevcat.gumroad.com/l/uniwebview-5). After purchasing from our store, you could download the `uniwebview_x_y_z.unitypackage` (`x_y_z` in the file name indicates the package version). Open your project in which you want to use UniWebView, then double-click the downloaded file to import it.
+Besides of Unity Asset Store, we also have [our own store](https://onevcat.gumroad.com/) (UniWebView product page). After purchasing from our store, you could download the `uniwebview_x_y_z.unitypackage` (`x_y_z` in the file name indicates the package version). Open your project in which you want to use UniWebView, then double-click the downloaded file to import it.
 
 ### Source Repo Access
 
@@ -1512,9 +1525,9 @@ For users who want to access the source code of UniWebView, we [provide a plan](
 
 Unity will prompt you with a window to confirm the importing files. Just click "Import" to add all files to your project.
 
-> The minimum deploy target of UniWebView is from iOS 9.0 and Android 5.0 (API Level 21). If you are still using an older deploy target for you
-> Unity project, you may have some issues when exporting the project to the final product. Please make sure to update the
-> Target minimum iOS Version and Minimum API Level in the player settings.
+> The minimum deploy target of UniWebView 6 is iOS 12.0 and Android 5.0 (API Level 21). Earlier iOS versions are not tested and not officially supported.
+> For Unity, we recommend using Unity 2021.3.37 LTS, 2022.3.23 LTS, or any Unity 6 (6000.x) version. Earlier versions might still work but are no longer part of our regular test matrix.
+> Please make sure to update the Target minimum iOS Version and Minimum API Level in the Player Settings accordingly.
 
 ![](/images/importing-v5.png)
 
@@ -1673,11 +1686,15 @@ Assets/
 ```
 
 **Step 1: Configure UniWebView Settings**
+
 - Open Preferences > UniWebView
 - In "Android Assets" section, add: `WebContents`
 - This tells UniWebView to copy this folder to Android assets during build
 
+![](/images/android-assets-folder.png)
+
 **Step 2: Load the Content**
+
 ```csharp
 // After configuration, the files will be accessible at the configured path
 var url = UniWebViewHelper.StreamingAssetURLForPath("WebContents/index.html");
@@ -1701,6 +1718,7 @@ Assets/
 
 **Configuration**: Add `StreamingAssets/WebContents` to Android Assets
 **Loading**:
+
 ```csharp
 var url = UniWebViewHelper.StreamingAssetURLForPath("WebContents/index.html");
 webView.Load(url);
@@ -1839,27 +1857,28 @@ webView.CleanCache();
 UniWebView provides two messaging systems for communication between web content and Unity:
 
 1. **URL Scheme Messaging** (Traditional) - Simple, one-way communication using custom URL schemes
-2. **Channel Message System** (New) - Advanced, bidirectional communication with structured data support
+2. **Channel Messaging System** (New) - Advanced, bidirectional communication with structured data support
 
 ## Choosing the Right System
 
-| Feature | URL Scheme Messaging | Channel Message System |
-|---------|---------------------|----------------------|
-| **Complexity** | Simple, easy setup | More powerful, slightly more complex |
-| **Communication** | One-way (Web → Unity) | Bidirectional (Web ↔ Unity) |
-| **Data Format** | URL query parameters | Structured JSON data |
-| **Response Support** | No | Yes (sync and async) |
-| **Data Size Limit** | ~16KB | Much larger (no URL length limits) |
-| **Performance** | Good for simple messages | Better for complex data |
-| **Type Safety** | String-based parsing | Native object serialization |
-| **Use Cases** | Simple actions, notifications | Complex data exchange, API-like interactions |
+| Feature              | URL Scheme Messaging          | Channel Messaging System                     |
+| -------------------- | ----------------------------- | -------------------------------------------- |
+| **Complexity**       | Simple, easy setup            | More powerful, slightly more complex         |
+| **Communication**    | One-way (Web → Unity)         | Bidirectional (Web ↔ Unity)                  |
+| **Data Format**      | URL query parameters          | Structured JSON data                         |
+| **Response Support** | No                            | Yes (sync and async)                         |
+| **Data Size Limit**  | ~16KB                         | Much larger (no URL length limits)           |
+| **Performance**      | Good for simple messages      | Better for complex data                      |
+| **Type Safety**      | String-based parsing          | Native object serialization                  |
+| **Use Cases**        | Simple actions, notifications | Complex data exchange, API-like interactions |
 
 **Recommendation:**
+
 - Use **URL Scheme Messaging** for simple, fire-and-forget messages
-- Use **Channel Message System** for complex data exchange and when you need responses
+- Use **Channel Messaging System** for complex data exchange and when you need responses
 
 ::: tip NEW FEATURE
-The Channel Message system is available starting from UniWebView v6. It provides more powerful communication capabilities. Learn more in the [Channel Message Guide](./channel-message.md).
+The Channel Messaging System is available starting from UniWebView v6. It provides more powerful communication capabilities. Learn more in the [Channel Message Guide](./channel-message.md).
 :::
 
 In this guide, we focus on the URL Scheme Messaging.
@@ -1955,14 +1974,15 @@ webView.OnPageFinished += (view, statusCode, url) => {
 ---
 
 ::: warning Limitation
-The URL scheme messaging system is built on URL and Unity's message sender. It means you cannot send the unlimited size of data at once. The allowed max length of a URL is different from devices and system versions. But **a safe length is ~16KB** for a URL. If you have something huge to send from the web page to Unity and encountered some problems, it would be better to split them into smaller pieces or switch to the Channel Message System.
+The URL scheme messaging system is built on URL and Unity's message sender. It means you cannot send the unlimited size of data at once. The allowed max length of a URL is different from devices and system versions. But **a safe length is ~16KB** for a URL. If you have something huge to send from the web page to Unity and encountered some problems, it would be better to split them into smaller pieces or switch to the Channel Messaging System.
 :::
 
-## Migrating to Channel Message System
+## Migrating to Channel Messaging System
 
-If you find the URL scheme messaging limitations restrictive, consider migrating to the Channel Message system. Here's a simple example:
+If you find the URL scheme messaging limitations restrictive, consider migrating to the Channel Messaging System. Here's a simple example:
 
 ### Before (URL Scheme)
+
 ```javascript
 // JavaScript - Limited data size, no response
 location.href = "uniwebview://updateScore?score=1500&level=3&bonus=true";
@@ -1981,15 +2001,16 @@ webView.OnMessageReceived += (view, message) => {
 ```
 
 ### After (Channel Message)
+
 ```javascript
 // JavaScript - Structured data, can get response
-const result = window.uniwebview.call('updateScore', {
-    score: 1500,
-    level: 3,
-    bonus: true
+const result = window.uniwebview.call("updateScore", {
+  score: 1500,
+  level: 3,
+  bonus: true,
 });
 
-console.log('Score updated:', result);
+console.log("Score updated:", result);
 ```
 
 ```csharp
@@ -2012,7 +2033,7 @@ public class ScoreData {
 ```
 
 ::: tip NEXT STEPS
-Ready to use the more powerful Channel Message system? Check out the [Channel Message Guide](./channel-message.md) for complete documentation and examples.
+Ready to use the more powerful Channel Messaging System? Check out the [Channel Message Guide](./channel-message.md) for complete documentation and examples.
 :::
 
 
@@ -2030,7 +2051,7 @@ If you have purchased UniWebView 4 before, we offer an upgrading discount.
 For users:
 
 - Purchased from our Gumroad Store - [Submit a ticket](https://onevcat.atlassian.net/servicedesk/customer/portal/2/group/2/create/10011) with your purchasing Email and we will send a coupon back.
-- Purchased from Unity Asset Store - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229334)
+- Purchased from Unity Asset Store - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229335)
   to find the Upgrade Price.
   :::
 
@@ -2105,26 +2126,29 @@ For other features and fixes in new versions of UniWebView v5, please check the 
 
 # Migration Guide (v5 to v6)
 
-> To migrate from UniWebView 5 to 6, remove old files, install the new version, and explore the new Channel Message system for enhanced bidirectional communication.
+> To migrate from UniWebView 5 to 6, remove old files, install the new version, and explore the new Channel Messaging System for enhanced bidirectional communication.
 
 ::: tip Upgrade Pricing
 If you have purchased UniWebView 5 before, we offer an upgrading discount.
 
 For users:
 
-- Purchased from our Gumroad Store - [Submit a ticket](https://onevcat.atlassian.net/servicedesk/customer/portal/2/group/2/create/10011) with your purchasing Email and we will send a coupon back.
-- Purchased from Unity Asset Store - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229334)
-  to find the Upgrade Price.
+- **Purchased from our Gumroad Store** - [Submit a ticket](https://onevcat.atlassian.net/servicedesk/customer/portal/2/group/2/create/10011) with your purchasing email and we will send a 50% off coupon back.
+- **Purchased from Unity Asset Store** - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229335) to find the 50% off Upgrade Price.
+- **Recent v5 Purchasers** (after July 30, 2025) - We set a 60-days "grace days". Just log in to Asset Store and claim for a **free upgrade** to UniWebView 6.
   :::
 
-### Overview
+Please feel free to contact us if you need any help upgrading the package to the latest version. We are here to assist you!
 
-UniWebView 6 is fully compatible with UniWebView 5. The migration to the new version is seamless and requires minimal effort. You need to:
+## Overview
+
+UniWebView 6 is mostly compatible with UniWebView 5. The migration to the new version is seamless and requires minimal effort. You need to:
 
 1. Remove UniWebView 5 from your project.
 2. Install UniWebView 6.
-3. Explore new Channel Message features.
-4. Consider upgrading existing URL scheme messaging to Channel Messages for better performance.
+3. Check if you are using `SetTransparencyClickingThroughEnabled` and update web content (see below).
+4. Explore new Channel Message features.
+5. Consider upgrading existing URL scheme messaging to Channel Messages for better performance and reliability.
 
 Let's start!
 
@@ -2151,21 +2175,88 @@ any) from your project:
 Now, you have completely removed UniWebView 5 from you project. Please make sure that you no longer have a "UniWebView"
 folder in "Assets". Then follow the [Installation Guide](./installation.md) to integrate UniWebView 6 into your project.
 
+It's worth noting that UniWebView 6 uses XCFramework for iOS integration. This lets you run your project and UniWebView content smoothly on the iOS simulator (including Apple Silicon) without any architecture conversion steps.
+
 ### Backward Compatibility
 
-UniWebView 6 maintains full backward compatibility with UniWebView 5. All existing APIs and functionality continue to work exactly as before. Your existing code will work without any modifications.
+UniWebView 6 maintains full backward compatibility with UniWebView 5 in Unity code level. All existing APIs and functionality continue to work exactly as before. Your existing code will build without any modifications.
 
-### New Features
+However, if you are using the "Transparency Clicking Through" feature, you need to update the web page content and add new data attributes in the appropriate places.
 
-The most significant addition in UniWebView 6 is the **Channel Message system**. This new system provides enhanced communication capabilities between web pages and Unity:
+## Transparency Clicking-Through Migration
+
+If you're currently using "Transparency Clicking Through" (`SetTransparencyClickingThroughEnabled(true)`), check the content below. Otherwise, you can jump to the next section.
+
+The underlying principle of the `SetTransparencyClickingThroughEnabled` API conflicts with the rendering engine of iOS 26, which causes this API does not work on iOS 26 devices. So we have completely redesigned a new solution.
+
+### Migration Steps
+
+The traditional pixel-sampling approach has been replaced with a collaborative system where your web page explicitly marks interactive elements.
+
+**1. Update Your HTML Content**
+
+Add `data-uv-transparency="opaque"` to interactive elements that should block touches:
+
+```html
+<!-- Before: All elements were handled by pixel detection -->
+<button onclick="handleClick()">Button</button>
+<div class="toolbar">
+  <button onclick="action1()">Action 1</button>
+  <button onclick="action2()">Action 2</button>
+</div>
+
+<!-- After: Mark interactive elements explicitly -->
+<button data-uv-transparency="opaque" onclick="handleClick()">Button</button>
+<div class="toolbar" data-uv-transparency="opaque">
+  <button onclick="action1()">Action 1</button>
+  <button onclick="action2()">Action 2</button>
+</div>
+```
+
+**2. No Unity Code Changes Required**
+
+Your existing Unity code continues to work without changes:
+
+```csharp
+// This remains the same
+webView.SetTransparencyClickingThroughEnabled(true);
+webView.BackgroundColor = Color.clear;
+```
+
+**3. Handle Dynamic Content (Optional)**
+
+For dynamically added content to the page, use the new refresh API when it is added:
+
+```csharp
+// After adding elements dynamically
+webView.EvaluateJavaScript("addNewButton()", (result) => {
+    webView.RefreshTransparencyClickingThroughLayout();
+});
+```
+
+### Important Notes
+
+- **Elements without the attribute** will allow clicks to pass through to Unity
+- **Container elements** marked as opaque will block touches for all child elements
+
+### Backward Compatibility
+
+Adding the `data-uv-transparency="opaque"` attribute won't affect any existing clients with older UniWebView versions. So you can still use the same updated HTML for all your app versions.
+
+We strongly recommend updating your HTML content to use the new element marking approach, if you need to run your app on iOS 26 or later.
+
+## Channel Messaging System
+
+The most significant addition in UniWebView 6 is the **Channel Messaging System**. If you are using a traditional URL-based message system (`uniwebview://`), you may want to consider migrating. This new system provides enhanced communication capabilities between web pages and Unity:
 
 #### Enhanced Communication
+
 - **Better Performance**: Direct bridge communication without URL scheme overhead
 - **Bidirectional Communication**: Unity can respond with data back to JavaScript
 - **Structured Data**: Native JSON support for complex data types
 - **Multiple Patterns**: Choose between fire-and-forget, synchronous, and asynchronous communication
 
-#### When to Use Channel Messages
+### When to Use Channel Messages
 
 Consider upgrading from URL scheme messaging (`uniwebview://`) to Channel Messages when:
 
@@ -2178,9 +2269,11 @@ Consider upgrading from URL scheme messaging (`uniwebview://`) to Channel Messag
 #### Migration Example
 
 **Old URL Scheme Approach:**
+
 ```javascript
 // JavaScript
-window.location = "uniwebview://action?data=" + encodeURIComponent(JSON.stringify(myData));
+window.location =
+  "uniwebview://action?data=" + encodeURIComponent(JSON.stringify(myData));
 ```
 
 ```csharp
@@ -2194,9 +2287,10 @@ webView.OnMessageReceived += (view, message) => {
 ```
 
 **New Channel Message Approach:**
+
 ```javascript
 // JavaScript
-window.uniwebview.send('action', myData);
+window.uniwebview.send("action", myData);
 ```
 
 ```csharp
@@ -2211,9 +2305,9 @@ webView.OnChannelMessageReceived += (view, message) => {
 };
 ```
 
-### Getting Started with Channel Messages
+#### Getting Started with Channel Messages
 
-To start using the new Channel Message system, check out the comprehensive [Channel Message Guide](./channel-message.md). The guide covers:
+To start using the new Channel Messaging System, check out the comprehensive [Channel Message Guide](./channel-message.md). The guide covers:
 
 - Three communication patterns (Send, Call, Request)
 - JavaScript API usage
@@ -2221,16 +2315,18 @@ To start using the new Channel Message system, check out the comprehensive [Chan
 - Error handling best practices
 - Security considerations
 
-### Checking New Features
+## Checking New Features
 
 For a complete overview of all new features and improvements in UniWebView 6, please check the [Version Highlight](./version-highlight.md) guide.
 
-For detailed API documentation of the Channel Message system, refer to the API references for:
+For detailed API documentation of the Channel Messaging System, refer to the API references for:
+
 - [UniWebViewChannelMessage](../api/UniWebViewChannelMessage.md)
 - [UniWebViewChannelMessageResponse](../api/UniWebViewChannelMessageResponse.md)
 - [UniWebViewChannelMessageType](../api/UniWebViewChannelMessageType.md)
 
 For all changes and fixes in UniWebView v6, please check the [Release Notes](../release-note/).
+
 
 ---
 
@@ -2246,7 +2342,7 @@ If you have purchased UniWebView 3 before, we offer an upgrading discount.
 For users:
 
 - Purchased from our Gumroad Store - [Submit a ticket](https://onevcat.atlassian.net/servicedesk/customer/portal/2/group/2/create/10011) with your purchasing Email and we will send a coupon back.
-- Purchased from Unity Asset Store - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229334)
+- Purchased from Unity Asset Store - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229335)
   to find the Upgrade Price.
   :::
 
@@ -3684,105 +3780,193 @@ For more about transition and animation, read the [API Reference](/api/).
 
 > UniWebView enables clicking through transparent web pages to interact with Unity scenes behind.
 
-If you have a web page with transparency background, it is possible to click through the web page and deliver the touch events to the Unity scene behind. This is called "Transparency Clicking Through" in UniWebView.
+It is possible to click through the web page and deliver the touch events to the Unity scene behind. This is called "Transparency Clicking Through" in UniWebView. Starting from v6, the implementation is redesigned for reliability on iOS 26 and modern Android systems.
+
+## How It Works
+
+UniWebView uses a modern approach for transparency detection. It collaborates with your web page to identify which areas should block touches and which should let them pass through to Unity. By setting the web page background to a transparent color, it can simultaneously display elements from both the web page and Unity, while keeping each of them clickable. 
 
 ## Steps
 
-There are three steps before you can actually click through the transparent part on web view.
+There are three steps to enable clicking through transparent areas:
 
-### Enabling click through check
+### 1. Enable transparency clicking through
 
-Calling [`SetTransparencyClickingThroughEnabled`](/api/#settransparencyclickingthroughenabled) with `true`. This allows UniWebView to check every touch and the pixel color at the touch point.
-
-You can simply do this after creating the web view:
+Call [`SetTransparencyClickingThroughEnabled`](/api/#settransparencyclickingthroughenabled) with `true` after creating your web view:
 
 ```csharp
 webView = gameObject.AddComponent<UniWebView>();
 webView.SetTransparencyClickingThroughEnabled(true);
 ```
 
-### Preparing a transparent web page
+This enables the transparency detection system and injects the necessary JavaScript code into your web page.
 
-To allow clicking through, it is required that the Unity scene is visible even under the web view. So you need to have a transparent web page content in HTML. Normally, it is controlled by the style used by `body` tag in the page:
+### 2. Mark interactive elements in your web page
+
+In your HTML, add the `data-uv-transparency="opaque"` attribute to any elements that should **block** touches to Unity and **not** allow clicking through (In other words, these mark the web elements you want to interact with.):
+
+```html
+<!-- This button will block touches and handle clicks normally -->
+<button data-uv-transparency="opaque" onclick="handleClick()">
+    Interactive Button
+</button>
+
+<!-- This div will also block touches in its entire area -->
+<div class="toolbar" data-uv-transparency="opaque">
+    <button onclick="action1()">Tool 1</button>
+    <button onclick="action2()">Tool 2</button>
+</div>
+
+<!-- Elements without the attribute allow clicks to pass through -->
+<div class="background">
+    This area allows clicking through to Unity
+</div>
+```
+
+**Important:** Only elements marked with `data-uv-transparency="opaque"` will intercept touches. All other areas will be transparent and allow touches to pass through to your Unity scene.
+
+### 3. (Optional) Prepare transparent web page and web view
+
+Usually, you want to set up your web page with a transparent background:
 
 ```html
 <body style="background-color: transparent"></body>
 ```
 
-Or in the CSS:
-
-```css
-body {
-  background-color: transparent;
-}
-```
-
-> By default, if `background-color` style is not set in the `body`, it has a default value of `transparent`. See the [related documentation](https://www.w3schools.com/cssref/pr_background-color.asp) for more.
-
-### Setting clear background color for web view
-
-Lastly, you need to set a clear color to the `BackgroundColor` property of UniWebView.
+And set the web view background to clear:
 
 ```csharp
 webView.BackgroundColor = Color.clear;
 ```
 
-> The `BackgroundColor` is different from the `background-color` of HTML body. It is the background color of the web view control, while `background-color` is for the HTML web content.
+That allows you to see your Unity scene behind. However, this step is optional; even if your page has a color, elements not marked as opaque can still be clicked through.
 
-## Full example
+## Dynamic Content Updates
 
-Here you can find a [sample HTML page](/passthrough.html.zip) with transparent background. There are two buttons on the web page. When clicking, they use UniWebView's [Messaging System](/guide/messaging-system.html) to deliver messages to Unity. Meanwhile the web view is displayed in full screen, the UI in Unity scene is available at the same time.
-
-Here is some reference code:
+Normally, the JavaScript injected by UniWebView automatically detects layout changes and scrolling events. However, if your web page content changes dynamically, you should manually refresh the transparency detection:
 
 ```csharp
-Text passthroughText;
-UniWebView webView;
+webView.RefreshTransparencyClickingThroughLayout();
+```
 
-void ShowWebView() {
-    // Prepare Unity UI.
-    passthroughText.text = "Sample Text";
+This is useful after:
+- Adding or removing DOM elements with JavaScript
+- Changing element visibility or styles
+- After animations or transitions complete
 
-    // Create web view.
-    webView = gameObject.AddComponent<UniWebView>();
-    webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
+## Complete Example
 
-    // Allow transparency clicking through.
-    webView.SetTransparencyClickingThroughEnabled(true);
-    // Make Unity scene visible.
-    webView.BackgroundColor = Color.clear;
+Here's a complete example showing how to set up transparency clicking through:
 
-    // Disable the scrolling bounces effect to fix the web UI.
-    webView.SetBouncesEnabled(false);
+```csharp
+public class TransparencyExample : MonoBehaviour
+{
+    UniWebView webView;
+    public Text statusText;
 
-    webView.OnShouldClose += (view) => {
-        webView = null;
-        return true;
-    };
+    void Start()
+    {
+        SetupWebView();
+    }
 
-    webView.OnMessageReceived += (view, message) => {
-        if (message.Path == "close") {
+    void SetupWebView()
+    {
+        // Create web view
+        webView = gameObject.AddComponent<UniWebView>();
+        webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
+
+        // Enable transparency clicking through
+        webView.SetTransparencyClickingThroughEnabled(true);
+
+        // Make Unity scene visible behind web view
+        webView.BackgroundColor = Color.clear;
+
+        // Handle messages from web page
+        webView.OnMessageReceived += (view, message) => {
+            if (message.Path == "button-clicked") {
+                statusText.text = "Web button clicked!";
+            } else if (message.Path == "close") {
+                CloseWebView();
+            }
+        };
+
+        // Load your web page
+        webView.Load("https://yourdomain.com/transparent-page.html");
+        webView.Show();
+    }
+
+    void CloseWebView()
+    {
+        if (webView != null) {
             Destroy(webView);
             webView = null;
-        } else if (message.Path == "hello") {
-            passthroughText.text = "Hello From Web View";
         }
-    };
-
-    webView.Load("https://docs.uniwebview.com/passthrough.html");
-    webView.Show();
-}
-
-void UnityCloseButtonTapped() {
-    Destroy(webView);
-    webView = null;
+    }
 }
 ```
 
-![](/images/passthrough.jpg)
+And the corresponding HTML page:
 
-The "Sample Text" and "Close From Unity" are created and as a part of Unity UI.
-Although the web view covers full screen, the Unity scene is still visible and all three buttons will be responsible and do their works.
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: transparent;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .toolbar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .btn {
+            background: #007AFF;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin: 10px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- This toolbar will block touches -->
+    <div class="toolbar" data-uv-transparency="opaque">
+        <h2 style="color: white; margin-top: 0;">Web Toolbar</h2>
+        <button class="btn" onclick="buttonClicked()">Web Button</button>
+        <button class="btn" onclick="closeWebView()">Close</button>
+    </div>
+
+    <!-- This area allows clicking through to Unity -->
+    <div style="height: 400px; display: flex; align-items: center; justify-content: center;">
+        <p style="color: rgba(255,255,255,0.7); text-align: center;">
+            This area is transparent.<br>
+            Clicks will pass through to Unity UI below.
+        </p>
+    </div>
+
+    <script>
+        function buttonClicked() {
+            window.location = 'uniwebview://button-clicked';
+        }
+
+        function closeWebView() {
+            window.location = 'uniwebview://close';
+        }
+    </script>
+</body>
+</html>
+```
+
+## Conclusion
+
+This transparency clicking through system works on iOS and Android, providing a reliable way to create immersive experiences where web content and Unity UI can coexist seamlessly.
 
 
 ---
@@ -4058,67 +4242,104 @@ It is fairly easy to add a web view by using the UniWebView prefab. But to use a
 
 # Version Highlight
 
-> UniWebView 6 introduces the Channel Message system for high-performance bidirectional communication, enhanced error handling, and improved messaging reliability between web pages and Unity.
+> UniWebView 6 introduces the Channel Messaging System for high-performance bidirectional communication, enhanced error handling, and improved messaging reliability between web pages and Unity.
 
 ::: tip Upgrade Pricing
 If you have purchased UniWebView 5 before, we offer an upgrading discount.
 
 For users:
 
-- Purchased from our Gumroad Store - [Submit a ticket](https://onevcat.atlassian.net/servicedesk/customer/portal/2/group/2/create/10011) with your purchasing Email and we will send a coupon back.
-- Purchased from Unity Asset Store - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229334)
-  to find the Upgrade Price.
+- **Purchased from our Gumroad Store** - [Submit a ticket](https://onevcat.atlassian.net/servicedesk/customer/portal/2/group/2/create/10011) with your purchasing email and we will send a 50% off coupon back.
+- **Purchased from Unity Asset Store** - Sign in to Asset Store and visit [our product page](https://assetstore.unity.com/packages/slug/229335) to find the 50% off Upgrade Price.
+- **Recent v5 Purchasers** (after July 30, 2025) - We set a 60-days "grace days". Just log in to Asset Store and claim for a **free upgrade** to UniWebView 6.
   :::
+
+Please feel free to contact us if you need any help upgrading the package to the latest version. We are here to assist you!
 
 UniWebView contains some significant improvements over its predecessor UniWebView 5. Here we will list a few of them to
 give you an overview about what are added and changed.
 
-### Channel Message System
+### Summary
 
-UniWebView 6 introduces a revolutionary **Channel Message system** that provides high-performance, bidirectional communication between web pages and Unity. This new system addresses the limitations of traditional URL scheme messaging:
+UniWebView 6 focuses on: high-performance bidirectional messaging (Channel Messages), reliability on new iOS versions (transparency clicking through redesign), build automation for Android large app scenarios, and modernization of iOS distribution with XCFramework. Below are the highlights.
 
-- **No size limits** for data transfer
+### Channel Messaging System
+
+UniWebView 6 introduces a revolutionary **Channel Messaging System** that provides high-performance, bidirectional communication between web pages and Unity. This new system addresses the limitations of traditional URL scheme messaging:
+
+- **Large data transfer support** (tested up to tens of MB; performance may degrade beyond ~100MB)
 - **No message loss** in high-frequency scenarios
 - **Bidirectional communication** with sync/async patterns
 - **Direct JSON object** passing without encoding
 - **Enhanced error handling** with structured responses
 - **Cross-platform consistency** (iOS, Android, Unity)
 
-The Channel Message system offers three communication patterns:
+The Channel Messaging System offers three communication patterns when communicating between the web page and Unity:
 
-| Pattern | Method | Description |
-| ------- | ------ | ----------- |
-| Fire-and-Forget | `send(action, data)` | Async messages without response |
-| Synchronous Call | `call(action, data)` | Immediate return values |
-| Async Request | `request(action, data)` | Promise-based responses with timeout |
+| Pattern          | JavaScript Method       | Unity Behavior                       |
+| ---------------- | ----------------------- | ------------------------------------ |
+| Fire-and-Forget  | `send(action, data)`    | Receiving messages without response  |
+| Synchronous Call | `call(action, data)`    | Immediate return values              |
+| Async Request    | `request(action, data)` | Promise-based responses with timeout |
 
-For more information about the Channel Message system, please check the [Channel Message Guide](./channel-message.md).
+This new messaging system eliminates URL encoding overhead and navigation cancellation issues, providing better performance and reliability for communication-heavy applications.
 
-### Enhanced Error Handling
+For more information about the Channel Messaging System, please check the [Channel Message Guide](./channel-message.md).
 
-UniWebView 6 provides structured error responses that include error codes, detailed messages, and additional metadata. This makes debugging and error handling much more robust in production applications.
+#### Channel Message Security & Robustness
 
-### Improved Performance and Reliability
+Alongside the new Channel Messaging System, a comprehensive security guideline is provided. It covers origin validation, input sanitization, replay protection and optional signature verification patterns. See the [Channel Message Security](./channel-message-security.md) guide.
 
-The new messaging system eliminates URL encoding overhead and navigation cancellation issues, providing better performance and reliability for communication-heavy applications.
+### Native Apple Silicon Support
 
-The pure JavaScript uploading controls are now also supported. For more, please read the [Uploading](./uploading.md) guide.
+UniWebView 6 introduces **XCFramework** distribution for iOS, providing native support for Apple Silicon Macs and enhanced development experience:
 
-### Improved Export Phase
+- **Native ARM64 Simulator Support**: Test on Apple Silicon Mac simulators without conversion tools or Rosetta emulation
+- **Universal Compatibility**: Single binary supports both device and simulator architectures
+- **Future-Proof Distribution**: Modern Apple distribution format aligned with latest Xcode capabilities
+- **Seamless Unity Integration**: Full compatibility with Unity 2021.3.37 LTS and later versions
+- **Simplified Development Workflow**: No need for platform-specific library management or manual architecture conversion
 
-In previous versions, when exporting with Release configuration and project minifying on, it is possible that the required
-symbols gets stripped out on Android. In UniWebView 5, we have a deeper integration with Unity's build pipeline to make sure
-this not happen again. Now the exporting behavior should be much more stable under different build configurations.
+This modernization eliminates the previous need for library conversion tools and provides a more robust, developer-friendly experience for iOS development workflows.
+It is especially useful when you want to debug your game on an iOS simulator.
 
-Starting from UniWebView 5, the library on Android now are also built with minify enabled, which means a smaller binary
-size and an improvement of project security.
+### Clicking Through Redesign
+
+The clicking through feature has been fully redesigned to work reliably on iOS 26 and modern Android systems.
+Instead of sampling pixels (which became unreliable with HDR rendering and remote layer trees), UniWebView now collaborates with your page.
+You explicitly mark interactive elements with `data-uv-transparency="opaque"`, and UniWebView builds a precise hit mask.
+
+Benefits:
+
+- Works on iOS 26 (previous implementation failed due to HDR / remote layer rendering)
+- Deterministic and performant (no per-touch pixel sampling)
+- Supports dynamic updates via `RefreshTransparencyClickingThroughLayout()`
+- Backward compatible: the new attributes are ignored safely by older UniWebView versions
+
+See the updated [Clicking Through](./transparency-through.md) guide for details and migration steps.
+
+### Android Local Assets Automation
+
+For Android Split Application Binary builds, UniWebView now automates copying configured folders to the correct `android_asset` location during Gradle export. This removes the previous error‑prone manual copying process.
+Configure folders under Preferences > UniWebView > Android Assets, then load them with `UniWebViewHelper.StreamingAssetURLForPath` as usual.
+See the [Loading Local Files](./loading-local-files.md) guide for examples.
+
+### Logger Performance Improvements
+
+The UniWebView logging system now uses lazy evaluation internally to avoid unnecessary string allocations when a log level is disabled. This reduces overhead in production builds where the log level is typically Critical.
+
+### Recommended Platform Targets
+
+- Unity 2021.3.37 LTS, 2022.3.23 LTS or any Unity 6 (6000.x) build are our validated environments.
+- Minimum iOS version is now 12.0.
+- Android still supports 5.0 (API 21) and above.
 
 ### Much More
 
 Please check other guides in the side bar and the [API Documentation](/latest/api/overview) to know more about UniWebView.
 We strongly suggest you upgrade to the latest version for a more powerful and stable web view component.
 
-If you need to migrate from UniWebView 4 to the latest UniWebView 5, please refer to the [Migration Guide](./migration-guide-v4-to-v5.md).
+If you need to migrate from UniWebView 5 to 6, refer to the [Migration Guide (v5 to v6)](./migration-guide-v5-to-v6.md).
 
 You can find other recent changes and all release logs in the [Release Note](../release-note) page.
 
@@ -9265,44 +9486,111 @@ syntax: SetTransparencyClickingThroughEnabled(bool enabled)
 returnType: void
 summary:
 
-Sets whether the web view should pass through clicks at its clear pixels to Unity scene.
+Sets whether the web view should pass through clicks on transparent areas to Unity scene.
 
-Setting this method is a pre-condition for the whole passing-through feature to work. To allow your touch passing through
-to Unity scene, the following conditions should be met at the same time:
+This method enables a modern transparency click-through system that collaborates with your web page to determine
+which areas should block touches and which should allow them to pass through to Unity.
 
-1. This method is called with `true`. It enables the web view to check every touch on the web view.
-2. The web view has a transparent background in body style for its content by CSS.
-3. The web view itself has a transparent background color by setting `BackgroundColor` with a clear color.
+To set up transparency clicking through:
 
-Then, when user clicks on the clear pixel on the web view, the touch events will not be handled by the web view.
-Instead, these events are passed to Unity scene. By using this feature, it is possible to create a UI for your game 
-with the web view.
+1. Call this method with `true` to enable the transparency detection system
+2. Set your web page background to transparent with CSS: `body { background-color: transparent; }`
+3. Set the web view background to clear: `webView.BackgroundColor = Color.clear;`
+4. In your HTML, mark interactive elements with `data-uv-transparency="opaque"` to block touches:
+   ```html
+   <button data-uv-transparency="opaque">Interactive Button</button>
+   ```
 
-Only clicks on transparent part on the web view will be delivered to Unity scene. The web view still intercepts
-and handles other touches on visible pixels on the web view.
+Elements marked as "opaque" will intercept touches normally, while unmarked areas will allow clicks to pass
+through to Unity. This approach works reliably across all platforms and provides better performance than
+traditional pixel sampling methods.
+
+The system automatically handles scrollable content, visibility changes, and DOM updates. For dynamic content
+changes, you can use `RefreshTransparencyClickingThroughLayout()` to manually refresh the detection.
 
 example:
 
 ```csharp
-// Allow transparency clicking through.
+// Enable transparency clicking through
 webView.SetTransparencyClickingThroughEnabled(true);
 
-// Make Unity scene visible.
+// Make Unity scene visible behind web view
 webView.BackgroundColor = Color.clear;
 
-// Disable the scrolling bounces effect to fix the web UI.
-webView.SetBouncesEnabled(false);
+// Load your web page with marked interactive elements
+webView.Load("file:///path/to/transparent-page.html");
+```
 
-// Other configuration, usually handle some messages from web view.
-webView.OnMessageReceived += (view, message) => {
-    // ...
-};
+Your HTML page should mark interactive elements:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: transparent;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .toolbar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- This toolbar will block touches -->
+    <div class="toolbar" data-uv-transparency="opaque">
+        <button onclick="handleClick()">Interactive Button</button>
+    </div>
+
+    <!-- This area allows clicking through to Unity -->
+    <div style="height: 400px;">
+        Transparent area - clicks pass through to Unity
+    </div>
+</body>
+</html>
 ```
 
 [[Methods.parameters]]
 name: enabled
 type: bool
 summary: Whether the transparency clicking through feature should be enabled in this web view.
+
+[[Methods]]
+name: RefreshTransparencyClickingThroughLayout
+syntax: RefreshTransparencyClickingThroughLayout()
+returnType: void
+summary:
+
+Manually refreshes the transparency clicking through layout detection.
+
+This method forces the web view to re-scan the DOM and update the cache of opaque regions used for hit testing.
+It should be called after dynamic changes to your web page content that are not automatically detected:
+
+- Adding or removing DOM elements with JavaScript
+- Changing element visibility or display properties
+- Moving elements that affect the layout
+- After animations or transitions complete
+- When toggling visibility of elements programmatically
+
+The system automatically updates the transparency layout in most cases (page load, scroll, resize, DOM mutations),
+so manual refresh is only needed for specific scenarios where automatic detection may not capture all changes.
+
+Note: This method only works when transparency clicking through is enabled via `SetTransparencyClickingThroughEnabled(true)`.
+
+example:
+
+```csharp
+// Enable transparency feature first
+webView.SetTransparencyClickingThroughEnabled(true);
+
+// After dynamic content changes, refresh the layout
+webView.EvaluateJavaScript("addNewButton()", (result) => {
+    // Refresh transparency layout after adding new interactive elements
+    webView.RefreshTransparencyClickingThroughLayout();
+});
+```
 
 [[Methods]]
 name: SetWebContentsDebuggingEnabled
@@ -10613,7 +10901,7 @@ This event is triggered when JavaScript code calls `window.uniwebview.send()`,
 return a `UniWebViewChannelMessageResponse` for sync calls or when immediate response
 is needed. For async messages that need delayed response, use `message.Respond()` method.
 
-The Channel Message system provides structured data communication between web content and Unity,
+The Channel Messaging System provides structured data communication between web content and Unity,
 supporting three communication patterns: Send (fire-and-forget), Call (synchronous), and Request (asynchronous).
 
 example:
@@ -11181,7 +11469,7 @@ file: UniWebViewChannelMessageType
 summary:
 Channel message types corresponding to different JavaScript call methods.
 
-This enumeration defines the three communication patterns supported by the Channel Message system.
+This enumeration defines the three communication patterns supported by the Channel Messaging System.
 Each type has different characteristics regarding response handling and timing.
 
 [[EnumValues]]

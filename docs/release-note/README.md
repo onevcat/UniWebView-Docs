@@ -1,5 +1,62 @@
 # Release Note
 
+### 6.0.0 (29 Sep, 2025)
+
+#### Add
+
+* **Channel Message System**: Introduces a revolutionary bidirectional communication system between web content and Unity. The new system provides three communication patterns:
+  - **Fire-and-Forget** (`send`): Async messages without response
+  - **Synchronous Call** (`call`): Immediate return values  
+  - **Async Request** (`request`): Promise-based responses with timeout support
+* **Enhanced Error Handling**: Structured error responses with error codes, detailed messages, and metadata for robust debugging
+* **Native XCFramework Support**: iOS distribution now uses XCFramework format with native Apple Silicon Mac simulator support, eliminating the need for architecture conversion tools
+* **Android Assets Automation**: Automated copying of configured folders to `android_asset` location during Gradle export for APK + OBB builds, removing manual copying steps
+* **Logger Performance Improvements**: Lazy evaluation internally to reduce overhead when log levels are disabled
+* **Channel Message Security Guidelines**: Comprehensive security patterns including origin validation, input sanitization, replay protection, and signature verification
+
+#### Fix
+
+* **Transparency Clicking Through Reliability**: Complete redesign using collaborative page marking instead of pixel sampling. This resolves issues with iOS 26 HDR rendering and remote layer trees where the previous implementation became unreliable
+
+#### Breaking Change
+
+::: danger
+**Transparency Clicking Through Migration Required**
+
+If you use `SetTransparencyClickingThroughEnabled(true)`, your web pages **must** be updated to mark interactive elements with `data-uv-transparency="opaque"` attribute.
+:::
+
+In short, the part that should capture web events needs to be tagged accordingly:
+
+  ```html
+  <!-- Before: All elements handled by pixel detection -->  
+  <button onclick="handleClick()">Button</button>
+  
+  <!-- After: Mark interactive elements explicitly -->
+  <button data-uv-transparency="opaque" onclick="handleClick()">Button</button>
+  ```
+
+::: danger
+**Minimum Platform Updates**:
+  - iOS minimum version increased from 9.0 to **12.0**
+  - Unity recommended versions: **2021.3.37 LTS**, **2022.3.23 LTS**, or **Unity 6 (6000.x)**
+:::
+
+#### Migration
+
+For detailed migration steps from v5 to v6, please refer to the [Migration Guide (v5 to v6)](https://docs.uniwebview.com/guide/migration-guide-v5-to-v6.html).
+
+Key migration actions:
+1. Remove UniWebView 5 files and import UniWebView 6
+2. **Update web content** with `data-uv-transparency="opaque"` attributes if using transparency clicking through
+3. Explore the new Channel Message system for enhanced communication
+
+### 5.17.5 (28 Sep, 2025)
+
+#### Fix
+
+* Fixed web view frame update issues on foldable devices. The web view now properly adjusts its frame when screen size changes without orientation change, such as when expanding or contracting a fold screen device.
+
 ### 5.17.4 (15 Sep, 2025)
 
 #### Fix
