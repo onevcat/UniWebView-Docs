@@ -4265,11 +4265,38 @@ UniWebView 6 focuses on: high-performance bidirectional messaging (Channel Messa
 
 ### Channel Messaging System
 
-UniWebView 6 introduces a revolutionary **Channel Messaging System** that provides high-performance, bidirectional communication between web pages and Unity. This new system addresses the limitations of traditional URL scheme messaging:
+UniWebView 6 introduces a revolutionary **Channel Messaging System** that provides high-performance, bidirectional communication between web pages and Unity. 
+
+```javascript
+// Before
+window.location.href = "uniwebview://someAction?key=value";
+
+// Now
+// Just message.
+window.uniwebview.send("playerDied", "Player fell into lava");
+
+// Sync return value.
+const userInfo = window.uniwebview.call("getUserInfo", {
+  userId: "12345",
+});
+console.log(`Welcome ${userInfo.userName}!`);
+
+// Or async request.
+window.uniwebview.request("loadGameData", {
+  saveSlot: 1,
+}).then((gameData) => {
+  // Start the game on web view...
+  initializeGame(gameData);
+}).catch((error) => {
+  console.error("Failed to load game:", error);
+});
+```
+
+This new system addresses the limitations of traditional URL scheme messaging:
 
 - **Large data transfer support** (tested up to tens of MB; performance may degrade beyond ~100MB)
 - **No message loss** in high-frequency scenarios
-- **Bidirectional communication** with sync/async patterns
+- **Bidirectional communication** with sync/async patterns returning values
 - **Direct JSON object** passing without encoding
 - **Enhanced error handling** with structured responses
 - **Cross-platform consistency** (iOS, Android, Unity)
@@ -4299,6 +4326,7 @@ UniWebView 6 introduces **XCFramework** distribution for iOS, providing native s
 - **Future-Proof Distribution**: Modern Apple distribution format aligned with latest Xcode capabilities
 - **Seamless Unity Integration**: Full compatibility with Unity 2021.3.37 LTS and later versions
 - **Simplified Development Workflow**: No need for platform-specific library management or manual architecture conversion
+- **Much smaller binary size**: The binary will be automatically picked in the built, so you can expect a size optimization for the final product. 
 
 This modernization eliminates the previous need for library conversion tools and provides a more robust, developer-friendly experience for iOS development workflows.
 It is especially useful when you want to debug your game on an iOS simulator.
