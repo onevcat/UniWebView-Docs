@@ -322,6 +322,9 @@ hides the status bar and navigation bar with a sticky style.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#settransparencyclickingthroughenabled'><span class='return-type'>void</span> SetTransparencyClickingThroughEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view should pass through clicks on transparent areas to Unity scene.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setroundcornerradius'><span class='return-type'>void</span> SetRoundCornerRadius(float topLeft, float topRight, float bottomLeft, float bottomRight)</a></div></td><td><div class='simple-summary'>
+<p>Sets rounded corner radii for the native web view container.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#refreshtransparencyclickingthroughlayout'><span class='return-type'>void</span> RefreshTransparencyClickingThroughLayout()</a></div></td><td><div class='simple-summary'>
 <p>Manually refreshes the transparency clicking through layout detection.</p>
 </div>
@@ -3952,6 +3955,56 @@ webView<span class="token punctuation">.</span><span class="token function">Load
     <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setroundcornerradius'></div><div class='api-heading' data-id='setroundcornerradius'><a href='#setroundcornerradius'><span class='return-type'>void</span> SetRoundCornerRadius(float topLeft, float topRight, float bottomLeft, float bottomRight)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets rounded corner radii for the native web view container.</p>
+<p>Each parameter describes the radius (in Unity pixel units) for one corner, starting from the top-left and moving clockwise.
+Values below zero are clamped to <code>0</code>. Passing <code>0</code> keeps the corner sharp. UniWebView converts these values to platform
+units automatically (points on iOS, pixels on Android) so the visual result remains consistent.</p>
+<p>There is also an overload <code>SetRoundCornerRadius(float radius)</code> that applies the same radius to every corner.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>topLeft</span></div>
+    <div class='parameter-item-desc'><p>Radius for the top-left corner in pixels.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>topRight</span></div>
+    <div class='parameter-item-desc'><p>Radius for the top-right corner in pixels.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>bottomLeft</span></div>
+    <div class='parameter-item-desc'><p>Radius for the bottom-left corner in pixels.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>bottomRight</span></div>
+    <div class='parameter-item-desc'><p>Radius for the bottom-right corner in pixels.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Apply a uniform 12 px radius to every corner.</span>
+webView<span class="token punctuation">.</span><span class="token function">SetRoundCornerRadius</span><span class="token punctuation">(</span><span class="token number">12.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Use different radii per corner (clockwise from top-left).</span>
+webView<span class="token punctuation">.</span><span class="token function">SetRoundCornerRadius</span><span class="token punctuation">(</span><span class="token number">16.0f</span><span class="token punctuation">,</span> <span class="token number">12.0f</span><span class="token punctuation">,</span> <span class="token number">8.0f</span><span class="token punctuation">,</span> <span class="token number">4.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
