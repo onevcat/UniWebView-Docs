@@ -94,3 +94,17 @@ void OnRectTransformDimensionsChange() {
     webView.UpdateFrame();
 }
 ```
+
+## Rounded Corners
+
+After确定了 web view 的位置与大小，你可以可选地应用圆角。圆角会在原生层对 WebView 容器裁剪，而不会影响你的 Unity UI。
+
+```csharp
+// 统一设置所有角的半径（单位：像素）
+webView.SetRoundCornerRadius(12.0f);
+
+// 或者分别设置四个角，从左上角顺时针
+webView.SetRoundCornerRadius(topLeft: 16.0f, topRight: 12.0f, bottomRight: 8.0f, bottomLeft: 4.0f);
+```
+
+圆角设置与 `Frame`/`ReferenceRectTransform` 协同工作。当你更新布局或参考的 `RectTransform` 时，不需要重新指定圆角值，它会沿用之前的设定。
