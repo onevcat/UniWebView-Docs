@@ -100,7 +100,7 @@ void OnRectTransformDimensionsChange() {
 Once the web view position and size are defined, you can optionally apply rounded corners. The rounding happens on the native container, so nothing in your Unity UI hierarchy needs to change.
 
 ```csharp
-// Apply the same radius (in pixels) to every corner.
+// Apply the same radius (Unity pixels) to every corner.
 webView.SetRoundCornerRadius(12.0f);
 
 // Or specify individual radii in clockwise order starting from the top-left corner.
@@ -108,3 +108,5 @@ webView.SetRoundCornerRadius(topLeft: 16.0f, topRight: 12.0f, bottomRight: 8.0f,
 ```
 
 Rounded corner settings work alongside `Frame`/`ReferenceRectTransform`. When you update the layout or the reference `RectTransform`, the previously applied corner radii remain in effect.
+
+> The values are expressed in Unity pixel units. UniWebView converts them to platform-specific coordinates (points on iOS, pixels on Android) so the visual effect stays consistent across devices.

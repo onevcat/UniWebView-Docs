@@ -2119,8 +2119,9 @@ returnType = "void"
 summary = """
 Sets rounded corner radii for the native web view container.
 
-Each parameter describes the radius (in pixels) for one corner, starting from the top-left and moving clockwise.
-Values below zero are clamped to `0`. Passing `0` keeps the corner sharp.
+Each parameter describes the radius (in Unity pixel units) for one corner, starting from the top-left and moving clockwise.
+Values below zero are clamped to `0`. Passing `0` keeps the corner sharp. UniWebView converts these values to platform
+units automatically (points on iOS, pixels on Android) so the visual result remains consistent.
 
 There is also an overload `SetRoundCornerRadius(float radius)` that applies the same radius to every corner.
 """
