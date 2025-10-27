@@ -2113,6 +2113,45 @@ type = "bool"
 summary = "Whether the transparency clicking through feature should be enabled in this web view."
 
 [[Methods]]
+name = "SetRoundCornerRadius"
+syntax = "SetRoundCornerRadius(float topLeft, float topRight, float bottomLeft, float bottomRight)"
+returnType = "void"
+summary = """
+Sets rounded corner radii for the native web view container.
+
+Each parameter describes the radius (in Unity pixel units) for one corner, starting from the top-left and moving clockwise.
+Values below zero are clamped to `0`. Passing `0` keeps the corner sharp. UniWebView converts these values to platform
+units automatically (points on iOS, pixels on Android) so the visual result remains consistent.
+
+There is also an overload `SetRoundCornerRadius(float radius)` that applies the same radius to every corner.
+"""
+example = """
+```csharp
+// Apply a uniform 12 px radius to every corner.
+webView.SetRoundCornerRadius(12.0f);
+
+// Use different radii per corner (clockwise from top-left).
+webView.SetRoundCornerRadius(16.0f, 12.0f, 8.0f, 4.0f);
+```
+"""
+[[Methods.parameters]]
+name = "topLeft"
+type = "float"
+summary = "Radius for the top-left corner in pixels."
+[[Methods.parameters]]
+name = "topRight"
+type = "float"
+summary = "Radius for the top-right corner in pixels."
+[[Methods.parameters]]
+name = "bottomLeft"
+type = "float"
+summary = "Radius for the bottom-left corner in pixels."
+[[Methods.parameters]]
+name = "bottomRight"
+type = "float"
+summary = "Radius for the bottom-right corner in pixels."
+
+[[Methods]]
 name = "RefreshTransparencyClickingThroughLayout"
 syntax = "RefreshTransparencyClickingThroughLayout()"
 returnType = "void"

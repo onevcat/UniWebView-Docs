@@ -1,5 +1,15 @@
 # Release Note
 
+### 6.1.0 (27 Oct, 2025)
+
+#### Add
+
+* Round corner support. Now you can use the `SetRoundCornerRadius` APIs to add a round corner to the web view container.
+
+#### Fix
+
+* Fix an issue that a wrong brace placement in the Gradle parser. Improve the output format of the gradle files.
+
 ### 6.0.0 (29 Sep, 2025)
 
 #### Add
@@ -1898,5 +1908,4 @@ New: Support for location service of Android.
 ### 1.0.1 (1 Nov, 2013)
 
 Init release
-
 
