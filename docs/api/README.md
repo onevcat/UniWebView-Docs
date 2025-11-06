@@ -2228,6 +2228,9 @@ webView<span class="token punctuation">.</span><span class="token function">AddS
   <span class="token string">"self-signed.badssl.com"</span><span class="token punctuation">,</span> 
   <span class="token string">"62:F1:B6:F8:B2:4B:29:CB:F3:18:BD:8A:E9:82:E0:60:03:97:89:6C:3C:DD:F8:E5:BE:6F:68:46:9E:B9:21:62"</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Now load the page with the domain and the self-signed certificate won't trigger an error.</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
