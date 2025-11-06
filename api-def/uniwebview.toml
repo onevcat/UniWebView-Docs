@@ -720,8 +720,7 @@ This is useful for handling self-signed certificates or certificates issued by p
 To obtain the SHA-256 fingerprint of a server certificate, you can use the following OpenSSL command by replacing `self-signed.badssl.com` with your target domain:
 
 ```bash
-echo | openssl s_client -connect self-signed.badssl.com:443 -servername self-signed.badssl.com \
-  | openssl x509 -fingerprint -sha256 -noout
+echo | openssl s_client -connect self-signed.badssl.com:443 -servername self-signed.badssl.com | openssl x509 -fingerprint -sha256 -noout
 ```
 """
 example = """
