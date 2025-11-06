@@ -1,102 +1,93 @@
 # Installation
 
-::: warning Important
+::: warning IMPORTANT
 We strongly recommend that you perform a backup before importing UniWebView to your project. If you are using any [version control system](https://en.wikipedia.org/wiki/Version_control) (like Git or SVN), it should be definitely safe to continue.
 :::
 
 ### Unity Asset Store
 
-If you purchased UniWebView from Unity Asset Store, open the Asset Store window from **Window → Asset Store**. You could search for UniWebView 3 there, then download it and click the "Import" button.
+If you purchased UniWebView from [Unity Asset Store](https://assetstore.unity.com/packages/slug/229334), open the Asset Store window from **Window → Asset Store** or **Window → Package Manager**. You could find UniWebView 5 there under **My Assets**, then click "Import".
 
 ### UniWebView Store
 
-Besides of Unity Asset Store, we also have our own store. After purchasing from our store, you could download the `uniwebview_x_y_z.unitypackage` file of UniWebView (`x_y_z` in the file name means the package version is `x.y.z`). Open your project in which you want to use UniWebView first, then double-click the downloaded file to import it.
+Besides of Unity Asset Store, we also have [our own store](https://onevcat.gumroad.com/l/uniwebview-5). After purchasing from our store, you could download the `uniwebview_x_y_z.unitypackage` (`x_y_z` in the file name indicates the package version). Open your project in which you want to use UniWebView, then double-click the downloaded file to import it.
 
 ## Importing Package
 
-No matter in which way you import UniWebView, Unity would prompt you with a window to confirm the importing files.
+Unity will prompt you with a window to confirm the importing files. Just click "Import" to add all files to your project.
 
-The integration approach has been changed from version 3.7.0, so you need to check your UniWebView version and follow the corresponding steps. If you are upgrading your UniWebView from 3.6.x or earlier, please read [Adapting to AAR File](./adapting-to-aar-file.md) instead. If you want a fresh installation to your project, choose either [UniWebView 3.7.0 and later](#uniwebview-3-7-0-and-later) or [UniWebView 3.6.x and earlier](#uniwebview-3-6-x-and-earlier) below:
+> The minimum deploy target of UniWebView is from iOS 9.0 and Android 5.0 (API Level 21). If you are still using an older deploy target for you
+> Unity project, you may have some issues when exporting the project to the final product. Please make sure to update the
+> Target minimum iOS Version and Minimum API Level in the player settings.
 
-### UniWebView 3.7.0 and later
+![](/images/importing-v5.png)
 
-From UniWebView 3.7.0, we adapted to AAR based library for Android. It will simplify the importing dramatically. The importing dialog looks like this and you should import everything into your project:
+### Restarting Unity
 
-![](/images/importing-aar.png)
+Restart the Unity app to give it a chance to load the UniWebView bundle for macOS Editor support. Remember to switch your build target in Player Setting
+to either iOS or Android, since UniWebView only works on these two platforms. Otherwise, UniWebView gives a warning, saying the platform is not supported yet.
 
-#### Manifest File
+### Optional Steps
 
-There is no need to do any modification to your `AndroidManifest.xml`, either you have one or not. UniWebView will handle its own need and Unity could merge the main app manifest to UniWebView's one. So by now you should be ready to continue to the [next step](#restarting-unity).
+After importing UniWebView, you can open the Unity Preferences panel (**Unity → Preferences**) to configure some necessary permissions. In most cases, there is no need to adjust them and your project should build and run well. If your project can build without issues on both iOS and Android, you can skip these steps below and check the [next chapter](./using-prefab.md).
 
-#### Optional Steps
+If you have any errors when building, you can use this panel to customize how UniWebView should adjust some behaviors or dependencies installation.
 
-Depending on your use case, you may need to add more permissions to the manifest file. For example, you may need `ACCESS_FINE_LOCATION` if you want to use location service in the web view, or `WRITE_EXTERNAL_STORAGE` if you want to choose or capture a photo to upload (since a temporary file will be created in the disk).
+UniWebView uses a post-build script to modify the gradle project and "AndroidManifest.xml" file for the exported Android project.
 
-If you have an `AndroidManifest.xml` in your project under `Assets/Plugins/Android` folder, you could add it next to `</application>` tag:
+![](/images/preferences-v5.png)
 
-```xml
-</application>
+### Android Manifest
 
-<!--Access Internet for web content-->
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-```
+Settings in this section will be used to adjust the final `AndroidManifest.xml` file of the exported project.
 
-If you don't have `AndroidManifest.xml` in `Assets/Plugins/Android`, you could copy the default one used by Unity from `${UnityPath}/PlaybackEngines/AndroidPlayer/Apk`, and paste it to your project. Then you could do the same modification to add additional permission.
+#### Uses Cleartext Traffic
 
-### UniWebView 3.6.x and earlier
+Set `usesCleartextTraffic` flag to `true` in the "AndroidManifest.xml". From Android 9.0, all plain HTTP traffic is forbidden by default.
 
-![](/images/importing.png)
+If you need to display plain HTTP content in the web view, turn it on.
 
-There should be no conflicting for those files unless you already have an `AndroidManifest.xml` in your project under `Assets/Plugins/Android`. If it shows a yellow warning mark for `AndroidManifest.xml`, you could uncheck it to keep your current version for now. We will describe how to modify the manifest file in [next section](#manifest-file).
+#### Write External Storage
 
-> The files might not be the same as they were in the image above. You should always import everything under `Plugins` and `UniWebView` from the package. When Unity's tools exporting the UniWebView package, there is a chance to contain some other files. But it should be safe to ignore any files if they are not under `Plugins` or `UniWebView`.
+Add `WRITE_EXTERNAL_STORAGE` permission to the "AndroidManifest.xml". It enables storing an image from the web page to the Download folder on the device. 
 
-#### Manifest File
+If you need to download and save any files to disk, turn it on.
 
-`AndroidManifest.xml` is used to describe some meta information for the Android target. If your project does not contain a manifest file before, the one you imported with UniWebView will be used. Otherwise, you should keep your original one and do some modification. Open the `Assets/Plugins/Android/AndroidManifest.xml` file with your favorite text editor and follow the steps below:
+#### Access Fine Location
 
-1. UniWebView needs `hardwareAccelerated` to be `true` to have a good render performance and play videos. Find your current main activity (the one with `android.intent.action.MAIN` filter) and add `android:hardwareAccelerated="true"` in the `<activity>` tag if it does not exist yet. Here is an example of modified main activity:
+Add `ACCESS_FINE_LOCATION` permission to the "AndroidManifest.xml". It enables the web view to use the location information. To get the location actually, you also need to call [`LocationService.Start`](https://docs.unity3d.com/ScriptReference/LocationService.Start.html) before you open a web page.
 
-  ```xml
-  <activity android:name="com.unity3d.player.UnityPlayerActivity"
-           android:label="@string/app_name"
-           android:hardwareAccelerated="true">
-           <!--Web page and video accelereate for UniWebView-->
+If you need to use location APIs on the web, turn it on.
 
-     <intent-filter>
-         <action android:name="android.intent.action.MAIN" />
-         ...
-     </intent-filter>
-     ...
- </activity>
-   ```
+### Gradle Build
 
-2. UniWebView needs an additional activity to open file chooser if you need to upload a photo from a web page. Add the `UniWebViewFileChooserActivity` declaration just above the `</application>` line:
+You can use settings in this section to modify the `build.gradle` behavior when exporting the project. By default, UniWebView
+will add all dependencies it needs. However, if you are using another package manager or some embedded libraries, a duplication might
+happen when exporting to Android APK file. In this case, you can try to disable a certain option below to let UniWebView use the existing package instead.
 
-  ```xml
-      ...
-      </activity>
+#### Adds Kotlin
 
-      <!--Image file chooser activity for UniWebView-->
-      <activity android:name="com.onevcat.uniwebview.UniWebViewFileChooserActivity" />
-  </application>
-  ```
+Whether Kotlin runtime should be added to the project. UniWebView for Android is written in Kotlin and you need the runtime in your project to run the code. It is on by default.
 
-3. Add permission for using the Internet if you need to access web content. This is not needed if you only use UniWebView for local files. Add the `INTERNET` permission line just the next line below `</application>`:
+If any other packages of your project is already adding this, you can opt-out this option to skip adding Kotlin to the project.
 
-  ```xml
-  </application>
-  
-  <!--Access Internet for web content-->
-  <uses-permission android:name="android.permission.INTERNET" />
-  ```
+#### Adds Android Browser
 
-4. Other permissions. Depending on your use case, you may need to add more permissions to the manifest file. For example, you may need `ACCESS_FINE_LOCATION` if you want to use location service in the web view, or `WRITE_EXTERNAL_STORAGE` if you want to choose or capture a photo to upload (since a temporary file will be created in the disk).
+Whether the [androidx.browser package](https://developer.android.com/jetpack/androidx/releases/browser) should be added to the project.
+UniWebView uses some features in that package. It is on by default.
 
-## Restarting Unity
+If any other packages of your project is already adding this, you can opt-out this option to skip adding the browser package to the project.
 
-You need to restart your Unity Editor to load UniWebView bundle for macOS Editor. Also remember to switch your build target in player setting to either iOS or Android, since UniWebView will only work on these two platforms.
+#### Enable Jetifier
+
+[Jetifier](https://developer.android.com/studio/command-line/jetifier) migrates your support-library-dependent libraries to compatible with AndroidX.
+UniWebView requires `androidx.browser` package, which is only available as an AndroidX package. Making it on can allow to keep using AndroidX support libraries (if there are). It makes your project cleaner.
+
+If you have to use a legacy support library and it cannot be migrated for some reason, disable this setting.
+
+### Auth Callbacks
+
+This is set of OAuth 2.0 settings. You need to set the OAuth 2.0 callback URLs you want to support in this section. See the [OAuth 2.0 guide](./oauth2.md) for more information.
 
 ## Next Step
 

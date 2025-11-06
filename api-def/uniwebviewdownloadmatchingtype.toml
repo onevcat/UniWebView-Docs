@@ -1,0 +1,14 @@
+title = "UniWebViewDownloadMatchingType"
+file = "uniwebviewdownloadmatchingtype"
+
+[[Properties]]
+name = "ExactValue"
+returnType = "UniWebViewDownloadMatchingType"
+hasSetter = false
+summary = "Matches exact the whole value."
+
+[[Properties]]
+name = "RegularExpression"
+returnType = "UniWebViewDownloadMatchingType"
+hasSetter = false
+summary = "Uses the value as a regular expression."

@@ -1,5 +1,437 @@
 # Release Note
 
+### 5.4.1 (17 May, 2023)
+
+#### Fix
+
+* An issue that the web view crashes on some Android devices when there is no loading callback is registered under Release mode. This was a regression introduced in 5.4.0. If you are using 5.4.0 and has this crash, please upgrade to 5.4.1 to get a fix.
+
+### 5.4.0 (13 May, 2023)
+
+#### Add
+
+* A method to control whether a loading should be started or not. Use `RegisterShouldHandleRequest` to register a callback and returns whether the loading should be started or not. Check [its reference](https://docs.uniwebview.com/api/#registershouldhandlerequest) for more.
+
+#### Fix
+
+* Now web view on iOS 16.4 can also be inspected. However, different from previous versions, you need to call `SetWebContentsDebuggingEnabled` to enable the debugging mode before inspecting the web view on all platforms.
+
+### 5.3.2 (5 Apr, 2023)
+
+#### Fix
+
+* Strip using of methods from `System.Web.HttpUtility` internally to resolve a runtime issue in older Unity versions.
+
+### 5.3.1 (18 Feb, 2023)
+
+#### Fix
+
+* An issue that `SetOpenLinksInExternalBrowser` setting is ignored for links with "target=_blank" attribute. Now the external browser will be used for such links instead of opening the page in place. If `SetOpenLinksInExternalBrowser` and `SetSupportMultipleWindows` is set to `true` at the same time, the external browser will be used.
+* Now the activity for OAuth 2.0 flow on Android allows orientation changes. It won't throw an exception anymore when the device is rotated during the flow.
+
+### 5.3.0 (28 Jan, 2023)
+
+#### Add
+
+* Support for customization of Kotlin and Android Browser package versions. This can help to resolve the conflict with other plugins which use another version of these packages.
+
+#### Fix
+
+* Improve the visual effect of the Embedded Toolbar on iOS. Now it has a larger and bold font for the title.
+* A better way to find the root view controller for adding UniWebView to on iOS. Now you can implement a `rootViewControllerForUniWebView` method in your app delegate and return the view controller you want UniWebView to be added to. By default, if the app delegate does not implement either `rootViewControllerForUniWebView` or `rootViewController`, UniWebView now also tries to find the top-most view controller instead of the window's direct root view controller.
+
+### 5.2.1 (4 Jan, 2023)
+
+#### Fix
+
+* A crash when an SSL error is encountered during loading a scheme other than "http" or "https" (for example, "wss://" links) on Android.
+
+### 5.2.0 (23 Dec, 2022)
+
+#### Add
+
+* Most of the OAuth flows now support refresh token. Use `StartRefreshTokenFlow` on the flow to start token refresh. For more about OAuth 2.0 support in UniWebView, check [this guide](https://docs.uniwebview.com/guide/oauth2.html#refresh-token).
+
+#### Fix
+
+* A workaround for Facebook login on Android. Facebook is preventing a web view to perform OAuth login on Android, now the `UniWebViewAuthenticationFlowFacebook` will use a desktop browser user-agent to open the login page.
+* A crash that caused by orientation change when the camera is presented on Android while the game is landscape but the camera is portrait.
+* A crash when taking screenshot when the web view has a zero or negative size. Now under this case, the `CaptureSnapshot` method will give an error `-1002` in its `OnCaptureSnapshotFinished` event.
+
+### 5.1.0 (21 Nov, 2022)
+
+#### Add
+
+* New methods to control the behavior of the loading spinner. Use `SetAllowUserDismissSpinner` to allow or forbid users dismissing the loading indicator; Use `ShowSpinner` and `HideSpinner` to control its visibility programmatically.
+* A new API `SetLimitsNavigationsToAppBoundDomains`, it is a wrapper of `limitsNavigationsToAppBoundDomains` for iOS. It limits user's navigation to only pre-defined domains on iOS.
+
+#### Fix
+
+* Improve the delay that on Android the received cookies are not flushed fast enough in some cases. Now a forcibly cookie flush is always performed when closing the web view.
+* The Unity InputSystem assembly reference is added explicitly to prevent compiling error on Unity's versions without InputSystem support.
+* An issue prevents the package built on macOS 13 SDK.
+
+### 5.0.2 (24 Oct, 2022)
+
+#### Fix
+
+* A potential issue that the post-build Gradle file parses wrongly when using variables.
+* The loading spinner is now not shown wrongly when a mail link tapped.
+
+### 5.0.1 (8 Oct, 2022)
+
+#### Fix
+
+* An issue that the exported iOS project cannot be built with Xcode 13.
+* A problem which stops the project from compiling when ".Net Framework" profile is used in Unity.
+
+### 5.0.0 (18 Sep, 2022)
+
+::: danger
+5.0.0 is a major update of UniWebView. Although most of APIs in UniWebView 5 are compatible with UniWebView 4 and it should be easy enough to migrate, there are still a few breaking changes. If you are using the toolbar in UniWebView 4, although it is still available, but it is deprecated and replaced by the new embedded toolbar. For migration from UniWebView 4 in detail, visit the [Migration Guide](https://docs.uniwebview.com/guide/migration-guide-v4-to-v5.html). To know the highlight of the version, check [this page](https://docs.uniwebview.com/guide/version-highlight.html) for more.
+:::
+
+#### Add
+
+* **Built-in OAuth 2.0 support** for Google, Twitter, Facebook, LINE and GitHub. Now your user can login with their account easily and get access token for other API calls on those service. For more about OAuth 2.0 support in UniWebView, check [this guide](https://docs.uniwebview.com/guide/oauth2.html).
+* **Customized OAuth 2.0 support** for any other service provider which defines a standard OAuth 2.0 Authorization Code Flow.
+* Embedded toolbar for both iOS and Android. It replaces the old toolbar on iOS. The new toolbar contains a set of navigation buttons and a title, showing as a part of the web view on top or bottom of the web view frame. For more about embedded toolbar, check [this guide](https://docs.uniwebview.com/guide/embedded-toolbar.html).
+
+#### Fix
+
+* A layout issue which occasionally happens when opening the old toolbar. Now the buttons position should be always correct.
+* An issue which causes web view's `Url` property not parsing correctly when it contains some special characters.
+
+#### Deprecate
+
+* The original iOS-only toolbar is now deprecated. Use the new embedded toolbar instead.
+* As Xcode 14 drops the support of 32-bit iOS devices, UniWebView 5 will not support 32-bit iOS devices anymore. If you are using UniWebView 4 and still need to support 32-bit iOS devices for a while, please stay with UniWebView 4.
+
+#### Known Issues
+
+* The `WKWebView` on iOS 16 Simulator is broken: the web view process won't connect and no content can be loaded due to a bug inside WebKit and Apple's system. To develop on iOS simulators, please use iOS 15 or earlier versions for now. This issue does not affect any physical devices running iOS 16.
+
+### 4.13.0 (3 Sep, 2022)
+
+#### Add
+
+* A `SetAcceptThirdPartyCookies` method to allow third party cookies on Android. By default, the third party cookies are not allowed for security reason.
+
+### 4.12.1 (24 Jun, 2022)
+
+#### Fix
+
+* An issue that a stored cookie cannot be read when using `GetCookie` method on iOS if its domain starting with a dot. According to RFC6265, the leading dot should be ignored when matching a cookie.
+
+### 4.12.0 (17 Jun, 2022)
+
+#### Add
+
+* An `allowJavaScriptOpening` parameter in `SetSupportMultipleWindows` to allow the web view opens a new window even triggered by JavaScript instead of user action.
+
+#### Fix
+
+* An issue which prevents "uploading from camera" from working properly on some Android 11 and Android 12 devices.
+* an issue which causes getting JavaScript evaluating result on the pages with UTF code format (a.k.a, characters as `\uXXXX`) will fail on Android.
+* Now UniWebView 4 supports from Unity 2019.4. This is a requirement of Unity publisher submission guidelines. If you need to continue using UniWebView 4.12.0 and later versions, please consider to upgrade your Unity version.
+
+### 4.11.2 (6 Apr, 2022)
+
+#### Fix
+
+* An issue that Safe Browsing on iOS will leak its memory when using `Dismiss` to close the web page by code.
+
+### 4.11.1 (23 Feb, 2022)
+
+#### Fix
+
+* Now UniWebView can build with Unity's new Input System enabled. But due to a bug in Unity's Input System, the back button detection on some Android devices may break and cause a stuck state. Before Unity can fix that, it is strongly recommended to use the "Both" option for Input System to get a stable experience.
+* An issue that when header is set, the HTML content in iframe tag not shows properly in some cases.
+* Fix a problem that the Post Build script edits format of some embedded variables in gradle file incorrectly.
+
+### 4.11.0 (26 Jan, 2022)
+
+#### Add
+
+* An `IsWebViewSupported` property on `UniWebView` to check whether the current device supports web view.
+
+### 4.10.3 (3 Dec, 2021)
+
+#### Fix
+
+* A crash when scrolling outside of the web view area when `SetTransparencyClickingThroughEnabled` is set to `true`.
+* Now Android supports RTL languages layout.
+
+### 4.10.2 (25 Nov, 2021)
+
+#### Fix
+
+* Now UniWebView also supports NTLM authentication method.
+* Uses the intent-based way to detect availability of SafeBrowsing. Now the `IsSafeBrowsingSupported` API would give back a more accurate result.
+* Removes the requirement of Gradle plugin version of 4.0.1 or later. This fixes some Android build errors on earlier Unity versions which ships with an older Gradle Plugin. However, if you are using `UniWebViewSafeBrowsing` and setting the Target API Level to Android 11 (Level 30), you still need a newer version of Unity and follow the [related guide](https://docs.uniwebview.com/guide/safe-browsing.html) to add `queries` to the `AndroidManifest.xml` file.
+* An issue that the toolbar on iOS can be clicked through to the Unity scene.
+
+
+### 4.10.1 (11 Nov, 2021)
+
+#### Fix
+
+* An issue that `UniWebViewSafeBrowsing.IsSafeBrowsingSupported` may always return `false` wrongly when build against Android API 30 or above.
+
+### 4.10.0 (2 Oct, 2021)
+
+#### Add
+
+* Add option to support for using regular expression matching in `AddDownloadURL` or `AddDownloadMIMEType` methods.
+
+#### Fix
+
+* Now the `Load` method allows a `null` URL on Android instead of crash the game.
+* The file downloading respects the SSL exception settings of the host web view now.
+* The UniWebView message system now support URLs without authority part. Now, a URL like `myscheme:this_is_the_message?foo=bar` can be parsed without problem.
+
+### 4.9.0 (26 Jul, 2021)
+
+#### Add
+
+* New feature Transparency Clicking Through. Now you can use `SetTransparencyClickingThroughEnabled` and set the `BackgroundColor` of web view to a clear color to allow the user tap through the web view background. Those taps will be delivered to Unity scene.
+
+#### Fix
+
+* A potential issue that in some cases the `Hide` or `Show` method freeze the game for a few seconds.
+
+### 4.8.0 (19 Jul, 2021)
+
+#### Add
+
+* A method to disable the keyboard avoidance behavior on Android. It can prevent the web view layout changing when showing keyboard on Android.
+
+#### Fix
+
+* A gradle parser issue that ignores tab in a gradle node. This may lead some gradle build failing if a tab is used in the gradle file.
+* Now the SSL error exception works properly even for resource on the allowed page.
+* An issue which causes the video auto play not working on Android.
+
+### 4.7.0 (14 Jun, 2021)
+
+#### Add
+
+* A new method `SetTextZoom` on Android. It delegates setting to Android `WebSettings.setTextZoom` for the web view .
+* A new method `SetDownloadEventForContextMenuEnabled` on Android. This allows the image saving action in context menu also triggers the `OnFileDownloadStarted` and `OnFileDownloadFinished` events.
+
+#### Fix
+
+* A potential issue that on some old Android devices, the `Show` and `Hide` methods do not return correct value for the animation starting state.
+
+### 4.6.1 (8 May, 2021)
+
+#### Fix
+
+* An issue that extension format of `accept` field is not recognized when uploading through the input file form on Android. It causes the file picker not shown up in some cases.
+
+### 4.6.0 (4 Apr, 2021)
+
+#### Add
+
+* Methods to remove cookies under a URL and with a certain cookie name. It allows you to remove some of the stored cookies instead of clearing them all. Check the `RemoveCookies` and `RemoveCooke` methods respectively.
+
+### 4.5.1 (12 Mar, 2021)
+
+#### Fix
+
+* Now file uploading from Android contains a more readable file name in its `Content-Disposition` field.
+* An issue which causes external keyboard input is not valid while opening the web view on iOS.
+
+### 4.5.0 (17 Feb, 2021)
+
+#### Add
+
+* A new method to capture the current web view content and store it on a temporary folder on disk. Check `CaptureSnapshot` method and `OnCaptureSnapshotFinished` event for more.
+
+#### Fix
+
+* A potential issue that Safe Browsing crashes on certain devices without Chrome and Google Mobile Services (GMS) properly installed.
+
+### 4.4.0 (26 Jan, 2021)
+
+#### Add
+
+* Support download files in the general web view. Now, a download task will be triggered if the loading of resource cannot be rendered in place. See the [Downloading Files Guide](https://docs.uniwebview.com/guide/download-files.html) for more information.
+
+#### Fix
+
+* Now Jetifier is not required when Android exporting. If you need Jetifier for other third-party libraries, set it in UniWebView's setting panel.
+* The `Hide` method now correctly hides the web view even when a full-screen view is being used on Android.
+
+### 4.3.1 (18 Dec, 2020)
+
+#### Fix
+
+* An issue that causes the app to crash on iOS 9 and 10 when closing the web view.
+
+### 4.3.0 (14 Dec, 2020)
+
+#### Add
+
+* A property to check whether the Safe Browsing Mode is supported on the device. Some Android devices may not have Chrome installed, so Safe Browsing Mode is not supported. Instead of ignoring the requests of opening the web page in Safe Browsing Mode, now UniWebView will open it in the installed system browser. Use `UniWebViewSafeBrowsing.IsSafeBrowsingSupported` to get availability.
+* Add Assembly Definitions (`asmdef`) support. Now UniWebView will organize itself as an assembly. This should boost your compile-time in Unity Editor.
+
+#### Fix
+
+* Better support for multiple windows. The pop-up new web page window can pop another new window now.
+* Now the script should compile when using Unity Editor even on Linux.
+* A Gradle issue which causes error while exporting project when some certain customized Gradle templates are used.
+* A potential problem that accessing to web page cookie might freeze the app in older iOS devices or systems.
+
+### 4.2.0 (17 Oct, 2020)
+
+#### Add
+
+* A method `SetAllowUniversalAccessFromFileURLs` to allow local file loading by AJAX from a local HTML page. This ignores CORS checking on iOS `WKWebView` when loading both the page and resource locally.
+* Now you can enable the screen swipe gesture on iOS or macOS to perform back or forward navigation. Call `SetAllowBackForwardNavigationGestures` to allow it.
+* Add opening and closing events for multiple window. Now you can receive `OnMultipleWindowOpened` and `OnMultipleWindowClosed` event when a new window is opened or closed respectively.
+
+#### Fix
+
+* Now the Safe Browsing on Android only requires "androidx.browser:browser" version 1.0.0. This solves some conflicting with other "old and bad-behaved" packages which not upgrading to the latest dependency.
+* The JavaScript pop-up alert now has a better cancel button style. Also fixed the duplicated prompt text for input alert.
+* An issue which causes wrong parsing for Gradle build file when a string is defined inside a non-node block.
+
+### 4.1.0 (26 Sep, 2020)
+
+#### Add
+
+* Add a method to dismiss the `UniWebViewSafeBrowsing` on iOS. To close an opened safe browsing component, call the `Dismiss` method.
+* Build support for iOS 14 and Xcode 12.
+
+#### Fix
+
+* An issue that `BackgroundColor` property not working on Android.
+
+### 4.0.4 (1 Sep, 2020)
+
+#### Fix
+
+* An issue causes the web view does not show up until switching the app from background on some customized Android distribution.
+* Now setting for "Accept" header will give a warning since iOS does not support customize this header field.
+
+### 4.0.3 (18 Aug, 2020)
+
+#### Fix
+
+* Fix an issue that causes keyboard overlaying not handled correctly on Android.
+
+### 4.0.2 (14 Aug, 2020)
+
+#### Fix
+
+* Android X browser dependency ('androidx.browser:browser') for UniWebView Android can now be disabled in the preference panel. Turn it off if other plugins are already adding it for you.
+
+### 4.0.1 (12 Aug, 2020)
+
+#### Fix
+
+* A issue that prevents the Gradle file being processed correctly if inline comments are used.
+* Kotlin dependency for UniWebView Android can now be disabled in the preference panel. Turn it off if other plugins are already adding it for you.
+
+### 4.0.0 (1 Aug, 2020)
+
+::: danger
+4.0.0 is a major update of UniWebView. Although most of APIs in UniWebView 4 are compatible with UniWebView 3 and it should be easy enough to migrate, there are still a few breaking changes. For migration from UniWebView 3 in detail, visit the [Migration Guide](https://docs-v4.uniwebview.com/guide/migration-guide.html). To know the highlight of the version, check [this page](https://docs-v4.uniwebview.com/guide/version-highlight.html) for more.
+:::
+
+#### Add
+
+* **Safe Browsing Mode support.** Now UniWebView also contains a wrapper for [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) on iOS and [Custom Tabs](https://developers.google.com/web/android/custom-tabs) on Android. It allows you to browse web pages in a more browser-like level, including sharing cookies or credentials with the system browser. Check the [Safe Browsing guide](https://docs.uniwebview.com/guide/safe-browsing.html) for more information. 
+* **Customizable built-in toolbar on iOS.** Now you can set the bar background color, button text, and the text color in the toolbar. Check the [Built-in Toolbar](https://docs.uniwebview.com/guide/built-in-toolbar.html) guide for more information.
+* **Add support for Unity 2020.1.** In the latest Unity version, it changes its way of handling native touch events. It may cause some functionality broken in UniWebView 3. UniWebView 4 uses itself in a new way to handle events to ensure working fine on all supported Unity versions. UniWebView 4 itself **supports from Unity 2018.3**.
+* **New Post Build Processing system and Preference Panel.** They provide a better way to define the dependencies and help you modify the "AndroidManifest.xml" file without touch it directly.
+* **Better permission model.** UniWebView now does not require the write external permission for uploading a photo from the gallery or camera to the web. It also adopts to permission models for Android 10. Other possible needed permission can be setup in the UniWebView Preference Panel.
+* An `OnPageProgressChanged` event which will be raised every time the loading progress changes in the web view.
+
+#### Fix
+
+* Now the web view resizes itself when a soft keyboard is showing up and about to cover the text input fields on the page. It keeps the text input visible.
+* UniWebView now always respects Unity setting of immersive mode on Android. The navigation bar will not jump out or flicker when showing the web view in an immersive mode.
+* Audio resource can stop correctly when the web view is closed now.
+* The alert pop-up and its text edit views for JavaScript confirm window or HTTP auth now have a better style and alignment.
+
+#### Deprecate
+
+* `SetImmersiveMode` is not needed anymore since the Unity setting is now always respected. This method will not do anything but give an error log instead.
+* `OnKeyCodeReceived` will not be called anymore since UniWebView is not intercepting any native events. Try Unity's `Input.GetKeyUp` in `Update` to get key code events instead.
+
+### 3.18.1 (4 Jul, 2020)
+
+#### Fix
+
+* A potential issue that the Android keyboard is not shown when switching back from a full screen view on Android 9 or above.
+* Now the Unity Editor support also allows displaying a web view when using the Device Simulator package.
+* An issue on iOS which causes the toolbar buttons placed in wrong position when switching back to the game while the web view is showing.
+
+### 3.18.0 (14 May, 2020)
+
+#### Add
+
+* An API to disable the whole user interaction of the web view. Call `SetUserInteractionEnabled(false)` on the web view if you do not want users to tap or scroll the web view.
+* Allow "Go Back" feature on a pop-up window if `SetSupportMultipleWindows` is set to `true`.
+
+#### Fix
+
+* An issue that the `OnPageFinished` event is not called on Android when loading an HTML string.
+
+### 3.17.0 (14 Apr, 2020)
+
+#### Add
+
+* A method to set the default font size on Android. This can help to reduce the influence of the user's display setting of the font scale. Use `SetDefaultFontSize` to give a more reasonable default font size based on the scale setting.
+* Now the visibility of navigation buttons (Go Back and Go Forward) on iOS toolbar can be set from Unity by `SetShowToolbarNavigationButtons`.
+
+#### Fix
+
+* A layout issue that breaks web view size when switching back to foreground when an action sheet shown in some cases.
+* The customized user agent string now also applies to the pop-up window when `SetSupportMultipleWindows` was called with `true`.
+* An issue that causes the new window cannot be dismissed correctly by `window.close()` on Android.
+* Now the text input views should be automatically scrolled up on Android when the soft keyboard displays and overlaps them.
+* The `ReferenceRectTransform` can calculate the correct final size and position for a non-default resolution setting for screen now.
+
+### 3.16.0 (5 Feb, 2020)
+
+#### Add
+
+* Support for `target="_blank"` links. By default, UniWebView will open the destination URL in the same page even it is attributed by a `_blank` target. If you want to open it in a new page, call `SetSupportMultipleWindows` with `true` and it will create a new web view above the current one to load the new request.
+
+#### Fix
+
+* Improve SSL error handling logic for Android to prevent warnings from Google.
+
+### 3.15.2 (8 Jan, 2020)
+
+#### Fix
+
+* URLs with "#" should be loaded correctly in iOS even the `skipEncoding` is not set to `true` in `Load` method.
+* The keyboard will be dismissed automatically when hiding the web view by calling `Hide` now.
+
+### 3.15.1 (18 Dec, 2019)
+
+#### Fix
+
+* Unity 2019.3 support. Fixed a problem which causes your app hanging and being killed at starting on iOS devices when building against Unity 2019.03 and without Xcode connected.
+* A possible crash when uploading and converting data between file choosers.
+* A potential issue that the Camera can be ignored when choosing images for uploading.
+
+### 3.15.0 (11 Dec, 2019)
+
+#### Add
+
+* A new method `ScrollTo` to scroll web view to a certain point.
+* Basic localization support for Android. Now the UniWebView related UI elements are localized for the following locals: `en`, `zh`, `zh-rTW`, `ja`, `ko`, `fr`, `de`, `es`, `ru`, `vi`, `pt`, `da`, `it`, `nl`, `sv`.
+
+#### Fix
+
+* Solve an issue that HTTP status cannot be retrieved correctly due to page loading events order are not correct on some Android systems.
+* Now the web view window will be pinned to top on macOS editor. This aligns the fact that the web view will always be the top-layer view on iOS and Android.
+
 ### 3.14.0 (20 Nov, 2019)
 
 #### Add
@@ -55,7 +487,7 @@ If you need to continue use UniWebView 3 on Unity 5.6, Unity 2017.1 or Unity 201
 
 #### Fix
 
-* A issue which causes the non-fullscreen web view position moving in some cases when soft keyboard is showing up.
+* A issue which causes the non full screen web view position moving in some cases when soft keyboard is showing up.
 
 ### 3.11.0 (27 Mar, 2019)
 
@@ -185,7 +617,7 @@ From Unity 2018, Gradle is used as the default build system, so we updated the i
 #### Fix
 
 * A potential issue which may cause game unresponsive when switching back to foreground when a web view's game object or its parent objects are inactive.
-* An issue causes web view cannot be added to correct view in the first game runloop while splash screen is disabled.
+* An issue causes web view cannot be added to correct view in the first game run loop while splash screen is disabled.
 
 ---
 
@@ -194,7 +626,7 @@ From Unity 2018, Gradle is used as the default build system, so we updated the i
 #### Add
 
 * Images from Internet now could be downloaded to Download folder in Android.
-* More consistent toolbar layout mechanism for toolbar on iOS. Now Auto Layout is used for layouting toolbar, and `adjustInset` option works better.
+* More consistent toolbar layout mechanism for toolbar on iOS. Now Auto Layout is used for layout toolbar, and `adjustInset` option works better.
 
 #### Fix
 
@@ -270,7 +702,7 @@ UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using
 #### Fix
 
 * A problem which caused hidden web view also receiving touch event on Android when multiple web views are used.
-* Fix an issue which causes crash when uploding a camera captured photo on some Android devices.
+* Fix an issue which causes crash when uploading a camera captured photo on some Android devices.
 * Improvement on loading performance a bit on Android.
 
 ---
@@ -327,9 +759,9 @@ UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using
 
 #### Fix
 
-* Local file URL with special charactors now can be corrected encoded when loading.
+* Local file URL with special characters now can be corrected encoded when loading.
 * Avoid unhandled Show method calling right after a Hide method. Now, the Hide method will be ignore if the web view is already hidden.
-* All three kinds of render mode for canvas (`ScreenSpaceOverlay`, `ScreenSpaceCamera` and `WorldSpace`) are now supported when using `RectTransform` to determin web view position and size.
+* All three kinds of render mode for canvas (`ScreenSpaceOverlay`, `ScreenSpaceCamera` and `WorldSpace`) are now supported when using `RectTransform` to determine web view position and size.
 * Array query in `UniWebViewMessage` should work as expected. Now a query like "?a[]=1&a[]=2" will be parsed to "1,2" in the result message.
 
 ---
@@ -340,7 +772,7 @@ UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using
 
 * A helper method `UniWebViewHelper.PersistentDataURLForPath` to return a url string for files under `persistentDataPath`.
 * A method to enable user resizing for web view windows on macOS Editor.
-* Upgrade to new build toolchain to get better optimized binary for both iOS and Android targets.
+* Upgrade to new build tool chain to get better optimized binary for both iOS and Android targets.
 
 #### Fix
 
@@ -355,14 +787,14 @@ UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using
 * Setting cookies from JavaScript now could work correctly.
 * Allowing back compatibility for mixed content loading in Android.
 * Stopping loading now could trigger page loading error event.
-* Fully bitcode support is now enabled for iOS build.
+* Fully bit code support is now enabled for iOS build.
 
 ---
 
 ### 3.0.0 (27 Jun, 2017)
 
 ::: danger
-3.0.0 is a major update of UniWebView. We rewote the whole software from scratch to bring your experience of using a web view in Unity to a next level. Be causion it is not compatible with UniWebView 2, there are quite a few breaking changes in this version. For migration from UniWebView 2 in detail, visit our [Migration Guide](https://docs.uniwebview.com/#/migration-guide) in documentation. To know the highlight of the version, check [this page](https://docs.uniwebview.com/#/version-highlight) for more.
+3.0.0 is a major update of UniWebView. We rewrote the whole software from scratch to bring your experience of using a web view in Unity to a next level. Be caution it is not compatible with UniWebView 2, there are quite a few breaking changes in this version. For migration from UniWebView 2 in detail, visit our [Migration Guide](https://docs-v3.uniwebview.com/guide/migration-guide.html) in documentation. To know the highlight of the version, check [this page](https://docs-v3.uniwebview.com/guide/version-highlight.html) for more.
 :::
 
 #### Add
@@ -370,11 +802,11 @@ UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using
 * Better way to set frame of the web view. You can also use a reference `RectTransform` to set position and size.
 * Use `WKWebView` instead of `UIWebView` on iOS.
 * New pop-up style Unity Editor support on macOS. It is a fully functional tool for debugging purpose.
-* A brandly new way to setup bridging between Unity and Cocoa native. Now there is no message sending delay.
+* A new way to setup bridging between Unity and Cocoa native. Now there is no message sending delay.
 * You can now set the position of toolbar to top or bottom on iOS.
-* A leveled logger to log all UniWebView related information. See [UniWebViewLogger](https://docs.uniwebview.com/#/latest/api/uniwebviewlogger.html) documentation for more.
-* Use a payload based callback API like transition and JavaScript related methods. It takes more data. See [UniWebViewNativeResultPayload](https://docs.uniwebview.com/#/latest/api/uniwebviewnativeresultpayload.html).
-* SSL exception for white listed domain. It is useful for a untrusted certification but you still want to access.
+* A leveled logger to log all UniWebView related information. See [UniWebViewLogger](https://docs.uniwebview.com/api/uniwebviewlogger.html) documentation for more.
+* Use a payload based callback API like transition and JavaScript related methods. It takes more data. See [UniWebViewNativeResultPayload]https://docs.uniwebview.com(/api/uniwebviewnativeresultpayload.html).
+* SSL exception for white listed domain. It is useful for a un-trusted certification but you still want to access.
 * A method to get current web view HTML content as a string.
 
 #### Fix
@@ -411,8 +843,8 @@ UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using
 
 #### Add
 
-* An API to set allowing video autoplay. Call SetAllowAutoPlay on the web view for it. Please note that you also need to add an "autoplay" property in the video tag to enable autoplay in the web page.
-* An API to enable inline video play for iOS. By default, iOS video play will be poped to full-screen. By calling SetAllowInlinePlay with a true flag, you can play video inline on iOS. Please note you also need to add an "inline" property in youe video tag to support it.
+* An API to set allowing video auto-play. Call `SetAllowAutoPlay` on the web view for it. Please note that you also need to add an "auto-play" property in the video tag to enable auto-play in the web page.
+* An API to enable inline video play for iOS. By default, iOS video play will be pop to full-screen. By calling SetAllowInlinePlay with a true flag, you can play video inline on iOS. Please note you also need to add an "inline" property in your video tag to support it.
 * SetCookie and GetCookie methods to set and get a cookie for a specified URL and key.
 
 #### Fix
@@ -425,7 +857,7 @@ UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using
 
 #### Fix
 
-* Precompiled jar file for Google VR activity.
+* Pre-compiled jar file for Google VR activity.
 * An issue which causes web view cannot be opened correctly in some old Android devices.
 
 ---
@@ -543,7 +975,7 @@ UniWebView now requires Xcode 9 with iOS SDK 11 to build. If you are still using
 Notice: Unity dropped Windows Phone 8 support officially from 5.3. UniWebView will not continue development for Windows Phone as well from this version.
 :::
 
-Reason: The ammount of our Windows Phone users is very few compared to iOS and Android (it is less than 1% share according to report).
+Reason: The amount of our Windows Phone users is very few compared to iOS and Android (it is less than 1% share according to report).
 However, if we want to to support Windows Store App with Windows Phone 8.1 SDK or Windows 10 SDK, it would take even more time than either of other platforms.
 
 Since the Windows Phone SDK itself is not backwards compatible, the transition from Windows 8 to 8.1 or 10 means we need to rewrite all code in the package.
@@ -558,7 +990,7 @@ The current Windows Phone 8 support (UniWebViewWP.dll) will be kept in later ver
 
 #### Add
 
-* Built-in show/hide transition. You could now show or hide the webview with a transition effect. Currently we support fade in/out and transition from/to one of screen edges. Please take a look at reference of Show() and Hide() for more.
+* Built-in show/hide transition. You could now show or hide the web view with a transition effect. Currently we support fade in/out and transition from/to one of screen edges. Please take a look at reference of Show() and Hide() for more.
   Add: Recreate new demo scenes as a better tutorial. Now most of the useful features are contained in the demo scenes, with fully commented script to show how to use them.
 * Now you can use "ESC" in OS X Editor to go back or close the web view.
 
@@ -574,7 +1006,7 @@ The current Windows Phone 8 support (UniWebViewWP.dll) will be kept in later ver
 Notice: Unity will drop Windows Phone 8 support officially from 5.3. UniWebView will not continue development for Windows Phone as well from the next version.
 :::
 
-Reason: The ammount of our Windows Phone users is very few compared to iOS and Android (it is less than 1% share according to report).
+Reason: The amount of our Windows Phone users is very few compared to iOS and Android (it is less than 1% share according to report).
 However, if we want to to support Windows Store App with Windows Phone 8.1 SDK or Windows 10 SDK, it would take even more time than either of other platforms.
 
 Since the Windows Phone SDK itself is not backwards compatible, the transition from Windows 8 to 8.1 or 10 means we need to rewrite all code in the package.
@@ -625,9 +1057,9 @@ The current Windows Phone 8 support (UniWebViewWP.dll) will be kept in later ver
 
 #### Fix
 
-* A vulnerability that accept SSL connect even an error hanppes. Now UniWebView will use the default behavior of system and reject all untrusted SSL connection. It will protect your web content from possible man-in-the-middle attacks. At the same time, it means you have to use a valid certification even if you are in test environment.
+* A vulnerability that accept SSL connect even an error happens. Now UniWebView will use the default behavior of system and reject all un-trusted SSL connection. It will protect your web content from possible man-in-the-middle attacks. At the same time, it means you have to use a valid certification even if you are in test environment.
 
-* A null exception when inputing in a text field in Editor.
+* A null exception when input in a text field in Editor.
 
 ---
 
@@ -635,7 +1067,7 @@ The current Windows Phone 8 support (UniWebViewWP.dll) will be kept in later ver
 
 #### Fix
 
-* An issue in Unity 5.2 which causes the webview not showing correctly in Unity Editor.
+* An issue in Unity 5.2 which causes the web view not showing correctly in Unity Editor.
 * Alert compatibility for iOS in Unity 5.2.
 
 ---
@@ -661,7 +1093,7 @@ The current Windows Phone 8 support (UniWebViewWP.dll) will be kept in later ver
 #### Fix
 
 * The video will paused when app switched to background in Android devices now.
-* An issue causes the loading indicator not removed in Windows Phone 8 devices when dismiss the webview.
+* An issue causes the loading indicator not removed in Windows Phone 8 devices when dismiss the web view.
 * Add Neatplugin and RigidFace to default supported third party jar.
 
 ---
@@ -678,7 +1110,7 @@ The current Windows Phone 8 support (UniWebViewWP.dll) will be kept in later ver
 
 #### Fix
 
-* An issue on Android which causes screen remaining black when user taps back button when playing a fullscreen Youtube video.
+* An issue on Android which causes screen remaining black when user taps back button when playing a full-screen Youtube video.
 
 ---
 
@@ -690,7 +1122,7 @@ The current Windows Phone 8 support (UniWebViewWP.dll) will be kept in later ver
 
 #### Fix
 
-* An issue which causes spinner not hidden when webview dismissed by done button.
+* An issue which causes spinner not hidden when web view dismissed by done button.
 
 ---
 
@@ -711,14 +1143,14 @@ The current Windows Phone 8 support (UniWebViewWP.dll) will be kept in later ver
 
 #### Add
 
-* Support for Windows Phone 8 and 8.1. Please note you need to add WebBrowser capatibility in Windows Phone's manifest file after exported from Unity.
+* Support for Windows Phone 8 and 8.1. Please note you need to add WebBrowser capability in Windows Phone's manifest file after exported from Unity.
 * Support for Unity 5. If you upgrade from UniWebView 1.x, you need to remove the old package and reimport again.
 * 64 bit support for Mac Editor version, since Unity 5 is now a 64-bit app.
 
 #### Fix
 
 * An issue which may cause the cache can not be cleaned completed in iOS.
-* A serialize issue which may cause editor crash in some occation.
+* A serialize issue which may cause editor crash in some occasion.
 
 ::: danger
 Notice: This version is not compatible with Unity 4.x. If you need to use UniWebView on Unity 4.x, please use UniWebView 1.x instead. You can find more information about the earlier version on Asset Store: https://assetstore.unity3d.com/jp/#!/content/12476
@@ -745,7 +1177,7 @@ Notice: This version is not compatible with Unity 4.x. If you need to use UniWeb
 #### Fix
 
 * Improve performance for Mac Editor a lot.
-* An issue which cause spinner can not hide when the webview removed by code from Unity.
+* An issue which cause spinner can not hide when the web view removed by code from Unity.
 * Update Android build target.
 
 ---
@@ -754,10 +1186,10 @@ Notice: This version is not compatible with Unity 4.x. If you need to use UniWeb
 
 #### Fix
 
-Add: A method to change the user agent of the webview. Now you can use the SetUserAgent method to set customized user agent for the webview.
+Add: A method to change the user agent of the web view. Now you can use the SetUserAgent method to set customized user agent for the web view.
 Add: The Mac Editor now supports for Xcode 6.1 and OSX Yosemite.
 
-* An orientation issue when you set game as a landscape one, while the webview can not rotated to portrait on iOS 8.
+* An orientation issue when you set game as a landscape one, while the web view can not rotated to portrait on iOS 8.
 
 ---
 
@@ -773,7 +1205,7 @@ Add: The Mac Editor now supports for Xcode 6.1 and OSX Yosemite.
 
 #### Add
 
-* An API for Android to enable wide view port support. Call SetUseWideViewPort(true) before loading any webpage containing viewport meta tag on Android to make it avaliable.
+* An API for Android to enable wide view port support. Call SetUseWideViewPort(true) before loading any webpage containing viewport meta tag on Android to make it available.
 
 #### Fix
 
@@ -790,7 +1222,7 @@ Add: The Mac Editor now supports for Xcode 6.1 and OSX Yosemite.
 #### Fix
 
 * Viewport issue for some Android devices. Now the html's viewport should work correctly.
-* Webview truncated issue when the y position set to 0 on some Android devices. This is an advanced fix continuing for version 1.6.1.
+* Web view truncated issue when the y position set to 0 on some Android devices. This is an advanced fix continuing for version 1.6.1.
 * An issue which causes auto-rotation not work on iOS 8 in some situation.
 * The position of toolbar and spinner should be correct on iOS 8 now.
 * A build error which stops the exported project compiling in Xcode 5 and iOS 7 SDK.
@@ -805,9 +1237,9 @@ This version dropped support for Unity 4.1.4. Now UniWebView starts from 4.2.2. 
 
 #### Add
 
-* UniWebViewHelper.screenHeight and UniWebViewHelper.screenWidth. You can retrive the screen size in "point" instead of "pixel" with these two new API. See the migrate guide below for more.
+* UniWebViewHelper.screenHeight and UniWebViewHelper.screenWidth. You can retrieve the screen size in "point" instead of "pixel" with these two new API. See the migrate guide below for more.
 * "tel:" link support for Android. Now you can open the telephone UI by a link like "tel:12345678".
-* An example in demo file, to show how to handle the auto-orientation, with keeping the layout unchanged in both portrait and landscope.
+* An example in demo file, to show how to handle the auto-orientation, with keeping the layout unchanged in both portrait and landscape.
 * iOS 8 and 5.5 inch iPhone 6 Plus support.
 
 #### Fix
@@ -826,7 +1258,7 @@ This version dropped support for Unity 4.1.4. Now UniWebView starts from 4.2.2. 
 
 > Migrate Guide - If you are using UniWebViewHelper.RunningOnRetinaIOS() to decide the insets of UniWebView, you may want to look at the Migrate Guide:
 
-Due to introduction of iPhone 6 Plus and its new @3x scale, the old way would not work well. Now, all screen-size-based insets calculation for UniWebView should NOT use RunningOnRetinaIOS anymore. Instead you should use UniWebViewHelper.screenHeight and UniWebViewHelper.screenWidth and specify the point directly. For example, if you want to show a webview taking the upper half of screen, before version 1.7.0, it might be something like this:
+Due to introduction of iPhone 6 Plus and its new @3x scale, the old way would not work well. Now, all screen-size-based insets calculation for UniWebView should NOT use RunningOnRetinaIOS anymore. Instead you should use UniWebViewHelper.screenHeight and UniWebViewHelper.screenWidth and specify the point directly. For example, if you want to show a web view taking the upper half of screen, before version 1.7.0, it might be something like this:
 
     int uiFactor = UniWebViewHelper.RunningOnRetinaIOS() ? 2 : 1;
     int bottomInset = Screen.height / ( 2 * uiFactor );
@@ -847,11 +1279,11 @@ To make sure you can notice this change, the usage of RunningOnRetinaIOS() will 
 
 #### Add
 
-* A precompiled package for Vuforia's QCARPlayerNativeActivity activity. You can find it under the /UniWebView/Source/ThirdPartyJar folder.
+* A pre-compiled package for Vuforia's QCARPlayerNativeActivity activity. You can find it under the /UniWebView/Source/ThirdPartyJar folder.
 
 #### Fix
 
-* An issue which cause the webview can not be full screen on some Android tablet.
+* An issue which cause the web view can not be full screen on some Android tablet.
 * Drop support for Android 2.2.x and earlier. So you can recompile the jar file with Android SDK 18 and later.
 
 ---
@@ -889,7 +1321,7 @@ To make sure you can notice this change, the usage of RunningOnRetinaIOS() will 
 
 #### Fix
 
-* Update Android recomplie guide for Unity 4.5.
+* Update Android recompile guide for Unity 4.5.
 * Rotation problem when playing full screen video on iOS. Now the layout can work perfectly.
 
 ---
@@ -898,7 +1330,7 @@ To make sure you can notice this change, the usage of RunningOnRetinaIOS() will 
 
 #### Fix
 
-* Fix errors when export from Unity for the platforms not supported in UniWebView. Be causion, this fix does not make UniWebView supporting for other platforms than iOS and Android. It just disabled UniWebView code and suspended the errors.
+* Fix errors when export from Unity for the platforms not supported in UniWebView. Be caution, this fix does not make UniWebView supporting for other platforms than iOS and Android. It just disabled UniWebView code and suspended the errors.
 
 ---
 
@@ -908,14 +1340,14 @@ To make sure you can notice this change, the usage of RunningOnRetinaIOS() will 
 
 * An API for adding some javascript snippet to Android and iOS in runtime. Now you can dynamically add js code to your page when the game is running, instead of defining it in the web page before loading the web content.
 * API for cleaning a specified cookie, instead of cleaning them all.
-* A key down event on Android while the webview is actived.
+* A key down event on Android while the web view is activated.
 
 #### Fix
 
 * Improved the performance for Mac Editor.
 * Some other small issues.
 
-> The parameters of LoadBeginDelegate is changed from 1.4.0. There is now an url parameter in the delegate. If you are using webview.currentUrl in the corresponding event, now please use this parameter intead of that. The currentUrl is updated only when web page loading finished or failed now.
+> The parameters of LoadBeginDelegate is changed from 1.4.0. There is now an url parameter in the delegate. If you are using web view.currentUrl in the corresponding event, now please use this parameter instead of that. The currentUrl is updated only when web page loading finished or failed now.
 
 ---
 
@@ -923,12 +1355,12 @@ To make sure you can notice this change, the usage of RunningOnRetinaIOS() will 
 
 #### Add
 
-* Add an API for clean cookies for the webview.
-* Add an API for stop current loading of the webview.
+* Add an API for clean cookies for the web view.
+* Add an API for stop current loading of the web view.
 
 #### Fix
 
-* Change the logic when loading webview, now UniWebView will send all loading begin event back to Unity.
+* Change the logic when loading web view, now UniWebView will send all loading begin event back to Unity.
 * An issue which cause Youtube video can not be automatically played in iOS.
 
 ---
@@ -939,7 +1371,7 @@ To make sure you can notice this change, the usage of RunningOnRetinaIOS() will 
 
 #### Fix
 
-New: Customize url schemes. You can now add and remove the url schemes UniWebView is using. By using new API of AddUrlScheme and RemoveUrlScheme, you can now integrate some more third party service eaiser.
+New: Customize url schemes. You can now add and remove the url schemes UniWebView is using. By using new API of AddUrlScheme and RemoveUrlScheme, you can now integrate some more third party service easier.
 New: Support for location service of Android.
 
 * Some memory leak on iOS.
@@ -950,14 +1382,14 @@ New: Support for location service of Android.
 
 #### Add
 
-* Add bouncesEnable propert to Android. You can set the bounce effect for Android as well. Default is false, which means not show the bounce effect on Android, and not bounce the webview on iOS.
+* Add bouncesEnable property to Android. You can set the bounce effect for Android as well. Default is false, which means not show the bounce effect on Android, and not bounce the web view on iOS.
 * Add a refresh button in iOS's built-in tool bar.
-* Add zoom feature to both iOS and Android. Now you can set the zoomEnable property to let your users zoom-in or zoom-out webview by a pinch gesture.
+* Add zoom feature to both iOS and Android. Now you can set the zoomEnable property to let your users zoom-in or zoom-out web view by a pinch gesture.
 * Add Reload method, you can reload the current page now from code.
 
 #### Fix
 
-* Ignore the ssl check in Andoird, it is useful when you are testing your page with a certification you create yourself. Otherwise, you can not get pass from it.
+* Ignore the ssl check in Android, it is useful when you are testing your page with a certification you create yourself. Otherwise, you can not get pass from it.
 * Log order issue on Android. Now the create and show events can be logged correctly.
 
 ---
@@ -966,13 +1398,13 @@ New: Support for location service of Android.
 
 #### Add
 
-* Add a bouncesEnable property to control the bounces when scroll the webview in iOS. The bounces effect is turned off by default, if you want it back, set this property to true.
+* Add a bouncesEnable property to control the bounces when scroll the web view in iOS. The bounces effect is turned off by default, if you want it back, set this property to true.
 
 #### Fix
 
 * A problem causing the OnComplete event can not be raised correctly when load fails.
-* A problem which causes the name of webview game object being appended instead of replaced.
-* A problem with hiding the webview. Now the webview area could be clicked through correctly when hidden.
+* A problem which causes the name of web view game object being appended instead of replaced.
+* A problem with hiding the web view. Now the web view area could be clicked through correctly when hidden.
 
 #### Deprecate
 
@@ -988,9 +1420,9 @@ New: Support for location service of Android.
 
 #### Fix
 
-* A potential issue which may cause unity scene turning to black when switching back to game while webview opened. It might shows on some old Android devices.
+* A potential issue which may cause unity scene turning to black when switching back to game while web view opened. It might shows on some old Android devices.
 * A problem which causes the source can not get compiled in Mono Develop.
-* Update the Dismiss method to let it work as designed in Mac Editor and Android devices. It now behavious as making the webview hidden instead of close and destory it. You can use Show to make it visible again after dismissing it.
+* Update the Dismiss method to let it work as designed in Mac Editor and Android devices. It now behaviors as making the web view hidden instead of close and destroy it. You can use Show to make it visible again after dismissing it.
 
 ---
 
@@ -1003,7 +1435,7 @@ New: Support for location service of Android.
 #### Fix
 
 * Change the local file loading back to previous because the new method can not handle base url very well.
-* An issue which caused current url can not be retrived properly for Android.
+* An issue which caused current url can not be retrieved properly for Android.
 
 ---
 
@@ -1026,15 +1458,15 @@ New: Support for location service of Android.
 
 #### Add
 
-* A spinner is added to webview, which will show when the webpage is under loading. The spinner is on by default, if you don't want it, you can set it not show by the SetShowSpinnerWhenLoading method of UniWebView.
+* A spinner is added to web view, which will show when the webpage is under loading. The spinner is on by default, if you don't want it, you can set it not show by the SetShowSpinnerWhenLoading method of UniWebView.
 * We also added a text label in the spinner, to show some information to your users.
-* Added an OnEvalJavaScriptFinished event for eval js script. Now EvaluatingJavaScript will not return a value, but raise the event. So you can use the same API for both iOS and Android.
+* Added an OnEvalJavaScriptFinished event for evaluate js script. Now EvaluatingJavaScript will not return a value, but raise the event. So you can use the same API for both iOS and Android.
 * Local file load for Android 4.x.
 
 #### Fix
 
 * Rewrote all the Android native code, to make it working properly under Unity 4.3.
-* A problem which may cause unity game scene disappeared when game goes to background with webview opened in some old Android devices.
+* A problem which may cause unity game scene disappeared when game goes to background with web view opened in some old Android devices.
 
 ---
 
@@ -1063,12 +1495,12 @@ New: Support for location service of Android.
 
 #### Add
 
-* Add a method to the webview for loading from a html string.
-* Add some demo script to tell demostrate how to load a local html file.
+* Add a method to the web view for loading from a html string.
+* Add some demo script to tell demonstrate how to load a local html file.
 
 #### Fix
 
-* A problem when users close the webview with soft keyboard showing in Android.
+* A problem when users close the web view with soft keyboard showing in Android.
 
 ---
 
@@ -1076,12 +1508,12 @@ New: Support for location service of Android.
 
 #### Add
 
-* A better and more intersting demo scene to explain how to make the UniWebView work.
+* A better and more interesting demo scene to explain how to make the UniWebView work.
 
 #### Fix
 
 * A problem which cause the keyboard not working on Android.
-* A rotation issue which cause the webview can not rotate correctly in iOS.
+* A rotation issue which cause the web view can not rotate correctly in iOS.
 
 ---
 
@@ -1091,8 +1523,8 @@ New: Support for location service of Android.
 
 * Add Youtube video playing support for Android.
 * Add a tool bar to iOS.
-* The users can use back button (Android) or a native toolbar (iOS) to close the webview now.
-* Add an event to control whether the webview can be closed or not.
+* The users can use back button (Android) or a native toolbar (iOS) to close the web view now.
+* Add an event to control whether the web view can be closed or not.
 
 #### Fix
 

@@ -57,14 +57,14 @@ notice = "This will be the decoded value for the path of original url."
 example = """
 ```csharp
 webView.OnMessageReceived += (view, message) => {
-    print(message.Scheme);
+    print(message.Path);
 };
 webView.Load("uniwebview://action?key=value&anotherKey=value");
 // => "action"
 
 // Encoded path
 webView.OnMessageReceived += (view, message) => {
-    print(message.Scheme);
+    print(message.Path);
 };
 webView.Load("uniwebview://%e8%b7%af%e5%be%84?key=value&anotherKey=value");
 // => "路径"

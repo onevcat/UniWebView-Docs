@@ -2,10 +2,9 @@
   "dependencies": {
     "escape-html": "^1.0.3",
     "fs-extra": "^5.0.0",
-    "marked": "^0.3.19",
-    "node-prismjs": "^0.1.1",
+    "marked": "^4.0.10",
     "toml": "^2.3.3",
-    "vuepress": "^0.8.4"
+    "vuepress": "^2.0.0-beta.49"
   },
   "name": "UniWebView-Docs",
   "version": "1.0.0",
@@ -17,5 +16,9 @@
     "dev": "./node_modules/.bin/vuepress dev docs",
     "build": "yarn api && ./node_modules/.bin/vuepress build docs",
     "api": "node ./script/build-api.js"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-search": "^2.0.0-beta.49",
+    "prismjs": "^1.27.0"
   }
 }
