@@ -162,7 +162,13 @@ as well as receive a message from the web view.
 <p>Adds a domain to the SSL checking white list.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#removesslexceptiondomain'><span class='return-type'>void</span> RemoveSslExceptionDomain(string domain)</a></div></td><td><div class='simple-summary'>
-<p>Removes a domain from the SSL checking white list.</p>
+<p>Removes a domain from the deprecated SSL exception white list.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#addsslpinnedfingerprint'><span class='return-type'>void</span> AddSslPinnedFingerprint(string domain, string fingerprint)</a></div></td><td><div class='simple-summary'>
+<p>Pins a SHA-256 certificate fingerprint for a domain.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removesslpinnedfingerprint'><span class='return-type'>void</span> RemoveSslPinnedFingerprint(string domain, string fingerprint)</a></div></td><td><div class='simple-summary'>
+<p>Removes a previously pinned fingerprint for the given domain.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setheaderfield'><span class='return-type'>void</span> SetHeaderField(string key, string value)</a></div></td><td><div class='simple-summary'>
 <p>Sets a customized header field for web view requests.</p>
@@ -2124,14 +2130,13 @@ webView<span class="token punctuation">.</span><span class="token function">AddU
     <div class='desc'>
       <div class='summary'>
 <p>Adds a domain to the SSL checking white list.</p>
-<p>If you are trying to access a website with un-trusted or expired certification, 
-the web view will prevent its loading. If you could confirm that this site is trusted,
-you can add the domain as an SSL exception, so you could visit it.</p>
+<p>This API is deprecated and no longer bypasses SSL certificate errors.
+Use <code>AddSslPinnedFingerprint</code> instead.</p>
 </div>
       <div class='custom-container warning'>
   <p class="custom-container-title">NOTICE</p>
   <p>
-        We strongly suggest you upgrade your site certification to a trusted one. It would be dangerous to add a site as SSL exception and your user might be exposed to the risk of Man-in-the-middle attack. You should know exactly what you will do before adding a domain to the whitelist.
+        This method is deprecated and not working. It is just kept for source compatibility only. Configure explicit certificate pinning via <code>AddSslPinnedFingerprint</code> to trust custom certificates.
   </p>
 </div>
       <div class='parameters'>
@@ -2147,13 +2152,8 @@ you can add the domain as an SSL exception, so you could visit it.</p>
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code><span class="token comment">// This loading will fail since the certification is a self-signed one and not trusted.</span>
-webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span />
-<span class="token comment">// Add "self-signed.badssl.com" as trusted.</span>
+<pre class="language-csharp"><code><span class="token comment">// Deprecated. No longer bypasses certificate errors.</span>
 webView<span class="token punctuation">.</span><span class="token function">AddSslExceptionDomain</span><span class="token punctuation">(</span><span class="token string">"self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// This page should load now.</span>
-webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 </code></pre>
 </div>
 </div>
@@ -2165,9 +2165,15 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Removes a domain from the SSL checking white list.</p>
+<p>Removes a domain from the deprecated SSL exception white list.</p>
 </div>
-            <div class='parameters'>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        This method is deprecated. Remove any legacy SSL exception before migrating to <code>AddSslPinnedFingerprint</code>.
+  </p>
+</div>
+      <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
@@ -2181,6 +2187,85 @@ webView<span class="token punctuation">.</span><span class="token function">Load
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">RemoveSslExceptionDomain</span><span class="token punctuation">(</span><span class="token string">"self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='addsslpinnedfingerprint'></div><div class='api-heading' data-id='addsslpinnedfingerprint'><a href='#addsslpinnedfingerprint'><span class='return-type'>void</span> AddSslPinnedFingerprint(string domain, string fingerprint)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Pins a SHA-256 certificate fingerprint for a domain.</p>
+<p>When an SSL error occurs, UniWebView compares the presented certificate fingerprint with the pinned values. The load proceeds only if a match is found.
+This is useful for handling self-signed certificates or certificates issued by private CAs.</p>
+<p>To obtain the SHA-256 fingerprint of a server certificate, you can use the following OpenSSL command by replacing <code>self-signed.badssl.com</code> with your target domain:</p>
+<pre><code class="language-bash">echo <span class="token operator">|</span> openssl s_client <span class="token operator">-</span>connect self<span class="token operator">-</span>signed<span class="token punctuation">.</span>badssl<span class="token punctuation">.</span>com<span class="token punctuation">:</span><span class="token number">443</span> <span class="token operator">-</span>servername self<span class="token operator">-</span>signed<span class="token punctuation">.</span>badssl<span class="token punctuation">.</span>com <span class="token operator">|</span> openssl x509 <span class="token operator">-</span>fingerprint <span class="token operator">-</span>sha256 <span class="token operator">-</span>noout
+</code></pre>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>domain</span></div>
+    <div class='parameter-item-desc'><p>The target domain. It should not include scheme or path parts.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>fingerprint</span></div>
+    <div class='parameter-item-desc'><p>The expected certificate SHA-256 fingerprint. Colons are optional and the comparison ignores casing.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Compute the SHA-256 fingerprint of the server certificate first.</span>
+webView<span class="token punctuation">.</span><span class="token function">AddSslPinnedFingerprint</span><span class="token punctuation">(</span>
+  <span class="token string">"self-signed.badssl.com"</span><span class="token punctuation">,</span> 
+  <span class="token string">"62:F1:B6:F8:B2:4B:29:CB:F3:18:BD:8A:E9:82:E0:60:03:97:89:6C:3C:DD:F8:E5:BE:6F:68:46:9E:B9:21:62"</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Now load the page with the domain and the self-signed certificate won't trigger an error.</span>
+webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://self-signed.badssl.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='removesslpinnedfingerprint'></div><div class='api-heading' data-id='removesslpinnedfingerprint'><a href='#removesslpinnedfingerprint'><span class='return-type'>void</span> RemoveSslPinnedFingerprint(string domain, string fingerprint)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Removes a previously pinned fingerprint for the given domain.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>domain</span></div>
+    <div class='parameter-item-desc'><p>The domain bound to the fingerprint.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>fingerprint</span></div>
+    <div class='parameter-item-desc'><p>The fingerprint to remove. Use the same format that was provided to AddSslPinnedFingerprint.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">RemoveSslPinnedFingerprint</span><span class="token punctuation">(</span>
+  <span class="token string">"self-signed.badssl.com"</span><span class="token punctuation">,</span> 
+  <span class="token string">"62:F1:B6:F8:B2:4B:29:CB:F3:18:BD:8A:E9:82:E0:60:03:97:89:6C:3C:DD:F8:E5:BE:6F:68:46:9E:B9:21:62"</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
