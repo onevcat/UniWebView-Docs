@@ -238,3 +238,90 @@ safeBrowsing.OnSafeBrowsingFinished += (browsing) => {
 name = "browsing"
 type = "UniWebViewSafeBrowsing"
 summary = "The `UniWebViewSafeBrowsing` object raised this event."
+
+[[Events]]
+name = "OnSafeBrowsingClosed"
+syntax = "OnSafeBrowsingClosed(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)"
+returnType = "event"
+summary = """
+Raised together with `OnSafeBrowsingFinished`, but includes the metadata payload from the native safe browsing component.
+"""
+example = """
+```csharp
+safeBrowsing.OnSafeBrowsingClosed += (browsing, metadata) => {
+    Debug.Log($"Safe Browsing closed at {metadata.TimestampUtc} from {metadata.Source}");
+};
+```
+"""
+[[Events.parameters]]
+name = "browsing"
+type = "UniWebViewSafeBrowsing"
+summary = "The `UniWebViewSafeBrowsing` object raised this event."
+[[Events.parameters]]
+name = "metadata"
+type = "UniWebViewSafeBrowsingEventMetadata"
+summary = "Structured metadata describing the native callback (timestamp, native source)."
+
+[[Events]]
+name = "OnSafeBrowsingNavigationStarted"
+syntax = "OnSafeBrowsingNavigationStarted(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)"
+returnType = "event"
+summary = "Raised when the underlying browser starts loading a page in Safe Browsing mode."
+notice = "This event is not raised on iOS/macOS because Safari does not expose a navigation-start callback."
+example = """
+```csharp
+safeBrowsing.OnSafeBrowsingNavigationStarted += (browsing, metadata) => {
+    Debug.Log($"Navigation started at {metadata.TimestampUtc}");
+};
+```
+"""
+[[Events.parameters]]
+name = "browsing"
+type = "UniWebViewSafeBrowsing"
+summary = "The `UniWebViewSafeBrowsing` object raised this event."
+[[Events.parameters]]
+name = "metadata"
+type = "UniWebViewSafeBrowsingEventMetadata"
+summary = "Structured metadata describing the native callback."
+
+[[Events]]
+name = "OnSafeBrowsingNavigationFinished"
+syntax = "OnSafeBrowsingNavigationFinished(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)"
+returnType = "event"
+summary = "Raised when the Safe Browsing page finishes loading successfully."
+example = """
+```csharp
+safeBrowsing.OnSafeBrowsingNavigationFinished += (browsing, metadata) => {
+    Debug.Log($"Navigation finished at {metadata.TimestampUtc}");
+};
+```
+"""
+[[Events.parameters]]
+name = "browsing"
+type = "UniWebViewSafeBrowsing"
+summary = "The `UniWebViewSafeBrowsing` object raised this event."
+[[Events.parameters]]
+name = "metadata"
+type = "UniWebViewSafeBrowsingEventMetadata"
+summary = "Structured metadata describing the native callback."
+
+[[Events]]
+name = "OnSafeBrowsingNavigationFailed"
+syntax = "OnSafeBrowsingNavigationFailed(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)"
+returnType = "event"
+summary = "Raised when the Safe Browsing page fails to load."
+example = """
+```csharp
+safeBrowsing.OnSafeBrowsingNavigationFailed += (browsing, metadata) => {
+    Debug.Log($"Safe Browsing error reported at {metadata.TimestampUtc}");
+};
+```
+"""
+[[Events.parameters]]
+name = "browsing"
+type = "UniWebViewSafeBrowsing"
+summary = "The `UniWebViewSafeBrowsing` object raised this event."
+[[Events.parameters]]
+name = "metadata"
+type = "UniWebViewSafeBrowsingEventMetadata"
+summary = "Structured metadata describing the native callback."
