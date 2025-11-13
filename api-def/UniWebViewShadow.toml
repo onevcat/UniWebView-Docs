@@ -1,0 +1,73 @@
+title = "UniWebViewShadow"
+file = "UniWebViewShadow"
+
+summary = """
+Represents the drop shadow styling applied to the UniWebView container.
+
+The values are expressed in Unity pixel units (points on iOS, pixels on Android) and map to the native shadow APIs.
+`UniWebViewShadow` is typically used with `UniWebView.SetShadow` to apply or remove a shadow that follows the same
+corner radii as the web view.
+"""
+
+[[Constructors]]
+syntax = "UniWebViewShadow(float radius, float opacity, float offsetX, float offsetY, Color color, float spread = 0.0f)"
+summary = """
+Creates a new shadow style.
+
+- `radius`: Blur radius of the shadow. Higher values produce a softer shadow.
+- `opacity`: Shadow opacity in the range `0.0 - 1.0`.
+- `offsetX` / `offsetY`: Horizontal and vertical offset of the shadow relative to the web view.
+- `color`: Base color of the shadow. Its alpha channel combines with `opacity`.
+- `spread`: Additional expansion applied to the shadow outline.
+"""
+
+[[Properties]]
+name = "Radius"
+returnType = "float"
+hasSetter = false
+summary = "Blur radius of the shadow in pixels."
+
+[[Properties]]
+name = "Opacity"
+returnType = "float"
+hasSetter = false
+summary = "Shadow opacity, clamped between `0.0` and `1.0`."
+
+[[Properties]]
+name = "OffsetX"
+returnType = "float"
+hasSetter = false
+summary = "Horizontal offset of the shadow relative to the container."
+
+[[Properties]]
+name = "OffsetY"
+returnType = "float"
+hasSetter = false
+summary = "Vertical offset of the shadow relative to the container."
+
+[[Properties]]
+name = "Spread"
+returnType = "float"
+hasSetter = false
+summary = "Extra expansion distance applied to the shadow outline."
+
+[[Properties]]
+name = "Color"
+returnType = "Color"
+hasSetter = false
+summary = "Color tint of the shadow. The alpha channel multiplies with `Opacity`."
+
+[[Properties]]
+name = "IsVisible"
+returnType = "bool"
+hasSetter = false
+summary = "Returns `true` when the shadow will be rendered (opacity greater than zero and radius/spread greater than zero)."
+
+[[Properties]]
+name = "None"
+returnType = "UniWebViewShadow"
+hasSetter = false
+summary = "Returns a predefined shadow definition that disables rendering (no blur, zero opacity)."
+[[Properties.badges]]
+name = "static"
+color = "blue"

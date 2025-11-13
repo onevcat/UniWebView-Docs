@@ -2208,6 +2208,39 @@ type = "float"
 summary = "Radius for the bottom-right corner in pixels."
 
 [[Methods]]
+name = "SetShadow"
+syntax = "SetShadow(UniWebViewShadow shadow)"
+returnType = "void"
+summary = """
+Configures the drop shadow rendered by the native web view container.
+
+The shadow follows the same corner radii that you configured through `SetRoundCornerRadius`. When the `shadow` argument
+disables itself (all zero values or `UniWebViewShadow.None`), UniWebView removes the shadow while leaving the corner
+rounding intact.
+"""
+example = """
+```csharp
+// Create a soft shadow that offsets slightly downward.
+var shadow = new UniWebViewShadow(
+    radius: 18.0f,
+    opacity: 0.35f,
+    offsetX: 0.0f,
+    offsetY: -6.0f,
+    color: Color.black,
+    spread: 4.0f
+);
+webView.SetShadow(shadow);
+
+// Disable the shadow completely.
+webView.SetShadow(UniWebViewShadow.None);
+```
+"""
+[[Methods.parameters]]
+name = "shadow"
+type = "UniWebViewShadow"
+summary = "Shadow definition including blur radius, opacity, color, optional spread, and XY offset."
+
+[[Methods]]
 name = "RefreshTransparencyClickingThroughLayout"
 syntax = "RefreshTransparencyClickingThroughLayout()"
 returnType = "void"
