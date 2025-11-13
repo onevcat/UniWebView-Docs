@@ -104,6 +104,153 @@ intent query explicitly in your AndroidManifest.xml, to follow the Package Visib
 </code></pre>
 </div>
 </div>
+</div>
+  </div>
+</div>
+
+<div class='api-box method'>
+  <div class="api-anchor" id='onsafebrowsingnavigationfailed'></div><div class='api-heading' data-id='onsafebrowsingnavigationfailed'><a href='#onsafebrowsingnavigationfailed'><span class='return-type'>event</span> OnSafeBrowsingNavigationFailed(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the Safe Browsing view reports that a navigation failed.</p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsing</span> <span class='parameter-item-name'>browsing</span></div>
+    <div class='parameter-item-desc'><p>The <code>UniWebViewSafeBrowsing</code> object raised this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsingEventMetadata</span> <span class='parameter-item-name'>metadata</span></div>
+    <div class='parameter-item-desc'><p>Structured information about the native callback.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>safeBrowsing<span class="token punctuation">.</span>OnSafeBrowsingNavigationFailed <span class="token operator">+=</span> <span class="token punctuation">(</span>browsing<span class="token punctuation">,</span> metadata<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> 
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span>$<span class="token string">"Safe Browsing error at {metadata.TimestampUtc}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+
+<div class='api-box method'>
+  <div class="api-anchor" id='onsafebrowsingnavigationfinished'></div><div class='api-heading' data-id='onsafebrowsingnavigationfinished'><a href='#onsafebrowsingnavigationfinished'><span class='return-type'>event</span> OnSafeBrowsingNavigationFinished(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the Safe Browsing view reports that the current navigation completed successfully.</p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsing</span> <span class='parameter-item-name'>browsing</span></div>
+    <div class='parameter-item-desc'><p>The <code>UniWebViewSafeBrowsing</code> object raised this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsingEventMetadata</span> <span class='parameter-item-name'>metadata</span></div>
+    <div class='parameter-item-desc'><p>Structured information about the native callback.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>safeBrowsing<span class="token punctuation">.</span>OnSafeBrowsingNavigationFinished <span class="token operator">+=</span> <span class="token punctuation">(</span>browsing<span class="token punctuation">,</span> metadata<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> 
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span>$<span class="token string">"Navigation finished at {metadata.TimestampUtc}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+
+<div class='api-box method'>
+  <div class="api-anchor" id='onsafebrowsingnavigationstarted'></div><div class='api-heading' data-id='onsafebrowsingnavigationstarted'><a href='#onsafebrowsingnavigationstarted'><span class='return-type'>event</span> OnSafeBrowsingNavigationStarted(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the Safe Browsing view reports that a navigation began.</p>
+</div>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        Safari (iOS/macOS) does not expose a navigation-start callback, so this event only fires on Android.
+
+  </p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsing</span> <span class='parameter-item-name'>browsing</span></div>
+    <div class='parameter-item-desc'><p>The <code>UniWebViewSafeBrowsing</code> object raised this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsingEventMetadata</span> <span class='parameter-item-name'>metadata</span></div>
+    <div class='parameter-item-desc'><p>Structured information about the native callback (timestamp, native source, etc.).</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>safeBrowsing<span class="token punctuation">.</span>OnSafeBrowsingNavigationStarted <span class="token operator">+=</span> <span class="token punctuation">(</span>browsing<span class="token punctuation">,</span> metadata<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> 
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span>$<span class="token string">"Navigation started at {metadata.TimestampUtc}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+
+<div class='api-box method'>
+  <div class="api-anchor" id='onsafebrowsingclosed'></div><div class='api-heading' data-id='onsafebrowsingclosed'><a href='#onsafebrowsingclosed'><span class='return-type'>event</span> OnSafeBrowsingClosed(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised together with <code>OnSafeBrowsingFinished</code>, but also exposes the metadata payload coming from the native Safe Browsing view (timestamp, native source, etc.).</p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsing</span> <span class='parameter-item-name'>browsing</span></div>
+    <div class='parameter-item-desc'><p>The <code>UniWebViewSafeBrowsing</code> object raised this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsingEventMetadata</span> <span class='parameter-item-name'>metadata</span></div>
+    <div class='parameter-item-desc'><p>Structured information from the native callback (timestamp, native source, etc.).</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>safeBrowsing<span class="token punctuation">.</span>OnSafeBrowsingClosed <span class="token operator">+=</span> <span class="token punctuation">(</span>browsing<span class="token punctuation">,</span> metadata<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> 
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span>$<span class="token string">"Safe Browsing closed at {metadata.TimestampUtc}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
     </div>
   </div>
 </div>
@@ -318,4 +465,3 @@ contrast, based on the toolbar background color you provided in <code>SetToolbar
     </div>
   </div>
 </div>
-
