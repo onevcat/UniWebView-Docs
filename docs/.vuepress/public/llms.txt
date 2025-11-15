@@ -7,6 +7,7 @@
 - [Introduction](https://docs.uniwebview.com/guide/README.md): UniWebView is a Unity plugin for iOS and Android, enabling web view integration with features like OAuth 2.0, JavaScript support, and cross-platform compatibility.
 - [Adapting to AAR File](https://docs.uniwebview.com/guide/adapting-to-aar-file.md): Upgrade to UniWebView 3.7.0+ by replacing UniWebView.jar with UniWebView.aar and updating the manifest.
 - [Built-in Toolbar](https://docs.uniwebview.com/guide/built-in-toolbar.md): The deprecated built-in toolbar in UniWebView has been replaced by the Embedded Toolbar; use the migration guide to switch.
+- [Certificate Pinning](https://docs.uniwebview.com/guide/certificate-pinning.md): UniWebView 6.2 replaces the legacy SSL exception list with explicit SHA-256 certificate pinning. Pinning lets you trust self-signed or private CA certificates without disabling TLS checks globally.
 - [Channel Message Security](https://docs.uniwebview.com/guide/channel-message-security.md)
 - [Channel Messaging System](https://docs.uniwebview.com/guide/channel-message.md): `<UniWebView>` Error in channel message handler: get_isActiveAndEnabled can only be called from the main thread.
 - [Debugging](https://docs.uniwebview.com/guide/debugging.md): Use UniWebView's debugging tools, including the logger, web log forwarding, and web page inspection on iOS, Android, and macOS.
@@ -65,6 +66,8 @@
 - [UniWebViewChannelMethodMediaCapturePermission](https://docs.uniwebview.com/api/UniWebViewChannelMethodMediaCapturePermission.toml)
 - [UniWebViewEmbeddedToolbar](https://docs.uniwebview.com/api/UniWebViewEmbeddedToolbar.toml)
 - [UniWebViewMediaCapturePermissionDecision](https://docs.uniwebview.com/api/UniWebViewMediaCapturePermissionDecision.toml)
+- [UniWebViewSafeBrowsingEventMetadata](https://docs.uniwebview.com/api/UniWebViewSafeBrowsingEventMetadata.toml)
+- [UniWebViewShadow](https://docs.uniwebview.com/api/UniWebViewShadow.toml)
 - [UniWebViewTransform](https://docs.uniwebview.com/api/UniWebViewTransform.toml)
 - [UniWebView](https://docs.uniwebview.com/api/uniwebview.toml)
 - [UniWebViewChannelMessage](https://docs.uniwebview.com/api/uniwebviewchannelmessage.toml)

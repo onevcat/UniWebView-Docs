@@ -110,3 +110,19 @@ webView.SetRoundCornerRadius(topLeft: 16.0f, topRight: 12.0f, bottomRight: 8.0f,
 Rounded corner settings work alongside `Frame`/`ReferenceRectTransform`. When you update the layout or the reference `RectTransform`, the previously applied corner radii remain in effect.
 
 > The values are expressed in Unity pixel units. UniWebView converts them to platform-specific coordinates (points on iOS, pixels on Android) so the visual effect stays consistent across devices.
+
+To emphasise rounded corners, you can add a container shadow that follows the same outline:
+
+```csharp
+var shadow = new UniWebViewShadow(
+    radius: 18.0f,
+    opacity: 0.35f,
+    offsetX: 0.0f,
+    offsetY: -6.0f,
+    color: Color.black,
+    spread: 4.0f
+);
+webView.SetShadow(shadow);
+```
+
+Passing `UniWebViewShadow.None` removes the shadow without changing the corner radius.

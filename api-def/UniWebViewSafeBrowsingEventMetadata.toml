@@ -1,0 +1,60 @@
+title = "UniWebViewSafeBrowsingEventMetadata"
+file = "UniWebViewSafeBrowsingEventMetadata"
+
+summary = """
+Strongly typed metadata emitted with every Safe Browsing callback.
+
+Native Custom Tabs and `SFSafariViewController` events send JSON payloads describing the lifecycle transition,
+including timestamps and the native source. UniWebView parses that payload into this class so you can inspect the data
+without touching JSON manually.
+
+`EventKind` indicates which stage triggered the callback:
+
+- `Unknown`: Payload could not be parsed, or native side omitted an event name.
+- `NavigationStarted`: Initial navigation began.
+- `NavigationFinished`: Page load finished successfully.
+- `NavigationFailed`: Page load failed. Inspect the `Raw` payload for error details.
+- `TabHidden`: User dismissed the Safe Browsing tab (maps to `OnSafeBrowsingClosed` / `OnSafeBrowsingFinished`).
+"""
+
+[[Properties]]
+name = "Kind"
+returnType = "UniWebViewSafeBrowsingEventMetadata.EventKind"
+hasSetter = false
+summary = "Event classification derived from the native payload."
+
+[[Properties]]
+name = "Source"
+returnType = "string"
+hasSetter = false
+summary = "Native component that emitted the event (for example, `CustomTabsCallback` or `SFSafariViewController`)."
+
+[[Properties]]
+name = "Timestamp"
+returnType = "long?"
+hasSetter = false
+summary = "Epoch timestamp (milliseconds) reported by the native payload, if provided."
+
+[[Properties]]
+name = "TimestampUtc"
+returnType = "DateTimeOffset?"
+hasSetter = false
+summary = "UTC representation of `Timestamp`, or `null` when the payload does not include a timestamp."
+
+[[Properties]]
+name = "TimestampLocal"
+returnType = "DateTime?"
+hasSetter = false
+summary = "Local time representation of `TimestampUtc`, convenient for logging in the player's timezone."
+
+[[Properties]]
+name = "IsValid"
+returnType = "bool"
+hasSetter = false
+summary = "Indicates whether the JSON payload was parsed successfully."
+
+[[Properties]]
+name = "Raw"
+returnType = "string"
+hasSetter = false
+summary = "Original JSON payload from native side, useful for diagnostics."

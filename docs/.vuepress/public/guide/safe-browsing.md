@@ -132,6 +132,32 @@ safeBrowsing.OnSafeBrowsingFinished += (browsing) => {
 };
 ```
 
+#### Navigation Events and Android Limitation
+
+Besides the finish event, there are three navigation lifecycle callbacks: `OnSafeBrowsingNavigationStarted`, `OnSafeBrowsingNavigationFinished`, and `OnSafeBrowsingNavigationFailed`. Each delegate now receives both the `UniWebViewSafeBrowsing` instance and a `UniWebViewSafeBrowsingEventMetadata` payload so you can inspect timestamps and native sources.
+
+- **iOS/macOS**: The events are dispatched immediately when Safari reports each state.
+- **Android**: Safe Browsing launches a Chrome Custom Tab, which pauses the Unity activity in the background. Unity does not process `UnitySendMessage` callbacks while paused, so these events are only delivered after the user dismisses the Custom Tab and the game returns to the foreground. They should not be used for real-time progress feedback on Android until a future update changes this behavior.
+
+> Note: Safari does not expose a "navigation started" callback, so `OnSafeBrowsingNavigationStarted` is only raised on Android.
+
+#### Metadata Payload
+
+Internally, native callbacks send JSON metadata. UniWebView parses it into a strongly-typed `UniWebViewSafeBrowsingEventMetadata` and delivers it through every Safe Browsing event:
+
+- `OnSafeBrowsingClosed(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)` – fires when the user closes the Safe Browsing tab with metadata payload (timestamp and native source).
+- `OnSafeBrowsingNavigationStarted(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)`
+- `OnSafeBrowsingNavigationFinished(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)`
+- `OnSafeBrowsingNavigationFailed(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)`
+
+```csharp
+safeBrowsing.OnSafeBrowsingClosed += (browsing, metadata) => {
+    Debug.Log($"Finished at {metadata.TimestampUtc}");
+};
+```
+
+`UniWebViewSafeBrowsingEventMetadata.Timestamp` uses epoch milliseconds, so you can convert it to UTC or local time reliably across platforms.
+
 #### Safe Browsing Mode in Editor
 
 On macOS Editor, due to the corresponding native class is not available, there is no such "Safe Browsing Mode". When you create and show a `UniWebViewSafeBrowsing`, UniWebView falls back to `Application.OpenURL`. That means:

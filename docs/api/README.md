@@ -331,6 +331,9 @@ hides the status bar and navigation bar with a sticky style.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setroundcornerradius'><span class='return-type'>void</span> SetRoundCornerRadius(float topLeft, float topRight, float bottomLeft, float bottomRight)</a></div></td><td><div class='simple-summary'>
 <p>Sets rounded corner radii for the native web view container.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setshadow'><span class='return-type'>void</span> SetShadow(UniWebViewShadow shadow)</a></div></td><td><div class='simple-summary'>
+<p>Configures the drop shadow rendered by the native web view container.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#refreshtransparencyclickingthroughlayout'><span class='return-type'>void</span> RefreshTransparencyClickingThroughLayout()</a></div></td><td><div class='simple-summary'>
 <p>Manually refreshes the transparency clicking through layout detection.</p>
 </div>
@@ -4090,6 +4093,48 @@ webView<span class="token punctuation">.</span><span class="token function">SetR
 <span />
 <span class="token comment">// Use different radii per corner (clockwise from top-left).</span>
 webView<span class="token punctuation">.</span><span class="token function">SetRoundCornerRadius</span><span class="token punctuation">(</span><span class="token number">16.0f</span><span class="token punctuation">,</span> <span class="token number">12.0f</span><span class="token punctuation">,</span> <span class="token number">8.0f</span><span class="token punctuation">,</span> <span class="token number">4.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setshadow'></div><div class='api-heading' data-id='setshadow'><a href='#setshadow'><span class='return-type'>void</span> SetShadow(UniWebViewShadow shadow)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Configures the drop shadow rendered by the native web view container.</p>
+<p>The shadow follows the same corner radii that you configured through <code>SetRoundCornerRadius</code>. When the <code>shadow</code> argument
+disables itself (all zero values or <code>UniWebViewShadow.None</code>), UniWebView removes the shadow while leaving the corner
+rounding intact.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewShadow</span> <span class='parameter-item-name'>shadow</span></div>
+    <div class='parameter-item-desc'><p>Shadow definition including blur radius, opacity, color, optional spread, and XY offset.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Create a soft shadow that offsets slightly downward.</span>
+<span class="token class-name"><span class="token keyword">var</span></span> shadow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">UniWebViewShadow</span><span class="token punctuation">(</span>
+    <span class="token named-parameter punctuation">radius</span><span class="token punctuation">:</span> <span class="token number">18.0f</span><span class="token punctuation">,</span>
+    <span class="token named-parameter punctuation">opacity</span><span class="token punctuation">:</span> <span class="token number">0.35f</span><span class="token punctuation">,</span>
+    <span class="token named-parameter punctuation">offsetX</span><span class="token punctuation">:</span> <span class="token number">0.0f</span><span class="token punctuation">,</span>
+    <span class="token named-parameter punctuation">offsetY</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">6.0f</span><span class="token punctuation">,</span>
+    <span class="token named-parameter punctuation">color</span><span class="token punctuation">:</span> Color<span class="token punctuation">.</span>black<span class="token punctuation">,</span>
+    <span class="token named-parameter punctuation">spread</span><span class="token punctuation">:</span> <span class="token number">4.0f</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">SetShadow</span><span class="token punctuation">(</span>shadow<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Disable the shadow completely.</span>
+webView<span class="token punctuation">.</span><span class="token function">SetShadow</span><span class="token punctuation">(</span>UniWebViewShadow<span class="token punctuation">.</span>None<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>

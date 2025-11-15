@@ -91,6 +91,7 @@ module.exports = {
             "messaging-system",
             "channel-message",
             "channel-message-security",
+            "certificate-pinning",
             "using-javascript",
             {
               text: "OAuth 2.0 Support",
@@ -262,6 +263,14 @@ module.exports = {
               {
                 text: "UniWebViewBackForwardItem",
                 link: "UniWebViewBackForwardItem"
+              },
+              {
+                text: "UniWebViewShadow",
+                link: "UniWebViewShadow"
+              },
+              {
+                text: "UniWebViewSafeBrowsingEventMetadata",
+                link: "UniWebViewSafeBrowsingEventMetadata"
               },
               {
                 text: "UniWebViewTransform",
