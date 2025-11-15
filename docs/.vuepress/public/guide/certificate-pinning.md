@@ -29,6 +29,8 @@ public class WebViewBootstrapper : MonoBehaviour {
 
     void Awake() {
         // Accept the self-signed cert served by https://self-signed.badssl.com
+        // The fingerprint used here is just a sample. In action, replace it
+        // with the value you get in the previous step.
         webView.AddSslPinnedFingerprint(
             "self-signed.badssl.com",
             "62:F1:B6:F8:B2:4B:29:CB:F3:18:BD:8A:E9:82:E0:60:03:97:89:6C:3C:DD:F8:E5:BE:6F:68:46:9E:B9:21:62"

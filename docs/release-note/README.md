@@ -1,5 +1,17 @@
 # Release Note
 
+### 6.2.0 (15 Nov, 2025)
+
+#### Add
+
+* Container shadow support on iOS and Android. Use the new `UniWebViewShadow` struct together with `SetShadow` to render drop shadows that stay in sync with `SetRoundCornerRadius`, transforms, and rotations.
+* SSL fingerprint pinning replaces the old SSL exception list. Call `AddSslPinnedFingerprint`/`RemoveSslPinnedFingerprint` to allow self-signed or private CA certificates on both Apple and Android platforms.
+* Safe Browsing callbacks now emit structured metadata via `UniWebViewSafeBrowsingEventMetadata`. Chrome Custom Tabs report navigation started/finished/failed events, Safari view controllers forward load success/failure, and the new `OnSafeBrowsingClosed` event mirrors `OnSafeBrowsingFinished` with timestamps and native source information.
+
+#### Breaking Change
+
+* `AddSslExceptionDomain` and `RemoveSslExceptionDomain` now raise compile errors and no longer bypass TLS errors. Pin certificates explicitly with `AddSslPinnedFingerprint` instead.
+
 ### 6.1.0 (27 Oct, 2025)
 
 #### Add
@@ -1908,4 +1920,3 @@ New: Support for location service of Android.
 ### 1.0.1 (1 Nov, 2013)
 
 Init release
-

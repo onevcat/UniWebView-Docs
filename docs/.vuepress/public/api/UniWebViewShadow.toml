@@ -31,7 +31,7 @@ summary = "Blur radius of the shadow in pixels."
 name = "Opacity"
 returnType = "float"
 hasSetter = false
-summary = "Shadow opacity, clamped between `0.0` and `1.0`."
+summary = "Shadow opacity, clamped between `0` and `1`."
 
 [[Properties]]
 name = "OffsetX"
