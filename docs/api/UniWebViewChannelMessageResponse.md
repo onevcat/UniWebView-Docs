@@ -14,7 +14,8 @@ Response objects are typically created using the static factory methods `Success
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#data'><span class='return-type'>object</span> data { get; }</a></div></td><td><div class='simple-summary'>
 <p>Response data for successful responses.</p>
 </div>
@@ -28,7 +29,8 @@ Response objects are typically created using the static factory methods `Success
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#success'><span class='return-type'>UniWebViewChannelMessageResponse</span> Success(object data)</a></div></td><td><div class='simple-summary'>
 <p>Static factory method for success responses.</p>
 </div>

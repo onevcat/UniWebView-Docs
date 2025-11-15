@@ -8,7 +8,8 @@ sidebarDepth: 0
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#top'><span class='return-type'>UniWebViewToolbarPosition</span> Top { get; }</a></div></td><td><div class='simple-summary'>
 <p>Top screen edge.</p>
 </div>

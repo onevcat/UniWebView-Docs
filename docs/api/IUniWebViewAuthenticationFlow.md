@@ -18,7 +18,8 @@ To use the common flow, any customize authentication flow must implement this in
 
 #### Events Summary
 
-<table>
+<table class='api-summary-table api-summary-table--events'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;TTokenType&gt;</span> OnAuthenticationFinished</a></div></td><td><div class='simple-summary'>
 <p>Called when the authentication flow succeeds and a valid token is generated.</p>
 </div>
@@ -35,7 +36,8 @@ To use the common flow, any customize authentication flow must implement this in
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#getcallbackurl'><span class='return-type'>string</span> GetCallbackUrl()</a></div></td><td><div class='simple-summary'>
 <p>Returns the redirect URL that is used to redirect the user after authenticated.</p>
 </div>

@@ -13,7 +13,8 @@ message object.
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#rawmessage'><span class='return-type'>string</span> RawMessage { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets the raw message.</p>
 </div>
@@ -30,7 +31,8 @@ message object.
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#uniwebviewmessage'><span class='return-type'></span> UniWebViewMessage(string rawMessage)</a></div></td><td><div class='simple-summary'>
 <p>Initializes a new instance of the <code>UniWebViewMessage</code> struct.</p>
 </div>

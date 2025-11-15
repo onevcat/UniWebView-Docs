@@ -18,7 +18,8 @@ web view's navigation history automatically. If you need the latest navigation h
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#allitems'><span class='return-type'>List&lt;UniWebViewBackForwardItem&gt;</span> AllItems { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets all items in the back-forward navigation history list.</p>
 </div>
@@ -41,7 +42,8 @@ web view's navigation history automatically. If you need the latest navigation h
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#itematindex'><span class='return-type'>UniWebViewBackForwardItem</span> ItemAtIndex(int index)</a></div></td><td><div class='simple-summary'>
 <p>Gets the item at the specified index in the navigation history.</p>
 </div>

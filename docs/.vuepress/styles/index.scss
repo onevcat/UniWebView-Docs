@@ -24,12 +24,44 @@
   margin: 0.2em 0;
 }
 
+.api-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.api-summary-table__signature {
+  width: 40%;
+}
+
+.api-summary-table__description {
+  width: 60%;
+}
+
+.api-summary-table td {
+  padding: 0.6rem 0.8rem;
+  vertical-align: middle;
+}
+
+.api-summary-table td:last-child {
+  padding-right: 0;
+}
+
 .api-summary-heading a {
   color: var(--c-text);
   text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  white-space: normal;
+  word-break: break-word;
 }
 .api-summary-heading .return-type {
   color: var(--c-brand);
+}
+
+.api-summary-table .simple-summary {
+  width: 100%;
+  min-width: 0;
 }
 
 .api-box .api-heading a {

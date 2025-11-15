@@ -8,7 +8,8 @@ sidebarDepth: 0
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#streamingasseturlforpath'><span class='return-type'>string</span> StreamingAssetURLForPath(string path)</a></div></td><td><div class='simple-summary'>
 <p>Get the local streaming asset path for a given file path related to the StreamingAssets folder.</p>
 </div>

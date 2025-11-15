@@ -15,7 +15,8 @@ When received a token from the server, UniWebView tries to parse it into this st
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#accesstoken'><span class='return-type'>string</span> AccessToken { get; }</a></div></td><td><div class='simple-summary'>
 <p>The access token retrieved from the service provider.</p>
 </div>

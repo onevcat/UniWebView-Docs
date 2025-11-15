@@ -14,7 +14,8 @@ corner radii as the web view.
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#radius'><span class='return-type'>float</span> Radius { get; }</a></div></td><td><div class='simple-summary'>
 <p>Blur radius of the shadow in pixels.</p>
 </div>

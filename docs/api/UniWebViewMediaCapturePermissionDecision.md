@@ -8,7 +8,8 @@ sidebarDepth: 0
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#prompt'><span class='return-type'>UniWebViewMediaCapturePermissionDecision</span> Prompt { get; }</a></div></td><td><div class='simple-summary'>
 <p>Display a prompt to ask user for the permission.</p>
 </div>

@@ -25,7 +25,8 @@ See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of aut
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#isauthenticationsupported'><span class='return-type'>bool</span> IsAuthenticationSupported { get; }</a></div></td><td><div class='simple-summary'>
 <p>Check whether the current device and system supports the authentication session.</p>
 </div>
@@ -39,7 +40,8 @@ See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of aut
 
 #### Events Summary
 
-<table>
+<table class='api-summary-table api-summary-table--events'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#onauthenticationfinished'><span class='return-type'>void</span> OnAuthenticationFinished(UniWebViewAuthenticationSession session, string url)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the session finishes authentication.</p>
 </div>
@@ -50,7 +52,8 @@ See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of aut
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#create'><span class='return-type'>UniWebViewAuthenticationSession</span> Create(string url, string callbackScheme)</a></div></td><td><div class='simple-summary'>
 <p>Creates a new authentication session with a given authentication page URL and a callback scheme.</p>
 </div>

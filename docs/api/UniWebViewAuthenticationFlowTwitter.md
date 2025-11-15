@@ -20,7 +20,8 @@ To allow the Twitter flow working, at least you need these steps:
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#clientid'><span class='return-type'>string</span> clientId { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The client ID of your Twitter application.</p>
 </div>
@@ -46,7 +47,8 @@ To allow the Twitter flow working, at least you need these steps:
 
 #### Events Summary
 
-<table>
+<table class='api-summary-table api-summary-table--events'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationTwitterToken&gt;</span> OnAuthenticationFinished</a></div></td><td><div class='simple-summary'>
 <p>Called when the authentication flow succeeds and a valid token is generated.</p>
 </div>
@@ -63,7 +65,8 @@ To allow the Twitter flow working, at least you need these steps:
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>void</span> StartAuthenticationFlow()</a></div></td><td><div class='simple-summary'>
 <p>Starts the authentication flow with the standard OAuth 2.</p>
 </div>

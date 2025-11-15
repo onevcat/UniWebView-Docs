@@ -12,7 +12,8 @@ as well as receive a message from the web view.
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#iswebviewsupported'><span class='return-type'>bool</span> IsWebViewSupported { get; }</a></div></td><td><div class='simple-summary'>
 <p>Whether the web view is supported in current runtime or not.</p>
 </div>
@@ -47,7 +48,8 @@ as well as receive a message from the web view.
 
 #### Events Summary
 
-<table>
+<table class='api-summary-table api-summary-table--events'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#onpagestarted'><span class='return-type'>void</span> OnPageStarted(UniWebView webView, string url)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view starts loading a url.</p>
 </div>
@@ -103,7 +105,8 @@ as well as receive a message from the web view.
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#settransform'><span class='return-type'>void</span> SetTransform(UniWebViewTransform transform)</a></div></td><td><div class='simple-summary'>
 <p>Applies a transformation to the web view, including rotation and scaling.</p>
 </div>

@@ -8,7 +8,8 @@ sidebarDepth: 0
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#identifier'><span class='return-type'>string</span> identifier { get; }</a></div></td><td><div class='simple-summary'>
 <p>The identifier bound to this payload.</p>
 </div>

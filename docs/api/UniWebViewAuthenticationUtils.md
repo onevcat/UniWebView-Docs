@@ -12,7 +12,8 @@ They are used inside the built-in flows, but you can also use them to implement 
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#generaterandombase64string'><span class='return-type'>string</span> GenerateRandomBase64String()</a></div></td><td><div class='simple-summary'>
 <p>Generates a random Base64 encoded string.</p>
 </div>

@@ -14,7 +14,8 @@ of this class. You can use the values in this class to determine the decision fo
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#protocol'><span class='return-type'>string</span> Protocol { get; }</a></div></td><td><div class='simple-summary'>
 <p>The protocol used by the permission request.</p>
 </div>

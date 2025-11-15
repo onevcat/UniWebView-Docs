@@ -22,7 +22,8 @@ without touching JSON manually.
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#kind'><span class='return-type'>UniWebViewSafeBrowsingEventMetadata.EventKind</span> Kind { get; }</a></div></td><td><div class='simple-summary'>
 <p>Event classification derived from the native payload.</p>
 </div>

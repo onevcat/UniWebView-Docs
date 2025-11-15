@@ -8,7 +8,8 @@ sidebarDepth: 0
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#instance'><span class='return-type'>UniWebViewLogger</span> Instance { get; }</a></div></td><td><div class='simple-summary'>
 <p>An instance of the UniWebView logger across the process.</p>
 </div>
@@ -34,7 +35,8 @@ sidebarDepth: 0
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#verbose'><span class='return-type'>void</span> Verbose(string message)</a></div></td><td><div class='simple-summary'>
 <p>Log a verbose message.</p>
 </div>

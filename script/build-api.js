@@ -211,7 +211,8 @@ function outputSummary(api) {
   let properties = api["Properties"];
   if (properties) {
     result += "#### Properties Summary\n\n";
-    result += "<table>\n";
+    result += "<table class='api-summary-table api-summary-table--properties'>\n";
+    result += "<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>\n";
     properties.forEach(p => {
       const property = new Property(p, api.file);
       result += `<tr><td><div class='api-summary-heading'>${property.linkTextWithoutBadge()}</div></td><td>${property.simpleSummaryText()}</td></tr>`;
@@ -222,7 +223,8 @@ function outputSummary(api) {
   let events = api["Events"];
   if (events) {
     result += "#### Events Summary\n\n";
-    result += "<table>\n";
+    result += "<table class='api-summary-table api-summary-table--events'>\n";
+    result += "<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>\n";
     events.forEach(e => {
       const event = new Event(e, api.file);
       result += `<tr><td><div class='api-summary-heading'>${event.linkTextWithoutBadge()}</div></td><td>${event.simpleSummaryText()}</td></tr>`;
@@ -233,7 +235,8 @@ function outputSummary(api) {
   let methods = api["Methods"];
   if (methods) {
     result += "#### Methods Summary\n\n";
-    result += "<table>\n";
+    result += "<table class='api-summary-table api-summary-table--methods'>\n";
+    result += "<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>\n";
     methods.forEach(m => {
       const method = new Method(m, api.file);
       result += `<tr><td><div class='api-summary-heading'>${method.linkTextWithoutBadge()}</div></td><td>${method.simpleSummaryText()}</td></tr>`;

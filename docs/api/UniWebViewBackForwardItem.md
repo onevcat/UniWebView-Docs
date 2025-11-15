@@ -14,7 +14,8 @@ You do not create an instance of this class directly. Instead, you get instances
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#url'><span class='return-type'>string</span> Url { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets the current URL of the history item.</p>
 </div>

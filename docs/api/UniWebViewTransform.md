@@ -20,7 +20,8 @@ transformations to the web view.
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#rotation'><span class='return-type'>float</span> Rotation { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The rotation of the web view in degrees.</p>
 </div>

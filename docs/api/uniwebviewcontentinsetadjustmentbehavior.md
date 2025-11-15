@@ -8,7 +8,8 @@ sidebarDepth: 0
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#automatic'><span class='return-type'>UniWebViewContentInsetAdjustmentBehavior</span> Automatic { get; }</a></div></td><td><div class='simple-summary'>
 <p>Automatically adjust the scroll view insets.</p>
 </div>

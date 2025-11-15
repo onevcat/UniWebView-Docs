@@ -26,7 +26,8 @@ external browser by using Unity's `Application.OpenURL`.
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#issafebrowsingsupported'><span class='return-type'>bool</span> IsSafeBrowsingSupported { get; }</a></div></td><td><div class='simple-summary'>
 <p>Whether the safe browsing mode is supported in current runtime or not.</p>
 </div>
@@ -34,7 +35,8 @@ external browser by using Unity's `Application.OpenURL`.
 
 #### Events Summary
 
-<table>
+<table class='api-summary-table api-summary-table--events'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#onsafebrowsingfinished'><span class='return-type'>event</span> OnSafeBrowsingFinished(UniWebViewSafeBrowsing browsing)</a></div></td><td><div class='simple-summary'>
 <p>Raised when user dismisses safe browsing by tapping the Done button or Back button.</p>
 </div>
@@ -54,7 +56,8 @@ external browser by using Unity's `Application.OpenURL`.
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#create'><span class='return-type'>UniWebViewSafeBrowsing</span> Create(string url)</a></div></td><td><div class='simple-summary'>
 <p>Creates a new <code>UniWebViewSafeBrowsing</code> instance with a given URL.</p>
 </div>

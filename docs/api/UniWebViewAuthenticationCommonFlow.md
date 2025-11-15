@@ -15,7 +15,8 @@ Instead, to start a customized auth flow, you can use the `UniWebViewAuthenticat
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#authorizeonstart'><span class='return-type'>bool</span> authorizeOnStart { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Whether to start authentication as soon as the script <code>Start</code>s.</p>
 </div>
@@ -26,7 +27,8 @@ Instead, to start a customized auth flow, you can use the `UniWebViewAuthenticat
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>abstract void</span> StartAuthenticationFlow()</a></div></td><td><div class='simple-summary'>
 <p>Subclass should override this method to start the authentication flow.</p>
 </div>

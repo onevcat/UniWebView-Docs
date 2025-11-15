@@ -8,7 +8,8 @@ sidebarDepth: 0
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#none'><span class='return-type'>UniWebViewTransitionEdge</span> None { get; }</a></div></td><td><div class='simple-summary'>
 <p>No transition when showing or hiding.</p>
 </div>

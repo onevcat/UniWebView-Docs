@@ -8,7 +8,8 @@ sidebarDepth: 0
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#exactvalue'><span class='return-type'>UniWebViewDownloadMatchingType</span> ExactValue { get; }</a></div></td><td><div class='simple-summary'>
 <p>Matches exact the whole value.</p>
 </div>

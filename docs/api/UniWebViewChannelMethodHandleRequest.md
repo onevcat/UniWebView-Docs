@@ -10,7 +10,8 @@ Represents the request of a loading used in request handler.
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#url'><span class='return-type'>string</span> Url { get; }</a></div></td><td><div class='simple-summary'>
 <p>The URL of the request.</p>
 </div>

@@ -14,7 +14,8 @@ Each message contains an action identifier, optional JSON data, and metadata for
 
 #### Properties Summary
 
-<table>
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#id'><span class='return-type'>string</span> id { get; }</a></div></td><td><div class='simple-summary'>
 <p>Unique identifier for this message.</p>
 </div>
@@ -46,7 +47,8 @@ Each message contains an action identifier, optional JSON data, and metadata for
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#getdata'><span class='return-type'>T</span> GetData&lt;T&gt;()</a></div></td><td><div class='simple-summary'>
 <p>Parses the message data as the specified type.</p>
 </div>

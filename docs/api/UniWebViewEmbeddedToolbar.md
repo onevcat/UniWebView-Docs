@@ -18,7 +18,8 @@ class to customize the toolbar to match your app's style.
 
 #### Methods Summary
 
-<table>
+<table class='api-summary-table api-summary-table--methods'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#setposition'><span class='return-type'>void</span> SetPosition(UniWebViewToolbarPosition position)</a></div></td><td><div class='simple-summary'>
 <p>Sets the position of the embedded toolbar.</p>
 </div>
