@@ -10,19 +10,19 @@ sidebarDepth: 0
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#none'><span class='return-type'>UniWebViewTransitionEdge</span> None { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#none'><span class='return-type'>UniWebViewTransitionEdge</span> <span class='member-name'>None</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>No transition when showing or hiding.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#top'><span class='return-type'>UniWebViewTransitionEdge</span> Top { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#top'><span class='return-type'>UniWebViewTransitionEdge</span> <span class='member-name'>Top</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Transit the web view from/to top.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#left'><span class='return-type'>UniWebViewTransitionEdge</span> Left { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#left'><span class='return-type'>UniWebViewTransitionEdge</span> <span class='member-name'>Left</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Transit the web view from/to left.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#bottom'><span class='return-type'>UniWebViewTransitionEdge</span> Bottom { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#bottom'><span class='return-type'>UniWebViewTransitionEdge</span> <span class='member-name'>Bottom</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Transit the web view from/to bottom.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#right'><span class='return-type'>UniWebViewTransitionEdge</span> Right { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#right'><span class='return-type'>UniWebViewTransitionEdge</span> <span class='member-name'>Right</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Transit the web view from/to right.</p>
 </div>
 </td></tr></table>
@@ -30,7 +30,7 @@ sidebarDepth: 0
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='none'></div><div class='api-heading' data-id='none'><a href='#none'><span class='return-type'>UniWebViewTransitionEdge</span> None { get; }</a></div>
+  <div class="api-anchor" id='none'></div><div class='api-heading' data-id='none'><a href='#none'><span class='return-type'>UniWebViewTransitionEdge</span> <span class='member-name'>None</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -40,7 +40,7 @@ sidebarDepth: 0
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='top'></div><div class='api-heading' data-id='top'><a href='#top'><span class='return-type'>UniWebViewTransitionEdge</span> Top { get; }</a></div>
+  <div class="api-anchor" id='top'></div><div class='api-heading' data-id='top'><a href='#top'><span class='return-type'>UniWebViewTransitionEdge</span> <span class='member-name'>Top</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -50,7 +50,7 @@ sidebarDepth: 0
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='left'></div><div class='api-heading' data-id='left'><a href='#left'><span class='return-type'>UniWebViewTransitionEdge</span> Left { get; }</a></div>
+  <div class="api-anchor" id='left'></div><div class='api-heading' data-id='left'><a href='#left'><span class='return-type'>UniWebViewTransitionEdge</span> <span class='member-name'>Left</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -60,7 +60,7 @@ sidebarDepth: 0
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='bottom'></div><div class='api-heading' data-id='bottom'><a href='#bottom'><span class='return-type'>UniWebViewTransitionEdge</span> Bottom { get; }</a></div>
+  <div class="api-anchor" id='bottom'></div><div class='api-heading' data-id='bottom'><a href='#bottom'><span class='return-type'>UniWebViewTransitionEdge</span> <span class='member-name'>Bottom</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -70,7 +70,7 @@ sidebarDepth: 0
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='right'></div><div class='api-heading' data-id='right'><a href='#right'><span class='return-type'>UniWebViewTransitionEdge</span> Right { get; }</a></div>
+  <div class="api-anchor" id='right'></div><div class='api-heading' data-id='right'><a href='#right'><span class='return-type'>UniWebViewTransitionEdge</span> <span class='member-name'>Right</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

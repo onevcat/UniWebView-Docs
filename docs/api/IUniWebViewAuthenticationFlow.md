@@ -20,16 +20,16 @@ To use the common flow, any customize authentication flow must implement this in
 
 <table class='api-summary-table api-summary-table--events'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;TTokenType&gt;</span> OnAuthenticationFinished</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;TTokenType&gt;</span> <span class='member-name'>OnAuthenticationFinished</span></a></div></td><td><div class='simple-summary'>
 <p>Called when the authentication flow succeeds and a valid token is generated.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnAuthenticationErrored</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> <span class='member-name'>OnAuthenticationErrored</span></a></div></td><td><div class='simple-summary'>
 <p>Called when any error (including user cancellation) happens during the authentication flow.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onrefreshtokenfinished'><span class='return-type'>UnityEvent&lt;TTokenType&gt;</span> OnRefreshTokenFinished</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onrefreshtokenfinished'><span class='return-type'>UnityEvent&lt;TTokenType&gt;</span> <span class='member-name'>OnRefreshTokenFinished</span></a></div></td><td><div class='simple-summary'>
 <p>Called when the access token refresh request finishes and a valid refreshed token is generated.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onrefreshtokenerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnRefreshTokenErrored</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onrefreshtokenerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> <span class='member-name'>OnRefreshTokenErrored</span></a></div></td><td><div class='simple-summary'>
 <p>Called when any error (including user cancellation) happens during the authentication flow.</p>
 </div>
 </td></tr></table>
@@ -38,25 +38,25 @@ To use the common flow, any customize authentication flow must implement this in
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#getcallbackurl'><span class='return-type'>string</span> GetCallbackUrl()</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#getcallbackurl'><span class='return-type'>string</span> <span class='member-name'>GetCallbackUrl</span>()</a></div></td><td><div class='simple-summary'>
 <p>Returns the redirect URL that is used to redirect the user after authenticated.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#getauthenticationconfiguration'><span class='return-type'>UniWebViewAuthenticationConfiguration</span> GetAuthenticationConfiguration()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getauthenticationconfiguration'><span class='return-type'>UniWebViewAuthenticationConfiguration</span> <span class='member-name'>GetAuthenticationConfiguration</span>()</a></div></td><td><div class='simple-summary'>
 <p>Returns the config of the authentication flow.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#getauthenticationuriarguments'><span class='return-type'>Dictionary&lt;string, string&gt;</span> GetAuthenticationUriArguments()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getauthenticationuriarguments'><span class='return-type'>Dictionary&lt;string, string&gt;</span> <span class='member-name'>GetAuthenticationUriArguments</span>()</a></div></td><td><div class='simple-summary'>
 <p>Returns a dictionary contains the parameters that are used to perform the authentication request.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#getadditionalauthenticationuriquery'><span class='return-type'>string</span> GetAdditionalAuthenticationUriQuery()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getadditionalauthenticationuriquery'><span class='return-type'>string</span> <span class='member-name'>GetAdditionalAuthenticationUriQuery</span>()</a></div></td><td><div class='simple-summary'>
 <p>Returns a string contains the additional query arguments that are used to construct the query string of the authentication request.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#getaccesstokenrequestparameters'><span class='return-type'>Dictionary&lt;string, string&gt;</span> GetAccessTokenRequestParameters(string authResponse)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getaccesstokenrequestparameters'><span class='return-type'>Dictionary&lt;string, string&gt;</span> <span class='member-name'>GetAccessTokenRequestParameters</span>(string authResponse)</a></div></td><td><div class='simple-summary'>
 <p>Returns a dictionary contains the parameters that are used to perform the access token exchange request.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#getrefreshtokenrequestparameters'><span class='return-type'>Dictionary&lt;string, string&gt;</span> GetRefreshTokenRequestParameters(string refreshToken)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getrefreshtokenrequestparameters'><span class='return-type'>Dictionary&lt;string, string&gt;</span> <span class='member-name'>GetRefreshTokenRequestParameters</span>(string refreshToken)</a></div></td><td><div class='simple-summary'>
 <p>Returns a dictionary contains the parameters that are used to perform the access token refresh request.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#generatetokenfromexchangeresponse'><span class='return-type'>TTokenType</span> GenerateTokenFromExchangeResponse(string exchangeResponse)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#generatetokenfromexchangeresponse'><span class='return-type'>TTokenType</span> <span class='member-name'>GenerateTokenFromExchangeResponse</span>(string exchangeResponse)</a></div></td><td><div class='simple-summary'>
 <p>Returns the strong-typed token for the authentication process.</p>
 </div>
 </td></tr></table>
@@ -64,7 +64,7 @@ To use the common flow, any customize authentication flow must implement this in
 ### Events
 
 <div class='api-box method'>
-  <div class="api-anchor" id='onauthenticationfinished'></div><div class='api-heading' data-id='onauthenticationfinished'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;TTokenType&gt;</span> OnAuthenticationFinished</a></div>
+  <div class="api-anchor" id='onauthenticationfinished'></div><div class='api-heading' data-id='onauthenticationfinished'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;TTokenType&gt;</span> <span class='member-name'>OnAuthenticationFinished</span></a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -74,7 +74,7 @@ To use the common flow, any customize authentication flow must implement this in
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onauthenticationerrored'></div><div class='api-heading' data-id='onauthenticationerrored'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnAuthenticationErrored</a></div>
+  <div class="api-anchor" id='onauthenticationerrored'></div><div class='api-heading' data-id='onauthenticationerrored'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> <span class='member-name'>OnAuthenticationErrored</span></a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -84,7 +84,7 @@ To use the common flow, any customize authentication flow must implement this in
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onrefreshtokenfinished'></div><div class='api-heading' data-id='onrefreshtokenfinished'><a href='#onrefreshtokenfinished'><span class='return-type'>UnityEvent&lt;TTokenType&gt;</span> OnRefreshTokenFinished</a></div>
+  <div class="api-anchor" id='onrefreshtokenfinished'></div><div class='api-heading' data-id='onrefreshtokenfinished'><a href='#onrefreshtokenfinished'><span class='return-type'>UnityEvent&lt;TTokenType&gt;</span> <span class='member-name'>OnRefreshTokenFinished</span></a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -94,7 +94,7 @@ To use the common flow, any customize authentication flow must implement this in
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onrefreshtokenerrored'></div><div class='api-heading' data-id='onrefreshtokenerrored'><a href='#onrefreshtokenerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnRefreshTokenErrored</a></div>
+  <div class="api-anchor" id='onrefreshtokenerrored'></div><div class='api-heading' data-id='onrefreshtokenerrored'><a href='#onrefreshtokenerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> <span class='member-name'>OnRefreshTokenErrored</span></a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -107,7 +107,7 @@ To use the common flow, any customize authentication flow must implement this in
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='getcallbackurl'></div><div class='api-heading' data-id='getcallbackurl'><a href='#getcallbackurl'><span class='return-type'>string</span> GetCallbackUrl()</a></div>
+  <div class="api-anchor" id='getcallbackurl'></div><div class='api-heading' data-id='getcallbackurl'><a href='#getcallbackurl'><span class='return-type'>string</span> <span class='member-name'>GetCallbackUrl</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -124,7 +124,7 @@ then send it to Unity side as the result of <code>UniWebViewAuthenticationSessio
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='getauthenticationconfiguration'></div><div class='api-heading' data-id='getauthenticationconfiguration'><a href='#getauthenticationconfiguration'><span class='return-type'>UniWebViewAuthenticationConfiguration</span> GetAuthenticationConfiguration()</a></div>
+  <div class="api-anchor" id='getauthenticationconfiguration'></div><div class='api-heading' data-id='getauthenticationconfiguration'><a href='#getauthenticationconfiguration'><span class='return-type'>UniWebViewAuthenticationConfiguration</span> <span class='member-name'>GetAuthenticationConfiguration</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -137,7 +137,7 @@ then send it to Unity side as the result of <code>UniWebViewAuthenticationSessio
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='getauthenticationuriarguments'></div><div class='api-heading' data-id='getauthenticationuriarguments'><a href='#getauthenticationuriarguments'><span class='return-type'>Dictionary&lt;string, string&gt;</span> GetAuthenticationUriArguments()</a></div>
+  <div class="api-anchor" id='getauthenticationuriarguments'></div><div class='api-heading' data-id='getauthenticationuriarguments'><a href='#getauthenticationuriarguments'><span class='return-type'>Dictionary&lt;string, string&gt;</span> <span class='member-name'>GetAuthenticationUriArguments</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -152,7 +152,7 @@ The key value pairs in the dictionary are used to construct the query string of 
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='getadditionalauthenticationuriquery'></div><div class='api-heading' data-id='getadditionalauthenticationuriquery'><a href='#getadditionalauthenticationuriquery'><span class='return-type'>string</span> GetAdditionalAuthenticationUriQuery()</a></div>
+  <div class="api-anchor" id='getadditionalauthenticationuriquery'></div><div class='api-heading' data-id='getadditionalauthenticationuriquery'><a href='#getadditionalauthenticationuriquery'><span class='return-type'>string</span> <span class='member-name'>GetAdditionalAuthenticationUriQuery</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -168,7 +168,7 @@ string that constructed from <code>GetAuthenticationUriArguments</code>.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='getaccesstokenrequestparameters'></div><div class='api-heading' data-id='getaccesstokenrequestparameters'><a href='#getaccesstokenrequestparameters'><span class='return-type'>Dictionary&lt;string, string&gt;</span> GetAccessTokenRequestParameters(string authResponse)</a></div>
+  <div class="api-anchor" id='getaccesstokenrequestparameters'></div><div class='api-heading' data-id='getaccesstokenrequestparameters'><a href='#getaccesstokenrequestparameters'><span class='return-type'>Dictionary&lt;string, string&gt;</span> <span class='member-name'>GetAccessTokenRequestParameters</span>(string authResponse)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -194,7 +194,7 @@ access token exchange request.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='getrefreshtokenrequestparameters'></div><div class='api-heading' data-id='getrefreshtokenrequestparameters'><a href='#getrefreshtokenrequestparameters'><span class='return-type'>Dictionary&lt;string, string&gt;</span> GetRefreshTokenRequestParameters(string refreshToken)</a></div>
+  <div class="api-anchor" id='getrefreshtokenrequestparameters'></div><div class='api-heading' data-id='getrefreshtokenrequestparameters'><a href='#getrefreshtokenrequestparameters'><span class='return-type'>Dictionary&lt;string, string&gt;</span> <span class='member-name'>GetRefreshTokenRequestParameters</span>(string refreshToken)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -220,7 +220,7 @@ the access token exchange when you issue the access token.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='generatetokenfromexchangeresponse'></div><div class='api-heading' data-id='generatetokenfromexchangeresponse'><a href='#generatetokenfromexchangeresponse'><span class='return-type'>TTokenType</span> GenerateTokenFromExchangeResponse(string exchangeResponse)</a></div>
+  <div class="api-anchor" id='generatetokenfromexchangeresponse'></div><div class='api-heading' data-id='generatetokenfromexchangeresponse'><a href='#generatetokenfromexchangeresponse'><span class='return-type'>TTokenType</span> <span class='member-name'>GenerateTokenFromExchangeResponse</span>(string exchangeResponse)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

@@ -24,25 +24,25 @@ without touching JSON manually.
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#kind'><span class='return-type'>UniWebViewSafeBrowsingEventMetadata.EventKind</span> Kind { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#kind'><span class='return-type'>UniWebViewSafeBrowsingEventMetadata.EventKind</span> <span class='member-name'>Kind</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Event classification derived from the native payload.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#source'><span class='return-type'>string</span> Source { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#source'><span class='return-type'>string</span> <span class='member-name'>Source</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Native component that emitted the event (for example, <code>CustomTabsCallback</code> or <code>SFSafariViewController</code>).</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#timestamp'><span class='return-type'>long?</span> Timestamp { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#timestamp'><span class='return-type'>long?</span> <span class='member-name'>Timestamp</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Epoch timestamp (milliseconds) reported by the native payload, if provided.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#timestamputc'><span class='return-type'>DateTimeOffset?</span> TimestampUtc { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#timestamputc'><span class='return-type'>DateTimeOffset?</span> <span class='member-name'>TimestampUtc</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>UTC representation of <code>Timestamp</code>, or <code>null</code> when the payload does not include a timestamp.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#timestamplocal'><span class='return-type'>DateTime?</span> TimestampLocal { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#timestamplocal'><span class='return-type'>DateTime?</span> <span class='member-name'>TimestampLocal</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Local time representation of <code>TimestampUtc</code>, convenient for logging in the player&#39;s timezone.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#isvalid'><span class='return-type'>bool</span> IsValid { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#isvalid'><span class='return-type'>bool</span> <span class='member-name'>IsValid</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Indicates whether the JSON payload was parsed successfully.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#raw'><span class='return-type'>string</span> Raw { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#raw'><span class='return-type'>string</span> <span class='member-name'>Raw</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Original JSON payload from native side, useful for diagnostics.</p>
 </div>
 </td></tr></table>
@@ -50,7 +50,7 @@ without touching JSON manually.
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='kind'></div><div class='api-heading' data-id='kind'><a href='#kind'><span class='return-type'>UniWebViewSafeBrowsingEventMetadata.EventKind</span> Kind { get; }</a></div>
+  <div class="api-anchor" id='kind'></div><div class='api-heading' data-id='kind'><a href='#kind'><span class='return-type'>UniWebViewSafeBrowsingEventMetadata.EventKind</span> <span class='member-name'>Kind</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -60,7 +60,7 @@ without touching JSON manually.
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='source'></div><div class='api-heading' data-id='source'><a href='#source'><span class='return-type'>string</span> Source { get; }</a></div>
+  <div class="api-anchor" id='source'></div><div class='api-heading' data-id='source'><a href='#source'><span class='return-type'>string</span> <span class='member-name'>Source</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -70,7 +70,7 @@ without touching JSON manually.
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='timestamp'></div><div class='api-heading' data-id='timestamp'><a href='#timestamp'><span class='return-type'>long?</span> Timestamp { get; }</a></div>
+  <div class="api-anchor" id='timestamp'></div><div class='api-heading' data-id='timestamp'><a href='#timestamp'><span class='return-type'>long?</span> <span class='member-name'>Timestamp</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -80,7 +80,7 @@ without touching JSON manually.
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='timestamputc'></div><div class='api-heading' data-id='timestamputc'><a href='#timestamputc'><span class='return-type'>DateTimeOffset?</span> TimestampUtc { get; }</a></div>
+  <div class="api-anchor" id='timestamputc'></div><div class='api-heading' data-id='timestamputc'><a href='#timestamputc'><span class='return-type'>DateTimeOffset?</span> <span class='member-name'>TimestampUtc</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -90,7 +90,7 @@ without touching JSON manually.
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='timestamplocal'></div><div class='api-heading' data-id='timestamplocal'><a href='#timestamplocal'><span class='return-type'>DateTime?</span> TimestampLocal { get; }</a></div>
+  <div class="api-anchor" id='timestamplocal'></div><div class='api-heading' data-id='timestamplocal'><a href='#timestamplocal'><span class='return-type'>DateTime?</span> <span class='member-name'>TimestampLocal</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -100,7 +100,7 @@ without touching JSON manually.
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='isvalid'></div><div class='api-heading' data-id='isvalid'><a href='#isvalid'><span class='return-type'>bool</span> IsValid { get; }</a></div>
+  <div class="api-anchor" id='isvalid'></div><div class='api-heading' data-id='isvalid'><a href='#isvalid'><span class='return-type'>bool</span> <span class='member-name'>IsValid</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -110,7 +110,7 @@ without touching JSON manually.
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='raw'></div><div class='api-heading' data-id='raw'><a href='#raw'><span class='return-type'>string</span> Raw { get; }</a></div>
+  <div class="api-anchor" id='raw'></div><div class='api-heading' data-id='raw'><a href='#raw'><span class='return-type'>string</span> <span class='member-name'>Raw</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

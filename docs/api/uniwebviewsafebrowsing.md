@@ -28,7 +28,7 @@ external browser by using Unity's `Application.OpenURL`.
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#issafebrowsingsupported'><span class='return-type'>bool</span> IsSafeBrowsingSupported { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#issafebrowsingsupported'><span class='return-type'>bool</span> <span class='member-name'>IsSafeBrowsingSupported</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Whether the safe browsing mode is supported in current runtime or not.</p>
 </div>
 </td></tr></table>
@@ -37,19 +37,19 @@ external browser by using Unity's `Application.OpenURL`.
 
 <table class='api-summary-table api-summary-table--events'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#onsafebrowsingfinished'><span class='return-type'>event</span> OnSafeBrowsingFinished(UniWebViewSafeBrowsing browsing)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#onsafebrowsingfinished'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingFinished</span>(UniWebViewSafeBrowsing browsing)</a></div></td><td><div class='simple-summary'>
 <p>Raised when user dismisses safe browsing by tapping the Done button or Back button.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onsafebrowsingclosed'><span class='return-type'>event</span> OnSafeBrowsingClosed(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onsafebrowsingclosed'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingClosed</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div></td><td><div class='simple-summary'>
 <p>Raised together with <code>OnSafeBrowsingFinished</code>, but includes the metadata payload from the native safe browsing component.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onsafebrowsingnavigationstarted'><span class='return-type'>event</span> OnSafeBrowsingNavigationStarted(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onsafebrowsingnavigationstarted'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingNavigationStarted</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the underlying browser starts loading a page in Safe Browsing mode.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onsafebrowsingnavigationfinished'><span class='return-type'>event</span> OnSafeBrowsingNavigationFinished(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onsafebrowsingnavigationfinished'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingNavigationFinished</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the Safe Browsing page finishes loading successfully.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onsafebrowsingnavigationfailed'><span class='return-type'>event</span> OnSafeBrowsingNavigationFailed(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onsafebrowsingnavigationfailed'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingNavigationFailed</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the Safe Browsing page fails to load.</p>
 </div>
 </td></tr></table>
@@ -58,22 +58,22 @@ external browser by using Unity's `Application.OpenURL`.
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#create'><span class='return-type'>UniWebViewSafeBrowsing</span> Create(string url)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#create'><span class='return-type'>UniWebViewSafeBrowsing</span> <span class='member-name'>Create</span>(string url)</a></div></td><td><div class='simple-summary'>
 <p>Creates a new <code>UniWebViewSafeBrowsing</code> instance with a given URL.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setpreferredcustomtabsbrowsers'><span class='return-type'>void</span> SetPreferredCustomTabsBrowsers(string[] packages)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setpreferredcustomtabsbrowsers'><span class='return-type'>void</span> <span class='member-name'>SetPreferredCustomTabsBrowsers</span>(string[] packages)</a></div></td><td><div class='simple-summary'>
 <p>Sets the preferred browsers for Custom Tabs in order of preference.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#show'><span class='return-type'>void</span> Show()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#show'><span class='return-type'>void</span> <span class='member-name'>Show</span>()</a></div></td><td><div class='simple-summary'>
 <p>Shows the safe browsing content above current screen.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#dismiss'><span class='return-type'>void</span> Dismiss()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#dismiss'><span class='return-type'>void</span> <span class='member-name'>Dismiss</span>()</a></div></td><td><div class='simple-summary'>
 <p>Dismisses the safe browsing component.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbarcolor'><span class='return-type'>void</span> SetToolbarColor(Color color)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbarcolor'><span class='return-type'>void</span> <span class='member-name'>SetToolbarColor</span>(Color color)</a></div></td><td><div class='simple-summary'>
 <p>Sets the color for toolbar background in the safe browsing component.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbaritemcolor'><span class='return-type'>void</span> SetToolbarItemColor(Color color)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbaritemcolor'><span class='return-type'>void</span> <span class='member-name'>SetToolbarItemColor</span>(Color color)</a></div></td><td><div class='simple-summary'>
 <p>Sets the color for toolbar controls in the safe browsing component.</p>
 </div>
 </td></tr></table>
@@ -81,7 +81,7 @@ external browser by using Unity's `Application.OpenURL`.
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='issafebrowsingsupported'></div><div class='api-heading' data-id='issafebrowsingsupported'><a href='#issafebrowsingsupported'><span class='return-type'>bool</span> IsSafeBrowsingSupported { get; }</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='issafebrowsingsupported'></div><div class='api-heading' data-id='issafebrowsingsupported'><a href='#issafebrowsingsupported'><span class='return-type'>bool</span> <span class='member-name'>IsSafeBrowsingSupported</span> { get; }</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -126,7 +126,7 @@ intent query explicitly in your AndroidManifest.xml, to follow the Package Visib
 ### Events
 
 <div class='api-box method'>
-  <div class="api-anchor" id='onsafebrowsingfinished'></div><div class='api-heading' data-id='onsafebrowsingfinished'><a href='#onsafebrowsingfinished'><span class='return-type'>event</span> OnSafeBrowsingFinished(UniWebViewSafeBrowsing browsing)</a></div>
+  <div class="api-anchor" id='onsafebrowsingfinished'></div><div class='api-heading' data-id='onsafebrowsingfinished'><a href='#onsafebrowsingfinished'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingFinished</span>(UniWebViewSafeBrowsing browsing)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -165,7 +165,7 @@ external browser.
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onsafebrowsingclosed'></div><div class='api-heading' data-id='onsafebrowsingclosed'><a href='#onsafebrowsingclosed'><span class='return-type'>event</span> OnSafeBrowsingClosed(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
+  <div class="api-anchor" id='onsafebrowsingclosed'></div><div class='api-heading' data-id='onsafebrowsingclosed'><a href='#onsafebrowsingclosed'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingClosed</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -199,7 +199,7 @@ external browser.
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onsafebrowsingnavigationstarted'></div><div class='api-heading' data-id='onsafebrowsingnavigationstarted'><a href='#onsafebrowsingnavigationstarted'><span class='return-type'>event</span> OnSafeBrowsingNavigationStarted(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
+  <div class="api-anchor" id='onsafebrowsingnavigationstarted'></div><div class='api-heading' data-id='onsafebrowsingnavigationstarted'><a href='#onsafebrowsingnavigationstarted'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingNavigationStarted</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -239,7 +239,7 @@ external browser.
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onsafebrowsingnavigationfinished'></div><div class='api-heading' data-id='onsafebrowsingnavigationfinished'><a href='#onsafebrowsingnavigationfinished'><span class='return-type'>event</span> OnSafeBrowsingNavigationFinished(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
+  <div class="api-anchor" id='onsafebrowsingnavigationfinished'></div><div class='api-heading' data-id='onsafebrowsingnavigationfinished'><a href='#onsafebrowsingnavigationfinished'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingNavigationFinished</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -273,7 +273,7 @@ external browser.
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onsafebrowsingnavigationfailed'></div><div class='api-heading' data-id='onsafebrowsingnavigationfailed'><a href='#onsafebrowsingnavigationfailed'><span class='return-type'>event</span> OnSafeBrowsingNavigationFailed(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
+  <div class="api-anchor" id='onsafebrowsingnavigationfailed'></div><div class='api-heading' data-id='onsafebrowsingnavigationfailed'><a href='#onsafebrowsingnavigationfailed'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingNavigationFailed</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -310,7 +310,7 @@ external browser.
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='create'></div><div class='api-heading' data-id='create'><a href='#create'><span class='return-type'>UniWebViewSafeBrowsing</span> Create(string url)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='create'></div><div class='api-heading' data-id='create'><a href='#create'><span class='return-type'>UniWebViewSafeBrowsing</span> <span class='member-name'>Create</span>(string url)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -337,7 +337,7 @@ external browser.
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setpreferredcustomtabsbrowsers'></div><div class='api-heading' data-id='setpreferredcustomtabsbrowsers'><a href='#setpreferredcustomtabsbrowsers'><span class='return-type'>void</span> SetPreferredCustomTabsBrowsers(string[] packages)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='setpreferredcustomtabsbrowsers'></div><div class='api-heading' data-id='setpreferredcustomtabsbrowsers'><a href='#setpreferredcustomtabsbrowsers'><span class='return-type'>void</span> <span class='member-name'>SetPreferredCustomTabsBrowsers</span>(string[] packages)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -389,7 +389,7 @@ safeBrowsing<span class="token punctuation">.</span><span class="token function"
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='show'></div><div class='api-heading' data-id='show'><a href='#show'><span class='return-type'>void</span> Show()</a></div>
+  <div class="api-anchor" id='show'></div><div class='api-heading' data-id='show'><a href='#show'><span class='return-type'>void</span> <span class='member-name'>Show</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -407,7 +407,7 @@ safeBrowsing<span class="token punctuation">.</span><span class="token function"
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='dismiss'></div><div class='api-heading' data-id='dismiss'><a href='#dismiss'><span class='return-type'>void</span> Dismiss()</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='dismiss'></div><div class='api-heading' data-id='dismiss'><a href='#dismiss'><span class='return-type'>void</span> <span class='member-name'>Dismiss</span>()</a><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -418,7 +418,7 @@ safeBrowsing<span class="token punctuation">.</span><span class="token function"
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='settoolbarcolor'></div><div class='api-heading' data-id='settoolbarcolor'><a href='#settoolbarcolor'><span class='return-type'>void</span> SetToolbarColor(Color color)</a></div>
+  <div class="api-anchor" id='settoolbarcolor'></div><div class='api-heading' data-id='settoolbarcolor'><a href='#settoolbarcolor'><span class='return-type'>void</span> <span class='member-name'>SetToolbarColor</span>(Color color)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -446,7 +446,7 @@ safeBrowsing<span class="token punctuation">.</span><span class="token function"
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='settoolbaritemcolor'></div><div class='api-heading' data-id='settoolbaritemcolor'><a href='#settoolbaritemcolor'><span class='return-type'>void</span> SetToolbarItemColor(Color color)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='settoolbaritemcolor'></div><div class='api-heading' data-id='settoolbaritemcolor'><a href='#settoolbaritemcolor'><span class='return-type'>void</span> <span class='member-name'>SetToolbarItemColor</span>(Color color)</a><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

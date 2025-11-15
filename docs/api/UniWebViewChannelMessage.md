@@ -16,31 +16,31 @@ Each message contains an action identifier, optional JSON data, and metadata for
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#id'><span class='return-type'>string</span> id { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#id'><span class='return-type'>string</span> <span class='member-name'>id</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Unique identifier for this message.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#timestamp'><span class='return-type'>long</span> timestamp { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#timestamp'><span class='return-type'>long</span> <span class='member-name'>timestamp</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Timestamp when the message was created (Unix milliseconds).</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#action'><span class='return-type'>string</span> action { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#action'><span class='return-type'>string</span> <span class='member-name'>action</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The action type for this message (required).</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#data'><span class='return-type'>string</span> data { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#data'><span class='return-type'>string</span> <span class='member-name'>data</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The message data as a JSON string (optional).</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#messagetype'><span class='return-type'>int</span> messageType { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#messagetype'><span class='return-type'>int</span> <span class='member-name'>messageType</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The type of this channel message as an integer.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#messagetype'><span class='return-type'>UniWebViewChannelMessageType</span> MessageType { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#messagetype'><span class='return-type'>UniWebViewChannelMessageType</span> <span class='member-name'>MessageType</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets the strongly-typed message type.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#isfireandforget'><span class='return-type'>bool</span> isFireAndForget { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#isfireandforget'><span class='return-type'>bool</span> <span class='member-name'>isFireAndForget</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>True if this is a fire-and-forget message (Send).</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#issynccall'><span class='return-type'>bool</span> isSyncCall { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#issynccall'><span class='return-type'>bool</span> <span class='member-name'>isSyncCall</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>True if this is a synchronous call (Call).</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#isasyncrequest'><span class='return-type'>bool</span> isAsyncRequest { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#isasyncrequest'><span class='return-type'>bool</span> <span class='member-name'>isAsyncRequest</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>True if this is an asynchronous request (Request).</p>
 </div>
 </td></tr></table>
@@ -49,19 +49,19 @@ Each message contains an action identifier, optional JSON data, and metadata for
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#getdata'><span class='return-type'>T</span> GetData&lt;T&gt;()</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#getdata'><span class='return-type'>T</span> <span class='member-name'>GetData</span>&lt;T&gt;()</a></div></td><td><div class='simple-summary'>
 <p>Parses the message data as the specified type.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#trygetdata'><span class='return-type'>bool</span> TryGetData&lt;T&gt;(out T result)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#trygetdata'><span class='return-type'>bool</span> <span class='member-name'>TryGetData</span>&lt;T&gt;(out T result)</a></div></td><td><div class='simple-summary'>
 <p>Safely parses the message data as the specified type.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#respond'><span class='return-type'>void</span> Respond(UniWebViewChannelMessageResponse response)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#respond'><span class='return-type'>void</span> <span class='member-name'>Respond</span>(UniWebViewChannelMessageResponse response)</a></div></td><td><div class='simple-summary'>
 <p>Sends an async response for this message.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#respond'><span class='return-type'>void</span> Respond(object data)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#respond'><span class='return-type'>void</span> <span class='member-name'>Respond</span>(object data)</a></div></td><td><div class='simple-summary'>
 <p>Convenience method for success responses.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#responderror'><span class='return-type'>void</span> RespondError(object errorData)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#responderror'><span class='return-type'>void</span> <span class='member-name'>RespondError</span>(object errorData)</a></div></td><td><div class='simple-summary'>
 <p>Convenience method for error responses.</p>
 </div>
 </td></tr></table>
@@ -69,7 +69,7 @@ Each message contains an action identifier, optional JSON data, and metadata for
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='id'></div><div class='api-heading' data-id='id'><a href='#id'><span class='return-type'>string</span> id { get; }</a></div>
+  <div class="api-anchor" id='id'></div><div class='api-heading' data-id='id'><a href='#id'><span class='return-type'>string</span> <span class='member-name'>id</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -81,7 +81,7 @@ For asynchronous Request messages, this ID links the original message to its res
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='timestamp'></div><div class='api-heading' data-id='timestamp'><a href='#timestamp'><span class='return-type'>long</span> timestamp { get; }</a></div>
+  <div class="api-anchor" id='timestamp'></div><div class='api-heading' data-id='timestamp'><a href='#timestamp'><span class='return-type'>long</span> <span class='member-name'>timestamp</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -93,7 +93,7 @@ measured in milliseconds since the Unix epoch (January 1, 1970, 00:00:00 UTC).</
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='action'></div><div class='api-heading' data-id='action'><a href='#action'><span class='return-type'>string</span> action { get; }</a></div>
+  <div class="api-anchor" id='action'></div><div class='api-heading' data-id='action'><a href='#action'><span class='return-type'>string</span> <span class='member-name'>action</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -125,7 +125,7 @@ Action names should follow a consistent naming convention in your application.</
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='data'></div><div class='api-heading' data-id='data'><a href='#data'><span class='return-type'>string</span> data { get; }</a></div>
+  <div class="api-anchor" id='data'></div><div class='api-heading' data-id='data'><a href='#data'><span class='return-type'>string</span> <span class='member-name'>data</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -137,7 +137,7 @@ Use <code>GetData&lt;T&gt;()</code> or <code>TryGetData&lt;T&gt;()</code> method
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='messagetype'></div><div class='api-heading' data-id='messagetype'><a href='#messagetype'><span class='return-type'>int</span> messageType { get; }</a></div>
+  <div class="api-anchor" id='messagetype'></div><div class='api-heading' data-id='messagetype'><a href='#messagetype'><span class='return-type'>int</span> <span class='member-name'>messageType</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -153,7 +153,7 @@ Use <code>GetData&lt;T&gt;()</code> or <code>TryGetData&lt;T&gt;()</code> method
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='messagetype'></div><div class='api-heading' data-id='messagetype'><a href='#messagetype'><span class='return-type'>UniWebViewChannelMessageType</span> MessageType { get; }</a></div>
+  <div class="api-anchor" id='messagetype'></div><div class='api-heading' data-id='messagetype'><a href='#messagetype'><span class='return-type'>UniWebViewChannelMessageType</span> <span class='member-name'>MessageType</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -189,7 +189,7 @@ for easier type checking and handling.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='isfireandforget'></div><div class='api-heading' data-id='isfireandforget'><a href='#isfireandforget'><span class='return-type'>bool</span> isFireAndForget { get; }</a></div>
+  <div class="api-anchor" id='isfireandforget'></div><div class='api-heading' data-id='isfireandforget'><a href='#isfireandforget'><span class='return-type'>bool</span> <span class='member-name'>isFireAndForget</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -201,7 +201,7 @@ They are used for notifications and one-way data transfer.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='issynccall'></div><div class='api-heading' data-id='issynccall'><a href='#issynccall'><span class='return-type'>bool</span> isSyncCall { get; }</a></div>
+  <div class="api-anchor" id='issynccall'></div><div class='api-heading' data-id='issynccall'><a href='#issynccall'><span class='return-type'>bool</span> <span class='member-name'>isSyncCall</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -213,7 +213,7 @@ The message handler should return a <code>UniWebViewChannelMessageResponse</code
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='isasyncrequest'></div><div class='api-heading' data-id='isasyncrequest'><a href='#isasyncrequest'><span class='return-type'>bool</span> isAsyncRequest { get; }</a></div>
+  <div class="api-anchor" id='isasyncrequest'></div><div class='api-heading' data-id='isasyncrequest'><a href='#isasyncrequest'><span class='return-type'>bool</span> <span class='member-name'>isAsyncRequest</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -228,7 +228,7 @@ The message handler should return null and call <code>message.Respond()</code> w
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='getdata'></div><div class='api-heading' data-id='getdata'><a href='#getdata'><span class='return-type'>T</span> GetData&lt;T&gt;()</a></div>
+  <div class="api-anchor" id='getdata'></div><div class='api-heading' data-id='getdata'><a href='#getdata'><span class='return-type'>T</span> <span class='member-name'>GetData</span>&lt;T&gt;()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -264,7 +264,7 @@ For safer parsing with error handling, use <code>TryGetData&lt;T&gt;()</code> in
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='trygetdata'></div><div class='api-heading' data-id='trygetdata'><a href='#trygetdata'><span class='return-type'>bool</span> TryGetData&lt;T&gt;(out T result)</a></div>
+  <div class="api-anchor" id='trygetdata'></div><div class='api-heading' data-id='trygetdata'><a href='#trygetdata'><span class='return-type'>bool</span> <span class='member-name'>TryGetData</span>&lt;T&gt;(out T result)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -305,7 +305,7 @@ explicit error handling for data parsing.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='respond'></div><div class='api-heading' data-id='respond'><a href='#respond'><span class='return-type'>void</span> Respond(UniWebViewChannelMessageResponse response)</a></div>
+  <div class="api-anchor" id='respond'></div><div class='api-heading' data-id='respond'><a href='#respond'><span class='return-type'>void</span> <span class='member-name'>Respond</span>(UniWebViewChannelMessageResponse response)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -356,7 +356,7 @@ Calling this method on Send or Call messages will log an error and have no effec
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='respond'></div><div class='api-heading' data-id='respond'><a href='#respond'><span class='return-type'>void</span> Respond(object data)</a></div>
+  <div class="api-anchor" id='respond'></div><div class='api-heading' data-id='respond'><a href='#respond'><span class='return-type'>void</span> <span class='member-name'>Respond</span>(object data)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -395,7 +395,7 @@ Use this when you want to send a successful response without explicitly creating
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='responderror'></div><div class='api-heading' data-id='responderror'><a href='#responderror'><span class='return-type'>void</span> RespondError(object errorData)</a></div>
+  <div class="api-anchor" id='responderror'></div><div class='api-heading' data-id='responderror'><a href='#responderror'><span class='return-type'>void</span> <span class='member-name'>RespondError</span>(object errorData)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

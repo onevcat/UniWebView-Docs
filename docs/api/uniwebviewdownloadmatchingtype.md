@@ -10,10 +10,10 @@ sidebarDepth: 0
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#exactvalue'><span class='return-type'>UniWebViewDownloadMatchingType</span> ExactValue { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#exactvalue'><span class='return-type'>UniWebViewDownloadMatchingType</span> <span class='member-name'>ExactValue</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Matches exact the whole value.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#regularexpression'><span class='return-type'>UniWebViewDownloadMatchingType</span> RegularExpression { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#regularexpression'><span class='return-type'>UniWebViewDownloadMatchingType</span> <span class='member-name'>RegularExpression</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Uses the value as a regular expression.</p>
 </div>
 </td></tr></table>
@@ -21,7 +21,7 @@ sidebarDepth: 0
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='exactvalue'></div><div class='api-heading' data-id='exactvalue'><a href='#exactvalue'><span class='return-type'>UniWebViewDownloadMatchingType</span> ExactValue { get; }</a></div>
+  <div class="api-anchor" id='exactvalue'></div><div class='api-heading' data-id='exactvalue'><a href='#exactvalue'><span class='return-type'>UniWebViewDownloadMatchingType</span> <span class='member-name'>ExactValue</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -31,7 +31,7 @@ sidebarDepth: 0
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='regularexpression'></div><div class='api-heading' data-id='regularexpression'><a href='#regularexpression'><span class='return-type'>UniWebViewDownloadMatchingType</span> RegularExpression { get; }</a></div>
+  <div class="api-anchor" id='regularexpression'></div><div class='api-heading' data-id='regularexpression'><a href='#regularexpression'><span class='return-type'>UniWebViewDownloadMatchingType</span> <span class='member-name'>RegularExpression</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

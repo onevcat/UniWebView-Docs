@@ -1,5 +1,12 @@
 :root {
   --content-width: 1000px;
+  --api-return-type-color: #56d39b;
+  --api-member-name-color: #1f7f50;
+}
+
+html.dark {
+  --api-return-type-color: #2d7c4d;
+  --api-member-name-color: #6de0ab;
 }
 
 .api-box {
@@ -55,8 +62,11 @@
   white-space: normal;
   word-break: break-word;
 }
+.api-summary-heading .member-name {
+  color: var(--api-member-name-color);
+}
 .api-summary-heading .return-type {
-  color: var(--c-brand);
+  color: var(--api-return-type-color);
 }
 
 .api-summary-table .simple-summary {

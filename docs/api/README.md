@@ -14,34 +14,34 @@ as well as receive a message from the web view.
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#iswebviewsupported'><span class='return-type'>bool</span> IsWebViewSupported { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#iswebviewsupported'><span class='return-type'>bool</span> <span class='member-name'>IsWebViewSupported</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Whether the web view is supported in current runtime or not.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#frame'><span class='return-type'>Rect</span> Frame { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#frame'><span class='return-type'>Rect</span> <span class='member-name'>Frame</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Gets or sets the frame of current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#referencerecttransform'><span class='return-type'>RectTransform</span> ReferenceRectTransform { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#referencerecttransform'><span class='return-type'>RectTransform</span> <span class='member-name'>ReferenceRectTransform</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>A reference rect transform which the web view should change its position and size to.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#url'><span class='return-type'>string</span> Url { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#url'><span class='return-type'>string</span> <span class='member-name'>Url</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The url of current loaded web page.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#cangoback'><span class='return-type'>bool</span> CanGoBack { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#cangoback'><span class='return-type'>bool</span> <span class='member-name'>CanGoBack</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets whether there is a back page in the back-forward list that can be navigated to.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#cangoforward'><span class='return-type'>bool</span> CanGoForward { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#cangoforward'><span class='return-type'>bool</span> <span class='member-name'>CanGoForward</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets whether there is a forward page in the back-forward list that can be navigated to.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#backgroundcolor'><span class='return-type'>Color</span> BackgroundColor { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#backgroundcolor'><span class='return-type'>Color</span> <span class='member-name'>BackgroundColor</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Gets or sets the background color of web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#alpha'><span class='return-type'>float</span> Alpha { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#alpha'><span class='return-type'>float</span> <span class='member-name'>Alpha</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Gets or sets the alpha value of the whole web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#embeddedtoolbar'><span class='return-type'>UniWebViewEmbeddedToolbar</span> EmbeddedToolbar { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#embeddedtoolbar'><span class='return-type'>UniWebViewEmbeddedToolbar</span> <span class='member-name'>EmbeddedToolbar</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Represents the embedded toolbar in the current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#restoreviewhierarchyonresume'><span class='return-type'>bool</span> RestoreViewHierarchyOnResume { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#restoreviewhierarchyonresume'><span class='return-type'>bool</span> <span class='member-name'>RestoreViewHierarchyOnResume</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Sets whether this web view instance should try to restore its view hierarchy when resumed.</p>
 </div>
 </td></tr></table>
@@ -50,55 +50,55 @@ as well as receive a message from the web view.
 
 <table class='api-summary-table api-summary-table--events'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#onpagestarted'><span class='return-type'>void</span> OnPageStarted(UniWebView webView, string url)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#onpagestarted'><span class='return-type'>void</span> <span class='member-name'>OnPageStarted</span>(UniWebView webView, string url)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view starts loading a url.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onpagecommitted'><span class='return-type'>void</span> OnPageCommitted(UniWebView webView, string url)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onpagecommitted'><span class='return-type'>void</span> <span class='member-name'>OnPageCommitted</span>(UniWebView webView, string url)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view receives response from the server and starts receiving web content.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onpagefinished'><span class='return-type'>void</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onpagefinished'><span class='return-type'>void</span> <span class='member-name'>OnPageFinished</span>(UniWebView webView, int statusCode, string url)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view finished to load a url successfully.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onpageprogresschanged'><span class='return-type'>void</span> OnPageProgressChanged(UniWebView webView, float progress)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onpageprogresschanged'><span class='return-type'>void</span> <span class='member-name'>OnPageProgressChanged</span>(UniWebView webView, float progress)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the loading progress value changes in current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onpageerrorreceived'><span class='return-type'>void</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onpageerrorreceived'><span class='return-type'>void</span> <span class='member-name'>OnPageErrorReceived</span>(UniWebView webView, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
 <p>Raised when an error encountered during the loading process.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onloadingerrorreceived'><span class='return-type'>void</span> OnLoadingErrorReceived(UniWebView webView, int errorCode, string errorMessage, UniWebViewNativeResultPayload payload)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onloadingerrorreceived'><span class='return-type'>void</span> <span class='member-name'>OnLoadingErrorReceived</span>(UniWebView webView, int errorCode, string errorMessage, UniWebViewNativeResultPayload payload)</a></div></td><td><div class='simple-summary'>
 <p>Raised when an error encountered during the loading process.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#oncapturesnapshotfinished'><span class='return-type'>void</span> OnCaptureSnapshotFinished(UniWebView webView, int errorCode, string diskPath)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#oncapturesnapshotfinished'><span class='return-type'>void</span> <span class='member-name'>OnCaptureSnapshotFinished</span>(UniWebView webView, int errorCode, string diskPath)</a></div></td><td><div class='simple-summary'>
 <p>Raised when an image captured and stored in a cache path on disk.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onfiledownloadstarted'><span class='return-type'>void</span> OnFileDownloadStarted(UniWebView webView, string remoteUrl, string fileName)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onfiledownloadstarted'><span class='return-type'>void</span> <span class='member-name'>OnFileDownloadStarted</span>(UniWebView webView, string remoteUrl, string fileName)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a file download task starts.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onfiledownloadfinished'><span class='return-type'>void</span> OnFileDownloadFinished(UniWebView webView, int errorCode, string remoteUrl, string diskPath)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onfiledownloadfinished'><span class='return-type'>void</span> <span class='member-name'>OnFileDownloadFinished</span>(UniWebView webView, int errorCode, string remoteUrl, string diskPath)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a file download task finishes with either an error or success.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onmessagereceived'><span class='return-type'>void</span> OnMessageReceived(UniWebView webView, UniWebViewMessage message)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onmessagereceived'><span class='return-type'>void</span> <span class='member-name'>OnMessageReceived</span>(UniWebView webView, UniWebViewMessage message)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a message from web view is received.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onshouldclose'><span class='return-type'>bool</span> OnShouldClose(UniWebView webView)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onshouldclose'><span class='return-type'>bool</span> <span class='member-name'>OnShouldClose</span>(UniWebView webView)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the web view is about to close itself.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onorientationchanged'><span class='return-type'>void</span> OnOrientationChanged(UniWebView webView, ScreenOrientation orientation)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onorientationchanged'><span class='return-type'>void</span> <span class='member-name'>OnOrientationChanged</span>(UniWebView webView, ScreenOrientation orientation)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the screen orientation is changed.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onwebcontentprocessterminated'><span class='return-type'>void</span> OnWebContentProcessTerminated(UniWebView webView)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onwebcontentprocessterminated'><span class='return-type'>void</span> <span class='member-name'>OnWebContentProcessTerminated</span>(UniWebView webView)</a></div></td><td><div class='simple-summary'>
 <p>On iOS, raise when the system calls <code>webViewWebContentProcessDidTerminate</code> method.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onmultiplewindowopened'><span class='return-type'>void</span> OnMultipleWindowOpened(UniWebView webView, string multipleWindowId)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onmultiplewindowopened'><span class='return-type'>void</span> <span class='member-name'>OnMultipleWindowOpened</span>(UniWebView webView, string multipleWindowId)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a new window is opened.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onmultiplewindowclosed'><span class='return-type'>void</span> OnMultipleWindowClosed(UniWebView webView, string multipleWindowId)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onmultiplewindowclosed'><span class='return-type'>void</span> <span class='member-name'>OnMultipleWindowClosed</span>(UniWebView webView, string multipleWindowId)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the multiple window is closed.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onkeycodereceived'><span class='return-type'>void</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onkeycodereceived'><span class='return-type'>void</span> <span class='member-name'>OnKeyCodeReceived</span>(UniWebView webView, int keyCode)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a key (like back button or volume up) on the device is pressed.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onchannelmessagereceived'><span class='return-type'>UniWebViewChannelMessageResponse</span> OnChannelMessageReceived(UniWebView webView, UniWebViewChannelMessage message)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onchannelmessagereceived'><span class='return-type'>UniWebViewChannelMessageResponse</span> <span class='member-name'>OnChannelMessageReceived</span>(UniWebView webView, UniWebViewChannelMessage message)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a channel message from JavaScript Bridge is received.</p>
 </div>
 </td></tr></table>
@@ -107,309 +107,309 @@ as well as receive a message from the web view.
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#settransform'><span class='return-type'>void</span> SetTransform(UniWebViewTransform transform)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#settransform'><span class='return-type'>void</span> <span class='member-name'>SetTransform</span>(UniWebViewTransform transform)</a></div></td><td><div class='simple-summary'>
 <p>Applies a transformation to the web view, including rotation and scaling.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#load'><span class='return-type'>void</span> Load(string url, bool skipEncoding, string readAccessURL)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#load'><span class='return-type'>void</span> <span class='member-name'>Load</span>(string url, bool skipEncoding, string readAccessURL)</a></div></td><td><div class='simple-summary'>
 <p>Loads a url in current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#loadhtmlstring'><span class='return-type'>void</span> LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#loadhtmlstring'><span class='return-type'>void</span> <span class='member-name'>LoadHTMLString</span>(string htmlString, string baseUrl, bool skipEncoding)</a></div></td><td><div class='simple-summary'>
 <p>Loads an HTML string in current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#reload'><span class='return-type'>void</span> Reload()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#reload'><span class='return-type'>void</span> <span class='member-name'>Reload</span>()</a></div></td><td><div class='simple-summary'>
 <p>Reloads the current page.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#stop'><span class='return-type'>void</span> Stop()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#stop'><span class='return-type'>void</span> <span class='member-name'>Stop</span>()</a></div></td><td><div class='simple-summary'>
 <p>Stops loading all resources on the current page.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#goback'><span class='return-type'>void</span> GoBack()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#goback'><span class='return-type'>void</span> <span class='member-name'>GoBack</span>()</a></div></td><td><div class='simple-summary'>
 <p>Navigates to the back item in the back-forward list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#goforward'><span class='return-type'>void</span> GoForward()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#goforward'><span class='return-type'>void</span> <span class='member-name'>GoForward</span>()</a></div></td><td><div class='simple-summary'>
 <p>Navigates to the forward item in the back-forward list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#copybackforwardlist'><span class='return-type'>UniWebViewBackForwardList</span> CopyBackForwardList()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#copybackforwardlist'><span class='return-type'>UniWebViewBackForwardList</span> <span class='member-name'>CopyBackForwardList</span>()</a></div></td><td><div class='simple-summary'>
 <p>Gets a copy of the back-forward list, which is the navigation history for the web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#gotoindexinbackforwardlist'><span class='return-type'>void</span> GoToIndexInBackForwardList(int index)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#gotoindexinbackforwardlist'><span class='return-type'>void</span> <span class='member-name'>GoToIndexInBackForwardList</span>(int index)</a></div></td><td><div class='simple-summary'>
 <p>Navigates to the specified index in the back-forward list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setopenlinksinexternalbrowser'><span class='return-type'>void</span> SetOpenLinksInExternalBrowser(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setopenlinksinexternalbrowser'><span class='return-type'>void</span> <span class='member-name'>SetOpenLinksInExternalBrowser</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the link clicking in the web view should open the page in an external browser.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#show'><span class='return-type'>bool</span> Show(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#show'><span class='return-type'>bool</span> <span class='member-name'>Show</span>(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div></td><td><div class='simple-summary'>
 <p>Sets the web view visible on screen.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#hide'><span class='return-type'>bool</span> Hide(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#hide'><span class='return-type'>bool</span> <span class='member-name'>Hide</span>(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div></td><td><div class='simple-summary'>
 <p>Sets the web view invisible from screen.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#animateto'><span class='return-type'>bool</span> AnimateTo(Rect frame, float duration, float delay, Action completionHandler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#animateto'><span class='return-type'>bool</span> <span class='member-name'>AnimateTo</span>(Rect frame, float duration, float delay, Action completionHandler)</a></div></td><td><div class='simple-summary'>
 <p>Animates the web view from current <code>Frame</code> (position and size) to another <code>Frame</code> (position and size) within <code>duration</code>.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#updateframe'><span class='return-type'>void</span> UpdateFrame()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#updateframe'><span class='return-type'>void</span> <span class='member-name'>UpdateFrame</span>()</a></div></td><td><div class='simple-summary'>
 <p>Updates and sets current frame of web view to match the setting.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#addjavascript'><span class='return-type'>void</span> AddJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#addjavascript'><span class='return-type'>void</span> <span class='member-name'>AddJavaScript</span>(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div></td><td><div class='simple-summary'>
 <p>Adds a JavaScript to current page.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#evaluatejavascript'><span class='return-type'>void</span> EvaluateJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#evaluatejavascript'><span class='return-type'>void</span> <span class='member-name'>EvaluateJavaScript</span>(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div></td><td><div class='simple-summary'>
 <p>Evaluates a JavaScript string on current page.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#addurlscheme'><span class='return-type'>void</span> AddUrlScheme(string scheme)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#addurlscheme'><span class='return-type'>void</span> <span class='member-name'>AddUrlScheme</span>(string scheme)</a></div></td><td><div class='simple-summary'>
 <p>Adds a url scheme to UniWebView message system interpreter.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#removeurlscheme'><span class='return-type'>void</span> RemoveUrlScheme(string scheme)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removeurlscheme'><span class='return-type'>void</span> <span class='member-name'>RemoveUrlScheme</span>(string scheme)</a></div></td><td><div class='simple-summary'>
 <p>Removes a url scheme from UniWebView message system interpreter.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#addsslexceptiondomain'><span class='return-type'>void</span> AddSslExceptionDomain(string domain)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#addsslexceptiondomain'><span class='return-type'>void</span> <span class='member-name'>AddSslExceptionDomain</span>(string domain)</a></div></td><td><div class='simple-summary'>
 <p>Adds a domain to the SSL checking white list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#removesslexceptiondomain'><span class='return-type'>void</span> RemoveSslExceptionDomain(string domain)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removesslexceptiondomain'><span class='return-type'>void</span> <span class='member-name'>RemoveSslExceptionDomain</span>(string domain)</a></div></td><td><div class='simple-summary'>
 <p>Removes a domain from the deprecated SSL exception white list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#addsslpinnedfingerprint'><span class='return-type'>void</span> AddSslPinnedFingerprint(string domain, string fingerprint)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#addsslpinnedfingerprint'><span class='return-type'>void</span> <span class='member-name'>AddSslPinnedFingerprint</span>(string domain, string fingerprint)</a></div></td><td><div class='simple-summary'>
 <p>Pins a SHA-256 certificate fingerprint for a domain.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#removesslpinnedfingerprint'><span class='return-type'>void</span> RemoveSslPinnedFingerprint(string domain, string fingerprint)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removesslpinnedfingerprint'><span class='return-type'>void</span> <span class='member-name'>RemoveSslPinnedFingerprint</span>(string domain, string fingerprint)</a></div></td><td><div class='simple-summary'>
 <p>Removes a previously pinned fingerprint for the given domain.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setheaderfield'><span class='return-type'>void</span> SetHeaderField(string key, string value)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setheaderfield'><span class='return-type'>void</span> <span class='member-name'>SetHeaderField</span>(string key, string value)</a></div></td><td><div class='simple-summary'>
 <p>Sets a customized header field for web view requests.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setuseragent'><span class='return-type'>void</span> SetUserAgent(string agent)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setuseragent'><span class='return-type'>void</span> <span class='member-name'>SetUserAgent</span>(string agent)</a></div></td><td><div class='simple-summary'>
 <p>Sets the user agent used in the web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#getuseragent'><span class='return-type'>string</span> GetUserAgent()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getuseragent'><span class='return-type'>string</span> <span class='member-name'>GetUserAgent</span>()</a></div></td><td><div class='simple-summary'>
 <p>Gets the user agent string currently used in web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setcontentinsetadjustmentbehavior'><span class='return-type'>void</span> SetContentInsetAdjustmentBehavior(UniWebViewContentInsetAdjustmentBehavior behavior)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setcontentinsetadjustmentbehavior'><span class='return-type'>void</span> <span class='member-name'>SetContentInsetAdjustmentBehavior</span>(UniWebViewContentInsetAdjustmentBehavior behavior)</a></div></td><td><div class='simple-summary'>
 <p>Sets the adjustment behavior which indicates how safe area insets 
 are added to the adjusted content inset.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowautoplay'><span class='return-type'>void</span> SetAllowAutoPlay(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowautoplay'><span class='return-type'>void</span> <span class='member-name'>SetAllowAutoPlay</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets allow auto-play for current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowinlineplay'><span class='return-type'>void</span> SetAllowInlinePlay(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowinlineplay'><span class='return-type'>void</span> <span class='member-name'>SetAllowInlinePlay</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets allow inline play for current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowfileaccess'><span class='return-type'>void</span> SetAllowFileAccess(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowfileaccess'><span class='return-type'>void</span> <span class='member-name'>SetAllowFileAccess</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether loading a local file is allowed.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowfileaccessfromfileurls'><span class='return-type'>void</span> SetAllowFileAccessFromFileURLs(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowfileaccessfromfileurls'><span class='return-type'>void</span> <span class='member-name'>SetAllowFileAccessFromFileURLs</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether file access from file URLs is allowed.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setacceptthirdpartycookies'><span class='return-type'>void</span> SetAcceptThirdPartyCookies(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setacceptthirdpartycookies'><span class='return-type'>void</span> <span class='member-name'>SetAcceptThirdPartyCookies</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the UniWebView should allow third party cookies to be set.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowuniversalaccessfromfileurls'><span class='return-type'>void</span> SetAllowUniversalAccessFromFileURLs(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowuniversalaccessfromfileurls'><span class='return-type'>void</span> <span class='member-name'>SetAllowUniversalAccessFromFileURLs</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets allow universal access from file URLs.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setenablekeyboardavoidance'><span class='return-type'>void</span> SetEnableKeyboardAvoidance(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setenablekeyboardavoidance'><span class='return-type'>void</span> <span class='member-name'>SetEnableKeyboardAvoidance</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view area should avoid soft keyboard.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setjavascriptenabled'><span class='return-type'>void</span> SetJavaScriptEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setjavascriptenabled'><span class='return-type'>void</span> <span class='member-name'>SetJavaScriptEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether JavaScript should be enabled in current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setlimitsnavigationstoappbounddomains'><span class='return-type'>void</span> SetLimitsNavigationsToAppBoundDomains(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setlimitsnavigationstoappbounddomains'><span class='return-type'>void</span> <span class='member-name'>SetLimitsNavigationsToAppBoundDomains</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view limits navigation to pages within the app’s domain.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowjavascriptopenwindow'><span class='return-type'>void</span> SetAllowJavaScriptOpenWindow(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowjavascriptopenwindow'><span class='return-type'>void</span> <span class='member-name'>SetAllowJavaScriptOpenWindow</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether JavaScript can open windows without user interaction.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setcalloutenabled'><span class='return-type'>void</span> SetCalloutEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setcalloutenabled'><span class='return-type'>void</span> <span class='member-name'>SetCalloutEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether a callout (context) menu should be displayed when user long tapping on certain web view content.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setsupportmultiplewindows'><span class='return-type'>void</span> SetSupportMultipleWindows(bool enabled, bool allowJavaScriptOpening)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setsupportmultiplewindows'><span class='return-type'>void</span> <span class='member-name'>SetSupportMultipleWindows</span>(bool enabled, bool allowJavaScriptOpening)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view should support a pop up web view triggered by user in a new tab.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setdefaultfontsize'><span class='return-type'>void</span> SetDefaultFontSize(int size)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setdefaultfontsize'><span class='return-type'>void</span> <span class='member-name'>SetDefaultFontSize</span>(int size)</a></div></td><td><div class='simple-summary'>
 <p>Sets the default font size used in the web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#settextzoom'><span class='return-type'>void</span> SetTextZoom(int textZoom)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settextzoom'><span class='return-type'>void</span> <span class='member-name'>SetTextZoom</span>(int textZoom)</a></div></td><td><div class='simple-summary'>
 <p>Sets the text zoom used in the web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setdraginteractionenabled'><span class='return-type'>void</span> SetDragInteractionEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setdraginteractionenabled'><span class='return-type'>void</span> <span class='member-name'>SetDragInteractionEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the drag interaction should be enabled on iOS.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setcachemode'><span class='return-type'>void</span> SetCacheMode(UniWebViewCacheMode mode)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setcachemode'><span class='return-type'>void</span> <span class='member-name'>SetCacheMode</span>(UniWebViewCacheMode mode)</a></div></td><td><div class='simple-summary'>
 <p>Sets the way of how the cache is used when loading a request.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#cleancache'><span class='return-type'>void</span> CleanCache(bool includeStorage, Action completionHandler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#cleancache'><span class='return-type'>void</span> <span class='member-name'>CleanCache</span>(bool includeStorage, Action completionHandler)</a></div></td><td><div class='simple-summary'>
 <p>Cleans web view cache.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setforwardwebconsoletonativeoutput'><span class='return-type'>void</span> SetForwardWebConsoleToNativeOutput(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setforwardwebconsoletonativeoutput'><span class='return-type'>void</span> <span class='member-name'>SetForwardWebConsoleToNativeOutput</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web page console output should be forwarded to native console.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding, Action handler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setcookie'><span class='return-type'>void</span> <span class='member-name'>SetCookie</span>(string url, string cookie, bool skipEncoding, Action handler)</a></div></td><td><div class='simple-summary'>
 <p>Sets a cookie for a certain url.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#getcookie'><span class='return-type'>void</span> GetCookie(string url, string key, bool skipEncoding, Action&lt;string&gt; handler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getcookie'><span class='return-type'>void</span> <span class='member-name'>GetCookie</span>(string url, string key, bool skipEncoding, Action&lt;string&gt; handler)</a></div></td><td><div class='simple-summary'>
 <p>Gets the cookie value under a given url and key.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#removecookies'><span class='return-type'>void</span> RemoveCookies(string url, bool skipEncoding, Action handler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removecookies'><span class='return-type'>void</span> <span class='member-name'>RemoveCookies</span>(string url, bool skipEncoding, Action handler)</a></div></td><td><div class='simple-summary'>
 <p>Removes all the cookies under a url.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#removecookie'><span class='return-type'>void</span> RemoveCookie(string url, string key, bool skipEncoding, Action handler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removecookie'><span class='return-type'>void</span> <span class='member-name'>RemoveCookie</span>(string url, string key, bool skipEncoding, Action handler)</a></div></td><td><div class='simple-summary'>
 <p>Removes the certain cookie under a url for the specified key.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#clearcookies'><span class='return-type'>void</span> ClearCookies(Action handler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#clearcookies'><span class='return-type'>void</span> <span class='member-name'>ClearCookies</span>(Action handler)</a></div></td><td><div class='simple-summary'>
 <p>Clears all cookies from web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#clearhttpauthusernamepassword'><span class='return-type'>void</span> ClearHttpAuthUsernamePassword(string host, string realm)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#clearhttpauthusernamepassword'><span class='return-type'>void</span> <span class='member-name'>ClearHttpAuthUsernamePassword</span>(string host, string realm)</a></div></td><td><div class='simple-summary'>
 <p>Clears any saved credentials for HTTP authentication for both Basic and Digest.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setshowspinnerwhileloading'><span class='return-type'>void</span> SetShowSpinnerWhileLoading(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setshowspinnerwhileloading'><span class='return-type'>void</span> <span class='member-name'>SetShowSpinnerWhileLoading</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether to show a loading indicator while the loading is in progress.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setspinnertext'><span class='return-type'>void</span> SetSpinnerText(string text)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setspinnertext'><span class='return-type'>void</span> <span class='member-name'>SetSpinnerText</span>(string text)</a></div></td><td><div class='simple-summary'>
 <p>Sets the text displayed in the loading indicator, if <code>SetShowSpinnerWhileLoading</code> is set to <code>true</code>.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowuserdismissspinner'><span class='return-type'>void</span> SetAllowUserDismissSpinner(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowuserdismissspinner'><span class='return-type'>void</span> <span class='member-name'>SetAllowUserDismissSpinner</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the user can dismiss the loading indicator by tapping on it or the greyed-out background around.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#showspinner'><span class='return-type'>void</span> ShowSpinner()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#showspinner'><span class='return-type'>void</span> <span class='member-name'>ShowSpinner</span>()</a></div></td><td><div class='simple-summary'>
 <p>Shows the loading spinner.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#hidespinner'><span class='return-type'>void</span> HideSpinner()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#hidespinner'><span class='return-type'>void</span> <span class='member-name'>HideSpinner</span>()</a></div></td><td><div class='simple-summary'>
 <p>Hides the loading spinner.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#sethorizontalscrollbarenabled'><span class='return-type'>void</span> SetHorizontalScrollBarEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#sethorizontalscrollbarenabled'><span class='return-type'>void</span> <span class='member-name'>SetHorizontalScrollBarEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the horizontal scroll bar should show when the web content beyonds web view bounds.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setverticalscrollbarenabled'><span class='return-type'>void</span> SetVerticalScrollBarEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setverticalscrollbarenabled'><span class='return-type'>void</span> <span class='member-name'>SetVerticalScrollBarEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the vertical scroll bar should show when the web content beyonds web view bounds.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setbouncesenabled'><span class='return-type'>void</span> SetBouncesEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setbouncesenabled'><span class='return-type'>void</span> <span class='member-name'>SetBouncesEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view should show with a bounces effect when scrolling to page edge.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setzoomenabled'><span class='return-type'>void</span> SetZoomEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setzoomenabled'><span class='return-type'>void</span> <span class='member-name'>SetZoomEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view supports zoom gesture to change content size.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#addpermissiontrustdomain'><span class='return-type'>void</span> AddPermissionTrustDomain(string domain)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#addpermissiontrustdomain'><span class='return-type'>void</span> <span class='member-name'>AddPermissionTrustDomain</span>(string domain)</a></div></td><td><div class='simple-summary'>
 <p>Adds a trusted domain to white list and allow permission requests from the domain.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#removepermissiontrustdomain'><span class='return-type'>void</span> RemovePermissionTrustDomain(string domain)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removepermissiontrustdomain'><span class='return-type'>void</span> <span class='member-name'>RemovePermissionTrustDomain</span>(string domain)</a></div></td><td><div class='simple-summary'>
 <p>Removes a trusted domain from white list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setbackbuttonenabled'><span class='return-type'>void</span> SetBackButtonEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setbackbuttonenabled'><span class='return-type'>void</span> <span class='member-name'>SetBackButtonEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the device back button should be enabled to execute &quot;go back&quot; or &quot;closing&quot; operation.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setusewideviewport'><span class='return-type'>void</span> SetUseWideViewPort(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setusewideviewport'><span class='return-type'>void</span> <span class='member-name'>SetUseWideViewPort</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view should enable support for the &quot;viewport&quot; HTML meta tag or should use a wide viewport.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setloadwithoverviewmode'><span class='return-type'>void</span> SetLoadWithOverviewMode(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setloadwithoverviewmode'><span class='return-type'>void</span> <span class='member-name'>SetLoadWithOverviewMode</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view loads pages in overview mode, that is, zooms out the content to fit on screen by width.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setimmersivemodeenabled'><span class='return-type'>void</span> SetImmersiveModeEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setimmersivemodeenabled'><span class='return-type'>void</span> <span class='member-name'>SetImmersiveModeEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view should behave in immersive mode, that is, 
 hides the status bar and navigation bar with a sticky style.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setshowtoolbar'><span class='return-type'>void</span> SetShowToolbar(bool show, bool animated, bool onTop, bool adjustInset)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setshowtoolbar'><span class='return-type'>void</span> <span class='member-name'>SetShowToolbar</span>(bool show, bool animated, bool onTop, bool adjustInset)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether to show a toolbar which contains navigation buttons and Done button.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbardonebuttontext'><span class='return-type'>void</span> SetToolbarDoneButtonText(string text)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbardonebuttontext'><span class='return-type'>void</span> <span class='member-name'>SetToolbarDoneButtonText</span>(string text)</a></div></td><td><div class='simple-summary'>
 <p>Sets the done button text in toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbargobackbuttontext'><span class='return-type'>void</span> SetToolbarGoBackButtonText(string text)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbargobackbuttontext'><span class='return-type'>void</span> <span class='member-name'>SetToolbarGoBackButtonText</span>(string text)</a></div></td><td><div class='simple-summary'>
 <p>Sets the go back button text in toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbargoforwardbuttontext'><span class='return-type'>void</span> SetToolbarGoForwardButtonText(string text)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbargoforwardbuttontext'><span class='return-type'>void</span> <span class='member-name'>SetToolbarGoForwardButtonText</span>(string text)</a></div></td><td><div class='simple-summary'>
 <p>Sets the go forward button text in toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setshowtoolbarnavigationbuttons'><span class='return-type'>void</span> SetShowToolbarNavigationButtons(bool show)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setshowtoolbarnavigationbuttons'><span class='return-type'>void</span> <span class='member-name'>SetShowToolbarNavigationButtons</span>(bool show)</a></div></td><td><div class='simple-summary'>
 <p>Sets the visibility of navigation buttons, such as &quot;Go Back&quot; and &quot;Go Forward&quot;, on toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbartintcolor'><span class='return-type'>void</span> SetToolbarTintColor(Color color)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbartintcolor'><span class='return-type'>void</span> <span class='member-name'>SetToolbarTintColor</span>(Color color)</a></div></td><td><div class='simple-summary'>
 <p>Sets the background tint color for the toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbartextcolor'><span class='return-type'>void</span> SetToolbarTextColor(Color color)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbartextcolor'><span class='return-type'>void</span> <span class='member-name'>SetToolbarTextColor</span>(Color color)</a></div></td><td><div class='simple-summary'>
 <p>Sets the button text color for the toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setuserinteractionenabled'><span class='return-type'>void</span> SetUserInteractionEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setuserinteractionenabled'><span class='return-type'>void</span> <span class='member-name'>SetUserInteractionEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view can receive user interaction or not.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#settransparencyclickingthroughenabled'><span class='return-type'>void</span> SetTransparencyClickingThroughEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settransparencyclickingthroughenabled'><span class='return-type'>void</span> <span class='member-name'>SetTransparencyClickingThroughEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view should pass through clicks on transparent areas to Unity scene.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setroundcornerradius'><span class='return-type'>void</span> SetRoundCornerRadius(float topLeft, float topRight, float bottomLeft, float bottomRight)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setroundcornerradius'><span class='return-type'>void</span> <span class='member-name'>SetRoundCornerRadius</span>(float topLeft, float topRight, float bottomLeft, float bottomRight)</a></div></td><td><div class='simple-summary'>
 <p>Sets rounded corner radii for the native web view container.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setshadow'><span class='return-type'>void</span> SetShadow(UniWebViewShadow shadow)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setshadow'><span class='return-type'>void</span> <span class='member-name'>SetShadow</span>(UniWebViewShadow shadow)</a></div></td><td><div class='simple-summary'>
 <p>Configures the drop shadow rendered by the native web view container.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#refreshtransparencyclickingthroughlayout'><span class='return-type'>void</span> RefreshTransparencyClickingThroughLayout()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#refreshtransparencyclickingthroughlayout'><span class='return-type'>void</span> <span class='member-name'>RefreshTransparencyClickingThroughLayout</span>()</a></div></td><td><div class='simple-summary'>
 <p>Manually refreshes the transparency clicking through layout detection.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setwebcontentsdebuggingenabled'><span class='return-type'>void</span> SetWebContentsDebuggingEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setwebcontentsdebuggingenabled'><span class='return-type'>void</span> <span class='member-name'>SetWebContentsDebuggingEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Enables debugging of web contents.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setwindowuserresizeenabled'><span class='return-type'>void</span> SetWindowUserResizeEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setwindowuserresizeenabled'><span class='return-type'>void</span> <span class='member-name'>SetWindowUserResizeEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Enables user resizing for web view window.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowbackforwardnavigationgestures'><span class='return-type'>void</span> SetAllowBackForwardNavigationGestures(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowbackforwardnavigationgestures'><span class='return-type'>void</span> <span class='member-name'>SetAllowBackForwardNavigationGestures</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether horizontal swipe gestures should trigger back-forward list navigation.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowhttpauthpopupwindow'><span class='return-type'>void</span> SetAllowHTTPAuthPopUpWindow(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowhttpauthpopupwindow'><span class='return-type'>void</span> <span class='member-name'>SetAllowHTTPAuthPopUpWindow</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether a prompt alert should be displayed for collection username and password when the web view receives an
 HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#gethtmlcontent'><span class='return-type'>void</span> GetHTMLContent(Action&lt;string&gt; handler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#gethtmlcontent'><span class='return-type'>void</span> <span class='member-name'>GetHTMLContent</span>(Action&lt;string&gt; handler)</a></div></td><td><div class='simple-summary'>
 <p>Gets the HTML content from current page by accessing its <code>outerHTML</code> with JavaScript.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#print'><span class='return-type'>void</span> Print()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#print'><span class='return-type'>void</span> <span class='member-name'>Print</span>()</a></div></td><td><div class='simple-summary'>
 <p>Prints current page.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#capturesnapshot'><span class='return-type'>void</span> CaptureSnapshot(string fileName)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#capturesnapshot'><span class='return-type'>void</span> <span class='member-name'>CaptureSnapshot</span>(string fileName)</a></div></td><td><div class='simple-summary'>
 <p>Capture the content of web view and store it to the cache path on disk with the given file name.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> StartSnapshotForRendering(Rect? rect = null, Action&lt;Texture&gt; onStarted = null)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StartSnapshotForRendering</span>(Rect? rect = null, Action&lt;Texture&gt; onStarted = null)</a></div></td><td><div class='simple-summary'>
 <p>Starts the process of continually rendering the snapshot.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#stopsnapshotforrendering'><span class='return-type'>void</span> StopSnapshotForRendering()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#stopsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StopSnapshotForRendering</span>()</a></div></td><td><div class='simple-summary'>
 <p>Stops the process of continually rendering the snapshot.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#getrendereddata'><span class='return-type'>byte[]</span> GetRenderedData(Rect? rect = null)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getrendereddata'><span class='return-type'>byte[]</span> <span class='member-name'>GetRenderedData</span>(Rect? rect = null)</a></div></td><td><div class='simple-summary'>
 <p>Gets the data of the rendered image for the current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#createrenderedtexture'><span class='return-type'>Texture2D</span> CreateRenderedTexture(Rect? rect = null)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#createrenderedtexture'><span class='return-type'>Texture2D</span> <span class='member-name'>CreateRenderedTexture</span>(Rect? rect = null)</a></div></td><td><div class='simple-summary'>
 <p>Creates a rendered texture for the current web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#scrollto'><span class='return-type'>void</span> ScrollTo(int x, int y, bool animated)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#scrollto'><span class='return-type'>void</span> <span class='member-name'>ScrollTo</span>(int x, int y, bool animated)</a></div></td><td><div class='simple-summary'>
 <p>Scrolls the web view to a certain point.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#adddownloadurl'><span class='return-type'>void</span> AddDownloadURL(string urlString, UniWebViewDownloadMatchingType type)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#adddownloadurl'><span class='return-type'>void</span> <span class='member-name'>AddDownloadURL</span>(string urlString, UniWebViewDownloadMatchingType type)</a></div></td><td><div class='simple-summary'>
 <p>Adds the URL to download inspecting list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#removedownloadurl'><span class='return-type'>void</span> RemoveDownloadURL(string urlString, UniWebViewDownloadMatchingType type)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removedownloadurl'><span class='return-type'>void</span> <span class='member-name'>RemoveDownloadURL</span>(string urlString, UniWebViewDownloadMatchingType type)</a></div></td><td><div class='simple-summary'>
 <p>Removes the URL from download inspecting list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#adddownloadmimetype'><span class='return-type'>void</span> AddDownloadMIMEType(string MIMEType, UniWebViewDownloadMatchingType type)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#adddownloadmimetype'><span class='return-type'>void</span> <span class='member-name'>AddDownloadMIMEType</span>(string MIMEType, UniWebViewDownloadMatchingType type)</a></div></td><td><div class='simple-summary'>
 <p>Adds the MIME type to download inspecting list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#removedownloadmimetypes'><span class='return-type'>void</span> RemoveDownloadMIMETypes(string MIMEType, UniWebViewDownloadMatchingType type)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#removedownloadmimetypes'><span class='return-type'>void</span> <span class='member-name'>RemoveDownloadMIMETypes</span>(string MIMEType, UniWebViewDownloadMatchingType type)</a></div></td><td><div class='simple-summary'>
 <p>Removes the MIME type from download inspecting list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowusereditfilenamebeforedownloading'><span class='return-type'>void</span> SetAllowUserEditFileNameBeforeDownloading(bool allowed)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowusereditfilenamebeforedownloading'><span class='return-type'>void</span> <span class='member-name'>SetAllowUserEditFileNameBeforeDownloading</span>(bool allowed)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether allowing users to edit the file name before downloading.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowuserchooseactionafterdownloading'><span class='return-type'>void</span> SetAllowUserChooseActionAfterDownloading(bool allowed)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setallowuserchooseactionafterdownloading'><span class='return-type'>void</span> <span class='member-name'>SetAllowUserChooseActionAfterDownloading</span>(bool allowed)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether allowing users to choose the way to handle the downloaded file.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setdownloadeventforcontextmenuenabled'><span class='return-type'>void</span> SetDownloadEventForContextMenuEnabled(bool enabled)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setdownloadeventforcontextmenuenabled'><span class='return-type'>void</span> <span class='member-name'>SetDownloadEventForContextMenuEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the <code>OnFileDownloadStarted</code> and <code>OnFileDownloadFinished</code> events should be raised even for an image
 saving action triggered by the callout (context) menu on Android.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#registershouldhandlerequest'><span class='return-type'>void</span> RegisterShouldHandleRequest(Func&lt;UniWebViewChannelMethodHandleRequest, bool&gt; handler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#registershouldhandlerequest'><span class='return-type'>void</span> <span class='member-name'>RegisterShouldHandleRequest</span>(Func&lt;UniWebViewChannelMethodHandleRequest, bool&gt; handler)</a></div></td><td><div class='simple-summary'>
 <p>Registers a method handler for deciding whether UniWebView should handle the request received by the web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#unregistershouldhandlerequest'><span class='return-type'>void</span> UnregisterShouldHandleRequest()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#unregistershouldhandlerequest'><span class='return-type'>void</span> <span class='member-name'>UnregisterShouldHandleRequest</span>()</a></div></td><td><div class='simple-summary'>
 <p>Unregisters the method handler for handling request received by the web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#registeronrequestmediacapturepermission'><span class='return-type'>void</span> RegisterOnRequestMediaCapturePermission(Func&lt;UniWebViewChannelMethodMediaCapturePermission, UniWebViewMediaCapturePermissionDecision&gt; handler)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#registeronrequestmediacapturepermission'><span class='return-type'>void</span> <span class='member-name'>RegisterOnRequestMediaCapturePermission</span>(Func&lt;UniWebViewChannelMethodMediaCapturePermission, UniWebViewMediaCapturePermissionDecision&gt; handler)</a></div></td><td><div class='simple-summary'>
 <p>Registers a method handler for deciding whether UniWebView should allow a media request from the web page or
 not.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#unregisteronrequestmediacapturepermission'><span class='return-type'>void</span> UnregisterOnRequestMediaCapturePermission()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#unregisteronrequestmediacapturepermission'><span class='return-type'>void</span> <span class='member-name'>UnregisterOnRequestMediaCapturePermission</span>()</a></div></td><td><div class='simple-summary'>
 <p>Unregisters the method handler for handling media capture permission request.</p>
 </div>
 </td></tr></table>
@@ -417,7 +417,7 @@ not.</p>
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='iswebviewsupported'></div><div class='api-heading' data-id='iswebviewsupported'><a href='#iswebviewsupported'><span class='return-type'>bool</span> IsWebViewSupported { get; }</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='iswebviewsupported'></div><div class='api-heading' data-id='iswebviewsupported'><a href='#iswebviewsupported'><span class='return-type'>bool</span> <span class='member-name'>IsWebViewSupported</span> { get; }</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -443,7 +443,7 @@ runtime checking on Android. On other not supported platforms such as Windows or
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='frame'></div><div class='api-heading' data-id='frame'><a href='#frame'><span class='return-type'>Rect</span> Frame { get; set; }</a></div>
+  <div class="api-anchor" id='frame'></div><div class='api-heading' data-id='frame'><a href='#frame'><span class='return-type'>Rect</span> <span class='member-name'>Frame</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -476,7 +476,7 @@ webView<span class="token punctuation">.</span>Frame <span class="token operator
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='referencerecttransform'></div><div class='api-heading' data-id='referencerecttransform'><a href='#referencerecttransform'><span class='return-type'>RectTransform</span> ReferenceRectTransform { get; set; }</a></div>
+  <div class="api-anchor" id='referencerecttransform'></div><div class='api-heading' data-id='referencerecttransform'><a href='#referencerecttransform'><span class='return-type'>RectTransform</span> <span class='member-name'>ReferenceRectTransform</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -499,7 +499,7 @@ webView<span class="token punctuation">.</span>ReferenceRectTransform <span clas
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='url'></div><div class='api-heading' data-id='url'><a href='#url'><span class='return-type'>string</span> Url { get; }</a></div>
+  <div class="api-anchor" id='url'></div><div class='api-heading' data-id='url'><a href='#url'><span class='return-type'>string</span> <span class='member-name'>Url</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -520,7 +520,7 @@ webView<span class="token punctuation">.</span>ReferenceRectTransform <span clas
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='cangoback'></div><div class='api-heading' data-id='cangoback'><a href='#cangoback'><span class='return-type'>bool</span> CanGoBack { get; }</a></div>
+  <div class="api-anchor" id='cangoback'></div><div class='api-heading' data-id='cangoback'><a href='#cangoback'><span class='return-type'>bool</span> <span class='member-name'>CanGoBack</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -530,7 +530,7 @@ webView<span class="token punctuation">.</span>ReferenceRectTransform <span clas
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='cangoforward'></div><div class='api-heading' data-id='cangoforward'><a href='#cangoforward'><span class='return-type'>bool</span> CanGoForward { get; }</a></div>
+  <div class="api-anchor" id='cangoforward'></div><div class='api-heading' data-id='cangoforward'><a href='#cangoforward'><span class='return-type'>bool</span> <span class='member-name'>CanGoForward</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -540,7 +540,7 @@ webView<span class="token punctuation">.</span>ReferenceRectTransform <span clas
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='backgroundcolor'></div><div class='api-heading' data-id='backgroundcolor'><a href='#backgroundcolor'><span class='return-type'>Color</span> BackgroundColor { get; set; }</a></div>
+  <div class="api-anchor" id='backgroundcolor'></div><div class='api-heading' data-id='backgroundcolor'><a href='#backgroundcolor'><span class='return-type'>Color</span> <span class='member-name'>BackgroundColor</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -563,7 +563,7 @@ webView<span class="token punctuation">.</span>BackgroundColor <span class="toke
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='alpha'></div><div class='api-heading' data-id='alpha'><a href='#alpha'><span class='return-type'>float</span> Alpha { get; set; }</a></div>
+  <div class="api-anchor" id='alpha'></div><div class='api-heading' data-id='alpha'><a href='#alpha'><span class='return-type'>float</span> <span class='member-name'>Alpha</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -583,7 +583,7 @@ webView<span class="token punctuation">.</span>Alpha <span class="token operator
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='embeddedtoolbar'></div><div class='api-heading' data-id='embeddedtoolbar'><a href='#embeddedtoolbar'><span class='return-type'>UniWebViewEmbeddedToolbar</span> EmbeddedToolbar { get; }</a></div>
+  <div class="api-anchor" id='embeddedtoolbar'></div><div class='api-heading' data-id='embeddedtoolbar'><a href='#embeddedtoolbar'><span class='return-type'>UniWebViewEmbeddedToolbar</span> <span class='member-name'>EmbeddedToolbar</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -604,7 +604,7 @@ webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='restoreviewhierarchyonresume'></div><div class='api-heading' data-id='restoreviewhierarchyonresume'><a href='#restoreviewhierarchyonresume'><span class='return-type'>bool</span> RestoreViewHierarchyOnResume { get; set; }</a></div>
+  <div class="api-anchor" id='restoreviewhierarchyonresume'></div><div class='api-heading' data-id='restoreviewhierarchyonresume'><a href='#restoreviewhierarchyonresume'><span class='return-type'>bool</span> <span class='member-name'>RestoreViewHierarchyOnResume</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -627,7 +627,7 @@ step to bring the web view to front to make the web view visible. Set this to tr
 ### Events
 
 <div class='api-box method'>
-  <div class="api-anchor" id='onpagestarted'></div><div class='api-heading' data-id='onpagestarted'><a href='#onpagestarted'><span class='return-type'>void</span> OnPageStarted(UniWebView webView, string url)</a></div>
+  <div class="api-anchor" id='onpagestarted'></div><div class='api-heading' data-id='onpagestarted'><a href='#onpagestarted'><span class='return-type'>void</span> <span class='member-name'>OnPageStarted</span>(UniWebView webView, string url)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -665,7 +665,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onpagecommitted'></div><div class='api-heading' data-id='onpagecommitted'><a href='#onpagecommitted'><span class='return-type'>void</span> OnPageCommitted(UniWebView webView, string url)</a></div>
+  <div class="api-anchor" id='onpagecommitted'></div><div class='api-heading' data-id='onpagecommitted'><a href='#onpagecommitted'><span class='return-type'>void</span> <span class='member-name'>OnPageCommitted</span>(UniWebView webView, string url)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -703,7 +703,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onpagefinished'></div><div class='api-heading' data-id='onpagefinished'><a href='#onpagefinished'><span class='return-type'>void</span> OnPageFinished(UniWebView webView, int statusCode, string url)</a></div>
+  <div class="api-anchor" id='onpagefinished'></div><div class='api-heading' data-id='onpagefinished'><a href='#onpagefinished'><span class='return-type'>void</span> <span class='member-name'>OnPageFinished</span>(UniWebView webView, int statusCode, string url)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -769,7 +769,7 @@ webView<span class="token punctuation">.</span>OnPageFinished <span class="token
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onpageprogresschanged'></div><div class='api-heading' data-id='onpageprogresschanged'><a href='#onpageprogresschanged'><span class='return-type'>void</span> OnPageProgressChanged(UniWebView webView, float progress)</a></div>
+  <div class="api-anchor" id='onpageprogresschanged'></div><div class='api-heading' data-id='onpageprogresschanged'><a href='#onpageprogresschanged'><span class='return-type'>void</span> <span class='member-name'>OnPageProgressChanged</span>(UniWebView webView, float progress)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -811,7 +811,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onpageerrorreceived'></div><div class='api-heading' data-id='onpageerrorreceived'><a href='#onpageerrorreceived'><span class='return-type'>void</span> OnPageErrorReceived(UniWebView webView, int errorCode, string errorMessage)</a></div>
+  <div class="api-anchor" id='onpageerrorreceived'></div><div class='api-heading' data-id='onpageerrorreceived'><a href='#onpageerrorreceived'><span class='return-type'>void</span> <span class='member-name'>OnPageErrorReceived</span>(UniWebView webView, int errorCode, string errorMessage)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -869,7 +869,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onloadingerrorreceived'></div><div class='api-heading' data-id='onloadingerrorreceived'><a href='#onloadingerrorreceived'><span class='return-type'>void</span> OnLoadingErrorReceived(UniWebView webView, int errorCode, string errorMessage, UniWebViewNativeResultPayload payload)</a></div>
+  <div class="api-anchor" id='onloadingerrorreceived'></div><div class='api-heading' data-id='onloadingerrorreceived'><a href='#onloadingerrorreceived'><span class='return-type'>void</span> <span class='member-name'>OnLoadingErrorReceived</span>(UniWebView webView, int errorCode, string errorMessage, UniWebViewNativeResultPayload payload)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -929,7 +929,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='oncapturesnapshotfinished'></div><div class='api-heading' data-id='oncapturesnapshotfinished'><a href='#oncapturesnapshotfinished'><span class='return-type'>void</span> OnCaptureSnapshotFinished(UniWebView webView, int errorCode, string diskPath)</a></div>
+  <div class="api-anchor" id='oncapturesnapshotfinished'></div><div class='api-heading' data-id='oncapturesnapshotfinished'><a href='#oncapturesnapshotfinished'><span class='return-type'>void</span> <span class='member-name'>OnCaptureSnapshotFinished</span>(UniWebView webView, int errorCode, string diskPath)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -976,7 +976,7 @@ webView<span class="token punctuation">.</span><span class="token function">Capt
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onfiledownloadstarted'></div><div class='api-heading' data-id='onfiledownloadstarted'><a href='#onfiledownloadstarted'><span class='return-type'>void</span> OnFileDownloadStarted(UniWebView webView, string remoteUrl, string fileName)</a></div>
+  <div class="api-anchor" id='onfiledownloadstarted'></div><div class='api-heading' data-id='onfiledownloadstarted'><a href='#onfiledownloadstarted'><span class='return-type'>void</span> <span class='member-name'>OnFileDownloadStarted</span>(UniWebView webView, string remoteUrl, string fileName)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1015,7 +1015,7 @@ webView<span class="token punctuation">.</span><span class="token function">Capt
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onfiledownloadfinished'></div><div class='api-heading' data-id='onfiledownloadfinished'><a href='#onfiledownloadfinished'><span class='return-type'>void</span> OnFileDownloadFinished(UniWebView webView, int errorCode, string remoteUrl, string diskPath)</a></div>
+  <div class="api-anchor" id='onfiledownloadfinished'></div><div class='api-heading' data-id='onfiledownloadfinished'><a href='#onfiledownloadfinished'><span class='return-type'>void</span> <span class='member-name'>OnFileDownloadFinished</span>(UniWebView webView, int errorCode, string remoteUrl, string diskPath)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1067,7 +1067,7 @@ On Android, it is in the &quot;Download&quot; folder of your app.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onmessagereceived'></div><div class='api-heading' data-id='onmessagereceived'><a href='#onmessagereceived'><span class='return-type'>void</span> OnMessageReceived(UniWebView webView, UniWebViewMessage message)</a></div>
+  <div class="api-anchor" id='onmessagereceived'></div><div class='api-heading' data-id='onmessagereceived'><a href='#onmessagereceived'><span class='return-type'>void</span> <span class='member-name'>OnMessageReceived</span>(UniWebView webView, UniWebViewMessage message)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1122,7 +1122,7 @@ anotherWebView<span class="token punctuation">.</span><span class="token functio
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onshouldclose'></div><div class='api-heading' data-id='onshouldclose'><a href='#onshouldclose'><span class='return-type'>bool</span> OnShouldClose(UniWebView webView)</a></div>
+  <div class="api-anchor" id='onshouldclose'></div><div class='api-heading' data-id='onshouldclose'><a href='#onshouldclose'><span class='return-type'>bool</span> <span class='member-name'>OnShouldClose</span>(UniWebView webView)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1174,7 +1174,7 @@ webView<span class="token punctuation">.</span>OnShouldClose <span class="token 
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onorientationchanged'></div><div class='api-heading' data-id='onorientationchanged'><a href='#onorientationchanged'><span class='return-type'>void</span> OnOrientationChanged(UniWebView webView, ScreenOrientation orientation)</a></div>
+  <div class="api-anchor" id='onorientationchanged'></div><div class='api-heading' data-id='onorientationchanged'><a href='#onorientationchanged'><span class='return-type'>void</span> <span class='member-name'>OnOrientationChanged</span>(UniWebView webView, ScreenOrientation orientation)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1211,7 +1211,7 @@ webView<span class="token punctuation">.</span>OnOrientationChanged <span class=
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onwebcontentprocessterminated'></div><div class='api-heading' data-id='onwebcontentprocessterminated'><a href='#onwebcontentprocessterminated'><span class='return-type'>void</span> OnWebContentProcessTerminated(UniWebView webView)</a></div>
+  <div class="api-anchor" id='onwebcontentprocessterminated'></div><div class='api-heading' data-id='onwebcontentprocessterminated'><a href='#onwebcontentprocessterminated'><span class='return-type'>void</span> <span class='member-name'>OnWebContentProcessTerminated</span>(UniWebView webView)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1249,7 +1249,7 @@ webView<span class="token punctuation">.</span>OnWebContentProcessTerminated <sp
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onmultiplewindowopened'></div><div class='api-heading' data-id='onmultiplewindowopened'><a href='#onmultiplewindowopened'><span class='return-type'>void</span> OnMultipleWindowOpened(UniWebView webView, string multipleWindowId)</a></div>
+  <div class="api-anchor" id='onmultiplewindowopened'></div><div class='api-heading' data-id='onmultiplewindowopened'><a href='#onmultiplewindowopened'><span class='return-type'>void</span> <span class='member-name'>OnMultipleWindowOpened</span>(UniWebView webView, string multipleWindowId)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1285,7 +1285,7 @@ webView<span class="token punctuation">.</span>OnMultipleWindowOpened <span clas
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onmultiplewindowclosed'></div><div class='api-heading' data-id='onmultiplewindowclosed'><a href='#onmultiplewindowclosed'><span class='return-type'>void</span> OnMultipleWindowClosed(UniWebView webView, string multipleWindowId)</a></div>
+  <div class="api-anchor" id='onmultiplewindowclosed'></div><div class='api-heading' data-id='onmultiplewindowclosed'><a href='#onmultiplewindowclosed'><span class='return-type'>void</span> <span class='member-name'>OnMultipleWindowClosed</span>(UniWebView webView, string multipleWindowId)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1320,7 +1320,7 @@ or by a invocation of <code>close()</code> on the page.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onkeycodereceived'></div><div class='api-heading' data-id='onkeycodereceived'><a href='#onkeycodereceived'><span class='return-type'>void</span> OnKeyCodeReceived(UniWebView webView, int keyCode)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='onkeycodereceived'></div><div class='api-heading' data-id='onkeycodereceived'><a href='#onkeycodereceived'><span class='return-type'>void</span> <span class='member-name'>OnKeyCodeReceived</span>(UniWebView webView, int keyCode)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1374,7 +1374,7 @@ So this event will be never raise anymore. Check <code>Input.GetKeyUp</code> in 
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onchannelmessagereceived'></div><div class='api-heading' data-id='onchannelmessagereceived'><a href='#onchannelmessagereceived'><span class='return-type'>UniWebViewChannelMessageResponse</span> OnChannelMessageReceived(UniWebView webView, UniWebViewChannelMessage message)</a></div>
+  <div class="api-anchor" id='onchannelmessagereceived'></div><div class='api-heading' data-id='onchannelmessagereceived'><a href='#onchannelmessagereceived'><span class='return-type'>UniWebViewChannelMessageResponse</span> <span class='member-name'>OnChannelMessageReceived</span>(UniWebView webView, UniWebViewChannelMessage message)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1466,7 +1466,7 @@ supporting three communication patterns: Send (fire-and-forget), Call (synchrono
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='settransform'></div><div class='api-heading' data-id='settransform'><a href='#settransform'><span class='return-type'>void</span> SetTransform(UniWebViewTransform transform)</a></div>
+  <div class="api-anchor" id='settransform'></div><div class='api-heading' data-id='settransform'><a href='#settransform'><span class='return-type'>void</span> <span class='member-name'>SetTransform</span>(UniWebViewTransform transform)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1532,7 +1532,7 @@ webView<span class="token punctuation">.</span><span class="token function">Show
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='load'></div><div class='api-heading' data-id='load'><a href='#load'><span class='return-type'>void</span> Load(string url, bool skipEncoding, string readAccessURL)</a></div>
+  <div class="api-anchor" id='load'></div><div class='api-heading' data-id='load'><a href='#load'><span class='return-type'>void</span> <span class='member-name'>Load</span>(string url, bool skipEncoding, string readAccessURL)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1578,7 +1578,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='loadhtmlstring'></div><div class='api-heading' data-id='loadhtmlstring'><a href='#loadhtmlstring'><span class='return-type'>void</span> LoadHTMLString(string htmlString, string baseUrl, bool skipEncoding)</a></div>
+  <div class="api-anchor" id='loadhtmlstring'></div><div class='api-heading' data-id='loadhtmlstring'><a href='#loadhtmlstring'><span class='return-type'>void</span> <span class='member-name'>LoadHTMLString</span>(string htmlString, string baseUrl, bool skipEncoding)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1615,7 +1615,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='reload'></div><div class='api-heading' data-id='reload'><a href='#reload'><span class='return-type'>void</span> Reload()</a></div>
+  <div class="api-anchor" id='reload'></div><div class='api-heading' data-id='reload'><a href='#reload'><span class='return-type'>void</span> <span class='member-name'>Reload</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1625,7 +1625,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='stop'></div><div class='api-heading' data-id='stop'><a href='#stop'><span class='return-type'>void</span> Stop()</a></div>
+  <div class="api-anchor" id='stop'></div><div class='api-heading' data-id='stop'><a href='#stop'><span class='return-type'>void</span> <span class='member-name'>Stop</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1635,7 +1635,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='goback'></div><div class='api-heading' data-id='goback'><a href='#goback'><span class='return-type'>void</span> GoBack()</a></div>
+  <div class="api-anchor" id='goback'></div><div class='api-heading' data-id='goback'><a href='#goback'><span class='return-type'>void</span> <span class='member-name'>GoBack</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1654,7 +1654,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='goforward'></div><div class='api-heading' data-id='goforward'><a href='#goforward'><span class='return-type'>void</span> GoForward()</a></div>
+  <div class="api-anchor" id='goforward'></div><div class='api-heading' data-id='goforward'><a href='#goforward'><span class='return-type'>void</span> <span class='member-name'>GoForward</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1673,7 +1673,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='copybackforwardlist'></div><div class='api-heading' data-id='copybackforwardlist'><a href='#copybackforwardlist'><span class='return-type'>UniWebViewBackForwardList</span> CopyBackForwardList()</a></div>
+  <div class="api-anchor" id='copybackforwardlist'></div><div class='api-heading' data-id='copybackforwardlist'><a href='#copybackforwardlist'><span class='return-type'>UniWebViewBackForwardList</span> <span class='member-name'>CopyBackForwardList</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1717,7 +1717,7 @@ webView<span class="token punctuation">.</span>OnLoadingErrorReceived <span clas
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='gotoindexinbackforwardlist'></div><div class='api-heading' data-id='gotoindexinbackforwardlist'><a href='#gotoindexinbackforwardlist'><span class='return-type'>void</span> GoToIndexInBackForwardList(int index)</a></div>
+  <div class="api-anchor" id='gotoindexinbackforwardlist'></div><div class='api-heading' data-id='gotoindexinbackforwardlist'><a href='#gotoindexinbackforwardlist'><span class='return-type'>void</span> <span class='member-name'>GoToIndexInBackForwardList</span>(int index)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1747,7 +1747,7 @@ webView<span class="token punctuation">.</span><span class="token function">GoTo
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setopenlinksinexternalbrowser'></div><div class='api-heading' data-id='setopenlinksinexternalbrowser'><a href='#setopenlinksinexternalbrowser'><span class='return-type'>void</span> SetOpenLinksInExternalBrowser(bool flag)</a></div>
+  <div class="api-anchor" id='setopenlinksinexternalbrowser'></div><div class='api-heading' data-id='setopenlinksinexternalbrowser'><a href='#setopenlinksinexternalbrowser'><span class='return-type'>void</span> <span class='member-name'>SetOpenLinksInExternalBrowser</span>(bool flag)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1781,7 +1781,7 @@ webView<span class="token punctuation">.</span>OnPageFinished <span class="token
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='show'></div><div class='api-heading' data-id='show'><a href='#show'><span class='return-type'>bool</span> Show(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div>
+  <div class="api-anchor" id='show'></div><div class='api-heading' data-id='show'><a href='#show'><span class='return-type'>bool</span> <span class='member-name'>Show</span>(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1842,7 +1842,7 @@ webView<span class="token punctuation">.</span><span class="token function">Show
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='hide'></div><div class='api-heading' data-id='hide'><a href='#hide'><span class='return-type'>bool</span> Hide(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div>
+  <div class="api-anchor" id='hide'></div><div class='api-heading' data-id='hide'><a href='#hide'><span class='return-type'>bool</span> <span class='member-name'>Hide</span>(bool fade, UniWebViewTransitionEdge edge, float duration, Action completionHandler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1911,7 +1911,7 @@ webView<span class="token punctuation">.</span><span class="token function">Hide
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='animateto'></div><div class='api-heading' data-id='animateto'><a href='#animateto'><span class='return-type'>bool</span> AnimateTo(Rect frame, float duration, float delay, Action completionHandler)</a></div>
+  <div class="api-anchor" id='animateto'></div><div class='api-heading' data-id='animateto'><a href='#animateto'><span class='return-type'>bool</span> <span class='member-name'>AnimateTo</span>(Rect frame, float duration, float delay, Action completionHandler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1960,7 +1960,7 @@ webView<span class="token punctuation">.</span><span class="token function">Anim
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='updateframe'></div><div class='api-heading' data-id='updateframe'><a href='#updateframe'><span class='return-type'>void</span> UpdateFrame()</a></div>
+  <div class="api-anchor" id='updateframe'></div><div class='api-heading' data-id='updateframe'><a href='#updateframe'><span class='return-type'>void</span> <span class='member-name'>UpdateFrame</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -1984,7 +1984,7 @@ to the web view. This method follows the frame determining rules.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='addjavascript'></div><div class='api-heading' data-id='addjavascript'><a href='#addjavascript'><span class='return-type'>void</span> AddJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div>
+  <div class="api-anchor" id='addjavascript'></div><div class='api-heading' data-id='addjavascript'><a href='#addjavascript'><span class='return-type'>void</span> <span class='member-name'>AddJavaScript</span>(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2022,7 +2022,7 @@ to the web view and a <code>UniWebViewNativeResultPayload</code> with <code>resu
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='evaluatejavascript'></div><div class='api-heading' data-id='evaluatejavascript'><a href='#evaluatejavascript'><span class='return-type'>void</span> EvaluateJavaScript(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div>
+  <div class="api-anchor" id='evaluatejavascript'></div><div class='api-heading' data-id='evaluatejavascript'><a href='#evaluatejavascript'><span class='return-type'>void</span> <span class='member-name'>EvaluateJavaScript</span>(string jsString, Action&lt;UniWebViewNativeResultPayload&gt; completionHandler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2074,7 +2074,7 @@ webView<span class="token punctuation">.</span><span class="token function">Eval
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='addurlscheme'></div><div class='api-heading' data-id='addurlscheme'><a href='#addurlscheme'><span class='return-type'>void</span> AddUrlScheme(string scheme)</a></div>
+  <div class="api-anchor" id='addurlscheme'></div><div class='api-heading' data-id='addurlscheme'><a href='#addurlscheme'><span class='return-type'>void</span> <span class='member-name'>AddUrlScheme</span>(string scheme)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2104,7 +2104,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddU
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='removeurlscheme'></div><div class='api-heading' data-id='removeurlscheme'><a href='#removeurlscheme'><span class='return-type'>void</span> RemoveUrlScheme(string scheme)</a></div>
+  <div class="api-anchor" id='removeurlscheme'></div><div class='api-heading' data-id='removeurlscheme'><a href='#removeurlscheme'><span class='return-type'>void</span> <span class='member-name'>RemoveUrlScheme</span>(string scheme)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2131,7 +2131,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddU
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='addsslexceptiondomain'></div><div class='api-heading' data-id='addsslexceptiondomain'><a href='#addsslexceptiondomain'><span class='return-type'>void</span> AddSslExceptionDomain(string domain)</a></div>
+  <div class="api-anchor" id='addsslexceptiondomain'></div><div class='api-heading' data-id='addsslexceptiondomain'><a href='#addsslexceptiondomain'><span class='return-type'>void</span> <span class='member-name'>AddSslExceptionDomain</span>(string domain)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2167,7 +2167,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddS
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='removesslexceptiondomain'></div><div class='api-heading' data-id='removesslexceptiondomain'><a href='#removesslexceptiondomain'><span class='return-type'>void</span> RemoveSslExceptionDomain(string domain)</a></div>
+  <div class="api-anchor" id='removesslexceptiondomain'></div><div class='api-heading' data-id='removesslexceptiondomain'><a href='#removesslexceptiondomain'><span class='return-type'>void</span> <span class='member-name'>RemoveSslExceptionDomain</span>(string domain)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2200,7 +2200,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddS
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='addsslpinnedfingerprint'></div><div class='api-heading' data-id='addsslpinnedfingerprint'><a href='#addsslpinnedfingerprint'><span class='return-type'>void</span> AddSslPinnedFingerprint(string domain, string fingerprint)</a></div>
+  <div class="api-anchor" id='addsslpinnedfingerprint'></div><div class='api-heading' data-id='addsslpinnedfingerprint'><a href='#addsslpinnedfingerprint'><span class='return-type'>void</span> <span class='member-name'>AddSslPinnedFingerprint</span>(string domain, string fingerprint)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2244,7 +2244,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='removesslpinnedfingerprint'></div><div class='api-heading' data-id='removesslpinnedfingerprint'><a href='#removesslpinnedfingerprint'><span class='return-type'>void</span> RemoveSslPinnedFingerprint(string domain, string fingerprint)</a></div>
+  <div class="api-anchor" id='removesslpinnedfingerprint'></div><div class='api-heading' data-id='removesslpinnedfingerprint'><a href='#removesslpinnedfingerprint'><span class='return-type'>void</span> <span class='member-name'>RemoveSslPinnedFingerprint</span>(string domain, string fingerprint)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2279,7 +2279,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setheaderfield'></div><div class='api-heading' data-id='setheaderfield'><a href='#setheaderfield'><span class='return-type'>void</span> SetHeaderField(string key, string value)</a></div>
+  <div class="api-anchor" id='setheaderfield'></div><div class='api-heading' data-id='setheaderfield'><a href='#setheaderfield'><span class='return-type'>void</span> <span class='member-name'>SetHeaderField</span>(string key, string value)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2328,7 +2328,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetH
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setuseragent'></div><div class='api-heading' data-id='setuseragent'><a href='#setuseragent'><span class='return-type'>void</span> SetUserAgent(string agent)</a></div>
+  <div class="api-anchor" id='setuseragent'></div><div class='api-heading' data-id='setuseragent'><a href='#setuseragent'><span class='return-type'>void</span> <span class='member-name'>SetUserAgent</span>(string agent)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2359,7 +2359,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetU
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='getuseragent'></div><div class='api-heading' data-id='getuseragent'><a href='#getuseragent'><span class='return-type'>string</span> GetUserAgent()</a></div>
+  <div class="api-anchor" id='getuseragent'></div><div class='api-heading' data-id='getuseragent'><a href='#getuseragent'><span class='return-type'>string</span> <span class='member-name'>GetUserAgent</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2387,7 +2387,7 @@ webView<span class="token punctuation">.</span><span class="token function">GetU
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setcontentinsetadjustmentbehavior'></div><div class='api-heading' data-id='setcontentinsetadjustmentbehavior'><a href='#setcontentinsetadjustmentbehavior'><span class='return-type'>void</span> SetContentInsetAdjustmentBehavior(UniWebViewContentInsetAdjustmentBehavior behavior)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='setcontentinsetadjustmentbehavior'></div><div class='api-heading' data-id='setcontentinsetadjustmentbehavior'><a href='#setcontentinsetadjustmentbehavior'><span class='return-type'>void</span> <span class='member-name'>SetContentInsetAdjustmentBehavior</span>(UniWebViewContentInsetAdjustmentBehavior behavior)</a><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2426,7 +2426,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetC
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setallowautoplay'></div><div class='api-heading' data-id='setallowautoplay'><a href='#setallowautoplay'><span class='return-type'>void</span> SetAllowAutoPlay(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='setallowautoplay'></div><div class='api-heading' data-id='setallowautoplay'><a href='#setallowautoplay'><span class='return-type'>void</span> <span class='member-name'>SetAllowAutoPlay</span>(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2469,7 +2469,7 @@ webView<span class="token punctuation">.</span><span class="token function">Show
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setallowinlineplay'></div><div class='api-heading' data-id='setallowinlineplay'><a href='#setallowinlineplay'><span class='return-type'>void</span> SetAllowInlinePlay(bool flag)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='setallowinlineplay'></div><div class='api-heading' data-id='setallowinlineplay'><a href='#setallowinlineplay'><span class='return-type'>void</span> <span class='member-name'>SetAllowInlinePlay</span>(bool flag)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2516,7 +2516,7 @@ webView<span class="token punctuation">.</span><span class="token function">Show
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setallowfileaccess'></div><div class='api-heading' data-id='setallowfileaccess'><a href='#setallowfileaccess'><span class='return-type'>void</span> SetAllowFileAccess(bool flag)</a></div>
+  <div class="api-anchor" id='setallowfileaccess'></div><div class='api-heading' data-id='setallowfileaccess'><a href='#setallowfileaccess'><span class='return-type'>void</span> <span class='member-name'>SetAllowFileAccess</span>(bool flag)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2552,7 +2552,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setallowfileaccessfromfileurls'></div><div class='api-heading' data-id='setallowfileaccessfromfileurls'><a href='#setallowfileaccessfromfileurls'><span class='return-type'>void</span> SetAllowFileAccessFromFileURLs(bool flag)</a></div>
+  <div class="api-anchor" id='setallowfileaccessfromfileurls'></div><div class='api-heading' data-id='setallowfileaccessfromfileurls'><a href='#setallowfileaccessfromfileurls'><span class='return-type'>void</span> <span class='member-name'>SetAllowFileAccessFromFileURLs</span>(bool flag)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2592,7 +2592,7 @@ would be able to read your sandbox. So we DO NOT recommend to enable it before y
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setacceptthirdpartycookies'></div><div class='api-heading' data-id='setacceptthirdpartycookies'><a href='#setacceptthirdpartycookies'><span class='return-type'>void</span> SetAcceptThirdPartyCookies(bool flag)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='setacceptthirdpartycookies'></div><div class='api-heading' data-id='setacceptthirdpartycookies'><a href='#setacceptthirdpartycookies'><span class='return-type'>void</span> <span class='member-name'>SetAcceptThirdPartyCookies</span>(bool flag)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2643,7 +2643,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetA
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setallowuniversalaccessfromfileurls'></div><div class='api-heading' data-id='setallowuniversalaccessfromfileurls'><a href='#setallowuniversalaccessfromfileurls'><span class='return-type'>void</span> SetAllowUniversalAccessFromFileURLs(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='setallowuniversalaccessfromfileurls'></div><div class='api-heading' data-id='setallowuniversalaccessfromfileurls'><a href='#setallowuniversalaccessfromfileurls'><span class='return-type'>void</span> <span class='member-name'>SetAllowUniversalAccessFromFileURLs</span>(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2690,7 +2690,7 @@ would be able to read your sandbox. So we DO NOT recommend to enable it before y
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setenablekeyboardavoidance'></div><div class='api-heading' data-id='setenablekeyboardavoidance'><a href='#setenablekeyboardavoidance'><span class='return-type'>void</span> SetEnableKeyboardAvoidance(bool flag)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='setenablekeyboardavoidance'></div><div class='api-heading' data-id='setenablekeyboardavoidance'><a href='#setenablekeyboardavoidance'><span class='return-type'>void</span> <span class='member-name'>SetEnableKeyboardAvoidance</span>(bool flag)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2733,7 +2733,7 @@ You need to set it before creating a web view. Existing web views are not affect
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setjavascriptenabled'></div><div class='api-heading' data-id='setjavascriptenabled'><a href='#setjavascriptenabled'><span class='return-type'>void</span> SetJavaScriptEnabled(bool enabled)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='setjavascriptenabled'></div><div class='api-heading' data-id='setjavascriptenabled'><a href='#setjavascriptenabled'><span class='return-type'>void</span> <span class='member-name'>SetJavaScriptEnabled</span>(bool enabled)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2772,7 +2772,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setlimitsnavigationstoappbounddomains'></div><div class='api-heading' data-id='setlimitsnavigationstoappbounddomains'><a href='#setlimitsnavigationstoappbounddomains'><span class='return-type'>void</span> SetLimitsNavigationsToAppBoundDomains(bool flag)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='setlimitsnavigationstoappbounddomains'></div><div class='api-heading' data-id='setlimitsnavigationstoappbounddomains'><a href='#setlimitsnavigationstoappbounddomains'><span class='return-type'>void</span> <span class='member-name'>SetLimitsNavigationsToAppBoundDomains</span>(bool flag)</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2812,7 +2812,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setallowjavascriptopenwindow'></div><div class='api-heading' data-id='setallowjavascriptopenwindow'><a href='#setallowjavascriptopenwindow'><span class='return-type'>void</span> SetAllowJavaScriptOpenWindow(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='setallowjavascriptopenwindow'></div><div class='api-heading' data-id='setallowjavascriptopenwindow'><a href='#setallowjavascriptopenwindow'><span class='return-type'>void</span> <span class='member-name'>SetAllowJavaScriptOpenWindow</span>(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2855,7 +2855,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setcalloutenabled'></div><div class='api-heading' data-id='setcalloutenabled'><a href='#setcalloutenabled'><span class='return-type'>void</span> SetCalloutEnabled(bool enabled)</a></div>
+  <div class="api-anchor" id='setcalloutenabled'></div><div class='api-heading' data-id='setcalloutenabled'><a href='#setcalloutenabled'><span class='return-type'>void</span> <span class='member-name'>SetCalloutEnabled</span>(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2889,7 +2889,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetC
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setsupportmultiplewindows'></div><div class='api-heading' data-id='setsupportmultiplewindows'><a href='#setsupportmultiplewindows'><span class='return-type'>void</span> SetSupportMultipleWindows(bool enabled, bool allowJavaScriptOpening)</a></div>
+  <div class="api-anchor" id='setsupportmultiplewindows'></div><div class='api-heading' data-id='setsupportmultiplewindows'><a href='#setsupportmultiplewindows'><span class='return-type'>void</span> <span class='member-name'>SetSupportMultipleWindows</span>(bool enabled, bool allowJavaScriptOpening)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2929,7 +2929,7 @@ before creating the web view.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setdefaultfontsize'></div><div class='api-heading' data-id='setdefaultfontsize'><a href='#setdefaultfontsize'><span class='return-type'>void</span> SetDefaultFontSize(int size)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='setdefaultfontsize'></div><div class='api-heading' data-id='setdefaultfontsize'><a href='#setdefaultfontsize'><span class='return-type'>void</span> <span class='member-name'>SetDefaultFontSize</span>(int size)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2954,7 +2954,7 @@ size setting in your CSS styles.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='settextzoom'></div><div class='api-heading' data-id='settextzoom'><a href='#settextzoom'><span class='return-type'>void</span> SetTextZoom(int textZoom)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='settextzoom'></div><div class='api-heading' data-id='settextzoom'><a href='#settextzoom'><span class='return-type'>void</span> <span class='member-name'>SetTextZoom</span>(int textZoom)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -2977,7 +2977,7 @@ to the the text zoom used in the web view.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setdraginteractionenabled'></div><div class='api-heading' data-id='setdraginteractionenabled'><a href='#setdraginteractionenabled'><span class='return-type'>void</span> SetDragInteractionEnabled(bool enabled)</a></div>
+  <div class="api-anchor" id='setdraginteractionenabled'></div><div class='api-heading' data-id='setdraginteractionenabled'><a href='#setdraginteractionenabled'><span class='return-type'>void</span> <span class='member-name'>SetDragInteractionEnabled</span>(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3012,7 +3012,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetD
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setcachemode'></div><div class='api-heading' data-id='setcachemode'><a href='#setcachemode'><span class='return-type'>void</span> SetCacheMode(UniWebViewCacheMode mode)</a></div>
+  <div class="api-anchor" id='setcachemode'></div><div class='api-heading' data-id='setcachemode'><a href='#setcachemode'><span class='return-type'>void</span> <span class='member-name'>SetCacheMode</span>(UniWebViewCacheMode mode)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3044,7 +3044,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='cleancache'></div><div class='api-heading' data-id='cleancache'><a href='#cleancache'><span class='return-type'>void</span> CleanCache(bool includeStorage, Action completionHandler)</a></div>
+  <div class="api-anchor" id='cleancache'></div><div class='api-heading' data-id='cleancache'><a href='#cleancache'><span class='return-type'>void</span> <span class='member-name'>CleanCache</span>(bool includeStorage, Action completionHandler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3073,7 +3073,7 @@ operation finishes.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setforwardwebconsoletonativeoutput'></div><div class='api-heading' data-id='setforwardwebconsoletonativeoutput'><a href='#setforwardwebconsoletonativeoutput'><span class='return-type'>void</span> SetForwardWebConsoleToNativeOutput(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='setforwardwebconsoletonativeoutput'></div><div class='api-heading' data-id='setforwardwebconsoletonativeoutput'><a href='#setforwardwebconsoletonativeoutput'><span class='return-type'>void</span> <span class='member-name'>SetForwardWebConsoleToNativeOutput</span>(bool flag)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3131,7 +3131,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setcookie'></div><div class='api-heading' data-id='setcookie'><a href='#setcookie'><span class='return-type'>void</span> SetCookie(string url, string cookie, bool skipEncoding, Action handler)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='setcookie'></div><div class='api-heading' data-id='setcookie'><a href='#setcookie'><span class='return-type'>void</span> <span class='member-name'>SetCookie</span>(string url, string cookie, bool skipEncoding, Action handler)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3182,7 +3182,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='getcookie'></div><div class='api-heading' data-id='getcookie'><a href='#getcookie'><span class='return-type'>void</span> GetCookie(string url, string key, bool skipEncoding, Action&lt;string&gt; handler)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='getcookie'></div><div class='api-heading' data-id='getcookie'><a href='#getcookie'><span class='return-type'>void</span> <span class='member-name'>GetCookie</span>(string url, string key, bool skipEncoding, Action&lt;string&gt; handler)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3221,7 +3221,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='removecookies'></div><div class='api-heading' data-id='removecookies'><a href='#removecookies'><span class='return-type'>void</span> RemoveCookies(string url, bool skipEncoding, Action handler)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='removecookies'></div><div class='api-heading' data-id='removecookies'><a href='#removecookies'><span class='return-type'>void</span> <span class='member-name'>RemoveCookies</span>(string url, bool skipEncoding, Action handler)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3255,7 +3255,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='removecookie'></div><div class='api-heading' data-id='removecookie'><a href='#removecookie'><span class='return-type'>void</span> RemoveCookie(string url, string key, bool skipEncoding, Action handler)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='removecookie'></div><div class='api-heading' data-id='removecookie'><a href='#removecookie'><span class='return-type'>void</span> <span class='member-name'>RemoveCookie</span>(string url, string key, bool skipEncoding, Action handler)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3294,7 +3294,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='clearcookies'></div><div class='api-heading' data-id='clearcookies'><a href='#clearcookies'><span class='return-type'>void</span> ClearCookies(Action handler)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='clearcookies'></div><div class='api-heading' data-id='clearcookies'><a href='#clearcookies'><span class='return-type'>void</span> <span class='member-name'>ClearCookies</span>(Action handler)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3319,7 +3319,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='clearhttpauthusernamepassword'></div><div class='api-heading' data-id='clearhttpauthusernamepassword'><a href='#clearhttpauthusernamepassword'><span class='return-type'>void</span> ClearHttpAuthUsernamePassword(string host, string realm)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='clearhttpauthusernamepassword'></div><div class='api-heading' data-id='clearhttpauthusernamepassword'><a href='#clearhttpauthusernamepassword'><span class='return-type'>void</span> <span class='member-name'>ClearHttpAuthUsernamePassword</span>(string host, string realm)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3357,7 +3357,7 @@ On Android, it only clears from disk database, the authentication might be still
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setshowspinnerwhileloading'></div><div class='api-heading' data-id='setshowspinnerwhileloading'><a href='#setshowspinnerwhileloading'><span class='return-type'>void</span> SetShowSpinnerWhileLoading(bool flag)</a></div>
+  <div class="api-anchor" id='setshowspinnerwhileloading'></div><div class='api-heading' data-id='setshowspinnerwhileloading'><a href='#setshowspinnerwhileloading'><span class='return-type'>void</span> <span class='member-name'>SetShowSpinnerWhileLoading</span>(bool flag)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3377,7 +3377,7 @@ On Android, it only clears from disk database, the authentication might be still
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setspinnertext'></div><div class='api-heading' data-id='setspinnertext'><a href='#setspinnertext'><span class='return-type'>void</span> SetSpinnerText(string text)</a></div>
+  <div class="api-anchor" id='setspinnertext'></div><div class='api-heading' data-id='setspinnertext'><a href='#setspinnertext'><span class='return-type'>void</span> <span class='member-name'>SetSpinnerText</span>(string text)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3397,7 +3397,7 @@ On Android, it only clears from disk database, the authentication might be still
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setallowuserdismissspinner'></div><div class='api-heading' data-id='setallowuserdismissspinner'><a href='#setallowuserdismissspinner'><span class='return-type'>void</span> SetAllowUserDismissSpinner(bool flag)</a></div>
+  <div class="api-anchor" id='setallowuserdismissspinner'></div><div class='api-heading' data-id='setallowuserdismissspinner'><a href='#setallowuserdismissspinner'><span class='return-type'>void</span> <span class='member-name'>SetAllowUserDismissSpinner</span>(bool flag)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3419,7 +3419,7 @@ with <code>false</code> to disable this behavior.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='showspinner'></div><div class='api-heading' data-id='showspinner'><a href='#showspinner'><span class='return-type'>void</span> ShowSpinner()</a></div>
+  <div class="api-anchor" id='showspinner'></div><div class='api-heading' data-id='showspinner'><a href='#showspinner'><span class='return-type'>void</span> <span class='member-name'>ShowSpinner</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3432,7 +3432,7 @@ the spinner when the loading finishes.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='hidespinner'></div><div class='api-heading' data-id='hidespinner'><a href='#hidespinner'><span class='return-type'>void</span> HideSpinner()</a></div>
+  <div class="api-anchor" id='hidespinner'></div><div class='api-heading' data-id='hidespinner'><a href='#hidespinner'><span class='return-type'>void</span> <span class='member-name'>HideSpinner</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3445,7 +3445,7 @@ the spinner when the loading starts.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='sethorizontalscrollbarenabled'></div><div class='api-heading' data-id='sethorizontalscrollbarenabled'><a href='#sethorizontalscrollbarenabled'><span class='return-type'>void</span> SetHorizontalScrollBarEnabled(bool enabled)</a></div>
+  <div class="api-anchor" id='sethorizontalscrollbarenabled'></div><div class='api-heading' data-id='sethorizontalscrollbarenabled'><a href='#sethorizontalscrollbarenabled'><span class='return-type'>void</span> <span class='member-name'>SetHorizontalScrollBarEnabled</span>(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3466,7 +3466,7 @@ the spinner when the loading starts.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setverticalscrollbarenabled'></div><div class='api-heading' data-id='setverticalscrollbarenabled'><a href='#setverticalscrollbarenabled'><span class='return-type'>void</span> SetVerticalScrollBarEnabled(bool enabled)</a></div>
+  <div class="api-anchor" id='setverticalscrollbarenabled'></div><div class='api-heading' data-id='setverticalscrollbarenabled'><a href='#setverticalscrollbarenabled'><span class='return-type'>void</span> <span class='member-name'>SetVerticalScrollBarEnabled</span>(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3487,7 +3487,7 @@ the spinner when the loading starts.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setbouncesenabled'></div><div class='api-heading' data-id='setbouncesenabled'><a href='#setbouncesenabled'><span class='return-type'>void</span> SetBouncesEnabled(bool enabled)</a></div>
+  <div class="api-anchor" id='setbouncesenabled'></div><div class='api-heading' data-id='setbouncesenabled'><a href='#setbouncesenabled'><span class='return-type'>void</span> <span class='member-name'>SetBouncesEnabled</span>(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3508,7 +3508,7 @@ the spinner when the loading starts.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setzoomenabled'></div><div class='api-heading' data-id='setzoomenabled'><a href='#setzoomenabled'><span class='return-type'>void</span> SetZoomEnabled(bool enabled)</a></div>
+  <div class="api-anchor" id='setzoomenabled'></div><div class='api-heading' data-id='setzoomenabled'><a href='#setzoomenabled'><span class='return-type'>void</span> <span class='member-name'>SetZoomEnabled</span>(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3528,7 +3528,7 @@ the spinner when the loading starts.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='addpermissiontrustdomain'></div><div class='api-heading' data-id='addpermissiontrustdomain'><a href='#addpermissiontrustdomain'><span class='return-type'>void</span> AddPermissionTrustDomain(string domain)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='addpermissiontrustdomain'></div><div class='api-heading' data-id='addpermissiontrustdomain'><a href='#addpermissiontrustdomain'><span class='return-type'>void</span> <span class='member-name'>AddPermissionTrustDomain</span>(string domain)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3577,7 +3577,7 @@ webView<span class="token punctuation">.</span><span class="token function">Regi
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='removepermissiontrustdomain'></div><div class='api-heading' data-id='removepermissiontrustdomain'><a href='#removepermissiontrustdomain'><span class='return-type'>void</span> RemovePermissionTrustDomain(string domain)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='removepermissiontrustdomain'></div><div class='api-heading' data-id='removepermissiontrustdomain'><a href='#removepermissiontrustdomain'><span class='return-type'>void</span> <span class='member-name'>RemovePermissionTrustDomain</span>(string domain)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3605,7 +3605,7 @@ webView<span class="token punctuation">.</span><span class="token function">Regi
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setbackbuttonenabled'></div><div class='api-heading' data-id='setbackbuttonenabled'><a href='#setbackbuttonenabled'><span class='return-type'>void</span> SetBackButtonEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='setbackbuttonenabled'></div><div class='api-heading' data-id='setbackbuttonenabled'><a href='#setbackbuttonenabled'><span class='return-type'>void</span> <span class='member-name'>SetBackButtonEnabled</span>(bool enabled)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3630,7 +3630,7 @@ similar purpose or call <code>SetAllowBackForwardNavigationGestures</code> to en
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setusewideviewport'></div><div class='api-heading' data-id='setusewideviewport'><a href='#setusewideviewport'><span class='return-type'>void</span> SetUseWideViewPort(bool flag)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='setusewideviewport'></div><div class='api-heading' data-id='setusewideviewport'><a href='#setusewideviewport'><span class='return-type'>void</span> <span class='member-name'>SetUseWideViewPort</span>(bool flag)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3651,7 +3651,7 @@ similar purpose or call <code>SetAllowBackForwardNavigationGestures</code> to en
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setloadwithoverviewmode'></div><div class='api-heading' data-id='setloadwithoverviewmode'><a href='#setloadwithoverviewmode'><span class='return-type'>void</span> SetLoadWithOverviewMode(bool flag)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='setloadwithoverviewmode'></div><div class='api-heading' data-id='setloadwithoverviewmode'><a href='#setloadwithoverviewmode'><span class='return-type'>void</span> <span class='member-name'>SetLoadWithOverviewMode</span>(bool flag)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3672,7 +3672,7 @@ similar purpose or call <code>SetAllowBackForwardNavigationGestures</code> to en
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setimmersivemodeenabled'></div><div class='api-heading' data-id='setimmersivemodeenabled'><a href='#setimmersivemodeenabled'><span class='return-type'>void</span> SetImmersiveModeEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='setimmersivemodeenabled'></div><div class='api-heading' data-id='setimmersivemodeenabled'><a href='#setimmersivemodeenabled'><span class='return-type'>void</span> <span class='member-name'>SetImmersiveModeEnabled</span>(bool enabled)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3695,7 +3695,7 @@ hides the status bar and navigation bar with a sticky style.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setshowtoolbar'></div><div class='api-heading' data-id='setshowtoolbar'><a href='#setshowtoolbar'><span class='return-type'>void</span> SetShowToolbar(bool show, bool animated, bool onTop, bool adjustInset)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='setshowtoolbar'></div><div class='api-heading' data-id='setshowtoolbar'><a href='#setshowtoolbar'><span class='return-type'>void</span> <span class='member-name'>SetShowToolbar</span>(bool show, bool animated, bool onTop, bool adjustInset)</a><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3753,7 +3753,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='settoolbardonebuttontext'></div><div class='api-heading' data-id='settoolbardonebuttontext'><a href='#settoolbardonebuttontext'><span class='return-type'>void</span> SetToolbarDoneButtonText(string text)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='settoolbardonebuttontext'></div><div class='api-heading' data-id='settoolbardonebuttontext'><a href='#settoolbardonebuttontext'><span class='return-type'>void</span> <span class='member-name'>SetToolbarDoneButtonText</span>(string text)</a><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3789,7 +3789,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='settoolbargobackbuttontext'></div><div class='api-heading' data-id='settoolbargobackbuttontext'><a href='#settoolbargobackbuttontext'><span class='return-type'>void</span> SetToolbarGoBackButtonText(string text)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='settoolbargobackbuttontext'></div><div class='api-heading' data-id='settoolbargobackbuttontext'><a href='#settoolbargobackbuttontext'><span class='return-type'>void</span> <span class='member-name'>SetToolbarGoBackButtonText</span>(string text)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3825,7 +3825,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='settoolbargoforwardbuttontext'></div><div class='api-heading' data-id='settoolbargoforwardbuttontext'><a href='#settoolbargoforwardbuttontext'><span class='return-type'>void</span> SetToolbarGoForwardButtonText(string text)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='settoolbargoforwardbuttontext'></div><div class='api-heading' data-id='settoolbargoforwardbuttontext'><a href='#settoolbargoforwardbuttontext'><span class='return-type'>void</span> <span class='member-name'>SetToolbarGoForwardButtonText</span>(string text)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3861,7 +3861,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setshowtoolbarnavigationbuttons'></div><div class='api-heading' data-id='setshowtoolbarnavigationbuttons'><a href='#setshowtoolbarnavigationbuttons'><span class='return-type'>void</span> SetShowToolbarNavigationButtons(bool show)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='setshowtoolbarnavigationbuttons'></div><div class='api-heading' data-id='setshowtoolbarnavigationbuttons'><a href='#setshowtoolbarnavigationbuttons'><span class='return-type'>void</span> <span class='member-name'>SetShowToolbarNavigationButtons</span>(bool show)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3892,7 +3892,7 @@ model is not for your case, call this method with <code>false</code> as <code>sh
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='settoolbartintcolor'></div><div class='api-heading' data-id='settoolbartintcolor'><a href='#settoolbartintcolor'><span class='return-type'>void</span> SetToolbarTintColor(Color color)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='settoolbartintcolor'></div><div class='api-heading' data-id='settoolbartintcolor'><a href='#settoolbartintcolor'><span class='return-type'>void</span> <span class='member-name'>SetToolbarTintColor</span>(Color color)</a><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3922,7 +3922,7 @@ You can change it by setting a new opaque color.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='settoolbartextcolor'></div><div class='api-heading' data-id='settoolbartextcolor'><a href='#settoolbartextcolor'><span class='return-type'>void</span> SetToolbarTextColor(Color color)</a><div class='api-badge api-badge-orange'>iOS</div></div>
+  <div class="api-anchor" id='settoolbartextcolor'></div><div class='api-heading' data-id='settoolbartextcolor'><a href='#settoolbartextcolor'><span class='return-type'>void</span> <span class='member-name'>SetToolbarTextColor</span>(Color color)</a><div class='api-badge api-badge-orange'>iOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3952,7 +3952,7 @@ You can change it by setting a new opaque color.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setuserinteractionenabled'></div><div class='api-heading' data-id='setuserinteractionenabled'><a href='#setuserinteractionenabled'><span class='return-type'>void</span> SetUserInteractionEnabled(bool enabled)</a></div>
+  <div class="api-anchor" id='setuserinteractionenabled'></div><div class='api-heading' data-id='setuserinteractionenabled'><a href='#setuserinteractionenabled'><span class='return-type'>void</span> <span class='member-name'>SetUserInteractionEnabled</span>(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -3974,7 +3974,7 @@ scroll the page.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='settransparencyclickingthroughenabled'></div><div class='api-heading' data-id='settransparencyclickingthroughenabled'><a href='#settransparencyclickingthroughenabled'><span class='return-type'>void</span> SetTransparencyClickingThroughEnabled(bool enabled)</a></div>
+  <div class="api-anchor" id='settransparencyclickingthroughenabled'></div><div class='api-heading' data-id='settransparencyclickingthroughenabled'><a href='#settransparencyclickingthroughenabled'><span class='return-type'>void</span> <span class='member-name'>SetTransparencyClickingThroughEnabled</span>(bool enabled)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4053,7 +4053,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setroundcornerradius'></div><div class='api-heading' data-id='setroundcornerradius'><a href='#setroundcornerradius'><span class='return-type'>void</span> SetRoundCornerRadius(float topLeft, float topRight, float bottomLeft, float bottomRight)</a></div>
+  <div class="api-anchor" id='setroundcornerradius'></div><div class='api-heading' data-id='setroundcornerradius'><a href='#setroundcornerradius'><span class='return-type'>void</span> <span class='member-name'>SetRoundCornerRadius</span>(float topLeft, float topRight, float bottomLeft, float bottomRight)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4103,7 +4103,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetR
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setshadow'></div><div class='api-heading' data-id='setshadow'><a href='#setshadow'><span class='return-type'>void</span> SetShadow(UniWebViewShadow shadow)</a></div>
+  <div class="api-anchor" id='setshadow'></div><div class='api-heading' data-id='setshadow'><a href='#setshadow'><span class='return-type'>void</span> <span class='member-name'>SetShadow</span>(UniWebViewShadow shadow)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4145,7 +4145,7 @@ webView<span class="token punctuation">.</span><span class="token function">SetS
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='refreshtransparencyclickingthroughlayout'></div><div class='api-heading' data-id='refreshtransparencyclickingthroughlayout'><a href='#refreshtransparencyclickingthroughlayout'><span class='return-type'>void</span> RefreshTransparencyClickingThroughLayout()</a></div>
+  <div class="api-anchor" id='refreshtransparencyclickingthroughlayout'></div><div class='api-heading' data-id='refreshtransparencyclickingthroughlayout'><a href='#refreshtransparencyclickingthroughlayout'><span class='return-type'>void</span> <span class='member-name'>RefreshTransparencyClickingThroughLayout</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4181,7 +4181,7 @@ webView<span class="token punctuation">.</span><span class="token function">Eval
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setwebcontentsdebuggingenabled'></div><div class='api-heading' data-id='setwebcontentsdebuggingenabled'><a href='#setwebcontentsdebuggingenabled'><span class='return-type'>void</span> SetWebContentsDebuggingEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div><div class='api-badge api-badge-purple'>macOS</div><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='setwebcontentsdebuggingenabled'></div><div class='api-heading' data-id='setwebcontentsdebuggingenabled'><a href='#setwebcontentsdebuggingenabled'><span class='return-type'>void</span> <span class='member-name'>SetWebContentsDebuggingEnabled</span>(bool enabled)</a><div class='api-badge api-badge-green'>Android</div><div class='api-badge api-badge-purple'>macOS</div><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4213,7 +4213,7 @@ Please remember to disable this in your product build. This should be only used 
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setwindowuserresizeenabled'></div><div class='api-heading' data-id='setwindowuserresizeenabled'><a href='#setwindowuserresizeenabled'><span class='return-type'>void</span> SetWindowUserResizeEnabled(bool enabled)</a><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='setwindowuserresizeenabled'></div><div class='api-heading' data-id='setwindowuserresizeenabled'><a href='#setwindowuserresizeenabled'><span class='return-type'>void</span> <span class='member-name'>SetWindowUserResizeEnabled</span>(bool enabled)</a><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4240,7 +4240,7 @@ By enabling user resizing, you would be able to resize the window by dragging it
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setallowbackforwardnavigationgestures'></div><div class='api-heading' data-id='setallowbackforwardnavigationgestures'><a href='#setallowbackforwardnavigationgestures'><span class='return-type'>void</span> SetAllowBackForwardNavigationGestures(bool flag)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='setallowbackforwardnavigationgestures'></div><div class='api-heading' data-id='setallowbackforwardnavigationgestures'><a href='#setallowbackforwardnavigationgestures'><span class='return-type'>void</span> <span class='member-name'>SetAllowBackForwardNavigationGestures</span>(bool flag)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4272,7 +4272,7 @@ default. To disable gesture navigation on Android, you have to also disable the 
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setallowhttpauthpopupwindow'></div><div class='api-heading' data-id='setallowhttpauthpopupwindow'><a href='#setallowhttpauthpopupwindow'><span class='return-type'>void</span> SetAllowHTTPAuthPopUpWindow(bool flag)</a></div>
+  <div class="api-anchor" id='setallowhttpauthpopupwindow'></div><div class='api-heading' data-id='setallowhttpauthpopupwindow'><a href='#setallowhttpauthpopupwindow'><span class='return-type'>void</span> <span class='member-name'>SetAllowHTTPAuthPopUpWindow</span>(bool flag)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4319,7 +4319,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='gethtmlcontent'></div><div class='api-heading' data-id='gethtmlcontent'><a href='#gethtmlcontent'><span class='return-type'>void</span> GetHTMLContent(Action&lt;string&gt; handler)</a></div>
+  <div class="api-anchor" id='gethtmlcontent'></div><div class='api-heading' data-id='gethtmlcontent'><a href='#gethtmlcontent'><span class='return-type'>void</span> <span class='member-name'>GetHTMLContent</span>(Action&lt;string&gt; handler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4349,7 +4349,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='print'></div><div class='api-heading' data-id='print'><a href='#print'><span class='return-type'>void</span> Print()</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='print'></div><div class='api-heading' data-id='print'><a href='#print'><span class='return-type'>void</span> <span class='member-name'>Print</span>()</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4367,7 +4367,7 @@ This method does nothing on macOS editor.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='capturesnapshot'></div><div class='api-heading' data-id='capturesnapshot'><a href='#capturesnapshot'><span class='return-type'>void</span> CaptureSnapshot(string fileName)</a></div>
+  <div class="api-anchor" id='capturesnapshot'></div><div class='api-heading' data-id='capturesnapshot'><a href='#capturesnapshot'><span class='return-type'>void</span> <span class='member-name'>CaptureSnapshot</span>(string fileName)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4407,7 +4407,7 @@ webView<span class="token punctuation">.</span><span class="token function">Capt
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='startsnapshotforrendering'></div><div class='api-heading' data-id='startsnapshotforrendering'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> StartSnapshotForRendering(Rect? rect = null, Action&lt;Texture&gt; onStarted = null)</a></div>
+  <div class="api-anchor" id='startsnapshotforrendering'></div><div class='api-heading' data-id='startsnapshotforrendering'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StartSnapshotForRendering</span>(Rect? rect = null, Action&lt;Texture&gt; onStarted = null)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4445,7 +4445,7 @@ representing the rendered texture. This is useful if you want to perform a one-t
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='stopsnapshotforrendering'></div><div class='api-heading' data-id='stopsnapshotforrendering'><a href='#stopsnapshotforrendering'><span class='return-type'>void</span> StopSnapshotForRendering()</a></div>
+  <div class="api-anchor" id='stopsnapshotforrendering'></div><div class='api-heading' data-id='stopsnapshotforrendering'><a href='#stopsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StopSnapshotForRendering</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4458,7 +4458,7 @@ resources and terminating the rendering process.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='getrendereddata'></div><div class='api-heading' data-id='getrendereddata'><a href='#getrendereddata'><span class='return-type'>byte[]</span> GetRenderedData(Rect? rect = null)</a></div>
+  <div class="api-anchor" id='getrendereddata'></div><div class='api-heading' data-id='getrendereddata'><a href='#getrendereddata'><span class='return-type'>byte[]</span> <span class='member-name'>GetRenderedData</span>(Rect? rect = null)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4497,7 +4497,7 @@ or if the data is not prepared.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='createrenderedtexture'></div><div class='api-heading' data-id='createrenderedtexture'><a href='#createrenderedtexture'><span class='return-type'>Texture2D</span> CreateRenderedTexture(Rect? rect = null)</a></div>
+  <div class="api-anchor" id='createrenderedtexture'></div><div class='api-heading' data-id='createrenderedtexture'><a href='#createrenderedtexture'><span class='return-type'>Texture2D</span> <span class='member-name'>CreateRenderedTexture</span>(Rect? rect = null)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4538,7 +4538,7 @@ the whole web view frame will be used as the snapshot area.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='scrollto'></div><div class='api-heading' data-id='scrollto'><a href='#scrollto'><span class='return-type'>void</span> ScrollTo(int x, int y, bool animated)</a></div>
+  <div class="api-anchor" id='scrollto'></div><div class='api-heading' data-id='scrollto'><a href='#scrollto'><span class='return-type'>void</span> <span class='member-name'>ScrollTo</span>(int x, int y, bool animated)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4579,7 +4579,7 @@ webView<span class="token punctuation">.</span><span class="token function">Scro
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='adddownloadurl'></div><div class='api-heading' data-id='adddownloadurl'><a href='#adddownloadurl'><span class='return-type'>void</span> AddDownloadURL(string urlString, UniWebViewDownloadMatchingType type)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='adddownloadurl'></div><div class='api-heading' data-id='adddownloadurl'><a href='#adddownloadurl'><span class='return-type'>void</span> <span class='member-name'>AddDownloadURL</span>(string urlString, UniWebViewDownloadMatchingType type)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4618,7 +4618,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddD
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='removedownloadurl'></div><div class='api-heading' data-id='removedownloadurl'><a href='#removedownloadurl'><span class='return-type'>void</span> RemoveDownloadURL(string urlString, UniWebViewDownloadMatchingType type)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='removedownloadurl'></div><div class='api-heading' data-id='removedownloadurl'><a href='#removedownloadurl'><span class='return-type'>void</span> <span class='member-name'>RemoveDownloadURL</span>(string urlString, UniWebViewDownloadMatchingType type)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4654,7 +4654,7 @@ webView<span class="token punctuation">.</span><span class="token function">Remo
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='adddownloadmimetype'></div><div class='api-heading' data-id='adddownloadmimetype'><a href='#adddownloadmimetype'><span class='return-type'>void</span> AddDownloadMIMEType(string MIMEType, UniWebViewDownloadMatchingType type)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='adddownloadmimetype'></div><div class='api-heading' data-id='adddownloadmimetype'><a href='#adddownloadmimetype'><span class='return-type'>void</span> <span class='member-name'>AddDownloadMIMEType</span>(string MIMEType, UniWebViewDownloadMatchingType type)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4693,7 +4693,7 @@ webView<span class="token punctuation">.</span><span class="token function">AddD
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='removedownloadmimetypes'></div><div class='api-heading' data-id='removedownloadmimetypes'><a href='#removedownloadmimetypes'><span class='return-type'>void</span> RemoveDownloadMIMETypes(string MIMEType, UniWebViewDownloadMatchingType type)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='removedownloadmimetypes'></div><div class='api-heading' data-id='removedownloadmimetypes'><a href='#removedownloadmimetypes'><span class='return-type'>void</span> <span class='member-name'>RemoveDownloadMIMETypes</span>(string MIMEType, UniWebViewDownloadMatchingType type)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4729,7 +4729,7 @@ webView<span class="token punctuation">.</span><span class="token function">Remo
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setallowusereditfilenamebeforedownloading'></div><div class='api-heading' data-id='setallowusereditfilenamebeforedownloading'><a href='#setallowusereditfilenamebeforedownloading'><span class='return-type'>void</span> SetAllowUserEditFileNameBeforeDownloading(bool allowed)</a></div>
+  <div class="api-anchor" id='setallowusereditfilenamebeforedownloading'></div><div class='api-heading' data-id='setallowusereditfilenamebeforedownloading'><a href='#setallowusereditfilenamebeforedownloading'><span class='return-type'>void</span> <span class='member-name'>SetAllowUserEditFileNameBeforeDownloading</span>(bool allowed)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4754,7 +4754,7 @@ used.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setallowuserchooseactionafterdownloading'></div><div class='api-heading' data-id='setallowuserchooseactionafterdownloading'><a href='#setallowuserchooseactionafterdownloading'><span class='return-type'>void</span> SetAllowUserChooseActionAfterDownloading(bool allowed)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
+  <div class="api-anchor" id='setallowuserchooseactionafterdownloading'></div><div class='api-heading' data-id='setallowuserchooseactionafterdownloading'><a href='#setallowuserchooseactionafterdownloading'><span class='return-type'>void</span> <span class='member-name'>SetAllowUserChooseActionAfterDownloading</span>(bool allowed)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4779,7 +4779,7 @@ File app or iCloud).</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setdownloadeventforcontextmenuenabled'></div><div class='api-heading' data-id='setdownloadeventforcontextmenuenabled'><a href='#setdownloadeventforcontextmenuenabled'><span class='return-type'>void</span> SetDownloadEventForContextMenuEnabled(bool enabled)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class="api-anchor" id='setdownloadeventforcontextmenuenabled'></div><div class='api-heading' data-id='setdownloadeventforcontextmenuenabled'><a href='#setdownloadeventforcontextmenuenabled'><span class='return-type'>void</span> <span class='member-name'>SetDownloadEventForContextMenuEnabled</span>(bool enabled)</a><div class='api-badge api-badge-green'>Android</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4820,7 +4820,7 @@ button in the callout menu.
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='registershouldhandlerequest'></div><div class='api-heading' data-id='registershouldhandlerequest'><a href='#registershouldhandlerequest'><span class='return-type'>void</span> RegisterShouldHandleRequest(Func&lt;UniWebViewChannelMethodHandleRequest, bool&gt; handler)</a></div>
+  <div class="api-anchor" id='registershouldhandlerequest'></div><div class='api-heading' data-id='registershouldhandlerequest'><a href='#registershouldhandlerequest'><span class='return-type'>void</span> <span class='member-name'>RegisterShouldHandleRequest</span>(Func&lt;UniWebViewChannelMethodHandleRequest, bool&gt; handler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4860,7 +4860,7 @@ to indicate whether UniWebView should continue to load the request or not as soo
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='unregistershouldhandlerequest'></div><div class='api-heading' data-id='unregistershouldhandlerequest'><a href='#unregistershouldhandlerequest'><span class='return-type'>void</span> UnregisterShouldHandleRequest()</a></div>
+  <div class="api-anchor" id='unregistershouldhandlerequest'></div><div class='api-heading' data-id='unregistershouldhandlerequest'><a href='#unregistershouldhandlerequest'><span class='return-type'>void</span> <span class='member-name'>UnregisterShouldHandleRequest</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4871,7 +4871,7 @@ to indicate whether UniWebView should continue to load the request or not as soo
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='registeronrequestmediacapturepermission'></div><div class='api-heading' data-id='registeronrequestmediacapturepermission'><a href='#registeronrequestmediacapturepermission'><span class='return-type'>void</span> RegisterOnRequestMediaCapturePermission(Func&lt;UniWebViewChannelMethodMediaCapturePermission, UniWebViewMediaCapturePermissionDecision&gt; handler)</a></div>
+  <div class="api-anchor" id='registeronrequestmediacapturepermission'></div><div class='api-heading' data-id='registeronrequestmediacapturepermission'><a href='#registeronrequestmediacapturepermission'><span class='return-type'>void</span> <span class='member-name'>RegisterOnRequestMediaCapturePermission</span>(Func&lt;UniWebViewChannelMethodMediaCapturePermission, UniWebViewMediaCapturePermissionDecision&gt; handler)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -4935,7 +4935,7 @@ webView<span class="token punctuation">.</span><span class="token function">Regi
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='unregisteronrequestmediacapturepermission'></div><div class='api-heading' data-id='unregisteronrequestmediacapturepermission'><a href='#unregisteronrequestmediacapturepermission'><span class='return-type'>void</span> UnregisterOnRequestMediaCapturePermission()</a></div>
+  <div class="api-anchor" id='unregisteronrequestmediacapturepermission'></div><div class='api-heading' data-id='unregisteronrequestmediacapturepermission'><a href='#unregisteronrequestmediacapturepermission'><span class='return-type'>void</span> <span class='member-name'>UnregisterOnRequestMediaCapturePermission</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

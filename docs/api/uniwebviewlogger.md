@@ -10,25 +10,25 @@ sidebarDepth: 0
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#instance'><span class='return-type'>UniWebViewLogger</span> Instance { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#instance'><span class='return-type'>UniWebViewLogger</span> <span class='member-name'>Instance</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>An instance of the UniWebView logger across the process.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#loglevel'><span class='return-type'>UniWebViewLogger.Level</span> LogLevel { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#loglevel'><span class='return-type'>UniWebViewLogger.Level</span> <span class='member-name'>LogLevel</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Current level of this logger.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#level.verbose'><span class='return-type'>UniWebViewLogger.Level</span> Level.Verbose { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#level.verbose'><span class='return-type'>UniWebViewLogger.Level</span> <span class='member-name'>Level.Verbose</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Lowest level.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#level.debug'><span class='return-type'>UniWebViewLogger.Level</span> Level.Debug { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#level.debug'><span class='return-type'>UniWebViewLogger.Level</span> <span class='member-name'>Level.Debug</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Debug level.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#level.info'><span class='return-type'>UniWebViewLogger.Level</span> Level.Info { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#level.info'><span class='return-type'>UniWebViewLogger.Level</span> <span class='member-name'>Level.Info</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Info level.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#level.critical'><span class='return-type'>UniWebViewLogger.Level</span> Level.Critical { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#level.critical'><span class='return-type'>UniWebViewLogger.Level</span> <span class='member-name'>Level.Critical</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Critical level.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#level.off'><span class='return-type'>UniWebViewLogger.Level</span> Level.Off { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#level.off'><span class='return-type'>UniWebViewLogger.Level</span> <span class='member-name'>Level.Off</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Off level.</p>
 </div>
 </td></tr></table>
@@ -37,16 +37,16 @@ sidebarDepth: 0
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#verbose'><span class='return-type'>void</span> Verbose(string message)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#verbose'><span class='return-type'>void</span> <span class='member-name'>Verbose</span>(string message)</a></div></td><td><div class='simple-summary'>
 <p>Log a verbose message.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#debug'><span class='return-type'>void</span> Debug(string message)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#debug'><span class='return-type'>void</span> <span class='member-name'>Debug</span>(string message)</a></div></td><td><div class='simple-summary'>
 <p>Log a debug message.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#info'><span class='return-type'>void</span> Info(string message)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#info'><span class='return-type'>void</span> <span class='member-name'>Info</span>(string message)</a></div></td><td><div class='simple-summary'>
 <p>Log a info message.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#critical'><span class='return-type'>void</span> Critical(string message)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#critical'><span class='return-type'>void</span> <span class='member-name'>Critical</span>(string message)</a></div></td><td><div class='simple-summary'>
 <p>Log a critical message.</p>
 </div>
 </td></tr></table>
@@ -54,7 +54,7 @@ sidebarDepth: 0
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='instance'></div><div class='api-heading' data-id='instance'><a href='#instance'><span class='return-type'>UniWebViewLogger</span> Instance { get; }</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='instance'></div><div class='api-heading' data-id='instance'><a href='#instance'><span class='return-type'>UniWebViewLogger</span> <span class='member-name'>Instance</span> { get; }</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -65,7 +65,7 @@ in UniWebView, instead of creating a new logger yourself.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='loglevel'></div><div class='api-heading' data-id='loglevel'><a href='#loglevel'><span class='return-type'>UniWebViewLogger.Level</span> LogLevel { get; set; }</a></div>
+  <div class="api-anchor" id='loglevel'></div><div class='api-heading' data-id='loglevel'><a href='#loglevel'><span class='return-type'>UniWebViewLogger.Level</span> <span class='member-name'>LogLevel</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -76,7 +76,7 @@ in UniWebView, instead of creating a new logger yourself.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='level.verbose'></div><div class='api-heading' data-id='level.verbose'><a href='#level.verbose'><span class='return-type'>UniWebViewLogger.Level</span> Level.Verbose { get; }</a></div>
+  <div class="api-anchor" id='level.verbose'></div><div class='api-heading' data-id='level.verbose'><a href='#level.verbose'><span class='return-type'>UniWebViewLogger.Level</span> <span class='member-name'>Level.Verbose</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -86,7 +86,7 @@ in UniWebView, instead of creating a new logger yourself.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='level.debug'></div><div class='api-heading' data-id='level.debug'><a href='#level.debug'><span class='return-type'>UniWebViewLogger.Level</span> Level.Debug { get; }</a></div>
+  <div class="api-anchor" id='level.debug'></div><div class='api-heading' data-id='level.debug'><a href='#level.debug'><span class='return-type'>UniWebViewLogger.Level</span> <span class='member-name'>Level.Debug</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -96,7 +96,7 @@ in UniWebView, instead of creating a new logger yourself.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='level.info'></div><div class='api-heading' data-id='level.info'><a href='#level.info'><span class='return-type'>UniWebViewLogger.Level</span> Level.Info { get; }</a></div>
+  <div class="api-anchor" id='level.info'></div><div class='api-heading' data-id='level.info'><a href='#level.info'><span class='return-type'>UniWebViewLogger.Level</span> <span class='member-name'>Level.Info</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -106,7 +106,7 @@ in UniWebView, instead of creating a new logger yourself.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='level.critical'></div><div class='api-heading' data-id='level.critical'><a href='#level.critical'><span class='return-type'>UniWebViewLogger.Level</span> Level.Critical { get; }</a></div>
+  <div class="api-anchor" id='level.critical'></div><div class='api-heading' data-id='level.critical'><a href='#level.critical'><span class='return-type'>UniWebViewLogger.Level</span> <span class='member-name'>Level.Critical</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -116,7 +116,7 @@ in UniWebView, instead of creating a new logger yourself.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='level.off'></div><div class='api-heading' data-id='level.off'><a href='#level.off'><span class='return-type'>UniWebViewLogger.Level</span> Level.Off { get; }</a></div>
+  <div class="api-anchor" id='level.off'></div><div class='api-heading' data-id='level.off'><a href='#level.off'><span class='return-type'>UniWebViewLogger.Level</span> <span class='member-name'>Level.Off</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -129,7 +129,7 @@ in UniWebView, instead of creating a new logger yourself.</p>
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='verbose'></div><div class='api-heading' data-id='verbose'><a href='#verbose'><span class='return-type'>void</span> Verbose(string message)</a></div>
+  <div class="api-anchor" id='verbose'></div><div class='api-heading' data-id='verbose'><a href='#verbose'><span class='return-type'>void</span> <span class='member-name'>Verbose</span>(string message)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -149,7 +149,7 @@ in UniWebView, instead of creating a new logger yourself.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='debug'></div><div class='api-heading' data-id='debug'><a href='#debug'><span class='return-type'>void</span> Debug(string message)</a></div>
+  <div class="api-anchor" id='debug'></div><div class='api-heading' data-id='debug'><a href='#debug'><span class='return-type'>void</span> <span class='member-name'>Debug</span>(string message)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -169,7 +169,7 @@ in UniWebView, instead of creating a new logger yourself.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='info'></div><div class='api-heading' data-id='info'><a href='#info'><span class='return-type'>void</span> Info(string message)</a></div>
+  <div class="api-anchor" id='info'></div><div class='api-heading' data-id='info'><a href='#info'><span class='return-type'>void</span> <span class='member-name'>Info</span>(string message)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -189,7 +189,7 @@ in UniWebView, instead of creating a new logger yourself.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='critical'></div><div class='api-heading' data-id='critical'><a href='#critical'><span class='return-type'>void</span> Critical(string message)</a></div>
+  <div class="api-anchor" id='critical'></div><div class='api-heading' data-id='critical'><a href='#critical'><span class='return-type'>void</span> <span class='member-name'>Critical</span>(string message)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

@@ -16,16 +16,16 @@ of this class. You can use the values in this class to determine the decision fo
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#protocol'><span class='return-type'>string</span> Protocol { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#protocol'><span class='return-type'>string</span> <span class='member-name'>Protocol</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The protocol used by the permission request.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#host'><span class='return-type'>string</span> Host { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#host'><span class='return-type'>string</span> <span class='member-name'>Host</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The host of the origin of the permission request.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#port'><span class='return-type'>int</span> Port { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#port'><span class='return-type'>int</span> <span class='member-name'>Port</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The port of the origin of the permission request.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#resources'><span class='return-type'>string[]</span> Resources { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#resources'><span class='return-type'>string[]</span> <span class='member-name'>Resources</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The string representation of the resources of the origin of the permission request.</p>
 </div>
 </td></tr></table>
@@ -33,7 +33,7 @@ of this class. You can use the values in this class to determine the decision fo
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='protocol'></div><div class='api-heading' data-id='protocol'><a href='#protocol'><span class='return-type'>string</span> Protocol { get; }</a></div>
+  <div class="api-anchor" id='protocol'></div><div class='api-heading' data-id='protocol'><a href='#protocol'><span class='return-type'>string</span> <span class='member-name'>Protocol</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -53,7 +53,7 @@ permission<span class="token punctuation">.</span>Protocol <span class="token co
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='host'></div><div class='api-heading' data-id='host'><a href='#host'><span class='return-type'>string</span> Host { get; }</a></div>
+  <div class="api-anchor" id='host'></div><div class='api-heading' data-id='host'><a href='#host'><span class='return-type'>string</span> <span class='member-name'>Host</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -74,7 +74,7 @@ permission<span class="token punctuation">.</span>Host <span class="token commen
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='port'></div><div class='api-heading' data-id='port'><a href='#port'><span class='return-type'>int</span> Port { get; }</a></div>
+  <div class="api-anchor" id='port'></div><div class='api-heading' data-id='port'><a href='#port'><span class='return-type'>int</span> <span class='member-name'>Port</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -95,7 +95,7 @@ permission<span class="token punctuation">.</span>Port <span class="token commen
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='resources'></div><div class='api-heading' data-id='resources'><a href='#resources'><span class='return-type'>string[]</span> Resources { get; }</a></div>
+  <div class="api-anchor" id='resources'></div><div class='api-heading' data-id='resources'><a href='#resources'><span class='return-type'>string[]</span> <span class='member-name'>Resources</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

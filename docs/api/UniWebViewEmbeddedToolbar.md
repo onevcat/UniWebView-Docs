@@ -20,43 +20,43 @@ class to customize the toolbar to match your app's style.
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#setposition'><span class='return-type'>void</span> SetPosition(UniWebViewToolbarPosition position)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#setposition'><span class='return-type'>void</span> <span class='member-name'>SetPosition</span>(UniWebViewToolbarPosition position)</a></div></td><td><div class='simple-summary'>
 <p>Sets the position of the embedded toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setmaxheight'><span class='return-type'>void</span> SetMaxHeight(float height)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setmaxheight'><span class='return-type'>void</span> <span class='member-name'>SetMaxHeight</span>(float height)</a></div></td><td><div class='simple-summary'>
 <p>Sets the maximum height of the toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#show'><span class='return-type'>void</span> Show()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#show'><span class='return-type'>void</span> <span class='member-name'>Show</span>()</a></div></td><td><div class='simple-summary'>
 <p>Shows the toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#hide'><span class='return-type'>void</span> Hide()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#hide'><span class='return-type'>void</span> <span class='member-name'>Hide</span>()</a></div></td><td><div class='simple-summary'>
 <p>Hides the toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setdonebuttontext'><span class='return-type'>void</span> SetDoneButtonText(string text)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setdonebuttontext'><span class='return-type'>void</span> <span class='member-name'>SetDoneButtonText</span>(string text)</a></div></td><td><div class='simple-summary'>
 <p>Sets the text of the done button.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setgobackbuttontext'><span class='return-type'>void</span> SetGoBackButtonText(string text)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setgobackbuttontext'><span class='return-type'>void</span> <span class='member-name'>SetGoBackButtonText</span>(string text)</a></div></td><td><div class='simple-summary'>
 <p>Sets the text of the back button.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setgoforwardbuttontext'><span class='return-type'>void</span> SetGoForwardButtonText(string text)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setgoforwardbuttontext'><span class='return-type'>void</span> <span class='member-name'>SetGoForwardButtonText</span>(string text)</a></div></td><td><div class='simple-summary'>
 <p>Sets the text of the forward button.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#settitletext'><span class='return-type'>void</span> SetTitleText(string text)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settitletext'><span class='return-type'>void</span> <span class='member-name'>SetTitleText</span>(string text)</a></div></td><td><div class='simple-summary'>
 <p>Sets the text of toolbar title.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setbackgroundcolor'><span class='return-type'>void</span> SetBackgroundColor(Color color)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setbackgroundcolor'><span class='return-type'>void</span> <span class='member-name'>SetBackgroundColor</span>(Color color)</a></div></td><td><div class='simple-summary'>
 <p>Sets the background color of the toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setbuttontextcolor'><span class='return-type'>void</span> SetButtonTextColor(Color color)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setbuttontextcolor'><span class='return-type'>void</span> <span class='member-name'>SetButtonTextColor</span>(Color color)</a></div></td><td><div class='simple-summary'>
 <p>Sets the buttons color of the toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#settitletextcolor'><span class='return-type'>void</span> SetTitleTextColor(Color color)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settitletextcolor'><span class='return-type'>void</span> <span class='member-name'>SetTitleTextColor</span>(Color color)</a></div></td><td><div class='simple-summary'>
 <p>Sets the text color of the toolbar title.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#hidenavigationbuttons'><span class='return-type'>void</span> HideNavigationButtons()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#hidenavigationbuttons'><span class='return-type'>void</span> <span class='member-name'>HideNavigationButtons</span>()</a></div></td><td><div class='simple-summary'>
 <p>Hides the navigation buttons on the toolbar.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#shownavigationbuttons'><span class='return-type'>void</span> ShowNavigationButtons()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#shownavigationbuttons'><span class='return-type'>void</span> <span class='member-name'>ShowNavigationButtons</span>()</a></div></td><td><div class='simple-summary'>
 <p>Shows the navigation buttons on the toolbar.</p>
 </div>
 </td></tr></table>
@@ -64,7 +64,7 @@ class to customize the toolbar to match your app's style.
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='setposition'></div><div class='api-heading' data-id='setposition'><a href='#setposition'><span class='return-type'>void</span> SetPosition(UniWebViewToolbarPosition position)</a></div>
+  <div class="api-anchor" id='setposition'></div><div class='api-heading' data-id='setposition'><a href='#setposition'><span class='return-type'>void</span> <span class='member-name'>SetPosition</span>(UniWebViewToolbarPosition position)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -94,7 +94,7 @@ webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setmaxheight'></div><div class='api-heading' data-id='setmaxheight'><a href='#setmaxheight'><span class='return-type'>void</span> SetMaxHeight(float height)</a></div>
+  <div class="api-anchor" id='setmaxheight'></div><div class='api-heading' data-id='setmaxheight'><a href='#setmaxheight'><span class='return-type'>void</span> <span class='member-name'>SetMaxHeight</span>(float height)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -117,7 +117,7 @@ window&#39;s title bar and the height is fixed.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='show'></div><div class='api-heading' data-id='show'><a href='#show'><span class='return-type'>void</span> Show()</a></div>
+  <div class="api-anchor" id='show'></div><div class='api-heading' data-id='show'><a href='#show'><span class='return-type'>void</span> <span class='member-name'>Show</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -134,7 +134,7 @@ window&#39;s title bar and the height is fixed.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='hide'></div><div class='api-heading' data-id='hide'><a href='#hide'><span class='return-type'>void</span> Hide()</a></div>
+  <div class="api-anchor" id='hide'></div><div class='api-heading' data-id='hide'><a href='#hide'><span class='return-type'>void</span> <span class='member-name'>Hide</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -151,7 +151,7 @@ window&#39;s title bar and the height is fixed.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setdonebuttontext'></div><div class='api-heading' data-id='setdonebuttontext'><a href='#setdonebuttontext'><span class='return-type'>void</span> SetDoneButtonText(string text)</a></div>
+  <div class="api-anchor" id='setdonebuttontext'></div><div class='api-heading' data-id='setdonebuttontext'><a href='#setdonebuttontext'><span class='return-type'>void</span> <span class='member-name'>SetDoneButtonText</span>(string text)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -179,7 +179,7 @@ window&#39;s title bar and the height is fixed.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setgobackbuttontext'></div><div class='api-heading' data-id='setgobackbuttontext'><a href='#setgobackbuttontext'><span class='return-type'>void</span> SetGoBackButtonText(string text)</a></div>
+  <div class="api-anchor" id='setgobackbuttontext'></div><div class='api-heading' data-id='setgobackbuttontext'><a href='#setgobackbuttontext'><span class='return-type'>void</span> <span class='member-name'>SetGoBackButtonText</span>(string text)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -207,7 +207,7 @@ window&#39;s title bar and the height is fixed.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setgoforwardbuttontext'></div><div class='api-heading' data-id='setgoforwardbuttontext'><a href='#setgoforwardbuttontext'><span class='return-type'>void</span> SetGoForwardButtonText(string text)</a></div>
+  <div class="api-anchor" id='setgoforwardbuttontext'></div><div class='api-heading' data-id='setgoforwardbuttontext'><a href='#setgoforwardbuttontext'><span class='return-type'>void</span> <span class='member-name'>SetGoForwardButtonText</span>(string text)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -235,7 +235,7 @@ window&#39;s title bar and the height is fixed.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='settitletext'></div><div class='api-heading' data-id='settitletext'><a href='#settitletext'><span class='return-type'>void</span> SetTitleText(string text)</a></div>
+  <div class="api-anchor" id='settitletext'></div><div class='api-heading' data-id='settitletext'><a href='#settitletext'><span class='return-type'>void</span> <span class='member-name'>SetTitleText</span>(string text)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -264,7 +264,7 @@ not fit in the space.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setbackgroundcolor'></div><div class='api-heading' data-id='setbackgroundcolor'><a href='#setbackgroundcolor'><span class='return-type'>void</span> SetBackgroundColor(Color color)</a></div>
+  <div class="api-anchor" id='setbackgroundcolor'></div><div class='api-heading' data-id='setbackgroundcolor'><a href='#setbackgroundcolor'><span class='return-type'>void</span> <span class='member-name'>SetBackgroundColor</span>(Color color)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -291,7 +291,7 @@ not fit in the space.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setbuttontextcolor'></div><div class='api-heading' data-id='setbuttontextcolor'><a href='#setbuttontextcolor'><span class='return-type'>void</span> SetButtonTextColor(Color color)</a></div>
+  <div class="api-anchor" id='setbuttontextcolor'></div><div class='api-heading' data-id='setbuttontextcolor'><a href='#setbuttontextcolor'><span class='return-type'>void</span> <span class='member-name'>SetButtonTextColor</span>(Color color)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -319,7 +319,7 @@ not fit in the space.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='settitletextcolor'></div><div class='api-heading' data-id='settitletextcolor'><a href='#settitletextcolor'><span class='return-type'>void</span> SetTitleTextColor(Color color)</a></div>
+  <div class="api-anchor" id='settitletextcolor'></div><div class='api-heading' data-id='settitletextcolor'><a href='#settitletextcolor'><span class='return-type'>void</span> <span class='member-name'>SetTitleTextColor</span>(Color color)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -346,7 +346,7 @@ not fit in the space.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='hidenavigationbuttons'></div><div class='api-heading' data-id='hidenavigationbuttons'><a href='#hidenavigationbuttons'><span class='return-type'>void</span> HideNavigationButtons()</a></div>
+  <div class="api-anchor" id='hidenavigationbuttons'></div><div class='api-heading' data-id='hidenavigationbuttons'><a href='#hidenavigationbuttons'><span class='return-type'>void</span> <span class='member-name'>HideNavigationButtons</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -366,7 +366,7 @@ webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='shownavigationbuttons'></div><div class='api-heading' data-id='shownavigationbuttons'><a href='#shownavigationbuttons'><span class='return-type'>void</span> ShowNavigationButtons()</a></div>
+  <div class="api-anchor" id='shownavigationbuttons'></div><div class='api-heading' data-id='shownavigationbuttons'><a href='#shownavigationbuttons'><span class='return-type'>void</span> <span class='member-name'>ShowNavigationButtons</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

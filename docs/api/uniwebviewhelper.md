@@ -10,10 +10,10 @@ sidebarDepth: 0
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#streamingasseturlforpath'><span class='return-type'>string</span> StreamingAssetURLForPath(string path)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#streamingasseturlforpath'><span class='return-type'>string</span> <span class='member-name'>StreamingAssetURLForPath</span>(string path)</a></div></td><td><div class='simple-summary'>
 <p>Get the local streaming asset path for a given file path related to the StreamingAssets folder.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#persistentdataurlforpath'><span class='return-type'>string</span> PersistentDataURLForPath(string path)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#persistentdataurlforpath'><span class='return-type'>string</span> <span class='member-name'>PersistentDataURLForPath</span>(string path)</a></div></td><td><div class='simple-summary'>
 <p>Get the local persistent data path for a given file path related to the data folder of your host app.</p>
 </div>
 </td></tr></table>
@@ -21,7 +21,7 @@ sidebarDepth: 0
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='streamingasseturlforpath'></div><div class='api-heading' data-id='streamingasseturlforpath'><a href='#streamingasseturlforpath'><span class='return-type'>string</span> StreamingAssetURLForPath(string path)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='streamingasseturlforpath'></div><div class='api-heading' data-id='streamingasseturlforpath'><a href='#streamingasseturlforpath'><span class='return-type'>string</span> <span class='member-name'>StreamingAssetURLForPath</span>(string path)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -51,7 +51,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='persistentdataurlforpath'></div><div class='api-heading' data-id='persistentdataurlforpath'><a href='#persistentdataurlforpath'><span class='return-type'>string</span> PersistentDataURLForPath(string path)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='persistentdataurlforpath'></div><div class='api-heading' data-id='persistentdataurlforpath'><a href='#persistentdataurlforpath'><span class='return-type'>string</span> <span class='member-name'>PersistentDataURLForPath</span>(string path)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

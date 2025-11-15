@@ -17,10 +17,10 @@ Instead, to start a customized auth flow, you can use the `UniWebViewAuthenticat
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#authorizeonstart'><span class='return-type'>bool</span> authorizeOnStart { get; set; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#authorizeonstart'><span class='return-type'>bool</span> <span class='member-name'>authorizeOnStart</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Whether to start authentication as soon as the script <code>Start</code>s.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#privatemode'><span class='return-type'>bool</span> privateMode { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#privatemode'><span class='return-type'>bool</span> <span class='member-name'>privateMode</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Whether to use private mode to authenticate the user.</p>
 </div>
 </td></tr></table>
@@ -29,20 +29,20 @@ Instead, to start a customized auth flow, you can use the `UniWebViewAuthenticat
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>abstract void</span> StartAuthenticationFlow()</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>abstract void</span> <span class='member-name'>StartAuthenticationFlow</span>()</a></div></td><td><div class='simple-summary'>
 <p>Subclass should override this method to start the authentication flow.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#startrefreshtokenflow'><span class='return-type'>abstract void</span> StartRefreshTokenFlow(string refreshToken)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#startrefreshtokenflow'><span class='return-type'>abstract void</span> <span class='member-name'>StartRefreshTokenFlow</span>(string refreshToken)</a></div></td><td><div class='simple-summary'>
 <p>Subclass should override this method to start the authentication flow.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#generateandstorestate'><span class='return-type'>string</span> GenerateAndStoreState()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#generateandstorestate'><span class='return-type'>string</span> <span class='member-name'>GenerateAndStoreState</span>()</a></div></td><td><div class='simple-summary'>
 <p>Child classes are expected to call this method to request a <code>state</code> (and store it for later check) if the 
 <code>state</code> verification is enabled.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#generatecodechallengeandstorecodeverify'><span class='return-type'>string</span> GenerateCodeChallengeAndStoreCodeVerify(UniWebViewAuthenticationPKCE method)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#generatecodechallengeandstorecodeverify'><span class='return-type'>string</span> <span class='member-name'>GenerateCodeChallengeAndStoreCodeVerify</span>(UniWebViewAuthenticationPKCE method)</a></div></td><td><div class='simple-summary'>
 <p>Child classes are expected to call this method to request a <code>code_challenge</code>.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#verifystate'><span class='return-type'>void</span> VerifyState(VerifyState(Dictionary&lt;string, string&gt; parameters, string key)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#verifystate'><span class='return-type'>void</span> <span class='member-name'>VerifyState</span>(VerifyState(Dictionary&lt;string, string&gt; parameters, string key)</a></div></td><td><div class='simple-summary'>
 <p>Perform verifying for <code>state</code>.</p>
 </div>
 </td></tr></table>
@@ -50,7 +50,7 @@ Instead, to start a customized auth flow, you can use the `UniWebViewAuthenticat
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='authorizeonstart'></div><div class='api-heading' data-id='authorizeonstart'><a href='#authorizeonstart'><span class='return-type'>bool</span> authorizeOnStart { get; set; }</a></div>
+  <div class="api-anchor" id='authorizeonstart'></div><div class='api-heading' data-id='authorizeonstart'><a href='#authorizeonstart'><span class='return-type'>bool</span> <span class='member-name'>authorizeOnStart</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -60,7 +60,7 @@ Instead, to start a customized auth flow, you can use the `UniWebViewAuthenticat
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='privatemode'></div><div class='api-heading' data-id='privatemode'><a href='#privatemode'><span class='return-type'>bool</span> privateMode { get; set; }</a></div>
+  <div class="api-anchor" id='privatemode'></div><div class='api-heading' data-id='privatemode'><a href='#privatemode'><span class='return-type'>bool</span> <span class='member-name'>privateMode</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -78,7 +78,7 @@ for third-party use) in Chrome&#39;s settings. Check settings with <code>chrome:
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='startauthenticationflow'></div><div class='api-heading' data-id='startauthenticationflow'><a href='#startauthenticationflow'><span class='return-type'>abstract void</span> StartAuthenticationFlow()</a></div>
+  <div class="api-anchor" id='startauthenticationflow'></div><div class='api-heading' data-id='startauthenticationflow'><a href='#startauthenticationflow'><span class='return-type'>abstract void</span> <span class='member-name'>StartAuthenticationFlow</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -89,7 +89,7 @@ a <code>UniWebViewAuthenticationFlow</code>. But you can also choose whatever yo
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='startrefreshtokenflow'></div><div class='api-heading' data-id='startrefreshtokenflow'><a href='#startrefreshtokenflow'><span class='return-type'>abstract void</span> StartRefreshTokenFlow(string refreshToken)</a></div>
+  <div class="api-anchor" id='startrefreshtokenflow'></div><div class='api-heading' data-id='startrefreshtokenflow'><a href='#startrefreshtokenflow'><span class='return-type'>abstract void</span> <span class='member-name'>StartRefreshTokenFlow</span>(string refreshToken)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -100,7 +100,7 @@ a Unity Web Request against the authentication flow&#39;s token entry point to r
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='generateandstorestate'></div><div class='api-heading' data-id='generateandstorestate'><a href='#generateandstorestate'><span class='return-type'>string</span> GenerateAndStoreState()</a></div>
+  <div class="api-anchor" id='generateandstorestate'></div><div class='api-heading' data-id='generateandstorestate'><a href='#generateandstorestate'><span class='return-type'>string</span> <span class='member-name'>GenerateAndStoreState</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -111,7 +111,7 @@ a Unity Web Request against the authentication flow&#39;s token entry point to r
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='generatecodechallengeandstorecodeverify'></div><div class='api-heading' data-id='generatecodechallengeandstorecodeverify'><a href='#generatecodechallengeandstorecodeverify'><span class='return-type'>string</span> GenerateCodeChallengeAndStoreCodeVerify(UniWebViewAuthenticationPKCE method)</a></div>
+  <div class="api-anchor" id='generatecodechallengeandstorecodeverify'></div><div class='api-heading' data-id='generatecodechallengeandstorecodeverify'><a href='#generatecodechallengeandstorecodeverify'><span class='return-type'>string</span> <span class='member-name'>GenerateCodeChallengeAndStoreCodeVerify</span>(UniWebViewAuthenticationPKCE method)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -122,7 +122,7 @@ token, the <code>code_verifier</code> will be used to verify the <code>code_chal
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='verifystate'></div><div class='api-heading' data-id='verifystate'><a href='#verifystate'><span class='return-type'>void</span> VerifyState(VerifyState(Dictionary&lt;string, string&gt; parameters, string key)</a></div>
+  <div class="api-anchor" id='verifystate'></div><div class='api-heading' data-id='verifystate'><a href='#verifystate'><span class='return-type'>void</span> <span class='member-name'>VerifyState</span>(VerifyState(Dictionary&lt;string, string&gt; parameters, string key)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

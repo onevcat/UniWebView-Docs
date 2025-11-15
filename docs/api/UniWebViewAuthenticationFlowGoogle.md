@@ -20,32 +20,32 @@ more detailed guide of authentication in UniWebView.
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#clientid'><span class='return-type'>string</span> clientId { get; set; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#clientid'><span class='return-type'>string</span> <span class='member-name'>clientId</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The client ID of your Google application.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#redirecturi'><span class='return-type'>string</span> redirectUri { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#redirecturi'><span class='return-type'>string</span> <span class='member-name'>redirectUri</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The redirect URI of your Google application.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#scope'><span class='return-type'>string</span> scope { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#scope'><span class='return-type'>string</span> <span class='member-name'>scope</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The scope of your Google application.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#optional'><span class='return-type'>UniWebViewAuthenticationFlowGoogleOptional</span> optional { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#optional'><span class='return-type'>UniWebViewAuthenticationFlowGoogleOptional</span> <span class='member-name'>optional</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Optional to control this flow&#39;s behaviour.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.pkcesupport'><span class='return-type'>UniWebViewAuthenticationPKCE</span> optional.PKCESupport { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.pkcesupport'><span class='return-type'>UniWebViewAuthenticationPKCE</span> <span class='member-name'>optional.PKCESupport</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Whether to enable PKCE when performing authentication.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.enablestate'><span class='return-type'>bool</span> optional.enableState { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.enablestate'><span class='return-type'>bool</span> <span class='member-name'>optional.enableState</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Whether to enable the state verification.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.loginhint'><span class='return-type'>string</span> optional.loginHint { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.loginhint'><span class='return-type'>string</span> <span class='member-name'>optional.loginHint</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>If your application knows which user is trying to authenticate, it can use this parameter to provide a hint to
 the Google Authentication Server.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.prompt'><span class='return-type'>string</span> optional.prompt { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.prompt'><span class='return-type'>string</span> <span class='member-name'>optional.prompt</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The prompt that will be set to the authentication request query.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.additionalauthenticationuriquery'><span class='return-type'>string</span> optional.additionalAuthenticationUriQuery { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.additionalauthenticationuriquery'><span class='return-type'>string</span> <span class='member-name'>optional.additionalAuthenticationUriQuery</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The additional query arguments that are used to construct the query string of the authentication request.</p>
 </div>
 </td></tr></table>
@@ -54,16 +54,16 @@ the Google Authentication Server.</p>
 
 <table class='api-summary-table api-summary-table--events'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationGoogleToken&gt;</span> OnAuthenticationFinished</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationGoogleToken&gt;</span> <span class='member-name'>OnAuthenticationFinished</span></a></div></td><td><div class='simple-summary'>
 <p>Called when the authentication flow succeeds and a valid token is generated.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnAuthenticationErrored</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> <span class='member-name'>OnAuthenticationErrored</span></a></div></td><td><div class='simple-summary'>
 <p>Called when any error (including user cancellation) happens during the authentication flow.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onrefreshtokenfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationGoogleToken&gt;</span> OnRefreshTokenFinished</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onrefreshtokenfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationGoogleToken&gt;</span> <span class='member-name'>OnRefreshTokenFinished</span></a></div></td><td><div class='simple-summary'>
 <p>Called when the access token refresh request finishes and a valid refreshed token is generated.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onrefreshtokenerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnRefreshTokenErrored</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onrefreshtokenerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> <span class='member-name'>OnRefreshTokenErrored</span></a></div></td><td><div class='simple-summary'>
 <p>Called when any error (including user cancellation) happens during the authentication flow.</p>
 </div>
 </td></tr></table>
@@ -72,10 +72,10 @@ the Google Authentication Server.</p>
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>void</span> StartAuthenticationFlow()</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>void</span> <span class='member-name'>StartAuthenticationFlow</span>()</a></div></td><td><div class='simple-summary'>
 <p>Starts the authentication flow with the standard OAuth 2.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#startrefreshtokenflow'><span class='return-type'>void</span> StartRefreshTokenFlow(string refreshToken)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#startrefreshtokenflow'><span class='return-type'>void</span> <span class='member-name'>StartRefreshTokenFlow</span>(string refreshToken)</a></div></td><td><div class='simple-summary'>
 <p>Starts the refresh flow with the standard OAuth 2.</p>
 </div>
 </td></tr></table>
@@ -83,7 +83,7 @@ the Google Authentication Server.</p>
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='clientid'></div><div class='api-heading' data-id='clientid'><a href='#clientid'><span class='return-type'>string</span> clientId { get; set; }</a></div>
+  <div class="api-anchor" id='clientid'></div><div class='api-heading' data-id='clientid'><a href='#clientid'><span class='return-type'>string</span> <span class='member-name'>clientId</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -101,7 +101,7 @@ the Google Authentication Server.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='redirecturi'></div><div class='api-heading' data-id='redirecturi'><a href='#redirecturi'><span class='return-type'>string</span> redirectUri { get; set; }</a></div>
+  <div class="api-anchor" id='redirecturi'></div><div class='api-heading' data-id='redirecturi'><a href='#redirecturi'><span class='return-type'>string</span> <span class='member-name'>redirectUri</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -120,7 +120,7 @@ contain regular double slashes <code>//</code>, but should be only one.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='scope'></div><div class='api-heading' data-id='scope'><a href='#scope'><span class='return-type'>string</span> scope { get; set; }</a></div>
+  <div class="api-anchor" id='scope'></div><div class='api-heading' data-id='scope'><a href='#scope'><span class='return-type'>string</span> <span class='member-name'>scope</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -131,7 +131,7 @@ contain regular double slashes <code>//</code>, but should be only one.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='optional'></div><div class='api-heading' data-id='optional'><a href='#optional'><span class='return-type'>UniWebViewAuthenticationFlowGoogleOptional</span> optional { get; set; }</a></div>
+  <div class="api-anchor" id='optional'></div><div class='api-heading' data-id='optional'><a href='#optional'><span class='return-type'>UniWebViewAuthenticationFlowGoogleOptional</span> <span class='member-name'>optional</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -141,7 +141,7 @@ contain regular double slashes <code>//</code>, but should be only one.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='optional.pkcesupport'></div><div class='api-heading' data-id='optional.pkcesupport'><a href='#optional.pkcesupport'><span class='return-type'>UniWebViewAuthenticationPKCE</span> optional.PKCESupport { get; set; }</a></div>
+  <div class="api-anchor" id='optional.pkcesupport'></div><div class='api-heading' data-id='optional.pkcesupport'><a href='#optional.pkcesupport'><span class='return-type'>UniWebViewAuthenticationPKCE</span> <span class='member-name'>optional.PKCESupport</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -151,7 +151,7 @@ contain regular double slashes <code>//</code>, but should be only one.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='optional.enablestate'></div><div class='api-heading' data-id='optional.enablestate'><a href='#optional.enablestate'><span class='return-type'>bool</span> optional.enableState { get; set; }</a></div>
+  <div class="api-anchor" id='optional.enablestate'></div><div class='api-heading' data-id='optional.enablestate'><a href='#optional.enablestate'><span class='return-type'>bool</span> <span class='member-name'>optional.enableState</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -163,7 +163,7 @@ authentication callback. </p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='optional.loginhint'></div><div class='api-heading' data-id='optional.loginhint'><a href='#optional.loginhint'><span class='return-type'>string</span> optional.loginHint { get; set; }</a></div>
+  <div class="api-anchor" id='optional.loginhint'></div><div class='api-heading' data-id='optional.loginhint'><a href='#optional.loginhint'><span class='return-type'>string</span> <span class='member-name'>optional.loginHint</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -174,7 +174,7 @@ the Google Authentication Server. </p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='optional.prompt'></div><div class='api-heading' data-id='optional.prompt'><a href='#optional.prompt'><span class='return-type'>string</span> optional.prompt { get; set; }</a></div>
+  <div class="api-anchor" id='optional.prompt'></div><div class='api-heading' data-id='optional.prompt'><a href='#optional.prompt'><span class='return-type'>string</span> <span class='member-name'>optional.prompt</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -186,7 +186,7 @@ the Google Authentication Server. </p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='optional.additionalauthenticationuriquery'></div><div class='api-heading' data-id='optional.additionalauthenticationuriquery'><a href='#optional.additionalauthenticationuriquery'><span class='return-type'>string</span> optional.additionalAuthenticationUriQuery { get; set; }</a></div>
+  <div class="api-anchor" id='optional.additionalauthenticationuriquery'></div><div class='api-heading' data-id='optional.additionalauthenticationuriquery'><a href='#optional.additionalauthenticationuriquery'><span class='return-type'>string</span> <span class='member-name'>optional.additionalAuthenticationUriQuery</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -203,7 +203,7 @@ query.</p>
 ### Events
 
 <div class='api-box method'>
-  <div class="api-anchor" id='onauthenticationfinished'></div><div class='api-heading' data-id='onauthenticationfinished'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationGoogleToken&gt;</span> OnAuthenticationFinished</a></div>
+  <div class="api-anchor" id='onauthenticationfinished'></div><div class='api-heading' data-id='onauthenticationfinished'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationGoogleToken&gt;</span> <span class='member-name'>OnAuthenticationFinished</span></a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -224,7 +224,7 @@ query.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onauthenticationerrored'></div><div class='api-heading' data-id='onauthenticationerrored'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnAuthenticationErrored</a></div>
+  <div class="api-anchor" id='onauthenticationerrored'></div><div class='api-heading' data-id='onauthenticationerrored'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> <span class='member-name'>OnAuthenticationErrored</span></a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -245,7 +245,7 @@ query.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onrefreshtokenfinished'></div><div class='api-heading' data-id='onrefreshtokenfinished'><a href='#onrefreshtokenfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationGoogleToken&gt;</span> OnRefreshTokenFinished</a></div>
+  <div class="api-anchor" id='onrefreshtokenfinished'></div><div class='api-heading' data-id='onrefreshtokenfinished'><a href='#onrefreshtokenfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationGoogleToken&gt;</span> <span class='member-name'>OnRefreshTokenFinished</span></a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -266,7 +266,7 @@ query.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onrefreshtokenerrored'></div><div class='api-heading' data-id='onrefreshtokenerrored'><a href='#onrefreshtokenerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnRefreshTokenErrored</a></div>
+  <div class="api-anchor" id='onrefreshtokenerrored'></div><div class='api-heading' data-id='onrefreshtokenerrored'><a href='#onrefreshtokenerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> <span class='member-name'>OnRefreshTokenErrored</span></a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -290,7 +290,7 @@ query.</p>
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='startauthenticationflow'></div><div class='api-heading' data-id='startauthenticationflow'><a href='#startauthenticationflow'><span class='return-type'>void</span> StartAuthenticationFlow()</a></div>
+  <div class="api-anchor" id='startauthenticationflow'></div><div class='api-heading' data-id='startauthenticationflow'><a href='#startauthenticationflow'><span class='return-type'>void</span> <span class='member-name'>StartAuthenticationFlow</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -301,7 +301,7 @@ This implements the abstract method in <code>UniWebViewAuthenticationCommonFlow<
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='startrefreshtokenflow'></div><div class='api-heading' data-id='startrefreshtokenflow'><a href='#startrefreshtokenflow'><span class='return-type'>void</span> StartRefreshTokenFlow(string refreshToken)</a></div>
+  <div class="api-anchor" id='startrefreshtokenflow'></div><div class='api-heading' data-id='startrefreshtokenflow'><a href='#startrefreshtokenflow'><span class='return-type'>void</span> <span class='member-name'>StartRefreshTokenFlow</span>(string refreshToken)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

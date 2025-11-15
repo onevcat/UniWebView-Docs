@@ -10,10 +10,10 @@ sidebarDepth: 0
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#webview'><span class='return-type'>UniWebView</span> webView { get; set; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#webview'><span class='return-type'>UniWebView</span> <span class='member-name'>webView</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The web view holder of this listener.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#name'><span class='return-type'>string</span> Name { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#name'><span class='return-type'>string</span> <span class='member-name'>Name</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Name of the current listener.</p>
 </div>
 </td></tr></table>
@@ -21,7 +21,7 @@ sidebarDepth: 0
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='webview'></div><div class='api-heading' data-id='webview'><a href='#webview'><span class='return-type'>UniWebView</span> webView { get; set; }</a></div>
+  <div class="api-anchor" id='webview'></div><div class='api-heading' data-id='webview'><a href='#webview'><span class='return-type'>UniWebView</span> <span class='member-name'>webView</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -37,7 +37,7 @@ sidebarDepth: 0
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='name'></div><div class='api-heading' data-id='name'><a href='#name'><span class='return-type'>string</span> Name { get; }</a></div>
+  <div class="api-anchor" id='name'></div><div class='api-heading' data-id='name'><a href='#name'><span class='return-type'>string</span> <span class='member-name'>Name</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

@@ -20,22 +20,22 @@ web view's navigation history automatically. If you need the latest navigation h
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#allitems'><span class='return-type'>List&lt;UniWebViewBackForwardItem&gt;</span> AllItems { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#allitems'><span class='return-type'>List&lt;UniWebViewBackForwardItem&gt;</span> <span class='member-name'>AllItems</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets all items in the back-forward navigation history list.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#currentitem'><span class='return-type'>UniWebViewBackForwardItem</span> CurrentItem { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#currentitem'><span class='return-type'>UniWebViewBackForwardItem</span> <span class='member-name'>CurrentItem</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets the current page item in the navigation history.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#backitem'><span class='return-type'>UniWebViewBackForwardItem</span> BackItem { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#backitem'><span class='return-type'>UniWebViewBackForwardItem</span> <span class='member-name'>BackItem</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets the previous (back) page item in the navigation history.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#forwarditem'><span class='return-type'>UniWebViewBackForwardItem</span> ForwardItem { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#forwarditem'><span class='return-type'>UniWebViewBackForwardItem</span> <span class='member-name'>ForwardItem</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets the next (forward) page item in the navigation history.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#currentindex'><span class='return-type'>int</span> CurrentIndex { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#currentindex'><span class='return-type'>int</span> <span class='member-name'>CurrentIndex</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets the index of current page in the navigation history.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#size'><span class='return-type'>int</span> Size { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#size'><span class='return-type'>int</span> <span class='member-name'>Size</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets the total number of items in the navigation history.</p>
 </div>
 </td></tr></table>
@@ -44,7 +44,7 @@ web view's navigation history automatically. If you need the latest navigation h
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#itematindex'><span class='return-type'>UniWebViewBackForwardItem</span> ItemAtIndex(int index)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#itematindex'><span class='return-type'>UniWebViewBackForwardItem</span> <span class='member-name'>ItemAtIndex</span>(int index)</a></div></td><td><div class='simple-summary'>
 <p>Gets the item at the specified index in the navigation history.</p>
 </div>
 </td></tr></table>
@@ -52,7 +52,7 @@ web view's navigation history automatically. If you need the latest navigation h
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='allitems'></div><div class='api-heading' data-id='allitems'><a href='#allitems'><span class='return-type'>List&lt;UniWebViewBackForwardItem&gt;</span> AllItems { get; }</a></div>
+  <div class="api-anchor" id='allitems'></div><div class='api-heading' data-id='allitems'><a href='#allitems'><span class='return-type'>List&lt;UniWebViewBackForwardItem&gt;</span> <span class='member-name'>AllItems</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -62,7 +62,7 @@ web view's navigation history automatically. If you need the latest navigation h
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='currentitem'></div><div class='api-heading' data-id='currentitem'><a href='#currentitem'><span class='return-type'>UniWebViewBackForwardItem</span> CurrentItem { get; }</a></div>
+  <div class="api-anchor" id='currentitem'></div><div class='api-heading' data-id='currentitem'><a href='#currentitem'><span class='return-type'>UniWebViewBackForwardItem</span> <span class='member-name'>CurrentItem</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -73,7 +73,7 @@ web view's navigation history automatically. If you need the latest navigation h
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='backitem'></div><div class='api-heading' data-id='backitem'><a href='#backitem'><span class='return-type'>UniWebViewBackForwardItem</span> BackItem { get; }</a></div>
+  <div class="api-anchor" id='backitem'></div><div class='api-heading' data-id='backitem'><a href='#backitem'><span class='return-type'>UniWebViewBackForwardItem</span> <span class='member-name'>BackItem</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -84,7 +84,7 @@ web view's navigation history automatically. If you need the latest navigation h
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='forwarditem'></div><div class='api-heading' data-id='forwarditem'><a href='#forwarditem'><span class='return-type'>UniWebViewBackForwardItem</span> ForwardItem { get; }</a></div>
+  <div class="api-anchor" id='forwarditem'></div><div class='api-heading' data-id='forwarditem'><a href='#forwarditem'><span class='return-type'>UniWebViewBackForwardItem</span> <span class='member-name'>ForwardItem</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -95,7 +95,7 @@ web view's navigation history automatically. If you need the latest navigation h
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='currentindex'></div><div class='api-heading' data-id='currentindex'><a href='#currentindex'><span class='return-type'>int</span> CurrentIndex { get; }</a></div>
+  <div class="api-anchor" id='currentindex'></div><div class='api-heading' data-id='currentindex'><a href='#currentindex'><span class='return-type'>int</span> <span class='member-name'>CurrentIndex</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -106,7 +106,7 @@ web view's navigation history automatically. If you need the latest navigation h
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='size'></div><div class='api-heading' data-id='size'><a href='#size'><span class='return-type'>int</span> Size { get; }</a></div>
+  <div class="api-anchor" id='size'></div><div class='api-heading' data-id='size'><a href='#size'><span class='return-type'>int</span> <span class='member-name'>Size</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -119,7 +119,7 @@ web view's navigation history automatically. If you need the latest navigation h
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='itematindex'></div><div class='api-heading' data-id='itematindex'><a href='#itematindex'><span class='return-type'>UniWebViewBackForwardItem</span> ItemAtIndex(int index)</a></div>
+  <div class="api-anchor" id='itematindex'></div><div class='api-heading' data-id='itematindex'><a href='#itematindex'><span class='return-type'>UniWebViewBackForwardItem</span> <span class='member-name'>ItemAtIndex</span>(int index)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

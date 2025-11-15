@@ -10,13 +10,13 @@ sidebarDepth: 0
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#prompt'><span class='return-type'>UniWebViewMediaCapturePermissionDecision</span> Prompt { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#prompt'><span class='return-type'>UniWebViewMediaCapturePermissionDecision</span> <span class='member-name'>Prompt</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Display a prompt to ask user for the permission.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#grant'><span class='return-type'>UniWebViewMediaCapturePermissionDecision</span> Grant { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#grant'><span class='return-type'>UniWebViewMediaCapturePermissionDecision</span> <span class='member-name'>Grant</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Grant the permission request without asking user.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#deny'><span class='return-type'>UniWebViewMediaCapturePermissionDecision</span> Deny { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#deny'><span class='return-type'>UniWebViewMediaCapturePermissionDecision</span> <span class='member-name'>Deny</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Deny the permission request.</p>
 </div>
 </td></tr></table>
@@ -24,7 +24,7 @@ sidebarDepth: 0
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='prompt'></div><div class='api-heading' data-id='prompt'><a href='#prompt'><span class='return-type'>UniWebViewMediaCapturePermissionDecision</span> Prompt { get; }</a></div>
+  <div class="api-anchor" id='prompt'></div><div class='api-heading' data-id='prompt'><a href='#prompt'><span class='return-type'>UniWebViewMediaCapturePermissionDecision</span> <span class='member-name'>Prompt</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -36,7 +36,7 @@ permission.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='grant'></div><div class='api-heading' data-id='grant'><a href='#grant'><span class='return-type'>UniWebViewMediaCapturePermissionDecision</span> Grant { get; }</a></div>
+  <div class="api-anchor" id='grant'></div><div class='api-heading' data-id='grant'><a href='#grant'><span class='return-type'>UniWebViewMediaCapturePermissionDecision</span> <span class='member-name'>Grant</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -46,7 +46,7 @@ permission.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='deny'></div><div class='api-heading' data-id='deny'><a href='#deny'><span class='return-type'>UniWebViewMediaCapturePermissionDecision</span> Deny { get; }</a></div>
+  <div class="api-anchor" id='deny'></div><div class='api-heading' data-id='deny'><a href='#deny'><span class='return-type'>UniWebViewMediaCapturePermissionDecision</span> <span class='member-name'>Deny</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

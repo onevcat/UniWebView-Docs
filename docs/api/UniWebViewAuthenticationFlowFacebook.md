@@ -27,16 +27,16 @@ To allow the Facebook flow working, at least you need to set the `App Id` in the
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#appid'><span class='return-type'>string</span> appId { get; set; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#appid'><span class='return-type'>string</span> <span class='member-name'>appId</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The App ID of your Facebook application.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#optional'><span class='return-type'>UniWebViewAuthenticationFlowFacebookOptional</span> optional { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#optional'><span class='return-type'>UniWebViewAuthenticationFlowFacebookOptional</span> <span class='member-name'>optional</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>Optional to control this flow&#39;s behaviour.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.scope'><span class='return-type'>string</span> optional.scope { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.scope'><span class='return-type'>string</span> <span class='member-name'>optional.scope</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The scope string of all your required scopes.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.additionalauthenticationuriquery'><span class='return-type'>string</span> optional.additionalAuthenticationUriQuery { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#optional.additionalauthenticationuriquery'><span class='return-type'>string</span> <span class='member-name'>optional.additionalAuthenticationUriQuery</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The additional query arguments that are used to construct the query string of the authentication request.</p>
 </div>
 </td></tr></table>
@@ -45,10 +45,10 @@ To allow the Facebook flow working, at least you need to set the `App Id` in the
 
 <table class='api-summary-table api-summary-table--events'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationFacebookToken&gt;</span> OnAuthenticationFinished</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationFacebookToken&gt;</span> <span class='member-name'>OnAuthenticationFinished</span></a></div></td><td><div class='simple-summary'>
 <p>Called when the authentication flow succeeds and a valid token is generated.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnAuthenticationErrored</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> <span class='member-name'>OnAuthenticationErrored</span></a></div></td><td><div class='simple-summary'>
 <p>Called when any error (including user cancellation) happens during the authentication flow.</p>
 </div>
 </td></tr></table>
@@ -57,7 +57,7 @@ To allow the Facebook flow working, at least you need to set the `App Id` in the
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>void</span> StartAuthenticationFlow()</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#startauthenticationflow'><span class='return-type'>void</span> <span class='member-name'>StartAuthenticationFlow</span>()</a></div></td><td><div class='simple-summary'>
 <p>Starts the authentication flow with the standard OAuth 2.</p>
 </div>
 </td></tr></table>
@@ -65,7 +65,7 @@ To allow the Facebook flow working, at least you need to set the `App Id` in the
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='appid'></div><div class='api-heading' data-id='appid'><a href='#appid'><span class='return-type'>string</span> appId { get; set; }</a></div>
+  <div class="api-anchor" id='appid'></div><div class='api-heading' data-id='appid'><a href='#appid'><span class='return-type'>string</span> <span class='member-name'>appId</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -75,7 +75,7 @@ To allow the Facebook flow working, at least you need to set the `App Id` in the
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='optional'></div><div class='api-heading' data-id='optional'><a href='#optional'><span class='return-type'>UniWebViewAuthenticationFlowFacebookOptional</span> optional { get; set; }</a></div>
+  <div class="api-anchor" id='optional'></div><div class='api-heading' data-id='optional'><a href='#optional'><span class='return-type'>UniWebViewAuthenticationFlowFacebookOptional</span> <span class='member-name'>optional</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -85,7 +85,7 @@ To allow the Facebook flow working, at least you need to set the `App Id` in the
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='optional.scope'></div><div class='api-heading' data-id='optional.scope'><a href='#optional.scope'><span class='return-type'>string</span> optional.scope { get; set; }</a></div>
+  <div class="api-anchor" id='optional.scope'></div><div class='api-heading' data-id='optional.scope'><a href='#optional.scope'><span class='return-type'>string</span> <span class='member-name'>optional.scope</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -95,7 +95,7 @@ To allow the Facebook flow working, at least you need to set the `App Id` in the
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='optional.additionalauthenticationuriquery'></div><div class='api-heading' data-id='optional.additionalauthenticationuriquery'><a href='#optional.additionalauthenticationuriquery'><span class='return-type'>string</span> optional.additionalAuthenticationUriQuery { get; set; }</a></div>
+  <div class="api-anchor" id='optional.additionalauthenticationuriquery'></div><div class='api-heading' data-id='optional.additionalauthenticationuriquery'><a href='#optional.additionalauthenticationuriquery'><span class='return-type'>string</span> <span class='member-name'>optional.additionalAuthenticationUriQuery</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -112,7 +112,7 @@ query.</p>
 ### Events
 
 <div class='api-box method'>
-  <div class="api-anchor" id='onauthenticationfinished'></div><div class='api-heading' data-id='onauthenticationfinished'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationFacebookToken&gt;</span> OnAuthenticationFinished</a></div>
+  <div class="api-anchor" id='onauthenticationfinished'></div><div class='api-heading' data-id='onauthenticationfinished'><a href='#onauthenticationfinished'><span class='return-type'>UnityEvent&lt;UniWebViewAuthenticationFacebookToken&gt;</span> <span class='member-name'>OnAuthenticationFinished</span></a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -133,7 +133,7 @@ query.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onauthenticationerrored'></div><div class='api-heading' data-id='onauthenticationerrored'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> OnAuthenticationErrored</a></div>
+  <div class="api-anchor" id='onauthenticationerrored'></div><div class='api-heading' data-id='onauthenticationerrored'><a href='#onauthenticationerrored'><span class='return-type'>UnityEvent&lt;long, string&gt;</span> <span class='member-name'>OnAuthenticationErrored</span></a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -157,7 +157,7 @@ query.</p>
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='startauthenticationflow'></div><div class='api-heading' data-id='startauthenticationflow'><a href='#startauthenticationflow'><span class='return-type'>void</span> StartAuthenticationFlow()</a></div>
+  <div class="api-anchor" id='startauthenticationflow'></div><div class='api-heading' data-id='startauthenticationflow'><a href='#startauthenticationflow'><span class='return-type'>void</span> <span class='member-name'>StartAuthenticationFlow</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

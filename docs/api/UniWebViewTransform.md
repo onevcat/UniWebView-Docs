@@ -22,13 +22,13 @@ transformations to the web view.
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#rotation'><span class='return-type'>float</span> Rotation { get; set; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#rotation'><span class='return-type'>float</span> <span class='member-name'>Rotation</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The rotation of the web view in degrees.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#scalex'><span class='return-type'>float</span> ScaleX { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#scalex'><span class='return-type'>float</span> <span class='member-name'>ScaleX</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The scaling factor applied to the X-axis of the web view.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#scaley'><span class='return-type'>float</span> ScaleY { get; set; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#scaley'><span class='return-type'>float</span> <span class='member-name'>ScaleY</span> { get; set; }</a></div></td><td><div class='simple-summary'>
 <p>The scaling factor applied to the Y-axis of the web view.</p>
 </div>
 </td></tr></table>
@@ -36,7 +36,7 @@ transformations to the web view.
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='rotation'></div><div class='api-heading' data-id='rotation'><a href='#rotation'><span class='return-type'>float</span> Rotation { get; set; }</a></div>
+  <div class="api-anchor" id='rotation'></div><div class='api-heading' data-id='rotation'><a href='#rotation'><span class='return-type'>float</span> <span class='member-name'>Rotation</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -46,7 +46,7 @@ transformations to the web view.
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='scalex'></div><div class='api-heading' data-id='scalex'><a href='#scalex'><span class='return-type'>float</span> ScaleX { get; set; }</a></div>
+  <div class="api-anchor" id='scalex'></div><div class='api-heading' data-id='scalex'><a href='#scalex'><span class='return-type'>float</span> <span class='member-name'>ScaleX</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -56,7 +56,7 @@ transformations to the web view.
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='scaley'></div><div class='api-heading' data-id='scaley'><a href='#scaley'><span class='return-type'>float</span> ScaleY { get; set; }</a></div>
+  <div class="api-anchor" id='scaley'></div><div class='api-heading' data-id='scaley'><a href='#scaley'><span class='return-type'>float</span> <span class='member-name'>ScaleY</span> { get; set; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

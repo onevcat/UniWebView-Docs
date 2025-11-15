@@ -14,22 +14,22 @@ They are used inside the built-in flows, but you can also use them to implement 
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#generaterandombase64string'><span class='return-type'>string</span> GenerateRandomBase64String()</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#generaterandombase64string'><span class='return-type'>string</span> <span class='member-name'>GenerateRandomBase64String</span>()</a></div></td><td><div class='simple-summary'>
 <p>Generates a random Base64 encoded string.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#generaterandombase64urlstring'><span class='return-type'>string</span> GenerateRandomBase64URLString()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#generaterandombase64urlstring'><span class='return-type'>string</span> <span class='member-name'>GenerateRandomBase64URLString</span>()</a></div></td><td><div class='simple-summary'>
 <p>Generates a random Base64URL encoded string.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#converttobase64urlstring'><span class='return-type'>string</span> ConvertToBase64URLString(string input)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#converttobase64urlstring'><span class='return-type'>string</span> <span class='member-name'>ConvertToBase64URLString</span>(string input)</a></div></td><td><div class='simple-summary'>
 <p>Converts a Base64 encoded string to a Base64URL encoded string.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#converttobase64string'><span class='return-type'>string</span> ConvertToBase64String(string input)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#converttobase64string'><span class='return-type'>string</span> <span class='member-name'>ConvertToBase64String</span>(string input)</a></div></td><td><div class='simple-summary'>
 <p>Converts a Base64URL encoded string to a Base64 encoded string.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#generatecodeverifier'><span class='return-type'>string</span> GenerateCodeVerifier(int length)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#generatecodeverifier'><span class='return-type'>string</span> <span class='member-name'>GenerateCodeVerifier</span>(int length)</a></div></td><td><div class='simple-summary'>
 <p>Generates a code verifier for PKCE usage.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#calculatecodechallenge'><span class='return-type'>string</span> CalculateCodeChallenge(string codeVerifier, UniWebViewAuthenticationPKCE method)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#calculatecodechallenge'><span class='return-type'>string</span> <span class='member-name'>CalculateCodeChallenge</span>(string codeVerifier, UniWebViewAuthenticationPKCE method)</a></div></td><td><div class='simple-summary'>
 <p>Calculates the code challenge for PKCE usage, with a given code verifier and hash method.</p>
 </div>
 </td></tr></table>
@@ -37,7 +37,7 @@ They are used inside the built-in flows, but you can also use them to implement 
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='generaterandombase64string'></div><div class='api-heading' data-id='generaterandombase64string'><a href='#generaterandombase64string'><span class='return-type'>string</span> GenerateRandomBase64String()</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='generaterandombase64string'></div><div class='api-heading' data-id='generaterandombase64string'><a href='#generaterandombase64string'><span class='return-type'>string</span> <span class='member-name'>GenerateRandomBase64String</span>()</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -50,7 +50,7 @@ They are used inside the built-in flows, but you can also use them to implement 
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='generaterandombase64urlstring'></div><div class='api-heading' data-id='generaterandombase64urlstring'><a href='#generaterandombase64urlstring'><span class='return-type'>string</span> GenerateRandomBase64URLString()</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='generaterandombase64urlstring'></div><div class='api-heading' data-id='generaterandombase64urlstring'><a href='#generaterandombase64urlstring'><span class='return-type'>string</span> <span class='member-name'>GenerateRandomBase64URLString</span>()</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -63,7 +63,7 @@ They are used inside the built-in flows, but you can also use them to implement 
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='converttobase64urlstring'></div><div class='api-heading' data-id='converttobase64urlstring'><a href='#converttobase64urlstring'><span class='return-type'>string</span> ConvertToBase64URLString(string input)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='converttobase64urlstring'></div><div class='api-heading' data-id='converttobase64urlstring'><a href='#converttobase64urlstring'><span class='return-type'>string</span> <span class='member-name'>ConvertToBase64URLString</span>(string input)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -86,7 +86,7 @@ They are used inside the built-in flows, but you can also use them to implement 
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='converttobase64string'></div><div class='api-heading' data-id='converttobase64string'><a href='#converttobase64string'><span class='return-type'>string</span> ConvertToBase64String(string input)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='converttobase64string'></div><div class='api-heading' data-id='converttobase64string'><a href='#converttobase64string'><span class='return-type'>string</span> <span class='member-name'>ConvertToBase64String</span>(string input)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -109,7 +109,7 @@ They are used inside the built-in flows, but you can also use them to implement 
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='generatecodeverifier'></div><div class='api-heading' data-id='generatecodeverifier'><a href='#generatecodeverifier'><span class='return-type'>string</span> GenerateCodeVerifier(int length)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='generatecodeverifier'></div><div class='api-heading' data-id='generatecodeverifier'><a href='#generatecodeverifier'><span class='return-type'>string</span> <span class='member-name'>GenerateCodeVerifier</span>(int length)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -132,7 +132,7 @@ They are used inside the built-in flows, but you can also use them to implement 
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='calculatecodechallenge'></div><div class='api-heading' data-id='calculatecodechallenge'><a href='#calculatecodechallenge'><span class='return-type'>string</span> CalculateCodeChallenge(string codeVerifier, UniWebViewAuthenticationPKCE method)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='calculatecodechallenge'></div><div class='api-heading' data-id='calculatecodechallenge'><a href='#calculatecodechallenge'><span class='return-type'>string</span> <span class='member-name'>CalculateCodeChallenge</span>(string codeVerifier, UniWebViewAuthenticationPKCE method)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

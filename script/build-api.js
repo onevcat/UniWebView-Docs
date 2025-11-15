@@ -114,9 +114,12 @@ class Property extends Entry {
   }
 
   linkTextWithoutBadge() {
+    const nameHtml = `<span class='member-name'>${escapeHtml(
+      this.entry.name
+    )}</span>`;
     return `<a href='${this.entryLink()}'><span class='return-type'>${escapeHtml(
       this.entry.returnType
-    )}</span> ${this.entry.name} { get; ${this.setterText()}}</a>`;
+    )}</span> ${nameHtml} { get; ${this.setterText()}}</a>`;
   }
 
   output() {
@@ -179,7 +182,24 @@ class Method extends Entry {
   linkTextWithoutBadge() {
     return `<a href='${this.entryLink()}'><span class='return-type'>${escapeHtml(
       this.entry.returnType
-    )}</span> ${escapeHtml(this.entry.syntax)}</a>`;
+    )}</span> ${this.highlightedSyntax()}</a>`;
+  }
+
+  highlightedSyntax() {
+    const syntax = this.entry.syntax || "";
+    const name = this.entry.name || "";
+    if (!name) {
+      return escapeHtml(syntax);
+    }
+    const index = syntax.indexOf(name);
+    if (index === -1) {
+      return escapeHtml(syntax);
+    }
+    const before = escapeHtml(syntax.slice(0, index));
+    const after = escapeHtml(syntax.slice(index + name.length));
+    return `${before}<span class='member-name'>${escapeHtml(
+      name
+    )}</span>${after}`;
   }
 
   output() {

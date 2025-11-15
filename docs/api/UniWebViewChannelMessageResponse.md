@@ -16,13 +16,13 @@ Response objects are typically created using the static factory methods `Success
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#data'><span class='return-type'>object</span> data { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#data'><span class='return-type'>object</span> <span class='member-name'>data</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Response data for successful responses.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#haserror'><span class='return-type'>bool</span> hasError { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#haserror'><span class='return-type'>bool</span> <span class='member-name'>hasError</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Whether this response represents an error.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#errordata'><span class='return-type'>object</span> errorData { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#errordata'><span class='return-type'>object</span> <span class='member-name'>errorData</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Error data if hasError is true.</p>
 </div>
 </td></tr></table>
@@ -31,10 +31,10 @@ Response objects are typically created using the static factory methods `Success
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#success'><span class='return-type'>UniWebViewChannelMessageResponse</span> Success(object data)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#success'><span class='return-type'>UniWebViewChannelMessageResponse</span> <span class='member-name'>Success</span>(object data)</a></div></td><td><div class='simple-summary'>
 <p>Static factory method for success responses.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#error'><span class='return-type'>UniWebViewChannelMessageResponse</span> Error(object errorData)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#error'><span class='return-type'>UniWebViewChannelMessageResponse</span> <span class='member-name'>Error</span>(object errorData)</a></div></td><td><div class='simple-summary'>
 <p>Static factory method for error responses.</p>
 </div>
 </td></tr></table>
@@ -42,7 +42,7 @@ Response objects are typically created using the static factory methods `Success
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='data'></div><div class='api-heading' data-id='data'><a href='#data'><span class='return-type'>object</span> data { get; }</a></div>
+  <div class="api-anchor" id='data'></div><div class='api-heading' data-id='data'><a href='#data'><span class='return-type'>object</span> <span class='member-name'>data</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -54,7 +54,7 @@ For error responses, this property is null.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='haserror'></div><div class='api-heading' data-id='haserror'><a href='#haserror'><span class='return-type'>bool</span> hasError { get; }</a></div>
+  <div class="api-anchor" id='haserror'></div><div class='api-heading' data-id='haserror'><a href='#haserror'><span class='return-type'>bool</span> <span class='member-name'>hasError</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -66,7 +66,7 @@ When false, the response will be delivered as a successful result.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='errordata'></div><div class='api-heading' data-id='errordata'><a href='#errordata'><span class='return-type'>object</span> errorData { get; }</a></div>
+  <div class="api-anchor" id='errordata'></div><div class='api-heading' data-id='errordata'><a href='#errordata'><span class='return-type'>object</span> <span class='member-name'>errorData</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -81,7 +81,7 @@ For success responses, this property is null. Supports any JSON-compatible type.
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='success'></div><div class='api-heading' data-id='success'><a href='#success'><span class='return-type'>UniWebViewChannelMessageResponse</span> Success(object data)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='success'></div><div class='api-heading' data-id='success'><a href='#success'><span class='return-type'>UniWebViewChannelMessageResponse</span> <span class='member-name'>Success</span>(object data)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -134,7 +134,7 @@ The provided data will be serialized to JSON and sent back to JavaScript.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='error'></div><div class='api-heading' data-id='error'><a href='#error'><span class='return-type'>UniWebViewChannelMessageResponse</span> Error(object errorData)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='error'></div><div class='api-heading' data-id='error'><a href='#error'><span class='return-type'>UniWebViewChannelMessageResponse</span> <span class='member-name'>Error</span>(object errorData)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

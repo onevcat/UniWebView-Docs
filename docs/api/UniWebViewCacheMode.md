@@ -10,16 +10,16 @@ sidebarDepth: 0
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#default'><span class='return-type'>UniWebViewCacheMode</span> Default { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#default'><span class='return-type'>UniWebViewCacheMode</span> <span class='member-name'>Default</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Default mode.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#nocache'><span class='return-type'>UniWebViewCacheMode</span> NoCache { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#nocache'><span class='return-type'>UniWebViewCacheMode</span> <span class='member-name'>NoCache</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>No cache is used.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#cacheelseload'><span class='return-type'>UniWebViewCacheMode</span> CacheElseLoad { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#cacheelseload'><span class='return-type'>UniWebViewCacheMode</span> <span class='member-name'>CacheElseLoad</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Prioritize the cache.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#cacheonly'><span class='return-type'>UniWebViewCacheMode</span> CacheOnly { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#cacheonly'><span class='return-type'>UniWebViewCacheMode</span> <span class='member-name'>CacheOnly</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Only use the cache.</p>
 </div>
 </td></tr></table>
@@ -27,7 +27,7 @@ sidebarDepth: 0
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='default'></div><div class='api-heading' data-id='default'><a href='#default'><span class='return-type'>UniWebViewCacheMode</span> Default { get; }</a></div>
+  <div class="api-anchor" id='default'></div><div class='api-heading' data-id='default'><a href='#default'><span class='return-type'>UniWebViewCacheMode</span> <span class='member-name'>Default</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -38,7 +38,7 @@ view will load from the network. This is the default setting.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='nocache'></div><div class='api-heading' data-id='nocache'><a href='#nocache'><span class='return-type'>UniWebViewCacheMode</span> NoCache { get; }</a></div>
+  <div class="api-anchor" id='nocache'></div><div class='api-heading' data-id='nocache'><a href='#nocache'><span class='return-type'>UniWebViewCacheMode</span> <span class='member-name'>NoCache</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -49,7 +49,7 @@ have a cache.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='cacheelseload'></div><div class='api-heading' data-id='cacheelseload'><a href='#cacheelseload'><span class='return-type'>UniWebViewCacheMode</span> CacheElseLoad { get; }</a></div>
+  <div class="api-anchor" id='cacheelseload'></div><div class='api-heading' data-id='cacheelseload'><a href='#cacheelseload'><span class='return-type'>UniWebViewCacheMode</span> <span class='member-name'>CacheElseLoad</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -60,7 +60,7 @@ expired. The web view will only load from the network when the page does not exi
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='cacheonly'></div><div class='api-heading' data-id='cacheonly'><a href='#cacheonly'><span class='return-type'>UniWebViewCacheMode</span> CacheOnly { get; }</a></div>
+  <div class="api-anchor" id='cacheonly'></div><div class='api-heading' data-id='cacheonly'><a href='#cacheonly'><span class='return-type'>UniWebViewCacheMode</span> <span class='member-name'>CacheOnly</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

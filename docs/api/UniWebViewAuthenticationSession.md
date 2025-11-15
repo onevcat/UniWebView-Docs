@@ -27,13 +27,13 @@ See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of aut
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#isauthenticationsupported'><span class='return-type'>bool</span> IsAuthenticationSupported { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#isauthenticationsupported'><span class='return-type'>bool</span> <span class='member-name'>IsAuthenticationSupported</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Check whether the current device and system supports the authentication session.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#url'><span class='return-type'>string</span> Url { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#url'><span class='return-type'>string</span> <span class='member-name'>Url</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The URL of the authentication webpage.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#callbackscheme'><span class='return-type'>string</span> CallbackScheme { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#callbackscheme'><span class='return-type'>string</span> <span class='member-name'>CallbackScheme</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The callback scheme of the authentication webpage.</p>
 </div>
 </td></tr></table>
@@ -42,10 +42,10 @@ See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of aut
 
 <table class='api-summary-table api-summary-table--events'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#onauthenticationfinished'><span class='return-type'>void</span> OnAuthenticationFinished(UniWebViewAuthenticationSession session, string url)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#onauthenticationfinished'><span class='return-type'>void</span> <span class='member-name'>OnAuthenticationFinished</span>(UniWebViewAuthenticationSession session, string url)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the session finishes authentication.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#onauthenticationerrorreceived'><span class='return-type'>void</span> OnAuthenticationErrorReceived(UniWebViewAuthenticationSession session, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onauthenticationerrorreceived'><span class='return-type'>void</span> <span class='member-name'>OnAuthenticationErrorReceived</span>(UniWebViewAuthenticationSession session, int errorCode, string errorMessage)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the session encounters an error.</p>
 </div>
 </td></tr></table>
@@ -54,13 +54,13 @@ See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of aut
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#create'><span class='return-type'>UniWebViewAuthenticationSession</span> Create(string url, string callbackScheme)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#create'><span class='return-type'>UniWebViewAuthenticationSession</span> <span class='member-name'>Create</span>(string url, string callbackScheme)</a></div></td><td><div class='simple-summary'>
 <p>Creates a new authentication session with a given authentication page URL and a callback scheme.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#start'><span class='return-type'>void</span> Start()</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#start'><span class='return-type'>void</span> <span class='member-name'>Start</span>()</a></div></td><td><div class='simple-summary'>
 <p>Start the authentication session process.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#setprivatemode'><span class='return-type'>void</span> SetPrivateMode(bool flag)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setprivatemode'><span class='return-type'>void</span> <span class='member-name'>SetPrivateMode</span>(bool flag)</a></div></td><td><div class='simple-summary'>
 <p>Sets to use the private mode for the authentication.</p>
 </div>
 </td></tr></table>
@@ -68,7 +68,7 @@ See the [OAuth 2.0 Support](/guide/oauth2.html) for a more detailed guide of aut
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='isauthenticationsupported'></div><div class='api-heading' data-id='isauthenticationsupported'><a href='#isauthenticationsupported'><span class='return-type'>bool</span> IsAuthenticationSupported { get; }</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='isauthenticationsupported'></div><div class='api-heading' data-id='isauthenticationsupported'><a href='#isauthenticationsupported'><span class='return-type'>bool</span> <span class='member-name'>IsAuthenticationSupported</span> { get; }</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -102,7 +102,7 @@ intent query explicitly in your AndroidManifest.xml, to follow the <a href="http
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='url'></div><div class='api-heading' data-id='url'><a href='#url'><span class='return-type'>string</span> Url { get; }</a></div>
+  <div class="api-anchor" id='url'></div><div class='api-heading' data-id='url'><a href='#url'><span class='return-type'>string</span> <span class='member-name'>Url</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -112,7 +112,7 @@ intent query explicitly in your AndroidManifest.xml, to follow the <a href="http
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='callbackscheme'></div><div class='api-heading' data-id='callbackscheme'><a href='#callbackscheme'><span class='return-type'>string</span> CallbackScheme { get; }</a></div>
+  <div class="api-anchor" id='callbackscheme'></div><div class='api-heading' data-id='callbackscheme'><a href='#callbackscheme'><span class='return-type'>string</span> <span class='member-name'>CallbackScheme</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -126,7 +126,7 @@ is expected to use a URL with this scheme to return to your app.</p>
 ### Events
 
 <div class='api-box method'>
-  <div class="api-anchor" id='onauthenticationfinished'></div><div class='api-heading' data-id='onauthenticationfinished'><a href='#onauthenticationfinished'><span class='return-type'>void</span> OnAuthenticationFinished(UniWebViewAuthenticationSession session, string url)</a></div>
+  <div class="api-anchor" id='onauthenticationfinished'></div><div class='api-heading' data-id='onauthenticationfinished'><a href='#onauthenticationfinished'><span class='return-type'>void</span> <span class='member-name'>OnAuthenticationFinished</span>(UniWebViewAuthenticationSession session, string url)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -153,7 +153,7 @@ is retrieved or an error is returned in the callback URL.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='onauthenticationerrorreceived'></div><div class='api-heading' data-id='onauthenticationerrorreceived'><a href='#onauthenticationerrorreceived'><span class='return-type'>void</span> OnAuthenticationErrorReceived(UniWebViewAuthenticationSession session, int errorCode, string errorMessage)</a></div>
+  <div class="api-anchor" id='onauthenticationerrorreceived'></div><div class='api-heading' data-id='onauthenticationerrorreceived'><a href='#onauthenticationerrorreceived'><span class='return-type'>void</span> <span class='member-name'>OnAuthenticationErrorReceived</span>(UniWebViewAuthenticationSession session, int errorCode, string errorMessage)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -188,7 +188,7 @@ happens when a network error or the user dismisses the authentication page from 
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='create'></div><div class='api-heading' data-id='create'><a href='#create'><span class='return-type'>UniWebViewAuthenticationSession</span> Create(string url, string callbackScheme)</a><div class='api-badge api-badge-blue'>static</div></div>
+  <div class="api-anchor" id='create'></div><div class='api-heading' data-id='create'><a href='#create'><span class='return-type'>UniWebViewAuthenticationSession</span> <span class='member-name'>Create</span>(string url, string callbackScheme)</a><div class='api-badge api-badge-blue'>static</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -228,7 +228,7 @@ client id and required scopes, etc.</p>
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='start'></div><div class='api-heading' data-id='start'><a href='#start'><span class='return-type'>void</span> Start()</a></div>
+  <div class="api-anchor" id='start'></div><div class='api-heading' data-id='start'><a href='#start'><span class='return-type'>void</span> <span class='member-name'>Start</span>()</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -259,7 +259,7 @@ session<span class="token punctuation">.</span><span class="token function">Star
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='setprivatemode'></div><div class='api-heading' data-id='setprivatemode'><a href='#setprivatemode'><span class='return-type'>void</span> SetPrivateMode(bool flag)</a></div>
+  <div class="api-anchor" id='setprivatemode'></div><div class='api-heading' data-id='setprivatemode'><a href='#setprivatemode'><span class='return-type'>void</span> <span class='member-name'>SetPrivateMode</span>(bool flag)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

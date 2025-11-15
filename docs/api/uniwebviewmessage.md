@@ -15,16 +15,16 @@ message object.
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#rawmessage'><span class='return-type'>string</span> RawMessage { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#rawmessage'><span class='return-type'>string</span> <span class='member-name'>RawMessage</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Gets the raw message.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#scheme'><span class='return-type'>string</span> Scheme { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#scheme'><span class='return-type'>string</span> <span class='member-name'>Scheme</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The url scheme of this UniWebViewMessage.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#path'><span class='return-type'>string</span> Path { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#path'><span class='return-type'>string</span> <span class='member-name'>Path</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The path of this UniWebViewMessage.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#args'><span class='return-type'>Dictionary&lt;string, string&gt;</span> Args { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#args'><span class='return-type'>Dictionary&lt;string, string&gt;</span> <span class='member-name'>Args</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The arguments of this UniWebViewMessage.</p>
 </div>
 </td></tr></table>
@@ -33,7 +33,7 @@ message object.
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#uniwebviewmessage'><span class='return-type'></span> UniWebViewMessage(string rawMessage)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#uniwebviewmessage'><span class='return-type'></span> <span class='member-name'>UniWebViewMessage</span>(string rawMessage)</a></div></td><td><div class='simple-summary'>
 <p>Initializes a new instance of the <code>UniWebViewMessage</code> struct.</p>
 </div>
 </td></tr></table>
@@ -41,7 +41,7 @@ message object.
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='rawmessage'></div><div class='api-heading' data-id='rawmessage'><a href='#rawmessage'><span class='return-type'>string</span> RawMessage { get; }</a></div>
+  <div class="api-anchor" id='rawmessage'></div><div class='api-heading' data-id='rawmessage'><a href='#rawmessage'><span class='return-type'>string</span> <span class='member-name'>RawMessage</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -63,7 +63,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='scheme'></div><div class='api-heading' data-id='scheme'><a href='#scheme'><span class='return-type'>string</span> Scheme { get; }</a></div>
+  <div class="api-anchor" id='scheme'></div><div class='api-heading' data-id='scheme'><a href='#scheme'><span class='return-type'>string</span> <span class='member-name'>Scheme</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -95,7 +95,7 @@ anotherWebView<span class="token punctuation">.</span><span class="token functio
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='path'></div><div class='api-heading' data-id='path'><a href='#path'><span class='return-type'>string</span> Path { get; }</a></div>
+  <div class="api-anchor" id='path'></div><div class='api-heading' data-id='path'><a href='#path'><span class='return-type'>string</span> <span class='member-name'>Path</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -129,7 +129,7 @@ webView<span class="token punctuation">.</span><span class="token function">Load
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='args'></div><div class='api-heading' data-id='args'><a href='#args'><span class='return-type'>Dictionary&lt;string, string&gt;</span> Args { get; }</a></div>
+  <div class="api-anchor" id='args'></div><div class='api-heading' data-id='args'><a href='#args'><span class='return-type'>Dictionary&lt;string, string&gt;</span> <span class='member-name'>Args</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -179,7 +179,7 @@ webView<span class="token punctuation">.</span>OnMessageReceived <span class="to
 ### Methods
 
 <div class='api-box method'>
-  <div class="api-anchor" id='uniwebviewmessage'></div><div class='api-heading' data-id='uniwebviewmessage'><a href='#uniwebviewmessage'><span class='return-type'></span> UniWebViewMessage(string rawMessage)</a><div class='api-badge api-badge-blue'>constructor</div></div>
+  <div class="api-anchor" id='uniwebviewmessage'></div><div class='api-heading' data-id='uniwebviewmessage'><a href='#uniwebviewmessage'><span class='return-type'></span> <span class='member-name'>UniWebViewMessage</span>(string rawMessage)</a><div class='api-badge api-badge-blue'>constructor</div></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>

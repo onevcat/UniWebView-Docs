@@ -17,25 +17,25 @@ When received a token from the server, UniWebView tries to parse it into this st
 
 <table class='api-summary-table api-summary-table--properties'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#accesstoken'><span class='return-type'>string</span> AccessToken { get; }</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#accesstoken'><span class='return-type'>string</span> <span class='member-name'>AccessToken</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The access token retrieved from the service provider.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#scope'><span class='return-type'>string</span> Scope { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#scope'><span class='return-type'>string</span> <span class='member-name'>Scope</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The granted scopes of the token.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#tokentype'><span class='return-type'>string</span> TokenType { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#tokentype'><span class='return-type'>string</span> <span class='member-name'>TokenType</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The token type.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#refreshtoken'><span class='return-type'>string</span> RefreshToken { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#refreshtoken'><span class='return-type'>string</span> <span class='member-name'>RefreshToken</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The refresh token retrieved from the service provider.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#expiresin'><span class='return-type'>long</span> ExpiresIn { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#expiresin'><span class='return-type'>long</span> <span class='member-name'>ExpiresIn</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>How long does this token remain valid.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#idtoken'><span class='return-type'>string</span> IdToken { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#idtoken'><span class='return-type'>string</span> <span class='member-name'>IdToken</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The ID token retrieved from the service provider.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#rawvalue'><span class='return-type'>string</span> RawValue { get; }</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#rawvalue'><span class='return-type'>string</span> <span class='member-name'>RawValue</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>The raw value of the response of the exchange token request.</p>
 </div>
 </td></tr></table>
@@ -43,7 +43,7 @@ When received a token from the server, UniWebView tries to parse it into this st
 ### Properties
 
 <div class='api-box property'>
-  <div class="api-anchor" id='accesstoken'></div><div class='api-heading' data-id='accesstoken'><a href='#accesstoken'><span class='return-type'>string</span> AccessToken { get; }</a></div>
+  <div class="api-anchor" id='accesstoken'></div><div class='api-heading' data-id='accesstoken'><a href='#accesstoken'><span class='return-type'>string</span> <span class='member-name'>AccessToken</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -58,7 +58,7 @@ place yourself.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='scope'></div><div class='api-heading' data-id='scope'><a href='#scope'><span class='return-type'>string</span> Scope { get; }</a></div>
+  <div class="api-anchor" id='scope'></div><div class='api-heading' data-id='scope'><a href='#scope'><span class='return-type'>string</span> <span class='member-name'>Scope</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -71,7 +71,7 @@ before actual attempts.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='tokentype'></div><div class='api-heading' data-id='tokentype'><a href='#tokentype'><span class='return-type'>string</span> TokenType { get; }</a></div>
+  <div class="api-anchor" id='tokentype'></div><div class='api-heading' data-id='tokentype'><a href='#tokentype'><span class='return-type'>string</span> <span class='member-name'>TokenType</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -82,7 +82,7 @@ before actual attempts.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='refreshtoken'></div><div class='api-heading' data-id='refreshtoken'><a href='#refreshtoken'><span class='return-type'>string</span> RefreshToken { get; }</a></div>
+  <div class="api-anchor" id='refreshtoken'></div><div class='api-heading' data-id='refreshtoken'><a href='#refreshtoken'><span class='return-type'>string</span> <span class='member-name'>RefreshToken</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -98,7 +98,7 @@ to determine the use of refresh token.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='expiresin'></div><div class='api-heading' data-id='expiresin'><a href='#expiresin'><span class='return-type'>long</span> ExpiresIn { get; }</a></div>
+  <div class="api-anchor" id='expiresin'></div><div class='api-heading' data-id='expiresin'><a href='#expiresin'><span class='return-type'>long</span> <span class='member-name'>ExpiresIn</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -108,7 +108,7 @@ to determine the use of refresh token.</p>
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='idtoken'></div><div class='api-heading' data-id='idtoken'><a href='#idtoken'><span class='return-type'>string</span> IdToken { get; }</a></div>
+  <div class="api-anchor" id='idtoken'></div><div class='api-heading' data-id='idtoken'><a href='#idtoken'><span class='return-type'>string</span> <span class='member-name'>IdToken</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
@@ -120,7 +120,7 @@ The ID token is usually a JWT token that contains information about the user.</p
   </div>
 </div>
 <div class='api-box property'>
-  <div class="api-anchor" id='rawvalue'></div><div class='api-heading' data-id='rawvalue'><a href='#rawvalue'><span class='return-type'>string</span> RawValue { get; }</a></div>
+  <div class="api-anchor" id='rawvalue'></div><div class='api-heading' data-id='rawvalue'><a href='#rawvalue'><span class='return-type'>string</span> <span class='member-name'>RawValue</span> { get; }</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
