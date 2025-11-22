@@ -1,5 +1,11 @@
 # Release Note
 
+### 6.2.1 (22 Nov, 2025)
+
+#### Fix
+
+* A Gradle parsing issue that prevents dummy files being added when `skipIl2CppBuild` flag is on.
+
 ### 6.2.0 (15 Nov, 2025)
 
 #### Add
