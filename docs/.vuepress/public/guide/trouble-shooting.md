@@ -19,7 +19,7 @@ However, if any other package in your project is already adding the same librari
 
 Most of the issues can be solved by adjusting the settings under the **"UniWebView" section**, which in the **Unity Preferences** panel. Press the "Settings" item in Unity's menu and open it, then follow the instructions below based on the error you have in the Unity console or Android log.
 
-![](/images/preferences-v5.png)
+![](/images/preferences-v6.png)
 
 ::: tip
 In almost all cases, it is important to perform a Clean Build after you change the settings. You can find it in the dropdown menu in the "Build Settings" window.

@@ -41,7 +41,7 @@ If you have any errors when building, you can use this panel to customize how Un
 
 UniWebView uses a post-build script to modify the gradle project and "AndroidManifest.xml" file for the exported Android project.
 
-![](/images/preferences-v5.png)
+![](/images/preferences-v6.png)
 
 ### Android Manifest
 

@@ -164,3 +164,9 @@ On macOS Editor, due to the corresponding native class is not available, there i
 
 - Your URL will be opened in an external browser on system, such as Safari or Chrome.
 - The customization methods and the events do not work. Any logic you write in `OnSafeBrowsingFinished` will never be called in Editor.
+
+### Advanced Custom Tabs Features (Android)
+
+Chrome Custom Tabs (and other providers that support Custom Tabs) offer richer, customizable APIs on Android: color schemes, secondary toolbar, navigation bar divider, prefetch/warmup, partial tab sizing/side-sheet, maximization button, etc. UniWebView exposes these through the Safe Browsing APIs; check the [API docs](/api/uniwebviewsafebrowsing.html) for usage.
+
+The default AndroidX Browser version is **1.5.0**, which covers the core features. If an API call in the docs requires a higher version (e.g., 1.7/1.8), upgrade the Android Browser package in the [UniWebView Settings Panel](/guide/installation.html#optional-steps) before building.
