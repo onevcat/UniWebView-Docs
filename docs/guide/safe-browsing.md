@@ -93,7 +93,7 @@ Once created, the Safe Browsing component in native side will be there and takin
 In other words, you need to at least call `Show` once you create a Safe Browsing. Otherwise, its memory is leaked.
 :::
 
-### Customization & Events
+### Customization
 
 #### Color
 
@@ -121,6 +121,18 @@ Although in the screenshot above, the controls are rendered with white and it se
 On Android, the system will automatically pick from white or black, based on the background color you set by `SetToolbarColor`, to make sure the text is clearly visible.
 Check the color palettes in the [Material design color guide](https://material.io/design/color/the-color-system.html#tools-for-picking-colors) to get detail on which color will be used.
 :::
+
+#### Advanced Custom Tabs Features (Android)
+
+On Android, Chrome Custom Tabs (and other providers that support Custom Tabs) offer richer, customizable APIs: color schemes, flexible height, secondary (bottom) toolbar, navigation bar divider, etc. UniWebView exposes these through the Safe Browsing APIs; check the [API docs](/api/uniwebviewsafebrowsing.html) for usage.
+
+For example, you can display a share button or present the page as a sheet:
+
+![](/images/custom-chrome-tab.png)
+
+The default AndroidX Browser version is **1.5.0**, which covers the core features. If an API call in the docs requires a higher version (e.g., 1.7/1.8), upgrade the Android Browser package in the [UniWebView Settings Panel](/guide/installation.html#optional-steps) before building.
+
+### Events
 
 #### Finish Event
 
@@ -164,9 +176,3 @@ On macOS Editor, due to the corresponding native class is not available, there i
 
 - Your URL will be opened in an external browser on system, such as Safari or Chrome.
 - The customization methods and the events do not work. Any logic you write in `OnSafeBrowsingFinished` will never be called in Editor.
-
-### Advanced Custom Tabs Features (Android)
-
-Chrome Custom Tabs (and other providers that support Custom Tabs) offer richer, customizable APIs on Android: color schemes, secondary toolbar, navigation bar divider, prefetch/warmup, partial tab sizing/side-sheet, maximization button, etc. UniWebView exposes these through the Safe Browsing APIs; check the [API docs](/api/uniwebviewsafebrowsing.html) for usage.
-
-The default AndroidX Browser version is **1.5.0**, which covers the core features. If an API call in the docs requires a higher version (e.g., 1.7/1.8), upgrade the Android Browser package in the [UniWebView Settings Panel](/guide/installation.html#optional-steps) before building.
