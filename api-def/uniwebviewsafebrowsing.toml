@@ -290,10 +290,10 @@ color = "green"
 
 [[Methods]]
 name = "SetInitialHeightPx"
-syntax = "SetInitialHeightPx(int initialHeightPx)"
+syntax = "SetInitialHeightPx(int initialHeightPx, ActivityHeightResizeBehavior resizeBehavior = ActivityHeightResizeBehavior.Fixed)"
 returnType = "void"
 summary = """
-Sets initial Custom Tab height in pixels for partial tabs. Ignored after `Show`.
+Sets initial Custom Tab height in pixels for partial tabs and chooses how the sheet can resize. Ignored after `Show`.
 
 Android only. This method does nothing on iOS.
 """
@@ -301,6 +301,10 @@ Android only. This method does nothing on iOS.
 name = "initialHeightPx"
 type = "int"
 summary = "Initial height in pixels."
+[[Methods.parameters]]
+name = "resizeBehavior"
+type = "ActivityHeightResizeBehavior"
+summary = "Resize behavior (`Default`, `Resizable`, or `Fixed`). Defaults to `Fixed`."
 [[Methods.badges]]
 name = "Android"
 color = "green"
