@@ -130,7 +130,7 @@ For example, you can display a share button or present the page as a sheet:
 
 ![](/images/custom-chrome-tab.png)
 
-The default AndroidX Browser version is **1.5.0**, which covers the core features. If an API call in the docs requires a higher version (e.g., 1.7/1.8), upgrade the Android Browser package in the [UniWebView Settings Panel](/guide/installation.html#optional-steps) before building.
+The default AndroidX Browser version is **1.5.0**, which covers the core features. If an API call in the docs requires a higher version (e.g., 1.7/1.8), upgrade the Android Browser package in the [UniWebView Settings Panel](/guide/installation.html#optional-steps) before building. Sometimes, you may also need to upgrade the Android SDK Target API Level or the Kotlin version together.
 
 ### Events
 
