@@ -89,9 +89,23 @@ Only web content hosted by HTTP or HTTPS is supported in Safe Browsing Mode. Att
 :::
 
 ::: warning Safe Browsing Memory
-Once created, the Safe Browsing component in native side will be there and taking memory until dismissed.
-In other words, you need to at least call `Show` once you create a Safe Browsing. Otherwise, its memory is leaked.
+Once created, the native Safe Browsing component keeps its underlying browser objects alive until the tab is closed **or** you explicitly dispose it.
+If you create a Safe Browsing instance but later decide not to call `Show`, make sure to release it with `safeBrowsing.Invalidate()`; otherwise its memory stays allocated on both Android and iOS.
+Whenever the Safe Browsing UI is actually shown, you do **not** need to call `Invalidate` manually—closing the tab (for example, tapping Done or pressing Back) triggers the native cleanup automatically.
 :::
+
+#### Releasing Safe Browsing Without Showing
+
+Sometimes you prepare Safe Browsing but later decide not to present it. In that case call `Invalidate` to release the native resources:
+
+```csharp
+var safeBrowsing = UniWebViewSafeBrowsing.Create("https://docs.uniwebview.com");
+
+// Business logic changed, Safe Browsing is no longer needed.
+safeBrowsing.Invalidate();
+```
+
+`Invalidate` does not close a Safe Browsing tab that is already visible (Android cannot dismiss Custom Tabs programmatically), but it unbinds the native services and removes the Unity listener so the instance can be garbage collected safely.
 
 ### Customization
 

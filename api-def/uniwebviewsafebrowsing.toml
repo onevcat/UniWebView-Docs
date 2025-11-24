@@ -166,6 +166,24 @@ name = "iOS"
 color = "orange"
 
 [[Methods]]
+name = "Invalidate"
+syntax = "Invalidate()"
+returnType = "void"
+summary = """
+Releases the native Safe Browsing resources when you no longer plan to use this instance.
+
+Call this after `Create` if the business logic changes and you decide not to show the Safe Browsing UI. Android will unbind its Custom Tabs service, while iOS simply discards the underlying `SFSafariViewController`. When the UI is actually presented and the user closes it (Done/Back), cleanup runs automatically and you do not need to call this method.
+"""
+example = """
+```csharp
+var safeBrowsing = UniWebViewSafeBrowsing.Create("https://uniwebview.com");
+
+// Later we decide not to show Safe Browsing anymore.
+safeBrowsing.Invalidate();
+```
+"""
+
+[[Methods]]
 name = "SetToolbarColor"
 syntax = "SetToolbarColor(Color color)"
 returnType = "void"

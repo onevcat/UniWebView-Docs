@@ -5,6 +5,7 @@
 #### Fix
 
 * A Gradle parsing issue that prevents dummy files being added when `skipIl2CppBuild` flag is on.
+* Fixed Safe Browsing on Android leaking Chrome Custom Tabs sessions when the tab hides or was never shown; added the cross-platform `UniWebViewSafeBrowsing.Invalidate()` API so unused Safe Browsing instances can be released explicitly on both Android and iOS.
 
 ### 6.2.0 (15 Nov, 2025)
 
