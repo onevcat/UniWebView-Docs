@@ -6,6 +6,20 @@ Normally, UniWebView will render the content of the visited page (e.g. HTML). Ho
 
 The file download should work correctly without any additional configuration. However, there are some differences in the file downloading behavior between iOS and Android due to the differences in how they handle file download requests. This document will explain this topic.
 
+## Disable Automatic Downloads
+
+If you do not want UniWebView to start a download automatically when a response cannot be rendered (for example, a binary
+file without inline support), call `SetAutoDownloadEnabled(false)` on the web view:
+
+```csharp
+webView.SetAutoDownloadEnabled(false);
+```
+
+When disabled, UniWebView ignores those non-renderable responses. On iOS and macOS Editor, any URLs or MIME types you
+explicitly add through `AddDownloadURL` or `AddDownloadMIMEType` still trigger downloads. On Android, this prevents the
+underlying download listener from forwarding the request to `DownloadManager`. Context menu actions like “Save Image” are
+not affected.
+
 ## Android
 
 For Android, there are not many configurable options.

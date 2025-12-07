@@ -2753,6 +2753,31 @@ type = "bool"
 summary = "Whether the user can edit the file name and determine whether actually starting the downloading."
 
 [[Methods]]
+name = "SetAutoDownloadEnabled"
+syntax = "SetAutoDownloadEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Enables or disables the automatic download when a response cannot be rendered in the web view. Default is `true`.
+
+When set to `false`, UniWebView skips starting a download task for non-renderable resources (such as attachments with
+unsupported MIME types). On iOS and macOS Editor, downloads triggered through `AddDownloadURL` or `AddDownloadMIMEType`
+still work. On Android, this prevents the download listener from forwarding unsupported resources to `DownloadManager`.
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether UniWebView should automatically start downloading non-renderable resources."
+[[Methods.badges]]
+name = "iOS"
+color = "orange"
+[[Methods.badges]]
+name = "macOS"
+color = "purple"
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
 name = "SetAllowUserChooseActionAfterDownloading"
 syntax = "SetAllowUserChooseActionAfterDownloading(bool allowed)"
 returnType = "void"
