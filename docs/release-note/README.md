@@ -1,5 +1,11 @@
 # Release Note
 
+### 6.2.2 (11 Dec, 2025)
+
+#### Fix
+
+* Resolved a GPU driver crash occurring when rendering web views with fade animations on Pixel 10 series devices.
+
 ### 6.2.1 (22 Nov, 2025)
 
 #### Fix
