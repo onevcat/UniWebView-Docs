@@ -66,6 +66,42 @@ if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
 name = "static"
 color = "blue"
 
+[[Properties]]
+name = "ColorScheme.System"
+returnType = "UniWebViewSafeBrowsing.ColorScheme"
+hasSetter = false
+summary = "Uses the system default color scheme."
+
+[[Properties]]
+name = "ColorScheme.Light"
+returnType = "UniWebViewSafeBrowsing.ColorScheme"
+hasSetter = false
+summary = "Forces a light color scheme for the Custom Tabs UI."
+
+[[Properties]]
+name = "ColorScheme.Dark"
+returnType = "UniWebViewSafeBrowsing.ColorScheme"
+hasSetter = false
+summary = "Forces a dark color scheme for the Custom Tabs UI."
+
+[[Properties]]
+name = "ActivityHeightResizeBehavior.Default"
+returnType = "UniWebViewSafeBrowsing.ActivityHeightResizeBehavior"
+hasSetter = false
+summary = "Uses the default resize behavior decided by the Custom Tabs provider."
+
+[[Properties]]
+name = "ActivityHeightResizeBehavior.Resizable"
+returnType = "UniWebViewSafeBrowsing.ActivityHeightResizeBehavior"
+hasSetter = false
+summary = "Allows the user to resize the partial Custom Tab."
+
+[[Properties]]
+name = "ActivityHeightResizeBehavior.Fixed"
+returnType = "UniWebViewSafeBrowsing.ActivityHeightResizeBehavior"
+hasSetter = false
+summary = "Prevents the user from resizing the partial Custom Tab."
+
 [[Methods]]
 name = "Create"
 syntax = "Create(string url)"

@@ -77,12 +77,22 @@ Whether Kotlin runtime should be added to the project. UniWebView for Android is
 
 If any other packages of your project is already adding this, you can opt-out this option to skip adding Kotlin to the project.
 
+If you keep the Kotlin version field empty, UniWebView uses the default Kotlin version (currently `1.8.22`). You can also specify a custom Kotlin version here. Versions lower than UniWebView's supported minimum will be clamped during export to avoid build failures.
+
 #### Adds Android Browser
 
 Whether the [androidx.browser package](https://developer.android.com/jetpack/androidx/releases/browser) should be added to the project.
 UniWebView uses some features in that package. It is on by default.
 
 If any other packages of your project is already adding this, you can opt-out this option to skip adding the browser package to the project.
+
+If you keep the Android Browser version field empty, UniWebView uses the default AndroidX Browser version (currently `1.5.0`). Some Safe Browsing (Custom Tabs) APIs require a newer AndroidX Browser version (for example, `1.7.0+` or `1.8.0+`). UniWebView will log a warning when an API is not available under the selected version.
+
+#### Adds AndroidX Core
+
+UniWebView requires `androidx.core:core` at runtime on Android. When `Adds Android Browser` is enabled, Gradle will resolve `androidx.core` transitively from `androidx.browser` and you do not need to add it separately.
+
+If you disable `Adds Android Browser`, make sure **some** dependency in your project still provides `androidx.core:core`. Otherwise, your game may crash on launch. If you are not sure, enable `Adds AndroidX Core` and leave its version empty to use UniWebView's default.
 
 #### Enable Jetifier
 
