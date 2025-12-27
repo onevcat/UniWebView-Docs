@@ -12,7 +12,8 @@ permissions are also built-in. You can use this class for tasks that are limited
 Apple Pay or Progressive Web Apps (PWA).
 
 You create a `UniWebViewSafeBrowsing` instance by calling the static `UniWebViewSafeBrowsing.Create` method with a
-destination URL. You cannot change this URL once the instance is created. To show the safe browsing, call `Show` on
+destination URL. On iOS, the URL is fixed for the lifetime of the instance. On Android, you can change the target URL
+before calling `Show` by using `ChangeUrl`. To show the safe browsing, call `Show` on
 the instance. The web content will be displayed in full screen with a toolbar containing the loaded URL, as well
 as some basic controls like Go Back, Go Forward and Done. 
 
