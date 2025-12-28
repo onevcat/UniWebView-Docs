@@ -16,7 +16,8 @@ permissions are also built-in. You can use this class for tasks that are limited
 Apple Pay or Progressive Web Apps (PWA).
 
 You create a `UniWebViewSafeBrowsing` instance by calling the static `UniWebViewSafeBrowsing.Create` method with a
-destination URL. You cannot change this URL once the instance is created. To show the safe browsing, call `Show` on
+destination URL. On iOS, the URL is fixed for the lifetime of the instance. On Android, you can change the target URL
+before calling `Show` by using `ChangeUrl`. To show the safe browsing, call `Show` on
 the instance. The web content will be displayed in full screen with a toolbar containing the loaded URL, as well
 as some basic controls like Go Back, Go Forward and Done. 
 
@@ -30,6 +31,24 @@ external browser by using Unity's `Application.OpenURL`.
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#issafebrowsingsupported'><span class='return-type'>bool</span> <span class='member-name'>IsSafeBrowsingSupported</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Whether the safe browsing mode is supported in current runtime or not.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#colorscheme.system'><span class='return-type'>UniWebViewSafeBrowsing.ColorScheme</span> <span class='member-name'>ColorScheme.System</span> { get; }</a></div></td><td><div class='simple-summary'>
+<p>Uses the system default color scheme.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#colorscheme.light'><span class='return-type'>UniWebViewSafeBrowsing.ColorScheme</span> <span class='member-name'>ColorScheme.Light</span> { get; }</a></div></td><td><div class='simple-summary'>
+<p>Forces a light color scheme for the Custom Tabs UI.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#colorscheme.dark'><span class='return-type'>UniWebViewSafeBrowsing.ColorScheme</span> <span class='member-name'>ColorScheme.Dark</span> { get; }</a></div></td><td><div class='simple-summary'>
+<p>Forces a dark color scheme for the Custom Tabs UI.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#activityheightresizebehavior.default'><span class='return-type'>UniWebViewSafeBrowsing.ActivityHeightResizeBehavior</span> <span class='member-name'>ActivityHeightResizeBehavior.Default</span> { get; }</a></div></td><td><div class='simple-summary'>
+<p>Uses the default resize behavior decided by the Custom Tabs provider.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#activityheightresizebehavior.resizable'><span class='return-type'>UniWebViewSafeBrowsing.ActivityHeightResizeBehavior</span> <span class='member-name'>ActivityHeightResizeBehavior.Resizable</span> { get; }</a></div></td><td><div class='simple-summary'>
+<p>Allows the user to resize the partial Custom Tab.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#activityheightresizebehavior.fixed'><span class='return-type'>UniWebViewSafeBrowsing.ActivityHeightResizeBehavior</span> <span class='member-name'>ActivityHeightResizeBehavior.Fixed</span> { get; }</a></div></td><td><div class='simple-summary'>
+<p>Prevents the user from resizing the partial Custom Tab.</p>
 </div>
 </td></tr></table>
 
@@ -70,8 +89,62 @@ external browser by using Unity's `Application.OpenURL`.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#dismiss'><span class='return-type'>void</span> <span class='member-name'>Dismiss</span>()</a></div></td><td><div class='simple-summary'>
 <p>Dismisses the safe browsing component.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#invalidate'><span class='return-type'>void</span> <span class='member-name'>Invalidate</span>()</a></div></td><td><div class='simple-summary'>
+<p>Releases the native Safe Browsing resources when you no longer plan to use this instance.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbarcolor'><span class='return-type'>void</span> <span class='member-name'>SetToolbarColor</span>(Color color)</a></div></td><td><div class='simple-summary'>
 <p>Sets the color for toolbar background in the safe browsing component.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setcolorscheme'><span class='return-type'>void</span> <span class='member-name'>SetColorScheme</span>(ColorScheme colorScheme)</a></div></td><td><div class='simple-summary'>
+<p>Sets the Custom Tabs UI color scheme.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#changeurl'><span class='return-type'>void</span> <span class='member-name'>ChangeUrl</span>(string url)</a></div></td><td><div class='simple-summary'>
+<p>Changes the URL to be loaded before the tab is shown (useful for warmup/prefetch).</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setsecondarytoolbarcolor'><span class='return-type'>void</span> <span class='member-name'>SetSecondaryToolbarColor</span>(Color color)</a></div></td><td><div class='simple-summary'>
+<p>Sets the secondary/bottom toolbar color.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setnavigationbarcolor'><span class='return-type'>void</span> <span class='member-name'>SetNavigationBarColor</span>(Color color)</a></div></td><td><div class='simple-summary'>
+<p>Sets the navigation bar color.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setnavigationbardividercolor'><span class='return-type'>void</span> <span class='member-name'>SetNavigationBarDividerColor</span>(Color color)</a></div></td><td><div class='simple-summary'>
+<p>Sets the navigation bar divider color.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbarcornerradiusdp'><span class='return-type'>void</span> <span class='member-name'>SetToolbarCornerRadiusDp</span>(int cornerRadiusDp)</a></div></td><td><div class='simple-summary'>
+<p>Sets the toolbar corner radius in dp for partial Custom Tabs.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setinitialheightpx'><span class='return-type'>void</span> <span class='member-name'>SetInitialHeightPx</span>(int initialHeightPx, ActivityHeightResizeBehavior resizeBehavior = ActivityHeightResizeBehavior.Fixed)</a></div></td><td><div class='simple-summary'>
+<p>Sets initial Custom Tab height in pixels for partial tabs and chooses how the sheet can resize.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setinitialwidthpx'><span class='return-type'>void</span> <span class='member-name'>SetInitialWidthPx</span>(int initialWidthPx)</a></div></td><td><div class='simple-summary'>
+<p>Sets initial Custom Tab width in pixels (side sheet).</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setsharemenuitemenabled'><span class='return-type'>void</span> <span class='member-name'>SetShareMenuItemEnabled</span>(bool enable)</a></div></td><td><div class='simple-summary'>
+<p>Enables or disables share menu items.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#seturlbarhidingenabled'><span class='return-type'>void</span> <span class='member-name'>SetUrlBarHidingEnabled</span>(bool enable)</a></div></td><td><div class='simple-summary'>
+<p>Enables hiding the URL bar on scroll.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setsendtoexternaldefaulthandlerenabled'><span class='return-type'>void</span> <span class='member-name'>SetSendToExternalDefaultHandlerEnabled</span>(bool enable)</a></div></td><td><div class='simple-summary'>
+<p>Sends redirects to the system default handler when enabled.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setmaximizationenabled'><span class='return-type'>void</span> <span class='member-name'>SetMaximizationEnabled</span>(bool enable)</a></div></td><td><div class='simple-summary'>
+<p>Toggles side-sheet maximization for partial Custom Tabs.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setdownloadbuttonenabled'><span class='return-type'>void</span> <span class='member-name'>SetDownloadButtonEnabled</span>(bool enable)</a></div></td><td><div class='simple-summary'>
+<p>Enables or disables the download button in the overflow menu.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setbookmarksbuttonenabled'><span class='return-type'>void</span> <span class='member-name'>SetBookmarksButtonEnabled</span>(bool enable)</a></div></td><td><div class='simple-summary'>
+<p>Enables or disables the bookmarks button in the overflow menu.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setbackgroundinteractionenabled'><span class='return-type'>void</span> <span class='member-name'>SetBackgroundInteractionEnabled</span>(bool enable)</a></div></td><td><div class='simple-summary'>
+<p>Allows interaction with background apps when a partial Custom Tab is shown.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setwarmup'><span class='return-type'>void</span> <span class='member-name'>SetWarmup</span>(bool enable)</a></div></td><td><div class='simple-summary'>
+<p>Warms up the Custom Tabs provider process to speed up later loads.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setprefetch'><span class='return-type'>void</span> <span class='member-name'>SetPrefetch</span>(bool enable, string alternativeUrl = null)</a></div></td><td><div class='simple-summary'>
+<p>Uses Custom Tabs prefetch (<code>mayLaunchUrl</code>) before showing the tab.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#settoolbaritemcolor'><span class='return-type'>void</span> <span class='member-name'>SetToolbarItemColor</span>(Color color)</a></div></td><td><div class='simple-summary'>
 <p>Sets the color for toolbar controls in the safe browsing component.</p>
@@ -120,6 +193,66 @@ intent query explicitly in your AndroidManifest.xml, to follow the Package Visib
 </div>
 </div>
     </div>
+  </div>
+</div>
+<div class='api-box property'>
+  <div class="api-anchor" id='colorscheme.system'></div><div class='api-heading' data-id='colorscheme.system'><a href='#colorscheme.system'><span class='return-type'>UniWebViewSafeBrowsing.ColorScheme</span> <span class='member-name'>ColorScheme.System</span> { get; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Uses the system default color scheme.</p>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box property'>
+  <div class="api-anchor" id='colorscheme.light'></div><div class='api-heading' data-id='colorscheme.light'><a href='#colorscheme.light'><span class='return-type'>UniWebViewSafeBrowsing.ColorScheme</span> <span class='member-name'>ColorScheme.Light</span> { get; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Forces a light color scheme for the Custom Tabs UI.</p>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box property'>
+  <div class="api-anchor" id='colorscheme.dark'></div><div class='api-heading' data-id='colorscheme.dark'><a href='#colorscheme.dark'><span class='return-type'>UniWebViewSafeBrowsing.ColorScheme</span> <span class='member-name'>ColorScheme.Dark</span> { get; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Forces a dark color scheme for the Custom Tabs UI.</p>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box property'>
+  <div class="api-anchor" id='activityheightresizebehavior.default'></div><div class='api-heading' data-id='activityheightresizebehavior.default'><a href='#activityheightresizebehavior.default'><span class='return-type'>UniWebViewSafeBrowsing.ActivityHeightResizeBehavior</span> <span class='member-name'>ActivityHeightResizeBehavior.Default</span> { get; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Uses the default resize behavior decided by the Custom Tabs provider.</p>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box property'>
+  <div class="api-anchor" id='activityheightresizebehavior.resizable'></div><div class='api-heading' data-id='activityheightresizebehavior.resizable'><a href='#activityheightresizebehavior.resizable'><span class='return-type'>UniWebViewSafeBrowsing.ActivityHeightResizeBehavior</span> <span class='member-name'>ActivityHeightResizeBehavior.Resizable</span> { get; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Allows the user to resize the partial Custom Tab.</p>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box property'>
+  <div class="api-anchor" id='activityheightresizebehavior.fixed'></div><div class='api-heading' data-id='activityheightresizebehavior.fixed'><a href='#activityheightresizebehavior.fixed'><span class='return-type'>UniWebViewSafeBrowsing.ActivityHeightResizeBehavior</span> <span class='member-name'>ActivityHeightResizeBehavior.Fixed</span> { get; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Prevents the user from resizing the partial Custom Tab.</p>
+</div>
+                </div>
   </div>
 </div>
 
@@ -418,6 +551,27 @@ safeBrowsing<span class="token punctuation">.</span><span class="token function"
   </div>
 </div>
 <div class='api-box method'>
+  <div class="api-anchor" id='invalidate'></div><div class='api-heading' data-id='invalidate'><a href='#invalidate'><span class='return-type'>void</span> <span class='member-name'>Invalidate</span>()</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Releases the native Safe Browsing resources when you no longer plan to use this instance.</p>
+<p>Call this after <code>Create</code> if the business logic changes and you decide not to show the Safe Browsing UI. Android will unbind its Custom Tabs service, while iOS simply discards the underlying <code>SFSafariViewController</code>. When the UI is actually presented and the user closes it (Done/Back), cleanup runs automatically and you do not need to call this method.</p>
+</div>
+                        <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> safeBrowsing <span class="token operator">=</span> UniWebViewSafeBrowsing<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span><span class="token string">"https://uniwebview.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Later we decide not to show Safe Browsing anymore.</span>
+safeBrowsing<span class="token punctuation">.</span><span class="token function">Invalidate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class="api-anchor" id='settoolbarcolor'></div><div class='api-heading' data-id='settoolbarcolor'><a href='#settoolbarcolor'><span class='return-type'>void</span> <span class='member-name'>SetToolbarColor</span>(Color color)</a></div>
   <div class='api-body'>
     <div class='desc'>
@@ -443,6 +597,373 @@ safeBrowsing<span class="token punctuation">.</span><span class="token function"
 </div>
 </div>
     </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setcolorscheme'></div><div class='api-heading' data-id='setcolorscheme'><a href='#setcolorscheme'><span class='return-type'>void</span> <span class='member-name'>SetColorScheme</span>(ColorScheme colorScheme)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the Custom Tabs UI color scheme. Ignored after <code>Show</code>.</p>
+<p>Android only. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>ColorScheme</span> <span class='parameter-item-name'>colorScheme</span></div>
+    <div class='parameter-item-desc'><p>The desired color scheme (<code>System</code>, <code>Light</code>, or <code>Dark</code>).</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='changeurl'></div><div class='api-heading' data-id='changeurl'><a href='#changeurl'><span class='return-type'>void</span> <span class='member-name'>ChangeUrl</span>(string url)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Changes the URL to be loaded before the tab is shown (useful for warmup/prefetch). Ignored after <code>Show</code>.</p>
+<p>Android only. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
+    <div class='parameter-item-desc'><p>The URL to switch to before calling <code>Show</code>.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setsecondarytoolbarcolor'></div><div class='api-heading' data-id='setsecondarytoolbarcolor'><a href='#setsecondarytoolbarcolor'><span class='return-type'>void</span> <span class='member-name'>SetSecondaryToolbarColor</span>(Color color)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the secondary/bottom toolbar color. Ignored after <code>Show</code>.</p>
+<p>Android only. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>Color</span> <span class='parameter-item-name'>color</span></div>
+    <div class='parameter-item-desc'><p>Tint color for the secondary toolbar.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setnavigationbarcolor'></div><div class='api-heading' data-id='setnavigationbarcolor'><a href='#setnavigationbarcolor'><span class='return-type'>void</span> <span class='member-name'>SetNavigationBarColor</span>(Color color)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the navigation bar color. Ignored after <code>Show</code>.</p>
+<p>Android only. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>Color</span> <span class='parameter-item-name'>color</span></div>
+    <div class='parameter-item-desc'><p>Tint color for the navigation bar.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setnavigationbardividercolor'></div><div class='api-heading' data-id='setnavigationbardividercolor'><a href='#setnavigationbardividercolor'><span class='return-type'>void</span> <span class='member-name'>SetNavigationBarDividerColor</span>(Color color)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the navigation bar divider color. Ignored after <code>Show</code>.</p>
+<p>Android only. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>Color</span> <span class='parameter-item-name'>color</span></div>
+    <div class='parameter-item-desc'><p>Tint color for the divider.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='settoolbarcornerradiusdp'></div><div class='api-heading' data-id='settoolbarcornerradiusdp'><a href='#settoolbarcornerradiusdp'><span class='return-type'>void</span> <span class='member-name'>SetToolbarCornerRadiusDp</span>(int cornerRadiusDp)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the toolbar corner radius in dp for partial Custom Tabs. Ignored after <code>Show</code>.</p>
+<p>Android only. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>cornerRadiusDp</span></div>
+    <div class='parameter-item-desc'><p>Corner radius in density-independent pixels.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setinitialheightpx'></div><div class='api-heading' data-id='setinitialheightpx'><a href='#setinitialheightpx'><span class='return-type'>void</span> <span class='member-name'>SetInitialHeightPx</span>(int initialHeightPx, ActivityHeightResizeBehavior resizeBehavior = ActivityHeightResizeBehavior.Fixed)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets initial Custom Tab height in pixels for partial tabs and chooses how the sheet can resize. Ignored after <code>Show</code>.</p>
+<p>Android only. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>initialHeightPx</span></div>
+    <div class='parameter-item-desc'><p>Initial height in pixels.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>ActivityHeightResizeBehavior</span> <span class='parameter-item-name'>resizeBehavior</span></div>
+    <div class='parameter-item-desc'><p>Resize behavior (<code>Default</code>, <code>Resizable</code>, or <code>Fixed</code>). Defaults to <code>Fixed</code>.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setinitialwidthpx'></div><div class='api-heading' data-id='setinitialwidthpx'><a href='#setinitialwidthpx'><span class='return-type'>void</span> <span class='member-name'>SetInitialWidthPx</span>(int initialWidthPx)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets initial Custom Tab width in pixels (side sheet). Ignored after <code>Show</code>.</p>
+<p>Android only. Requires AndroidX Browser 1.8.0+. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>initialWidthPx</span></div>
+    <div class='parameter-item-desc'><p>Initial width in pixels.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setsharemenuitemenabled'></div><div class='api-heading' data-id='setsharemenuitemenabled'><a href='#setsharemenuitemenabled'><span class='return-type'>void</span> <span class='member-name'>SetShareMenuItemEnabled</span>(bool enable)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Enables or disables share menu items. Ignored after <code>Show</code>.</p>
+<p>Android only. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enable</span></div>
+    <div class='parameter-item-desc'><p>Whether sharing buttons are enabled.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='seturlbarhidingenabled'></div><div class='api-heading' data-id='seturlbarhidingenabled'><a href='#seturlbarhidingenabled'><span class='return-type'>void</span> <span class='member-name'>SetUrlBarHidingEnabled</span>(bool enable)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Enables hiding the URL bar on scroll. Ignored after <code>Show</code>.</p>
+<p>Android only. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enable</span></div>
+    <div class='parameter-item-desc'><p>Whether the URL bar hides when scrolling.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setsendtoexternaldefaulthandlerenabled'></div><div class='api-heading' data-id='setsendtoexternaldefaulthandlerenabled'><a href='#setsendtoexternaldefaulthandlerenabled'><span class='return-type'>void</span> <span class='member-name'>SetSendToExternalDefaultHandlerEnabled</span>(bool enable)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sends redirects to the system default handler when enabled. Ignored after <code>Show</code>.</p>
+<p>Android only. Requires AndroidX Browser 1.7.0+. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enable</span></div>
+    <div class='parameter-item-desc'><p>Allow redirects to be handled externally.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setmaximizationenabled'></div><div class='api-heading' data-id='setmaximizationenabled'><a href='#setmaximizationenabled'><span class='return-type'>void</span> <span class='member-name'>SetMaximizationEnabled</span>(bool enable)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Toggles side-sheet maximization for partial Custom Tabs. Ignored after <code>Show</code>.</p>
+<p>Android only. Requires AndroidX Browser 1.8.0+. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enable</span></div>
+    <div class='parameter-item-desc'><p>Whether the maximization button is enabled.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setdownloadbuttonenabled'></div><div class='api-heading' data-id='setdownloadbuttonenabled'><a href='#setdownloadbuttonenabled'><span class='return-type'>void</span> <span class='member-name'>SetDownloadButtonEnabled</span>(bool enable)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Enables or disables the download button in the overflow menu. Ignored after <code>Show</code>.</p>
+<p>Android only. Requires AndroidX Browser 1.7.0+. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enable</span></div>
+    <div class='parameter-item-desc'><p>Enable download button in overflow.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setbookmarksbuttonenabled'></div><div class='api-heading' data-id='setbookmarksbuttonenabled'><a href='#setbookmarksbuttonenabled'><span class='return-type'>void</span> <span class='member-name'>SetBookmarksButtonEnabled</span>(bool enable)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Enables or disables the bookmarks button in the overflow menu. Ignored after <code>Show</code>.</p>
+<p>Android only. Requires AndroidX Browser 1.7.0+. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enable</span></div>
+    <div class='parameter-item-desc'><p>Enable bookmarks button in overflow.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setbackgroundinteractionenabled'></div><div class='api-heading' data-id='setbackgroundinteractionenabled'><a href='#setbackgroundinteractionenabled'><span class='return-type'>void</span> <span class='member-name'>SetBackgroundInteractionEnabled</span>(bool enable)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Allows interaction with background apps when a partial Custom Tab is shown. Ignored after <code>Show</code>.</p>
+<p>Android only. Requires AndroidX Browser 1.7.0+. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enable</span></div>
+    <div class='parameter-item-desc'><p>Allow background interaction while partial tab is visible.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setwarmup'></div><div class='api-heading' data-id='setwarmup'><a href='#setwarmup'><span class='return-type'>void</span> <span class='member-name'>SetWarmup</span>(bool enable)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Warms up the Custom Tabs provider process to speed up later loads. Can be called multiple times. Ignored after <code>Show</code>.</p>
+<p>Android only. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enable</span></div>
+    <div class='parameter-item-desc'><p>Whether to warm up the provider.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setprefetch'></div><div class='api-heading' data-id='setprefetch'><a href='#setprefetch'><span class='return-type'>void</span> <span class='member-name'>SetPrefetch</span>(bool enable, string alternativeUrl = null)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Uses Custom Tabs prefetch (<code>mayLaunchUrl</code>) before showing the tab. Ignored after <code>Show</code>.</p>
+<p>Android only. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enable</span></div>
+    <div class='parameter-item-desc'><p>Enable or disable prefetch.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>alternativeUrl</span></div>
+    <div class='parameter-item-desc'><p>Optional URL to prefetch instead of the current one.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
   </div>
 </div>
 <div class='api-box method'>

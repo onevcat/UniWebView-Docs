@@ -1147,6 +1147,20 @@ Normally, UniWebView will render the content of the visited page (e.g. HTML). Ho
 
 The file download should work correctly without any additional configuration. However, there are some differences in the file downloading behavior between iOS and Android due to the differences in how they handle file download requests. This document will explain this topic.
 
+## Disable Automatic Downloads
+
+If you do not want UniWebView to start a download automatically when a response cannot be rendered (for example, a binary
+file without inline support), call `SetAutoDownloadEnabled(false)` on the web view:
+
+```csharp
+webView.SetAutoDownloadEnabled(false);
+```
+
+When disabled, UniWebView ignores those non-renderable responses. On iOS and macOS Editor, any URLs or MIME types you
+explicitly add through `AddDownloadURL` or `AddDownloadMIMEType` still trigger downloads. On Android, this prevents the
+underlying download listener from forwarding the request to `DownloadManager`. Context menu actions like “Save Image” are
+not affected.
+
 ## Android
 
 For Android, there are not many configurable options.
@@ -1234,7 +1248,7 @@ UniWebView will rise some events related to the download task.
 
 To observe the start of downloading, listen to the `OnFileDownloadStarted` event. For the finishes event, use `OnFileDownloadFinished`:
 
-```swift
+```csharp
 webView.OnFileDownloadStarted += (view, remoteUrl, fileName) => {
     Debug.Log(string.Format("Download Started. From '{0}', file name '{1}'", remoteUrl, fileName));
 };
@@ -1619,7 +1633,7 @@ If you have any errors when building, you can use this panel to customize how Un
 
 UniWebView uses a post-build script to modify the gradle project and "AndroidManifest.xml" file for the exported Android project.
 
-![](/images/preferences-v5.png)
+![](/images/preferences-v6.png)
 
 ### Android Manifest
 
@@ -1655,12 +1669,22 @@ Whether Kotlin runtime should be added to the project. UniWebView for Android is
 
 If any other packages of your project is already adding this, you can opt-out this option to skip adding Kotlin to the project.
 
+If you keep the Kotlin version field empty, UniWebView uses the default Kotlin version (currently `1.8.22`). You can also specify a custom Kotlin version here. Versions lower than UniWebView's supported minimum will be clamped during export to avoid build failures.
+
 #### Adds Android Browser
 
 Whether the [androidx.browser package](https://developer.android.com/jetpack/androidx/releases/browser) should be added to the project.
 UniWebView uses some features in that package. It is on by default.
 
 If any other packages of your project is already adding this, you can opt-out this option to skip adding the browser package to the project.
+
+If you keep the Android Browser version field empty, UniWebView uses the default AndroidX Browser version (currently `1.5.0`). Some Safe Browsing (Custom Tabs) APIs require a newer AndroidX Browser version (for example, `1.7.0+` or `1.8.0+`). UniWebView will log a warning when an API is not available under the selected version.
+
+#### Adds AndroidX Core
+
+UniWebView requires `androidx.core:core` at runtime on Android. When `Adds Android Browser` is enabled, Gradle will resolve `androidx.core` transitively from `androidx.browser` and you do not need to add it separately.
+
+If you disable `Adds Android Browser`, make sure **some** dependency in your project still provides `androidx.core:core`. Otherwise, your game may crash on launch. If you are not sure, enable `Adds AndroidX Core` and leave its version empty to use UniWebView's default.
 
 #### Enable Jetifier
 
@@ -3629,11 +3653,25 @@ Only web content hosted by HTTP or HTTPS is supported in Safe Browsing Mode. Att
 :::
 
 ::: warning Safe Browsing Memory
-Once created, the Safe Browsing component in native side will be there and taking memory until dismissed.
-In other words, you need to at least call `Show` once you create a Safe Browsing. Otherwise, its memory is leaked.
+Once created, the native Safe Browsing component keeps its underlying browser objects alive until the tab is closed **or** you explicitly dispose it.
+If you create a Safe Browsing instance but later decide not to call `Show`, make sure to release it with `safeBrowsing.Invalidate()`; otherwise its memory stays allocated on both Android and iOS.
+Whenever the Safe Browsing UI is actually shown, you do **not** need to call `Invalidate` manually—closing the tab (for example, tapping Done or pressing Back) triggers the native cleanup automatically.
 :::
 
-### Customization & Events
+#### Releasing Safe Browsing Without Showing
+
+Sometimes you prepare Safe Browsing but later decide not to present it. In that case call `Invalidate` to release the native resources:
+
+```csharp
+var safeBrowsing = UniWebViewSafeBrowsing.Create("https://docs.uniwebview.com");
+
+// Business logic changed, Safe Browsing is no longer needed.
+safeBrowsing.Invalidate();
+```
+
+`Invalidate` does not close a Safe Browsing tab that is already visible (Android cannot dismiss Custom Tabs programmatically), but it unbinds the native services and removes the Unity listener so the instance can be garbage collected safely.
+
+### Customization
 
 #### Color
 
@@ -3661,6 +3699,18 @@ Although in the screenshot above, the controls are rendered with white and it se
 On Android, the system will automatically pick from white or black, based on the background color you set by `SetToolbarColor`, to make sure the text is clearly visible.
 Check the color palettes in the [Material design color guide](https://material.io/design/color/the-color-system.html#tools-for-picking-colors) to get detail on which color will be used.
 :::
+
+#### Advanced Custom Tabs Features (Android)
+
+On Android, Chrome Custom Tabs (and other providers that support Custom Tabs) offer richer, customizable APIs: color schemes, flexible height, secondary (bottom) toolbar, navigation bar divider, etc. UniWebView exposes these through the Safe Browsing APIs; check the [API docs](/api/uniwebviewsafebrowsing.html) for usage.
+
+For example, you can display a share button or present the page as a sheet:
+
+![](/images/custom-chrome-tab.png)
+
+The default AndroidX Browser version is **1.5.0**, which covers the core features. If an API call in the docs requires a higher version (e.g., 1.7/1.8), upgrade the Android Browser package in the [UniWebView Settings Panel](/guide/installation.html#optional-steps) before building. Sometimes, you may also need to upgrade the Android SDK Target API Level or the Kotlin version together.
+
+### Events
 
 #### Finish Event
 
@@ -4127,7 +4177,7 @@ However, if any other package in your project is already adding the same librari
 
 Most of the issues can be solved by adjusting the settings under the **"UniWebView" section**, which in the **Unity Preferences** panel. Press the "Settings" item in Unity's menu and open it, then follow the instructions below based on the error you have in the Unity console or Android log.
 
-![](/images/preferences-v5.png)
+![](/images/preferences-v6.png)
 
 ::: tip
 In almost all cases, it is important to perform a Clean Build after you change the settings. You can find it in the dropdown menu in the "Build Settings" window.
@@ -10541,6 +10591,32 @@ type: bool
 summary: Whether the user can edit the file name and determine whether actually starting the downloading.
 
 [[Methods]]
+name: SetAutoDownloadEnabled
+syntax: SetAutoDownloadEnabled(bool enabled)
+returnType: void
+summary:
+
+Enables or disables the automatic download when a response cannot be rendered in the web view. Default is `true`.
+
+When set to `false`, UniWebView skips starting a download task for non-renderable resources (such as attachments with
+unsupported MIME types). On iOS and macOS Editor, downloads triggered through `AddDownloadURL` or `AddDownloadMIMEType`
+still work. On Android, this prevents the download listener from forwarding unsupported resources to `DownloadManager`.
+
+[[Methods.parameters]]
+name: enabled
+type: bool
+summary: Whether UniWebView should automatically start downloading non-renderable resources.
+[[Methods.badges]]
+name: iOS
+color: orange
+[[Methods.badges]]
+name: macOS
+color: purple
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
 name: SetAllowUserChooseActionAfterDownloading
 syntax: SetAllowUserChooseActionAfterDownloading(bool allowed)
 returnType: void
@@ -12448,7 +12524,8 @@ permissions are also built-in. You can use this class for tasks that are limited
 Apple Pay or Progressive Web Apps (PWA).
 
 You create a `UniWebViewSafeBrowsing` instance by calling the static `UniWebViewSafeBrowsing.Create` method with a
-destination URL. You cannot change this URL once the instance is created. To show the safe browsing, call `Show` on
+destination URL. On iOS, the URL is fixed for the lifetime of the instance. On Android, you can change the target URL
+before calling `Show` by using `ChangeUrl`. To show the safe browsing, call `Show` on
 the instance. The web content will be displayed in full screen with a toolbar containing the loaded URL, as well
 as some basic controls like Go Back, Go Forward and Done. 
 
@@ -12501,6 +12578,42 @@ if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
 [[Properties.badges]]
 name: static
 color: blue
+
+[[Properties]]
+name: ColorScheme.System
+returnType: UniWebViewSafeBrowsing.ColorScheme
+hasSetter: false
+summary: Uses the system default color scheme.
+
+[[Properties]]
+name: ColorScheme.Light
+returnType: UniWebViewSafeBrowsing.ColorScheme
+hasSetter: false
+summary: Forces a light color scheme for the Custom Tabs UI.
+
+[[Properties]]
+name: ColorScheme.Dark
+returnType: UniWebViewSafeBrowsing.ColorScheme
+hasSetter: false
+summary: Forces a dark color scheme for the Custom Tabs UI.
+
+[[Properties]]
+name: ActivityHeightResizeBehavior.Default
+returnType: UniWebViewSafeBrowsing.ActivityHeightResizeBehavior
+hasSetter: false
+summary: Uses the default resize behavior decided by the Custom Tabs provider.
+
+[[Properties]]
+name: ActivityHeightResizeBehavior.Resizable
+returnType: UniWebViewSafeBrowsing.ActivityHeightResizeBehavior
+hasSetter: false
+summary: Allows the user to resize the partial Custom Tab.
+
+[[Properties]]
+name: ActivityHeightResizeBehavior.Fixed
+returnType: UniWebViewSafeBrowsing.ActivityHeightResizeBehavior
+hasSetter: false
+summary: Prevents the user from resizing the partial Custom Tab.
 
 [[Methods]]
 name: Create
@@ -12610,6 +12723,25 @@ name: iOS
 color: orange
 
 [[Methods]]
+name: Invalidate
+syntax: Invalidate()
+returnType: void
+summary:
+
+Releases the native Safe Browsing resources when you no longer plan to use this instance.
+
+Call this after `Create` if the business logic changes and you decide not to show the Safe Browsing UI. Android will unbind its Custom Tabs service, while iOS simply discards the underlying `SFSafariViewController`. When the UI is actually presented and the user closes it (Done/Back), cleanup runs automatically and you do not need to call this method.
+
+example:
+
+```csharp
+var safeBrowsing = UniWebViewSafeBrowsing.Create("https://uniwebview.com");
+
+// Later we decide not to show Safe Browsing anymore.
+safeBrowsing.Invalidate();
+```
+
+[[Methods]]
 name: SetToolbarColor
 syntax: SetToolbarColor(Color color)
 returnType: void
@@ -12631,6 +12763,320 @@ type: Color
 summary:
 
 The color to tint the toolbar.
+
+[[Methods]]
+name: SetColorScheme
+syntax: SetColorScheme(ColorScheme colorScheme)
+returnType: void
+summary:
+
+Sets the Custom Tabs UI color scheme. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: colorScheme
+type: ColorScheme
+summary: The desired color scheme (`System`, `Light`, or `Dark`).
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: ChangeUrl
+syntax: ChangeUrl(string url)
+returnType: void
+summary:
+
+Changes the URL to be loaded before the tab is shown (useful for warmup/prefetch). Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: url
+type: string
+summary: The URL to switch to before calling `Show`.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetSecondaryToolbarColor
+syntax: SetSecondaryToolbarColor(Color color)
+returnType: void
+summary:
+
+Sets the secondary/bottom toolbar color. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: color
+type: Color
+summary: Tint color for the secondary toolbar.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetNavigationBarColor
+syntax: SetNavigationBarColor(Color color)
+returnType: void
+summary:
+
+Sets the navigation bar color. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: color
+type: Color
+summary: Tint color for the navigation bar.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetNavigationBarDividerColor
+syntax: SetNavigationBarDividerColor(Color color)
+returnType: void
+summary:
+
+Sets the navigation bar divider color. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: color
+type: Color
+summary: Tint color for the divider.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetToolbarCornerRadiusDp
+syntax: SetToolbarCornerRadiusDp(int cornerRadiusDp)
+returnType: void
+summary:
+
+Sets the toolbar corner radius in dp for partial Custom Tabs. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: cornerRadiusDp
+type: int
+summary: Corner radius in density-independent pixels.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetInitialHeightPx
+syntax: SetInitialHeightPx(int initialHeightPx, ActivityHeightResizeBehavior resizeBehavior = ActivityHeightResizeBehavior.Fixed)
+returnType: void
+summary:
+
+Sets initial Custom Tab height in pixels for partial tabs and chooses how the sheet can resize. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: initialHeightPx
+type: int
+summary: Initial height in pixels.
+[[Methods.parameters]]
+name: resizeBehavior
+type: ActivityHeightResizeBehavior
+summary: Resize behavior (`Default`, `Resizable`, or `Fixed`). Defaults to `Fixed`.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetInitialWidthPx
+syntax: SetInitialWidthPx(int initialWidthPx)
+returnType: void
+summary:
+
+Sets initial Custom Tab width in pixels (side sheet). Ignored after `Show`.
+
+Android only. Requires AndroidX Browser 1.8.0+. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: initialWidthPx
+type: int
+summary: Initial width in pixels.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetShareMenuItemEnabled
+syntax: SetShareMenuItemEnabled(bool enable)
+returnType: void
+summary:
+
+Enables or disables share menu items. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: enable
+type: bool
+summary: Whether sharing buttons are enabled.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetUrlBarHidingEnabled
+syntax: SetUrlBarHidingEnabled(bool enable)
+returnType: void
+summary:
+
+Enables hiding the URL bar on scroll. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: enable
+type: bool
+summary: Whether the URL bar hides when scrolling.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetSendToExternalDefaultHandlerEnabled
+syntax: SetSendToExternalDefaultHandlerEnabled(bool enable)
+returnType: void
+summary:
+
+Sends redirects to the system default handler when enabled. Ignored after `Show`.
+
+Android only. Requires AndroidX Browser 1.7.0+. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: enable
+type: bool
+summary: Allow redirects to be handled externally.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetMaximizationEnabled
+syntax: SetMaximizationEnabled(bool enable)
+returnType: void
+summary:
+
+Toggles side-sheet maximization for partial Custom Tabs. Ignored after `Show`.
+
+Android only. Requires AndroidX Browser 1.8.0+. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: enable
+type: bool
+summary: Whether the maximization button is enabled.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetDownloadButtonEnabled
+syntax: SetDownloadButtonEnabled(bool enable)
+returnType: void
+summary:
+
+Enables or disables the download button in the overflow menu. Ignored after `Show`.
+
+Android only. Requires AndroidX Browser 1.7.0+. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: enable
+type: bool
+summary: Enable download button in overflow.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetBookmarksButtonEnabled
+syntax: SetBookmarksButtonEnabled(bool enable)
+returnType: void
+summary:
+
+Enables or disables the bookmarks button in the overflow menu. Ignored after `Show`.
+
+Android only. Requires AndroidX Browser 1.7.0+. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: enable
+type: bool
+summary: Enable bookmarks button in overflow.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetBackgroundInteractionEnabled
+syntax: SetBackgroundInteractionEnabled(bool enable)
+returnType: void
+summary:
+
+Allows interaction with background apps when a partial Custom Tab is shown. Ignored after `Show`.
+
+Android only. Requires AndroidX Browser 1.7.0+. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: enable
+type: bool
+summary: Allow background interaction while partial tab is visible.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetWarmup
+syntax: SetWarmup(bool enable)
+returnType: void
+summary:
+
+Warms up the Custom Tabs provider process to speed up later loads. Can be called multiple times. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: enable
+type: bool
+summary: Whether to warm up the provider.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
+name: SetPrefetch
+syntax: SetPrefetch(bool enable, string alternativeUrl = null)
+returnType: void
+summary:
+
+Uses Custom Tabs prefetch (`mayLaunchUrl`) before showing the tab. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+
+[[Methods.parameters]]
+name: enable
+type: bool
+summary: Enable or disable prefetch.
+[[Methods.parameters]]
+name: alternativeUrl
+type: string
+summary: Optional URL to prefetch instead of the current one.
+[[Methods.badges]]
+name: Android
+color: green
 
 [[Methods]]
 name: SetToolbarItemColor

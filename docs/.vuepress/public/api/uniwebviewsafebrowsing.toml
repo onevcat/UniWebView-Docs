@@ -12,7 +12,8 @@ permissions are also built-in. You can use this class for tasks that are limited
 Apple Pay or Progressive Web Apps (PWA).
 
 You create a `UniWebViewSafeBrowsing` instance by calling the static `UniWebViewSafeBrowsing.Create` method with a
-destination URL. You cannot change this URL once the instance is created. To show the safe browsing, call `Show` on
+destination URL. On iOS, the URL is fixed for the lifetime of the instance. On Android, you can change the target URL
+before calling `Show` by using `ChangeUrl`. To show the safe browsing, call `Show` on
 the instance. The web content will be displayed in full screen with a toolbar containing the loaded URL, as well
 as some basic controls like Go Back, Go Forward and Done. 
 
@@ -65,6 +66,42 @@ if (UniWebViewSafeBrowsing.IsSafeBrowsingSupported) {
 [[Properties.badges]]
 name = "static"
 color = "blue"
+
+[[Properties]]
+name = "ColorScheme.System"
+returnType = "UniWebViewSafeBrowsing.ColorScheme"
+hasSetter = false
+summary = "Uses the system default color scheme."
+
+[[Properties]]
+name = "ColorScheme.Light"
+returnType = "UniWebViewSafeBrowsing.ColorScheme"
+hasSetter = false
+summary = "Forces a light color scheme for the Custom Tabs UI."
+
+[[Properties]]
+name = "ColorScheme.Dark"
+returnType = "UniWebViewSafeBrowsing.ColorScheme"
+hasSetter = false
+summary = "Forces a dark color scheme for the Custom Tabs UI."
+
+[[Properties]]
+name = "ActivityHeightResizeBehavior.Default"
+returnType = "UniWebViewSafeBrowsing.ActivityHeightResizeBehavior"
+hasSetter = false
+summary = "Uses the default resize behavior decided by the Custom Tabs provider."
+
+[[Properties]]
+name = "ActivityHeightResizeBehavior.Resizable"
+returnType = "UniWebViewSafeBrowsing.ActivityHeightResizeBehavior"
+hasSetter = false
+summary = "Allows the user to resize the partial Custom Tab."
+
+[[Properties]]
+name = "ActivityHeightResizeBehavior.Fixed"
+returnType = "UniWebViewSafeBrowsing.ActivityHeightResizeBehavior"
+hasSetter = false
+summary = "Prevents the user from resizing the partial Custom Tab."
 
 [[Methods]]
 name = "Create"
@@ -166,6 +203,24 @@ name = "iOS"
 color = "orange"
 
 [[Methods]]
+name = "Invalidate"
+syntax = "Invalidate()"
+returnType = "void"
+summary = """
+Releases the native Safe Browsing resources when you no longer plan to use this instance.
+
+Call this after `Create` if the business logic changes and you decide not to show the Safe Browsing UI. Android will unbind its Custom Tabs service, while iOS simply discards the underlying `SFSafariViewController`. When the UI is actually presented and the user closes it (Done/Back), cleanup runs automatically and you do not need to call this method.
+"""
+example = """
+```csharp
+var safeBrowsing = UniWebViewSafeBrowsing.Create("https://uniwebview.com");
+
+// Later we decide not to show Safe Browsing anymore.
+safeBrowsing.Invalidate();
+```
+"""
+
+[[Methods]]
 name = "SetToolbarColor"
 syntax = "SetToolbarColor(Color color)"
 returnType = "void"
@@ -185,6 +240,303 @@ type = "Color"
 summary = """
 The color to tint the toolbar.
 """
+
+[[Methods]]
+name = "SetColorScheme"
+syntax = "SetColorScheme(ColorScheme colorScheme)"
+returnType = "void"
+summary = """
+Sets the Custom Tabs UI color scheme. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "colorScheme"
+type = "ColorScheme"
+summary = "The desired color scheme (`System`, `Light`, or `Dark`)."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "ChangeUrl"
+syntax = "ChangeUrl(string url)"
+returnType = "void"
+summary = """
+Changes the URL to be loaded before the tab is shown (useful for warmup/prefetch). Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "url"
+type = "string"
+summary = "The URL to switch to before calling `Show`."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetSecondaryToolbarColor"
+syntax = "SetSecondaryToolbarColor(Color color)"
+returnType = "void"
+summary = """
+Sets the secondary/bottom toolbar color. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = "Tint color for the secondary toolbar."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetNavigationBarColor"
+syntax = "SetNavigationBarColor(Color color)"
+returnType = "void"
+summary = """
+Sets the navigation bar color. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = "Tint color for the navigation bar."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetNavigationBarDividerColor"
+syntax = "SetNavigationBarDividerColor(Color color)"
+returnType = "void"
+summary = """
+Sets the navigation bar divider color. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "color"
+type = "Color"
+summary = "Tint color for the divider."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetToolbarCornerRadiusDp"
+syntax = "SetToolbarCornerRadiusDp(int cornerRadiusDp)"
+returnType = "void"
+summary = """
+Sets the toolbar corner radius in dp for partial Custom Tabs. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "cornerRadiusDp"
+type = "int"
+summary = "Corner radius in density-independent pixels."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetInitialHeightPx"
+syntax = "SetInitialHeightPx(int initialHeightPx, ActivityHeightResizeBehavior resizeBehavior = ActivityHeightResizeBehavior.Fixed)"
+returnType = "void"
+summary = """
+Sets initial Custom Tab height in pixels for partial tabs and chooses how the sheet can resize. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "initialHeightPx"
+type = "int"
+summary = "Initial height in pixels."
+[[Methods.parameters]]
+name = "resizeBehavior"
+type = "ActivityHeightResizeBehavior"
+summary = "Resize behavior (`Default`, `Resizable`, or `Fixed`). Defaults to `Fixed`."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetInitialWidthPx"
+syntax = "SetInitialWidthPx(int initialWidthPx)"
+returnType = "void"
+summary = """
+Sets initial Custom Tab width in pixels (side sheet). Ignored after `Show`.
+
+Android only. Requires AndroidX Browser 1.8.0+. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "initialWidthPx"
+type = "int"
+summary = "Initial width in pixels."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetShareMenuItemEnabled"
+syntax = "SetShareMenuItemEnabled(bool enable)"
+returnType = "void"
+summary = """
+Enables or disables share menu items. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "enable"
+type = "bool"
+summary = "Whether sharing buttons are enabled."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetUrlBarHidingEnabled"
+syntax = "SetUrlBarHidingEnabled(bool enable)"
+returnType = "void"
+summary = """
+Enables hiding the URL bar on scroll. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "enable"
+type = "bool"
+summary = "Whether the URL bar hides when scrolling."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetSendToExternalDefaultHandlerEnabled"
+syntax = "SetSendToExternalDefaultHandlerEnabled(bool enable)"
+returnType = "void"
+summary = """
+Sends redirects to the system default handler when enabled. Ignored after `Show`.
+
+Android only. Requires AndroidX Browser 1.7.0+. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "enable"
+type = "bool"
+summary = "Allow redirects to be handled externally."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetMaximizationEnabled"
+syntax = "SetMaximizationEnabled(bool enable)"
+returnType = "void"
+summary = """
+Toggles side-sheet maximization for partial Custom Tabs. Ignored after `Show`.
+
+Android only. Requires AndroidX Browser 1.8.0+. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "enable"
+type = "bool"
+summary = "Whether the maximization button is enabled."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetDownloadButtonEnabled"
+syntax = "SetDownloadButtonEnabled(bool enable)"
+returnType = "void"
+summary = """
+Enables or disables the download button in the overflow menu. Ignored after `Show`.
+
+Android only. Requires AndroidX Browser 1.7.0+. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "enable"
+type = "bool"
+summary = "Enable download button in overflow."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetBookmarksButtonEnabled"
+syntax = "SetBookmarksButtonEnabled(bool enable)"
+returnType = "void"
+summary = """
+Enables or disables the bookmarks button in the overflow menu. Ignored after `Show`.
+
+Android only. Requires AndroidX Browser 1.7.0+. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "enable"
+type = "bool"
+summary = "Enable bookmarks button in overflow."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetBackgroundInteractionEnabled"
+syntax = "SetBackgroundInteractionEnabled(bool enable)"
+returnType = "void"
+summary = """
+Allows interaction with background apps when a partial Custom Tab is shown. Ignored after `Show`.
+
+Android only. Requires AndroidX Browser 1.7.0+. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "enable"
+type = "bool"
+summary = "Allow background interaction while partial tab is visible."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetWarmup"
+syntax = "SetWarmup(bool enable)"
+returnType = "void"
+summary = """
+Warms up the Custom Tabs provider process to speed up later loads. Can be called multiple times. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "enable"
+type = "bool"
+summary = "Whether to warm up the provider."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetPrefetch"
+syntax = "SetPrefetch(bool enable, string alternativeUrl = null)"
+returnType = "void"
+summary = """
+Uses Custom Tabs prefetch (`mayLaunchUrl`) before showing the tab. Ignored after `Show`.
+
+Android only. This method does nothing on iOS.
+"""
+[[Methods.parameters]]
+name = "enable"
+type = "bool"
+summary = "Enable or disable prefetch."
+[[Methods.parameters]]
+name = "alternativeUrl"
+type = "string"
+summary = "Optional URL to prefetch instead of the current one."
+[[Methods.badges]]
+name = "Android"
+color = "green"
 
 [[Methods]]
 name = "SetToolbarItemColor"

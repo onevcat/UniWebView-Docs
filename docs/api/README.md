@@ -392,6 +392,9 @@ HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowusereditfilenamebeforedownloading'><span class='return-type'>void</span> <span class='member-name'>SetAllowUserEditFileNameBeforeDownloading</span>(bool allowed)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether allowing users to edit the file name before downloading.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setautodownloadenabled'><span class='return-type'>void</span> <span class='member-name'>SetAutoDownloadEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Enables or disables the automatic download when a response cannot be rendered in the web view.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowuserchooseactionafterdownloading'><span class='return-type'>void</span> <span class='member-name'>SetAllowUserChooseActionAfterDownloading</span>(bool allowed)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether allowing users to choose the way to handle the downloaded file.</p>
 </div>
@@ -4746,6 +4749,29 @@ used.</p>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>allowed</span></div>
     <div class='parameter-item-desc'><p>Whether the user can edit the file name and determine whether actually starting the downloading.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setautodownloadenabled'></div><div class='api-heading' data-id='setautodownloadenabled'><a href='#setautodownloadenabled'><span class='return-type'>void</span> <span class='member-name'>SetAutoDownloadEnabled</span>(bool enabled)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Enables or disables the automatic download when a response cannot be rendered in the web view. Default is <code>true</code>.</p>
+<p>When set to <code>false</code>, UniWebView skips starting a download task for non-renderable resources (such as attachments with
+unsupported MIME types). On iOS and macOS Editor, downloads triggered through <code>AddDownloadURL</code> or <code>AddDownloadMIMEType</code>
+still work. On Android, this prevents the download listener from forwarding unsupported resources to <code>DownloadManager</code>.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item-desc'><p>Whether UniWebView should automatically start downloading non-renderable resources.</p>
 </div>
   </li>
 </ul></div>

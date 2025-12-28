@@ -1,4 +1,29 @@
 # Release Note
+### 6.3.0
+
+#### Add
+
+* Add `SetAutoDownloadEnabled` to disable the automatic download behavior when a response cannot be rendered inline.
+* Add `UniWebViewSafeBrowsing.Invalidate` to release native Safe Browsing resources when you decide not to call `Show`.
+* Add more Android Custom Tabs (Safe Browsing) customization APIs, including:
+  - `SetColorScheme`
+  - `ChangeUrl` (useful with warmup/prefetch flows)
+  - `SetSecondaryToolbarColor`
+  - `SetNavigationBarColor` / `SetNavigationBarDividerColor`
+  - `SetToolbarCornerRadiusDp`
+  - `SetInitialHeightPx` (now accepts an optional resize behavior flag) and `SetInitialWidthPx`
+  - `SetShareMenuItemEnabled`, `SetUrlBarHidingEnabled`, `SetSendToExternalDefaultHandlerEnabled`
+  - `SetMaximizationEnabled`, `SetDownloadButtonEnabled`, `SetBookmarksButtonEnabled`, `SetBackgroundInteractionEnabled`
+  - `SetWarmup` / `SetPrefetch`
+* Android dependencies in the UniWebView Settings Panel now use newer defaults (`org.jetbrains.kotlin` 1.8.22, `androidx.browser` 1.5.0) and support customizing versions, with minimum version clamping and warnings when unavailable.
+
+#### Fix
+
+* Improved Safe Browsing cleanup on Android to avoid leaking Custom Tabs connections/callbacks, and guard Safe Browsing invocations after disposal.
+* Fixed Android Custom Tabs sizing/version handling and improved warmup/prefetch reliability.
+* Fixed native-to-Unity callback bridging to avoid null string issues in edge cases.
+* Improved Android Gradle export patching with better version parsing and Kotlin dependency handling.
+* Fixed an issue on some Android devices where applying a non-1.0 alpha to web view could shift its Y position.
 
 ### 6.2.2 (11 Dec, 2025)
 
@@ -11,7 +36,6 @@
 #### Fix
 
 * A Gradle parsing issue that prevents dummy files being added when `skipIl2CppBuild` flag is on.
-* Fixed Safe Browsing on Android leaking Chrome Custom Tabs sessions when the tab hides or was never shown; added the cross-platform `UniWebViewSafeBrowsing.Invalidate()` API so unused Safe Browsing instances can be released explicitly on both Android and iOS.
 
 ### 6.2.0 (15 Nov, 2025)
 
