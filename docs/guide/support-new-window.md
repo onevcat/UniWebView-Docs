@@ -27,8 +27,20 @@ view, with the same size and position. When the opened new tab is closed, it wil
 automatically.
 
 The new tab web view is just a temporary layer: it is not a fully functional `UniWebView` component itself, and will not
-follow all settings as the original web view. You have to make sure it can be dismissed correctly, for example, using
-a JavaScript to call `window.close()`. Otherwise, the original web view will be always covered and invisible.
+follow all settings as the original web view. You should dismiss it correctly, otherwise the original web view will be
+always covered and invisible.
+
+To manage a popup window, use the `OnPopupWindowOpened` event to receive a `UniWebViewPopup` handle:
+
+```csharp
+webView.OnPopupWindowOpened += (view, popup) => {
+    // Close the popup directly.
+    popup.Close();
+};
+```
+
+The popup handle provides minimal controls like `Close`, `GoBack`, `GoForward`, and `EvaluateJavaScript`. You can also
+observe `OnPopupWindowClosed` to track its lifecycle.
 
 ### Opening window with JavaScript
 

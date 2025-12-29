@@ -1,0 +1,60 @@
+title = "UniWebViewPopup"
+file = "UniWebViewPopup"
+
+summary = """
+A lightweight handle for controlling a popup window opened by UniWebView.
+
+A popup window is a temporary overlay web view created when `SetSupportMultipleWindows(true, ...)` is enabled and
+`target=\"_blank\"` or `window.open()` is triggered. It is not a full `UniWebView` component, but provides limited
+control through this handle.
+"""
+
+[[Properties]]
+name = "Id"
+returnType = "string"
+hasSetter = false
+summary = "The identifier of the popup window."
+
+[[Properties]]
+name = "IsAlive"
+returnType = "bool"
+hasSetter = false
+summary = "Whether this popup window is still alive."
+
+[[Properties]]
+name = "Owner"
+returnType = "UniWebView"
+hasSetter = false
+summary = "The owner UniWebView that created this popup window."
+
+[[Methods]]
+name = "Close"
+syntax = "Close()"
+returnType = "void"
+summary = "Closes the popup window."
+
+[[Methods]]
+name = "GoBack"
+syntax = "GoBack()"
+returnType = "void"
+summary = "Navigates back in the popup history. If it cannot go back, the popup will be closed."
+
+[[Methods]]
+name = "GoForward"
+syntax = "GoForward()"
+returnType = "void"
+summary = "Navigates forward in the popup history."
+
+[[Methods]]
+name = "EvaluateJavaScript"
+syntax = "EvaluateJavaScript(string jsString, Action<UniWebViewNativeResultPayload> completionHandler = null)"
+returnType = "void"
+summary = "Evaluates a JavaScript string in the popup window context."
+[[Methods.parameters]]
+name = "jsString"
+type = "string"
+summary = "The JavaScript string to evaluate."
+[[Methods.parameters]]
+name = "completionHandler"
+type = "Action<UniWebViewNativeResultPayload>"
+summary = "Called when evaluating JavaScript finishes."

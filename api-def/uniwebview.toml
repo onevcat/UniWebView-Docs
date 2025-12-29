@@ -1281,6 +1281,28 @@ before creating the web view.
 """
 
 [[Methods]]
+name = "GetPopupWindow"
+syntax = "GetPopupWindow(string multipleWindowId)"
+returnType = "UniWebViewPopup"
+summary = """
+Gets a popup window handle by its identifier.
+
+Returns `null` if the popup window is not found or already closed.
+"""
+example = """
+```csharp
+webView.OnPopupWindowOpened += (view, popup) => {
+    var samePopup = view.GetPopupWindow(popup.Id);
+    samePopup?.EvaluateJavaScript("window.close();");
+};
+```
+"""
+[[Methods.parameters]]
+name = "multipleWindowId"
+type = "string"
+summary = "The identifier of the popup window."
+
+[[Methods]]
 name = "SetDefaultFontSize"
 syntax = "SetDefaultFontSize(int size)"
 returnType = "void"
@@ -3453,6 +3475,29 @@ type = "string"
 summary = "The identifier of the opened new window."
 
 [[Events]]
+name = "OnPopupWindowOpened"
+syntax = "OnPopupWindowOpened(UniWebView webView, UniWebViewPopup popup)"
+returnType = "void"
+summary = """
+Raised when a popup window is opened. This provides a lightweight popup window handle for control.
+"""
+example = """
+```csharp
+webView.OnPopupWindowOpened += (view, popup) => {
+    popup.EvaluateJavaScript("console.log('popup opened');");
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which opens the popup window."
+[[Events.parameters]]
+name = "popup"
+type = "UniWebViewPopup"
+summary = "The popup window handle."
+
+[[Events]]
 name = "OnMultipleWindowClosed"
 syntax = "OnMultipleWindowClosed(UniWebView webView, string multipleWindowId)"
 returnType = "void"
@@ -3475,6 +3520,29 @@ summary = "The web view component which closes the multiple window."
 name = "multipleWindowId"
 type = "string"
 summary = "The identifier of the closed new window."
+
+[[Events]]
+name = "OnPopupWindowClosed"
+syntax = "OnPopupWindowClosed(UniWebView webView, UniWebViewPopup popup)"
+returnType = "void"
+summary = """
+Raised when a popup window is closed.
+"""
+example = """
+```csharp
+webView.OnPopupWindowClosed += (view, popup) => {
+    // Popup is closed.
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which closes the popup window."
+[[Events.parameters]]
+name = "popup"
+type = "UniWebViewPopup"
+summary = "The popup window handle."
 
 [[Events]]
 name = "OnKeyCodeReceived"
