@@ -42,6 +42,18 @@ webView.OnPopupWindowOpened += (view, popup) => {
 The popup handle provides minimal controls like `Close`, `GoBack`, `GoForward`, and `EvaluateJavaScript`. You can also
 observe `OnPopupWindowClosed` to track its lifecycle.
 
+Popup page lifecycle events are disabled by default to avoid extra message noise. If you need them (for example, to
+wait until the popup is ready before running JavaScript), enable them before opening the popup:
+
+```csharp
+webView.SetPopupPageEventEnabled(true);
+webView.OnPopupWindowOpened += (view, popup) => {
+    popup.OnPageFinished += (popupView, payload) => {
+        popupView.EvaluateJavaScript("console.log('popup ready');");
+    };
+};
+```
+
 ### Opening window with JavaScript
 
 Besides of a link with "\_blank" attribute, there is another way to open a new window: JavaScript. An invocation of `window.open`

@@ -58,3 +58,73 @@ summary = "The JavaScript string to evaluate."
 name = "completionHandler"
 type = "Action<UniWebViewNativeResultPayload>"
 summary = "Called when evaluating JavaScript finishes."
+
+[[Events]]
+name = "OnPageStarted"
+syntax = "OnPageStarted(UniWebViewPopup popup, string url)"
+returnType = "void"
+summary = "Raised when the popup starts loading a url."
+[[Events.parameters]]
+name = "popup"
+type = "UniWebViewPopup"
+summary = "The popup window handle."
+[[Events.parameters]]
+name = "url"
+type = "string"
+summary = "The url which the popup is about to load."
+
+[[Events]]
+name = "OnPageCommitted"
+syntax = "OnPageCommitted(UniWebViewPopup popup, string url)"
+returnType = "void"
+summary = "Raised when the popup starts receiving web content."
+[[Events.parameters]]
+name = "popup"
+type = "UniWebViewPopup"
+summary = "The popup window handle."
+[[Events.parameters]]
+name = "url"
+type = "string"
+summary = "The url which the popup has started receiving content for."
+
+[[Events]]
+name = "OnPageFinished"
+syntax = "OnPageFinished(UniWebViewPopup popup, UniWebViewNativeResultPayload payload)"
+returnType = "void"
+summary = "Raised when the popup finishes loading a url."
+[[Events.parameters]]
+name = "popup"
+type = "UniWebViewPopup"
+summary = "The popup window handle."
+[[Events.parameters]]
+name = "payload"
+type = "UniWebViewNativeResultPayload"
+summary = "The payload which contains the loading result."
+
+[[Events]]
+name = "OnPageErrorReceived"
+syntax = "OnPageErrorReceived(UniWebViewPopup popup, UniWebViewNativeResultPayload payload)"
+returnType = "void"
+summary = "Raised when an error encountered during the popup loading process."
+[[Events.parameters]]
+name = "popup"
+type = "UniWebViewPopup"
+summary = "The popup window handle."
+[[Events.parameters]]
+name = "payload"
+type = "UniWebViewNativeResultPayload"
+summary = "The payload which contains the loading error."
+
+[[Events]]
+name = "OnPageProgressChanged"
+syntax = "OnPageProgressChanged(UniWebViewPopup popup, float progress)"
+returnType = "void"
+summary = "Raised when the loading progress value changes in current popup page."
+[[Events.parameters]]
+name = "popup"
+type = "UniWebViewPopup"
+summary = "The popup window handle."
+[[Events.parameters]]
+name = "progress"
+type = "float"
+summary = "A value indicates the loading progress of current popup page."

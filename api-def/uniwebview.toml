@@ -1281,6 +1281,27 @@ before creating the web view.
 """
 
 [[Methods]]
+name = "SetPopupPageEventEnabled"
+syntax = "SetPopupPageEventEnabled(bool enabled)"
+returnType = "void"
+summary = """
+Sets whether the popup page events should be delivered to Unity.
+
+This option is disabled by default to avoid extra message noise. Enable it before opening a popup if you need
+reliable popup page lifecycle events (`OnPageStarted`, `OnPageFinished`, etc.) on `UniWebViewPopup`.
+"""
+example = """
+```csharp
+webView.SetPopupPageEventEnabled(true);
+webView.SetSupportMultipleWindows(true, true);
+```
+"""
+[[Methods.parameters]]
+name = "enabled"
+type = "bool"
+summary = "Whether to enable popup page events. Default is `false`."
+
+[[Methods]]
 name = "GetPopupWindow"
 syntax = "GetPopupWindow(string multipleWindowId)"
 returnType = "UniWebViewPopup"
