@@ -265,6 +265,10 @@ module.exports = {
                 link: "UniWebViewBackForwardItem"
               },
               {
+                text: "UniWebViewPopup",
+                link: "UniWebViewPopup"
+              },
+              {
                 text: "UniWebViewShadow",
                 link: "UniWebViewShadow"
               },

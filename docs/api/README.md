@@ -92,8 +92,14 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onmultiplewindowopened'><span class='return-type'>void</span> <span class='member-name'>OnMultipleWindowOpened</span>(UniWebView webView, string multipleWindowId)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a new window is opened.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onpopupwindowopened'><span class='return-type'>void</span> <span class='member-name'>OnPopupWindowOpened</span>(UniWebView webView, UniWebViewPopup popup)</a></div></td><td><div class='simple-summary'>
+<p>Raised when a popup window is opened.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onmultiplewindowclosed'><span class='return-type'>void</span> <span class='member-name'>OnMultipleWindowClosed</span>(UniWebView webView, string multipleWindowId)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the multiple window is closed.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onpopupwindowclosed'><span class='return-type'>void</span> <span class='member-name'>OnPopupWindowClosed</span>(UniWebView webView, UniWebViewPopup popup)</a></div></td><td><div class='simple-summary'>
+<p>Raised when a popup window is closed.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onkeycodereceived'><span class='return-type'>void</span> <span class='member-name'>OnKeyCodeReceived</span>(UniWebView webView, int keyCode)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a key (like back button or volume up) on the device is pressed.</p>
@@ -221,6 +227,12 @@ are added to the adjusted content inset.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setsupportmultiplewindows'><span class='return-type'>void</span> <span class='member-name'>SetSupportMultipleWindows</span>(bool enabled, bool allowJavaScriptOpening)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether the web view should support a pop up web view triggered by user in a new tab.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setpopuppageeventenabled'><span class='return-type'>void</span> <span class='member-name'>SetPopupPageEventEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
+<p>Sets whether the popup page events should be delivered to Unity.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getpopupwindow'><span class='return-type'>UniWebViewPopup</span> <span class='member-name'>GetPopupWindow</span>(string multipleWindowId)</a></div></td><td><div class='simple-summary'>
+<p>Gets a popup window handle by its identifier.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setdefaultfontsize'><span class='return-type'>void</span> <span class='member-name'>SetDefaultFontSize</span>(int size)</a></div></td><td><div class='simple-summary'>
 <p>Sets the default font size used in the web view.</p>
@@ -1288,6 +1300,40 @@ webView<span class="token punctuation">.</span>OnMultipleWindowOpened <span clas
   </div>
 </div>
 <div class='api-box method'>
+  <div class="api-anchor" id='onpopupwindowopened'></div><div class='api-heading' data-id='onpopupwindowopened'><a href='#onpopupwindowopened'><span class='return-type'>void</span> <span class='member-name'>OnPopupWindowOpened</span>(UniWebView webView, UniWebViewPopup popup)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when a popup window is opened. This provides a lightweight popup window handle for control.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which opens the popup window.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewPopup</span> <span class='parameter-item-name'>popup</span></div>
+    <div class='parameter-item-desc'><p>The popup window handle.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnPopupWindowOpened <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> popup<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    popup<span class="token punctuation">.</span><span class="token function">EvaluateJavaScript</span><span class="token punctuation">(</span><span class="token string">"console.log('popup opened');"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class="api-anchor" id='onmultiplewindowclosed'></div><div class='api-heading' data-id='onmultiplewindowclosed'><a href='#onmultiplewindowclosed'><span class='return-type'>void</span> <span class='member-name'>OnMultipleWindowClosed</span>(UniWebView webView, string multipleWindowId)</a></div>
   <div class='api-body'>
     <div class='desc'>
@@ -1315,6 +1361,40 @@ or by a invocation of <code>close()</code> on the page.</p>
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnMultipleWindowClosed <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> windowId<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token comment">// The opened window with identifier "windowId" is closed.</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onpopupwindowclosed'></div><div class='api-heading' data-id='onpopupwindowclosed'><a href='#onpopupwindowclosed'><span class='return-type'>void</span> <span class='member-name'>OnPopupWindowClosed</span>(UniWebView webView, UniWebViewPopup popup)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when a popup window is closed.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which closes the popup window.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewPopup</span> <span class='parameter-item-name'>popup</span></div>
+    <div class='parameter-item-desc'><p>The popup window handle.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnPopupWindowClosed <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> popup<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// Popup is closed.</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
@@ -2929,6 +3009,67 @@ before creating the web view.</p>
 </ul></div>
 </div>
                 </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setpopuppageeventenabled'></div><div class='api-heading' data-id='setpopuppageeventenabled'><a href='#setpopuppageeventenabled'><span class='return-type'>void</span> <span class='member-name'>SetPopupPageEventEnabled</span>(bool enabled)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets whether the popup page events should be delivered to Unity.</p>
+<p>This option is disabled by default to avoid extra message noise. Enable it before opening a popup if you need
+reliable popup page lifecycle events (<code>OnPageStarted</code>, <code>OnPageFinished</code>, etc.) on <code>UniWebViewPopup</code>.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>bool</span> <span class='parameter-item-name'>enabled</span></div>
+    <div class='parameter-item-desc'><p>Whether to enable popup page events. Default is <code>false</code>.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">SetPopupPageEventEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span><span class="token function">SetSupportMultipleWindows</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='getpopupwindow'></div><div class='api-heading' data-id='getpopupwindow'><a href='#getpopupwindow'><span class='return-type'>UniWebViewPopup</span> <span class='member-name'>GetPopupWindow</span>(string multipleWindowId)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Gets a popup window handle by its identifier.</p>
+<p>Returns <code>null</code> if the popup window is not found or already closed.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>multipleWindowId</span></div>
+    <div class='parameter-item-desc'><p>The identifier of the popup window.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnPopupWindowOpened <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> popup<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token class-name"><span class="token keyword">var</span></span> samePopup <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">GetPopupWindow</span><span class="token punctuation">(</span>popup<span class="token punctuation">.</span>Id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    samePopup<span class="token punctuation">?.</span><span class="token function">EvaluateJavaScript</span><span class="token punctuation">(</span><span class="token string">"window.close();"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
   </div>
 </div>
 <div class='api-box method'>

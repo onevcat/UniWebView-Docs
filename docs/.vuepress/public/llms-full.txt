@@ -3789,8 +3789,86 @@ view, with the same size and position. When the opened new tab is closed, it wil
 automatically.
 
 The new tab web view is just a temporary layer: it is not a fully functional `UniWebView` component itself, and will not
-follow all settings as the original web view. You have to make sure it can be dismissed correctly, for example, using
-a JavaScript to call `window.close()`. Otherwise, the original web view will be always covered and invisible.
+follow all settings as the original web view. You should dismiss it correctly, otherwise the original web view will be
+always covered and invisible.
+
+### Popup window handle
+
+When a new window is opened, UniWebView raises events with a lightweight handle, `UniWebViewPopup`. It is the recommended
+way to control the popup because it exposes minimal but explicit actions (`Close`, `GoBack`, `GoForward`,
+`EvaluateJavaScript`) and a few state properties.
+
+`OnMultipleWindowOpened` / `OnMultipleWindowClosed` are still available for compatibility, but they only provide the
+identifier string. Prefer `OnPopupWindowOpened` / `OnPopupWindowClosed`, and use `GetPopupWindow` if you only have the id.
+
+To manage a popup window, use the `OnPopupWindowOpened` event to receive a `UniWebViewPopup` handle:
+
+```csharp
+webView.SetSupportMultipleWindows(true, false);
+webView.OnPopupWindowOpened += (view, popup) => {
+    // Close the popup directly.
+    popup.Close();
+};
+```
+
+The popup handle provides minimal controls like `Close`, `GoBack`, `GoForward`, and `EvaluateJavaScript`. You can also
+observe `OnPopupWindowClosed` to track its lifecycle.
+
+### Popup usage examples
+
+**Example 1: "Back or close" behavior**
+
+`GoBack` will close the popup automatically if it cannot go back, which is handy for a single "Back" button:
+
+```csharp
+UniWebViewPopup activePopup = null;
+webView.SetSupportMultipleWindows(true, false);
+
+webView.OnPopupWindowOpened += (view, popup) => {
+    activePopup = popup;
+};
+
+webView.OnPopupWindowClosed += (view, popup) => {
+    if (activePopup == popup) {
+        activePopup = null;
+    }
+};
+
+public void OnBackOrClosePopup() {
+    if (activePopup == null || !activePopup.IsAlive) {
+        return;
+    }
+
+    activePopup.GoBack();
+}
+```
+
+**Example 2: Run JavaScript after the popup finishes loading**
+
+Popup page lifecycle events are disabled by default to avoid extra message noise. If you need them (for example, to
+wait until the popup is ready before running JavaScript), enable them before opening the popup:
+
+```csharp
+webView.SetPopupPageEventEnabled(true);
+webView.SetSupportMultipleWindows(true, false);
+webView.OnPopupWindowOpened += (view, popup) => {
+    popup.OnPageFinished += (popupView, payload) => {
+        popupView.EvaluateJavaScript("console.log('popup ready');");
+    };
+};
+```
+
+**Example 3: Handle popup by identifier**
+
+If you already listen to `OnMultipleWindowOpened`, you can retrieve the popup handle and then switch to the new API:
+
+```csharp
+webView.SetSupportMultipleWindows(true, false);
+webView.OnMultipleWindowOpened += (view, windowId) => {
+    var popup = view.GetPopupWindow(windowId);
+    popup?.EvaluateJavaScript("console.log('popup opened by id');");
+};
+```
 
 ### Opening window with JavaScript
 
@@ -7495,6 +7573,141 @@ use.
 
 ---
 
+### UniWebViewPopup
+
+# UniWebViewPopup
+file: UniWebViewPopup
+
+summary:
+
+A lightweight handle for controlling a popup window opened by UniWebView.
+
+A popup window is a temporary overlay web view created when `SetSupportMultipleWindows(true, ...)` is enabled and
+`target=\"_blank\"` or `window.open()` is triggered. It is not a full `UniWebView` component, but provides limited
+control through this handle.
+
+[[Properties]]
+name: Id
+returnType: string
+hasSetter: false
+summary: The identifier of the popup window.
+
+[[Properties]]
+name: IsAlive
+returnType: bool
+hasSetter: false
+summary: Whether this popup window is still alive.
+
+[[Properties]]
+name: Owner
+returnType: UniWebView
+hasSetter: false
+summary: The owner UniWebView that created this popup window.
+
+[[Methods]]
+name: Close
+syntax: Close()
+returnType: void
+summary: Closes the popup window.
+
+[[Methods]]
+name: GoBack
+syntax: GoBack()
+returnType: void
+summary: Navigates back in the popup history. If it cannot go back, the popup will be closed.
+
+[[Methods]]
+name: GoForward
+syntax: GoForward()
+returnType: void
+summary: Navigates forward in the popup history.
+
+[[Methods]]
+name: EvaluateJavaScript
+syntax: EvaluateJavaScript(string jsString, Action<UniWebViewNativeResultPayload> completionHandler = null)
+returnType: void
+summary: Evaluates a JavaScript string in the popup window context.
+[[Methods.parameters]]
+name: jsString
+type: string
+summary: The JavaScript string to evaluate.
+[[Methods.parameters]]
+name: completionHandler
+type: Action<UniWebViewNativeResultPayload>
+summary: Called when evaluating JavaScript finishes.
+
+[[Events]]
+name: OnPageStarted
+syntax: OnPageStarted(UniWebViewPopup popup, string url)
+returnType: void
+summary: Raised when the popup starts loading a url.
+[[Events.parameters]]
+name: popup
+type: UniWebViewPopup
+summary: The popup window handle.
+[[Events.parameters]]
+name: url
+type: string
+summary: The url which the popup is about to load.
+
+[[Events]]
+name: OnPageCommitted
+syntax: OnPageCommitted(UniWebViewPopup popup, string url)
+returnType: void
+summary: Raised when the popup starts receiving web content.
+[[Events.parameters]]
+name: popup
+type: UniWebViewPopup
+summary: The popup window handle.
+[[Events.parameters]]
+name: url
+type: string
+summary: The url which the popup has started receiving content for.
+
+[[Events]]
+name: OnPageFinished
+syntax: OnPageFinished(UniWebViewPopup popup, UniWebViewNativeResultPayload payload)
+returnType: void
+summary: Raised when the popup finishes loading a url.
+[[Events.parameters]]
+name: popup
+type: UniWebViewPopup
+summary: The popup window handle.
+[[Events.parameters]]
+name: payload
+type: UniWebViewNativeResultPayload
+summary: The payload which contains the loading result.
+
+[[Events]]
+name: OnPageErrorReceived
+syntax: OnPageErrorReceived(UniWebViewPopup popup, UniWebViewNativeResultPayload payload)
+returnType: void
+summary: Raised when an error encountered during the popup loading process.
+[[Events.parameters]]
+name: popup
+type: UniWebViewPopup
+summary: The popup window handle.
+[[Events.parameters]]
+name: payload
+type: UniWebViewNativeResultPayload
+summary: The payload which contains the loading error.
+
+[[Events]]
+name: OnPageProgressChanged
+syntax: OnPageProgressChanged(UniWebViewPopup popup, float progress)
+returnType: void
+summary: Raised when the loading progress value changes in current popup page.
+[[Events.parameters]]
+name: popup
+type: UniWebViewPopup
+summary: The popup window handle.
+[[Events.parameters]]
+name: progress
+type: float
+summary: A value indicates the loading progress of current popup page.
+
+---
+
 ### UniWebViewSafeBrowsingEventMetadata
 
 # UniWebViewSafeBrowsingEventMetadata
@@ -9030,6 +9243,53 @@ code, even from third party (in an iframe or a library on the page), can open a 
 
 Usually, when passing `true` to this parameter, you may also want to call `SetAllowJavaScriptOpenWindow` with `true`
 before creating the web view.
+
+[[Methods]]
+name: SetPopupPageEventEnabled
+syntax: SetPopupPageEventEnabled(bool enabled)
+returnType: void
+summary:
+
+Sets whether the popup page events should be delivered to Unity.
+
+This option is disabled by default to avoid extra message noise. Enable it before opening a popup if you need
+reliable popup page lifecycle events (`OnPageStarted`, `OnPageFinished`, etc.) on `UniWebViewPopup`.
+
+example:
+
+```csharp
+webView.SetPopupPageEventEnabled(true);
+webView.SetSupportMultipleWindows(true, true);
+```
+
+[[Methods.parameters]]
+name: enabled
+type: bool
+summary: Whether to enable popup page events. Default is `false`.
+
+[[Methods]]
+name: GetPopupWindow
+syntax: GetPopupWindow(string multipleWindowId)
+returnType: UniWebViewPopup
+summary:
+
+Gets a popup window handle by its identifier.
+
+Returns `null` if the popup window is not found or already closed.
+
+example:
+
+```csharp
+webView.OnPopupWindowOpened += (view, popup) => {
+    var samePopup = view.GetPopupWindow(popup.Id);
+    samePopup?.EvaluateJavaScript("window.close();");
+};
+```
+
+[[Methods.parameters]]
+name: multipleWindowId
+type: string
+summary: The identifier of the popup window.
 
 [[Methods]]
 name: SetDefaultFontSize
@@ -11332,6 +11592,31 @@ type: string
 summary: The identifier of the opened new window.
 
 [[Events]]
+name: OnPopupWindowOpened
+syntax: OnPopupWindowOpened(UniWebView webView, UniWebViewPopup popup)
+returnType: void
+summary:
+
+Raised when a popup window is opened. This provides a lightweight popup window handle for control.
+
+example:
+
+```csharp
+webView.OnPopupWindowOpened += (view, popup) => {
+    popup.EvaluateJavaScript("console.log('popup opened');");
+};
+```
+
+[[Events.parameters]]
+name: webView
+type: UniWebView
+summary: The web view component which opens the popup window.
+[[Events.parameters]]
+name: popup
+type: UniWebViewPopup
+summary: The popup window handle.
+
+[[Events]]
 name: OnMultipleWindowClosed
 syntax: OnMultipleWindowClosed(UniWebView webView, string multipleWindowId)
 returnType: void
@@ -11356,6 +11641,31 @@ summary: The web view component which closes the multiple window.
 name: multipleWindowId
 type: string
 summary: The identifier of the closed new window.
+
+[[Events]]
+name: OnPopupWindowClosed
+syntax: OnPopupWindowClosed(UniWebView webView, UniWebViewPopup popup)
+returnType: void
+summary:
+
+Raised when a popup window is closed.
+
+example:
+
+```csharp
+webView.OnPopupWindowClosed += (view, popup) => {
+    // Popup is closed.
+};
+```
+
+[[Events.parameters]]
+name: webView
+type: UniWebView
+summary: The web view component which closes the popup window.
+[[Events.parameters]]
+name: popup
+type: UniWebViewPopup
+summary: The popup window handle.
 
 [[Events]]
 name: OnKeyCodeReceived

@@ -1,4 +1,15 @@
 # Release Note
+### 6.4.0 (5 Jan, 2026)
+
+#### Add
+
+* Add popup window handle APIs (`UniWebViewPopup`) with open/close events, navigation controls, and JavaScript evaluation.
+* Add popup page events for popups (`SetPopupPageEventEnabled` plus `OnPageStarted`/`OnPageCommitted`/`OnPageFinished`/`OnPageErrorReceived`/`OnPageProgressChanged` on `UniWebViewPopup`).
+
+#### Fix
+
+* Handle channel message error payloads safely on iOS and Android to avoid exceptions with unexpected error formats.
+
 ### 6.3.0 (28 Dec, 2025)
 
 #### Add
