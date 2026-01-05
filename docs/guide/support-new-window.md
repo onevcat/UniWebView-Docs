@@ -30,9 +30,19 @@ The new tab web view is just a temporary layer: it is not a fully functional `Un
 follow all settings as the original web view. You should dismiss it correctly, otherwise the original web view will be
 always covered and invisible.
 
+### Popup window handle
+
+When a new window is opened, UniWebView raises events with a lightweight handle, `UniWebViewPopup`. It is the recommended
+way to control the popup because it exposes minimal but explicit actions (`Close`, `GoBack`, `GoForward`,
+`EvaluateJavaScript`) and a few state properties.
+
+`OnMultipleWindowOpened` / `OnMultipleWindowClosed` are still available for compatibility, but they only provide the
+identifier string. Prefer `OnPopupWindowOpened` / `OnPopupWindowClosed`, and use `GetPopupWindow` if you only have the id.
+
 To manage a popup window, use the `OnPopupWindowOpened` event to receive a `UniWebViewPopup` handle:
 
 ```csharp
+webView.SetSupportMultipleWindows(true, false);
 webView.OnPopupWindowOpened += (view, popup) => {
     // Close the popup directly.
     popup.Close();
@@ -42,15 +52,59 @@ webView.OnPopupWindowOpened += (view, popup) => {
 The popup handle provides minimal controls like `Close`, `GoBack`, `GoForward`, and `EvaluateJavaScript`. You can also
 observe `OnPopupWindowClosed` to track its lifecycle.
 
+### Popup usage examples
+
+**Example 1: "Back or close" behavior**
+
+`GoBack` will close the popup automatically if it cannot go back, which is handy for a single "Back" button:
+
+```csharp
+UniWebViewPopup activePopup = null;
+webView.SetSupportMultipleWindows(true, false);
+
+webView.OnPopupWindowOpened += (view, popup) => {
+    activePopup = popup;
+};
+
+webView.OnPopupWindowClosed += (view, popup) => {
+    if (activePopup == popup) {
+        activePopup = null;
+    }
+};
+
+public void OnBackOrClosePopup() {
+    if (activePopup == null || !activePopup.IsAlive) {
+        return;
+    }
+
+    activePopup.GoBack();
+}
+```
+
+**Example 2: Run JavaScript after the popup finishes loading**
+
 Popup page lifecycle events are disabled by default to avoid extra message noise. If you need them (for example, to
 wait until the popup is ready before running JavaScript), enable them before opening the popup:
 
 ```csharp
 webView.SetPopupPageEventEnabled(true);
+webView.SetSupportMultipleWindows(true, false);
 webView.OnPopupWindowOpened += (view, popup) => {
     popup.OnPageFinished += (popupView, payload) => {
         popupView.EvaluateJavaScript("console.log('popup ready');");
     };
+};
+```
+
+**Example 3: Handle popup by identifier**
+
+If you already listen to `OnMultipleWindowOpened`, you can retrieve the popup handle and then switch to the new API:
+
+```csharp
+webView.SetSupportMultipleWindows(true, false);
+webView.OnMultipleWindowOpened += (view, windowId) => {
+    var popup = view.GetPopupWindow(windowId);
+    popup?.EvaluateJavaScript("console.log('popup opened by id');");
 };
 ```
 
