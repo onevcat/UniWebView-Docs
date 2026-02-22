@@ -18,6 +18,9 @@ without touching JSON manually.
 - `NavigationStarted`: Initial navigation began.
 - `NavigationFinished`: Page load finished successfully.
 - `NavigationFailed`: Page load failed. Inspect the `Raw` payload for error details.
+- `WarmupComplete`: Custom Tabs provider warmup completed (Android only, AndroidX Browser 1.8.0+).
+- `Minimized`: Safe Browsing tab was minimized (Android only, AndroidX Browser 1.8.0+).
+- `Unminimized`: Safe Browsing tab was restored from minimized state (Android only, AndroidX Browser 1.8.0+).
 - `TabHidden`: User dismissed the Safe Browsing tab (maps to `OnSafeBrowsingClosed` / `OnSafeBrowsingFinished`).
 
 #### Properties Summary

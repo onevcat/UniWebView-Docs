@@ -1,4 +1,16 @@
 # Release Note
+### 6.5.0 (22 Feb, 2026)
+
+#### Add
+
+* Add `GetSafeBrowsingCustomTabsProviderPackageName` for Android to query the resolved Custom Tabs provider package name used by Safe Browsing (`getSafeBrowsingCustomTabsProviderPackageName` on native bridge).
+* Add Android Safe Browsing lifecycle events `OnSafeBrowsingWarmupComplete`, `OnSafeBrowsingMinimized`, and `OnSafeBrowsingUnminimized` with structured metadata payloads.
+
+#### Fix
+
+* Fix Safe Browsing `hasShown` warning behavior on non-iOS platforms to avoid incorrect runtime warnings.
+* Fix UniWebView teardown when listener cleanup happens earlier than `OnDestroy`, avoiding null-reference cleanup paths for popup/session release.
+
 ### 6.4.0 (5 Jan, 2026)
 
 #### Add

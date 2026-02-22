@@ -56,6 +56,19 @@ disabled in Android system settings, this property returns `false`.
 You can only use the Safe Browsing Mode when the property is `true`. Otherwise, please let your user know how to enable
 it by re-installing Chrome and enable it in the system settings.
 
+#### Check Resolved Custom Tabs Provider (Android)
+
+On Android, you can inspect which Custom Tabs provider package UniWebView would use:
+
+```csharp
+var providerPackage = UniWebViewSafeBrowsing.GetSafeBrowsingCustomTabsProviderPackageName();
+if (!string.IsNullOrEmpty(providerPackage)) {
+    Debug.Log($"Safe Browsing provider: {providerPackage}");
+}
+```
+
+This returns `null` if Safe Browsing is unavailable or no provider can be resolved.
+
 ## Prefab
 
 > Remember to remove the previous `UniWebView.prefab` first if you just followed the [Web View - Prefab](./using-prefab.md) guide.
@@ -167,6 +180,16 @@ Besides the finish event, there are three navigation lifecycle callbacks: `OnSaf
 
 > Note: Safari does not expose a "navigation started" callback, so `OnSafeBrowsingNavigationStarted` is only raised on Android.
 
+#### Android Custom Tabs Lifecycle Events (1.8.0+)
+
+When using AndroidX Browser 1.8.0 or later, Safe Browsing also provides:
+
+- `OnSafeBrowsingWarmupComplete`
+- `OnSafeBrowsingMinimized`
+- `OnSafeBrowsingUnminimized`
+
+These callbacks are Android-only and include `UniWebViewSafeBrowsingEventMetadata`.
+
 #### Metadata Payload
 
 Internally, native callbacks send JSON metadata. UniWebView parses it into a strongly-typed `UniWebViewSafeBrowsingEventMetadata` and delivers it through every Safe Browsing event:
@@ -175,6 +198,9 @@ Internally, native callbacks send JSON metadata. UniWebView parses it into a str
 - `OnSafeBrowsingNavigationStarted(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)`
 - `OnSafeBrowsingNavigationFinished(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)`
 - `OnSafeBrowsingNavigationFailed(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)`
+- `OnSafeBrowsingWarmupComplete(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)` (Android, AndroidX Browser 1.8.0+)
+- `OnSafeBrowsingMinimized(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)` (Android, AndroidX Browser 1.8.0+)
+- `OnSafeBrowsingUnminimized(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)` (Android, AndroidX Browser 1.8.0+)
 
 ```csharp
 safeBrowsing.OnSafeBrowsingClosed += (browsing, metadata) => {

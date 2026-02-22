@@ -65,6 +65,15 @@ external browser by using Unity's `Application.OpenURL`.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onsafebrowsingnavigationstarted'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingNavigationStarted</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the underlying browser starts loading a page in Safe Browsing mode.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onsafebrowsingwarmupcomplete'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingWarmupComplete</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div></td><td><div class='simple-summary'>
+<p>Raised when the safe browser warmup callback is received.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onsafebrowsingminimized'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingMinimized</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div></td><td><div class='simple-summary'>
+<p>Raised when the safe browser is minimized.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onsafebrowsingunminimized'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingUnminimized</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div></td><td><div class='simple-summary'>
+<p>Raised when the safe browser is restored from minimized state.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onsafebrowsingnavigationfinished'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingNavigationFinished</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the Safe Browsing page finishes loading successfully.</p>
 </div>
@@ -79,6 +88,9 @@ external browser by using Unity's `Application.OpenURL`.
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
 <tr><td><div class='api-summary-heading'><a href='#create'><span class='return-type'>UniWebViewSafeBrowsing</span> <span class='member-name'>Create</span>(string url)</a></div></td><td><div class='simple-summary'>
 <p>Creates a new <code>UniWebViewSafeBrowsing</code> instance with a given URL.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#getsafebrowsingcustomtabsproviderpackagename'><span class='return-type'>string</span> <span class='member-name'>GetSafeBrowsingCustomTabsProviderPackageName</span>()</a></div></td><td><div class='simple-summary'>
+<p>Returns the Android Custom Tabs provider package name that UniWebView Safe Browsing would use.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setpreferredcustomtabsbrowsers'><span class='return-type'>void</span> <span class='member-name'>SetPreferredCustomTabsBrowsers</span>(string[] packages)</a></div></td><td><div class='simple-summary'>
 <p>Sets the preferred browsers for Custom Tabs in order of preference.</p>
@@ -372,6 +384,112 @@ external browser.
   </div>
 </div>
 <div class='api-box method'>
+  <div class="api-anchor" id='onsafebrowsingwarmupcomplete'></div><div class='api-heading' data-id='onsafebrowsingwarmupcomplete'><a href='#onsafebrowsingwarmupcomplete'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingWarmupComplete</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the safe browser warmup callback is received.</p>
+<p>Android only. Requires AndroidX Browser 1.8.0+.
+This callback indicates provider process warmup completion, not page load completion.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsing</span> <span class='parameter-item-name'>browsing</span></div>
+    <div class='parameter-item-desc'><p>The <code>UniWebViewSafeBrowsing</code> object raised this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsingEventMetadata</span> <span class='parameter-item-name'>metadata</span></div>
+    <div class='parameter-item-desc'><p>Structured metadata describing the native callback.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>safeBrowsing<span class="token punctuation">.</span>OnSafeBrowsingWarmupComplete <span class="token operator">+=</span> <span class="token punctuation">(</span>browsing<span class="token punctuation">,</span> metadata<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"Warmup complete at </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">metadata<span class="token punctuation">.</span>TimestampUtc</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onsafebrowsingminimized'></div><div class='api-heading' data-id='onsafebrowsingminimized'><a href='#onsafebrowsingminimized'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingMinimized</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the safe browser is minimized.</p>
+<p>Android only. Requires AndroidX Browser 1.8.0+.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsing</span> <span class='parameter-item-name'>browsing</span></div>
+    <div class='parameter-item-desc'><p>The <code>UniWebViewSafeBrowsing</code> object raised this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsingEventMetadata</span> <span class='parameter-item-name'>metadata</span></div>
+    <div class='parameter-item-desc'><p>Structured metadata describing the native callback.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>safeBrowsing<span class="token punctuation">.</span>OnSafeBrowsingMinimized <span class="token operator">+=</span> <span class="token punctuation">(</span>browsing<span class="token punctuation">,</span> metadata<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"Safe Browsing minimized at </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">metadata<span class="token punctuation">.</span>TimestampUtc</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onsafebrowsingunminimized'></div><div class='api-heading' data-id='onsafebrowsingunminimized'><a href='#onsafebrowsingunminimized'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingUnminimized</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the safe browser is restored from minimized state.</p>
+<p>Android only. Requires AndroidX Browser 1.8.0+.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsing</span> <span class='parameter-item-name'>browsing</span></div>
+    <div class='parameter-item-desc'><p>The <code>UniWebViewSafeBrowsing</code> object raised this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewSafeBrowsingEventMetadata</span> <span class='parameter-item-name'>metadata</span></div>
+    <div class='parameter-item-desc'><p>Structured metadata describing the native callback.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>safeBrowsing<span class="token punctuation">.</span>OnSafeBrowsingUnminimized <span class="token operator">+=</span> <span class="token punctuation">(</span>browsing<span class="token punctuation">,</span> metadata<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"Safe Browsing restored at </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">metadata<span class="token punctuation">.</span>TimestampUtc</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class="api-anchor" id='onsafebrowsingnavigationfinished'></div><div class='api-heading' data-id='onsafebrowsingnavigationfinished'><a href='#onsafebrowsingnavigationfinished'><span class='return-type'>event</span> <span class='member-name'>OnSafeBrowsingNavigationFinished</span>(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)</a></div>
   <div class='api-body'>
     <div class='desc'>
@@ -463,6 +581,31 @@ external browser.
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
 <pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> safeBrowsing <span class="token operator">=</span> UniWebViewSafeBrowsing<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span><span class="token string">"https://uniwebview.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='getsafebrowsingcustomtabsproviderpackagename'></div><div class='api-heading' data-id='getsafebrowsingcustomtabsproviderpackagename'><a href='#getsafebrowsingcustomtabsproviderpackagename'><span class='return-type'>string</span> <span class='member-name'>GetSafeBrowsingCustomTabsProviderPackageName</span>()</a><div class='api-badge api-badge-blue'>static</div><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Returns the Android Custom Tabs provider package name that UniWebView Safe Browsing would use.</p>
+<p>This is Android-only. It returns <code>null</code> if Safe Browsing is not supported or no provider can be resolved.
+The Android native bridge method is <code>getSafeBrowsingCustomTabsProviderPackageName</code>.</p>
+</div>
+                  <div class='section-title'>Return Value</div>
+<div class='method-return'><p>The resolved Custom Tabs provider package name on Android; otherwise, <code>null</code>.</p>
+</div>
+      <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> packageName <span class="token operator">=</span> UniWebViewSafeBrowsing<span class="token punctuation">.</span><span class="token function">GetSafeBrowsingCustomTabsProviderPackageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">string</span><span class="token punctuation">.</span><span class="token function">IsNullOrEmpty</span><span class="token punctuation">(</span>packageName<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"Safe Browsing provider: </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">packageName</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 </div>
 </div>

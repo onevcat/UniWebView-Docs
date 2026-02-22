@@ -126,6 +126,32 @@ name = "static"
 color = "blue"
 
 [[Methods]]
+name = "GetSafeBrowsingCustomTabsProviderPackageName"
+syntax = "GetSafeBrowsingCustomTabsProviderPackageName()"
+returnType = "string"
+summary = """
+Returns the Android Custom Tabs provider package name that UniWebView Safe Browsing would use.
+
+This is Android-only. It returns `null` if Safe Browsing is not supported or no provider can be resolved.
+The Android native bridge method is `getSafeBrowsingCustomTabsProviderPackageName`.
+"""
+returnValue = "The resolved Custom Tabs provider package name on Android; otherwise, `null`."
+example = """
+```csharp
+var packageName = UniWebViewSafeBrowsing.GetSafeBrowsingCustomTabsProviderPackageName();
+if (!string.IsNullOrEmpty(packageName)) {
+    Debug.Log($"Safe Browsing provider: {packageName}");
+}
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
 name = "SetPreferredCustomTabsBrowsers"
 syntax = "SetPreferredCustomTabsBrowsers(string[] packages)"
 returnType = "void"
@@ -624,6 +650,82 @@ example = """
 ```csharp
 safeBrowsing.OnSafeBrowsingNavigationStarted += (browsing, metadata) => {
     Debug.Log($"Navigation started at {metadata.TimestampUtc}");
+};
+```
+"""
+[[Events.parameters]]
+name = "browsing"
+type = "UniWebViewSafeBrowsing"
+summary = "The `UniWebViewSafeBrowsing` object raised this event."
+[[Events.parameters]]
+name = "metadata"
+type = "UniWebViewSafeBrowsingEventMetadata"
+summary = "Structured metadata describing the native callback."
+
+[[Events]]
+name = "OnSafeBrowsingWarmupComplete"
+syntax = "OnSafeBrowsingWarmupComplete(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)"
+returnType = "event"
+summary = """
+Raised when the safe browser warmup callback is received.
+
+Android only. Requires AndroidX Browser 1.8.0+.
+This callback indicates provider process warmup completion, not page load completion.
+"""
+example = """
+```csharp
+safeBrowsing.OnSafeBrowsingWarmupComplete += (browsing, metadata) => {
+    Debug.Log($"Warmup complete at {metadata.TimestampUtc}");
+};
+```
+"""
+[[Events.parameters]]
+name = "browsing"
+type = "UniWebViewSafeBrowsing"
+summary = "The `UniWebViewSafeBrowsing` object raised this event."
+[[Events.parameters]]
+name = "metadata"
+type = "UniWebViewSafeBrowsingEventMetadata"
+summary = "Structured metadata describing the native callback."
+
+[[Events]]
+name = "OnSafeBrowsingMinimized"
+syntax = "OnSafeBrowsingMinimized(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)"
+returnType = "event"
+summary = """
+Raised when the safe browser is minimized.
+
+Android only. Requires AndroidX Browser 1.8.0+.
+"""
+example = """
+```csharp
+safeBrowsing.OnSafeBrowsingMinimized += (browsing, metadata) => {
+    Debug.Log($"Safe Browsing minimized at {metadata.TimestampUtc}");
+};
+```
+"""
+[[Events.parameters]]
+name = "browsing"
+type = "UniWebViewSafeBrowsing"
+summary = "The `UniWebViewSafeBrowsing` object raised this event."
+[[Events.parameters]]
+name = "metadata"
+type = "UniWebViewSafeBrowsingEventMetadata"
+summary = "Structured metadata describing the native callback."
+
+[[Events]]
+name = "OnSafeBrowsingUnminimized"
+syntax = "OnSafeBrowsingUnminimized(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)"
+returnType = "event"
+summary = """
+Raised when the safe browser is restored from minimized state.
+
+Android only. Requires AndroidX Browser 1.8.0+.
+"""
+example = """
+```csharp
+safeBrowsing.OnSafeBrowsingUnminimized += (browsing, metadata) => {
+    Debug.Log($"Safe Browsing restored at {metadata.TimestampUtc}");
 };
 ```
 """
