@@ -1,0 +1,53 @@
+title = "UniWebViewChannelMethodEmbeddedToolbarItemAction"
+file = "UniWebViewChannelMethodEmbeddedToolbarItemAction"
+
+summary = """
+Represents an embedded toolbar item action request from the native side.
+
+This object is passed to the handler registered via `UniWebView.RegisterOnEmbeddedToolbarItemAction`. It contains
+the identifier of the toolbar item that was tapped or long-pressed, the gesture type, and optional toast text for
+title copy interactions.
+"""
+
+[[Properties]]
+name = "Identifier"
+returnType = "string"
+hasSetter = false
+summary = """
+The toolbar item identifier.
+
+Built-in identifiers are prefixed with `"uwv.toolbar."` (e.g., `"uwv.toolbar.back"`, `"uwv.toolbar.done"`).
+Custom items use the identifier provided when creating the item via `Item.Custom`.
+"""
+
+[[Properties]]
+name = "Gesture"
+returnType = "UniWebViewChannelMethodEmbeddedToolbarItemAction.GestureType"
+hasSetter = false
+summary = """
+The gesture type that triggered this action.
+
+For most toolbar items, this is `Tap`. For the title item with `OnLongPress` configured, it can be `LongPress`.
+"""
+
+[[Properties]]
+name = "CopyToastText"
+returnType = "string"
+hasSetter = false
+summary = """
+Optional toast text from the title item's long-press copy interaction config.
+
+This is `null` unless the action was triggered by a title long-press with `CopyUrl` configured.
+"""
+
+[[Properties]]
+name = "GestureType.Tap"
+returnType = "UniWebViewChannelMethodEmbeddedToolbarItemAction.GestureType"
+hasSetter = false
+summary = "A tap gesture."
+
+[[Properties]]
+name = "GestureType.LongPress"
+returnType = "UniWebViewChannelMethodEmbeddedToolbarItemAction.GestureType"
+hasSetter = false
+summary = "A long-press gesture. Only used by the title item when `OnLongPress` is configured."

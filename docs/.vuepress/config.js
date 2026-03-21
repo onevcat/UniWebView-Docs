@@ -323,6 +323,14 @@ module.exports = {
                 link: "UniWebViewEmbeddedToolbar"
               },
               {
+                text: "UniWebViewEmbeddedToolbarConfig",
+                link: "UniWebViewEmbeddedToolbarConfig"
+              },
+              {
+                text: "UniWebViewChannelMethodEmbeddedToolbarItemAction",
+                link: "UniWebViewChannelMethodEmbeddedToolbarItemAction"
+              },
+              {
                 text: "UniWebViewNativeListener",
                 link: "uniwebviewnativelistener"
               },
