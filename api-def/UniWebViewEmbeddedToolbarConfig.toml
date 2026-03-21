@@ -1,0 +1,251 @@
+title = "UniWebViewEmbeddedToolbarConfig"
+file = "UniWebViewEmbeddedToolbarConfig"
+
+summary = """
+Represents the configuration for the embedded toolbar.
+
+A config object describes the full toolbar layout: which items appear (back, forward, done, reload, title, or
+custom buttons), how they are arranged (left, center, right sections), their colors, and title interaction
+behaviors.
+
+Use `UniWebViewEmbeddedToolbarConfig.Default` for the standard layout (back + forward on the left, title in the
+center, done on the right), or construct your own config. Apply the config by calling
+`UniWebViewEmbeddedToolbar.ApplyConfig`.
+"""
+
+[[Properties]]
+name = "Default"
+returnType = "UniWebViewEmbeddedToolbarConfig"
+hasSetter = false
+summary = """
+Gets the default toolbar config.
+
+The default config contains: back and forward buttons on the left, a title item in the center, and a done
+button on the right. Position is `Top`, visibility is `true`, and colors use platform defaults.
+"""
+[[Properties.badges]]
+name = "static"
+color = "blue"
+
+[[Properties]]
+name = "Visible"
+returnType = "bool"
+hasSetter = true
+summary = """
+Whether the toolbar is visible. Default is `true`.
+"""
+
+[[Properties]]
+name = "Position"
+returnType = "UniWebViewToolbarPosition"
+hasSetter = true
+summary = """
+The position of the toolbar. Either `Top` or `Bottom`. Default is `Top`.
+
+This property only takes effect on iOS and Android. On macOS Unity Editor, the toolbar is always in the
+window's title bar.
+"""
+
+[[Properties]]
+name = "MaxHeight"
+returnType = "float?"
+hasSetter = true
+summary = """
+The maximum height of the toolbar in points. If set to a value smaller than the standard height, the toolbar
+will shrink to that height.
+
+This property only takes effect on iOS and Android.
+"""
+
+[[Properties]]
+name = "BackgroundColor"
+returnType = "UniWebViewEmbeddedToolbarConfig.ColorValue"
+hasSetter = true
+summary = """
+The background color of the toolbar. When `null`, the platform default is used.
+"""
+
+[[Properties]]
+name = "ButtonTextColor"
+returnType = "UniWebViewEmbeddedToolbarConfig.ColorValue"
+hasSetter = true
+summary = """
+The default text color for toolbar buttons (back, forward, done, reload, custom). When `null`, the platform
+default is used. Individual items can override this via `Item.Style.TextColor`.
+"""
+
+[[Properties]]
+name = "TitleTextColor"
+returnType = "UniWebViewEmbeddedToolbarConfig.ColorValue"
+hasSetter = true
+summary = """
+The text color for the title item. When `null`, the platform default is used. The title item can override
+this via its own `Item.Style.TextColor`.
+"""
+
+[[Properties]]
+name = "Left"
+returnType = "List<UniWebViewEmbeddedToolbarConfig.Item>"
+hasSetter = true
+summary = """
+The list of items to display on the left section of the toolbar.
+
+In the default config, this contains the back and forward built-in items.
+"""
+
+[[Properties]]
+name = "Center"
+returnType = "List<UniWebViewEmbeddedToolbarConfig.Item>"
+hasSetter = true
+summary = """
+The list of items to display in the center section of the toolbar.
+
+In the default config, this contains the title built-in item. You can also add other built-in or custom
+buttons to the center section alongside the title.
+"""
+
+[[Properties]]
+name = "Right"
+returnType = "List<UniWebViewEmbeddedToolbarConfig.Item>"
+hasSetter = true
+summary = """
+The list of items to display on the right section of the toolbar.
+
+In the default config, this contains the done built-in item.
+"""
+
+[[Methods]]
+name = "FromJson"
+syntax = "UniWebViewEmbeddedToolbarConfig.FromJson(string json)"
+returnType = "UniWebViewEmbeddedToolbarConfig"
+summary = """
+Creates a config from a JSON string. Returns `null` if the JSON is invalid.
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "json"
+type = "string"
+summary = "A JSON string representing the toolbar config."
+
+[[Methods]]
+name = "ToJson"
+syntax = "ToJson()"
+returnType = "string"
+summary = """
+Serializes the config to a JSON string.
+"""
+
+[[Methods]]
+name = "FindFirstBuiltInItem"
+syntax = "FindFirstBuiltInItem(UniWebViewEmbeddedToolbarConfig.BuiltInItemKind kind)"
+returnType = "UniWebViewEmbeddedToolbarConfig.Item"
+summary = """
+Finds the first built-in item matching the given kind across all sections (left, center, right).
+
+Returns `null` if no matching item is found.
+"""
+example = """
+```csharp
+var config = UniWebViewEmbeddedToolbarConfig.Default;
+var titleItem = config.FindFirstBuiltInItem(
+    UniWebViewEmbeddedToolbarConfig.BuiltInItemKind.Title
+);
+titleItem.Title = "My App";
+```
+"""
+[[Methods.parameters]]
+name = "kind"
+type = "UniWebViewEmbeddedToolbarConfig.BuiltInItemKind"
+summary = "The built-in item kind to search for."
+
+[[Methods]]
+name = "Item.BuiltIn"
+syntax = "UniWebViewEmbeddedToolbarConfig.Item.BuiltIn(BuiltInItemKind kind, string title = null, bool? visible = null, ItemStyle style = null, TitleInteraction titleInteraction = null, string identifier = null)"
+returnType = "UniWebViewEmbeddedToolbarConfig.Item"
+summary = """
+Creates a built-in toolbar item.
+
+Built-in items are: `Back`, `Forward`, `Done`, `Reload`, and `Title`. Each has a default text and identifier.
+You can override the title, visibility, style, and (for the Title item) title interaction.
+"""
+example = """
+```csharp
+// Create a reload button.
+var reload = UniWebViewEmbeddedToolbarConfig.Item.BuiltIn(
+    UniWebViewEmbeddedToolbarConfig.BuiltInItemKind.Reload
+);
+
+// Create a title with scroll-to-top interaction.
+var title = UniWebViewEmbeddedToolbarConfig.Item.BuiltIn(
+    UniWebViewEmbeddedToolbarConfig.BuiltInItemKind.Title,
+    title: "My App",
+    titleInteraction: new UniWebViewEmbeddedToolbarConfig.TitleInteraction {
+        OnTap = UniWebViewEmbeddedToolbarConfig.TitleInteraction.TapAction.ScrollToTop
+    }
+);
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "kind"
+type = "UniWebViewEmbeddedToolbarConfig.BuiltInItemKind"
+summary = "The kind of built-in item to create."
+[[Methods.parameters]]
+name = "title"
+type = "string"
+summary = "Optional title text override. If `null`, the platform default text is used."
+[[Methods.parameters]]
+name = "visible"
+type = "bool?"
+summary = "Optional visibility override. If `null`, the item is visible by default."
+[[Methods.parameters]]
+name = "style"
+type = "UniWebViewEmbeddedToolbarConfig.ItemStyle"
+summary = "Optional style override for this item."
+[[Methods.parameters]]
+name = "titleInteraction"
+type = "UniWebViewEmbeddedToolbarConfig.TitleInteraction"
+summary = "Optional title interaction config. Only applicable to the `Title` built-in item."
+[[Methods.parameters]]
+name = "identifier"
+type = "string"
+summary = "Optional identifier override. By default, built-in items use `uwv.toolbar.*` identifiers."
+
+[[Methods]]
+name = "Item.Custom"
+syntax = "UniWebViewEmbeddedToolbarConfig.Item.Custom(string identifier, string title, ItemStyle style = null)"
+returnType = "UniWebViewEmbeddedToolbarConfig.Item"
+summary = """
+Creates a custom toolbar item (button).
+
+Custom items require an identifier and a title. When tapped, the item's action is delivered through
+`RegisterOnEmbeddedToolbarItemAction` on the `UniWebView` instance. Custom items have no native default
+action.
+"""
+example = """
+```csharp
+var shareButton = UniWebViewEmbeddedToolbarConfig.Item.Custom(
+    "my.share",
+    "Share"
+);
+```
+"""
+[[Methods.badges]]
+name = "static"
+color = "blue"
+[[Methods.parameters]]
+name = "identifier"
+type = "string"
+summary = "A unique identifier for the custom item. Used to identify the item in action callbacks."
+[[Methods.parameters]]
+name = "title"
+type = "string"
+summary = "The button title text."
+[[Methods.parameters]]
+name = "style"
+type = "UniWebViewEmbeddedToolbarConfig.ItemStyle"
+summary = "Optional style for this item."
