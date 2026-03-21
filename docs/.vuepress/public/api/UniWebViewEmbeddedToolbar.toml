@@ -4,14 +4,83 @@ file = "UniWebViewEmbeddedToolbar"
 summary = """
 Represents the embedded toolbar in a web view.
 
-You do not create an instance of this class directly. Instead, use the `EmbeddedWebView` property in `UniWebView` to
+You do not create an instance of this class directly. Instead, use the `EmbeddedToolbar` property in `UniWebView` to
 get the current embedded toolbar in the web view and interact with it.
 
 The embedded toolbar of a web view expands its width to match the web view's frame width. It is displayed at either
 top or bottom of the web view, based on the setting received through `SetPosition`. By default, the toolbar contains
-a main title, a back button, a forward button and a done button to close the web view. You can use methods in this
-class to customize the toolbar to match your app's style. 
+a main title, a back button, a forward button and a done button to close the web view.
+
+You can customize the toolbar through the config-based approach: create a `UniWebViewEmbeddedToolbarConfig`, set up
+items (built-in or custom), colors, title interactions, and apply it via `ApplyConfig`. This gives you full control
+over the toolbar layout, including adding custom buttons, a reload button, and title interactions like scroll-to-top
+or copy-URL-on-long-press.
+
+For simple customization, convenience methods like `SetDoneButtonText`, `SetBackgroundColor`, etc. are also
+available. These methods modify the current config internally and apply the changes automatically.
 """
+
+[[Properties]]
+name = "CurrentConfig"
+returnType = "UniWebViewEmbeddedToolbarConfig"
+hasSetter = false
+summary = """
+Gets a cloned copy of the current toolbar config.
+
+You can use this to inspect the current state of the toolbar, or as a starting point for building a modified config.
+Changes to the returned object will not affect the toolbar until you pass it to `ApplyConfig`.
+"""
+example = """
+```csharp
+// Get the current config as a starting point for modifications.
+var config = webView.EmbeddedToolbar.CurrentConfig;
+config.BackgroundColor = UniWebViewEmbeddedToolbarConfig.ColorValue.FromColor(Color.black);
+webView.EmbeddedToolbar.ApplyConfig(config);
+```
+"""
+
+[[Methods]]
+name = "ApplyConfig"
+syntax = "ApplyConfig(UniWebViewEmbeddedToolbarConfig config)"
+returnType = "void"
+summary = """
+Applies a toolbar config to fully customize the toolbar layout and behavior.
+
+This is the recommended way to configure the toolbar. You can control which items appear (back, forward, done,
+reload, title, or custom buttons), their order and placement (left, center, right sections), colors, and title
+interactions (tap to scroll to top, long press to copy URL).
+
+After calling this method, the toolbar will be re-rendered with the given config. Pass `null` to reset to the
+default config.
+"""
+example = """
+```csharp
+var config = UniWebViewEmbeddedToolbarConfig.Default;
+
+// Add a reload button to the left section.
+config.Left.Add(
+    UniWebViewEmbeddedToolbarConfig.Item.BuiltIn(
+        UniWebViewEmbeddedToolbarConfig.BuiltInItemKind.Reload
+    )
+);
+
+// Set the title text and enable title interactions.
+var titleItem = config.FindFirstBuiltInItem(
+    UniWebViewEmbeddedToolbarConfig.BuiltInItemKind.Title
+);
+titleItem.Title = "My App";
+titleItem.TitleInteraction = new UniWebViewEmbeddedToolbarConfig.TitleInteraction {
+    OnTap = UniWebViewEmbeddedToolbarConfig.TitleInteraction.TapAction.ScrollToTop,
+    OnLongPress = UniWebViewEmbeddedToolbarConfig.TitleInteraction.LongPressAction.CopyUrl
+};
+
+webView.EmbeddedToolbar.ApplyConfig(config);
+```
+"""
+[[Methods.parameters]]
+name = "config"
+type = "UniWebViewEmbeddedToolbarConfig"
+summary = "The toolbar config to apply. Pass `null` to apply the default config."
 
 [[Methods]]
 name = "SetPosition"
@@ -81,13 +150,13 @@ name = "SetDoneButtonText"
 syntax = "SetDoneButtonText(string text)"
 returnType = "void"
 summary = """
-Sets the text of the done button. 
+Sets the text of the done button.
 
 The default text is "Done".
 """
 example = """
 ```csharp
-webView.EmbeddedToolbar.SetDoneButtonText("关闭");
+webView.EmbeddedToolbar.SetDoneButtonText("Close");
 ```
 """
 [[Methods.parameters]]
@@ -100,13 +169,13 @@ name = "SetGoBackButtonText"
 syntax = "SetGoBackButtonText(string text)"
 returnType = "void"
 summary = """
-Sets the text of the back button. 
+Sets the text of the back button.
 
 The default text is "❮" ("\u276E").
 """
 example = """
 ```csharp
-webView.EmbeddedToolbar.SetDoneButtonText("返回");
+webView.EmbeddedToolbar.SetGoBackButtonText("Back");
 ```
 """
 [[Methods.parameters]]
@@ -125,7 +194,7 @@ The default text is "❯" ("\u276F").
 """
 example = """
 ```csharp
-webView.EmbeddedToolbar.SetDoneButtonText("前进");
+webView.EmbeddedToolbar.SetGoForwardButtonText("Fwd");
 ```
 """
 [[Methods.parameters]]
@@ -138,14 +207,13 @@ name = "SetTitleText"
 syntax = "SetTitleText(string text)"
 returnType = "void"
 summary = """
-Sets the text of toolbar title. 
+Sets the text of toolbar title.
 
-The default is empty. The space is limited, setting a long text as title might
-not fit in the space.
+The default is empty. The space is limited, setting a long text as title might not fit in the space.
 """
 example = """
 ```csharp
-webView.EmbeddedToolbar.SetDoneButtonText("My Game");
+webView.EmbeddedToolbar.SetTitleText("My Game");
 ```
 """
 [[Methods.parameters]]
@@ -175,7 +243,7 @@ name = "SetButtonTextColor"
 syntax = "SetButtonTextColor(Color color)"
 returnType = "void"
 summary = """
-Sets the buttons color of the toolbar. 
+Sets the buttons color of the toolbar.
 
 This color affects the back, forward and done button.
 """
@@ -194,7 +262,7 @@ name = "SetTitleTextColor"
 syntax = "SetTitleTextColor(Color color)"
 returnType = "void"
 summary = """
-Sets the text color of the toolbar title. 
+Sets the text color of the toolbar title.
 """
 example = """
 ```csharp
@@ -211,9 +279,9 @@ name = "HideNavigationButtons"
 syntax = "HideNavigationButtons()"
 returnType = "void"
 summary = """
-Hides the navigation buttons on the toolbar. 
+Hides the navigation buttons on the toolbar.
 
-When called, the back button and forward button will not be shown. 
+When called, the back button and forward button will not be shown.
 By default, the navigation buttons are shown.
 """
 example = """
@@ -228,7 +296,7 @@ name = "ShowNavigationButtons"
 syntax = "ShowNavigationButtons()"
 returnType = "void"
 summary = """
-Shows the navigation buttons on the toolbar. 
+Shows the navigation buttons on the toolbar.
 
 When called, the back button and forward button will be shown.
 By default, the navigation buttons are shown.

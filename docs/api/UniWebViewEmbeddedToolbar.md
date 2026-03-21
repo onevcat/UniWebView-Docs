@@ -8,19 +8,38 @@ sidebarDepth: 0
 
 Represents the embedded toolbar in a web view.
 
-You do not create an instance of this class directly. Instead, use the `EmbeddedWebView` property in `UniWebView` to
+You do not create an instance of this class directly. Instead, use the `EmbeddedToolbar` property in `UniWebView` to
 get the current embedded toolbar in the web view and interact with it.
 
 The embedded toolbar of a web view expands its width to match the web view's frame width. It is displayed at either
 top or bottom of the web view, based on the setting received through `SetPosition`. By default, the toolbar contains
-a main title, a back button, a forward button and a done button to close the web view. You can use methods in this
-class to customize the toolbar to match your app's style. 
+a main title, a back button, a forward button and a done button to close the web view.
+
+You can customize the toolbar through the config-based approach: create a `UniWebViewEmbeddedToolbarConfig`, set up
+items (built-in or custom), colors, title interactions, and apply it via `ApplyConfig`. This gives you full control
+over the toolbar layout, including adding custom buttons, a reload button, and title interactions like scroll-to-top
+or copy-URL-on-long-press.
+
+For simple customization, convenience methods like `SetDoneButtonText`, `SetBackgroundColor`, etc. are also
+available. These methods modify the current config internally and apply the changes automatically.
+
+#### Properties Summary
+
+<table class='api-summary-table api-summary-table--properties'>
+<colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
+<tr><td><div class='api-summary-heading'><a href='#currentconfig'><span class='return-type'>UniWebViewEmbeddedToolbarConfig</span> <span class='member-name'>CurrentConfig</span> { get; }</a></div></td><td><div class='simple-summary'>
+<p>Gets a cloned copy of the current toolbar config.</p>
+</div>
+</td></tr></table>
 
 #### Methods Summary
 
 <table class='api-summary-table api-summary-table--methods'>
 <colgroup><col class='api-summary-table__signature' /><col class='api-summary-table__description' /></colgroup>
-<tr><td><div class='api-summary-heading'><a href='#setposition'><span class='return-type'>void</span> <span class='member-name'>SetPosition</span>(UniWebViewToolbarPosition position)</a></div></td><td><div class='simple-summary'>
+<tr><td><div class='api-summary-heading'><a href='#applyconfig'><span class='return-type'>void</span> <span class='member-name'>ApplyConfig</span>(UniWebViewEmbeddedToolbarConfig config)</a></div></td><td><div class='simple-summary'>
+<p>Applies a toolbar config to fully customize the toolbar layout and behavior.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setposition'><span class='return-type'>void</span> <span class='member-name'>SetPosition</span>(UniWebViewToolbarPosition position)</a></div></td><td><div class='simple-summary'>
 <p>Sets the position of the embedded toolbar.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setmaxheight'><span class='return-type'>void</span> <span class='member-name'>SetMaxHeight</span>(float height)</a></div></td><td><div class='simple-summary'>
@@ -61,8 +80,84 @@ class to customize the toolbar to match your app's style.
 </div>
 </td></tr></table>
 
+### Properties
+
+<div class='api-box property'>
+  <div class="api-anchor" id='currentconfig'></div><div class='api-heading' data-id='currentconfig'><a href='#currentconfig'><span class='return-type'>UniWebViewEmbeddedToolbarConfig</span> <span class='member-name'>CurrentConfig</span> { get; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Gets a cloned copy of the current toolbar config.</p>
+<p>You can use this to inspect the current state of the toolbar, or as a starting point for building a modified config.
+Changes to the returned object will not affect the toolbar until you pass it to <code>ApplyConfig</code>.</p>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Get the current config as a starting point for modifications.</span>
+<span class="token class-name"><span class="token keyword">var</span></span> config <span class="token operator">=</span> webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span>CurrentConfig<span class="token punctuation">;</span>
+config<span class="token punctuation">.</span>BackgroundColor <span class="token operator">=</span> UniWebViewEmbeddedToolbarConfig<span class="token punctuation">.</span>ColorValue<span class="token punctuation">.</span><span class="token function">FromColor</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span>black<span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">ApplyConfig</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+
 ### Methods
 
+<div class='api-box method'>
+  <div class="api-anchor" id='applyconfig'></div><div class='api-heading' data-id='applyconfig'><a href='#applyconfig'><span class='return-type'>void</span> <span class='member-name'>ApplyConfig</span>(UniWebViewEmbeddedToolbarConfig config)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Applies a toolbar config to fully customize the toolbar layout and behavior.</p>
+<p>This is the recommended way to configure the toolbar. You can control which items appear (back, forward, done,
+reload, title, or custom buttons), their order and placement (left, center, right sections), colors, and title
+interactions (tap to scroll to top, long press to copy URL).</p>
+<p>After calling this method, the toolbar will be re-rendered with the given config. Pass <code>null</code> to reset to the
+default config.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewEmbeddedToolbarConfig</span> <span class='parameter-item-name'>config</span></div>
+    <div class='parameter-item-desc'><p>The toolbar config to apply. Pass <code>null</code> to apply the default config.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> config <span class="token operator">=</span> UniWebViewEmbeddedToolbarConfig<span class="token punctuation">.</span>Default<span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Add a reload button to the left section.</span>
+config<span class="token punctuation">.</span>Left<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>
+    UniWebViewEmbeddedToolbarConfig<span class="token punctuation">.</span>Item<span class="token punctuation">.</span><span class="token function">BuiltIn</span><span class="token punctuation">(</span>
+        UniWebViewEmbeddedToolbarConfig<span class="token punctuation">.</span>BuiltInItemKind<span class="token punctuation">.</span>Reload
+    <span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+<span class="token comment">// Set the title text and enable title interactions.</span>
+<span class="token class-name"><span class="token keyword">var</span></span> titleItem <span class="token operator">=</span> config<span class="token punctuation">.</span><span class="token function">FindFirstBuiltInItem</span><span class="token punctuation">(</span>
+    UniWebViewEmbeddedToolbarConfig<span class="token punctuation">.</span>BuiltInItemKind<span class="token punctuation">.</span>Title
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+titleItem<span class="token punctuation">.</span>Title <span class="token operator">=</span> <span class="token string">"My App"</span><span class="token punctuation">;</span>
+titleItem<span class="token punctuation">.</span>TitleInteraction <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">UniWebViewEmbeddedToolbarConfig<span class="token punctuation">.</span>TitleInteraction</span> <span class="token punctuation">{</span>
+    OnTap <span class="token operator">=</span> UniWebViewEmbeddedToolbarConfig<span class="token punctuation">.</span>TitleInteraction<span class="token punctuation">.</span>TapAction<span class="token punctuation">.</span>ScrollToTop<span class="token punctuation">,</span>
+    OnLongPress <span class="token operator">=</span> UniWebViewEmbeddedToolbarConfig<span class="token punctuation">.</span>TitleInteraction<span class="token punctuation">.</span>LongPressAction<span class="token punctuation">.</span>CopyUrl
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span />
+webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">ApplyConfig</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
 <div class='api-box method'>
   <div class="api-anchor" id='setposition'></div><div class='api-heading' data-id='setposition'><a href='#setposition'><span class='return-type'>void</span> <span class='member-name'>SetPosition</span>(UniWebViewToolbarPosition position)</a></div>
   <div class='api-body'>
@@ -155,7 +250,7 @@ window&#39;s title bar and the height is fixed.</p>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Sets the text of the done button. </p>
+<p>Sets the text of the done button.</p>
 <p>The default text is &quot;Done&quot;.</p>
 </div>
             <div class='parameters'>
@@ -171,7 +266,7 @@ window&#39;s title bar and the height is fixed.</p>
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetDoneButtonText</span><span class="token punctuation">(</span><span class="token string">"关闭"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetDoneButtonText</span><span class="token punctuation">(</span><span class="token string">"Close"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -183,7 +278,7 @@ window&#39;s title bar and the height is fixed.</p>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Sets the text of the back button. </p>
+<p>Sets the text of the back button.</p>
 <p>The default text is &quot;❮&quot; (&quot;❮&quot;).</p>
 </div>
             <div class='parameters'>
@@ -199,7 +294,7 @@ window&#39;s title bar and the height is fixed.</p>
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetDoneButtonText</span><span class="token punctuation">(</span><span class="token string">"返回"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetGoBackButtonText</span><span class="token punctuation">(</span><span class="token string">"Back"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -227,7 +322,7 @@ window&#39;s title bar and the height is fixed.</p>
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetDoneButtonText</span><span class="token punctuation">(</span><span class="token string">"前进"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetGoForwardButtonText</span><span class="token punctuation">(</span><span class="token string">"Fwd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -239,9 +334,8 @@ window&#39;s title bar and the height is fixed.</p>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Sets the text of toolbar title. </p>
-<p>The default is empty. The space is limited, setting a long text as title might
-not fit in the space.</p>
+<p>Sets the text of toolbar title.</p>
+<p>The default is empty. The space is limited, setting a long text as title might not fit in the space.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -256,7 +350,7 @@ not fit in the space.</p>
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetDoneButtonText</span><span class="token punctuation">(</span><span class="token string">"My Game"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token punctuation">.</span><span class="token function">SetTitleText</span><span class="token punctuation">(</span><span class="token string">"My Game"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>
@@ -295,7 +389,7 @@ not fit in the space.</p>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Sets the buttons color of the toolbar. </p>
+<p>Sets the buttons color of the toolbar.</p>
 <p>This color affects the back, forward and done button.</p>
 </div>
             <div class='parameters'>
@@ -323,7 +417,7 @@ not fit in the space.</p>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Sets the text color of the toolbar title. </p>
+<p>Sets the text color of the toolbar title.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -350,8 +444,8 @@ not fit in the space.</p>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Hides the navigation buttons on the toolbar. </p>
-<p>When called, the back button and forward button will not be shown. 
+<p>Hides the navigation buttons on the toolbar.</p>
+<p>When called, the back button and forward button will not be shown.
 By default, the navigation buttons are shown.</p>
 </div>
                         <div class='example'>
@@ -370,7 +464,7 @@ webView<span class="token punctuation">.</span>EmbeddedToolbar<span class="token
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Shows the navigation buttons on the toolbar. </p>
+<p>Shows the navigation buttons on the toolbar.</p>
 <p>When called, the back button and forward button will be shown.
 By default, the navigation buttons are shown.</p>
 </div>
