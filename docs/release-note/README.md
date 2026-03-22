@@ -1,4 +1,19 @@
 # Release Note
+### 6.6.0 (22 Mar, 2026)
+
+#### Add
+
+* Config-based embedded toolbar via `UniWebViewEmbeddedToolbarConfig`. Define toolbar layout, items, colors, and behavior in a JSON-friendly configuration and apply it with `ApplyConfig` on `UniWebViewEmbeddedToolbar`.
+* Custom toolbar items. Beyond the built-in Back, Forward, Done, Reload, and Title items, you can now add custom items to the left, center, and right positions of the toolbar.
+* Title interaction behaviors. Configure tap-to-scroll-to-top and long-press-to-copy-URL on the title item via `TitleInteraction` in the toolbar config.
+* Toolbar item action callbacks. Use `RegisterOnEmbeddedToolbarItemAction` and `UnregisterOnEmbeddedToolbarItemAction` on `UniWebView` to intercept tap and long-press gestures on any toolbar item.
+
+#### Fix
+
+* Fix an iOS Texture Mirror crash in `CA::Transaction::finish_frame` when a snapshot is requested while another is still in flight.
+* Enforce minimum touch target size for Android toolbar buttons to improve tap reliability.
+* Use native appearance defaults for macOS toolbar to match platform conventions.
+
 ### 6.5.0 (22 Feb, 2026)
 
 #### Add

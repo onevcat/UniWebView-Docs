@@ -374,7 +374,7 @@ HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#capturesnapshot'><span class='return-type'>void</span> <span class='member-name'>CaptureSnapshot</span>(string fileName)</a></div></td><td><div class='simple-summary'>
 <p>Capture the content of web view and store it to the cache path on disk with the given file name.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StartSnapshotForRendering</span>(Rect? rect = null, Action&lt;Texture&gt; onStarted = null)</a></div></td><td><div class='simple-summary'>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StartSnapshotForRendering</span>(Rect? rect = null, Action&lt;Texture&gt; onStarted = null, float refreshInterval = 0)</a></div></td><td><div class='simple-summary'>
 <p>Starts the process of continually rendering the snapshot.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#stopsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StopSnapshotForRendering</span>()</a></div></td><td><div class='simple-summary'>
@@ -4551,14 +4551,16 @@ webView<span class="token punctuation">.</span><span class="token function">Capt
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='startsnapshotforrendering'></div><div class='api-heading' data-id='startsnapshotforrendering'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StartSnapshotForRendering</span>(Rect? rect = null, Action&lt;Texture&gt; onStarted = null)</a></div>
+  <div class="api-anchor" id='startsnapshotforrendering'></div><div class='api-heading' data-id='startsnapshotforrendering'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StartSnapshotForRendering</span>(Rect? rect = null, Action&lt;Texture&gt; onStarted = null, float refreshInterval = 0)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
 <p>Starts the process of continually rendering the snapshot.</p>
 <p>You take the responsibility of calling this method before you use either <code>GetRenderedData</code> or
 <code>CreateRenderedTexture(Rect?)</code> to get the rendered data or texture. It prepares a render buffer for the image
-data and performs the initial rendering for later use.</p>
+data and starts an internal coroutine that periodically fetches snapshot data from the native side.</p>
+<p>Once started, <code>GetRenderedData</code> and <code>CreateRenderedTexture</code> return the latest cached data without crossing the
+native boundary, so they are safe to call from <code>Update()</code>.</p>
 </div>
       <div class='custom-container warning'>
   <p class="custom-container-title">NOTICE</p>
@@ -4581,6 +4583,14 @@ the associated resources.
     <div class='parameter-item'><span class='parameter-item-type'>Action&lt;Texture&gt;</span> <span class='parameter-item-name'>onStarted</span></div>
     <div class='parameter-item-desc'><p>An optional callback to execute when rendering has started. The callback receives a <code>Texture2D</code> parameter
 representing the rendered texture. This is useful if you want to perform a one-time rendering of the web view.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>refreshInterval</span></div>
+    <div class='parameter-item-desc'><p>The interval in seconds between snapshot refreshes. By default (when not set or set to <code>0</code>), it refreshes every frame
+for the best responsiveness. Use a larger value to reduce CPU/GPU usage, for example <code>1.0f/30</code> for approximately 30 fps
+or <code>1.0f/10</code> for approximately 10 fps. This is especially useful on Android where snapshot capture runs on the main
+thread.</p>
 </div>
   </li>
 </ul></div>
