@@ -102,25 +102,30 @@ Destroy(cubeRenderer.material.mainTexture);
 It is heavy work to take snapshots of the web view and pass them between the native side and Unity, especially on
 old devices. There are some small tips to improve the performance.
 
-### Create Less Texture
+### Refresh Interval
 
-The most straightforward way is creating less textures. Instead of creating a new texture in every `Update`, you can
-set an interval. For example, a very naive change to make it create only a quarter of the textures compared to above:
+By default, `StartSnapshotForRendering` captures a new snapshot every frame for the best responsiveness. However,
+this can be expensive — especially on Android where snapshot capture runs on the main thread. You can pass a
+`refreshInterval` parameter to reduce the capture frequency:
 
 ```csharp
-int counter = 0;
+// Capture at ~30 fps instead of every frame.
+webView.StartSnapshotForRendering(refreshInterval: 1.0f / 30);
 
-void Update() {
-  if (webView != null) {
-    count += 1;
-    if (count == 4) {
-      Destroy(cubeRenderer.material.mainTexture);
-      cubeRenderer.material.mainTexture = webView.CreateRenderedTexture();
-      count = 0;
-    }
-  }
-}
+// Capture at ~10 fps for a mostly-static page.
+webView.StartSnapshotForRendering(refreshInterval: 1.0f / 10);
 ```
+
+With a refresh interval set, the internal snapshot coroutine fetches data from the native side at the specified rate,
+and `CreateRenderedTexture` / `GetRenderedData` simply return the latest cached result without crossing the native
+boundary. This means you can still call `CreateRenderedTexture` in `Update` safely — no manual frame-skipping counter
+is needed.
+
+::: tip
+On iOS, `StartSnapshotForRendering` already uses a coroutine internally to avoid capturing during CoreAnimation
+transactions (which would cause crashes). The `refreshInterval` parameter works the same way on all platforms, but the
+performance benefit is most noticeable on Android.
+:::
 
 ### One Time Rendering
 

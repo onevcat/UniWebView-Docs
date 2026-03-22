@@ -2503,14 +2503,17 @@ random UUID with "png" file extension as the file name.
 
 [[Methods]]
 name = "StartSnapshotForRendering"
-syntax = "StartSnapshotForRendering(Rect? rect = null, Action<Texture> onStarted = null)"
+syntax = "StartSnapshotForRendering(Rect? rect = null, Action<Texture> onStarted = null, float refreshInterval = 0)"
 returnType = "void"
 summary = """
 Starts the process of continually rendering the snapshot.
 
 You take the responsibility of calling this method before you use either `GetRenderedData` or
 `CreateRenderedTexture(Rect?)` to get the rendered data or texture. It prepares a render buffer for the image
-data and performs the initial rendering for later use.
+data and starts an internal coroutine that periodically fetches snapshot data from the native side.
+
+Once started, `GetRenderedData` and `CreateRenderedTexture` return the latest cached data without crossing the
+native boundary, so they are safe to call from `Update()`.
 """
 notice = """
 If this method is not called, the related data or texture methods will not work and will only return `null`. Once you
@@ -2529,6 +2532,15 @@ type = "Action<Texture>"
 summary = """
 An optional callback to execute when rendering has started. The callback receives a `Texture2D` parameter
 representing the rendered texture. This is useful if you want to perform a one-time rendering of the web view.
+"""
+[[Methods.parameters]]
+name = "refreshInterval"
+type = "float"
+summary = """
+The interval in seconds between snapshot refreshes. By default (when not set or set to `0`), it refreshes every frame
+for the best responsiveness. Use a larger value to reduce CPU/GPU usage, for example `1.0f/30` for approximately 30 fps
+or `1.0f/10` for approximately 10 fps. This is especially useful on Android where snapshot capture runs on the main
+thread.
 """
 
 [[Methods]]
