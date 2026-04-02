@@ -1,4 +1,10 @@
 # Release Note
+### 6.6.1 (2 April, 2026)
+
+#### Fix
+
+* Fix an Android crash when capturing a snapshot while the web view has a zero scale transform, which caused `Bitmap.createBitmap` to fail with an invalid size.
+
 ### 6.6.0 (22 Mar, 2026)
 
 #### Add
