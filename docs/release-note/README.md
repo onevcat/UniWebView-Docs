@@ -1,4 +1,12 @@
 # Release Note
+### 6.6.2 (25 Apr, 2026)
+
+#### Fix
+
+* Fix slow first paint on iOS and macOS when a URL is loaded before `Show` is called. Pre-Show web views are no longer placed in a hidden ancestor chain, avoiding WebKit's `requestAnimationFrame` pause and 1Hz timer throttle.
+* Fix `GetAlpha` returning 0 on iOS and macOS before the first `Show` call. The user-set alpha is now returned regardless of the on-screen container state.
+* Fix missing `failingURL` in `OnPageErrorReceived` on iOS and macOS when WebKit delivers the error with only the `NSURL`-typed user info key.
+
 ### 6.6.1 (2 April, 2026)
 
 #### Fix
