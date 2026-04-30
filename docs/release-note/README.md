@@ -1,4 +1,10 @@
 # Release Note
+### 6.6.3 (30 Apr, 2026)
+
+#### Fix
+
+* Fix `StartSnapshotForRendering` invoking the `onStarted` callback before the first snapshot frame is actually cached. The callback now defers until the initial snapshot data is available, so the returned texture reflects real web view content instead of an empty image.
+
 ### 6.6.2 (25 Apr, 2026)
 
 #### Fix
