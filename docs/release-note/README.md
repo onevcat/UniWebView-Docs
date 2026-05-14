@@ -1,4 +1,11 @@
 # Release Note
+### 6.6.4 (14 May, 2026)
+
+#### Fix
+
+* Fix the Android web view frame not accounting for the safe area when the screen is in fullscreen mode.
+* Fix stale `onStarted` callbacks from `StartSnapshotForRendering` when the method is called again before a previous snapshot session is stopped. The old callback registration is now properly cleared, so only the latest `onStarted` is invoked.
+
 ### 6.6.3 (30 Apr, 2026)
 
 #### Fix
