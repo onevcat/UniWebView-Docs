@@ -1,4 +1,11 @@
 # Release Note
+### 6.6.5 (17 May, 2026)
+
+#### Fix
+
+* Fix Android web view frame positioning when the `frame` property is used directly without a `referenceRectTransform`. The Unity frame is now mapped through the native coordinate system so the status bar offset and screen scale are applied consistently with reference-rect mode.
+* Fix Android keyboard avoidance using stale screen and keyboard heights, which could shrink the web view by the wrong amount or leave a gap when the soft keyboard appears. The overlap is now computed from the window's visible display frame.
+
 ### 6.6.4 (14 May, 2026)
 
 #### Fix
