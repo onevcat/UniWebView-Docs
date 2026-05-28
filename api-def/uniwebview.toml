@@ -2502,11 +2502,79 @@ random UUID with "png" file extension as the file name.
 """
 
 [[Methods]]
+name = "StartSnapshotTextureStream"
+syntax = "StartSnapshotTextureStream(Rect? rect = null, float refreshInterval = 0, Action<Texture2D> onReady = null)"
+returnType = "UniWebViewSnapshotTextureStream"
+summary = """
+Starts a live snapshot texture stream for the current web view.
+
+This is the supported API for continuously showing web view snapshots in Unity. It returns a stream object that owns a
+single live texture. Assign the texture once in `onReady`, then keep using the same texture while the stream updates it
+in place.
+
+Starting a new stream on the same web view stops the previous stream. Dispose the returned stream when you no longer
+need it, or let UniWebView clean it up when the web view is destroyed.
+"""
+notice = """
+If the current platform or graphics backend does not support the optimized native texture stream, the returned stream
+stays not ready: `Texture` is `null`, `IsReady` is `false`, and `onReady` is not called. This API never falls back to
+the legacy PNG-backed `CreateRenderedTexture` or `GetRenderedData` path.
+"""
+example = """
+```csharp
+UniWebViewSnapshotTextureStream stream;
+
+void OpenWebView() {
+    webView = gameObject.AddComponent<UniWebView>();
+    webView.Frame = new Rect(0, 0, 512, 512);
+    webView.Load("https://uniwebview.com");
+
+    stream = webView.StartSnapshotTextureStream(onReady: texture => {
+        rawImage.texture = texture;
+    });
+}
+
+void CloseWebView() {
+    rawImage.texture = null;
+    stream?.Dispose();
+    stream = null;
+    Destroy(webView);
+}
+```
+"""
+returnValue = """
+A stream object that owns the live texture and controls its lifetime.
+"""
+[[Methods.parameters]]
+name = "rect"
+type = "Rect?"
+summary = """
+The optional rectangle to capture. If `null` (by default), the entire web view is captured.
+"""
+[[Methods.parameters]]
+name = "refreshInterval"
+type = "float"
+summary = """
+The interval in seconds between snapshot refreshes. Use `0` to refresh as fast as the internal scheduler safely allows.
+Use a positive value, such as `1.0f / 30`, to throttle native snapshot capture.
+"""
+[[Methods.parameters]]
+name = "onReady"
+type = "Action<Texture2D>"
+summary = """
+An optional callback invoked once after the first native texture frame is captured and uploaded. The callback receives
+the stream-owned live texture.
+"""
+
+[[Methods]]
 name = "StartSnapshotForRendering"
-syntax = "StartSnapshotForRendering(Rect? rect = null, Action<Texture> onStarted = null, float refreshInterval = 0)"
+syntax = "StartSnapshotForRendering(Rect? rect = null, Action<Texture2D> onStarted = null, float refreshInterval = 0)"
 returnType = "void"
 summary = """
-Starts the process of continually rendering the snapshot.
+Starts the legacy process of continually rendering PNG-backed snapshots.
+
+This API is legacy and allocation-heavy. For continuous render-as-texture use, prefer
+`StartSnapshotTextureStream`, assign the stream texture once, and dispose the stream during cleanup.
 
 You take the responsibility of calling this method before you use either `GetRenderedData` or
 `CreateRenderedTexture(Rect?)` to get the rendered data or texture. It prepares a render buffer for the image
@@ -2516,6 +2584,9 @@ Once started, `GetRenderedData` and `CreateRenderedTexture` return the latest ca
 native boundary, so they are safe to call from `Update()`.
 """
 notice = """
+This legacy API is kept for source and behavior compatibility. It still uses the PNG-backed snapshot path and
+`CreateRenderedTexture` still creates a new standalone texture for each call.
+
 If this method is not called, the related data or texture methods will not work and will only return `null`. Once you
 no longer need the web view to be rendered as a texture, you should call `StopSnapshotForRendering` to clean up
 the associated resources.
@@ -2548,11 +2619,15 @@ name = "StopSnapshotForRendering"
 syntax = "StopSnapshotForRendering()"
 returnType = "void"
 summary = """
-Stops the process of continually rendering the snapshot.
+Stops the legacy process of continually rendering PNG-backed snapshots.
 
 You should call this method when you no longer need any further data or texture from the
 `GetRenderedData` or `CreateRenderedTexture` methods. This helps in releasing
 resources and terminating the rendering process.
+"""
+notice = """
+This API belongs to the legacy snapshot texture path. For new continuous render-as-texture code, use
+`StartSnapshotTextureStream` and dispose the returned stream instead.
 """
 
 [[Methods]]
@@ -2560,7 +2635,10 @@ name = "GetRenderedData"
 syntax = "GetRenderedData(Rect? rect = null)"
 returnType = "byte[]"
 summary = """
-Gets the data of the rendered image for the current web view.
+Gets the PNG data of the rendered image for the current web view.
+
+This API is legacy and allocation-heavy. For continuous texture display, use `StartSnapshotTextureStream` and assign
+the stream-owned live texture once.
 
 This method provides you with the raw bytes of the rendered image data in PNG format. To successfully retrieve the
 current rendered data, you should first call `StartSnapshotForRendering` to initiate the rendering process.
@@ -2575,6 +2653,9 @@ An array of raw bytes representing the rendered image data in PNG format, or `nu
 or if the data is not prepared.
 """
 notice = """
+This method returns PNG bytes from the legacy snapshot path. The new snapshot texture stream API does not use this
+method as a fallback.
+
 Please note that this method supports only software-rendered content. Content rendered by hardware, such as videos
 and WebGL content, will appear as a black rectangle in the rendered image.
 """
@@ -2591,7 +2672,10 @@ name = "CreateRenderedTexture"
 syntax = "CreateRenderedTexture(Rect? rect = null)"
 returnType = "Texture2D"
 summary = """
-Creates a rendered texture for the current web view.
+Creates a standalone rendered texture for the current web view from legacy PNG snapshot data.
+
+This API is legacy and allocation-heavy. For continuous texture display, use `StartSnapshotTextureStream`, assign the
+stream-owned live texture once, and dispose the stream during cleanup.
 
 You should destroy the returned texture using the `Destroy` method when you no longer need it to free up resources.
 
@@ -2606,6 +2690,9 @@ Check the [Render as Texture](/guide/render-as-texture.html) guide for more.
 """
 notice = """
 You need to destroy the returned texture when you do not need it anymore.
+
+This method keeps its legacy behavior for compatibility: every successful call creates a new standalone texture. It is
+not a live texture stream and is not used as a fallback by `StartSnapshotTextureStream`.
 
 Please note that this method supports only software-rendered content. Content rendered by hardware, such as videos
 and WebGL content, will appear as a black rectangle in the rendered image.
