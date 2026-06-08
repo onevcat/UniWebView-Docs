@@ -62,9 +62,11 @@ The texture passed to `onReady` is owned by the stream and updated in place. Do 
 If `onReady` is not called and `stream.IsReady` remains `false`, the current platform or graphics backend does not
 support the optimized stream path. UniWebView does not silently fall back to the legacy PNG texture path.
 
-On Android, the optimized stream currently supports OpenGL ES 2 and OpenGL ES 3 only. Vulkan is not supported by this
-stream path. If your project uses Auto Graphics API and Unity selects Vulkan on Android, the stream remains not ready.
-Switch the Android graphics API to OpenGL ES to use snapshot texture streaming.
+On Android, the optimized stream currently supports OpenGL ES 2 and OpenGL ES 3 only. Vulkan is not supported yet. This
+does not prevent Android WebView itself from running when Unity uses Vulkan; the limitation is in the current native
+texture bridge, which creates and updates an OpenGL ES texture for Unity. If your project uses Auto Graphics API and
+Unity selects Vulkan on Android, the stream remains not ready. Switch the Android graphics API to OpenGL ES to use
+snapshot texture streaming.
 
 > If you still want to show the texture in a plain 2D format, then a the Unity's `Plane` or `RawImage` might be your
 > choice.

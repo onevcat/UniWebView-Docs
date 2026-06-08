@@ -11,7 +11,8 @@ needed.
 
 If the current platform or graphics backend does not support the optimized stream, `Texture` remains `null` and
 `IsReady` remains `false`. The stream API does not fall back to the legacy PNG-backed texture APIs. On Android, the
-optimized stream currently requires OpenGL ES 2 or OpenGL ES 3. Vulkan is not supported by this stream path.
+optimized stream currently requires OpenGL ES 2 or OpenGL ES 3. Vulkan is not supported yet because the current Android
+native texture bridge creates and updates an OpenGL ES texture for Unity.
 """
 
 [[Properties]]
