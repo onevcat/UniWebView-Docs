@@ -2519,6 +2519,10 @@ notice = """
 If the current platform or graphics backend does not support the optimized native texture stream, the returned stream
 stays not ready: `Texture` is `null`, `IsReady` is `false`, and `onReady` is not called. This API never falls back to
 the legacy PNG-backed `CreateRenderedTexture` or `GetRenderedData` path.
+
+On Android, the optimized stream currently requires OpenGL ES 2 or OpenGL ES 3. Vulkan is not supported. If your Unity
+project uses Auto Graphics API and selects Vulkan on Android, this stream remains not ready. Switch the Android graphics
+API to OpenGL ES to use snapshot texture streaming.
 """
 example = """
 ```csharp

@@ -10,7 +10,8 @@ Assign the texture once, clear your Unity reference before cleanup, and call `Di
 needed.
 
 If the current platform or graphics backend does not support the optimized stream, `Texture` remains `null` and
-`IsReady` remains `false`. The stream API does not fall back to the legacy PNG-backed texture APIs.
+`IsReady` remains `false`. The stream API does not fall back to the legacy PNG-backed texture APIs. On Android, the
+optimized stream currently requires OpenGL ES 2 or OpenGL ES 3. Vulkan is not supported by this stream path.
 """
 
 [[Properties]]
