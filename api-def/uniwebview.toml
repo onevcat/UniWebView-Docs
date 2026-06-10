@@ -2516,15 +2516,14 @@ Starting a new stream on the same web view stops the previous stream. Dispose th
 need it, or let UniWebView clean it up when the web view is destroyed.
 """
 notice = """
-If the current platform or graphics backend does not support the optimized native texture stream, the returned stream
-stays not ready: `Texture` is `null`, `IsReady` is `false`, and `onReady` is not called. This API never falls back to
-the legacy PNG-backed `CreateRenderedTexture` or `GetRenderedData` path.
+If the current platform or graphics backend supports neither the optimized native texture stream nor a CPU readback
+fallback, the returned stream stays not ready: `Texture` is `null`, `IsReady` is `false`, and `onReady` is not called.
+This API never falls back to the legacy PNG-backed `CreateRenderedTexture` or `GetRenderedData` path.
 
-On Android, the optimized stream currently requires OpenGL ES 2 or OpenGL ES 3. Vulkan is not supported yet. This is a
-limitation of the current Android native texture bridge, which creates and updates an OpenGL ES texture for Unity. Android
-WebView itself can still run normally when Unity uses Vulkan, but the snapshot texture stream remains not ready if your
-Unity project uses Auto Graphics API and selects Vulkan on Android. Switch the Android graphics API to OpenGL ES to use
-snapshot texture streaming.
+On Android, the optimized native texture path requires OpenGL ES 2 or OpenGL ES 3. When Unity runs on another graphics
+API such as Vulkan, the stream automatically falls back to a CPU readback path that updates the stream-owned texture
+from the captured frame data. The public behavior is identical, but each frame costs an extra CPU copy and texture
+upload. Switch the Android graphics API to OpenGL ES if you need the best streaming performance.
 """
 example = """
 ```csharp

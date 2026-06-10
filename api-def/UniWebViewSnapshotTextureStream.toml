@@ -9,10 +9,11 @@ You do not create an instance of this class directly. Start a stream by calling 
 Assign the texture once, clear your Unity reference before cleanup, and call `Dispose` when the stream is no longer
 needed.
 
-If the current platform or graphics backend does not support the optimized stream, `Texture` remains `null` and
-`IsReady` remains `false`. The stream API does not fall back to the legacy PNG-backed texture APIs. On Android, the
-optimized stream currently requires OpenGL ES 2 or OpenGL ES 3. Vulkan is not supported yet because the current Android
-native texture bridge creates and updates an OpenGL ES texture for Unity.
+If the current platform or graphics backend supports neither the optimized stream nor a CPU readback fallback,
+`Texture` remains `null` and `IsReady` remains `false`. The stream API does not fall back to the legacy PNG-backed
+texture APIs. On Android, the optimized native texture path requires OpenGL ES 2 or OpenGL ES 3; under other graphics
+APIs such as Vulkan, the stream automatically uses a CPU readback fallback with the same behavior at a higher per-frame
+cost.
 """
 
 [[Properties]]
