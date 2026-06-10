@@ -2503,7 +2503,7 @@ random UUID with "png" file extension as the file name.
 
 [[Methods]]
 name = "StartSnapshotTextureStream"
-syntax = "StartSnapshotTextureStream(Rect? rect = null, float refreshInterval = 0, Action<Texture2D> onReady = null)"
+syntax = "StartSnapshotTextureStream(Rect? rect = null, float refreshInterval = 0, Action<Texture2D> onReady = null, float resolutionScale = 1.0f)"
 returnType = "UniWebViewSnapshotTextureStream"
 summary = """
 Starts a live snapshot texture stream for the current web view.
@@ -2570,6 +2570,15 @@ type = "Action<Texture2D>"
 summary = """
 An optional callback invoked once after the first native texture frame is captured and uploaded. The callback receives
 the stream-owned live texture.
+"""
+[[Methods.parameters]]
+name = "resolutionScale"
+type = "float"
+summary = """
+The scale applied to the capture resolution, in the `(0, 1]` range. Use `1` (the default) to capture at full
+resolution. Use a smaller value such as `0.5f` to reduce the capture and upload cost per frame, at the price of a
+softer image. Values out of the range are clamped. This currently only takes effect on iOS and macOS; Android always
+captures at full resolution.
 """
 
 [[Methods]]

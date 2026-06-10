@@ -113,6 +113,23 @@ stream = webView.StartSnapshotTextureStream(refreshInterval: 1.0f / 10, onReady:
 With a refresh interval set, the stream scheduler requests native snapshots at the specified rate while keeping the same
 Unity texture object alive.
 
+### Resolution Scale
+
+By default, the stream captures at the full resolution of the web view. On devices with a high display scale (such as
+recent iPhones with a 3x Retina screen), every frame produces a large image that has to be converted and uploaded. If
+the texture is displayed smaller than the web view, or a softer image is acceptable, pass a `resolutionScale` in the
+`(0, 1]` range to cut the per-frame cost roughly by the square of the scale:
+
+```csharp
+// Capture at half resolution: ~1/4 of the pixel processing per frame.
+stream = webView.StartSnapshotTextureStream(resolutionScale: 0.5f, onReady: texture => {
+    cubeRenderer.material.mainTexture = texture;
+});
+```
+
+The `resolutionScale` parameter currently takes effect on iOS and macOS. On Android, it is ignored and the stream
+always captures at full resolution.
+
 ::: tip
 The stream API avoids the legacy PNG encode/decode path on supported platforms. The legacy APIs remain source-compatible
 for existing projects, but they should not be used for new continuous texture rendering.
