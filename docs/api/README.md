@@ -374,17 +374,20 @@ HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#capturesnapshot'><span class='return-type'>void</span> <span class='member-name'>CaptureSnapshot</span>(string fileName)</a></div></td><td><div class='simple-summary'>
 <p>Capture the content of web view and store it to the cache path on disk with the given file name.</p>
 </div>
-</td></tr><tr><td><div class='api-summary-heading'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StartSnapshotForRendering</span>(Rect? rect = null, Action&lt;Texture&gt; onStarted = null, float refreshInterval = 0)</a></div></td><td><div class='simple-summary'>
-<p>Starts the process of continually rendering the snapshot.</p>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#startsnapshottexturestream'><span class='return-type'>UniWebViewSnapshotTextureStream</span> <span class='member-name'>StartSnapshotTextureStream</span>(Rect? rect = null, float refreshInterval = 0, Action&lt;Texture2D&gt; onReady = null, float resolutionScale = 1.0f)</a></div></td><td><div class='simple-summary'>
+<p>Starts a live snapshot texture stream for the current web view.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StartSnapshotForRendering</span>(Rect? rect = null, Action&lt;Texture2D&gt; onStarted = null, float refreshInterval = 0)</a></div></td><td><div class='simple-summary'>
+<p>Starts the legacy process of continually rendering PNG-backed snapshots.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#stopsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StopSnapshotForRendering</span>()</a></div></td><td><div class='simple-summary'>
-<p>Stops the process of continually rendering the snapshot.</p>
+<p>Stops the legacy process of continually rendering PNG-backed snapshots.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#getrendereddata'><span class='return-type'>byte[]</span> <span class='member-name'>GetRenderedData</span>(Rect? rect = null)</a></div></td><td><div class='simple-summary'>
-<p>Gets the data of the rendered image for the current web view.</p>
+<p>Gets the PNG data of the rendered image for the current web view.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#createrenderedtexture'><span class='return-type'>Texture2D</span> <span class='member-name'>CreateRenderedTexture</span>(Rect? rect = null)</a></div></td><td><div class='simple-summary'>
-<p>Creates a rendered texture for the current web view.</p>
+<p>Creates a standalone rendered texture for the current web view from legacy PNG snapshot data.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#scrollto'><span class='return-type'>void</span> <span class='member-name'>ScrollTo</span>(int x, int y, bool animated)</a></div></td><td><div class='simple-summary'>
 <p>Scrolls the web view to a certain point.</p>
@@ -4551,11 +4554,99 @@ webView<span class="token punctuation">.</span><span class="token function">Capt
   </div>
 </div>
 <div class='api-box method'>
-  <div class="api-anchor" id='startsnapshotforrendering'></div><div class='api-heading' data-id='startsnapshotforrendering'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StartSnapshotForRendering</span>(Rect? rect = null, Action&lt;Texture&gt; onStarted = null, float refreshInterval = 0)</a></div>
+  <div class="api-anchor" id='startsnapshottexturestream'></div><div class='api-heading' data-id='startsnapshottexturestream'><a href='#startsnapshottexturestream'><span class='return-type'>UniWebViewSnapshotTextureStream</span> <span class='member-name'>StartSnapshotTextureStream</span>(Rect? rect = null, float refreshInterval = 0, Action&lt;Texture2D&gt; onReady = null, float resolutionScale = 1.0f)</a></div>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Starts the process of continually rendering the snapshot.</p>
+<p>Starts a live snapshot texture stream for the current web view.</p>
+<p>This is the supported API for continuously showing web view snapshots in Unity. It returns a stream object that owns a
+single live texture. Assign the texture once in <code>onReady</code>, then keep using the same texture while the stream updates it
+in place.</p>
+<p>Starting a new stream on the same web view stops the previous stream. Dispose the returned stream when you no longer
+need it, or let UniWebView clean it up when the web view is destroyed.</p>
+</div>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        If the current platform or graphics backend supports neither the optimized native texture stream nor a CPU readback
+fallback, the returned stream stays not ready: <code>Texture</code> is <code>null</code>, <code>IsReady</code> is <code>false</code>, and <code>onReady</code> is not called.
+This API never falls back to the legacy PNG-backed <code>CreateRenderedTexture</code> or <code>GetRenderedData</code> path.
+
+On Android, the optimized native texture path requires OpenGL ES 2 or OpenGL ES 3. When Unity runs on another graphics
+API such as Vulkan, the stream automatically falls back to a CPU readback path that updates the stream-owned texture
+from the captured frame data. The public behavior is identical, but each frame costs an extra CPU copy and texture
+upload. Switch the Android graphics API to OpenGL ES if you need the best streaming performance.
+
+  </p>
+</div>
+      <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>Rect?</span> <span class='parameter-item-name'>rect</span></div>
+    <div class='parameter-item-desc'><p>The optional rectangle to capture. If <code>null</code> (by default), the entire web view is captured.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>refreshInterval</span></div>
+    <div class='parameter-item-desc'><p>The interval in seconds between snapshot refreshes. Use <code>0</code> to refresh as fast as the internal scheduler safely allows.
+Use a positive value, such as <code>1.0f / 30</code>, to throttle native snapshot capture.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>Action&lt;Texture2D&gt;</span> <span class='parameter-item-name'>onReady</span></div>
+    <div class='parameter-item-desc'><p>An optional callback invoked once after the first native texture frame is captured and uploaded. The callback receives
+the stream-owned live texture.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>float</span> <span class='parameter-item-name'>resolutionScale</span></div>
+    <div class='parameter-item-desc'><p>The scale applied to the capture resolution, in the <code>(0, 1]</code> range. Use <code>1</code> (the default) to capture at full
+resolution. Use a smaller value such as <code>0.5f</code> to reduce the capture and upload cost per frame, at the price of a
+softer image. Values out of the range are clamped. This currently only takes effect on iOS and macOS; Android always
+captures at full resolution.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+      <div class='section-title'>Return Value</div>
+<div class='method-return'><p>A stream object that owns the live texture and controls its lifetime.</p>
+</div>
+      <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token class-name">UniWebViewSnapshotTextureStream</span> stream<span class="token punctuation">;</span>
+<span />
+<span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">OpenWebView</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    webView <span class="token operator">=</span> gameObject<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddComponent</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>UniWebView<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    webView<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">"https://uniwebview.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span />
+    stream <span class="token operator">=</span> webView<span class="token punctuation">.</span><span class="token function">StartSnapshotTextureStream</span><span class="token punctuation">(</span><span class="token named-parameter punctuation">onReady</span><span class="token punctuation">:</span> texture <span class="token operator">=></span> <span class="token punctuation">{</span>
+        rawImage<span class="token punctuation">.</span>texture <span class="token operator">=</span> texture<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span />
+<span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">CloseWebView</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    rawImage<span class="token punctuation">.</span>texture <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    stream<span class="token punctuation">?.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    stream <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token function">Destroy</span><span class="token punctuation">(</span>webView<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='startsnapshotforrendering'></div><div class='api-heading' data-id='startsnapshotforrendering'><a href='#startsnapshotforrendering'><span class='return-type'>void</span> <span class='member-name'>StartSnapshotForRendering</span>(Rect? rect = null, Action&lt;Texture2D&gt; onStarted = null, float refreshInterval = 0)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Starts the legacy process of continually rendering PNG-backed snapshots.</p>
+<p>This API is legacy and allocation-heavy. For continuous render-as-texture use, prefer
+<code>StartSnapshotTextureStream</code>, assign the stream texture once, and dispose the stream during cleanup.</p>
 <p>You take the responsibility of calling this method before you use either <code>GetRenderedData</code> or
 <code>CreateRenderedTexture(Rect?)</code> to get the rendered data or texture. It prepares a render buffer for the image
 data and starts an internal coroutine that periodically fetches snapshot data from the native side.</p>
@@ -4565,7 +4656,10 @@ native boundary, so they are safe to call from <code>Update()</code>.</p>
       <div class='custom-container warning'>
   <p class="custom-container-title">NOTICE</p>
   <p>
-        If this method is not called, the related data or texture methods will not work and will only return <code>null</code>. Once you
+        This legacy API is kept for source and behavior compatibility. It still uses the PNG-backed snapshot path and
+<code>CreateRenderedTexture</code> still creates a new standalone texture for each call.
+
+If this method is not called, the related data or texture methods will not work and will only return <code>null</code>. Once you
 no longer need the web view to be rendered as a texture, you should call <code>StopSnapshotForRendering</code> to clean up
 the associated resources.
 
@@ -4603,12 +4697,20 @@ thread.</p>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Stops the process of continually rendering the snapshot.</p>
+<p>Stops the legacy process of continually rendering PNG-backed snapshots.</p>
 <p>You should call this method when you no longer need any further data or texture from the
 <code>GetRenderedData</code> or <code>CreateRenderedTexture</code> methods. This helps in releasing
 resources and terminating the rendering process.</p>
 </div>
-                            </div>
+      <div class='custom-container warning'>
+  <p class="custom-container-title">NOTICE</p>
+  <p>
+        This API belongs to the legacy snapshot texture path. For new continuous render-as-texture code, use
+<code>StartSnapshotTextureStream</code> and dispose the returned stream instead.
+
+  </p>
+</div>
+                      </div>
   </div>
 </div>
 <div class='api-box method'>
@@ -4616,7 +4718,9 @@ resources and terminating the rendering process.</p>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Gets the data of the rendered image for the current web view.</p>
+<p>Gets the PNG data of the rendered image for the current web view.</p>
+<p>This API is legacy and allocation-heavy. For continuous texture display, use <code>StartSnapshotTextureStream</code> and assign
+the stream-owned live texture once.</p>
 <p>This method provides you with the raw bytes of the rendered image data in PNG format. To successfully retrieve the
 current rendered data, you should first call <code>StartSnapshotForRendering</code> to initiate the rendering process.
 If <code>StartSnapshotForRendering</code> has not been called, this method will return <code>null</code>.</p>
@@ -4627,7 +4731,10 @@ center of the web view and taking a 100x100 square as the snapshot area.</p>
       <div class='custom-container warning'>
   <p class="custom-container-title">NOTICE</p>
   <p>
-        Please note that this method supports only software-rendered content. Content rendered by hardware, such as videos
+        This method returns PNG bytes from the legacy snapshot path. The new snapshot texture stream API does not use this
+method as a fallback.
+
+Please note that this method supports only software-rendered content. Content rendered by hardware, such as videos
 and WebGL content, will appear as a black rectangle in the rendered image.
 
   </p>
@@ -4655,7 +4762,9 @@ or if the data is not prepared.</p>
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Creates a rendered texture for the current web view.</p>
+<p>Creates a standalone rendered texture for the current web view from legacy PNG snapshot data.</p>
+<p>This API is legacy and allocation-heavy. For continuous texture display, use <code>StartSnapshotTextureStream</code>, assign the
+stream-owned live texture once, and dispose the stream during cleanup.</p>
 <p>You should destroy the returned texture using the <code>Destroy</code> method when you no longer need it to free up resources.</p>
 <p>This method provides you with a texture of the rendered image for the web view, which you can use in your 3D game world.
 To obtain the current rendered data, you should call <code>StartSnapshotForRendering</code> before using this method.
@@ -4668,6 +4777,9 @@ display purposes. It is your responsibility to call the <code>Destroy</code> met
   <p class="custom-container-title">NOTICE</p>
   <p>
         You need to destroy the returned texture when you do not need it anymore.
+
+This method keeps its legacy behavior for compatibility: every successful call creates a new standalone texture. It is
+not a live texture stream and is not used as a fallback by <code>StartSnapshotTextureStream</code>.
 
 Please note that this method supports only software-rendered content. Content rendered by hardware, such as videos
 and WebGL content, will appear as a black rectangle in the rendered image.

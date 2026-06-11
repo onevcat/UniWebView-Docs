@@ -1,0 +1,78 @@
+title = "UniWebViewSnapshotTextureStream"
+file = "UniWebViewSnapshotTextureStream"
+
+summary = """
+Represents a live snapshot texture stream owned by a `UniWebView`.
+
+You do not create an instance of this class directly. Start a stream by calling `StartSnapshotTextureStream` on a
+`UniWebView` instance. The stream owns one live texture and updates it in place after the first native frame is ready.
+Assign the texture once, clear your Unity reference before cleanup, and call `Dispose` when the stream is no longer
+needed.
+
+If the current platform or graphics backend supports neither the optimized stream nor a CPU readback fallback,
+`Texture` remains `null` and `IsReady` remains `false`. The stream API does not fall back to the legacy PNG-backed
+texture APIs. On Android, the optimized native texture path requires OpenGL ES 2 or OpenGL ES 3; under other graphics
+APIs such as Vulkan, the stream automatically uses a CPU readback fallback with the same behavior at a higher per-frame
+cost.
+"""
+
+[[Properties]]
+name = "Texture"
+returnType = "Texture2D"
+hasSetter = false
+summary = """
+Gets the live texture updated in place by the stream.
+
+The value is `null` until the first native frame is captured and uploaded. The stream owns this texture; do not destroy
+it manually.
+"""
+
+[[Properties]]
+name = "IsReady"
+returnType = "bool"
+hasSetter = false
+summary = "Gets whether the stream has received its first usable native texture frame."
+
+[[Properties]]
+name = "Width"
+returnType = "int"
+hasSetter = false
+summary = "Gets the current stream texture width in pixels."
+
+[[Properties]]
+name = "Height"
+returnType = "int"
+hasSetter = false
+summary = "Gets the current stream texture height in pixels."
+
+[[Properties]]
+name = "Rect"
+returnType = "Rect"
+hasSetter = false
+summary = "Gets the local web view rectangle captured by this stream."
+
+[[Properties]]
+name = "FrameIndex"
+returnType = "long"
+hasSetter = false
+summary = "Gets the latest uploaded frame index."
+
+[[Methods]]
+name = "Stop"
+syntax = "Stop()"
+returnType = "void"
+summary = """
+Stops the stream and releases the stream-owned texture.
+
+Calling this method more than once is safe.
+"""
+
+[[Methods]]
+name = "Dispose"
+syntax = "Dispose()"
+returnType = "void"
+summary = """
+Stops the stream and releases the stream-owned texture.
+
+This is equivalent to `Stop` and is safe to call more than once.
+"""

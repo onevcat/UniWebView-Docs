@@ -23,79 +23,69 @@ Here is what it looks like when you render the web view into a texture and put i
 
 ## Implementation
 
-UniWebView provides a neat API to render the current web view content into a texture. However, this feature is turned off
-by default for performance reasons. You need to manually start and stop the process of rendering as you need.
+UniWebView provides `StartSnapshotTextureStream` for continuous render-as-texture use. The stream owns one live texture
+and updates it in place on supported platforms. Assign the texture once when the stream becomes ready, then dispose the
+stream during cleanup.
 
-### Start Rendering Process
+The older `StartSnapshotForRendering`, `GetRenderedData`, and `CreateRenderedTexture` APIs are still available for
+compatibility, but they are legacy. They use a PNG-backed snapshot path and `CreateRenderedTexture` creates a new
+standalone texture every time it is called.
 
-Before you begin to access any data or texture, you need to start the rendering process first. You can do it by calling the
-[`StartSnapshotForRendering`](/api/#startsnapshotforrendering) method.
+### Start a Texture Stream
+
+Before you begin to use the texture, start a stream by calling the
+[`StartSnapshotTextureStream`](/api/#startsnapshottexturestream) method.
 
 ```csharp
 public class MyBehaviour : MonoBehaviour {
 
   UniWebView webView;
+  UniWebViewSnapshotTextureStream stream;
+  Renderer cubeRenderer; // cube.GetComponent<Renderer>();
 
   void OpenWebView() {
     webView = gameObject.AddComponent<UniWebView>();
     webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
     webView.Load("https://uniwebview.com");
 
-    // Start the rendering process.
-    webView.StartSnapshotForRendering();
+    stream = webView.StartSnapshotTextureStream(onReady: texture => {
+      cubeRenderer.material.mainTexture = texture;
+    });
   }
 }
 ```
 
-> It is no need to call `Show` method to actually display the web view. The rendering process will be started even if
+> It is no need to call `Show` method to actually display the web view. The stream can be started even if
 > the web view is not visible.
 
-### Create the Texture
+The texture passed to `onReady` is owned by the stream and updated in place. Do not destroy and recreate it every frame.
+If `onReady` is not called and `stream.IsReady` remains `false`, the current platform or graphics backend does not
+support the optimized stream path. UniWebView does not silently fall back to the legacy PNG texture path.
 
-You can choose either to create a texture once, or repeatedly create a new texture in the `Update` method. Gets the
-texture and assign it somewhere in your scene. For example, assume there is a `cube` in the scene with a renderer:
-
-```csharp
-public class MyBehaviour : MonoBehaviour {
-
-    // ...
-
-    Renderer cubeRenderer; // cube.GetComponent<Renderer>();
-
-    void Update() {
-      if (webView != null) {
-        Destroy(cubeRenderer.material.mainTexture);
-        cubeRenderer.material.mainTexture = webView.CreateRenderedTexture();
-      }
-    }
-}
-```
-
-Every call to `CreateRenderedTexture` creates a new texture. You should destroy the old one before creating a new one.
-Otherwise, it will cause a memory leak and your game might be killed very soon.
+On Android, the optimized native texture path requires OpenGL ES 2 or OpenGL ES 3. When Unity runs on another graphics
+API such as Vulkan (the default choice of Auto Graphics API on most devices), the stream automatically falls back to a
+CPU readback path: the captured frame data is copied into the stream-owned texture instead of being uploaded through the
+native OpenGL ES bridge. The stream behaves identically, but each frame costs an extra CPU copy and texture upload.
+Switch the Android graphics API to OpenGL ES if you need the best snapshot texture streaming performance.
 
 > If you still want to show the texture in a plain 2D format, then a the Unity's `Plane` or `RawImage` might be your
 > choice.
 
 ### Clean Work
 
-Finally, when you no longer need the web view to generate any additional textures, it is a good practice to stop the
-rendering process. This closes the data channel and clears the buffer to free up some memory.
+Finally, when you no longer need the web view to generate any additional textures, dispose the stream. This closes the
+native stream and releases the stream-owned texture.
 
 ```csharp
-webView.StopSnapshotForRendering();
+cubeRenderer.material.mainTexture = null;
+stream?.Dispose();
+stream = null;
 ```
 
 When you destroy the web view (by either calling the `Destroy` on the UniWebView component or destroying the whole
-scene containing the web view), UniWebView will call the `StopSnapshotForRendering` for you. When you keep the best
+scene containing the web view), UniWebView will dispose the active stream for you. When you keep the best
 practice that is mentioned in the [Memory Management](./memory-management.md) guide, usually you do not need to call
 this method manually yourself.
-
-Also, do not forget to destroy the last rendered texture:
-
-```csharp
-Destroy(cubeRenderer.material.mainTexture);
-```
 
 ## Performance
 
@@ -104,34 +94,51 @@ old devices. There are some small tips to improve the performance.
 
 ### Refresh Interval
 
-By default, `StartSnapshotForRendering` captures a new snapshot every frame for the best responsiveness. However,
+By default, `StartSnapshotTextureStream` captures a new snapshot every frame for the best responsiveness. However,
 this can be expensive — especially on Android where snapshot capture runs on the main thread. You can pass a
 `refreshInterval` parameter to reduce the capture frequency:
 
 ```csharp
 // Capture at ~30 fps instead of every frame.
-webView.StartSnapshotForRendering(refreshInterval: 1.0f / 30);
+stream = webView.StartSnapshotTextureStream(refreshInterval: 1.0f / 30, onReady: texture => {
+    cubeRenderer.material.mainTexture = texture;
+});
 
 // Capture at ~10 fps for a mostly-static page.
-webView.StartSnapshotForRendering(refreshInterval: 1.0f / 10);
+stream = webView.StartSnapshotTextureStream(refreshInterval: 1.0f / 10, onReady: texture => {
+    cubeRenderer.material.mainTexture = texture;
+});
 ```
 
-With a refresh interval set, the internal snapshot coroutine fetches data from the native side at the specified rate,
-and `CreateRenderedTexture` / `GetRenderedData` simply return the latest cached result without crossing the native
-boundary. This means you can still call `CreateRenderedTexture` in `Update` safely — no manual frame-skipping counter
-is needed.
+With a refresh interval set, the stream scheduler requests native snapshots at the specified rate while keeping the same
+Unity texture object alive.
+
+### Resolution Scale
+
+By default, the stream captures at the full resolution of the web view. On devices with a high display scale (such as
+recent iPhones with a 3x Retina screen), every frame produces a large image that has to be converted and uploaded. If
+the texture is displayed smaller than the web view, or a softer image is acceptable, pass a `resolutionScale` in the
+`(0, 1]` range to cut the per-frame cost roughly by the square of the scale:
+
+```csharp
+// Capture at half resolution: ~1/4 of the pixel processing per frame.
+stream = webView.StartSnapshotTextureStream(resolutionScale: 0.5f, onReady: texture => {
+    cubeRenderer.material.mainTexture = texture;
+});
+```
+
+The `resolutionScale` parameter currently takes effect on iOS and macOS. On Android, it is ignored and the stream
+always captures at full resolution.
 
 ::: tip
-On iOS, `StartSnapshotForRendering` already uses a coroutine internally to avoid capturing during CoreAnimation
-transactions (which would cause crashes). The `refreshInterval` parameter works the same way on all platforms, but the
-performance benefit is most noticeable on Android.
+The stream API avoids the legacy PNG encode/decode path on supported platforms. The legacy APIs remain source-compatible
+for existing projects, but they should not be used for new continuous texture rendering.
 :::
 
-### One Time Rendering
+### Start After Page Load
 
 If the web content is static and does not change after the first load, instead of taking the snapshot in `Update`, you
-can also choose to perform a one-time rendering by calling `StartSnapshotForRendering` in the `OnPageFinished`
-event, and passing an `onStart` callback to it:
+can start the stream in the `OnPageFinished` event:
 
 ```csharp
 public class MyBehaviour : MonoBehaviour {
@@ -144,7 +151,7 @@ public class MyBehaviour : MonoBehaviour {
     webView.Load("https://uniwebview.com");
 
     webView.OnPageFinished += (view, code, error) => {
-      webView.StartSnapshotForRendering(onStarted: texture => {
+      stream = webView.StartSnapshotTextureStream(onReady: texture => {
         cubeRenderer.material.mainTexture = texture;
       });
     };
@@ -152,19 +159,19 @@ public class MyBehaviour : MonoBehaviour {
 }
 ```
 
-> Also, do not forget to call `Destroy(cubeRenderer.material.mainTexture);` at proper time to avoid memory leak.
-
 ### Size and Partial Snapshot
 
 The size of the texture is also a factor that affects the performance. The larger the texture is, the more time it takes
 to be rendered and passed between native and Unity.
 
-To only take a partial snapshot of the web view, you can pass a `Rect` to the `CreateRenderedTexture` method:
+To only stream a partial snapshot of the web view, pass a `Rect` to `StartSnapshotTextureStream`:
 
 ```csharp
 // Take the snapshot of 100x100 square in the middle of the web view.
 var rect = new Rect(webView.Frame.width / 2 - 50,  webView.Frame.height / 2 - 50, 100, 100);
-cubeRenderer.material.mainTexture = webView.CreateRenderedTexture(rect);
+stream = webView.StartSnapshotTextureStream(rect, onReady: texture => {
+    cubeRenderer.material.mainTexture = texture;
+});
 ```
 
 > The final pixel count of the snapshot matters. If you do not need the texture to be at the high resolution, you can
@@ -177,7 +184,7 @@ cubeRenderer.material.mainTexture = webView.CreateRenderedTexture(rect);
 
 ## Other Limitations
 
-The rendered texture is not a native view but only a live snapshot of the view. There are some other limitations other
+The rendered texture is not a native view but only a live snapshot stream of the view. There are some other limitations other
 than the performance.
 
 ### Interaction
