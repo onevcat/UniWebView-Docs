@@ -1,4 +1,20 @@
 # Release Note
+### 6.7.0 (11 Jun, 2026)
+
+#### Add
+
+* Live snapshot texture stream via `StartSnapshotTextureStream`. It creates a `UniWebViewSnapshotTextureStream` that owns a single `Texture2D` and keeps updating it in place with the latest web view content, which is much more efficient than the legacy snapshot rendering APIs. You can capture a sub-rectangle, control the refresh interval, and dispose the stream when it is no longer needed.
+* A `resolutionScale` parameter for `StartSnapshotTextureStream` to capture at a reduced resolution and lower the per-frame cost. It currently takes effect on iOS and macOS; Android always captures at full resolution.
+* On Android, the snapshot texture stream is backed by a new native library (`libUniWebViewNativeTexture.so`) with an optimized texture path on OpenGL ES 2 and OpenGL ES 3. On other graphics APIs such as Vulkan, the stream automatically falls back to a CPU readback path with the same behavior at a higher per-frame cost.
+
+#### Fix
+
+* Fix a memory leak on Android where the web view and its keyboard workaround were not fully detached and released when the web view is destroyed.
+
+#### Deprecate
+
+* The legacy snapshot rendering APIs (`StartSnapshotForRendering`, `StopSnapshotForRendering`, `GetRenderedData` and `CreateRenderedTexture`) are now marked as deprecated since they allocate heavily on every frame. Use the new `StartSnapshotTextureStream` instead.
+
 ### 6.6.5 (17 May, 2026)
 
 #### Fix
