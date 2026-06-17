@@ -3800,3 +3800,40 @@ summary = "The web view component which raises this event."
 name = "message"
 type = "UniWebViewChannelMessage"
 summary = "The channel message received from JavaScript Bridge containing action, data, and metadata."
+
+[[Events]]
+name = "OnExternalActivityResultReceived"
+syntax = "OnExternalActivityResultReceived(UniWebView webView, UniWebViewExternalActivityResult result)"
+returnType = "void"
+summary = """
+Raised when an external Android activity, launched from the web view via a custom URL scheme (such as `upi://`
+for payment apps), finishes and returns a result.
+
+When a web page navigates to a non-HTTP URL scheme that matches an installed app, UniWebView launches that app
+using Android's `startActivityForResult`. When the external app calls `setResult` and finishes, this event
+delivers the result back to your Unity code.
+
+This event is only available on Android. On iOS and macOS, external app communication uses URL schemes and
+deep links instead (handle via `Application.deepLinkActivated`).
+"""
+example = """
+```csharp
+webView.OnExternalActivityResultReceived += (view, result) => {
+    if (result.Status == UniWebViewExternalActivityResultStatus.Ok) {
+        Debug.Log("External app returned data: " + result.Data);
+        // Forward the result to the web page if needed
+        view.EvaluateJavaScript("window.onPaymentResult('" + result.Data + "')");
+    } else {
+        Debug.Log("External app was canceled.");
+    }
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "result"
+type = "UniWebViewExternalActivityResult"
+summary = "The result returned from the external Android activity, containing the original URL, result status, and any data returned by the external app."
