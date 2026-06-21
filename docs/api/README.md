@@ -107,6 +107,10 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onchannelmessagereceived'><span class='return-type'>UniWebViewChannelMessageResponse</span> <span class='member-name'>OnChannelMessageReceived</span>(UniWebView webView, UniWebViewChannelMessage message)</a></div></td><td><div class='simple-summary'>
 <p>Raised when a channel message from JavaScript Bridge is received.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onexternalactivityresultreceived'><span class='return-type'>void</span> <span class='member-name'>OnExternalActivityResultReceived</span>(UniWebView webView, UniWebViewExternalActivityResult result)</a></div></td><td><div class='simple-summary'>
+<p>Raised when an external Android activity, launched from the web view via a custom URL scheme (such as <code>upi://</code>
+for payment apps), finishes and returns a result.</p>
+</div>
 </td></tr></table>
 
 #### Methods Summary
@@ -1542,6 +1546,52 @@ supporting three communication patterns: Send (fire-and-forget), Call (synchrono
     <span class="token keyword">public</span> <span class="token class-name"><span class="token keyword">int</span></span> score<span class="token punctuation">;</span>
     <span class="token keyword">public</span> <span class="token class-name"><span class="token keyword">int</span></span> level<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onexternalactivityresultreceived'></div><div class='api-heading' data-id='onexternalactivityresultreceived'><a href='#onexternalactivityresultreceived'><span class='return-type'>void</span> <span class='member-name'>OnExternalActivityResultReceived</span>(UniWebView webView, UniWebViewExternalActivityResult result)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when an external Android activity, launched from the web view via a custom URL scheme (such as <code>upi://</code>
+for payment apps), finishes and returns a result.</p>
+<p>When a web page navigates to a non-HTTP URL scheme that matches an installed app, UniWebView launches that app
+using Android&#39;s <code>startActivityForResult</code>. When the external app calls <code>setResult</code> and finishes, this event
+delivers the result back to your Unity code.</p>
+<p>This event is only available on Android. On iOS and macOS, external app communication uses URL schemes and
+deep links instead (handle via <code>Application.deepLinkActivated</code>).</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewExternalActivityResult</span> <span class='parameter-item-name'>result</span></div>
+    <div class='parameter-item-desc'><p>The result returned from the external Android activity, containing the original URL, result status, and any data returned by the external app.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span>OnExternalActivityResultReceived <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> result<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>Status <span class="token operator">==</span> UniWebViewExternalActivityResultStatus<span class="token punctuation">.</span>Ok<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"External app returned data: "</span> <span class="token operator">+</span> result<span class="token punctuation">.</span>Data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// Forward the result to the web page if needed</span>
+        view<span class="token punctuation">.</span><span class="token function">EvaluateJavaScript</span><span class="token punctuation">(</span><span class="token string">"window.onPaymentResult('"</span> <span class="token operator">+</span> result<span class="token punctuation">.</span>Data <span class="token operator">+</span> <span class="token string">"')"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"External app was canceled."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
 </div>

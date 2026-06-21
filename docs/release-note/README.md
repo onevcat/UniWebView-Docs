@@ -1,4 +1,13 @@
 # Release Note
+### 6.8.0 (22 Jun, 2026)
+
+#### Add
+
+* External activity result support on Android. When the web view launches a third-party app intent via `startActivityForResult`, the result is now captured and delivered through the new `OnExternalActivityResultReceived` event as a `UniWebViewExternalActivityResult` containing the result code and data extras.
+#### Fix
+
+* Fix Android web view frame position and size when the host app applies window insets as padding on the content view, which is the recommended adaptation for the edge-to-edge enforcement on Android 15 and later. The web view frame is now offset and scaled into the padded area where the Unity view is laid out, instead of only considering the status bar height.
+
 ### 6.7.0 (11 Jun, 2026)
 
 #### Add

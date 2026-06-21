@@ -1,0 +1,47 @@
+title = "UniWebViewExternalActivityResult"
+file = "UniWebViewExternalActivityResult"
+
+summary = """
+Represents the result returned from an external Android activity that was launched from the web view.
+
+When a web page in the web view navigates to a custom URL scheme (such as `upi://` for payment apps),
+UniWebView launches the corresponding external app using Android's `startActivityForResult`. When that
+app finishes and returns a result, this object carries the result data back to your Unity code.
+
+This is only available on Android. On iOS and macOS, external app communication uses URL schemes and
+deep links instead.
+"""
+
+[[Properties]]
+name = "Url"
+returnType = "string"
+hasSetter = false
+summary = "The original URL that triggered the external app launch (e.g., `upi://pay?pa=...`)."
+
+[[Properties]]
+name = "Status"
+returnType = "UniWebViewExternalActivityResultStatus"
+hasSetter = false
+summary = "The result status returned by the external activity."
+
+[[Properties]]
+name = "ResultCode"
+returnType = "int"
+hasSetter = false
+summary = "The raw integer result code returned by the external activity. This is the Android `resultCode` value. In most cases, use the `Status` property instead for a more readable representation."
+
+[[Properties]]
+name = "Data"
+returnType = "string"
+hasSetter = false
+summary = """
+The data returned by the external activity, serialized as a JSON string.
+
+The JSON object contains all extras from the result Intent. For UPI payment apps, this typically
+includes a `"response"` key with a query-string-formatted value containing fields like `txnId`,
+`Status`, and `responseCode`.
+
+If the result Intent also carries a data URI, it is included under the `"__dataUri"` key.
+
+This value is an empty string if the external activity returned no data.
+"""

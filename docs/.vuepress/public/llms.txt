@@ -67,6 +67,8 @@
 - [UniWebViewChannelMethodMediaCapturePermission](https://docs.uniwebview.com/api/UniWebViewChannelMethodMediaCapturePermission.toml)
 - [UniWebViewEmbeddedToolbar](https://docs.uniwebview.com/api/UniWebViewEmbeddedToolbar.toml)
 - [UniWebViewEmbeddedToolbarConfig](https://docs.uniwebview.com/api/UniWebViewEmbeddedToolbarConfig.toml)
+- [UniWebViewExternalActivityResult](https://docs.uniwebview.com/api/UniWebViewExternalActivityResult.toml)
+- [UniWebViewExternalActivityResultStatus](https://docs.uniwebview.com/api/UniWebViewExternalActivityResultStatus.toml)
 - [UniWebViewMediaCapturePermissionDecision](https://docs.uniwebview.com/api/UniWebViewMediaCapturePermissionDecision.toml)
 - [UniWebViewPopup](https://docs.uniwebview.com/api/UniWebViewPopup.toml)
 - [UniWebViewSafeBrowsingEventMetadata](https://docs.uniwebview.com/api/UniWebViewSafeBrowsingEventMetadata.toml)

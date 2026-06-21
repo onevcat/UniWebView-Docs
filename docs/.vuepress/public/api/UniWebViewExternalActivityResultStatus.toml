@@ -1,0 +1,18 @@
+title = "UniWebViewExternalActivityResultStatus"
+file = "UniWebViewExternalActivityResultStatus"
+
+summary = """
+The status of an external activity result on Android.
+"""
+
+[[Properties]]
+name = "Ok"
+returnType = "UniWebViewExternalActivityResultStatus"
+hasSetter = false
+summary = "The external activity completed successfully and returned a result."
+
+[[Properties]]
+name = "Canceled"
+returnType = "UniWebViewExternalActivityResultStatus"
+hasSetter = false
+summary = "The external activity was canceled by the user or did not return a result."
