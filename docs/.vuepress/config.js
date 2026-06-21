@@ -279,6 +279,10 @@ module.exports = {
               {
                 text: "UniWebViewTransform",
                 link: "UniWebViewTransform"
+              },
+              {
+                text: "UniWebViewExternalActivityResult",
+                link: "UniWebViewExternalActivityResult"
               }
             ]
           },
@@ -312,6 +316,10 @@ module.exports = {
               {
                 text: "UniWebViewMediaCapturePermissionDecision",
                 link: "UniWebViewMediaCapturePermissionDecision"
+              },
+              {
+                text: "UniWebViewExternalActivityResultStatus",
+                link: "UniWebViewExternalActivityResultStatus"
               }
             ]
           },
