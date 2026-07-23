@@ -1,4 +1,14 @@
 # Release Note
+### 6.8.1 (23 Jul, 2026)
+
+#### Fix
+
+* Strengthen OAuth PKCE verifier generation with cryptographically secure randomness, and make callback parameter parsing preserve values containing `=`, accept empty values, and reject duplicate keys.
+* Fix `ReferenceRectTransform` frame mapping on iOS when Unity renders below the physical display resolution.
+* Fix Android calls waiting unnecessarily when a web view has already been destroyed, and make native screen geometry access consistently run on the UI thread.
+* Fix Cocoa channel-result ownership and rendered-data length handling to prevent memory leaks, crashes, and data corruption.
+* Fix stale UniWebView listener and authentication-session state when using Fast Enter Play Mode.
+
 ### 6.8.0 (22 Jun, 2026)
 
 #### Add
