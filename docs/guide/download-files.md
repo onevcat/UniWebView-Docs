@@ -18,7 +18,7 @@ webView.SetAutoDownloadEnabled(false);
 When disabled, UniWebView ignores those non-renderable responses. On iOS and macOS Editor, any URLs or MIME types you
 explicitly add through `AddDownloadURL` or `AddDownloadMIMEType` still trigger downloads. On Android, this prevents the
 underlying download listener from forwarding the request to `DownloadManager`. Context menu actions like “Save Image” are
-not affected.
+not affected. Data and blob URLs are also ignored while automatic downloading is disabled.
 
 ## Android
 
@@ -132,6 +132,10 @@ If you need to handle these errors, write code for different cases for different
 ## Data Link and Blob Link
 
 UniWebView supports downloading from [data link](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data) and [blob link](https://developer.mozilla.org/en-US/docs/Web/API/Blob). A system alert dialog will be presented to the user to decide the download file name and post-download action.
+
+Data and blob downloads are limited to 16 MiB of decoded content. These URLs are transferred through the JavaScript-to-native
+bridge as an in-memory data URI, so larger payloads are rejected before base64 decoding to avoid excessive memory use. Use a
+regular HTTP(S) download URL for larger files.
 
 When dealing with blob link, UniWebView will try to fetch the content of the blob link. You need to make sure the blob link is available during the loading. That means, you should not call the `URL.revokeObjectURL(blobURL);` in your JavaScript too early. A possible and naive way to handle this is delaying the revoking call for a while:
 

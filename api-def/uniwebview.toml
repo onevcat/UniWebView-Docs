@@ -2918,6 +2918,7 @@ Enables or disables the automatic download when a response cannot be rendered in
 When set to `false`, UniWebView skips starting a download task for non-renderable resources (such as attachments with
 unsupported MIME types). On iOS and macOS Editor, downloads triggered through `AddDownloadURL` or `AddDownloadMIMEType`
 still work. On Android, this prevents the download listener from forwarding unsupported resources to `DownloadManager`.
+Data and blob URLs are ignored on all platforms while automatic downloading is disabled.
 """
 [[Methods.parameters]]
 name = "enabled"
