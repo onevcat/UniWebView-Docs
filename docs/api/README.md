@@ -1014,7 +1014,7 @@ webView<span class="token punctuation">.</span><span class="token function">Capt
   </li>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>remoteUrl</span></div>
-    <div class='parameter-item-desc'><p>The remote URL of this download task. This is also the download URL for the task.</p>
+    <div class='parameter-item-desc'><p>The remote URL of this download task. For a data URL, this contains only the URI metadata through the comma and does not include the embedded payload.</p>
 </div>
   </li>
   <li>
@@ -1061,7 +1061,7 @@ an <code>ERROR_*</code> value in <code>DownloadManager</code>.</p>
   </li>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>remoteUrl</span></div>
-    <div class='parameter-item-desc'><p>The remote URL of this download task.</p>
+    <div class='parameter-item-desc'><p>The remote URL of this download task. For a data URL, this contains only the URI metadata through the comma and does not include the embedded payload.</p>
 </div>
   </li>
   <li>
@@ -5077,7 +5077,8 @@ used.</p>
 <p>Enables or disables the automatic download when a response cannot be rendered in the web view. Default is <code>true</code>.</p>
 <p>When set to <code>false</code>, UniWebView skips starting a download task for non-renderable resources (such as attachments with
 unsupported MIME types). On iOS and macOS Editor, downloads triggered through <code>AddDownloadURL</code> or <code>AddDownloadMIMEType</code>
-still work. On Android, this prevents the download listener from forwarding unsupported resources to <code>DownloadManager</code>.</p>
+still work. On Android, this prevents the download listener from forwarding unsupported resources to <code>DownloadManager</code>.
+Data and blob URLs are ignored on all platforms while automatic downloading is disabled.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>

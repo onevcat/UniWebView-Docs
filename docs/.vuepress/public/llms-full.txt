@@ -1159,7 +1159,7 @@ webView.SetAutoDownloadEnabled(false);
 When disabled, UniWebView ignores those non-renderable responses. On iOS and macOS Editor, any URLs or MIME types you
 explicitly add through `AddDownloadURL` or `AddDownloadMIMEType` still trigger downloads. On Android, this prevents the
 underlying download listener from forwarding the request to `DownloadManager`. Context menu actions like “Save Image” are
-not affected.
+not affected. Data and blob URLs are also ignored while automatic downloading is disabled.
 
 ## Android
 
@@ -1273,6 +1273,13 @@ If you need to handle these errors, write code for different cases for different
 ## Data Link and Blob Link
 
 UniWebView supports downloading from [data link](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data) and [blob link](https://developer.mozilla.org/en-US/docs/Web/API/Blob). A system alert dialog will be presented to the user to decide the download file name and post-download action.
+
+Data and blob downloads are limited to 16 MiB of decoded content. Data URLs are parsed with a bounded decoder. For blob
+URLs, UniWebView rejects oversized responses and blobs before converting them to a base64 data URI for the JavaScript-to-native
+bridge. Use a regular HTTP(S) download URL for larger files.
+
+For data downloads, `OnFileDownloadStarted` and `OnFileDownloadFinished` receive only the URI metadata through the
+comma (for example, `data:image/png;base64,`) as `remoteUrl`. The embedded payload is not forwarded to Unity.
 
 When dealing with blob link, UniWebView will try to fetch the content of the blob link. You need to make sure the blob link is available during the loading. That means, you should not call the `URL.revokeObjectURL(blobURL);` in your JavaScript too early. A possible and naive way to handle this is delaying the revoking call for a while:
 
@@ -12068,6 +12075,7 @@ Enables or disables the automatic download when a response cannot be rendered in
 When set to `false`, UniWebView skips starting a download task for non-renderable resources (such as attachments with
 unsupported MIME types). On iOS and macOS Editor, downloads triggered through `AddDownloadURL` or `AddDownloadMIMEType`
 still work. On Android, this prevents the download listener from forwarding unsupported resources to `DownloadManager`.
+Data and blob URLs are ignored on all platforms while automatic downloading is disabled.
 
 [[Methods.parameters]]
 name: enabled
@@ -12567,7 +12575,7 @@ summary: The web view component which raises this event.
 [[Events.parameters]]
 name: remoteUrl
 type: string
-summary: The remote URL of this download task. This is also the download URL for the task.
+summary: The remote URL of this download task. For a data URL, this contains only the URI metadata through the comma and does not include the embedded payload.
 [[Events.parameters]]
 name: fileName
 type: string
@@ -12610,7 +12618,7 @@ an `ERROR_*` value in `DownloadManager`.
 [[Events.parameters]]
 name: remoteUrl
 type: string
-summary: The remote URL of this download task.
+summary: The remote URL of this download task. For a data URL, this contains only the URI metadata through the comma and does not include the embedded payload.
 [[Events.parameters]]
 name: diskPath
 type: string
