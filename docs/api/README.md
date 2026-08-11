@@ -1014,7 +1014,7 @@ webView<span class="token punctuation">.</span><span class="token function">Capt
   </li>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>remoteUrl</span></div>
-    <div class='parameter-item-desc'><p>The remote URL of this download task. For a data URL, this contains only the URI metadata through the comma and does not include the embedded payload.</p>
+    <div class='parameter-item-desc'><p>The remote URL of this download task. For a data URL, this contains only the URI metadata through the comma and does not include the embedded payload. For a blob URL download, this is the <code>blob:</code> URL that started the task.</p>
 </div>
   </li>
   <li>
@@ -1061,7 +1061,7 @@ an <code>ERROR_*</code> value in <code>DownloadManager</code>.</p>
   </li>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>remoteUrl</span></div>
-    <div class='parameter-item-desc'><p>The remote URL of this download task. For a data URL, this contains only the URI metadata through the comma and does not include the embedded payload.</p>
+    <div class='parameter-item-desc'><p>The remote URL of this download task. For a data URL, this contains only the URI metadata through the comma and does not include the embedded payload. For a blob URL download, this is the <code>blob:</code> URL that started the task.</p>
 </div>
   </li>
   <li>

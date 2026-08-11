@@ -138,7 +138,14 @@ URLs, UniWebView rejects oversized responses and blobs before converting them to
 bridge. Use a regular HTTP(S) download URL for larger files.
 
 For data downloads, `OnFileDownloadStarted` and `OnFileDownloadFinished` receive only the URI metadata through the
-comma (for example, `data:image/png;base64,`) as `remoteUrl`. The embedded payload is not forwarded to Unity.
+comma (for example, `data:image/png;base64,`) as `remoteUrl`. The embedded payload is not forwarded to Unity. For blob
+downloads, `remoteUrl` is the `blob:` URL that started the download on all platforms. Percent-encoded data URL payloads
+are decoded following RFC 2397: a literal `+` stays a plus sign instead of being converted to a space.
+
+Blob downloads are only handled when they are initiated from the main frame, including links that open a new window
+from the main frame. Blob navigations started inside an embedded frame are ignored. The blob bridge also requires a
+native-issued, one-time request token for each download, so page scripts cannot trigger download events or file writes
+without an actual blob download being started. Data URL downloads are not frame-restricted.
 
 When dealing with blob link, UniWebView will try to fetch the content of the blob link. You need to make sure the blob link is available during the loading. That means, you should not call the `URL.revokeObjectURL(blobURL);` in your JavaScript too early. A possible and naive way to handle this is delaying the revoking call for a while:
 

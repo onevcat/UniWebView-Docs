@@ -3391,7 +3391,7 @@ summary = "The web view component which raises this event."
 [[Events.parameters]]
 name = "remoteUrl"
 type = "string"
-summary = "The remote URL of this download task. For a data URL, this contains only the URI metadata through the comma and does not include the embedded payload."
+summary = "The remote URL of this download task. For a data URL, this contains only the URI metadata through the comma and does not include the embedded payload. For a blob URL download, this is the `blob:` URL that started the task."
 [[Events.parameters]]
 name = "fileName"
 type = "string"
@@ -3431,7 +3431,7 @@ an `ERROR_*` value in `DownloadManager`.
 [[Events.parameters]]
 name = "remoteUrl"
 type = "string"
-summary = "The remote URL of this download task. For a data URL, this contains only the URI metadata through the comma and does not include the embedded payload."
+summary = "The remote URL of this download task. For a data URL, this contains only the URI metadata through the comma and does not include the embedded payload. For a blob URL download, this is the `blob:` URL that started the task."
 [[Events.parameters]]
 name = "diskPath"
 type = "string"
