@@ -1,4 +1,7 @@
 #! /bin/sh
+set -eu
+
 cp ../UniWebView/Assets/UniWebView/CHANGELOG.md ./docs/release-note/README.md
 yarn build
-rsync -auv dist onevcat@uniwebview.com:/home/onevcat/www/uniwebview-docs/
+
+# EdgeOne deploys automatically after the generated docs are committed and pushed to master.

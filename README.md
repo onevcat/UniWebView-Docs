@@ -15,4 +15,9 @@ yarn dev
 
 ```bash
 ./deploy.sh
+git add docs
+git commit -m "Update doc"
+git push origin master
 ```
+
+`deploy.sh` synchronizes the release note and builds the site. EdgeOne deploys the generated `dist` automatically after the documentation source is pushed to `master`.

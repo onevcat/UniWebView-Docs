@@ -1,0 +1,6 @@
+{
+  "nodeVersion": "24.11.0",
+  "installCommand": "yarn install --frozen-lockfile --non-interactive",
+  "buildCommand": "yarn build",
+  "outputDirectory": "dist"
+}

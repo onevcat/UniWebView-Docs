@@ -12,6 +12,7 @@
   "repository": "https://github.com/onevcat/UniWebView-Docs.git",
   "author": "onevcat <onevcat@gmail.com>",
   "license": "N/A",
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "dev": "./node_modules/.bin/vuepress dev docs",
     "build": "yarn api && yarn llms && ./node_modules/.bin/vuepress build docs",
@@ -23,7 +24,7 @@
     "prismjs": "^1.27.0"
   },
   "volta": {
-    "node": "18.16.0",
-    "yarn": "1.16.0"
+    "node": "24.11.0",
+    "yarn": "1.22.22"
   }
 }
