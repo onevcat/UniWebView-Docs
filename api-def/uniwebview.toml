@@ -2934,6 +2934,37 @@ name = "Android"
 color = "green"
 
 [[Methods]]
+name = "SetAndroidDownloadDestination"
+syntax = "SetAndroidDownloadDestination(UniWebViewAndroidDownloadDestination destination)"
+returnType = "void"
+summary = """
+Sets the destination for files downloaded by this web view on Android. The default is `AppSpecific`.
+
+`AppSpecific` stores files in the app-specific external Downloads directory. `PublicDownloads` stores files in the user's
+public Downloads directory. This setting affects normal URL, data URL, blob URL, and context-menu image downloads.
+
+On Android 10 and newer, public Downloads uses `MediaStore` and needs no storage permission. The `diskPath` parameter in
+`OnFileDownloadFinished` is a `content://` URI for this destination. On Android 9 and older, public Downloads requires
+`WRITE_EXTERNAL_STORAGE` and its runtime permission; `diskPath` is a filesystem path.
+
+This method only works on Android.
+"""
+example = """
+```csharp
+webView.SetAndroidDownloadDestination(
+    UniWebViewAndroidDownloadDestination.PublicDownloads
+);
+```
+"""
+[[Methods.parameters]]
+name = "destination"
+type = "UniWebViewAndroidDownloadDestination"
+summary = "The destination used for subsequent downloads from this web view."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
 name = "SetAllowUserChooseActionAfterDownloading"
 syntax = "SetAllowUserChooseActionAfterDownloading(bool allowed)"
 returnType = "void"
@@ -2969,9 +3000,8 @@ saving action triggered by the callout (context) menu on Android.
 
 By default, the image saving goes through a different route and it does not trigger the `OnFileDownloadStarted` 
 and `OnFileDownloadFinished` events like other normal download tasks. Setting this with enabled with `true` if
-you also need to get notified when user long-presses on the image and taps "Save Image" button. By default, the
-image will be saved to the Downloads directory and you can get the path from the parameter 
-of `OnFileDownloadFinished` event.
+you also need to get notified when user long-presses on the image and taps "Save Image" button. The image is saved
+to the configured Android download destination, and the location is provided by the `OnFileDownloadFinished` event.
 """
 notice = """
 This only works on Android. On iOS, there is no way to get a callback or any event from the "Add to Photos"
@@ -3435,8 +3465,9 @@ summary = "The remote URL of this download task."
 name = "diskPath"
 type = "string"
 summary = """
-The file path of the downloaded file. On iOS, the downloader file is in a temporary folder of your app sandbox.
-On Android, it is in the "Download" folder of your app.
+The location of the downloaded file. On iOS, the downloader file is in a temporary folder of your app sandbox.
+On Android, it is a filesystem path in the app-specific Downloads directory by default. When using
+`UniWebViewAndroidDownloadDestination.PublicDownloads` on Android 10 and newer, it is a `content://` URI instead.
 """
 
 [[Events]]

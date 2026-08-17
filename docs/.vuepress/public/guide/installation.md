@@ -55,9 +55,11 @@ If you need to display plain HTTP content in the web view, turn it on.
 
 #### Write External Storage
 
-Add `WRITE_EXTERNAL_STORAGE` permission to the "AndroidManifest.xml". It enables storing an image from the web page to the Download folder on the device.
+Add `WRITE_EXTERNAL_STORAGE` permission to the `AndroidManifest.xml`. It is only required when using
+`UniWebViewAndroidDownloadDestination.PublicDownloads` on Android 9 and older; you must also request the runtime
+permission before starting the download.
 
-If you need to download and save any files to disk, turn it on.
+It is not required for the default app-specific Downloads destination or for public Downloads on Android 10 and newer.
 
 #### Access Fine Location
 

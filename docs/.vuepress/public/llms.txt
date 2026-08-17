@@ -48,6 +48,7 @@
 ## API Reference
 
 - [IUniWebViewAuthenticationFlow](https://docs.uniwebview.com/api/IUniWebViewAuthenticationFlow.toml)
+- [UniWebViewAndroidDownloadDestination](https://docs.uniwebview.com/api/UniWebViewAndroidDownloadDestination.toml)
 - [UniWebViewAuthenticationCommonFlow](https://docs.uniwebview.com/api/UniWebViewAuthenticationCommonFlow.toml)
 - [UniWebViewAuthenticationFlowCustomize](https://docs.uniwebview.com/api/UniWebViewAuthenticationFlowCustomize.toml)
 - [UniWebViewAuthenticationFlowDiscord](https://docs.uniwebview.com/api/UniWebViewAuthenticationFlowDiscord.toml)
