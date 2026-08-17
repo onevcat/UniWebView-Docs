@@ -414,6 +414,9 @@ HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.</p>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setautodownloadenabled'><span class='return-type'>void</span> <span class='member-name'>SetAutoDownloadEnabled</span>(bool enabled)</a></div></td><td><div class='simple-summary'>
 <p>Enables or disables the automatic download when a response cannot be rendered in the web view.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setandroiddownloaddestination'><span class='return-type'>void</span> <span class='member-name'>SetAndroidDownloadDestination</span>(UniWebViewAndroidDownloadDestination destination)</a></div></td><td><div class='simple-summary'>
+<p>Sets the destination for files downloaded by this web view on Android.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setallowuserchooseactionafterdownloading'><span class='return-type'>void</span> <span class='member-name'>SetAllowUserChooseActionAfterDownloading</span>(bool allowed)</a></div></td><td><div class='simple-summary'>
 <p>Sets whether allowing users to choose the way to handle the downloaded file.</p>
 </div>
@@ -1066,8 +1069,9 @@ an <code>ERROR_*</code> value in <code>DownloadManager</code>.</p>
   </li>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>diskPath</span></div>
-    <div class='parameter-item-desc'><p>The file path of the downloaded file. On iOS, the downloader file is in a temporary folder of your app sandbox.
-On Android, it is in the &quot;Download&quot; folder of your app.</p>
+    <div class='parameter-item-desc'><p>The location of the downloaded file. On iOS, the downloader file is in a temporary folder of your app sandbox.
+On Android, it is a filesystem path in the app-specific Downloads directory by default. When using
+<code>UniWebViewAndroidDownloadDestination.PublicDownloads</code> on Android 10 and newer, it is a <code>content://</code> URI instead.</p>
 </div>
   </li>
 </ul></div>
@@ -5093,6 +5097,41 @@ still work. On Android, this prevents the download listener from forwarding unsu
   </div>
 </div>
 <div class='api-box method'>
+  <div class="api-anchor" id='setandroiddownloaddestination'></div><div class='api-heading' data-id='setandroiddownloaddestination'><a href='#setandroiddownloaddestination'><span class='return-type'>void</span> <span class='member-name'>SetAndroidDownloadDestination</span>(UniWebViewAndroidDownloadDestination destination)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the destination for files downloaded by this web view on Android. The default is <code>AppSpecific</code>.</p>
+<p><code>AppSpecific</code> stores files in the app-specific external Downloads directory. <code>PublicDownloads</code> stores files in the user&#39;s
+public Downloads directory. This setting affects normal URL, data URL, blob URL, and context-menu image downloads.</p>
+<p>On Android 10 and newer, public Downloads uses <code>MediaStore</code> and needs no storage permission. The <code>diskPath</code> parameter in
+<code>OnFileDownloadFinished</code> is a <code>content://</code> URI for this destination. On Android 9 and older, public Downloads requires
+<code>WRITE_EXTERNAL_STORAGE</code> and its runtime permission; <code>diskPath</code> is a filesystem path.</p>
+<p>This method only works on Android.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebViewAndroidDownloadDestination</span> <span class='parameter-item-name'>destination</span></div>
+    <div class='parameter-item-desc'><p>The destination used for subsequent downloads from this web view.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code>webView<span class="token punctuation">.</span><span class="token function">SetAndroidDownloadDestination</span><span class="token punctuation">(</span>
+    UniWebViewAndroidDownloadDestination<span class="token punctuation">.</span>PublicDownloads
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
   <div class="api-anchor" id='setallowuserchooseactionafterdownloading'></div><div class='api-heading' data-id='setallowuserchooseactionafterdownloading'><a href='#setallowuserchooseactionafterdownloading'><span class='return-type'>void</span> <span class='member-name'>SetAllowUserChooseActionAfterDownloading</span>(bool allowed)</a><div class='api-badge api-badge-orange'>iOS</div><div class='api-badge api-badge-purple'>macOS</div></div>
   <div class='api-body'>
     <div class='desc'>
@@ -5126,9 +5165,8 @@ File app or iCloud).</p>
 saving action triggered by the callout (context) menu on Android.</p>
 <p>By default, the image saving goes through a different route and it does not trigger the <code>OnFileDownloadStarted</code> 
 and <code>OnFileDownloadFinished</code> events like other normal download tasks. Setting this with enabled with <code>true</code> if
-you also need to get notified when user long-presses on the image and taps &quot;Save Image&quot; button. By default, the
-image will be saved to the Downloads directory and you can get the path from the parameter 
-of <code>OnFileDownloadFinished</code> event.</p>
+you also need to get notified when user long-presses on the image and taps &quot;Save Image&quot; button. The image is saved
+to the configured Android download destination, and the location is provided by the <code>OnFileDownloadFinished</code> event.</p>
 </div>
       <div class='custom-container warning'>
   <p class="custom-container-title">NOTICE</p>

@@ -22,9 +22,49 @@ not affected.
 
 ## Android
 
-For Android, there are not many configurable options.
+By default, UniWebView stores downloads in its app-specific external Downloads directory, typically:
 
-When accepting a resource that cannot be rendered, UniWebView will pop up a dialog asking the user for the file name they wish to use. By default, the file name will be read from the `Content-Disposition` header of the received response. After confirming the file name, the file will be stored in the app's `Download` folder. Users can find the downloaded file by accessing `Download` through the Notification Center banner or Android's File app.
+```text
+/storage/emulated/0/Android/data/<package-name>/files/Download
+```
+
+This is the `AppSpecific` destination. It applies to normal URL, data URL, blob URL, and context-menu image downloads.
+It does not require storage permission, is removed when the app is uninstalled, and may not be browsable from ordinary file
+manager apps on Android 11 and newer.
+
+To store downloads in the user's public Downloads directory instead, set the destination on the corresponding web view
+before starting a download:
+
+```csharp
+webView.SetAndroidDownloadDestination(
+    UniWebViewAndroidDownloadDestination.PublicDownloads
+);
+```
+
+This is an instance setting, so different web views can use different destinations. It affects all download types from that
+web view. Public Downloads files remain after app uninstallation and are visible to the user and other apps.
+
+On Android 10 and newer, UniWebView saves data and blob downloads through `MediaStore`; no storage permission is needed to
+create files owned by your app. In `OnFileDownloadFinished`, the `diskPath` value for this destination is a `content://` URI
+on these Android versions. Treat it as a content URI rather than a filesystem path.
+
+On Android 9 and older, public Downloads needs `WRITE_EXTERNAL_STORAGE`. Enable **Write External Storage** in the UniWebView
+Preferences panel to add it to the manifest, then request the runtime permission before starting a public download. The
+`diskPath` callback value is a filesystem path on these versions.
+
+```csharp
+#if UNITY_ANDROID && !UNITY_EDITOR
+if (!UnityEngine.Android.Permission.HasUserAuthorizedPermission(
+        UnityEngine.Android.Permission.ExternalStorageWrite)) {
+    UnityEngine.Android.Permission.RequestUserPermission(
+        UnityEngine.Android.Permission.ExternalStorageWrite
+    );
+}
+#endif
+```
+
+When accepting a resource that cannot be rendered, UniWebView will pop up a dialog asking the user for the file name they
+wish to use. By default, the file name will be read from the `Content-Disposition` header of the received response.
 
 ## iOS
 

@@ -1,0 +1,20 @@
+title = "UniWebViewAndroidDownloadDestination"
+file = "UniWebViewAndroidDownloadDestination"
+
+[[Properties]]
+name = "AppSpecific"
+returnType = "UniWebViewAndroidDownloadDestination"
+hasSetter = false
+summary = """
+Stores files in the app-specific external Downloads directory. This is the default. Files are removed when the app is
+uninstalled and may not be browsable from ordinary file manager apps on Android 11 and newer.
+"""
+
+[[Properties]]
+name = "PublicDownloads"
+returnType = "UniWebViewAndroidDownloadDestination"
+hasSetter = false
+summary = """
+Stores files in the user's public Downloads directory. Files remain after app uninstallation and are visible to the user
+and other apps.
+"""

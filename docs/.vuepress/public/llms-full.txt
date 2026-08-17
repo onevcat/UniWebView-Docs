@@ -1163,9 +1163,49 @@ not affected.
 
 ## Android
 
-For Android, there are not many configurable options.
+By default, UniWebView stores downloads in its app-specific external Downloads directory, typically:
 
-When accepting a resource that cannot be rendered, UniWebView will pop up a dialog asking the user for the file name they wish to use. By default, the file name will be read from the `Content-Disposition` header of the received response. After confirming the file name, the file will be stored in the app's `Download` folder. Users can find the downloaded file by accessing `Download` through the Notification Center banner or Android's File app.
+```text
+/storage/emulated/0/Android/data/<package-name>/files/Download
+```
+
+This is the `AppSpecific` destination. It applies to normal URL, data URL, blob URL, and context-menu image downloads.
+It does not require storage permission, is removed when the app is uninstalled, and may not be browsable from ordinary file
+manager apps on Android 11 and newer.
+
+To store downloads in the user's public Downloads directory instead, set the destination on the corresponding web view
+before starting a download:
+
+```csharp
+webView.SetAndroidDownloadDestination(
+    UniWebViewAndroidDownloadDestination.PublicDownloads
+);
+```
+
+This is an instance setting, so different web views can use different destinations. It affects all download types from that
+web view. Public Downloads files remain after app uninstallation and are visible to the user and other apps.
+
+On Android 10 and newer, UniWebView saves data and blob downloads through `MediaStore`; no storage permission is needed to
+create files owned by your app. In `OnFileDownloadFinished`, the `diskPath` value for this destination is a `content://` URI
+on these Android versions. Treat it as a content URI rather than a filesystem path.
+
+On Android 9 and older, public Downloads needs `WRITE_EXTERNAL_STORAGE`. Enable **Write External Storage** in the UniWebView
+Preferences panel to add it to the manifest, then request the runtime permission before starting a public download. The
+`diskPath` callback value is a filesystem path on these versions.
+
+```csharp
+#if UNITY_ANDROID && !UNITY_EDITOR
+if (!UnityEngine.Android.Permission.HasUserAuthorizedPermission(
+        UnityEngine.Android.Permission.ExternalStorageWrite)) {
+    UnityEngine.Android.Permission.RequestUserPermission(
+        UnityEngine.Android.Permission.ExternalStorageWrite
+    );
+}
+#endif
+```
+
+When accepting a resource that cannot be rendered, UniWebView will pop up a dialog asking the user for the file name they
+wish to use. By default, the file name will be read from the `Content-Disposition` header of the received response.
 
 ## iOS
 
@@ -1831,9 +1871,11 @@ If you need to display plain HTTP content in the web view, turn it on.
 
 #### Write External Storage
 
-Add `WRITE_EXTERNAL_STORAGE` permission to the "AndroidManifest.xml". It enables storing an image from the web page to the Download folder on the device.
+Add `WRITE_EXTERNAL_STORAGE` permission to the `AndroidManifest.xml`. It is only required when using
+`UniWebViewAndroidDownloadDestination.PublicDownloads` on Android 9 and older; you must also request the runtime
+permission before starting the download.
 
-If you need to download and save any files to disk, turn it on.
+It is not required for the default app-specific Downloads destination or for public Downloads on Android 10 and newer.
 
 #### Access Fine Location
 
@@ -5526,6 +5568,31 @@ summary:
 
 The body response of the access token exchange request. Usually it contains the desired `access_token` and other
 necessary fields to describe the authenticated result.
+
+---
+
+### UniWebViewAndroidDownloadDestination
+
+# UniWebViewAndroidDownloadDestination
+file: UniWebViewAndroidDownloadDestination
+
+[[Properties]]
+name: AppSpecific
+returnType: UniWebViewAndroidDownloadDestination
+hasSetter: false
+summary:
+
+Stores files in the app-specific external Downloads directory. This is the default. Files are removed when the app is
+uninstalled and may not be browsable from ordinary file manager apps on Android 11 and newer.
+
+[[Properties]]
+name: PublicDownloads
+returnType: UniWebViewAndroidDownloadDestination
+hasSetter: false
+summary:
+
+Stores files in the user's public Downloads directory. Files remain after app uninstallation and are visible to the user
+and other apps.
 
 ---
 
@@ -12084,6 +12151,39 @@ name: Android
 color: green
 
 [[Methods]]
+name: SetAndroidDownloadDestination
+syntax: SetAndroidDownloadDestination(UniWebViewAndroidDownloadDestination destination)
+returnType: void
+summary:
+
+Sets the destination for files downloaded by this web view on Android. The default is `AppSpecific`.
+
+`AppSpecific` stores files in the app-specific external Downloads directory. `PublicDownloads` stores files in the user's
+public Downloads directory. This setting affects normal URL, data URL, blob URL, and context-menu image downloads.
+
+On Android 10 and newer, public Downloads uses `MediaStore` and needs no storage permission. The `diskPath` parameter in
+`OnFileDownloadFinished` is a `content://` URI for this destination. On Android 9 and older, public Downloads requires
+`WRITE_EXTERNAL_STORAGE` and its runtime permission; `diskPath` is a filesystem path.
+
+This method only works on Android.
+
+example:
+
+```csharp
+webView.SetAndroidDownloadDestination(
+    UniWebViewAndroidDownloadDestination.PublicDownloads
+);
+```
+
+[[Methods.parameters]]
+name: destination
+type: UniWebViewAndroidDownloadDestination
+summary: The destination used for subsequent downloads from this web view.
+[[Methods.badges]]
+name: Android
+color: green
+
+[[Methods]]
 name: SetAllowUserChooseActionAfterDownloading
 syntax: SetAllowUserChooseActionAfterDownloading(bool allowed)
 returnType: void
@@ -12121,9 +12221,8 @@ saving action triggered by the callout (context) menu on Android.
 
 By default, the image saving goes through a different route and it does not trigger the `OnFileDownloadStarted` 
 and `OnFileDownloadFinished` events like other normal download tasks. Setting this with enabled with `true` if
-you also need to get notified when user long-presses on the image and taps "Save Image" button. By default, the
-image will be saved to the Downloads directory and you can get the path from the parameter 
-of `OnFileDownloadFinished` event.
+you also need to get notified when user long-presses on the image and taps "Save Image" button. The image is saved
+to the configured Android download destination, and the location is provided by the `OnFileDownloadFinished` event.
 
 notice:
 
@@ -12616,8 +12715,9 @@ name: diskPath
 type: string
 summary:
 
-The file path of the downloaded file. On iOS, the downloader file is in a temporary folder of your app sandbox.
-On Android, it is in the "Download" folder of your app.
+The location of the downloaded file. On iOS, the downloader file is in a temporary folder of your app sandbox.
+On Android, it is a filesystem path in the app-specific Downloads directory by default. When using
+`UniWebViewAndroidDownloadDestination.PublicDownloads` on Android 10 and newer, it is a `content://` URI instead.
 
 [[Events]]
 name: OnMessageReceived
