@@ -26,5 +26,8 @@
   "volta": {
     "node": "24.11.0",
     "yarn": "1.22.22"
+  },
+  "resolutions": {
+    "braces": "3.0.3"
   }
 }
