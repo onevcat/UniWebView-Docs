@@ -1,4 +1,22 @@
 # Release Note
+### 6.9.0 (24 Aug, 2026)
+
+#### Add
+
+* Add `SetAndroidDownloadDestination` to let each Android web view save normal, data, blob, and context-menu image downloads to either its app-specific Downloads directory or the user's public Downloads directory.
+
+#### Fix
+
+* Limit data and blob downloads to 16 MiB, honor automatic download settings consistently, avoid exposing full data URIs in download events, and serialize Android data URL writes on a bounded worker queue.
+* Require a native-issued, one-time request token for blob download callbacks on all platforms, so page scripts can no longer forge download events or write files without a user-initiated blob download.
+* Blob download events now report the `blob:` source URL as `remoteUrl` on all platforms. Previously iOS and macOS reported the page URL instead.
+* Percent-encoded data URL payloads are now decoded following RFC 2397 on Android: a literal `+` stays a plus sign instead of being converted to a space.
+* Data URL downloads that fail during background decoding or cannot be scheduled after confirmation now raise a failed `OnFileDownloadFinished` event on Android instead of disappearing silently.
+* Preserve downloaded files before reporting completion on iOS and macOS, and cleanly cancel in-flight downloads when their web view is destroyed.
+* Prevent authentication sessions and integrated OAuth flows from completing more than once when native callbacks, universal links, and cancellation race.
+* Redact sensitive URL paths, query strings, fragments, cookies, headers, JavaScript, and message payloads from built-in runtime logs while retaining useful diagnostic metadata.
+* Fix Unity 6.5 serialization analyzer errors (`UAC1001`) for toolbar configuration and native listener fields.
+
 ### 6.8.1 (23 Jul, 2026)
 
 #### Fix
