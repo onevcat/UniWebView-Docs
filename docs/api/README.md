@@ -5142,7 +5142,8 @@ public Downloads directory. This setting affects normal URL, data URL, blob URL,
 default share sheet and give the user a chance to send and store the file to another location (such as the 
 File app or iCloud).</p>
 <p>On macOS Editor, setting this to <code>true</code> will allow UniWebView to open the file in Finder.</p>
-<p>This method does not have any effect on Android. On Android, the file is downloaded to the app&#39;s Download folder.</p>
+<p>This method does not have any effect on Android. Use <code>SetAndroidDownloadDestination</code> to control the download location.
+The default is <code>UniWebViewAndroidDownloadDestination.AppSpecific</code>.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>

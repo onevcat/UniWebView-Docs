@@ -1316,7 +1316,8 @@ UniWebView supports downloading from [data link](https://developer.mozilla.org/e
 
 Data and blob downloads are limited to 16 MiB of decoded content. Data URLs are parsed with a bounded decoder. For blob
 URLs, UniWebView rejects oversized responses and blobs before converting them to a base64 data URI for the JavaScript-to-native
-bridge. Use a regular HTTP(S) download URL for larger files.
+bridge. Use a regular HTTP(S) download URL for larger files. Invalid or oversized data or blob URLs rejected before a
+native download task is created do not raise download events.
 
 For data downloads, `OnFileDownloadStarted` and `OnFileDownloadFinished` receive only the URI metadata through the
 comma (for example, `data:image/png;base64,`) as `remoteUrl`. The embedded payload is not forwarded to Unity. For blob
@@ -12212,7 +12213,8 @@ File app or iCloud).
 
 On macOS Editor, setting this to `true` will allow UniWebView to open the file in Finder.
 
-This method does not have any effect on Android. On Android, the file is downloaded to the app's Download folder.
+This method does not have any effect on Android. Use `SetAndroidDownloadDestination` to control the download location.
+The default is `UniWebViewAndroidDownloadDestination.AppSpecific`.
 
 [[Methods.parameters]]
 name: allowed

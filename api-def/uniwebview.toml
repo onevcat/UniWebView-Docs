@@ -2978,7 +2978,8 @@ File app or iCloud).
 
 On macOS Editor, setting this to `true` will allow UniWebView to open the file in Finder.
 
-This method does not have any effect on Android. On Android, the file is downloaded to the app's Download folder.
+This method does not have any effect on Android. Use `SetAndroidDownloadDestination` to control the download location.
+The default is `UniWebViewAndroidDownloadDestination.AppSpecific`.
 """
 [[Methods.parameters]]
 name = "allowed"
