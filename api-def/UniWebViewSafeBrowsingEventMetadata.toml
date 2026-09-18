@@ -18,6 +18,9 @@ without touching JSON manually.
 - `Minimized`: Safe Browsing tab was minimized (Android only, AndroidX Browser 1.8.0+).
 - `Unminimized`: Safe Browsing tab was restored from minimized state (Android only, AndroidX Browser 1.8.0+).
 - `TabHidden`: User dismissed the Safe Browsing tab (maps to `OnSafeBrowsingClosed` / `OnSafeBrowsingFinished`).
+- `MessageChannelReady`: The current Android Custom Tabs message channel is ready.
+- `PostMessage`: The page sent a message through the Custom Tabs message port.
+- `RelationshipValidated`: Digital Asset Links validation completed or could not be submitted.
 """
 
 [[Properties]]
@@ -61,3 +64,21 @@ name = "Raw"
 returnType = "string"
 hasSetter = false
 summary = "Original JSON payload from native side, useful for diagnostics."
+
+[[Properties]]
+name = "Message"
+returnType = "string"
+hasSetter = false
+summary = "Page payload for a `PostMessage` event, or an empty string otherwise."
+
+[[Properties]]
+name = "Result"
+returnType = "bool?"
+hasSetter = false
+summary = "Digital Asset Links result for a `RelationshipValidated` event."
+
+[[Properties]]
+name = "Origin"
+returnType = "string"
+hasSetter = false
+summary = "Source origin associated with a `RelationshipValidated` event."

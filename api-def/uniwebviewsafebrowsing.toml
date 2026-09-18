@@ -222,11 +222,16 @@ returnType = "void"
 summary = """
 Dismisses the safe browsing component.
 
-This method only works on iOS. On Android, there is no way to dismiss the safe browsing component 
+On iOS, this dismisses `SFSafariViewController`. On Android, it disposes the
+Custom Tabs session and brings the host activity to the front. Chrome does not
+provide a direct Custom Tab close API.
 """
 [[Methods.badges]]
 name = "iOS"
 color = "orange"
+[[Methods.badges]]
+name = "Android"
+color = "green"
 
 [[Methods]]
 name = "Invalidate"
@@ -565,6 +570,80 @@ name = "Android"
 color = "green"
 
 [[Methods]]
+name = "SetPostMessageOrigin"
+syntax = "SetPostMessageOrigin(string origin)"
+returnType = "void"
+summary = """
+Sets the Digital Asset Links source origin and receiving page target origin to
+the same value. The value must be an origin such as `https://store.example.com`,
+without a path. Android only. When omitted, both origins default from the URL
+passed to `Create`.
+"""
+[[Methods.parameters]]
+name = "origin"
+type = "string"
+summary = "Origin used as both the channel source and target."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "SetPostMessageOrigins"
+syntax = "SetPostMessageOrigins(string sourceOrigin, string targetOrigin)"
+returnType = "void"
+summary = """
+Configures distinct origins for the Android Custom Tabs postMessage channel.
+`sourceOrigin` identifies the app through Digital Asset Links. `targetOrigin`
+restricts which loaded page may receive the channel. Requires AndroidX Browser
+1.6.0 or newer.
+"""
+[[Methods.parameters]]
+name = "sourceOrigin"
+type = "string"
+summary = "Digital Asset Links origin that identifies the app."
+[[Methods.parameters]]
+name = "targetOrigin"
+type = "string"
+summary = "Only pages at this origin may receive the channel."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "PostMessage"
+syntax = "PostMessage(string message)"
+returnType = "bool"
+summary = """
+Sends or queues a string for the Android Custom Tabs channel. Queue the initial
+handshake before calling `Show`; native Android flushes it when the channel is
+ready even if Unity is paused behind a full Custom Tab.
+"""
+[[Methods.parameters]]
+name = "message"
+type = "string"
+summary = "Opaque string delivered to the page."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
+name = "LaunchUrl"
+syntax = "LaunchUrl(string url)"
+returnType = "bool"
+summary = """
+Opens a URL through Android's normal `ACTION_VIEW` resolution. This is useful
+for App Links that return to a native handler. It does not guarantee navigation
+or reuse of the currently visible Custom Tab.
+"""
+[[Methods.parameters]]
+name = "url"
+type = "string"
+summary = "URL Android should resolve."
+[[Methods.badges]]
+name = "Android"
+color = "green"
+
+[[Methods]]
 name = "SetToolbarItemColor"
 syntax = "SetToolbarItemColor(Color color)"
 returnType = "void"
@@ -661,6 +740,56 @@ summary = "The `UniWebViewSafeBrowsing` object raised this event."
 name = "metadata"
 type = "UniWebViewSafeBrowsingEventMetadata"
 summary = "Structured metadata describing the native callback."
+
+[[Events]]
+name = "OnSafeBrowsingMessageChannelReady"
+syntax = "OnSafeBrowsingMessageChannelReady(UniWebViewSafeBrowsing browsing, UniWebViewSafeBrowsingEventMetadata metadata)"
+returnType = "event"
+summary = "Raised when the current Android Custom Tabs postMessage channel is ready. Messages queued before `Show` are flushed natively before this event reaches Unity."
+[[Events.parameters]]
+name = "browsing"
+type = "UniWebViewSafeBrowsing"
+summary = "The Safe Browsing instance that raised this event."
+[[Events.parameters]]
+name = "metadata"
+type = "UniWebViewSafeBrowsingEventMetadata"
+summary = "Structured channel-ready metadata."
+
+[[Events]]
+name = "OnSafeBrowsingPostMessage"
+syntax = "OnSafeBrowsingPostMessage(UniWebViewSafeBrowsing browsing, string message, UniWebViewSafeBrowsingEventMetadata metadata)"
+returnType = "event"
+summary = "Raised when the page sends a string through the Android Custom Tabs message port."
+[[Events.parameters]]
+name = "browsing"
+type = "UniWebViewSafeBrowsing"
+summary = "The Safe Browsing instance that raised this event."
+[[Events.parameters]]
+name = "message"
+type = "string"
+summary = "Opaque string received from the page."
+[[Events.parameters]]
+name = "metadata"
+type = "UniWebViewSafeBrowsingEventMetadata"
+summary = "Structured postMessage metadata."
+
+[[Events]]
+name = "OnSafeBrowsingRelationshipValidated"
+syntax = "OnSafeBrowsingRelationshipValidated(UniWebViewSafeBrowsing browsing, bool succeeded, UniWebViewSafeBrowsingEventMetadata metadata)"
+returnType = "event"
+summary = "Raised when Digital Asset Links validation completes or its prerequisite request cannot be submitted. The channel is requested only after a successful result and finished navigation."
+[[Events.parameters]]
+name = "browsing"
+type = "UniWebViewSafeBrowsing"
+summary = "The Safe Browsing instance that raised this event."
+[[Events.parameters]]
+name = "succeeded"
+type = "bool"
+summary = "Whether validation succeeded."
+[[Events.parameters]]
+name = "metadata"
+type = "UniWebViewSafeBrowsingEventMetadata"
+summary = "Metadata containing the validated source origin."
 
 [[Events]]
 name = "OnSafeBrowsingWarmupComplete"
