@@ -50,6 +50,15 @@ external browser by using Unity's `Application.OpenURL`.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#activityheightresizebehavior.fixed'><span class='return-type'>UniWebViewSafeBrowsing.ActivityHeightResizeBehavior</span> <span class='member-name'>ActivityHeightResizeBehavior.Fixed</span> { get; }</a></div></td><td><div class='simple-summary'>
 <p>Prevents the user from resizing the partial Custom Tab.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#activitysidesheetposition.default'><span class='return-type'>UniWebViewSafeBrowsing.ActivitySideSheetPosition</span> <span class='member-name'>ActivitySideSheetPosition.Default</span> { get; }</a></div></td><td><div class='simple-summary'>
+<p>Uses the default side sheet position decided by the Custom Tabs provider.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#activitysidesheetposition.start'><span class='return-type'>UniWebViewSafeBrowsing.ActivitySideSheetPosition</span> <span class='member-name'>ActivitySideSheetPosition.Start</span> { get; }</a></div></td><td><div class='simple-summary'>
+<p>Anchors the side sheet to the start edge (left in LTR).</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#activitysidesheetposition.end'><span class='return-type'>UniWebViewSafeBrowsing.ActivitySideSheetPosition</span> <span class='member-name'>ActivitySideSheetPosition.End</span> { get; }</a></div></td><td><div class='simple-summary'>
+<p>Anchors the side sheet to the end edge (right in LTR).</p>
+</div>
 </td></tr></table>
 
 #### Events Summary
@@ -130,6 +139,12 @@ external browser by using Unity's `Application.OpenURL`.
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setinitialwidthpx'><span class='return-type'>void</span> <span class='member-name'>SetInitialWidthPx</span>(int initialWidthPx)</a></div></td><td><div class='simple-summary'>
 <p>Sets initial Custom Tab width in pixels (side sheet).</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setactivitysidesheetbreakpointdp'><span class='return-type'>void</span> <span class='member-name'>SetActivitySideSheetBreakpointDp</span>(int breakpointDp)</a></div></td><td><div class='simple-summary'>
+<p>Sets the screen width breakpoint in dp for partial Custom Tabs.</p>
+</div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#setactivitysidesheetposition'><span class='return-type'>void</span> <span class='member-name'>SetActivitySideSheetPosition</span>(ActivitySideSheetPosition position)</a></div></td><td><div class='simple-summary'>
+<p>Sets the edge that the side sheet of a partial Custom Tab anchors to.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#setsharemenuitemenabled'><span class='return-type'>void</span> <span class='member-name'>SetShareMenuItemEnabled</span>(bool enable)</a></div></td><td><div class='simple-summary'>
 <p>Enables or disables share menu items.</p>
@@ -263,6 +278,36 @@ intent query explicitly in your AndroidManifest.xml, to follow the Package Visib
     <div class='desc'>
       <div class='summary'>
 <p>Prevents the user from resizing the partial Custom Tab.</p>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box property'>
+  <div class="api-anchor" id='activitysidesheetposition.default'></div><div class='api-heading' data-id='activitysidesheetposition.default'><a href='#activitysidesheetposition.default'><span class='return-type'>UniWebViewSafeBrowsing.ActivitySideSheetPosition</span> <span class='member-name'>ActivitySideSheetPosition.Default</span> { get; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Uses the default side sheet position decided by the Custom Tabs provider. It is the end edge (right in LTR) by default.</p>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box property'>
+  <div class="api-anchor" id='activitysidesheetposition.start'></div><div class='api-heading' data-id='activitysidesheetposition.start'><a href='#activitysidesheetposition.start'><span class='return-type'>UniWebViewSafeBrowsing.ActivitySideSheetPosition</span> <span class='member-name'>ActivitySideSheetPosition.Start</span> { get; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Anchors the side sheet to the start edge (left in LTR).</p>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box property'>
+  <div class="api-anchor" id='activitysidesheetposition.end'></div><div class='api-heading' data-id='activitysidesheetposition.end'><a href='#activitysidesheetposition.end'><span class='return-type'>UniWebViewSafeBrowsing.ActivitySideSheetPosition</span> <span class='member-name'>ActivitySideSheetPosition.End</span> { get; }</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Anchors the side sheet to the end edge (right in LTR).</p>
 </div>
                 </div>
   </div>
@@ -908,6 +953,49 @@ safeBrowsing<span class="token punctuation">.</span><span class="token function"
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>initialWidthPx</span></div>
     <div class='parameter-item-desc'><p>Initial width in pixels.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setactivitysidesheetbreakpointdp'></div><div class='api-heading' data-id='setactivitysidesheetbreakpointdp'><a href='#setactivitysidesheetbreakpointdp'><span class='return-type'>void</span> <span class='member-name'>SetActivitySideSheetBreakpointDp</span>(int breakpointDp)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the screen width breakpoint in dp for partial Custom Tabs. When the screen is wider than this value, the Custom Tab shows as a side sheet instead of a bottom sheet. Configure it before <code>Show</code>. It does not update a page that is already shown.</p>
+<p>The value must be positive. A value of 0 or less is ignored and an error is logged. Chrome uses 600dp when the value is less than 600dp.</p>
+<p>Android only. Requires AndroidX Browser 1.8.0+. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>breakpointDp</span></div>
+    <div class='parameter-item-desc'><p>A positive breakpoint in density-independent pixels.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+                </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='setactivitysidesheetposition'></div><div class='api-heading' data-id='setactivitysidesheetposition'><a href='#setactivitysidesheetposition'><span class='return-type'>void</span> <span class='member-name'>SetActivitySideSheetPosition</span>(ActivitySideSheetPosition position)</a><div class='api-badge api-badge-green'>Android</div></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Sets the edge that the side sheet of a partial Custom Tab anchors to. The default is the end edge (right in LTR). A bottom sheet ignores this value. Configure it before <code>Show</code>. It does not update a page that is already shown.</p>
+<p>Android only. Requires AndroidX Browser 1.8.0+. This method does nothing on iOS.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>ActivitySideSheetPosition</span> <span class='parameter-item-name'>position</span></div>
+    <div class='parameter-item-desc'><p>The edge to anchor to (<code>Default</code>, <code>Start</code>, or <code>End</code>).</p>
 </div>
   </li>
 </ul></div>
