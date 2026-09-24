@@ -22,7 +22,7 @@ For users who want to access the source code of UniWebView, we [provide a plan](
 
 Unity will prompt you with a window to confirm the importing files. Just click "Import" to add all files to your project.
 
-> The minimum deploy target of UniWebView 6 is iOS 15.0 and Android 5.0 (API Level 21). Earlier iOS versions are not tested and not officially supported. The macOS Editor support requires macOS 12.0 or later.
+> The minimum deploy target of UniWebView 6 is iOS 12.0 and Android 5.0 (API Level 21). Earlier iOS versions are not tested and not officially supported. The macOS Editor support requires macOS 12.0 or later.
 > For Unity, we recommend using Unity 2021.3.37 LTS, 2022.3.23 LTS, or any Unity 6 (6000.x) version. Earlier versions might still work but are no longer part of our regular test matrix.
 > Please make sure to update the Target minimum iOS Version and Minimum API Level in the Player Settings accordingly.
 
