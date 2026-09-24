@@ -987,7 +987,7 @@ safeBrowsing<span class="token punctuation">.</span><span class="token function"
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Sets the edge that the side sheet of a partial Custom Tab anchors to. The default is the end edge (right in LTR). A bottom sheet ignores this value. Configure it before <code>Show</code>. It does not update a page that is already shown.</p>
+<p>Sets the edge that the side sheet of a partial Custom Tab anchors to. The default is the end edge (right in LTR). A bottom sheet ignores this value. A value that is not a defined enum member is ignored and an error is logged. Configure it before <code>Show</code>. It does not update a page that is already shown.</p>
 <p>Android only. Requires AndroidX Browser 1.8.0+. This method does nothing on iOS.</p>
 </div>
             <div class='parameters'>
