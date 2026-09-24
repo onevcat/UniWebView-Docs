@@ -117,7 +117,7 @@ The UniWebView logging system now uses lazy evaluation internally to avoid unnec
 ### Recommended Platform Targets
 
 - Unity 2021.3.37 LTS, 2022.3.23 LTS or any Unity 6 (6000.x) build are our validated environments.
-- Minimum iOS version is now 15.0.
+- Minimum iOS version is now 12.0.
 - The macOS Editor support requires macOS 12.0 or later.
 - Android still supports 5.0 (API 21) and above.
 
