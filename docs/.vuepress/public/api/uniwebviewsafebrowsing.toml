@@ -749,6 +749,8 @@ returnType = "event"
 summary = """
 Raised when the safe browser is minimized.
 
+Minimizing does not finish the browsing, so `OnSafeBrowsingFinished` is not raised. If the user closes the tab after restoring it, `OnSafeBrowsingFinished` is raised as usual. If the user closes the minimized tab directly, Chrome does not report it, so `OnSafeBrowsingFinished` is not raised for this instance.
+
 Android only. Requires AndroidX Browser 1.8.0+.
 """
 example = """
