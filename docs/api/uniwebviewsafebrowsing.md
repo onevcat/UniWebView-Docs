@@ -470,6 +470,7 @@ This callback indicates provider process warmup completion, not page load comple
     <div class='desc'>
       <div class='summary'>
 <p>Raised when the safe browser is minimized.</p>
+<p>Minimizing does not finish the browsing, so <code>OnSafeBrowsingFinished</code> is not raised. If the user closes the tab after restoring it, <code>OnSafeBrowsingFinished</code> is raised as usual. If the user closes the minimized tab directly, Chrome does not report it, so <code>OnSafeBrowsingFinished</code> is not raised for this instance.</p>
 <p>Android only. Requires AndroidX Browser 1.8.0+.</p>
 </div>
             <div class='parameters'>
