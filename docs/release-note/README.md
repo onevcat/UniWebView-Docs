@@ -1,4 +1,20 @@
 # Release Note
+### 6.10.0 (27 Sep, 2026)
+
+#### Add
+
+* Add `SetActivitySideSheetBreakpointDp` and `SetActivitySideSheetPosition` to `UniWebViewSafeBrowsing` on Android. They configure the side sheet that Chrome shows for Partial Custom Tabs on wide or landscape screens, with the new `ActivitySideSheetPosition` enum for the anchored edge. Requires AndroidX Browser 1.8.0 or later.
+
+#### Fix
+
+* Fix Android web view frame position and size on Unity 6.1 and later when a system bar is visible. These Unity versions pad their own player view with the system bar insets, so a web view using `ReferenceRectTransform` became taller and shifted. The frame is now mapped against the Unity player surface instead of the status bar height.
+* Deliver `OnSafeBrowsingMinimized`, `OnSafeBrowsingUnminimized`, and `OnSafeBrowsingWarmupComplete` in Android release builds. Code shrinking removed these callbacks from the release library before.
+* Keep the Safe Browsing session alive when the Custom Tab is minimized on Android. Previously the session finished as soon as the tab was hidden, so the minimize and unminimize events never reached Unity. `OnSafeBrowsingFinished` is now raised when the tab is closed after being restored.
+
+#### Breaking Change
+
+* The macOS Editor support now requires macOS 12.0 or later. The minimum iOS version stays at iOS 12.0.
+
 ### 6.9.0 (24 Aug, 2026)
 
 #### Add
