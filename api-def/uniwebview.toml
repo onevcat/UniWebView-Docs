@@ -1500,12 +1500,16 @@ returnType = "void"
 summary = """
 Sets a cookie for a certain url. When it finishes, the `handler` will be called.
 
-The `cookie` string supports all available cookie properties as well as multiple cookies. See [RFC6265bis](https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-03) for detail.
+Pass one `Set-Cookie` header value per call, for example `SID=abc==; Domain=.example.com; Path=/; Secure; HttpOnly`. Do not combine multiple cookies with commas or semicolons. A semicolon separates attributes, and an `Expires` date can contain a comma.
+
+`Domain=example.com` and `Domain=.example.com` both include subdomains. Omit `Domain` to create a host-only cookie. The domain must match the URL host or a parent domain. `Path` must start with `/`; an omitted, empty, or relative path (such as `./account`) uses the URL's default cookie path, not a relative directory. Cookie names and paths are case-sensitive; attribute names and domains are case-insensitive. Values are not URL-decoded.
+
+Standard attributes such as `Expires`, `Max-Age`, `Secure`, and `HttpOnly` are parsed by the native cookie implementation. Support for newer attributes, such as `SameSite` and `Partitioned`, depends on the OS and WebView version. This API does not override browser privacy policies. It writes to native storage and is not a validator for untrusted `Set-Cookie` headers; do not assume identical public-suffix or cookie-prefix enforcement across platforms. See [RFC 6265](https://www.rfc-editor.org/rfc/rfc6265) for cookie syntax and matching rules.
 
 UniWebView respects the server cookie header by default. Generally, you do not need to set the cookie from client manually. However, if you have to pass your server a manually set cookie, 
 use this method.
 
-This performs an asynchronous operation. The `handler` will be called when the operation finishes and it is the safe time to find the cookie in the storage.
+This performs an asynchronous operation. The `handler` will be called when the operation finishes. Completion does not mean that the native cookie store accepted the cookie; an invalid cookie or browser policy can prevent storage.
 """
 example = """
 ```csharp
@@ -1542,7 +1546,11 @@ summary = "Whether UniWebView should skip encoding the url or not. If set to `fa
 name = "GetCookie"
 syntax = "GetCookie(string url, string key, bool skipEncoding, Action<string> handler)"
 returnType = "void"
-summary = "Gets the cookie value under a given url and key. When it finishes, the `handler` will be called with the cookie value if exists."
+summary = """
+Gets the cookie value for a full URL and key. Matching uses the host, path, Secure flag, and expiry. A host-only cookie does not match subdomains, and a Secure cookie is not returned for an HTTP URL. If multiple cookies have the same name, the one with the longest matching path is returned; do not rely on ordering when their path lengths are equal.
+
+The `handler` receives the stored value without URL decoding, or an empty string if no cookie matches. An empty cookie value also returns an empty string. Native reads can include HttpOnly cookies. This lookup does not predict whether a browser will send the cookie in a specific cross-site or partitioned request.
+"""
 example = """
 ```csharp
 UniWebView.GetCookie("https://example.com", "testCookie", (value) => {
@@ -1556,7 +1564,7 @@ color = "blue"
 [[Methods.parameters]]
 name = "url"
 type = "string"
-summary = "The url (domain) where the target cookie is."
+summary = "The full URL, including scheme and path, used to match the target cookie."
 [[Methods.parameters]]
 name = "key"
 type = "string"
