@@ -1578,11 +1578,15 @@ summary = "Whether UniWebView should skip encoding the url or not. If set to `fa
 name = "RemoveCookies"
 syntax = "RemoveCookies(string url, bool skipEncoding, Action handler)"
 returnType = "void"
-summary = "Removes all the cookies under a url. When it finishes, the `handler` will be called."
+summary = """
+Removes all the cookies that apply to a URL. When it finishes, the `handler` will be called.
+
+A cookie is removed only when it applies to the URL, with the same host, path, and Secure rules as `GetCookie`. Cookies for other paths, host-only cookies of a parent host, cookies of subdomains, and Secure cookies when the URL uses HTTP are kept. To remove all cookies, use `ClearCookies`.
+"""
 example = """
 ```csharp
-UniWebView.RemoveCookies("https://example.com", () => {
-    Debug.Log("Cookies under `example.com` are removed.");
+UniWebView.RemoveCookies("https://example.com/", () => {
+    Debug.Log("Cookies that apply to `https://example.com/` are removed.");
 });
 ```
 """
@@ -1592,7 +1596,7 @@ color = "blue"
 [[Methods.parameters]]
 name = "url"
 type = "string"
-summary = "The url (domain) where the target cookie is."
+summary = "The full URL, including scheme and path, used to match the cookies."
 [[Methods.parameters]]
 name = "skipEncoding"
 type = "bool"
@@ -1602,11 +1606,15 @@ summary = "Whether UniWebView should skip encoding the url or not. If set to `fa
 name = "RemoveCookie"
 syntax = "RemoveCookie(string url, string key, bool skipEncoding, Action handler)"
 returnType = "void"
-summary = "Removes the certain cookie under a url for the specified key. When it finishes, the `handler` will be called."
+summary = """
+Removes the cookies with the specified key that apply to a URL. When it finishes, the `handler` will be called.
+
+A cookie is removed only when it applies to the URL, with the same host, path, and Secure rules as `GetCookie`. Cookies for other paths, host-only cookies of a parent host, cookies of subdomains, and Secure cookies when the URL uses HTTP are kept. To remove all cookies, use `ClearCookies`.
+"""
 example = """
 ```csharp
-UniWebView.RemoveCookie("https://example.com", "SID", () => {
-    Debug.Log("Cookie `SID` under `example.com` is removed.");
+UniWebView.RemoveCookie("https://example.com/", "SID", () => {
+    Debug.Log("Cookie `SID` for `https://example.com/` is removed.");
 });
 ```
 """
@@ -1616,7 +1624,7 @@ color = "blue"
 [[Methods.parameters]]
 name = "url"
 type = "string"
-summary = "The url (domain) where the target cookie is."
+summary = "The full URL, including scheme and path, used to match the cookies."
 [[Methods.parameters]]
 name = "key"
 type = "string"
@@ -1631,7 +1639,7 @@ name = "ClearCookies"
 syntax = "ClearCookies(Action handler)"
 returnType = "void"
 summary = "Clears all cookies from web view. When it finishes, the `handler` will be called."
-notice = "This will clear cookies from all domains in the web view and previous. If you only need to remove cookies from a certain domain, use `RemoveCookies` instead."
+notice = "This will clear cookies from all domains in the web view and previous. If you only need to remove the cookies for a certain URL, use `RemoveCookies` instead."
 example = """
 ```csharp
 UniWebView.ClearCookies(() => {
