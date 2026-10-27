@@ -260,13 +260,13 @@ are added to the adjusted content inset.</p>
 <p>Sets a cookie for a certain url.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#getcookie'><span class='return-type'>void</span> <span class='member-name'>GetCookie</span>(string url, string key, bool skipEncoding, Action&lt;string&gt; handler)</a></div></td><td><div class='simple-summary'>
-<p>Gets the cookie value under a given url and key.</p>
+<p>Gets the cookie value for a full URL and key.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#removecookies'><span class='return-type'>void</span> <span class='member-name'>RemoveCookies</span>(string url, bool skipEncoding, Action handler)</a></div></td><td><div class='simple-summary'>
-<p>Removes all the cookies under a url.</p>
+<p>Removes all the cookies that apply to a URL.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#removecookie'><span class='return-type'>void</span> <span class='member-name'>RemoveCookie</span>(string url, string key, bool skipEncoding, Action handler)</a></div></td><td><div class='simple-summary'>
-<p>Removes the certain cookie under a url for the specified key.</p>
+<p>Removes the cookies with the specified key that apply to a URL.</p>
 </div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#clearcookies'><span class='return-type'>void</span> <span class='member-name'>ClearCookies</span>(Action handler)</a></div></td><td><div class='simple-summary'>
 <p>Clears all cookies from web view.</p>
@@ -3337,10 +3337,12 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
     <div class='desc'>
       <div class='summary'>
 <p>Sets a cookie for a certain url. When it finishes, the <code>handler</code> will be called.</p>
-<p>The <code>cookie</code> string supports all available cookie properties as well as multiple cookies. See <a href="https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-03">RFC6265bis</a> for detail.</p>
+<p>Pass one <code>Set-Cookie</code> header value per call, for example <code>SID=abc==; Domain=.example.com; Path=/; Secure; HttpOnly</code>. Do not combine multiple cookies with commas or semicolons. A semicolon separates attributes, and an <code>Expires</code> date can contain a comma.</p>
+<p><code>Domain=example.com</code> and <code>Domain=.example.com</code> both include subdomains. Omit <code>Domain</code> to create a host-only cookie. The domain must match the URL host or a parent domain. <code>Path</code> must start with <code>/</code>; an omitted, empty, or relative path (such as <code>./account</code>) uses the URL&#39;s default cookie path, not a relative directory. Cookie names and paths are case-sensitive; attribute names and domains are case-insensitive. Values are not URL-decoded.</p>
+<p>Standard attributes such as <code>Expires</code>, <code>Max-Age</code>, <code>Secure</code>, and <code>HttpOnly</code> are parsed by the native cookie implementation. Support for newer attributes, such as <code>SameSite</code> and <code>Partitioned</code>, depends on the OS and WebView version. This API does not override browser privacy policies. It writes to native storage and is not a validator for untrusted <code>Set-Cookie</code> headers; do not assume identical public-suffix or cookie-prefix enforcement across platforms. See <a href="https://www.rfc-editor.org/rfc/rfc6265">RFC 6265</a> for cookie syntax and matching rules.</p>
 <p>UniWebView respects the server cookie header by default. Generally, you do not need to set the cookie from client manually. However, if you have to pass your server a manually set cookie, 
 use this method.</p>
-<p>This performs an asynchronous operation. The <code>handler</code> will be called when the operation finishes and it is the safe time to find the cookie in the storage.</p>
+<p>This performs an asynchronous operation. The <code>handler</code> will be called when the operation finishes. Completion does not mean that the native cookie store accepted the cookie; an invalid cookie or browser policy can prevent storage.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
@@ -3387,14 +3389,15 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Gets the cookie value under a given url and key. When it finishes, the <code>handler</code> will be called with the cookie value if exists.</p>
+<p>Gets the cookie value for a full URL and key. Matching uses the host, path, Secure flag, and expiry. A host-only cookie does not match subdomains, and a Secure cookie is not returned for an HTTP URL. If multiple cookies have the same name, the one with the longest matching path is returned; do not rely on ordering when their path lengths are equal.</p>
+<p>The <code>handler</code> receives the stored value without URL decoding, or an empty string if no cookie matches. An empty cookie value also returns an empty string. Native reads can include HttpOnly cookies. This lookup does not predict whether a browser will send the cookie in a specific cross-site or partitioned request.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
-    <div class='parameter-item-desc'><p>The url (domain) where the target cookie is.</p>
+    <div class='parameter-item-desc'><p>The full URL, including scheme and path, used to match the target cookie.</p>
 </div>
   </li>
   <li>
@@ -3426,14 +3429,15 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Removes all the cookies under a url. When it finishes, the <code>handler</code> will be called.</p>
+<p>Removes all the cookies that apply to a URL. When it finishes, the <code>handler</code> will be called.</p>
+<p>A cookie is removed only when it applies to the URL, with the same host, path, and Secure rules as <code>GetCookie</code>. Cookies for other paths, host-only cookies of a parent host, cookies of subdomains, and Secure cookies when the URL uses HTTP are kept. To remove all cookies, use <code>ClearCookies</code>.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
-    <div class='parameter-item-desc'><p>The url (domain) where the target cookie is.</p>
+    <div class='parameter-item-desc'><p>The full URL, including scheme and path, used to match the cookies.</p>
 </div>
   </li>
   <li>
@@ -3446,8 +3450,8 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">RemoveCookies</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Cookies under `example.com` are removed."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">RemoveCookies</span><span class="token punctuation">(</span><span class="token string">"https://example.com/"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Cookies that apply to `https://example.com/` are removed."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
@@ -3460,14 +3464,15 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
   <div class='api-body'>
     <div class='desc'>
       <div class='summary'>
-<p>Removes the certain cookie under a url for the specified key. When it finishes, the <code>handler</code> will be called.</p>
+<p>Removes the cookies with the specified key that apply to a URL. When it finishes, the <code>handler</code> will be called.</p>
+<p>A cookie is removed only when it applies to the URL, with the same host, path, and Secure rules as <code>GetCookie</code>. Cookies for other paths, host-only cookies of a parent host, cookies of subdomains, and Secure cookies when the URL uses HTTP are kept. To remove all cookies, use <code>ClearCookies</code>.</p>
 </div>
             <div class='parameters'>
 <div class='section-title'>Parameters</div>
 <div class='parameter-item-list'><ul>
   <li>
     <div class='parameter-item'><span class='parameter-item-type'>string</span> <span class='parameter-item-name'>url</span></div>
-    <div class='parameter-item-desc'><p>The url (domain) where the target cookie is.</p>
+    <div class='parameter-item-desc'><p>The full URL, including scheme and path, used to match the cookies.</p>
 </div>
   </li>
   <li>
@@ -3485,8 +3490,8 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
             <div class='example'>
     <p class='example-title'>Example</p>
 <div class="language-csharp extra-class">
-<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">RemoveCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token string">"SID"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Cookie `SID` under `example.com` is removed."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-csharp"><code>UniWebView<span class="token punctuation">.</span><span class="token function">RemoveCookie</span><span class="token punctuation">(</span><span class="token string">"https://example.com/"</span><span class="token punctuation">,</span> <span class="token string">"SID"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token string">"Cookie `SID` for `https://example.com/` is removed."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
@@ -3504,7 +3509,7 @@ UniWebView<span class="token punctuation">.</span><span class="token function">S
       <div class='custom-container warning'>
   <p class="custom-container-title">NOTICE</p>
   <p>
-        This will clear cookies from all domains in the web view and previous. If you only need to remove cookies from a certain domain, use <code>RemoveCookies</code> instead.
+        This will clear cookies from all domains in the web view and previous. If you only need to remove the cookies for a certain URL, use <code>RemoveCookies</code> instead.
   </p>
 </div>
                   <div class='example'>

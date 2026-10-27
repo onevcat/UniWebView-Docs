@@ -33,7 +33,7 @@
 - [Rotation and Scale](https://docs.uniwebview.com/guide/rotation-and-scale.md): UniWebView supports transforming web views with rotation and scaling, enhancing display flexibility in Unity games.
 - [Safe Browsing Mode](https://docs.uniwebview.com/guide/safe-browsing.md): UniWebView's Safe Browsing Mode offers a full-screen, browser-like web experience with customizable UI and requires device support checks.
 - [Supporting New Window](https://docs.uniwebview.com/guide/support-new-window.md): UniWebView supports new windows in web views through configuration, allowing links and JavaScript to open new tabs or windows.
-- [Submit a Ticket](https://docs.uniwebview.com/guide/ticket.md): Use the AI-driven chat bot for quick help or submit a private ticket for direct support if needed.
+- [Submit a Ticket](https://docs.uniwebview.com/guide/ticket.md): Submit a private ticket for direct support if you need help.
 - [Term of Service (Terms)](https://docs.uniwebview.com/guide/tos.md): UniWebView's Terms of Service, aligned with Unity Asset Store'sToS, govern use, content ownership, and allow for service modifications and termination.
 - [Transition](https://docs.uniwebview.com/guide/transition.md): UniWebView offers customizable show/hide transitions and position/size animations for web views.
 - [Clicking Through](https://docs.uniwebview.com/guide/transparency-through.md): UniWebView enables clicking through transparent web pages to interact with Unity scenes behind.
