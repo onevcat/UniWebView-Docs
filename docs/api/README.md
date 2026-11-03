@@ -86,6 +86,9 @@ as well as receive a message from the web view.
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onorientationchanged'><span class='return-type'>void</span> <span class='member-name'>OnOrientationChanged</span>(UniWebView webView, ScreenOrientation orientation)</a></div></td><td><div class='simple-summary'>
 <p>Raised when the screen orientation is changed.</p>
 </div>
+</td></tr><tr><td><div class='api-summary-heading'><a href='#onscreensizechanged'><span class='return-type'>void</span> <span class='member-name'>OnScreenSizeChanged</span>(UniWebView webView, int width, int height)</a></div></td><td><div class='simple-summary'>
+<p>Raised when the screen size (`Screen.</p>
+</div>
 </td></tr><tr><td><div class='api-summary-heading'><a href='#onwebcontentprocessterminated'><span class='return-type'>void</span> <span class='member-name'>OnWebContentProcessTerminated</span>(UniWebView webView)</a></div></td><td><div class='simple-summary'>
 <p>On iOS, raise when the system calls <code>webViewWebContentProcessDidTerminate</code> method.</p>
 </div>
@@ -1229,6 +1232,51 @@ need to support multiple orientations in your game.</p>
 webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
 webView<span class="token punctuation">.</span>OnOrientationChanged <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> orientation<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<div class='api-box method'>
+  <div class="api-anchor" id='onscreensizechanged'></div><div class='api-heading' data-id='onscreensizechanged'><a href='#onscreensizechanged'><span class='return-type'>void</span> <span class='member-name'>OnScreenSizeChanged</span>(UniWebView webView, int width, int height)</a></div>
+  <div class='api-body'>
+    <div class='desc'>
+      <div class='summary'>
+<p>Raised when the screen size (<code>Screen.width</code> and <code>Screen.height</code>) is changed. Besides a rotation, this happens when a
+foldable device is folded or unfolded, or when the game window is resized on a device that supports multiple windows.
+The screen orientation does not always change in these cases, so <code>OnOrientationChanged</code> is not always raised.</p>
+<p>If you set the web view position and size with the <code>Frame</code> property, update it in this event to keep the layout
+correct. A web view in full screen mode or with a <code>ReferenceRectTransform</code> updates its frame automatically.</p>
+</div>
+            <div class='parameters'>
+<div class='section-title'>Parameters</div>
+<div class='parameter-item-list'><ul>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>UniWebView</span> <span class='parameter-item-name'>webView</span></div>
+    <div class='parameter-item-desc'><p>The web view component which raises this event.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>width</span></div>
+    <div class='parameter-item-desc'><p>The new screen width in pixels. It is the same value as <code>Screen.width</code>.</p>
+</div>
+  </li>
+  <li>
+    <div class='parameter-item'><span class='parameter-item-type'>int</span> <span class='parameter-item-name'>height</span></div>
+    <div class='parameter-item-desc'><p>The new screen height in pixels. It is the same value as <code>Screen.height</code>.</p>
+</div>
+  </li>
+</ul></div>
+</div>
+            <div class='example'>
+    <p class='example-title'>Example</p>
+<div class="language-csharp extra-class">
+<pre class="language-csharp"><code><span class="token comment">// Keep the web view full screen when the device rotates, folds or unfolds.</span>
+webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> Screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+webView<span class="token punctuation">.</span>OnScreenSizeChanged <span class="token operator">+=</span> <span class="token punctuation">(</span>view<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    webView<span class="token punctuation">.</span>Frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Rect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 </div>

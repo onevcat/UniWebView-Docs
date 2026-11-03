@@ -1,4 +1,27 @@
 # Release Note
+### 6.11.0 (3 Nov, 2026)
+
+#### Add
+
+* Add `OnScreenSizeChanged` event to `UniWebView`. It is raised when `Screen.width` or `Screen.height` changes. Besides a rotation, this happens when a foldable device such as iPhone Duo or Galaxy Z Fold is folded or unfolded, or when the game window is resized on a device that supports multiple windows. `OnOrientationChanged` is not raised in these cases, so a web view with a `Frame` set for the previous screen size kept its old frame. Update the `Frame` in the new event to keep the layout correct. A web view in full screen mode or with a `ReferenceRectTransform` already updates its frame automatically.
+
+#### Fix
+
+* `GetCookie` on iOS and macOS now uses the same matching rules as the web view and as Android. It checks the host, the path, the `Secure` attribute, and the expiry of each cookie. When several cookies with the same name match, the one with the longest path is returned. Before, only the domain was checked, so a cookie that the web view does not send to the URL could be returned.
+* `SetCookie` on iOS and macOS now ignores a cookie whose `Domain` does not match the URL host or one of its parent domains. An empty or relative `Path` (such as `./account`) now uses the default cookie path of the URL. Before, such a cookie could be stored for an unrelated domain, or with a path that never matched any URL.
+* `GetCookie` on Android now keeps `=` characters in a cookie value, such as the Base64 value `abc==`. Before, the value was cut at the first `=`. When several cookies with the same name match, the one with the longest path is returned.
+* `RemoveCookie` and `RemoveCookies` on Android now delete the cookies. Before, they wrote an empty host-only cookie with the same name. That only hid the original cookie: domain cookies (such as `Domain=.example.com`), cookies with a different path, and `Secure` cookies (such as `__Host-` or `__Secure-` cookies) stayed in the store and were still sent to the server.
+* `RemoveCookie` and `RemoveCookies` on Android no longer block the Unity thread while they remove cookies. The handler is called after the removal finishes.
+* The embedded toolbar at the bottom now calculates its safe area inset from the app window instead of the device screen on iOS. On iPhone Duo and in resizable windows, the app does not always cover the whole screen.
+
+#### Breaking Change
+
+* All cookie APIs now match cookies with the full URL that you pass, including its scheme and path, on all platforms. The `url` parameter is now documented as a full URL, not as a domain. Android already worked this way. On iOS and macOS, some calls that returned or removed a cookie before now do not. We treat the old results as a bug, because the web view does not send those cookies to that URL. Check your code for these cases:
+  * **A cookie set on a page URL without `Path`.** For example, `SetCookie("https://example.com/login/index.html", "token=abc")` stores the cookie with the default path `/login`. `GetCookie("https://example.com", "token")` now returns an empty string, because `/` is not under `/login`. Add `Path=/` when the cookie must apply to the whole site, or read it with a URL under its path.
+  * **A host-only cookie read from a subdomain.** A cookie set for `https://example.com` without `Domain` applies to `example.com` only. It is no longer returned for `https://www.example.com`. Add `Domain=example.com` when subdomains must receive it.
+  * **A `Secure` cookie read with an `http://` URL.** It is no longer returned. Use the `https://` URL.
+  * **Removing all cookies of a site with one URL.** `RemoveCookies` and `RemoveCookie` on iOS and macOS remove only the cookies that apply to the URL, with the same rules as `GetCookie`. Before, they removed every cookie whose domain matched the host, for all paths, and also the host-only cookies of parent hosts. Cookies for other paths, host-only cookies of a parent host, and `Secure` cookies when the URL uses `http://` are now kept. Use `ClearCookies` to remove all cookies, or call `RemoveCookies` with each URL that you need to clean.
+
 ### 6.10.0 (27 Sep, 2026)
 
 #### Add

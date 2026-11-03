@@ -62,6 +62,21 @@ webView.OnOrientationChanged += (view, orientation) => {
 
 > If you do not set the `Frame` again in the `OnOrientationChanged` event, the web view size will keep what it is initially set (320x640), and your layout will be broken.
 
+### Screen Size Change
+
+The screen size can also change without a rotation: a foldable device such as iPhone Duo or Galaxy Z Fold is folded or unfolded, or the game window is resized on a device that supports multiple windows. `OnOrientationChanged` is not raised in these cases, so a `Frame` set for the previous screen size stays.
+
+Listen to the `OnScreenSizeChanged` event instead. It is raised whenever `Screen.width` or `Screen.height` changes, including a rotation, so one handler covers all cases:
+
+```csharp
+webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
+
+// OnScreenSizeChanged will be called whenever the screen size changes.
+webView.OnScreenSizeChanged += (view, width, height) => {
+    webView.Frame = new Rect(0, 0, width, height);
+};
+```
+
 ## Using Reference UI Element
 
 Unity has a responsive, nicely designed UI system: Unity UI. It considers screen canvas scaler and every rendered Unity UI comes with a `RectTransform`. You can set a `RectTransform` to UniWebView's `ReferenceRectTransform`, and UniWebView will follow this given `RectTransform` to determine its position and size. So you could skip to calculate the `Frame` and adapt to devices with different sizes and resolutions.
@@ -81,9 +96,9 @@ And everything should be done.
 
 ### Handle Rect Transform Changing
 
-Similar to the case for `Frame`, `ReferenceRectTransform` only considers the current state of the referenced transform when set. However, since we know the reference rect will be changed when the screen orientation changes, there is no need to update it again in `OnOrientationChanged` event. UniWebView will update its position and size automatically for you.
+Similar to the case for `Frame`, `ReferenceRectTransform` only considers the current state of the referenced transform when set. However, since we know the reference rect will be changed when the screen orientation or size changes, there is no need to update it again in `OnOrientationChanged` or `OnScreenSizeChanged` event. UniWebView will update its position and size automatically for you.
 
-But for other changes besides of the orientation change, UniWebView cannot detect it automatically. You take the responsibility to update the web view position and size in this case. In Unity, the `OnRectTransformDimensionsChange` in `UIBehavior` will be called when the attached rect transform changed. Please call UniWebView's `UpdateFrame()` in this method to give UniWebView a chance to calculate correct layout:
+But for other changes besides of the screen change, UniWebView cannot detect it automatically. You take the responsibility to update the web view position and size in this case. In Unity, the `OnRectTransformDimensionsChange` in `UIBehavior` will be called when the attached rect transform changed. Please call UniWebView's `UpdateFrame()` in this method to give UniWebView a chance to calculate correct layout:
 
 ```csharp
 // In a UIBehavior script:
