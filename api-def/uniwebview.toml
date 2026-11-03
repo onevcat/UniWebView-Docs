@@ -3603,6 +3603,40 @@ type = "ScreenOrientation"
 summary = "The screen orientation for current state."
 
 [[Events]]
+name = "OnScreenSizeChanged"
+syntax = "OnScreenSizeChanged(UniWebView webView, int width, int height)"
+returnType = "void"
+summary = """
+Raised when the screen size (`Screen.width` and `Screen.height`) is changed. Besides a rotation, this happens when a
+foldable device is folded or unfolded, or when the game window is resized on a device that supports multiple windows.
+The screen orientation does not always change in these cases, so `OnOrientationChanged` is not always raised.
+
+If you set the web view position and size with the `Frame` property, update it in this event to keep the layout
+correct. A web view in full screen mode or with a `ReferenceRectTransform` updates its frame automatically.
+"""
+example = """
+```csharp
+// Keep the web view full screen when the device rotates, folds or unfolds.
+webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
+webView.OnScreenSizeChanged += (view, width, height) => {
+    webView.Frame = new Rect(0, 0, width, height);
+};
+```
+"""
+[[Events.parameters]]
+name = "webView"
+type = "UniWebView"
+summary = "The web view component which raises this event."
+[[Events.parameters]]
+name = "width"
+type = "int"
+summary = "The new screen width in pixels. It is the same value as `Screen.width`."
+[[Events.parameters]]
+name = "height"
+type = "int"
+summary = "The new screen height in pixels. It is the same value as `Screen.height`."
+
+[[Events]]
 name = "OnWebContentProcessTerminated"
 syntax = "OnWebContentProcessTerminated(UniWebView webView)"
 returnType = "void"
